@@ -1,0 +1,65 @@
+%implements s1068_b0_g3vnd_160_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+/* MATLAB Function: '<S1500>/FirGenericInitFcn' */
+/* MATLAB Function: '<S1500>/FirGenericInitFcn' incorporates:
+ *  Constant: '<S1473>/filterMapping'
+ *  Constant: '<S1473>/inputMapping'
+ *  S-Function (TOP_MEX): '<S1473>/TOP2'
+ *  Sum: '<S1473>/Add'
+ */
+/*  Invoke the function trigger output */
+/* MATLAB Function 'ITC/init': '<S1505>:1' */
+/* '<S1505>:1:3' init(); */
+/*  Generic FIR function to work with M inputs, N outputs and K filters */
+/*  */
+/*  Parameters: */
+/*    u:              input channels [frame size x number of inputs] */
+/*    CoeffsTarget:    coefficient sets [total filter lengths x 1] */
+/*    CoeffsLengths:  array of filter lengths [number of filters x 1] */
+/*    InputMapping:   zero-based input mapping for each filter  [number of outputs x 1] */
+/*    CoeffsMapping:  zero-based filter mapping for each filter [number of outputs x 1] */
+/*  */
+/*  Global parameters: */
+/*    States:         array of states [totalBufferSize x 1] */
+/*    CodeWorkMemory: working memory set up during roommode reset/init CRL */
+/*                    function call [codeWorkMemorySize x 1] */
+/* -------------------------------------------------------------------------- */
+/* MATLAB Function 'Fir/Fir/TargetSpecific/FirGenericInitFcn': '<S1501>:1' */
+/*  Extract configuration information from inputs */
+/* '<S1501>:1:18' [FrameSize, NumInputs]  = size(u); */
+/* '<S1501>:1:19' NumOutputs = numel(InputMapping); */
+/*  Get the work memory and states size */
+/* '<S1501>:1:25' WorkMemorySize = numel(CodeWorkMemory); */
+/* '<S1501>:1:26' StateBufferSize = numel(StateBuffer); */
+/*  Set correct data types */
+/* '<S1501>:1:29' CoeffsLengths = uint32(CoeffsLengths); */
+/* '<S1501>:1:30' NumCoeffSets = uint32(numel(CoeffsLengths)); */
+/* '<S1501>:1:31' FrameSize = uint32(FrameSize); */
+/* '<S1501>:1:32' NumOutputs = uint32(NumOutputs); */
+/* '<S1501>:1:33' NumInputs = uint32(NumInputs); */
+/* '<S1501>:1:34' WorkMemorySize = uint32(WorkMemorySize); */
+/* '<S1501>:1:35' StateBufferSize = uint32(StateBufferSize); */
+/*  Reconstitute Variant */
+/* '<S1501>:1:38' VariantSelect = char(VariantUint8); */
+/* '<S1501>:1:40' switch(VariantSelect) */
+/* '<S1501>:1:52' case {'Hexagon'} */
+/* '<S1501>:1:53' y = fir_hexagon_init(u, CoeffsTarget, StateBuffer, CoeffsLengths, InputMapping, CoeffsMapping, ... */
+/* '<S1501>:1:54'             FrameSize, NumCoeffSets, NumInputs, NumOutputs, CodeWorkMemory); */
+/*@>12e88ba*/fir_init(%<SLibCG_DumpSSCode("/*@[12e8d3d*/",(SLibCG_CSCDWAddr(500, 629, "", -1, "", 0)),"/*@]*/")>, &/*@>12e8a76*/Model_Target_VLS_B./*@>12e8da5*/Add/*@>12e7c52*/[/*@>12e80bf*/0], %<SLibCG_DumpSSCode("/*@[12e8d20*/",(SLibCG_BOCSCAddr(608, 5760, "", -1, "", 0)),"/*@]*/")>, %<SLibCG_DumpSSCode("/*@[12e8d03*/",(SLibCG_CSCDWAddr(497, 6060, "", -1, "", 0)),"/*@]*/")>, %<SLibCG_DumpSSCode("/*@[12e8ce6*/",(SLibCG_BOCSCAddr(600, 20, "", -1, "", 0)),"/*@]*/")>, &/*@>12e8b99*/Model_Target_ConstP./*@>12e8da8*/pooled104/*@>12e7c6c*/[/*@>12e80c3*/0], &/*@>12e8b9f*/Model_Target_ConstP./*@>12e8dab*/pooled105/*@>12e7c73*/[/*@>12e80c4*/0], /*@>12e80b4*/8U, /*@>12e80b5*/20U, /*@>12e80b6*/12U, /*@>12e80b7*/20U, %<SLibCG_DumpSSCode("/*@[12e8cc9*/",(SLibCG_CSCDWAddr(500, 629, "", -1, "", 0)),"/*@]*/")>);
+/* '<S1501>:1:55' CodeWorkMemory(1) = y; */
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void InitTrigger_Model_232_11_239_99(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(160, 0, fcnProtoType)>
+%endfunction

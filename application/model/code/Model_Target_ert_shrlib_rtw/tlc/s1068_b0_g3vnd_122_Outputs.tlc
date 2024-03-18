@@ -1,0 +1,2302 @@
+%implements s1068_b0_g3vnd_122_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+int32_T colIdx;
+int32_T i;
+int32_T sample;
+int32_T writeIndex;
+real32_T PremixMatrixTarget[77];
+real32_T audioOut[64];
+real32_T MatrixConcatenate[56];
+real32_T PremixMatrix_e[30];
+real32_T PremixMatrix_a[20];
+real32_T rtb_Downsample_n[16];
+real32_T PremixMatrix_m[12];
+real32_T rtb_Transpose1_o_0[12];
+int8_T rtAction;
+int8_T rtPrevAction;
+static const int8_T tmp[18] = %<(TLC_STR_CTX(0))>;
+static const int8_T tmp_0[6] = %<(TLC_STR_CTX(1))>;
+static const int8_T tmp_1[22] = %<(TLC_STR_CTX(2))>;
+static const int8_T tmp_2[4] = %<(TLC_STR_CTX(3))>;
+%closefile localVarDecl
+%assign _modelSS = ""
+
+%assign tlcDisableFcnOfS414B12 = OpaqueTLCBlockFcn("Disable", 414, 12, 122, 1, 0)
+%assign tlcDisableFcnOfS348B3 = OpaqueTLCBlockFcn("Disable", 348, 3, 122, 1, 1)
+%assign tlcDisableFcnOfS350B3 = OpaqueTLCBlockFcn("Disable", 350, 3, 122, 1, 2)
+%assign tlcDisableFcnOfS352B3 = OpaqueTLCBlockFcn("Disable", 352, 3, 122, 1, 3)
+%assign tlcDisableFcnOfS414B75 = OpaqueTLCBlockFcn("Disable", 414, 75, 122, 1, 4)
+%assign tlcDisableFcnOfS414B123 = OpaqueTLCBlockFcn("Disable", 414, 123, 122, 1, 5)
+%assign tlcDisableFcnOfS414B124 = OpaqueTLCBlockFcn("Disable", 414, 124, 122, 1, 6)
+%assign tlcDisableFcnOfS414B127 = OpaqueTLCBlockFcn("Disable", 414, 127, 122, 1, 7)
+%assign tlcDisableFcnOfS414B128 = OpaqueTLCBlockFcn("Disable", 414, 128, 122, 1, 8)
+%assign tlcDisableFcnOfS414B130 = OpaqueTLCBlockFcn("Disable", 414, 130, 122, 1, 9)
+%assign tlcDisableFcnOfS414B131 = OpaqueTLCBlockFcn("Disable", 414, 131, 122, 1, 10)
+%assign tlcDisableFcnOfS414B132 = OpaqueTLCBlockFcn("Disable", 414, 132, 122, 1, 11)
+%assign tlcDisableFcnOfS318B3 = OpaqueTLCBlockFcn("Disable", 318, 3, 122, 1, 12)
+%assign tlcDisableFcnOfS320B3 = OpaqueTLCBlockFcn("Disable", 320, 3, 122, 1, 13)
+%assign tlcDisableFcnOfS322B3 = OpaqueTLCBlockFcn("Disable", 322, 3, 122, 1, 14)
+%assign tlcDisableFcnOfS414B152 = OpaqueTLCBlockFcn("Disable", 414, 152, 122, 1, 15)
+%assign tlcDisableFcnOfS414B153 = OpaqueTLCBlockFcn("Disable", 414, 153, 122, 1, 16)
+%assign tlcDisableFcnOfS414B155 = OpaqueTLCBlockFcn("Disable", 414, 155, 122, 1, 17)
+%assign tlcDisableFcnOfS414B156 = OpaqueTLCBlockFcn("Disable", 414, 156, 122, 1, 18)
+%assign tlcDisableFcnOfS414B158 = OpaqueTLCBlockFcn("Disable", 414, 158, 122, 1, 19)
+%assign tlcDisableFcnOfS414B159 = OpaqueTLCBlockFcn("Disable", 414, 159, 122, 1, 20)
+%assign tlcDisableFcnOfS414B160 = OpaqueTLCBlockFcn("Disable", 414, 160, 122, 1, 21)
+%assign tlcDisableFcnOfS414B171 = OpaqueTLCBlockFcn("Disable", 414, 171, 122, 1, 22)
+%assign tlcDisableFcnOfS414B182 = OpaqueTLCBlockFcn("Disable", 414, 182, 122, 1, 23)
+%assign tlcDisableFcnOfS414B187 = OpaqueTLCBlockFcn("Disable", 414, 187, 122, 1, 24)
+%assign tlcEnableFcnOfS414B75 = OpaqueTLCBlockFcn("Enable", 414, 75, 122, 1, 25)
+%assign tlcEnableFcnOfS414B111 = OpaqueTLCBlockFcn("Enable", 414, 111, 122, 1, 26)
+%assign tlcOutputsFcnOfS414B0 = OpaqueTLCBlockFcn("Outputs", 414, 0, 122, 1, 27)
+%assign tlcOutputsFcnOfS414B1 = OpaqueTLCBlockFcn("Outputs", 414, 1, 122, 1, 28)
+%assign tlcOutputsFcnOfS414B2 = OpaqueTLCBlockFcn("Outputs", 414, 2, 122, 1, 29)
+%assign tlcOutputsFcnOfS414B4 = OpaqueTLCBlockFcn("Outputs", 414, 4, 122, 1, 30)
+%assign tlcOutputsFcnOfS414B6 = OpaqueTLCBlockFcn("Outputs", 414, 6, 122, 1, 31)
+%assign tlcOutputsFcnOfS414B8 = OpaqueTLCBlockFcn("Outputs", 414, 8, 122, 1, 32)
+%assign tlcOutputsFcnOfS414B12 = OpaqueTLCBlockFcn("Outputs", 414, 12, 122, 1, 33)
+%assign tlcOutputsFcnOfS414B15 = OpaqueTLCBlockFcn("Outputs", 414, 15, 122, 1, 34)
+%assign tlcOutputsFcnOfS414B16 = OpaqueTLCBlockFcn("Outputs", 414, 16, 122, 1, 35)
+%assign tlcOutputsFcnOfS414B17 = OpaqueTLCBlockFcn("Outputs", 414, 17, 122, 1, 36)
+%assign tlcOutputsFcnOfS414B18 = OpaqueTLCBlockFcn("Outputs", 414, 18, 122, 1, 37)
+%assign tlcOutputsFcnOfS414B19 = OpaqueTLCBlockFcn("Outputs", 414, 19, 122, 1, 38)
+%assign tlcOutputsFcnOfS414B20 = OpaqueTLCBlockFcn("Outputs", 414, 20, 122, 1, 39)
+%assign tlcOutputsFcnOfS414B21 = OpaqueTLCBlockFcn("Outputs", 414, 21, 122, 1, 40)
+%assign tlcOutputsFcnOfS414B22 = OpaqueTLCBlockFcn("Outputs", 414, 22, 122, 1, 41)
+%assign tlcOutputsFcnOfS414B23 = OpaqueTLCBlockFcn("Outputs", 414, 23, 122, 1, 42)
+%assign tlcOutputsFcnOfS414B24 = OpaqueTLCBlockFcn("Outputs", 414, 24, 122, 1, 43)
+%assign tlcOutputsFcnOfS348B3 = OpaqueTLCBlockFcn("Outputs", 348, 3, 122, 1, 44)
+%assign tlcOutputsFcnOfS350B3 = OpaqueTLCBlockFcn("Outputs", 350, 3, 122, 1, 45)
+%assign tlcOutputsFcnOfS352B3 = OpaqueTLCBlockFcn("Outputs", 352, 3, 122, 1, 46)
+%assign tlcOutputsFcnOfS414B29 = OpaqueTLCBlockFcn("Outputs", 414, 29, 122, 1, 47)
+%assign tlcOutputsFcnOfS414B30 = OpaqueTLCBlockFcn("Outputs", 414, 30, 122, 1, 48)
+%assign tlcOutputsFcnOfS414B31 = OpaqueTLCBlockFcn("Outputs", 414, 31, 122, 1, 49)
+%assign tlcOutputsFcnOfS414B32 = OpaqueTLCBlockFcn("Outputs", 414, 32, 122, 1, 50)
+%assign tlcOutputsFcnOfS414B33 = OpaqueTLCBlockFcn("Outputs", 414, 33, 122, 1, 51)
+%assign tlcOutputsFcnOfS414B34 = OpaqueTLCBlockFcn("Outputs", 414, 34, 122, 1, 52)
+%assign tlcOutputsFcnOfS414B35 = OpaqueTLCBlockFcn("Outputs", 414, 35, 122, 1, 53)
+%assign tlcOutputsFcnOfS414B36 = OpaqueTLCBlockFcn("Outputs", 414, 36, 122, 1, 54)
+%assign tlcOutputsFcnOfS414B37 = OpaqueTLCBlockFcn("Outputs", 414, 37, 122, 1, 55)
+%assign tlcOutputsFcnOfS414B38 = OpaqueTLCBlockFcn("Outputs", 414, 38, 122, 1, 56)
+%assign tlcOutputsFcnOfS414B39 = OpaqueTLCBlockFcn("Outputs", 414, 39, 122, 1, 57)
+%assign tlcOutputsFcnOfS414B40 = OpaqueTLCBlockFcn("Outputs", 414, 40, 122, 1, 58)
+%assign tlcOutputsFcnOfS414B41 = OpaqueTLCBlockFcn("Outputs", 414, 41, 122, 1, 59)
+%assign tlcOutputsFcnOfS414B42 = OpaqueTLCBlockFcn("Outputs", 414, 42, 122, 1, 60)
+%assign tlcOutputsFcnOfS414B43 = OpaqueTLCBlockFcn("Outputs", 414, 43, 122, 1, 61)
+%assign tlcOutputsFcnOfS414B44 = OpaqueTLCBlockFcn("Outputs", 414, 44, 122, 1, 62)
+%assign tlcOutputsFcnOfS414B45 = OpaqueTLCBlockFcn("Outputs", 414, 45, 122, 1, 63)
+%assign tlcOutputsFcnOfS414B46 = OpaqueTLCBlockFcn("Outputs", 414, 46, 122, 1, 64)
+%assign tlcOutputsFcnOfS414B47 = OpaqueTLCBlockFcn("Outputs", 414, 47, 122, 1, 65)
+%assign tlcOutputsFcnOfS414B48 = OpaqueTLCBlockFcn("Outputs", 414, 48, 122, 1, 66)
+%assign tlcOutputsFcnOfS414B49 = OpaqueTLCBlockFcn("Outputs", 414, 49, 122, 1, 67)
+%assign tlcOutputsFcnOfS414B50 = OpaqueTLCBlockFcn("Outputs", 414, 50, 122, 1, 68)
+%assign tlcOutputsFcnOfS414B51 = OpaqueTLCBlockFcn("Outputs", 414, 51, 122, 1, 69)
+%assign tlcOutputsFcnOfS414B52 = OpaqueTLCBlockFcn("Outputs", 414, 52, 122, 1, 70)
+%assign tlcOutputsFcnOfS414B53 = OpaqueTLCBlockFcn("Outputs", 414, 53, 122, 1, 71)
+%assign tlcOutputsFcnOfS414B54 = OpaqueTLCBlockFcn("Outputs", 414, 54, 122, 1, 72)
+%assign tlcOutputsFcnOfS414B55 = OpaqueTLCBlockFcn("Outputs", 414, 55, 122, 1, 73)
+%assign tlcOutputsFcnOfS414B56 = OpaqueTLCBlockFcn("Outputs", 414, 56, 122, 1, 74)
+%assign tlcOutputsFcnOfS414B57 = OpaqueTLCBlockFcn("Outputs", 414, 57, 122, 1, 75)
+%assign tlcOutputsFcnOfS414B58 = OpaqueTLCBlockFcn("Outputs", 414, 58, 122, 1, 76)
+%assign tlcOutputsFcnOfS414B59 = OpaqueTLCBlockFcn("Outputs", 414, 59, 122, 1, 77)
+%assign tlcOutputsFcnOfS414B60 = OpaqueTLCBlockFcn("Outputs", 414, 60, 122, 1, 78)
+%assign tlcOutputsFcnOfS414B61 = OpaqueTLCBlockFcn("Outputs", 414, 61, 122, 1, 79)
+%assign tlcOutputsFcnOfS414B62 = OpaqueTLCBlockFcn("Outputs", 414, 62, 122, 1, 80)
+%assign tlcOutputsFcnOfS414B63 = OpaqueTLCBlockFcn("Outputs", 414, 63, 122, 1, 81)
+%assign tlcOutputsFcnOfS414B64 = OpaqueTLCBlockFcn("Outputs", 414, 64, 122, 1, 82)
+%assign tlcOutputsFcnOfS414B65 = OpaqueTLCBlockFcn("Outputs", 414, 65, 122, 1, 83)
+%assign tlcOutputsFcnOfS414B66 = OpaqueTLCBlockFcn("Outputs", 414, 66, 122, 1, 84)
+%assign tlcOutputsFcnOfS414B67 = OpaqueTLCBlockFcn("Outputs", 414, 67, 122, 1, 85)
+%assign tlcOutputsFcnOfS414B68 = OpaqueTLCBlockFcn("Outputs", 414, 68, 122, 1, 86)
+%assign tlcOutputsFcnOfS414B69 = OpaqueTLCBlockFcn("Outputs", 414, 69, 122, 1, 87)
+%assign tlcOutputsFcnOfS414B70 = OpaqueTLCBlockFcn("Outputs", 414, 70, 122, 1, 88)
+%assign tlcOutputsFcnOfS414B71 = OpaqueTLCBlockFcn("Outputs", 414, 71, 122, 1, 89)
+%assign tlcOutputsFcnOfS414B72 = OpaqueTLCBlockFcn("Outputs", 414, 72, 122, 1, 90)
+%assign tlcOutputsFcnOfS414B73 = OpaqueTLCBlockFcn("Outputs", 414, 73, 122, 1, 91)
+%assign tlcOutputsFcnOfS414B74 = OpaqueTLCBlockFcn("Outputs", 414, 74, 122, 1, 92)
+%assign tlcOutputsFcnOfS414B75 = OpaqueTLCBlockFcn("Outputs", 414, 75, 122, 1, 93)
+%assign tlcOutputsFcnOfS414B92 = OpaqueTLCBlockFcn("Outputs", 414, 92, 122, 1, 94)
+%assign tlcOutputsFcnOfS414B111 = OpaqueTLCBlockFcn("Outputs", 414, 111, 122, 1, 95)
+%assign tlcOutputsFcnOfS414B123 = OpaqueTLCBlockFcn("Outputs", 414, 123, 122, 1, 96)
+%assign tlcOutputsFcnOfS414B124 = OpaqueTLCBlockFcn("Outputs", 414, 124, 122, 1, 97)
+%assign tlcOutputsFcnOfS414B127 = OpaqueTLCBlockFcn("Outputs", 414, 127, 122, 1, 98)
+%assign tlcOutputsFcnOfS414B128 = OpaqueTLCBlockFcn("Outputs", 414, 128, 122, 1, 99)
+%assign tlcOutputsFcnOfS414B130 = OpaqueTLCBlockFcn("Outputs", 414, 130, 122, 1, 100)
+%assign tlcOutputsFcnOfS414B131 = OpaqueTLCBlockFcn("Outputs", 414, 131, 122, 1, 101)
+%assign tlcOutputsFcnOfS414B132 = OpaqueTLCBlockFcn("Outputs", 414, 132, 122, 1, 102)
+%assign tlcOutputsFcnOfS414B133 = OpaqueTLCBlockFcn("Outputs", 414, 133, 122, 1, 103)
+%assign tlcOutputsFcnOfS414B134 = OpaqueTLCBlockFcn("Outputs", 414, 134, 122, 1, 104)
+%assign tlcOutputsFcnOfS414B135 = OpaqueTLCBlockFcn("Outputs", 414, 135, 122, 1, 105)
+%assign tlcOutputsFcnOfS414B136 = OpaqueTLCBlockFcn("Outputs", 414, 136, 122, 1, 106)
+%assign tlcOutputsFcnOfS414B137 = OpaqueTLCBlockFcn("Outputs", 414, 137, 122, 1, 107)
+%assign tlcOutputsFcnOfS414B138 = OpaqueTLCBlockFcn("Outputs", 414, 138, 122, 1, 108)
+%assign tlcOutputsFcnOfS414B139 = OpaqueTLCBlockFcn("Outputs", 414, 139, 122, 1, 109)
+%assign tlcOutputsFcnOfS414B140 = OpaqueTLCBlockFcn("Outputs", 414, 140, 122, 1, 110)
+%assign tlcOutputsFcnOfS414B141 = OpaqueTLCBlockFcn("Outputs", 414, 141, 122, 1, 111)
+%assign tlcOutputsFcnOfS414B142 = OpaqueTLCBlockFcn("Outputs", 414, 142, 122, 1, 112)
+%assign tlcOutputsFcnOfS318B3 = OpaqueTLCBlockFcn("Outputs", 318, 3, 122, 1, 113)
+%assign tlcOutputsFcnOfS320B3 = OpaqueTLCBlockFcn("Outputs", 320, 3, 122, 1, 114)
+%assign tlcOutputsFcnOfS322B3 = OpaqueTLCBlockFcn("Outputs", 322, 3, 122, 1, 115)
+%assign tlcOutputsFcnOfS414B152 = OpaqueTLCBlockFcn("Outputs", 414, 152, 122, 1, 116)
+%assign tlcOutputsFcnOfS414B153 = OpaqueTLCBlockFcn("Outputs", 414, 153, 122, 1, 117)
+%assign tlcOutputsFcnOfS414B155 = OpaqueTLCBlockFcn("Outputs", 414, 155, 122, 1, 118)
+%assign tlcOutputsFcnOfS414B156 = OpaqueTLCBlockFcn("Outputs", 414, 156, 122, 1, 119)
+%assign tlcOutputsFcnOfS414B158 = OpaqueTLCBlockFcn("Outputs", 414, 158, 122, 1, 120)
+%assign tlcOutputsFcnOfS414B159 = OpaqueTLCBlockFcn("Outputs", 414, 159, 122, 1, 121)
+%assign tlcOutputsFcnOfS414B160 = OpaqueTLCBlockFcn("Outputs", 414, 160, 122, 1, 122)
+%assign tlcOutputsFcnOfS414B161 = OpaqueTLCBlockFcn("Outputs", 414, 161, 122, 1, 123)
+%assign tlcOutputsFcnOfS414B162 = OpaqueTLCBlockFcn("Outputs", 414, 162, 122, 1, 124)
+%assign tlcOutputsFcnOfS414B163 = OpaqueTLCBlockFcn("Outputs", 414, 163, 122, 1, 125)
+%assign tlcOutputsFcnOfS414B164 = OpaqueTLCBlockFcn("Outputs", 414, 164, 122, 1, 126)
+%assign tlcOutputsFcnOfS414B165 = OpaqueTLCBlockFcn("Outputs", 414, 165, 122, 1, 127)
+%assign tlcOutputsFcnOfS414B171 = OpaqueTLCBlockFcn("Outputs", 414, 171, 122, 1, 128)
+%assign tlcOutputsFcnOfS414B172 = OpaqueTLCBlockFcn("Outputs", 414, 172, 122, 1, 129)
+%assign tlcOutputsFcnOfS414B173 = OpaqueTLCBlockFcn("Outputs", 414, 173, 122, 1, 130)
+%assign tlcOutputsFcnOfS414B174 = OpaqueTLCBlockFcn("Outputs", 414, 174, 122, 1, 131)
+%assign tlcOutputsFcnOfS414B175 = OpaqueTLCBlockFcn("Outputs", 414, 175, 122, 1, 132)
+%assign tlcOutputsFcnOfS414B176 = OpaqueTLCBlockFcn("Outputs", 414, 176, 122, 1, 133)
+%assign tlcOutputsFcnOfS414B182 = OpaqueTLCBlockFcn("Outputs", 414, 182, 122, 1, 134)
+%assign tlcOutputsFcnOfS414B183 = OpaqueTLCBlockFcn("Outputs", 414, 183, 122, 1, 135)
+%assign tlcOutputsFcnOfS414B187 = OpaqueTLCBlockFcn("Outputs", 414, 187, 122, 1, 136)
+%assign tlcOutputsFcnOfS423B2 = OpaqueTLCBlockFcn("Outputs", 423, 2, 122, 1, 137)
+%assign tlcOutputsFcnOfS423B7 = OpaqueTLCBlockFcn("Outputs", 423, 7, 122, 1, 138)
+%assign tlcOutputsFcnOfS423B11 = OpaqueTLCBlockFcn("Outputs", 423, 11, 122, 1, 139)
+/* {S!d936}If: '<S587>/If' incorporates:
+ *  DataStoreRead: '<S587>/Enable State Read'
+ */
+/*@>128a66b*/rtPrevAction/*@>10d9ea8*/ = /*@>12a75df*/Model_Target_Medusa5H1Part3_DW./*@>12af001*/If_ActiveSubsystem;
+/*@>128a669*/rtAction/*@>10d9eb0*/ = (int8_T)(/*@>12a75e5*/Model_Target_Medusa5H1Part3_DW./*@>12af004*/MedusaPostUpmixEnable/*@>126a747*/ <= /*@>1289cc9*/0U);
+/*@>12a75eb*/Model_Target_Medusa5H1Part3_DW./*@>12af007*/If_ActiveSubsystem/*@>10d9eb4*/ = /*@>128a667*/rtAction;
+/*@>10d9eb8*/if ((/*@>128a661*/rtPrevAction/*@>10d9eb7*/ != /*@>128a663*/rtAction)/*@>12ab4af*/ && (/*@>128969a*/rtPrevAction/*@>128a9bd*/ == /*@>128a9ba*/0)) {
+    /* {S!d337}Disable for Enabled SubSystem: '<S999>/Mono-Surround' */
+    /*@>10d9f50*/if (/*@>12a75f1*/Model_Target_Medusa5H1Part3_DW./*@>12af00a*/MonoSurround_MODE) {
+        /* {S!d432}Disable for If: '<S1015>/If' */
+        /*@>12a75f7*/Model_Target_Medusa5H1Part3_DW./*@>12af00d*/If_ActiveSubsystem_b/*@>10da02e*/ = /*@>12ad950*/-1;
+        /* {S!d434}Disable for If: '<S1016>/If' */
+        /*@>12a75fd*/Model_Target_Medusa5H1Part3_DW./*@>12af010*/If_ActiveSubsystem_k/*@>10da030*/ = /*@>12ad956*/-1;
+        /*@>12a7603*/Model_Target_Medusa5H1Part3_DW./*@>12af013*/MonoSurround_MODE/*@>10d9f52*/ = /*@>128a57c*/false;
+    }
+    /* {E!d337}End of Disable for SubSystem: '<S999>/Mono-Surround' */
+%if !WHITE_SPACE(tlcDisableFcnOfS414B12)
+
+    /* {S!d436}Disable for M-S-Function: '<S999>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12aabbc*/",tlcDisableFcnOfS414B12,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcDisableFcnOfS348B3)
+    /* {S!d339}Disable for MATLAB Function: '<S1000>/Fade_Trigger_Generation' incorporates:
+ *  SubSystem: '<S1003>/Fader Downmix'
+ */
+    /* {S!d438}Disable for M-S-Function: '<S1071>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12aabbd*/",tlcDisableFcnOfS348B3,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcDisableFcnOfS350B3)
+    /* {S!d340}Disable for MATLAB Function: '<S1000>/Fade_Trigger_Generation' incorporates:
+ *  SubSystem: '<S1002>/Fader Downmix'
+ */
+    /* {S!d440}Disable for M-S-Function: '<S1059>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12aabbe*/",tlcDisableFcnOfS350B3,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcDisableFcnOfS352B3)
+    /* {S!d341}Disable for MATLAB Function: '<S1000>/Fade_Trigger_Generation' incorporates:
+ *  SubSystem: '<S1004>/Fader Downmix'
+ */
+    /* {S!d442}Disable for M-S-Function: '<S1083>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12aabbf*/",tlcDisableFcnOfS352B3,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcDisableFcnOfS414B75)
+    /* {S!d343}Disable for S-Function (RTC_REQ_RSP): '<S1113>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[12aabc1*/",tlcDisableFcnOfS414B75,"/*@]*/")>\
+    /* {E!d343}End of Disable for S-Function (RTC_REQ_RSP): '<S1113>/RTC Request Response Trigger' */
+%endif
+%if !WHITE_SPACE(tlcDisableFcnOfS414B123)
+
+    /* {S!d444}Disable for M-S-Function: '<S1062>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12aabc2*/",tlcDisableFcnOfS414B123,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcDisableFcnOfS414B124)
+    /* {S!d446}Disable for M-S-Function: '<S1002>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12aabc3*/",tlcDisableFcnOfS414B124,"/*@]*/")>\
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[314], "Disable",2)
+    /* {S!d345}Disable for Atomic SubSystem: '<S887>/Expand Tail Components' */
+%<SLibCG_DumpSSCode("/*@[12aacab*/",SLibCGIRGenReusableSysCall("Model_Target_ExpandTailComponents_Disable", [], 314, 0, 14, 2, 6, 423),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[314]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+    /* {E!d345}End of Disable for SubSystem: '<S887>/Expand Tail Components' */
+
+%endif
+%if !WHITE_SPACE(tlcDisableFcnOfS414B127)
+    /* {S!d448}Disable for M-S-Function: '<S1074>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12aabc4*/",tlcDisableFcnOfS414B127,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcDisableFcnOfS414B128)
+    /* {S!d450}Disable for M-S-Function: '<S1003>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12aabc5*/",tlcDisableFcnOfS414B128,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcDisableFcnOfS414B130)
+    /* {S!d452}Disable for M-S-Function: '<S1086>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12aabc6*/",tlcDisableFcnOfS414B130,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcDisableFcnOfS414B131)
+    /* {S!d454}Disable for M-S-Function: '<S1004>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12aabc7*/",tlcDisableFcnOfS414B131,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcDisableFcnOfS414B132)
+    /* {S!d456}Disable for M-S-Function: '<S998>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12aabc8*/",tlcDisableFcnOfS414B132,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcDisableFcnOfS318B3)
+    /* {S!d347}Disable for MATLAB Function: '<S932>/Fade_Trigger_Generation' incorporates:
+ *  SubSystem: '<S935>/Fader Downmix'
+ */
+    /* {S!d458}Disable for M-S-Function: '<S962>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12aabc9*/",tlcDisableFcnOfS318B3,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcDisableFcnOfS320B3)
+    /* {S!d348}Disable for MATLAB Function: '<S932>/Fade_Trigger_Generation' incorporates:
+ *  SubSystem: '<S934>/Fader Downmix'
+ */
+    /* {S!d460}Disable for M-S-Function: '<S950>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12aabca*/",tlcDisableFcnOfS320B3,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcDisableFcnOfS322B3)
+    /* {S!d349}Disable for MATLAB Function: '<S932>/Fade_Trigger_Generation' incorporates:
+ *  SubSystem: '<S936>/Fader Downmix'
+ */
+    /* {S!d462}Disable for M-S-Function: '<S974>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12aabcb*/",tlcDisableFcnOfS322B3,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcDisableFcnOfS414B152)
+    /* {S!d464}Disable for M-S-Function: '<S953>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12aabcc*/",tlcDisableFcnOfS414B152,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcDisableFcnOfS414B153)
+    /* {S!d466}Disable for M-S-Function: '<S934>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12aabcd*/",tlcDisableFcnOfS414B153,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcDisableFcnOfS414B155)
+    /* {S!d468}Disable for M-S-Function: '<S965>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12aabce*/",tlcDisableFcnOfS414B155,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcDisableFcnOfS414B156)
+    /* {S!d470}Disable for M-S-Function: '<S935>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12aabcf*/",tlcDisableFcnOfS414B156,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcDisableFcnOfS414B158)
+    /* {S!d472}Disable for M-S-Function: '<S977>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12aabd0*/",tlcDisableFcnOfS414B158,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcDisableFcnOfS414B159)
+    /* {S!d474}Disable for M-S-Function: '<S936>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12aabd1*/",tlcDisableFcnOfS414B159,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcDisableFcnOfS414B160)
+    /* {S!d476}Disable for M-S-Function: '<S931>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12aabd2*/",tlcDisableFcnOfS414B160,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcDisableFcnOfS414B171)
+    /* {S!d478}Disable for M-S-Function: '<S1129>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12aabd3*/",tlcDisableFcnOfS414B171,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcDisableFcnOfS414B182)
+    /* {S!d480}Disable for M-S-Function: '<S1130>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12aabd4*/",tlcDisableFcnOfS414B182,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcDisableFcnOfS414B187)
+    /* {S!d482}Disable for M-S-Function: '<S1110>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12aabd5*/",tlcDisableFcnOfS414B187,"/*@]*/")>\
+%endif
+}
+/*@>128b964*/if (/*@>128a65f*/rtAction/*@>128b963*/ == /*@>128b966*/0) {
+    boolean_T fadeOn;
+    boolean_T rtb_SLC_On;
+    /*@>10d9ec0*/if (/*@>128a65b*/rtPrevAction/*@>128d48d*/ != /*@>128cfe3*/0) {
+%if !WHITE_SPACE(tlcEnableFcnOfS414B75)
+        /* {S!d351}Enable for IfAction SubSystem: '<S587>/On' incorporates:
+ *  ActionPort: '<S887>/Action Port'
+ */
+        /* {S!d352}Enable for S-Function (RTC_REQ_RSP): '<S1113>/RTC Request Response Trigger' */
+        /* {S!d484}Enable for If: '<S587>/If' */
+%<SLibCG_DumpSSCode("/*@[12aabd7*/",tlcEnableFcnOfS414B75,"/*@]*/")>\
+        /* {E!d352}End of Enable for S-Function (RTC_REQ_RSP): '<S1113>/RTC Request Response Trigger' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS414B111)
+
+        /* {S!d354}Enable for S-Function (RTC_REQ_RSP): '<S1114>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[12aabd9*/",tlcEnableFcnOfS414B111,"/*@]*/")>\
+        /* {E!d354}End of Enable for S-Function (RTC_REQ_RSP): '<S1114>/RTC Request Response Trigger' */
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[314], "Enable",2)
+
+        /* {S!d356}Enable for Atomic SubSystem: '<S887>/Expand Tail Components' */
+%<SLibCG_DumpSSCode("/*@[12aaca6*/",SLibCGIRGenReusableSysCall("Model_Target_ExpandTailComponents_Enable", [], 314, 0, 13, 2, 6, 423),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[314]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+        /* {E!d356}End of Enable for SubSystem: '<S887>/Expand Tail Components' */
+        /* {E!d351}End of Enable for SubSystem: '<S587>/On' */
+%endif
+    }
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B0)
+    /* {S!d359}Outputs for IfAction SubSystem: '<S587>/On' incorporates:
+ *  ActionPort: '<S887>/Action Port'
+ */
+    /* {S!d486}S-Function (TOP_MEX): '<S1010>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[12aabdb*/",tlcOutputsFcnOfS414B0,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B1)
+    /* {S!d488}S-Function (TOP_MEX): '<S1010>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aabdd*/",tlcOutputsFcnOfS414B1,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B2)
+    /* {S!d490}S-Function (TOP_MEX): '<S1010>/TOP2' */
+%<SLibCG_DumpSSCode("/*@[12aabdf*/",tlcOutputsFcnOfS414B2,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B4)
+    /* {S!d492}S-Function (TOP_MEX): '<S902>/Full Rate Bass Delay' */
+%<SLibCG_DumpSSCode("/*@[12aabe1*/",tlcOutputsFcnOfS414B4,"/*@]*/")>\
+%endif
+    /* {S!d494}MATLAB Function: '<S892>/MATLAB Function' */
+    /* [Param:maxDelay] */
+    /* MATLAB Function 'MedusaAlignmentDelay/MATLAB Function': '<S901>:1' */
+    /*  Our delayline lives in global variable. We treat as a circular buffer.  */
+    /*  figure out the frame size and channel count */
+    /* '<S901>:1:9' [frameSize, numChannels] = size(audioIn); */
+    /* '<S901>:1:10' frameSize = int32(frameSize); */
+    /* '<S901>:1:11' stateLen = int32(maxDelay)+frameSize; */
+    /* '<S901>:1:12' totalLen = int32(stateLen * numChannels); */
+    /* '<S901>:1:13' audioOut = coder.nullcopy(audioIn); */
+    /*  writeIndex points to our current write location in buffer */
+    /* '<S901>:1:17' if isempty(delayIndex) */
+    /*  delayBuffer is a circular buffer that holds previous samples */
+    /*  Write data to delay buffer */
+    /* '<S901>:1:24' bufferIndex = delayIndex; */
+    /*@>1289ffb*/i/*@>10db18b*/ = /*@>12a7609*/Model_Target_Medusa5H1Part3_DW./*@>12af016*/delayIndex;
+    /* '<S901>:1:26' for channel = 1:numChannels */
+/*@>10db1b3*/    for (/*@>12ade55*/colIdx = /*@>12ade54*/0; /*@>12ade5f*/colIdx < /*@>12ade5d*/2; /*@>12ade5b*/colIdx/*@>12ade74*/++) {
+        /*  Save writeIndex for next channel */
+        /* '<S901>:1:29' writeIndex = circindex(bufferIndex, int32(0), totalLen); */
+        /*@>1289fea*/writeIndex/*@>10db18e*/ = /*@>12aa197*/circindex(/*@>1289fee*/i, /*@>12ad962*/0, /*@>12ad965*/70);
+        /* '<S901>:1:31' for sample = 1:frameSize */
+/*@>10db1b7*/        for (/*@>12ade66*/sample = /*@>12ade65*/0; /*@>12ade70*/sample < /*@>12ade6e*/32; /*@>12ade6c*/sample/*@>12ade75*/++) {
+            /*  overwrite oldest sample with the current input sample */
+            /* '<S901>:1:34' delayBuffer(writeIndex + 1) = audioIn(sample, channel); */
+%<SLibCG_DumpSSCode("/*@[12aae87*/",SLibCG_SetCSCDW(552, 70, "", -1, "/*@>12afc5e*/writeIndex", 0, "%<SLibCG_DumpSSCode("/*@[12afc61*/",(SLibCG_BOCSC(356, 64, "", -1, "(/*@>12afc6b*/colIdx/*@>12afc6a*/ << /*@>12afc6c*/5)/*@>12afc69*/ + /*@>12afc6d*/sample", 0)),"/*@]*/")>"),"/*@]*/")>\
+            /*  increment write pointer */
+            /* '<S901>:1:37' writeIndex = circindex(writeIndex, int32(1), totalLen); */
+            /*@>1289fcb*/writeIndex/*@>10db195*/ = /*@>12aa19a*/circindex(/*@>1289fcf*/writeIndex, /*@>12ad971*/1, /*@>12ad974*/70);
+        }
+        /*  Advance buffer index for next channel */
+        /* '<S901>:1:41' bufferIndex = circindex(bufferIndex, stateLen, totalLen); */
+        /*@>1289fd6*/i/*@>10db197*/ = /*@>12aa19d*/circindex(/*@>1289fda*/i, /*@>12ad968*/35, /*@>12ad96b*/70);
+    }
+    /*  Reset */
+    /* '<S901>:1:45' bufferIndex = circindex(delayIndex, frameSize, totalLen); */
+    /*@>1289ff0*/i/*@>10db199*/ = /*@>12aa1a0*/circindex(/*@>12a760f*/Model_Target_Medusa5H1Part3_DW./*@>12af019*/delayIndex, /*@>12ad95c*/32, /*@>12ad95f*/70);
+    /* '<S901>:1:46' delayIndex = bufferIndex; */
+    /*@>12a7615*/Model_Target_Medusa5H1Part3_DW./*@>12af01c*/delayIndex/*@>10db19b*/ = /*@>1289fe8*/i;
+    /*  Read samples from delay line */
+    /* '<S901>:1:49' for channel = 1:numChannels */
+/*@>10db1c4*/    for (/*@>12ade33*/colIdx = /*@>12ade32*/0; /*@>12ade3d*/colIdx < /*@>12ade3b*/2; /*@>12ade39*/colIdx/*@>12ade76*/++) {
+        /*  Setup read pointer */
+        /* '<S901>:1:52' readIndex = circindex(bufferIndex, -(delayTime+frameSize), totalLen); */
+        /*@>1289fd1*/writeIndex/*@>10db19e*/ = /*@>12aa1a3*/circindex(/*@>1289fd4*/i, -/*@<128a7c8*/(%<SLibCG_DumpSSCode("/*@[12aae4f*/",(SLibCG_SE(SLibCG_BOCSC(736, 1, "", -1, "", 0))),"/*@]*/")>/*@>10db1a9*/ + /*@>1289fb7*/32), /*@>12ad96e*/70);
+        /* '<S901>:1:54' for sample = 1:frameSize */
+/*@>10db1c8*/        for (/*@>12ade44*/sample = /*@>12ade43*/0; /*@>12ade4e*/sample < /*@>12ade4c*/32; /*@>12ade4a*/sample/*@>12ade77*/++) {
+            /*  overwrite oldest sample with the current input sample */
+            /* '<S901>:1:57' audioOut(sample, channel) = delayBuffer(readIndex + 1); */
+            /*@>1289b61*/audioOut/*@>1284b24*/[/*@>1289b5f*/sample/*@>1284b20*/ + (/*@>1289b5d*/colIdx/*@>128a7d0*/ << /*@>128a7cf*/5)]/*@>10db1a4*/ = %<SLibCG_DumpSSCode("/*@[12aae33*/",(SLibCG_SE(SLibCG_CSCDW(552, 70, "", -1, "/*@>12a5441*/writeIndex", 0))),"/*@]*/")>;
+            /*  increment write pointer */
+            /* '<S901>:1:60' readIndex = circindex(readIndex, int32(1), totalLen); */
+            /*@>1289fba*/writeIndex/*@>10db1a6*/ = /*@>12aa1a6*/circindex(/*@>1289fbe*/writeIndex, /*@>12ad97d*/1, /*@>12ad980*/70);
+        }
+        /*  Advance buffer index for next channel */
+        /* '<S901>:1:65' bufferIndex = circindex(bufferIndex, stateLen, totalLen); */
+        /*@>1289fc0*/i/*@>10db1a8*/ = /*@>12aa1a9*/circindex(/*@>1289fc4*/i, /*@>12ad977*/35, /*@>12ad97a*/70);
+    }
+    /* {E!d494}End of MATLAB Function: '<S892>/MATLAB Function' */
+
+    /* {S!d496}DownSample: '<S887>/Downsample' */
+/*@>127c946*/    for (/*@>12ade22*/i = /*@>12ade21*/0; /*@>12ade2c*/i < /*@>12ade2a*/16; /*@>12ade28*/i/*@>12ade78*/++) {
+        /*@>1289b69*/rtb_Downsample_n/*@>1279b53*/[/*@>1289b67*/i]/*@>10daf23*/ = /*@>12a543c*/audioOut/*@>12a543e*/[/*@>12a543a*/i/*@>12a5438*/ << /*@>12a543b*/2];
+    }
+    /* {E!d496}End of DownSample: '<S887>/Downsample' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B6)
+
+    /* {S!d498}S-Function (TOP_MEX): '<S902>/Decimated Bass Delay' */
+%<SLibCG_DumpSSCode("/*@[12aabe3*/",tlcOutputsFcnOfS414B6,"/*@]*/")>\
+%endif
+    /* {S!d500}MATLAB Function: '<S891>/MATLAB Function' incorporates:
+ *  DownSample: '<S887>/Downsample'
+ */
+    /* [Param:maxDelay] */
+    /* MATLAB Function 'MedusaAlignmentDelay/MATLAB Function': '<S900>:1' */
+    /*  Our delayline lives in global variable. We treat as a circular buffer.  */
+    /*  figure out the frame size and channel count */
+    /* '<S900>:1:9' [frameSize, numChannels] = size(audioIn); */
+    /* '<S900>:1:10' frameSize = int32(frameSize); */
+    /* '<S900>:1:11' stateLen = int32(maxDelay)+frameSize; */
+    /* '<S900>:1:12' totalLen = int32(stateLen * numChannels); */
+    /* '<S900>:1:13' audioOut = coder.nullcopy(audioIn); */
+    /*  writeIndex points to our current write location in buffer */
+    /* '<S900>:1:17' if isempty(delayIndex) */
+    /*  delayBuffer is a circular buffer that holds previous samples */
+    /*  Write data to delay buffer */
+    /* '<S900>:1:24' bufferIndex = delayIndex; */
+    /*@>1289faa*/i/*@>10db23a*/ = /*@>12a761b*/Model_Target_Medusa5H1Part3_DW./*@>12af01f*/delayIndex_i;
+    /* '<S900>:1:26' for channel = 1:numChannels */
+/*@>10db262*/    for (/*@>12ade00*/colIdx = /*@>12addff*/0; /*@>12ade0a*/colIdx < /*@>12ade08*/2; /*@>12ade06*/colIdx/*@>12ade79*/++) {
+        /*  Save writeIndex for next channel */
+        /* '<S900>:1:29' writeIndex = circindex(bufferIndex, int32(0), totalLen); */
+        /*@>1289f99*/writeIndex/*@>10db23d*/ = /*@>12aa1ac*/circindex(/*@>1289f9d*/i, /*@>12ad989*/0, /*@>12ad98c*/1482);
+        /* '<S900>:1:31' for sample = 1:frameSize */
+/*@>10db266*/        for (/*@>12ade11*/sample = /*@>12ade10*/0; /*@>12ade1b*/sample < /*@>12ade19*/8; /*@>12ade17*/sample/*@>12ade7a*/++) {
+            /*  overwrite oldest sample with the current input sample */
+            /* '<S900>:1:34' delayBuffer(writeIndex + 1) = audioIn(sample, channel); */
+%<SLibCG_DumpSSCode("/*@[12aae1a*/",SLibCG_SetCSCDW(551, 1482, "", -1, "/*@>12afc87*/writeIndex", 0, "/*@>12afc8b*/rtb_Downsample_n/*@>12afc8a*/[(/*@>12afc8e*/colIdx/*@>12afc8d*/ << /*@>12afc8f*/3)/*@>12afc8c*/ + /*@>12afc90*/sample]"),"/*@]*/")>\
+            /*  increment write pointer */
+            /* '<S900>:1:37' writeIndex = circindex(writeIndex, int32(1), totalLen); */
+            /*@>1289f7a*/writeIndex/*@>10db244*/ = /*@>12aa1af*/circindex(/*@>1289f7e*/writeIndex, /*@>12ad998*/1, /*@>12ad99b*/1482);
+        }
+        /*  Advance buffer index for next channel */
+        /* '<S900>:1:41' bufferIndex = circindex(bufferIndex, stateLen, totalLen); */
+        /*@>1289f85*/i/*@>10db246*/ = /*@>12aa1b2*/circindex(/*@>1289f89*/i, /*@>12ad98f*/741, /*@>12ad992*/1482);
+    }
+    /*  Reset */
+    /* '<S900>:1:45' bufferIndex = circindex(delayIndex, frameSize, totalLen); */
+    /*@>1289f9f*/i/*@>10db248*/ = /*@>12aa1b5*/circindex(/*@>12a7621*/Model_Target_Medusa5H1Part3_DW./*@>12af022*/delayIndex_i, /*@>12ad983*/8, /*@>12ad986*/1482);
+    /* '<S900>:1:46' delayIndex = bufferIndex; */
+    /*@>12a7627*/Model_Target_Medusa5H1Part3_DW./*@>12af025*/delayIndex_i/*@>10db24a*/ = /*@>1289f97*/i;
+    /*  Read samples from delay line */
+    /* '<S900>:1:49' for channel = 1:numChannels */
+/*@>10db273*/    for (/*@>12addde*/colIdx = /*@>12adddd*/0; /*@>12adde8*/colIdx < /*@>12adde6*/2; /*@>12adde4*/colIdx/*@>12ade7b*/++) {
+        /*  Setup read pointer */
+        /* '<S900>:1:52' readIndex = circindex(bufferIndex, -(delayTime+frameSize), totalLen); */
+        /*@>1289f80*/writeIndex/*@>10db24d*/ = /*@>12aa1b8*/circindex(/*@>1289f83*/i, -/*@<128a7e1*/(%<SLibCG_DumpSSCode("/*@[12aadfd*/",(SLibCG_SE(SLibCG_BOCSC(737, 1, "", -1, "", 0))),"/*@]*/")>/*@>10db258*/ + /*@>1289f66*/8), /*@>12ad995*/1482);
+        /* '<S900>:1:54' for sample = 1:frameSize */
+/*@>10db277*/        for (/*@>12addef*/sample = /*@>12addee*/0; /*@>12addf9*/sample < /*@>12addf7*/8; /*@>12addf5*/sample/*@>12ade7c*/++) {
+            /*  overwrite oldest sample with the current input sample */
+            /* '<S900>:1:57' audioOut(sample, channel) = delayBuffer(readIndex + 1); */
+            /*@>12a6bcb*/Model_Target_Medusa5H1Part3_B./*@>12aedb8*/audioOut_p/*@>1284b39*/[/*@>1289b3d*/sample/*@>1284b35*/ + (/*@>1289b3b*/colIdx/*@>128a7e9*/ << /*@>128a7e8*/3)]/*@>10db253*/ = %<SLibCG_DumpSSCode("/*@[12aade1*/",(SLibCG_SE(SLibCG_CSCDW(551, 1482, "", -1, "/*@>12a545e*/writeIndex", 0))),"/*@]*/")>;
+            /*  increment write pointer */
+            /* '<S900>:1:60' readIndex = circindex(readIndex, int32(1), totalLen); */
+            /*@>1289f69*/writeIndex/*@>10db255*/ = /*@>12aa1bb*/circindex(/*@>1289f6d*/writeIndex, /*@>12ad9a4*/1, /*@>12ad9a7*/1482);
+        }
+        /*  Advance buffer index for next channel */
+        /* '<S900>:1:65' bufferIndex = circindex(bufferIndex, stateLen, totalLen); */
+        /*@>1289f6f*/i/*@>10db257*/ = /*@>12aa1be*/circindex(/*@>1289f73*/i, /*@>12ad99e*/741, /*@>12ad9a1*/1482);
+    }
+    /* {E!d500}End of MATLAB Function: '<S891>/MATLAB Function' */
+/*@>127c92f*/    for (/*@>12addcd*/writeIndex = /*@>12addcc*/0; /*@>12addd7*/writeIndex < /*@>12addd5*/8; /*@>12addd3*/writeIndex/*@>12ade7d*/++) {
+        /* {S!d502}S-Function (sdspsubmtrx): '<S1096>/Submatrix' */
+        /*@>12a6bb3*/Model_Target_Medusa5H1Part3_B./*@>12aedac*/Submatrix/*@>1279c7d*/[/*@>1289b45*/writeIndex]/*@>10da0d0*/ = /*@>12a6bb9*/Model_Target_Medusa5H1Part3_B./*@>12aedaf*/audioOut_p/*@>12a5455*/[/*@>12a5452*/writeIndex];
+        /* {S!d504}SignalConversion generated from: '<S1006>/Matrix Concatenate3' incorporates:
+ *  S-Function (sdspsubmtrx): '<S1096>/Submatrix'
+ */
+        /*@>12a6bbf*/Model_Target_Medusa5H1Part3_B./*@>12aedb2*/MatrixConcatenate1/*@>1279c43*/[/*@>1289b4d*/writeIndex]/*@>1275bd9*/ = /*@>12a6bc5*/Model_Target_Medusa5H1Part3_B./*@>12aedb5*/Submatrix/*@>12a545b*/[/*@>12a5458*/writeIndex];
+    }
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B8)
+    /* {S!d506}S-Function (TOP_MEX): '<S902>/Alignment Delay' */
+%<SLibCG_DumpSSCode("/*@[12aabe5*/",tlcOutputsFcnOfS414B8,"/*@]*/")>\
+%endif
+    /* {S!d508}MATLAB Function: '<S890>/MATLAB Function' incorporates:
+ *  Buffer: '<S647>/BufferOut'
+ */
+    /* [Param:maxDelay] */
+    /* MATLAB Function 'MedusaAlignmentDelay/MATLAB Function': '<S899>:1' */
+    /*  Our delayline lives in global variable. We treat as a circular buffer.  */
+    /*  figure out the frame size and channel count */
+    /* '<S899>:1:9' [frameSize, numChannels] = size(audioIn); */
+    /* '<S899>:1:10' frameSize = int32(frameSize); */
+    /* '<S899>:1:11' stateLen = int32(maxDelay)+frameSize; */
+    /* '<S899>:1:12' totalLen = int32(stateLen * numChannels); */
+    /* '<S899>:1:13' audioOut = coder.nullcopy(audioIn); */
+    /*  writeIndex points to our current write location in buffer */
+    /* '<S899>:1:17' if isempty(delayIndex) */
+    /*  delayBuffer is a circular buffer that holds previous samples */
+    /*  Write data to delay buffer */
+    /* '<S899>:1:24' bufferIndex = delayIndex; */
+    /*@>1289f59*/i/*@>10db2e9*/ = /*@>12a762d*/Model_Target_Medusa5H1Part3_DW./*@>12af028*/delayIndex_d;
+    /* '<S899>:1:26' for channel = 1:numChannels */
+/*@>10db311*/    for (/*@>12addab*/colIdx = /*@>12addaa*/0; /*@>12addb5*/colIdx < /*@>12addb3*/8; /*@>12addb1*/colIdx/*@>12ade7e*/++) {
+        /*  Save writeIndex for next channel */
+        /* '<S899>:1:29' writeIndex = circindex(bufferIndex, int32(0), totalLen); */
+        /*@>1289f48*/writeIndex/*@>10db2ec*/ = /*@>12aa1c1*/circindex(/*@>1289f4c*/i, /*@>12ad9b0*/0, /*@>12ad9b3*/1392);
+        /* '<S899>:1:31' for sample = 1:frameSize */
+/*@>10db315*/        for (/*@>12addbc*/sample = /*@>12addbb*/0; /*@>12addc6*/sample < /*@>12addc4*/8; /*@>12addc2*/sample/*@>12ade7f*/++) {
+            /*  overwrite oldest sample with the current input sample */
+            /* '<S899>:1:34' delayBuffer(writeIndex + 1) = audioIn(sample, channel); */
+%<SLibCG_DumpSSCode("/*@[12aadc8*/",SLibCG_SetCSCDW(550, 1392, "", -1, "/*@>12afca9*/writeIndex", 0, "/*@>12afcae*/Model_Target_B./*@>12afcad*/BufferOut/*@>12afcac*/[(/*@>12afcb2*/colIdx/*@>12afcb1*/ << /*@>12afcb3*/3)/*@>12afcb0*/ + /*@>12afcb4*/sample]"),"/*@]*/")>\
+            /*  increment write pointer */
+            /* '<S899>:1:37' writeIndex = circindex(writeIndex, int32(1), totalLen); */
+            /*@>1289f29*/writeIndex/*@>10db2f3*/ = /*@>12aa1c4*/circindex(/*@>1289f2d*/writeIndex, /*@>12ad9bf*/1, /*@>12ad9c2*/1392);
+        }
+        /*  Advance buffer index for next channel */
+        /* '<S899>:1:41' bufferIndex = circindex(bufferIndex, stateLen, totalLen); */
+        /*@>1289f34*/i/*@>10db2f5*/ = /*@>12aa1c7*/circindex(/*@>1289f38*/i, /*@>12ad9b6*/174, /*@>12ad9b9*/1392);
+    }
+    /*  Reset */
+    /* '<S899>:1:45' bufferIndex = circindex(delayIndex, frameSize, totalLen); */
+    /*@>1289f4e*/i/*@>10db2f7*/ = /*@>12aa1ca*/circindex(/*@>12a7633*/Model_Target_Medusa5H1Part3_DW./*@>12af02b*/delayIndex_d, /*@>12ad9aa*/8, /*@>12ad9ad*/1392);
+    /* '<S899>:1:46' delayIndex = bufferIndex; */
+    /*@>12a7639*/Model_Target_Medusa5H1Part3_DW./*@>12af02e*/delayIndex_d/*@>10db2f9*/ = /*@>1289f46*/i;
+    /*  Read samples from delay line */
+    /* '<S899>:1:49' for channel = 1:numChannels */
+/*@>10db322*/    for (/*@>12add89*/colIdx = /*@>12add88*/0; /*@>12add93*/colIdx < /*@>12add91*/8; /*@>12add8f*/colIdx/*@>12ade80*/++) {
+        /*  Setup read pointer */
+        /* '<S899>:1:52' readIndex = circindex(bufferIndex, -(delayTime+frameSize), totalLen); */
+        /*@>1289f2f*/writeIndex/*@>10db2fc*/ = /*@>12aa1cd*/circindex(/*@>1289f32*/i, -/*@<128a7f2*/(%<SLibCG_DumpSSCode("/*@[12aadab*/",(SLibCG_SE(SLibCG_BOCSC(738, 1, "", -1, "", 0))),"/*@]*/")>/*@>10db307*/ + /*@>1289f15*/8), /*@>12ad9bc*/1392);
+        /* '<S899>:1:54' for sample = 1:frameSize */
+/*@>10db326*/        for (/*@>12add9a*/sample = /*@>12add99*/0; /*@>12adda4*/sample < /*@>12adda2*/8; /*@>12adda0*/sample/*@>12ade81*/++) {
+            /*  overwrite oldest sample with the current input sample */
+            /* '<S899>:1:57' audioOut(sample, channel) = delayBuffer(readIndex + 1); */
+            /*@>12a6d5a*/Model_Target_Medusa5H1Part3_B./*@>12aedbe*/audioOut_g/*@>1284b4e*/[/*@>1289b1a*/sample/*@>1284b4a*/ + (/*@>1289b18*/colIdx/*@>128a7fa*/ << /*@>128a7f9*/3)]/*@>10db302*/ = %<SLibCG_DumpSSCode("/*@[12aad8f*/",(SLibCG_SE(SLibCG_CSCDW(550, 1392, "", -1, "/*@>12a546f*/writeIndex", 0))),"/*@]*/")>;
+            /*  increment write pointer */
+            /* '<S899>:1:60' readIndex = circindex(readIndex, int32(1), totalLen); */
+            /*@>1289f18*/writeIndex/*@>10db304*/ = /*@>12aa1d0*/circindex(/*@>1289f1c*/writeIndex, /*@>12ad9ce*/1, /*@>12ad9d1*/1392);
+        }
+        /*  Advance buffer index for next channel */
+        /* '<S899>:1:65' bufferIndex = circindex(bufferIndex, stateLen, totalLen); */
+        /*@>1289f1e*/i/*@>10db306*/ = /*@>12aa1d3*/circindex(/*@>1289f22*/i, /*@>12ad9c8*/174, /*@>12ad9cb*/1392);
+    }
+    /* {E!d508}End of MATLAB Function: '<S890>/MATLAB Function' */
+/*@>127c909*/    for (/*@>12add78*/writeIndex = /*@>12add77*/0; /*@>12add82*/writeIndex < /*@>12add80*/8; /*@>12add7e*/writeIndex/*@>12ade82*/++) {
+        /* {S!d510}S-Function (sdspsubmtrx): '<S1097>/Submatrix2' */
+        /*@>12a6d60*/Model_Target_Medusa5H1Part3_B./*@>12aedc1*/Submatrix2/*@>1279dab*/[/*@>1289b22*/writeIndex]/*@>10da0f3*/ = /*@>12a6d66*/Model_Target_Medusa5H1Part3_B./*@>12aedc4*/audioOut_g/*@>12a5478*/[/*@>12a5475*/writeIndex];
+        /* {S!d512}SignalConversion generated from: '<S1006>/Matrix Concatenate3' incorporates:
+ *  S-Function (sdspsubmtrx): '<S1097>/Submatrix2'
+ */
+        /*@>12a6d6c*/Model_Target_Medusa5H1Part3_B./*@>12aedc7*/MatrixConcatenate1/*@>1279d6d*/[/*@>1289b2b*/writeIndex/*@>1279d72*/ + /*@>1289b2a*/8]/*@>1275bf8*/ = /*@>12a6d72*/Model_Target_Medusa5H1Part3_B./*@>12aedca*/Submatrix2/*@>12a547e*/[/*@>12a547b*/writeIndex];
+        /* {S!d514}S-Function (sdspsubmtrx): '<S1097>/Submatrix4' */
+        /*@>12a6d78*/Model_Target_Medusa5H1Part3_B./*@>12aedcd*/Submatrix4/*@>1279e79*/[/*@>1289b07*/writeIndex]/*@>10da114*/ = /*@>12a6d7e*/Model_Target_Medusa5H1Part3_B./*@>12aedd0*/audioOut_g/*@>12a5486*/[/*@>12a5482*/writeIndex/*@>12a5480*/ + /*@>12a5483*/16];
+        /* {S!d516}SignalConversion generated from: '<S1006>/Matrix Concatenate3' incorporates:
+ *  S-Function (sdspsubmtrx): '<S1097>/Submatrix4'
+ */
+        /*@>12a6d8a*/Model_Target_Medusa5H1Part3_B./*@>12aedd6*/MatrixConcatenate1/*@>1279e3b*/[/*@>1289b10*/writeIndex/*@>1279e40*/ + /*@>1289b0f*/16]/*@>1275c1a*/ = /*@>12a6d90*/Model_Target_Medusa5H1Part3_B./*@>12aedd9*/Submatrix4/*@>12a5496*/[/*@>12a5493*/writeIndex];
+        /* {S!d518}S-Function (sdspsubmtrx): '<S1097>/Submatrix6' */
+        /*@>12a6d96*/Model_Target_Medusa5H1Part3_B./*@>12aeddc*/Submatrix6/*@>1279ef6*/[/*@>1289af6*/writeIndex]/*@>10da135*/ = /*@>12a6d9c*/Model_Target_Medusa5H1Part3_B./*@>12aeddf*/audioOut_g/*@>12a549e*/[/*@>12a549a*/writeIndex/*@>12a5498*/ + /*@>12a549b*/32];
+        /* {S!d520}SignalConversion generated from: '<S1006>/Matrix Concatenate3' incorporates:
+ *  S-Function (sdspsubmtrx): '<S1097>/Submatrix6'
+ */
+        /*@>12a6da2*/Model_Target_Medusa5H1Part3_B./*@>12aede2*/MatrixConcatenate1/*@>1279eb8*/[/*@>1289aff*/writeIndex/*@>1279ebd*/ + /*@>1289afe*/24]/*@>1275c3c*/ = /*@>12a6da8*/Model_Target_Medusa5H1Part3_B./*@>12aede5*/Submatrix6/*@>12a54a4*/[/*@>12a54a1*/writeIndex];
+        /* {S!d522}S-Function (sdspsubmtrx): '<S1097>/Submatrix7' */
+        /*@>12a6dae*/Model_Target_Medusa5H1Part3_B./*@>12aede8*/Submatrix7/*@>1279f73*/[/*@>1289ae5*/writeIndex]/*@>10da156*/ = /*@>12a6db4*/Model_Target_Medusa5H1Part3_B./*@>12aedeb*/audioOut_g/*@>12a54ac*/[/*@>12a54a8*/writeIndex/*@>12a54a6*/ + /*@>12a54a9*/40];
+        /* {S!d524}SignalConversion generated from: '<S1006>/Matrix Concatenate3' incorporates:
+ *  S-Function (sdspsubmtrx): '<S1097>/Submatrix7'
+ */
+        /*@>12a6dba*/Model_Target_Medusa5H1Part3_B./*@>12aedee*/MatrixConcatenate1/*@>1279f35*/[/*@>1289aee*/writeIndex/*@>1279f3a*/ + /*@>1289aed*/32]/*@>1275c5e*/ = /*@>12a6dc0*/Model_Target_Medusa5H1Part3_B./*@>12aedf1*/Submatrix7/*@>12a54b2*/[/*@>12a54af*/writeIndex];
+        /* {S!d526}S-Function (sdspsubmtrx): '<S1096>/Submatrix1' */
+        /*@>12a6dd2*/Model_Target_Medusa5H1Part3_B./*@>12aedf7*/Submatrix1/*@>1279ff0*/[/*@>1289ad4*/writeIndex]/*@>10da177*/ = /*@>12a6dd8*/Model_Target_Medusa5H1Part3_B./*@>12aedfa*/audioOut_p/*@>12a54c2*/[/*@>12a54be*/writeIndex/*@>12a54bc*/ + /*@>12a54bf*/8];
+        /* {S!d528}SignalConversion generated from: '<S1006>/Matrix Concatenate5' incorporates:
+ *  S-Function (sdspsubmtrx): '<S1096>/Submatrix1'
+ */
+        /*@>12a6de4*/Model_Target_Medusa5H1Part3_B./*@>12aee00*/MatrixConcatenate1/*@>1279fb2*/[/*@>1289add*/writeIndex/*@>1279fb7*/ + /*@>1289adc*/40]/*@>1275c80*/ = /*@>12a6dea*/Model_Target_Medusa5H1Part3_B./*@>12aee03*/Submatrix1/*@>12a54d2*/[/*@>12a54cf*/writeIndex];
+        /* {S!d530}S-Function (sdspsubmtrx): '<S1097>/Submatrix3' */
+        /*@>12a6df0*/Model_Target_Medusa5H1Part3_B./*@>12aee06*/Submatrix3/*@>127a06d*/[/*@>1289ac3*/writeIndex]/*@>10da198*/ = /*@>12a6df6*/Model_Target_Medusa5H1Part3_B./*@>12aee09*/audioOut_g/*@>12a54da*/[/*@>12a54d6*/writeIndex/*@>12a54d4*/ + /*@>12a54d7*/8];
+        /* {S!d532}SignalConversion generated from: '<S1006>/Matrix Concatenate5' incorporates:
+ *  S-Function (sdspsubmtrx): '<S1097>/Submatrix3'
+ */
+        /*@>12a6dfc*/Model_Target_Medusa5H1Part3_B./*@>12aee0c*/MatrixConcatenate1/*@>127a02f*/[/*@>1289acc*/writeIndex/*@>127a034*/ + /*@>1289acb*/48]/*@>1275ca2*/ = /*@>12a6e02*/Model_Target_Medusa5H1Part3_B./*@>12aee0f*/Submatrix3/*@>12a54e0*/[/*@>12a54dd*/writeIndex];
+        /* {S!d534}S-Function (sdspsubmtrx): '<S1097>/Submatrix5' */
+        /*@>12a6e08*/Model_Target_Medusa5H1Part3_B./*@>12aee12*/Submatrix5/*@>127a0ea*/[/*@>1289ab2*/writeIndex]/*@>10da1b9*/ = /*@>12a6e0e*/Model_Target_Medusa5H1Part3_B./*@>12aee15*/audioOut_g/*@>12a54e8*/[/*@>12a54e4*/writeIndex/*@>12a54e2*/ + /*@>12a54e5*/24];
+        /* {S!d536}SignalConversion generated from: '<S1006>/Matrix Concatenate5' incorporates:
+ *  S-Function (sdspsubmtrx): '<S1097>/Submatrix5'
+ */
+        /*@>12a6e14*/Model_Target_Medusa5H1Part3_B./*@>12aee18*/MatrixConcatenate1/*@>127a0ac*/[/*@>1289abb*/writeIndex/*@>127a0b1*/ + /*@>1289aba*/56]/*@>1275cc4*/ = /*@>12a6e1a*/Model_Target_Medusa5H1Part3_B./*@>12aee1b*/Submatrix5/*@>12a54ee*/[/*@>12a54eb*/writeIndex];
+        /* {S!d538}S-Function (sdspsubmtrx): '<S1097>/Submatrix1' */
+        /*@>12a6e26*/Model_Target_Medusa5H1Part3_B./*@>12aee21*/Submatrix1_a/*@>127a167*/[/*@>1289aa1*/writeIndex]/*@>10da1da*/ = /*@>12a6e2c*/Model_Target_Medusa5H1Part3_B./*@>12aee24*/audioOut_g/*@>12a5501*/[/*@>12a54fd*/writeIndex/*@>12a54fb*/ + /*@>12a54fe*/48];
+        /* {S!d540}SignalConversion generated from: '<S1006>/Matrix Concatenate5' incorporates:
+ *  S-Function (sdspsubmtrx): '<S1097>/Submatrix1'
+ */
+        /*@>12a6e38*/Model_Target_Medusa5H1Part3_B./*@>12aee2a*/MatrixConcatenate1/*@>127a129*/[/*@>1289aaa*/writeIndex/*@>127a12e*/ + /*@>1289aa9*/64]/*@>1275ce6*/ = /*@>12a6e3e*/Model_Target_Medusa5H1Part3_B./*@>12aee2d*/Submatrix1_a/*@>12a5507*/[/*@>12a5504*/writeIndex];
+        /* {S!d542}S-Function (sdspsubmtrx): '<S1097>/Submatrix8' */
+        /*@>12a6e44*/Model_Target_Medusa5H1Part3_B./*@>12aee30*/Submatrix8/*@>127a1e4*/[/*@>1289a90*/writeIndex]/*@>10da1fb*/ = /*@>12a6e4a*/Model_Target_Medusa5H1Part3_B./*@>12aee33*/audioOut_g/*@>12a550f*/[/*@>12a550b*/writeIndex/*@>12a5509*/ + /*@>12a550c*/56];
+        /* {S!d544}SignalConversion generated from: '<S1006>/Matrix Concatenate5' incorporates:
+ *  S-Function (sdspsubmtrx): '<S1097>/Submatrix8'
+ */
+        /*@>12a6e50*/Model_Target_Medusa5H1Part3_B./*@>12aee36*/MatrixConcatenate1/*@>127a1a6*/[/*@>1289a99*/writeIndex/*@>127a1ab*/ + /*@>1289a98*/72]/*@>1275d08*/ = /*@>12a6e56*/Model_Target_Medusa5H1Part3_B./*@>12aee39*/Submatrix8/*@>12a5515*/[/*@>12a5512*/writeIndex];
+    }
+    /* {S!d546}S-Function (sdspsubmtrx): '<S1060>/Submatrix' incorporates:
+ *  DataStoreRead: '<S1060>/Data Store Read1'
+ */
+    /*@>128a4cd*/i/*@>10da209*/ = /*@>12ad9c5*/0;
+/*@>127c7a9*/    for (/*@>12add67*/colIdx = /*@>12add66*/0; /*@>12add71*/colIdx < /*@>12add6f*/10; /*@>12add6d*/colIdx/*@>12ade83*/++) {
+        /*@>12a6d84*/Model_Target_Medusa5H1Part3_B./*@>12aedd3*/Submatrix_g/*@>127a22f*/[/*@>1289a87*/i]/*@>10da21e*/ = /*@>12a7645*/Model_Target_Medusa5H1Part3_DW./*@>12af034*/Premix_currentGain_CS/*@>12a5490*/[(/*@>12a548b*/colIdx/*@>12a5489*/ << /*@>12a548c*/1)/*@>12a5488*/ + /*@>12a548d*/1];
+        /*@>128a4c7*/i/*@>12ade84*/++;
+    }
+    /* {E!d546}End of S-Function (sdspsubmtrx): '<S1060>/Submatrix' */
+
+    /* {S!d360}Outputs for Enabled SubSystem: '<S999>/Mono-Surround' incorporates:
+ *  EnablePort: '<S1011>/Enable'
+ */
+    /*@>10da558*/if (/*@>12a763f*/Model_Target_Medusa5H1Part3_DW./*@>12af031*/MonoSurround_MODE) {
+        /* {S!d548}Disable for If: '<S1015>/If' */
+        /*@>12a764b*/Model_Target_Medusa5H1Part3_DW./*@>12af037*/If_ActiveSubsystem_b/*@>10daf3c*/ = /*@>12ad9d4*/-1;
+        /* {S!d550}Disable for If: '<S1016>/If' */
+        /*@>12a7651*/Model_Target_Medusa5H1Part3_DW./*@>12af03a*/If_ActiveSubsystem_k/*@>10daf3e*/ = /*@>12ad9d7*/-1;
+        /*@>12a7657*/Model_Target_Medusa5H1Part3_DW./*@>12af03d*/MonoSurround_MODE/*@>10da55a*/ = /*@>128a058*/false;
+    }
+    /* {E!d360}End of Outputs for SubSystem: '<S999>/Mono-Surround' */
+
+    /* {S!d552}S-Function (sdspsubmtrx): '<S1060>/Submatrix1' incorporates:
+ *  DataStoreRead: '<S1060>/Data Store Read1'
+ */
+    /*@>128a4c5*/i/*@>10da228*/ = /*@>12ad9da*/0;
+/*@>127c72a*/    for (/*@>12add56*/colIdx = /*@>12add55*/0; /*@>12add60*/colIdx < /*@>12add5e*/10; /*@>12add5c*/colIdx/*@>12ade85*/++) {
+        /*@>12a6dcc*/Model_Target_Medusa5H1Part3_B./*@>12aedf4*/Submatrix1_c/*@>1286317*/[/*@>1289597*/i]/*@>1286316*/ = /*@>12a765d*/Model_Target_Medusa5H1Part3_DW./*@>12af040*/Premix_currentGain_CS/*@>12a54ba*/[/*@>12a54b6*/colIdx/*@>12a54b4*/ << /*@>12a54b7*/1];
+        /*@>12a6dde*/Model_Target_Medusa5H1Part3_B./*@>12aedfd*/Submatrix1_c/*@>128632d*/[/*@>128958e*/i/*@>128632f*/ + /*@>1289588*/1]/*@>128632c*/ = /*@>12a7663*/Model_Target_Medusa5H1Part3_DW./*@>12af043*/Premix_currentGain_CS/*@>12a54cc*/[(/*@>12a54c7*/colIdx/*@>12a54c5*/ << /*@>12a54c8*/1)/*@>12a54c4*/ + /*@>12a54c9*/1];
+        /*@>128a4bf*/i/*@>12ade86*/ += /*@>128a4c1*/2;
+    }
+    /* {E!d552}End of S-Function (sdspsubmtrx): '<S1060>/Submatrix1' */
+
+    /* {S!d554}Math: '<S1060>/Transpose1' incorporates:
+ *  S-Function (sdspsubmtrx): '<S1060>/Submatrix1'
+ */
+/*@>127a29d*/    for (/*@>12add34*/i = /*@>12add33*/0; /*@>12add3e*/i < /*@>12add3c*/2; /*@>12add3a*/i/*@>12ade87*/++) {
+/*@>127a28d*/        for (/*@>12add45*/colIdx = /*@>12add44*/0; /*@>12add4f*/colIdx < /*@>12add4d*/10; /*@>12add4b*/colIdx/*@>12ade88*/++) {
+            /*@>1289a7b*/PremixMatrix_a/*@>1285570*/[/*@>1289a7f*/colIdx/*@>128556c*/ + /*@>12896ab*/10/*@>128a813*/ * /*@>1289a7d*/i]/*@>127a280*/ = /*@>12a6e20*/Model_Target_Medusa5H1Part3_B./*@>12aee1e*/Submatrix1_c/*@>12a54f9*/[(/*@>12a54f3*/colIdx/*@>12a54f1*/ << /*@>12a54f4*/1)/*@>12a54f0*/ + /*@>12a54f6*/i];
+        }
+    }
+    /* {E!d554}End of Math: '<S1060>/Transpose1' */
+
+    /* {S!d556}Product: '<S1060>/Matrix Multiply1' incorporates:
+ *  Concatenate: '<S1006>/Matrix Concatenate1'
+ */
+/*@>127a63a*/    for (/*@>12add01*/i = /*@>12add00*/0; /*@>12add0b*/i < /*@>12add09*/2; /*@>12add07*/i/*@>12ade89*/++) {
+/*@>127a62a*/        for (/*@>12add12*/colIdx = /*@>12add11*/0; /*@>12add1c*/colIdx < /*@>12add1a*/8; /*@>12add18*/colIdx/*@>12ade8a*/++) {
+            /*@>1296d2a*/sample/*@>1296d2c*/ = (/*@>1289a44*/i/*@>128a825*/ << /*@>128a824*/3)/*@>1285587*/ + /*@>1289a46*/colIdx;
+            /*@>1289a48*/rtb_Downsample_n/*@>128558b*/[/*@>1296d2e*/sample]/*@>127a647*/ = /*@>1289a4a*/0.0F;
+/*@>127a61a*/            for (/*@>12add23*/writeIndex = /*@>12add22*/0; /*@>12add2d*/writeIndex < /*@>12add2b*/10; /*@>12add29*/writeIndex/*@>12ade8b*/++) {
+                /*@>1289714*/rtb_Downsample_n/*@>12855ae*/[sample] += /*@>12a6e5c*/Model_Target_Medusa5H1Part3_B./*@>12aee3c*/MatrixConcatenate1/*@>12a5520*/[(/*@>12a551a*/writeIndex/*@>12a5518*/ << /*@>12a551b*/3)/*@>12a5517*/ + /*@>12a551d*/colIdx]/*@>128fb31*/ * /*@>12a5529*/PremixMatrix_a/*@>12a552b*/[/*@>12a5524*/10/*@>12a5523*/ * /*@>12a5526*/i/*@>12a5522*/ + /*@>12a5528*/writeIndex];
+            }
+        }
+    }
+    /* {S!d558}MATLAB Function: '<S999>/Selective Concatenation' incorporates:
+ *  Merge: '<S587>/Merge'
+ *  Product: '<S1060>/Matrix Multiply1'
+ */
+    /*@>12a1f37*/memcpy(&/*@>12a6e32*/Model_Target_Medusa5H1Part3_B./*@>12aee27*/Merge/*@>129e702*/[/*@>129e6f0*/0], &/*@>129e709*/rtb_Downsample_n/*@>129e70a*/[/*@>129e6fd*/0], /*@>129e70c*/sizeof(real32_T)/*@>12ab4aa*/ << /*@>12ab4a9*/4U);
+    /* {S!d560}M-S-Function: '<S999>/FeaturePath' */
+    /*  Concatenate monosurround output (if available) to the center outputs */
+    /* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 3/On/Premix/Premix with Mono-Surround & CAE with Fade Ramper/CS Processing/Selective Concatenation': '<S1012>:1' */
+    /* '<S1012>:1:5' if MedusaPremixConfig.NumSurroundOut==0 */
+    /* '<S1012>:1:6' CSOut = COut; */
+%<SLibCG_DumpSSCode("/*@[12aabe6*/",tlcOutputsFcnOfS414B12,"/*@]*/")>\
+    /* {S!d562}MATLAB Function: '<S1111>/MATLAB Function1' */
+    /* MATLAB Function 'Surround Level Control Generic/Detect SLC REQ/MATLAB Function1': '<S1116>:1' */
+    /*  Initialize previousCount */
+    /* '<S1116>:1:8' if(isempty(previousCount)) */
+    /* '<S1116>:1:12' SLC_On = false; */
+    /*@>1289f0c*/rtb_SLC_On/*@>10db39f*/ = /*@>1289f0b*/false;
+    /*  Track changes in TriggerCount to indicate SLC Trigger */
+    /* '<S1116>:1:15' if(TriggerCount ~= previousCount) */
+    /*@>10db3a9*/if (/*@>12a7669*/Model_Target_Medusa5H1Part3_DW./*@>12af046*/TriggerCount/*@>10db3a5*/ != /*@>12a766f*/Model_Target_Medusa5H1Part3_DW./*@>12af049*/previousCount) {
+        /* '<S1116>:1:16' SLC_On = true; */
+        /*@>1289f05*/rtb_SLC_On/*@>10db3a2*/ = /*@>1289f04*/true;
+    }
+    /*  Update the previousCount to contain the previous value of Trigger Count for next instance */
+    /* '<S1116>:1:20' previousCount = TriggerCount; */
+    /*@>12a7675*/Model_Target_Medusa5H1Part3_DW./*@>12af04c*/previousCount/*@>10db3a4*/ = /*@>12a767b*/Model_Target_Medusa5H1Part3_DW./*@>12af04f*/TriggerCount;
+    /* {E!d562}End of MATLAB Function: '<S1111>/MATLAB Function1' */
+
+    /* {S!d564}Selector: '<S887>/Selector' incorporates:
+ *  Delay: '<S887>/Delay6'
+ */
+    /*@>12a6e62*/Model_Target_Medusa5H1Part3_B./*@>12aee3f*/Selector_p/*@>10da253*/ = /*@>12a7681*/Model_Target_Medusa5H1Part3_DW./*@>12af052*/Delay6_DSTATE/*@>12a5536*/[/*@>12a5533*/0];
+    /* {S!d566}Selector: '<S887>/Selector2' incorporates:
+ *  Delay: '<S887>/Delay6'
+ */
+    /*@>12a6e68*/Model_Target_Medusa5H1Part3_B./*@>12aee42*/Selector2/*@>10da268*/ = /*@>12a7687*/Model_Target_Medusa5H1Part3_DW./*@>12af055*/Delay6_DSTATE/*@>12a553b*/[/*@>12a5538*/1];
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B15)
+    /* {S!d568}S-Function (TOP_MEX): '<S1056>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[12aabe8*/",tlcOutputsFcnOfS414B15,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B16)
+    /* {S!d570}S-Function (TOP_MEX): '<S1054>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[12aabea*/",tlcOutputsFcnOfS414B16,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B17)
+    /* {S!d572}S-Function (TOP_MEX): '<S1055>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[12aabec*/",tlcOutputsFcnOfS414B17,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B18)
+    /* {S!d574}S-Function (TOP_MEX): '<S1056>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aabee*/",tlcOutputsFcnOfS414B18,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B19)
+    /* {S!d576}S-Function (TOP_MEX): '<S1054>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aabf0*/",tlcOutputsFcnOfS414B19,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B20)
+    /* {S!d578}S-Function (TOP_MEX): '<S1055>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aabf2*/",tlcOutputsFcnOfS414B20,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B21)
+    /* {S!d580}S-Function (TOP_MEX): '<S1052>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aabf4*/",tlcOutputsFcnOfS414B21,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B22)
+    /* {S!d582}S-Function (TOP_MEX): '<S1053>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aabf6*/",tlcOutputsFcnOfS414B22,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B23)
+    /* {S!d584}S-Function (TOP_MEX): '<S1058>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aabf8*/",tlcOutputsFcnOfS414B23,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B24)
+    /* {S!d586}S-Function (TOP_MEX): '<S1057>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aabfa*/",tlcOutputsFcnOfS414B24,"/*@]*/")>\
+%endif
+    /* {S!d588}MATLAB Function: '<S1000>/Fade_Trigger_Generation' */
+    /*  #codegen */
+    /* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 3/On/Premix/Premix with Mono-Surround & CAE with Fade Ramper/Fade Inputs/Fade_Trigger_Generation': '<S1051>:1' */
+    /* '<S1051>:1:3' fadeOn = false; */
+    /*@>1289efe*/fadeOn/*@>10db435*/ = /*@>1289efd*/false;
+    /* {S!d590}Abs: '<S1000>/Abs2' incorporates:
+ *  Delay: '<S1000>/Delay2'
+ */
+    /*  Generates function call triggers when incoming fade gain values change */
+    /* '<S1051>:1:6' if(gainDifference > 0) */
+    /*@>129139f*/if (-/*@<128ff76*//*@>12a768d*/Model_Target_Medusa5H1Part3_DW./*@>12af058*/Delay2_DSTATE/*@>128fb5f*/ < /*@>128fb62*/0) {
+        /*@>12913a3*/i/*@>12913a2*/ = /*@>12a7699*/Model_Target_Medusa5H1Part3_DW./*@>12af05e*/Delay2_DSTATE;
+    } else {
+        /*@>1291390*/i/*@>1291392*/ = -/*@<128ff7e*//*@>12a7693*/Model_Target_Medusa5H1Part3_DW./*@>12af05b*/Delay2_DSTATE;
+    }
+    /* {S!d610}MATLAB Function: '<S1000>/Fade_Trigger_Generation' incorporates:
+ *  Abs: '<S1000>/Abs'
+ *  Abs: '<S1000>/Abs1'
+ *  Abs: '<S1000>/Abs2'
+ *  Delay: '<S1000>/Delay'
+ *  Delay: '<S1000>/Delay1'
+ *  Sum: '<S1000>/Add'
+ *  Sum: '<S1000>/Subtract1'
+ *  Sum: '<S1000>/Subtract2'
+ */
+    /*@>10db43a*/if ((/*@>12a0f6a*/qhmath_abs_f(/*@>12a6e6e*/Model_Target_Medusa5H1Part3_B./*@>12aee45*/Selector_p/*@>126ea20*/ - /*@>12a769f*/Model_Target_Medusa5H1Part3_DW./*@>12af061*/Delay_DSTATE)/*@>126e589*/ + /*@>126e58c*/(real32_T)/*@>1291394*/i)/*@>126e588*/ + /*@>12a0f6c*/qhmath_abs_f(/*@>12a6e74*/Model_Target_Medusa5H1Part3_B./*@>12aee48*/Selector2/*@>126ea2e*/ - /*@>12a76a5*/Model_Target_Medusa5H1Part3_DW./*@>12af064*/Delay1_DSTATE)/*@>10db437*/ > /*@>1289efc*/0.0F) {
+        /* {S!d362}Outputs for Function Call SubSystem: '<S1003>/Fader Downmix' */
+        /* {S!d592}If: '<S1071>/If' */
+        /* '<S1051>:1:7' fadeTrigger_Left(); */
+        /*@>10db579*/if (/*@>12a6e80*/Model_Target_Medusa5H1Part3_B./*@>12aee4b*/Selector_p/*@>10db578*/ >= /*@>12a6e86*/Model_Target_Medusa5H1Part3_B./*@>12aee4e*/Selector2) {
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[315], "Output",2)
+            /* {S!d363}Outputs for IfAction SubSystem: '<S1071>/Fading Forward' incorporates:
+ *  ActionPort: '<S1076>/Action Port'
+ */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_FadingForward",315,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[12aacad*/",SLibCGIRGenReusableSysCall("Model_Target_FadingForward", ["%<_modelSS>", "/*@>12afd5f*/Model_Target_Medusa5H1Part3_B./*@>12afd5e*/Selector2", "%<SLibCG_DumpSSCode("/*@[12afd6a*/",(SLibCG_BOCSC(663, 1, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[12afd7c*/",(SLibCG_BOCSC(662, 1, "", -1, "", 0)),"/*@]*/")>", "&/*@>12afd90*/Model_Target_Medusa5H1Part3_B./*@>12afd8f*/Merge_p"], 315, 3, 6, 2, 6, 423),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[315]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+            /* {E!d363}End of Outputs for SubSystem: '<S1071>/Fading Forward' */
+%endif
+        } else {
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[316], "Output",2)
+            /* {S!d365}Outputs for IfAction SubSystem: '<S1071>/Fading Backward' incorporates:
+ *  ActionPort: '<S1075>/Action Port'
+ */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_FadingBackward",316,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[12aacac*/",SLibCGIRGenReusableSysCall("Model_Target_FadingBackward", ["%<_modelSS>", "/*@>12afdd9*/Model_Target_Medusa5H1Part3_B./*@>12afdd8*/Selector_p", "%<SLibCG_DumpSSCode("/*@[12afde4*/",(SLibCG_BOCSC(661, 1, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[12afdf6*/",(SLibCG_BOCSC(660, 1, "", -1, "", 0)),"/*@]*/")>", "&/*@>12afe0a*/Model_Target_Medusa5H1Part3_B./*@>12afe09*/Merge_p"], 316, 3, 6, 2, 6, 423),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[316]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+            /* {E!d365}End of Outputs for SubSystem: '<S1071>/Fading Backward' */
+%endif
+        }
+        /* {E!d592}End of If: '<S1071>/If' */
+        /*  #codegen */
+        /* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 3/On/Premix/Premix with Mono-Surround & CAE with Fade Ramper/Full Mixing Matrix_Left/Fader Downmix/MATLAB Function': '<S1077>:1' */
+        /* '<S1077>:1:3' downmixWeights = weights; */
+        /*  If CAE is supported and enabled, replace the tail weights with their CAE counterparts */
+        /* '<S1077>:1:6' if(MedusaPremixConfig.includeCAE == 1 && CAE_Enable == 1) */
+/*@>1275f1e*/        for (/*@>12adcf0*/i = /*@>12adcef*/0; /*@>12adcfa*/i < /*@>12adcf8*/77; /*@>12adcf6*/i/*@>12ade8d*/++) {
+            /* {S!d594}Product: '<S1071>/Matrix Multiply' incorporates:
+ *  MATLAB Function: '<S1071>/MATLAB Function'
+ *  S-Function (TOP_MEX): '<S1055>/TOP'
+ */
+            /*@>12a6ebc*/Model_Target_Medusa5H1Part3_B./*@>12aee66*/MatrixMultiply_bn/*@>127a8ca*/[/*@>1289a25*/i]/*@>1275f0d*/ = /*@>12a6ec2*/Model_Target_Medusa5H1Part3_B./*@>12aee69*/Merge_p/*@>128a847*/ * %<SLibCG_DumpSSCode("/*@[12aad74*/",(SLibCG_SE(SLibCG_BOCSC(659, 77, "", -1, "/*@>12a554a*/i", 0))),"/*@]*/")>;
+        }
+%if !WHITE_SPACE(tlcOutputsFcnOfS348B3)
+        /* {S!d596}M-S-Function: '<S1071>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12aabfb*/",tlcOutputsFcnOfS348B3,"/*@]*/")>\
+        /* {E!d362}End of Outputs for SubSystem: '<S1003>/Fader Downmix' */
+
+%endif
+        /* {S!d368}Outputs for Function Call SubSystem: '<S1002>/Fader Downmix' */
+        /* {S!d598}If: '<S1059>/If' */
+        /* '<S1051>:1:8' fadeTrigger_CS(); */
+        /*@>10db5a1*/if (/*@>12a6ec8*/Model_Target_Medusa5H1Part3_B./*@>12aee6c*/Selector_p/*@>10db5a0*/ >= /*@>12a6ece*/Model_Target_Medusa5H1Part3_B./*@>12aee6f*/Selector2) {
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[315], "Output",2)
+            /* {S!d369}Outputs for IfAction SubSystem: '<S1059>/Fading Forward' incorporates:
+ *  ActionPort: '<S1064>/Action Port'
+ */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_FadingForward",315,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[12aacaf*/",SLibCGIRGenReusableSysCall("Model_Target_FadingForward", ["%<_modelSS>", "/*@>12afe5c*/Model_Target_Medusa5H1Part3_B./*@>12afe5b*/Selector2", "%<SLibCG_DumpSSCode("/*@[12afe67*/",(SLibCG_BOCSC(663, 1, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[12afe79*/",(SLibCG_BOCSC(662, 1, "", -1, "", 0)),"/*@]*/")>", "&/*@>12afe8d*/Model_Target_Medusa5H1Part3_B./*@>12afe8c*/Merge_c"], 315, 4, 6, 2, 6, 423),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[315]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+            /* {E!d369}End of Outputs for SubSystem: '<S1059>/Fading Forward' */
+%endif
+        } else {
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[316], "Output",2)
+            /* {S!d371}Outputs for IfAction SubSystem: '<S1059>/Fading Backward' incorporates:
+ *  ActionPort: '<S1063>/Action Port'
+ */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_FadingBackward",316,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[12aacae*/",SLibCGIRGenReusableSysCall("Model_Target_FadingBackward", ["%<_modelSS>", "/*@>12afed6*/Model_Target_Medusa5H1Part3_B./*@>12afed5*/Selector_p", "%<SLibCG_DumpSSCode("/*@[12afee1*/",(SLibCG_BOCSC(661, 1, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[12afef3*/",(SLibCG_BOCSC(660, 1, "", -1, "", 0)),"/*@]*/")>", "&/*@>12aff07*/Model_Target_Medusa5H1Part3_B./*@>12aff06*/Merge_c"], 316, 4, 6, 2, 6, 423),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[316]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+            /* {E!d371}End of Outputs for SubSystem: '<S1059>/Fading Backward' */
+%endif
+        }
+        /* {E!d598}End of If: '<S1059>/If' */
+        /*  #codegen */
+        /* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 3/On/Premix/Premix with Mono-Surround & CAE with Fade Ramper/Full Mixing Matrix_Center Surround/Fader Downmix/MATLAB Function': '<S1065>:1' */
+        /* '<S1065>:1:3' downmixWeights = weights; */
+        /*  If CAE is supported and enabled, replace the tail weights with their CAE counterparts */
+        /* '<S1065>:1:6' if(MedusaPremixConfig.includeCAE ==1 && CAE_Enable == 1) */
+/*@>1275f3d*/        for (/*@>12adcdf*/i = /*@>12adcde*/0; /*@>12adce9*/i < /*@>12adce7*/20; /*@>12adce5*/i/*@>12ade8e*/++) {
+            /* {S!d600}Product: '<S1059>/Matrix Multiply' incorporates:
+ *  MATLAB Function: '<S1059>/MATLAB Function'
+ *  S-Function (TOP_MEX): '<S1054>/TOP'
+ */
+            /*@>12a6ef2*/Model_Target_Medusa5H1Part3_B./*@>12aee7e*/MatrixMultiply_b/*@>127a911*/[/*@>1289a1d*/i]/*@>1275f2c*/ = /*@>12a6ef8*/Model_Target_Medusa5H1Part3_B./*@>12aee81*/Merge_c/*@>128a84b*/ * %<SLibCG_DumpSSCode("/*@[12aad59*/",(SLibCG_SE(SLibCG_BOCSC(658, 20, "", -1, "/*@>12a5550*/i", 0))),"/*@]*/")>;
+        }
+%if !WHITE_SPACE(tlcOutputsFcnOfS350B3)
+        /* {S!d602}M-S-Function: '<S1059>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12aabfc*/",tlcOutputsFcnOfS350B3,"/*@]*/")>\
+        /* {E!d368}End of Outputs for SubSystem: '<S1002>/Fader Downmix' */
+
+%endif
+        /* {S!d374}Outputs for Function Call SubSystem: '<S1004>/Fader Downmix' */
+        /* {S!d604}If: '<S1083>/If' */
+        /* '<S1051>:1:9' fadeTrigger_Right(); */
+        /*@>10db5c9*/if (/*@>12a6efe*/Model_Target_Medusa5H1Part3_B./*@>12aee84*/Selector_p/*@>10db5c8*/ >= /*@>12a6f04*/Model_Target_Medusa5H1Part3_B./*@>12aee87*/Selector2) {
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[315], "Output",2)
+            /* {S!d375}Outputs for IfAction SubSystem: '<S1083>/Fading Forward' incorporates:
+ *  ActionPort: '<S1088>/Action Port'
+ */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_FadingForward",315,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[12aacb1*/",SLibCGIRGenReusableSysCall("Model_Target_FadingForward", ["%<_modelSS>", "/*@>12aff59*/Model_Target_Medusa5H1Part3_B./*@>12aff58*/Selector2", "%<SLibCG_DumpSSCode("/*@[12aff64*/",(SLibCG_BOCSC(663, 1, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[12aff76*/",(SLibCG_BOCSC(662, 1, "", -1, "", 0)),"/*@]*/")>", "&/*@>12aff8a*/Model_Target_Medusa5H1Part3_B./*@>12aff89*/Merge_g"], 315, 5, 6, 2, 6, 423),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[315]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+            /* {E!d375}End of Outputs for SubSystem: '<S1083>/Fading Forward' */
+%endif
+        } else {
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[316], "Output",2)
+            /* {S!d377}Outputs for IfAction SubSystem: '<S1083>/Fading Backward' incorporates:
+ *  ActionPort: '<S1087>/Action Port'
+ */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_FadingBackward",316,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[12aacb0*/",SLibCGIRGenReusableSysCall("Model_Target_FadingBackward", ["%<_modelSS>", "/*@>12affd3*/Model_Target_Medusa5H1Part3_B./*@>12affd2*/Selector_p", "%<SLibCG_DumpSSCode("/*@[12affde*/",(SLibCG_BOCSC(661, 1, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[12afff0*/",(SLibCG_BOCSC(660, 1, "", -1, "", 0)),"/*@]*/")>", "&/*@>12b0004*/Model_Target_Medusa5H1Part3_B./*@>12b0003*/Merge_g"], 316, 5, 6, 2, 6, 423),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[316]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+            /* {E!d377}End of Outputs for SubSystem: '<S1083>/Fading Backward' */
+%endif
+        }
+        /* {E!d604}End of If: '<S1083>/If' */
+        /*  #codegen */
+        /* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 3/On/Premix/Premix with Mono-Surround & CAE with Fade Ramper/Full Mixing Matrix_Right/Fader Downmix/MATLAB Function': '<S1089>:1' */
+        /* '<S1089>:1:3' downmixWeights = weights; */
+        /*  If CAE is supported and enabled, replace the tail weights with their CAE counterparts */
+        /* '<S1089>:1:6' if(MedusaPremixConfig.includeCAE == 1 && CAE_Enable == 1) */
+/*@>1275f5c*/        for (/*@>12adcce*/i = /*@>12adccd*/0; /*@>12adcd8*/i < /*@>12adcd6*/77; /*@>12adcd4*/i/*@>12ade8f*/++) {
+            /* {S!d606}Product: '<S1083>/Matrix Multiply' incorporates:
+ *  MATLAB Function: '<S1083>/MATLAB Function'
+ *  S-Function (TOP_MEX): '<S1056>/TOP'
+ */
+            /*@>12a6f28*/Model_Target_Medusa5H1Part3_B./*@>12aee96*/MatrixMultiply/*@>127a958*/[/*@>1289a15*/i]/*@>1275f4b*/ = /*@>12a6f2e*/Model_Target_Medusa5H1Part3_B./*@>12aee99*/Merge_g/*@>128a84f*/ * %<SLibCG_DumpSSCode("/*@[12aad3e*/",(SLibCG_SE(SLibCG_BOCSC(657, 77, "", -1, "/*@>12a5556*/i", 0))),"/*@]*/")>;
+        }
+%if !WHITE_SPACE(tlcOutputsFcnOfS352B3)
+        /* {S!d608}M-S-Function: '<S1083>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12aabfd*/",tlcOutputsFcnOfS352B3,"/*@]*/")>\
+        /* {E!d374}End of Outputs for SubSystem: '<S1004>/Fader Downmix' */
+%endif
+        /* '<S1051>:1:10' fadeOn = true; */
+        /*@>1289efa*/fadeOn/*@>10db436*/ = /*@>1289ef9*/true;
+        /*  Indicates that fade is triggered */
+    }
+/*@>1275fdf*/    for (/*@>12adcbd*/i = /*@>12adcbc*/0; /*@>12adcc7*/i < /*@>12adcc5*/77; /*@>12adcc3*/i/*@>12ade90*/++) {
+        /* {S!d612}Sum: '<S1004>/Add' incorporates:
+ *  Constant: '<S1004>/Constant'
+ *  DataStoreRead: '<S1086>/Data Store Read'
+ *  Product: '<S1004>/Matrix Multiply'
+ *  Product: '<S1083>/Matrix Multiply'
+ *  Sum: '<S1004>/Subtract'
+ */
+        /*@>12a6ea4*/Model_Target_Medusa5H1Part3_B./*@>12aee5d*/Transpose1_o/*@>127a88b*/[/*@>1289a2d*/i]/*@>1275fc7*/ = (/*@>128fb6a*/1.0F/*@>128fb69*/ - /*@>12a6eaa*/Model_Target_Medusa5H1Part3_B./*@>12aee60*/Merge_g)/*@>128a853*/ * /*@>12a76ab*/Model_Target_Medusa5H1Part3_DW./*@>12af067*/Premix_SLCGain_Right/*@>12a5541*/[/*@>12a553e*/i]/*@>1275fce*/ + /*@>12a6eb0*/Model_Target_Medusa5H1Part3_B./*@>12aee63*/MatrixMultiply/*@>12a5547*/[/*@>12a5544*/i];
+    }
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B29)
+    /* {S!d614}S-Function (TOP_MEX): '<S1180>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aabff*/",tlcOutputsFcnOfS414B29,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B30)
+    /* {S!d616}S-Function (TOP_MEX): '<S1177>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aac01*/",tlcOutputsFcnOfS414B30,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B31)
+    /* {S!d618}S-Function (TOP_MEX): '<S1179>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aac03*/",tlcOutputsFcnOfS414B31,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B32)
+    /* {S!d620}S-Function (TOP_MEX): '<S1178>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aac05*/",tlcOutputsFcnOfS414B32,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B33)
+    /* {S!d622}S-Function (TOP_MEX): '<S1155>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aac07*/",tlcOutputsFcnOfS414B33,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B34)
+    /* {S!d624}S-Function (TOP_MEX): '<S1152>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aac09*/",tlcOutputsFcnOfS414B34,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B35)
+    /* {S!d626}S-Function (TOP_MEX): '<S1154>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aac0b*/",tlcOutputsFcnOfS414B35,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B36)
+    /* {S!d628}S-Function (TOP_MEX): '<S1153>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aac0d*/",tlcOutputsFcnOfS414B36,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B37)
+    /* {S!d630}S-Function (TOP_MEX): '<S1108>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aac0f*/",tlcOutputsFcnOfS414B37,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B38)
+    /* {S!d632}S-Function (TOP_MEX): '<S1108>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[12aac11*/",tlcOutputsFcnOfS414B38,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B39)
+    /* {S!d634}S-Function (TOP_MEX): '<S1101>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aac13*/",tlcOutputsFcnOfS414B39,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B40)
+    /* {S!d636}S-Function (TOP_MEX): '<S1101>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[12aac15*/",tlcOutputsFcnOfS414B40,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B41)
+    /* {S!d638}S-Function (TOP_MEX): '<S1105>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aac17*/",tlcOutputsFcnOfS414B41,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B42)
+    /* {S!d640}S-Function (TOP_MEX): '<S1105>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[12aac19*/",tlcOutputsFcnOfS414B42,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B43)
+    /* {S!d642}S-Function (TOP_MEX): '<S1102>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aac1b*/",tlcOutputsFcnOfS414B43,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B44)
+    /* {S!d644}S-Function (TOP_MEX): '<S1107>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aac1d*/",tlcOutputsFcnOfS414B44,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B45)
+    /* {S!d646}S-Function (TOP_MEX): '<S1107>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[12aac1f*/",tlcOutputsFcnOfS414B45,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B46)
+    /* {S!d648}S-Function (TOP_MEX): '<S1100>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aac21*/",tlcOutputsFcnOfS414B46,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B47)
+    /* {S!d650}S-Function (TOP_MEX): '<S1100>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[12aac23*/",tlcOutputsFcnOfS414B47,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B48)
+    /* {S!d652}S-Function (TOP_MEX): '<S1104>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aac25*/",tlcOutputsFcnOfS414B48,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B49)
+    /* {S!d654}S-Function (TOP_MEX): '<S1104>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[12aac27*/",tlcOutputsFcnOfS414B49,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B50)
+    /* {S!d656}S-Function (TOP_MEX): '<S1106>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aac29*/",tlcOutputsFcnOfS414B50,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B51)
+    /* {S!d658}S-Function (TOP_MEX): '<S1106>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[12aac2b*/",tlcOutputsFcnOfS414B51,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B52)
+    /* {S!d660}S-Function (TOP_MEX): '<S1099>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aac2d*/",tlcOutputsFcnOfS414B52,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B53)
+    /* {S!d662}S-Function (TOP_MEX): '<S1099>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[12aac2f*/",tlcOutputsFcnOfS414B53,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B54)
+    /* {S!d664}S-Function (TOP_MEX): '<S1103>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aac31*/",tlcOutputsFcnOfS414B54,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B55)
+    /* {S!d666}S-Function (TOP_MEX): '<S1103>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[12aac33*/",tlcOutputsFcnOfS414B55,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B56)
+    /* {S!d668}S-Function (TOP_MEX): '<S997>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aac35*/",tlcOutputsFcnOfS414B56,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B57)
+    /* {S!d670}S-Function (TOP_MEX): '<S997>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[12aac37*/",tlcOutputsFcnOfS414B57,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B58)
+    /* {S!d672}S-Function (TOP_MEX): '<S990>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aac39*/",tlcOutputsFcnOfS414B58,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B59)
+    /* {S!d674}S-Function (TOP_MEX): '<S990>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[12aac3b*/",tlcOutputsFcnOfS414B59,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B60)
+    /* {S!d676}S-Function (TOP_MEX): '<S994>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aac3d*/",tlcOutputsFcnOfS414B60,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B61)
+    /* {S!d678}S-Function (TOP_MEX): '<S994>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[12aac3f*/",tlcOutputsFcnOfS414B61,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B62)
+    /* {S!d680}S-Function (TOP_MEX): '<S991>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aac41*/",tlcOutputsFcnOfS414B62,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B63)
+    /* {S!d682}S-Function (TOP_MEX): '<S996>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aac43*/",tlcOutputsFcnOfS414B63,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B64)
+    /* {S!d684}S-Function (TOP_MEX): '<S996>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[12aac45*/",tlcOutputsFcnOfS414B64,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B65)
+    /* {S!d686}S-Function (TOP_MEX): '<S989>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aac47*/",tlcOutputsFcnOfS414B65,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B66)
+    /* {S!d688}S-Function (TOP_MEX): '<S989>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[12aac49*/",tlcOutputsFcnOfS414B66,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B67)
+    /* {S!d690}S-Function (TOP_MEX): '<S993>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aac4b*/",tlcOutputsFcnOfS414B67,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B68)
+    /* {S!d692}S-Function (TOP_MEX): '<S993>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[12aac4d*/",tlcOutputsFcnOfS414B68,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B69)
+    /* {S!d694}S-Function (TOP_MEX): '<S995>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aac4f*/",tlcOutputsFcnOfS414B69,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B70)
+    /* {S!d696}S-Function (TOP_MEX): '<S995>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[12aac51*/",tlcOutputsFcnOfS414B70,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B71)
+    /* {S!d698}S-Function (TOP_MEX): '<S988>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aac53*/",tlcOutputsFcnOfS414B71,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B72)
+    /* {S!d700}S-Function (TOP_MEX): '<S988>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[12aac55*/",tlcOutputsFcnOfS414B72,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B73)
+    /* {S!d702}S-Function (TOP_MEX): '<S992>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aac57*/",tlcOutputsFcnOfS414B73,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B74)
+    /* {S!d704}S-Function (TOP_MEX): '<S992>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[12aac59*/",tlcOutputsFcnOfS414B74,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B75)
+    /* {S!d380}S-Function (RTC_REQ_RSP): '<S1113>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[12aac5b*/",tlcOutputsFcnOfS414B75,"/*@]*/")>\
+%endif
+    /* {E!d380}End of Outputs for S-Function (RTC_REQ_RSP): '<S1113>/RTC Request Response Trigger' */
+/*@>1276005*/    for (/*@>12adcac*/i = /*@>12adcab*/0; /*@>12adcb6*/i < /*@>12adcb4*/77; /*@>12adcb2*/i/*@>12ade91*/++) {
+        /* {S!d706}Sum: '<S1003>/Add' incorporates:
+ *  Constant: '<S1003>/Constant'
+ *  DataStoreRead: '<S1074>/Data Store Read'
+ *  Product: '<S1003>/Matrix Multiply'
+ *  Product: '<S1071>/Matrix Multiply'
+ *  Sum: '<S1003>/Subtract'
+ */
+        /*@>1289a0b*/PremixMatrixTarget/*@>127a9c4*/[/*@>1289a09*/i]/*@>1275fed*/ = (/*@>128fb6f*/1.0F/*@>128fb6e*/ - /*@>12a6f34*/Model_Target_Medusa5H1Part3_B./*@>12aee9c*/Merge_p)/*@>128a857*/ * /*@>12a76b1*/Model_Target_Medusa5H1Part3_DW./*@>12af06a*/Premix_SLCGain_Left/*@>12a555f*/[/*@>12a555c*/i]/*@>1275ff4*/ + /*@>12a6f3a*/Model_Target_Medusa5H1Part3_B./*@>12aee9f*/MatrixMultiply_bn/*@>12a5565*/[/*@>12a5562*/i];
+    }
+/*@>127602b*/    for (/*@>12adc9b*/i = /*@>12adc9a*/0; /*@>12adca5*/i < /*@>12adca3*/20; /*@>12adca1*/i/*@>12ade92*/++) {
+        /* {S!d708}Sum: '<S1002>/Add' incorporates:
+ *  Constant: '<S1002>/Constant'
+ *  DataStoreRead: '<S1062>/Data Store Read'
+ *  Product: '<S1002>/Matrix Multiply'
+ *  Product: '<S1059>/Matrix Multiply'
+ *  Sum: '<S1002>/Subtract'
+ */
+        /*@>12899ff*/PremixMatrix_a/*@>127aa18*/[/*@>12899fd*/i]/*@>1276013*/ = (/*@>128fb74*/1.0F/*@>128fb73*/ - /*@>12a6f40*/Model_Target_Medusa5H1Part3_B./*@>12aeea2*/Merge_c)/*@>128a85b*/ * /*@>12a76b7*/Model_Target_Medusa5H1Part3_DW./*@>12af06d*/Premix_SLCGain_CS/*@>12a556b*/[/*@>12a5568*/i]/*@>127601a*/ + /*@>12a6f46*/Model_Target_Medusa5H1Part3_B./*@>12aeea5*/MatrixMultiply_b/*@>12a5571*/[/*@>12a556e*/i];
+    }
+    /* {S!d716}MATLAB Function: '<S1005>/MATLAB Function' incorporates:
+ *  MATLAB Function: '<S1000>/Fade_Trigger_Generation'
+ */
+    /* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 3/On/Premix/Premix with Mono-Surround & CAE with Fade Ramper/Generate Ramp Trigger/MATLAB Function': '<S1095>:1' */
+    /* '<S1095>:1:3' rampOn = 0; */
+    /*  DEBUG parameter */
+    /*  Trigger ramping if SLC OR Fade is triggered */
+    /* '<S1095>:1:6' if(SLC_On || Fade_On) */
+    /*@>10db4cb*/if (/*@>1289ef7*/rtb_SLC_On/*@>10db4dc*/ || /*@>1289cc1*/fadeOn) {
+        /* {S!d382}MATLAB Function: '<S1073>/control' */
+        /* {S!d710}MATLAB Function: '<S1073>/control' */
+        /* '<S1095>:1:7' rampOn = 1; */
+        /* '<S1095>:1:8' ramp(); */
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[357], "Output",2)
+%if SLibCG_SystemFcnArgAccessed("Model_Target_control_p",357,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[12aacb6*/",SLibCGIRGenReusableSysCall("Model_Target_control_p", ["%<_modelSS>", "/*@>12b020a*/PremixMatrixTarget", "%<SLibCG_DumpSSCode("/*@[12b0214*/",(SLibCG_BOCSC(648, 1, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[12b0226*/",(SLibCG_BOCSC(649, 1, "", -1, "", 0)),"/*@]*/")>", "&/*@>12b023a*/Model_Target_Medusa5H1Part3_DW./*@>12b0239*/Premix_Freeze_Left", "/*@>12b0246*/Model_Target_Medusa5H1Part3_DW./*@>12b0245*/Premix_currentGain_Left", "/*@>12b0252*/Model_Target_Medusa5H1Part3_DW./*@>12b0251*/Premix_frameCount_Left", "/*@>12b025e*/Model_Target_Medusa5H1Part3_DW./*@>12b025d*/Premix_rampCoeff_Left", "/*@>12b026a*/Model_Target_Medusa5H1Part3_DW./*@>12b0269*/Premix_targetGain_Left"], 357, 0, 6, 2, 6, 423),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[357]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[358], "Output",2)
+
+        /* {S!d384}MATLAB Function: '<S1061>/control' */
+        /* {S!d712}MATLAB Function: '<S1061>/control' */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_control_l",358,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[12aacb9*/",SLibCGIRGenReusableSysCall("Model_Target_control_l", ["%<_modelSS>", "/*@>12b02c0*/PremixMatrix_a", "%<SLibCG_DumpSSCode("/*@[12b02ca*/",(SLibCG_BOCSC(648, 1, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[12b02dc*/",(SLibCG_BOCSC(649, 1, "", -1, "", 0)),"/*@]*/")>", "&/*@>12b02f0*/Model_Target_Medusa5H1Part3_DW./*@>12b02ef*/Premix_Freeze_CS", "/*@>12b02fc*/Model_Target_Medusa5H1Part3_DW./*@>12b02fb*/Premix_currentGain_CS", "/*@>12b0308*/Model_Target_Medusa5H1Part3_DW./*@>12b0307*/Premix_frameCount_CS", "/*@>12b0314*/Model_Target_Medusa5H1Part3_DW./*@>12b0313*/Premix_rampCoeff_CS", "/*@>12b0320*/Model_Target_Medusa5H1Part3_DW./*@>12b031f*/Premix_targetGain_CS"], 358, 0, 6, 2, 6, 423),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[358]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[359], "Output",2)
+
+        /* {S!d386}MATLAB Function: '<S1085>/control' */
+        /* {S!d714}MATLAB Function: '<S1085>/control' */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_control_c",359,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[12aacbc*/",SLibCGIRGenReusableSysCall("Model_Target_control_c", ["%<_modelSS>", "/*@>12b0379*/Model_Target_Medusa5H1Part3_B./*@>12b0378*/Transpose1_o", "%<SLibCG_DumpSSCode("/*@[12b0384*/",(SLibCG_BOCSC(648, 1, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[12b0396*/",(SLibCG_BOCSC(649, 1, "", -1, "", 0)),"/*@]*/")>", "&/*@>12b03aa*/Model_Target_Medusa5H1Part3_DW./*@>12b03a9*/Premix_Freeze_Right", "/*@>12b03b6*/Model_Target_Medusa5H1Part3_DW./*@>12b03b5*/Premix_currentGain_Right", "/*@>12b03c2*/Model_Target_Medusa5H1Part3_DW./*@>12b03c1*/Premix_frameCount_Right", "/*@>12b03ce*/Model_Target_Medusa5H1Part3_DW./*@>12b03cd*/Premix_rampCoeff_Right", "/*@>12b03da*/Model_Target_Medusa5H1Part3_DW./*@>12b03d9*/Premix_targetGain_Right"], 359, 0, 6, 2, 6, 423),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[359]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+    }
+    /* {E!d716}End of MATLAB Function: '<S1005>/MATLAB Function' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B92)
+
+    /* {S!d388}S-Function (RTC_NTF): '<S1113>/NTF Trigger' */
+%<SLibCG_DumpSSCode("/*@[12aac60*/",tlcOutputsFcnOfS414B92,"/*@]*/")>\
+%endif
+    /* {E!d388}End of Outputs for S-Function (RTC_NTF): '<S1113>/NTF Trigger' */
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[354], "Output",2)
+
+    /* {S!d718}MATLAB Function: '<S1061>/process' */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_process_p",354,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[12aacb8*/",SLibCGIRGenReusableSysCall("Model_Target_process_p", ["%<_modelSS>", "&/*@>12b0425*/Model_Target_Medusa5H1Part3_DW./*@>12b0424*/Premix_Freeze_CS", "/*@>12b0431*/Model_Target_Medusa5H1Part3_DW./*@>12b0430*/Premix_currentGain_CS", "/*@>12b043d*/Model_Target_Medusa5H1Part3_DW./*@>12b043c*/Premix_frameCount_CS", "/*@>12b0449*/Model_Target_Medusa5H1Part3_DW./*@>12b0448*/Premix_rampCoeff_CS", "/*@>12b0455*/Model_Target_Medusa5H1Part3_DW./*@>12b0454*/Premix_targetGain_CS"], 354, 0, 6, 2, 6, 423),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[354]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B111)
+    /* {S!d390}S-Function (RTC_REQ_RSP): '<S1114>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[12aac62*/",tlcOutputsFcnOfS414B111,"/*@]*/")>\
+%endif
+    /* {E!d390}End of Outputs for S-Function (RTC_REQ_RSP): '<S1114>/RTC Request Response Trigger' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B123)
+
+    /* {S!d720}M-S-Function: '<S1062>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12aac63*/",tlcOutputsFcnOfS414B123,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B124)
+    /* {S!d722}M-S-Function: '<S1002>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12aac64*/",tlcOutputsFcnOfS414B124,"/*@]*/")>\
+%endif
+/*@>1275d3b*/    for (/*@>12adc8a*/i = /*@>12adc89*/0; /*@>12adc94*/i < /*@>12adc92*/8; /*@>12adc90*/i/*@>12ade93*/++) {
+        /* {S!d724}SignalConversion generated from: '<S1006>/Matrix Concatenate' incorporates:
+ *  Concatenate: '<S1006>/Matrix Concatenate'
+ *  S-Function (sdspsubmtrx): '<S1096>/Submatrix'
+ */
+        /*@>12899f7*/MatrixConcatenate/*@>127aa65*/[/*@>12899f5*/i]/*@>1275d2a*/ = /*@>12a6f5e*/Model_Target_Medusa5H1Part3_B./*@>12aeeab*/Submatrix/*@>12a5577*/[/*@>12a5574*/i];
+        /* {S!d726}SignalConversion generated from: '<S1006>/Matrix Concatenate' incorporates:
+ *  Concatenate: '<S1006>/Matrix Concatenate'
+ *  S-Function (sdspsubmtrx): '<S1097>/Submatrix2'
+ */
+        /*@>12899ef*/MatrixConcatenate/*@>127aa9c*/[/*@>12899ed*/i/*@>127aaa1*/ + /*@>12899ec*/8]/*@>1275d49*/ = /*@>12a6f64*/Model_Target_Medusa5H1Part3_B./*@>12aeeae*/Submatrix2/*@>12a557d*/[/*@>12a557a*/i];
+        /* {S!d728}SignalConversion generated from: '<S1006>/Matrix Concatenate' incorporates:
+ *  Concatenate: '<S1006>/Matrix Concatenate'
+ *  S-Function (sdspsubmtrx): '<S1097>/Submatrix4'
+ */
+        /*@>12899e6*/MatrixConcatenate/*@>127aad5*/[/*@>12899e4*/i/*@>127aada*/ + /*@>12899e3*/16]/*@>1275d6b*/ = /*@>12a6f6a*/Model_Target_Medusa5H1Part3_B./*@>12aeeb1*/Submatrix4/*@>12a5583*/[/*@>12a5580*/i];
+        /* {S!d730}SignalConversion generated from: '<S1006>/Matrix Concatenate' incorporates:
+ *  Concatenate: '<S1006>/Matrix Concatenate'
+ *  S-Function (sdspsubmtrx): '<S1097>/Submatrix6'
+ */
+        /*@>12899dd*/MatrixConcatenate/*@>127ab0e*/[/*@>12899db*/i/*@>127ab13*/ + /*@>12899da*/24]/*@>1275d8d*/ = /*@>12a6f70*/Model_Target_Medusa5H1Part3_B./*@>12aeeb4*/Submatrix6/*@>12a5589*/[/*@>12a5586*/i];
+        /* {S!d732}SignalConversion generated from: '<S1006>/Matrix Concatenate' incorporates:
+ *  Concatenate: '<S1006>/Matrix Concatenate'
+ *  S-Function (sdspsubmtrx): '<S1097>/Submatrix7'
+ */
+        /*@>12899bc*/MatrixConcatenate/*@>127abe6*/[/*@>12899ba*/i/*@>127abeb*/ + /*@>12899b9*/32]/*@>1275daf*/ = /*@>12a6f76*/Model_Target_Medusa5H1Part3_B./*@>12aeeb7*/Submatrix7/*@>12a558f*/[/*@>12a558c*/i];
+    }
+    /* {S!d734}Selector: '<S887>/Selector1' incorporates:
+ *  Buffer: '<S647>/BufferOut'
+ *  Sum: '<S936>/Add'
+ */
+/*@>127abb4*/    for (/*@>12adc68*/i = /*@>12adc67*/0; /*@>12adc72*/i < /*@>12adc70*/4; /*@>12adc6e*/i/*@>12ade94*/++) {
+/*@>127aba4*/        for (/*@>12adc79*/colIdx = /*@>12adc78*/0; /*@>12adc83*/colIdx < /*@>12adc81*/8; /*@>12adc7f*/colIdx/*@>12ade95*/++) {
+            /*@>12a6f7c*/Model_Target_Medusa5H1Part3_B./*@>12aeeba*/PremixMatrix_i/*@>1284bd7*/[/*@>12899d0*/colIdx/*@>1284bd3*/ + (/*@>12899ce*/i/*@>128a864*/ << /*@>128a863*/3)]/*@>127ab97*/ = /*@>12a6f83*/Model_Target_B./*@>12aeebd*/BufferOut/*@>12a55a4*/[(/*@>12a559c*/tmp_2/*@>12a559b*/[/*@>12a559e*/i]/*@>12a5598*/ << /*@>12a559f*/3)/*@>12a5597*/ + /*@>12a55a1*/colIdx];
+        }
+    }
+    /* {E!d734}End of Selector: '<S887>/Selector1' */
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[314], "Output",2)
+
+    /* {S!d392}Outputs for Atomic SubSystem: '<S887>/Expand Tail Components' */
+%<SLibCG_DumpSSCode("/*@[12aacbe*/",SLibCGIRGenReusableSysCall("Model_Target_ExpandTailComponents", [], 314, 0, 6, 2, 6, 423),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[314]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+    /* {E!d392}End of Outputs for SubSystem: '<S887>/Expand Tail Components' */
+%endif
+/*@>127c70e*/    for (/*@>12adc57*/writeIndex = /*@>12adc56*/0; /*@>12adc61*/writeIndex < /*@>12adc5f*/8; /*@>12adc5d*/writeIndex/*@>12ade96*/++) {
+        /* {S!d736}S-Function (sdspsubmtrx): '<S1098>/Submatrix' incorporates:
+ *  Concatenate: '<S1006>/Matrix Concatenate'
+ */
+        /*@>12899b3*/MatrixConcatenate/*@>127ac2b*/[/*@>12899b1*/writeIndex/*@>1286b41*/ + /*@>12899b0*/40]/*@>10da30f*/ = %<SLibCG_DumpSSCode("/*@[12aaef1*/",(SLibCG_SE(SLibCG_BOCSC(746, 32, "", -1, "/*@>12a55a7*/writeIndex", 0))),"/*@]*/")>;
+        /* {S!d738}S-Function (sdspsubmtrx): '<S1098>/Submatrix2' incorporates:
+ *  Concatenate: '<S1006>/Matrix Concatenate'
+ */
+        /*@>128997e*/MatrixConcatenate/*@>127ada1*/[/*@>128997c*/writeIndex/*@>1286b43*/ + /*@>128997b*/48]/*@>10da32e*/ = %<SLibCG_DumpSSCode("/*@[12aaed6*/",(SLibCG_SE(SLibCG_BOCSC(746, 32, "", -1, "/*@>12a55ae*/writeIndex/*@>12a55ac*/ + /*@>12a55af*/16", 0))),"/*@]*/")>;
+    }
+    /* {S!d740}Product: '<S1072>/Matrix Multiply1' incorporates:
+ *  Concatenate: '<S1006>/Matrix Concatenate'
+ *  DataStoreRead: '<S1072>/Mixing Gains'
+ *  Math: '<S1072>/Transpose1'
+ *  Merge: '<S587>/Merge'
+ */
+/*@>127acce*/    for (/*@>12adc24*/i = /*@>12adc23*/0; /*@>12adc2e*/i < /*@>12adc2c*/8; /*@>12adc2a*/i/*@>12ade97*/++) {
+/*@>127acbe*/        for (/*@>12adc35*/colIdx = /*@>12adc34*/0; /*@>12adc3f*/colIdx < /*@>12adc3d*/11; /*@>12adc3b*/colIdx/*@>12ade98*/++) {
+            /*@>1296d42*/sample/*@>1296d44*/ = (/*@>1289990*/colIdx/*@>128a874*/ << /*@>128a873*/3)/*@>12856d5*/ + /*@>1289992*/i;
+            /*@>12a6f9b*/Model_Target_Medusa5H1Part3_B./*@>12aeec6*/MatrixConcatenate/*@>12856d9*/[/*@>1296d46*/sample]/*@>127acdb*/ = /*@>1289996*/0.0F;
+/*@>127acae*/            for (/*@>12adc46*/writeIndex = /*@>12adc45*/0; /*@>12adc50*/writeIndex < /*@>12adc4e*/7; /*@>12adc4c*/writeIndex/*@>12ade99*/++) {
+                /*@>12a6fa1*/Model_Target_Medusa5H1Part3_B./*@>12aeec9*/MatrixConcatenate/*@>12856fd*/[sample] += /*@>12a55bb*/MatrixConcatenate/*@>12a55bd*/[(/*@>12a55b7*/writeIndex/*@>12a55b5*/ << /*@>12a55b8*/3)/*@>12a55b4*/ + /*@>12a55ba*/i]/*@>128fb86*/ * /*@>12a7753*/Model_Target_Medusa5H1Part3_DW./*@>12af0bb*/Premix_currentGain_Left/*@>12a55c8*/[/*@>12a55c1*/11/*@>12a55c0*/ * /*@>12a55c3*/writeIndex/*@>12a55bf*/ + /*@>12a55c5*/colIdx];
+            }
+        }
+    }
+    /*@>12a1f39*/memcpy(&/*@>12a6f8f*/Model_Target_Medusa5H1Part3_B./*@>12aeec0*/Merge/*@>129e619*/[/*@>129e607*/16], &/*@>12a6f95*/Model_Target_Medusa5H1Part3_B./*@>12aeec3*/MatrixConcatenate/*@>129e621*/[/*@>129e614*/0], /*@>129e617*/88U/*@>129e624*/ * /*@>129e623*/sizeof(real32_T));
+    /* {E!d740}End of Product: '<S1072>/Matrix Multiply1' */
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[355], "Output",2)
+
+    /* {S!d742}MATLAB Function: '<S1073>/process' */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_process_in",355,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[12aacbf*/",SLibCGIRGenReusableSysCall("Model_Target_process_in", ["%<_modelSS>", "&/*@>12b04c4*/Model_Target_Medusa5H1Part3_DW./*@>12b04c3*/Premix_Freeze_Left", "/*@>12b04d0*/Model_Target_Medusa5H1Part3_DW./*@>12b04cf*/Premix_currentGain_Left", "/*@>12b04dc*/Model_Target_Medusa5H1Part3_DW./*@>12b04db*/Premix_frameCount_Left", "/*@>12b04e8*/Model_Target_Medusa5H1Part3_DW./*@>12b04e7*/Premix_rampCoeff_Left", "/*@>12b04f4*/Model_Target_Medusa5H1Part3_DW./*@>12b04f3*/Premix_targetGain_Left"], 355, 0, 6, 2, 6, 423),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[355]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B127)
+    /* {S!d744}M-S-Function: '<S1074>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12aac65*/",tlcOutputsFcnOfS414B127,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B128)
+    /* {S!d746}M-S-Function: '<S1003>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12aac66*/",tlcOutputsFcnOfS414B128,"/*@]*/")>\
+%endif
+/*@>1275de2*/    for (/*@>12adc13*/writeIndex = /*@>12adc12*/0; /*@>12adc1d*/writeIndex < /*@>12adc1b*/8; /*@>12adc19*/writeIndex/*@>12ade9b*/++) {
+        /* {S!d748}SignalConversion generated from: '<S1006>/Matrix Concatenate4' incorporates:
+ *  Concatenate: '<S1006>/Matrix Concatenate4'
+ *  S-Function (sdspsubmtrx): '<S1096>/Submatrix1'
+ */
+        /*@>1289975*/MatrixConcatenate/*@>127ade4*/[/*@>1289973*/writeIndex]/*@>1275dd1*/ = /*@>12a6fb3*/Model_Target_Medusa5H1Part3_B./*@>12aeecc*/Submatrix1/*@>12a55d4*/[/*@>12a55d1*/writeIndex];
+        /* {S!d750}SignalConversion generated from: '<S1006>/Matrix Concatenate4' incorporates:
+ *  Concatenate: '<S1006>/Matrix Concatenate4'
+ *  S-Function (sdspsubmtrx): '<S1097>/Submatrix3'
+ */
+        /*@>128996d*/MatrixConcatenate/*@>127ae1b*/[/*@>128996b*/writeIndex/*@>127ae20*/ + /*@>128996a*/8]/*@>1275df0*/ = /*@>12a6fb9*/Model_Target_Medusa5H1Part3_B./*@>12aeecf*/Submatrix3/*@>12a55da*/[/*@>12a55d7*/writeIndex];
+        /* {S!d752}SignalConversion generated from: '<S1006>/Matrix Concatenate4' incorporates:
+ *  Concatenate: '<S1006>/Matrix Concatenate4'
+ *  S-Function (sdspsubmtrx): '<S1097>/Submatrix5'
+ */
+        /*@>1289964*/MatrixConcatenate/*@>127ae54*/[/*@>1289962*/writeIndex/*@>127ae59*/ + /*@>1289961*/16]/*@>1275e12*/ = /*@>12a6fbf*/Model_Target_Medusa5H1Part3_B./*@>12aeed2*/Submatrix5/*@>12a55e0*/[/*@>12a55dd*/writeIndex];
+        /* {S!d754}SignalConversion generated from: '<S1006>/Matrix Concatenate4' incorporates:
+ *  Concatenate: '<S1006>/Matrix Concatenate4'
+ *  S-Function (sdspsubmtrx): '<S1097>/Submatrix1'
+ */
+        /*@>128995b*/MatrixConcatenate/*@>127ae8d*/[/*@>1289959*/writeIndex/*@>127ae92*/ + /*@>1289958*/24]/*@>1275e34*/ = /*@>12a6fd1*/Model_Target_Medusa5H1Part3_B./*@>12aeedb*/Submatrix1_a/*@>12a55e6*/[/*@>12a55e3*/writeIndex];
+        /* {S!d756}SignalConversion generated from: '<S1006>/Matrix Concatenate4' incorporates:
+ *  Concatenate: '<S1006>/Matrix Concatenate4'
+ *  S-Function (sdspsubmtrx): '<S1097>/Submatrix8'
+ */
+        /*@>1289952*/MatrixConcatenate/*@>127aec4*/[/*@>1289950*/writeIndex/*@>127aec9*/ + /*@>128994f*/32]/*@>1275e56*/ = /*@>12a6fd7*/Model_Target_Medusa5H1Part3_B./*@>12aeede*/Submatrix8/*@>12a55ec*/[/*@>12a55e9*/writeIndex];
+        /* {S!d758}S-Function (sdspsubmtrx): '<S1098>/Submatrix1' incorporates:
+ *  Concatenate: '<S1006>/Matrix Concatenate4'
+ */
+        /*@>1289949*/MatrixConcatenate/*@>127af07*/[/*@>1289947*/writeIndex/*@>1286b45*/ + /*@>1289946*/40]/*@>10da367*/ = %<SLibCG_DumpSSCode("/*@[12aaebb*/",(SLibCG_SE(SLibCG_BOCSC(746, 32, "", -1, "/*@>12a55f0*/writeIndex/*@>12a55ee*/ + /*@>12a55f1*/8", 0))),"/*@]*/")>;
+        /* {S!d760}S-Function (sdspsubmtrx): '<S1098>/Submatrix3' incorporates:
+ *  Concatenate: '<S1006>/Matrix Concatenate4'
+ */
+        /*@>1289914*/MatrixConcatenate/*@>127b07d*/[/*@>1289912*/writeIndex/*@>1286b47*/ + /*@>1289911*/48]/*@>10da386*/ = %<SLibCG_DumpSSCode("/*@[12aaea0*/",(SLibCG_SE(SLibCG_BOCSC(746, 32, "", -1, "/*@>12a55f8*/writeIndex/*@>12a55f6*/ + /*@>12a55f9*/24", 0))),"/*@]*/")>;
+    }
+    /* {S!d762}Product: '<S1084>/Matrix Multiply1' incorporates:
+ *  Concatenate: '<S1006>/Matrix Concatenate4'
+ *  DataStoreRead: '<S1084>/Data Store Read1'
+ *  Math: '<S1084>/Transpose1'
+ *  Merge: '<S587>/Merge'
+ */
+/*@>127afaa*/    for (/*@>12adbe0*/i = /*@>12adbdf*/0; /*@>12adbea*/i < /*@>12adbe8*/8; /*@>12adbe6*/i/*@>12ade9c*/++) {
+/*@>127af9a*/        for (/*@>12adbf1*/colIdx = /*@>12adbf0*/0; /*@>12adbfb*/colIdx < /*@>12adbf9*/11; /*@>12adbf7*/colIdx/*@>12ade9d*/++) {
+            /*@>1296d5a*/sample/*@>1296d5c*/ = (/*@>1289926*/colIdx/*@>128a89b*/ << /*@>128a89a*/3)/*@>1285737*/ + /*@>1289928*/i;
+            /*@>12a6fdd*/Model_Target_Medusa5H1Part3_B./*@>12aeee1*/MatrixConcatenate/*@>128573b*/[/*@>1296d5e*/sample]/*@>127afb7*/ = /*@>128992c*/0.0F;
+/*@>127af8a*/            for (/*@>12adc02*/writeIndex = /*@>12adc01*/0; /*@>12adc0c*/writeIndex < /*@>12adc0a*/7; /*@>12adc08*/writeIndex/*@>12ade9e*/++) {
+                /*@>12a6fe3*/Model_Target_Medusa5H1Part3_B./*@>12aeee4*/MatrixConcatenate/*@>128575e*/[sample] += /*@>12a5605*/MatrixConcatenate/*@>12a5607*/[(/*@>12a5601*/writeIndex/*@>12a55ff*/ << /*@>12a5602*/3)/*@>12a55fe*/ + /*@>12a5604*/i]/*@>128fbaa*/ * /*@>12a7777*/Model_Target_Medusa5H1Part3_DW./*@>12af0cd*/Premix_currentGain_Right/*@>12a5612*/[/*@>12a560b*/11/*@>12a560a*/ * /*@>12a560d*/writeIndex/*@>12a5609*/ + /*@>12a560f*/colIdx];
+            }
+        }
+    }
+    /*@>12a1f3b*/memcpy(&/*@>12a6fc5*/Model_Target_Medusa5H1Part3_B./*@>12aeed5*/Merge/*@>129e598*/[/*@>129e586*/104], &/*@>12a6fcb*/Model_Target_Medusa5H1Part3_B./*@>12aeed8*/MatrixConcatenate/*@>129e5a0*/[/*@>129e593*/0], /*@>129e596*/88U/*@>129e5a3*/ * /*@>129e5a2*/sizeof(real32_T));
+    /* {E!d762}End of Product: '<S1084>/Matrix Multiply1' */
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[356], "Output",2)
+
+    /* {S!d764}MATLAB Function: '<S1085>/process' */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_process_f",356,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[12aacc0*/",SLibCGIRGenReusableSysCall("Model_Target_process_f", ["%<_modelSS>", "&/*@>12b0548*/Model_Target_Medusa5H1Part3_DW./*@>12b0547*/Premix_Freeze_Right", "/*@>12b0554*/Model_Target_Medusa5H1Part3_DW./*@>12b0553*/Premix_currentGain_Right", "/*@>12b0560*/Model_Target_Medusa5H1Part3_DW./*@>12b055f*/Premix_frameCount_Right", "/*@>12b056c*/Model_Target_Medusa5H1Part3_DW./*@>12b056b*/Premix_rampCoeff_Right", "/*@>12b0578*/Model_Target_Medusa5H1Part3_DW./*@>12b0577*/Premix_targetGain_Right"], 356, 0, 6, 2, 6, 423),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[356]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B130)
+    /* {S!d766}M-S-Function: '<S1086>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12aac67*/",tlcOutputsFcnOfS414B130,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B131)
+    /* {S!d768}M-S-Function: '<S1004>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12aac68*/",tlcOutputsFcnOfS414B131,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B132)
+    /* {S!d770}M-S-Function: '<S998>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12aac69*/",tlcOutputsFcnOfS414B132,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B133)
+    /* {S!d772}S-Function (TOP_MEX): '<S947>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[12aac6b*/",tlcOutputsFcnOfS414B133,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B134)
+    /* {S!d774}S-Function (TOP_MEX): '<S945>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[12aac6d*/",tlcOutputsFcnOfS414B134,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B135)
+    /* {S!d776}S-Function (TOP_MEX): '<S946>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[12aac6f*/",tlcOutputsFcnOfS414B135,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B136)
+    /* {S!d778}S-Function (TOP_MEX): '<S947>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aac71*/",tlcOutputsFcnOfS414B136,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B137)
+    /* {S!d780}S-Function (TOP_MEX): '<S945>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aac73*/",tlcOutputsFcnOfS414B137,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B138)
+    /* {S!d782}S-Function (TOP_MEX): '<S946>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aac75*/",tlcOutputsFcnOfS414B138,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B139)
+    /* {S!d784}S-Function (TOP_MEX): '<S943>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aac77*/",tlcOutputsFcnOfS414B139,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B140)
+    /* {S!d786}S-Function (TOP_MEX): '<S944>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aac79*/",tlcOutputsFcnOfS414B140,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B141)
+    /* {S!d788}S-Function (TOP_MEX): '<S949>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aac7b*/",tlcOutputsFcnOfS414B141,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B142)
+    /* {S!d790}S-Function (TOP_MEX): '<S948>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aac7d*/",tlcOutputsFcnOfS414B142,"/*@]*/")>\
+%endif
+    /* {S!d792}MATLAB Function: '<S932>/Fade_Trigger_Generation' */
+    /*  #codegen */
+    /* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 3/On/Full-rate Mixer/Full-Rate Mixer with CAE & Fade Ramper/Fade Inputs/Fade_Trigger_Generation': '<S942>:1' */
+    /* '<S942>:1:3' fadeOn = false; */
+    /*@>1289ef5*/fadeOn/*@>10db4e2*/ = /*@>1289ef4*/false;
+    /* {S!d794}Abs: '<S932>/Abs2' incorporates:
+ *  Delay: '<S932>/Delay2'
+ */
+    /*  Generates function call triggers when incoming fade gain values change */
+    /* '<S942>:1:6' if(gainDifference > 0) */
+    /*@>12913a4*/if (-/*@<128ff99*//*@>12a777d*/Model_Target_Medusa5H1Part3_DW./*@>12af0d0*/Delay2_DSTATE_k/*@>128fbce*/ < /*@>128fbd1*/0) {
+        /*@>12913a8*/i/*@>12913a7*/ = /*@>12a7789*/Model_Target_Medusa5H1Part3_DW./*@>12af0d6*/Delay2_DSTATE_k;
+    } else {
+        /*@>1291398*/i/*@>129139a*/ = -/*@<128ffa1*//*@>12a7783*/Model_Target_Medusa5H1Part3_DW./*@>12af0d3*/Delay2_DSTATE_k;
+    }
+    /* {S!d814}MATLAB Function: '<S932>/Fade_Trigger_Generation' incorporates:
+ *  Abs: '<S932>/Abs'
+ *  Abs: '<S932>/Abs1'
+ *  Abs: '<S932>/Abs2'
+ *  Delay: '<S932>/Delay'
+ *  Delay: '<S932>/Delay1'
+ *  Sum: '<S932>/Add'
+ *  Sum: '<S932>/Subtract1'
+ *  Sum: '<S932>/Subtract2'
+ */
+    /*@>10db4e7*/if ((/*@>12a1026*/qhmath_abs_f(/*@>12a6fef*/Model_Target_Medusa5H1Part3_B./*@>12aeee7*/Selector_p/*@>126ea3f*/ - /*@>12a778f*/Model_Target_Medusa5H1Part3_DW./*@>12af0d9*/Delay_DSTATE_c)/*@>126e5f2*/ + /*@>126e5f5*/(real32_T)/*@>129139c*/i)/*@>126e5f1*/ + /*@>12a1028*/qhmath_abs_f(/*@>12a6ff5*/Model_Target_Medusa5H1Part3_B./*@>12aeeea*/Selector2/*@>126ea4d*/ - /*@>12a7795*/Model_Target_Medusa5H1Part3_DW./*@>12af0dc*/Delay1_DSTATE_m)/*@>10db4e4*/ > /*@>1289ef3*/0.0F) {
+        /* {S!d394}Outputs for Function Call SubSystem: '<S935>/Fader Downmix' */
+        /* {S!d796}If: '<S962>/If' */
+        /* '<S942>:1:7' fadeTrigger_Left(); */
+        /*@>10db5f1*/if (/*@>12a7001*/Model_Target_Medusa5H1Part3_B./*@>12aeeed*/Selector_p/*@>10db5f0*/ >= /*@>12a7007*/Model_Target_Medusa5H1Part3_B./*@>12aeef0*/Selector2) {
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[315], "Output",2)
+            /* {S!d395}Outputs for IfAction SubSystem: '<S962>/Fading Forward' incorporates:
+ *  ActionPort: '<S967>/Action Port'
+ */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_FadingForward",315,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[12aacc2*/",SLibCGIRGenReusableSysCall("Model_Target_FadingForward", ["%<_modelSS>", "/*@>12b0636*/Model_Target_Medusa5H1Part3_B./*@>12b0635*/Selector2", "%<SLibCG_DumpSSCode("/*@[12b0641*/",(SLibCG_BOCSC(719, 1, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[12b0653*/",(SLibCG_BOCSC(718, 1, "", -1, "", 0)),"/*@]*/")>", "&/*@>12b0667*/Model_Target_Medusa5H1Part3_B./*@>12b0666*/Merge_pk"], 315, 0, 6, 2, 6, 423),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[315]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+            /* {E!d395}End of Outputs for SubSystem: '<S962>/Fading Forward' */
+%endif
+        } else {
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[316], "Output",2)
+            /* {S!d397}Outputs for IfAction SubSystem: '<S962>/Fading Backward' incorporates:
+ *  ActionPort: '<S966>/Action Port'
+ */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_FadingBackward",316,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[12aacc1*/",SLibCGIRGenReusableSysCall("Model_Target_FadingBackward", ["%<_modelSS>", "/*@>12b06b0*/Model_Target_Medusa5H1Part3_B./*@>12b06af*/Selector_p", "%<SLibCG_DumpSSCode("/*@[12b06bb*/",(SLibCG_BOCSC(717, 1, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[12b06cd*/",(SLibCG_BOCSC(716, 1, "", -1, "", 0)),"/*@]*/")>", "&/*@>12b06e1*/Model_Target_Medusa5H1Part3_B./*@>12b06e0*/Merge_pk"], 316, 0, 6, 2, 6, 423),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[316]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+            /* {E!d397}End of Outputs for SubSystem: '<S962>/Fading Backward' */
+%endif
+        }
+        /* {E!d796}End of If: '<S962>/If' */
+        /*  #codegen */
+        /* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 3/On/Full-rate Mixer/Full-Rate Mixer with CAE & Fade Ramper/Full Mixing Matrix_Left/Fader Downmix/MATLAB Function': '<S968>:1' */
+        /* '<S968>:1:3' downmixWeights = weights; */
+        /*  If CAE is supported and enabled, replace the tail weights with their CAE counterparts */
+        /* '<S968>:1:6' if(MedusaFRMConfig.includeCAE == 1 && CAE_Enable == 1) */
+/*@>1275f7b*/        for (/*@>12adbcf*/i = /*@>12adbce*/0; /*@>12adbd9*/i < /*@>12adbd7*/30; /*@>12adbd5*/i/*@>12adea0*/++) {
+            /* {S!d798}Product: '<S962>/Matrix Multiply' incorporates:
+ *  MATLAB Function: '<S962>/MATLAB Function'
+ *  S-Function (TOP_MEX): '<S946>/TOP'
+ */
+            /*@>12a7055*/Model_Target_Medusa5H1Part3_B./*@>12aef14*/MatrixMultiply_n/*@>127b1cd*/[/*@>12898e5*/i]/*@>1275f6a*/ = /*@>12a705b*/Model_Target_Medusa5H1Part3_B./*@>12aef17*/Merge_pk/*@>128a8bd*/ * %<SLibCG_DumpSSCode("/*@[12aad23*/",(SLibCG_SE(SLibCG_BOCSC(715, 30, "", -1, "/*@>12a563f*/i", 0))),"/*@]*/")>;
+        }
+%if !WHITE_SPACE(tlcOutputsFcnOfS318B3)
+        /* {S!d800}M-S-Function: '<S962>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12aac7e*/",tlcOutputsFcnOfS318B3,"/*@]*/")>\
+        /* {E!d394}End of Outputs for SubSystem: '<S935>/Fader Downmix' */
+
+%endif
+        /* {S!d400}Outputs for Function Call SubSystem: '<S934>/Fader Downmix' */
+        /* {S!d802}If: '<S950>/If' */
+        /* '<S942>:1:8' fadeTrigger_CS(); */
+        /*@>10db623*/if (/*@>12a7061*/Model_Target_Medusa5H1Part3_B./*@>12aef1a*/Selector_p/*@>10db622*/ >= /*@>12a7067*/Model_Target_Medusa5H1Part3_B./*@>12aef1d*/Selector2) {
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[315], "Output",2)
+            /* {S!d401}Outputs for IfAction SubSystem: '<S950>/Fading Forward' incorporates:
+ *  ActionPort: '<S955>/Action Port'
+ */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_FadingForward",315,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[12aacc7*/",SLibCGIRGenReusableSysCall("Model_Target_FadingForward", ["%<_modelSS>", "/*@>12b0733*/Model_Target_Medusa5H1Part3_B./*@>12b0732*/Selector2", "%<SLibCG_DumpSSCode("/*@[12b073e*/",(SLibCG_BOCSC(719, 1, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[12b0750*/",(SLibCG_BOCSC(718, 1, "", -1, "", 0)),"/*@]*/")>", "&/*@>12b0764*/Model_Target_Medusa5H1Part3_B./*@>12b0763*/Merge_n"], 315, 1, 6, 2, 6, 423),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[315]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+            /* {E!d401}End of Outputs for SubSystem: '<S950>/Fading Forward' */
+%endif
+        } else {
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[316], "Output",2)
+            /* {S!d403}Outputs for IfAction SubSystem: '<S950>/Fading Backward' incorporates:
+ *  ActionPort: '<S954>/Action Port'
+ */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_FadingBackward",316,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[12aacc6*/",SLibCGIRGenReusableSysCall("Model_Target_FadingBackward", ["%<_modelSS>", "/*@>12b07ad*/Model_Target_Medusa5H1Part3_B./*@>12b07ac*/Selector_p", "%<SLibCG_DumpSSCode("/*@[12b07b8*/",(SLibCG_BOCSC(717, 1, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[12b07ca*/",(SLibCG_BOCSC(716, 1, "", -1, "", 0)),"/*@]*/")>", "&/*@>12b07de*/Model_Target_Medusa5H1Part3_B./*@>12b07dd*/Merge_n"], 316, 1, 6, 2, 6, 423),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[316]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+            /* {E!d403}End of Outputs for SubSystem: '<S950>/Fading Backward' */
+%endif
+        }
+        /* {E!d802}End of If: '<S950>/If' */
+        /*  #codegen */
+        /* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 3/On/Full-rate Mixer/Full-Rate Mixer with CAE & Fade Ramper/Full Mixing Matrix_Center Surround/Fader Downmix/MATLAB Function': '<S956>:1' */
+        /* '<S956>:1:3' downmixWeights = weights; */
+        /*  If CAE is supported and enabled, replace the tail weights with their CAE counterparts */
+        /* '<S956>:1:6' if(MedusaFRMConfig.includeCAE == 1 && CAE_Enable == 1) */
+/*@>1275f9a*/        for (/*@>12adbbe*/i = /*@>12adbbd*/0; /*@>12adbc8*/i < /*@>12adbc6*/12; /*@>12adbc4*/i/*@>12adea1*/++) {
+            /* {S!d804}Product: '<S950>/Matrix Multiply' incorporates:
+ *  MATLAB Function: '<S950>/MATLAB Function'
+ *  S-Function (TOP_MEX): '<S945>/TOP'
+ */
+            /*@>12a710f*/Model_Target_Medusa5H1Part3_B./*@>12aef5f*/MatrixMultiply_e/*@>127b25f*/[/*@>12898da*/i]/*@>1275f89*/ = /*@>12a7115*/Model_Target_Medusa5H1Part3_B./*@>12aef62*/Merge_n/*@>128a8c1*/ * %<SLibCG_DumpSSCode("/*@[12aad08*/",(SLibCG_SE(SLibCG_BOCSC(714, 12, "", -1, "/*@>12a5673*/i", 0))),"/*@]*/")>;
+        }
+%if !WHITE_SPACE(tlcOutputsFcnOfS320B3)
+        /* {S!d806}M-S-Function: '<S950>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12aac7f*/",tlcOutputsFcnOfS320B3,"/*@]*/")>\
+        /* {E!d400}End of Outputs for SubSystem: '<S934>/Fader Downmix' */
+
+%endif
+        /* {S!d406}Outputs for Function Call SubSystem: '<S936>/Fader Downmix' */
+        /* {S!d808}If: '<S974>/If' */
+        /* '<S942>:1:9' fadeTrigger_Right(); */
+        /*@>10db64b*/if (/*@>12a711b*/Model_Target_Medusa5H1Part3_B./*@>12aef65*/Selector_p/*@>10db64a*/ >= /*@>12a7121*/Model_Target_Medusa5H1Part3_B./*@>12aef68*/Selector2) {
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[315], "Output",2)
+            /* {S!d407}Outputs for IfAction SubSystem: '<S974>/Fading Forward' incorporates:
+ *  ActionPort: '<S979>/Action Port'
+ */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_FadingForward",315,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[12aacca*/",SLibCGIRGenReusableSysCall("Model_Target_FadingForward", ["%<_modelSS>", "/*@>12b0830*/Model_Target_Medusa5H1Part3_B./*@>12b082f*/Selector2", "%<SLibCG_DumpSSCode("/*@[12b083b*/",(SLibCG_BOCSC(719, 1, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[12b084d*/",(SLibCG_BOCSC(718, 1, "", -1, "", 0)),"/*@]*/")>", "&/*@>12b0861*/Model_Target_Medusa5H1Part3_B./*@>12b0860*/Merge_go"], 315, 2, 6, 2, 6, 423),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[315]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+            /* {E!d407}End of Outputs for SubSystem: '<S974>/Fading Forward' */
+%endif
+        } else {
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[316], "Output",2)
+            /* {S!d409}Outputs for IfAction SubSystem: '<S974>/Fading Backward' incorporates:
+ *  ActionPort: '<S978>/Action Port'
+ */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_FadingBackward",316,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[12aacc9*/",SLibCGIRGenReusableSysCall("Model_Target_FadingBackward", ["%<_modelSS>", "/*@>12b08aa*/Model_Target_Medusa5H1Part3_B./*@>12b08a9*/Selector_p", "%<SLibCG_DumpSSCode("/*@[12b08b5*/",(SLibCG_BOCSC(717, 1, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[12b08c7*/",(SLibCG_BOCSC(716, 1, "", -1, "", 0)),"/*@]*/")>", "&/*@>12b08db*/Model_Target_Medusa5H1Part3_B./*@>12b08da*/Merge_go"], 316, 2, 6, 2, 6, 423),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[316]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+            /* {E!d409}End of Outputs for SubSystem: '<S974>/Fading Backward' */
+%endif
+        }
+        /* {E!d808}End of If: '<S974>/If' */
+        /*  #codegen */
+        /* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 3/On/Full-rate Mixer/Full-Rate Mixer with CAE & Fade Ramper/Full Mixing Matrix_Right/Fader Downmix/MATLAB Function': '<S980>:1' */
+        /* '<S980>:1:3' downmixWeights = weights; */
+        /*  If CAE is supported and enabled, replace the tail weights with their CAE counterparts */
+        /* '<S980>:1:6' if(MedusaFRMConfig.includeCAE == 1 && CAE_Enable == 1) */
+/*@>1275fb9*/        for (/*@>12adbad*/i = /*@>12adbac*/0; /*@>12adbb7*/i < /*@>12adbb5*/30; /*@>12adbb3*/i/*@>12adea2*/++) {
+            /* {S!d810}Product: '<S974>/Matrix Multiply' incorporates:
+ *  MATLAB Function: '<S974>/MATLAB Function'
+ *  S-Function (TOP_MEX): '<S947>/TOP'
+ */
+            /*@>12a7151*/Model_Target_Medusa5H1Part3_B./*@>12aef7a*/MatrixMultiply_i/*@>127b39d*/[/*@>12898b1*/i]/*@>1275fa8*/ = /*@>12a7157*/Model_Target_Medusa5H1Part3_B./*@>12aef7d*/Merge_go/*@>128a8c5*/ * %<SLibCG_DumpSSCode("/*@[12aaced*/",(SLibCG_SE(SLibCG_BOCSC(713, 30, "", -1, "/*@>12a568a*/i", 0))),"/*@]*/")>;
+        }
+%if !WHITE_SPACE(tlcOutputsFcnOfS322B3)
+        /* {S!d812}M-S-Function: '<S974>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12aac80*/",tlcOutputsFcnOfS322B3,"/*@]*/")>\
+        /* {E!d406}End of Outputs for SubSystem: '<S936>/Fader Downmix' */
+%endif
+        /* '<S942>:1:10' fadeOn = true; */
+        /*@>1289ef1*/fadeOn/*@>10db4e3*/ = /*@>1289ef0*/true;
+        /*  Indicates that fade is triggered */
+    }
+/*@>1276054*/    for (/*@>12adb9c*/i = /*@>12adb9b*/0; /*@>12adba6*/i < /*@>12adba4*/30; /*@>12adba2*/i/*@>12adea3*/++) {
+        /* {S!d816}Sum: '<S936>/Add' incorporates:
+ *  Constant: '<S936>/Constant'
+ *  DataStoreRead: '<S977>/Data Store Read'
+ *  Product: '<S936>/Matrix Multiply'
+ *  Product: '<S974>/Matrix Multiply'
+ *  Sum: '<S936>/Subtract'
+ */
+        /*@>12a7025*/Model_Target_Medusa5H1Part3_B./*@>12aeeff*/PremixMatrix_i/*@>127b0ec*/[/*@>1289905*/i]/*@>1276039*/ = (/*@>128fbd9*/1.0F/*@>128fbd8*/ - /*@>12a702b*/Model_Target_Medusa5H1Part3_B./*@>12aef02*/Merge_go)/*@>128a8c9*/ * /*@>12a779b*/Model_Target_Medusa5H1Part3_DW./*@>12af0df*/FRM_SLCGain_Right/*@>12a561e*/[/*@>12a561b*/i]/*@>1276043*/ + /*@>12a7031*/Model_Target_Medusa5H1Part3_B./*@>12aef05*/MatrixMultiply_i/*@>12a5624*/[/*@>12a5621*/i];
+        /* {S!d818}Sum: '<S935>/Add' incorporates:
+ *  Constant: '<S935>/Constant'
+ *  DataStoreRead: '<S965>/Data Store Read'
+ *  Product: '<S935>/Matrix Multiply'
+ *  Product: '<S962>/Matrix Multiply'
+ *  Sum: '<S935>/Subtract'
+ */
+        /*@>12898fb*/PremixMatrix_e/*@>127b141*/[/*@>12898f9*/i]/*@>1276062*/ = (/*@>128fbde*/1.0F/*@>128fbdd*/ - /*@>12a7037*/Model_Target_Medusa5H1Part3_B./*@>12aef08*/Merge_pk)/*@>128a8cd*/ * /*@>12a77a1*/Model_Target_Medusa5H1Part3_DW./*@>12af0e2*/FRM_SLCGain_Left/*@>12a562a*/[/*@>12a5627*/i]/*@>1276069*/ + /*@>12a703d*/Model_Target_Medusa5H1Part3_B./*@>12aef0b*/MatrixMultiply_n/*@>12a5630*/[/*@>12a562d*/i];
+    }
+/*@>12760a0*/    for (/*@>12adb8b*/i = /*@>12adb8a*/0; /*@>12adb95*/i < /*@>12adb93*/12; /*@>12adb91*/i/*@>12adea4*/++) {
+        /* {S!d820}Sum: '<S934>/Add' incorporates:
+ *  Constant: '<S934>/Constant'
+ *  DataStoreRead: '<S953>/Data Store Read'
+ *  Product: '<S934>/Matrix Multiply'
+ *  Product: '<S950>/Matrix Multiply'
+ *  Sum: '<S934>/Subtract'
+ */
+        /*@>12898ef*/PremixMatrix_m/*@>127b198*/[/*@>12898ed*/i]/*@>1276088*/ = (/*@>128fbe3*/1.0F/*@>128fbe2*/ - /*@>12a7043*/Model_Target_Medusa5H1Part3_B./*@>12aef0e*/Merge_n)/*@>128a8d1*/ * /*@>12a77a7*/Model_Target_Medusa5H1Part3_DW./*@>12af0e5*/FRM_SLCGain_CS/*@>12a5636*/[/*@>12a5633*/i]/*@>127608f*/ + /*@>12a7049*/Model_Target_Medusa5H1Part3_B./*@>12aef11*/MatrixMultiply_e/*@>12a563c*/[/*@>12a5639*/i];
+    }
+    /* {S!d828}MATLAB Function: '<S937>/MATLAB Function' incorporates:
+ *  MATLAB Function: '<S932>/Fade_Trigger_Generation'
+ */
+    /* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 3/On/Full-rate Mixer/Full-Rate Mixer with CAE & Fade Ramper/Generate Ramp Trigger/MATLAB Function': '<S986>:1' */
+    /* '<S986>:1:3' rampOn = 0; */
+    /*  DEBUG parameter */
+    /*  Trigger ramping if SLC OR Fade is triggered */
+    /* '<S986>:1:6' if(SLC_On || Fade_On) */
+    /*@>10db504*/if (/*@>1289eee*/rtb_SLC_On/*@>10db515*/ || /*@>1289cbf*/fadeOn) {
+        /* {S!d412}MATLAB Function: '<S964>/control' */
+        /* {S!d822}MATLAB Function: '<S964>/control' */
+        /* '<S986>:1:7' rampOn = 1; */
+        /* '<S986>:1:8' ramp(); */
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[327], "Output",2)
+%if SLibCG_SystemFcnArgAccessed("Model_Target_control_m",327,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[12aacc3*/",SLibCGIRGenReusableSysCall("Model_Target_control_m", ["%<_modelSS>", "/*@>12b093a*/PremixMatrix_e", "%<SLibCG_DumpSSCode("/*@[12b0944*/",(SLibCG_BOCSC(648, 1, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[12b0956*/",(SLibCG_BOCSC(649, 1, "", -1, "", 0)),"/*@]*/")>", "&/*@>12b096a*/Model_Target_Medusa5H1Part3_DW./*@>12b0969*/FRM_Freeze_Left", "/*@>12b0976*/Model_Target_Medusa5H1Part3_DW./*@>12b0975*/FRM_currentGain_Left", "/*@>12b0982*/Model_Target_Medusa5H1Part3_DW./*@>12b0981*/FRM_frameCount_Left", "/*@>12b098e*/Model_Target_Medusa5H1Part3_DW./*@>12b098d*/FRM_rampCoeff_Left", "/*@>12b099a*/Model_Target_Medusa5H1Part3_DW./*@>12b0999*/FRM_targetGain_Left"], 327, 0, 6, 2, 6, 423),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[327]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[328], "Output",2)
+
+        /* {S!d414}MATLAB Function: '<S952>/control' */
+        /* {S!d824}MATLAB Function: '<S952>/control' */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_control_e",328,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[12aacc4*/",SLibCGIRGenReusableSysCall("Model_Target_control_e", ["%<_modelSS>", "/*@>12b09f0*/PremixMatrix_m", "%<SLibCG_DumpSSCode("/*@[12b09fa*/",(SLibCG_BOCSC(648, 1, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[12b0a0c*/",(SLibCG_BOCSC(649, 1, "", -1, "", 0)),"/*@]*/")>", "&/*@>12b0a20*/Model_Target_Medusa5H1Part3_DW./*@>12b0a1f*/FRM_Freeze_CS", "/*@>12b0a2c*/Model_Target_Medusa5H1Part3_DW./*@>12b0a2b*/FRM_currentGain_CS", "/*@>12b0a38*/Model_Target_Medusa5H1Part3_DW./*@>12b0a37*/FRM_frameCount_CS", "/*@>12b0a44*/Model_Target_Medusa5H1Part3_DW./*@>12b0a43*/FRM_rampCoeff_CS", "/*@>12b0a50*/Model_Target_Medusa5H1Part3_DW./*@>12b0a4f*/FRM_targetGain_CS"], 328, 0, 6, 2, 6, 423),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[328]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[329], "Output",2)
+
+        /* {S!d416}MATLAB Function: '<S976>/control' */
+        /* {S!d826}MATLAB Function: '<S976>/control' */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_control_a",329,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[12aacc5*/",SLibCGIRGenReusableSysCall("Model_Target_control_a", ["%<_modelSS>", "&/*@>12b0aae*/Model_Target_Medusa5H1Part3_B./*@>12b0aad*/PremixMatrix_i/*@>12b0aac*/[/*@>12b0ab0*/0]", "%<SLibCG_DumpSSCode("/*@[12b0aba*/",(SLibCG_BOCSC(648, 1, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[12b0acc*/",(SLibCG_BOCSC(649, 1, "", -1, "", 0)),"/*@]*/")>", "&/*@>12b0ae0*/Model_Target_Medusa5H1Part3_DW./*@>12b0adf*/FRM_Freeze_Right", "/*@>12b0aec*/Model_Target_Medusa5H1Part3_DW./*@>12b0aeb*/FRM_currentGain_Right", "/*@>12b0af8*/Model_Target_Medusa5H1Part3_DW./*@>12b0af7*/FRM_frameCount_Right", "/*@>12b0b04*/Model_Target_Medusa5H1Part3_DW./*@>12b0b03*/FRM_rampCoeff_Right", "/*@>12b0b10*/Model_Target_Medusa5H1Part3_DW./*@>12b0b0f*/FRM_targetGain_Right"], 329, 0, 6, 2, 6, 423),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[329]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+    }
+    /* {E!d828}End of MATLAB Function: '<S937>/MATLAB Function' */
+/*@>127c676*/    for (/*@>12adb7a*/writeIndex = /*@>12adb79*/0; /*@>12adb84*/writeIndex < /*@>12adb82*/32; /*@>12adb80*/writeIndex/*@>12adea5*/++) {
+        /* {S!d830}S-Function (sdspsubmtrx): '<S987>/Submatrix2' incorporates:
+ *  Buffer: '<S648>/BufferOut'
+ *  Concatenate: '<S938>/Matrix Concatenate'
+ */
+        /*@>12a7091*/Model_Target_Medusa5H1Part3_B./*@>12aef2c*/Left_CenterChannelInputs_m/*@>127b29d*/[/*@>12898d2*/writeIndex]/*@>10da418*/ = /*@>12a7098*/Model_Target_B./*@>12aef2f*/BufferOut_c/*@>12a5648*/[/*@>12a5645*/writeIndex];
+        /* {S!d832}S-Function (sdspsubmtrx): '<S987>/Submatrix4' incorporates:
+ *  Buffer: '<S648>/BufferOut'
+ *  Concatenate: '<S938>/Matrix Concatenate'
+ */
+        /*@>12a70b0*/Model_Target_Medusa5H1Part3_B./*@>12aef3b*/Left_CenterChannelInputs_m/*@>127b2e3*/[/*@>12898ca*/writeIndex/*@>127b2e9*/ + /*@>128957a*/32]/*@>10da437*/ = /*@>12a70b7*/Model_Target_B./*@>12aef3e*/BufferOut_c/*@>12a5650*/[/*@>12a564c*/writeIndex/*@>12a564a*/ + /*@>12a564d*/64];
+        /* {S!d834}S-Function (sdspsubmtrx): '<S987>/Submatrix5' incorporates:
+ *  Buffer: '<S648>/BufferOut'
+ *  Concatenate: '<S938>/Matrix Concatenate'
+ */
+        /*@>12a70c3*/Model_Target_Medusa5H1Part3_B./*@>12aef41*/Left_CenterChannelInputs_m/*@>127b360*/[/*@>12898ba*/writeIndex/*@>1286b71*/ + /*@>12898b9*/64]/*@>10da456*/ = /*@>12a70ca*/Model_Target_B./*@>12aef44*/BufferOut_c/*@>12a5658*/[/*@>12a5654*/writeIndex/*@>12a5652*/ + /*@>12a5655*/96];
+    }
+    /* {S!d836}SignalConversion generated from: '<S938>/Matrix Concatenate1' incorporates:
+ *  Concatenate: '<S938>/Matrix Concatenate'
+ */
+    /*@>12a1f3d*/memcpy(&/*@>12a70a4*/Model_Target_Medusa5H1Part3_B./*@>12aef35*/MatrixConcatenate1_j/*@>129e504*/[/*@>129e4f3*/0], &/*@>12a70aa*/Model_Target_Medusa5H1Part3_B./*@>12aef38*/Left_CenterChannelInputs_m/*@>129e50c*/[/*@>129e500*/0], /*@>129e502*/96U/*@>129e50f*/ * /*@>129e50e*/sizeof(real32_T));
+/*@>127c604*/    for (/*@>12adb69*/writeIndex = /*@>12adb68*/0; /*@>12adb73*/writeIndex < /*@>12adb71*/32; /*@>12adb6f*/writeIndex/*@>12adea6*/++) {
+        /* {S!d838}S-Function (sdspsubmtrx): '<S987>/Submatrix3' incorporates:
+ *  Buffer: '<S648>/BufferOut'
+ *  Concatenate: '<S938>/Matrix Concatenate2'
+ */
+        /*@>12a70e2*/Model_Target_Medusa5H1Part3_B./*@>12aef4d*/Right_CenterChannelInputs/*@>127b3df*/[/*@>12898a9*/writeIndex]/*@>10da479*/ = /*@>12a70e9*/Model_Target_B./*@>12aef50*/BufferOut_c/*@>12a5660*/[/*@>12a565c*/writeIndex/*@>12a565a*/ + /*@>12a565d*/32];
+        /* {S!d840}S-Function (sdspsubmtrx): '<S987>/Submatrix6' incorporates:
+ *  Buffer: '<S648>/BufferOut'
+ *  Concatenate: '<S938>/Matrix Concatenate2'
+ */
+        /*@>12a70f5*/Model_Target_Medusa5H1Part3_B./*@>12aef53*/Right_CenterChannelInputs/*@>127b423*/[/*@>12898a1*/writeIndex/*@>127b429*/ + /*@>1289576*/32]/*@>10da498*/ = /*@>12a70fc*/Model_Target_B./*@>12aef56*/BufferOut_c/*@>12a5668*/[/*@>12a5664*/writeIndex/*@>12a5662*/ + /*@>12a5665*/128];
+        /* {S!d842}S-Function (sdspsubmtrx): '<S987>/Submatrix7' incorporates:
+ *  Buffer: '<S648>/BufferOut'
+ *  Concatenate: '<S938>/Matrix Concatenate2'
+ */
+        /*@>12a7102*/Model_Target_Medusa5H1Part3_B./*@>12aef59*/Right_CenterChannelInputs/*@>127b4fc*/[/*@>128987a*/writeIndex/*@>1286b74*/ + /*@>1289879*/64]/*@>10da4b7*/ = /*@>12a7109*/Model_Target_B./*@>12aef5c*/BufferOut_c/*@>12a5670*/[/*@>12a566c*/writeIndex/*@>12a566a*/ + /*@>12a566d*/160];
+    }
+    /* {S!d844}SignalConversion generated from: '<S938>/Matrix Concatenate1' incorporates:
+ *  Concatenate: '<S938>/Matrix Concatenate2'
+ */
+    /*@>12a1f3f*/memcpy(&/*@>12a70d6*/Model_Target_Medusa5H1Part3_B./*@>12aef47*/MatrixConcatenate1_j/*@>129e4ab*/[/*@>129e499*/96], &/*@>12a70dc*/Model_Target_Medusa5H1Part3_B./*@>12aef4a*/Right_CenterChannelInputs/*@>129e4b3*/[/*@>129e4a6*/0], /*@>129e4a9*/96U/*@>129e4b6*/ * /*@>129e4b5*/sizeof(real32_T));
+    /* {S!d846}Math: '<S951>/Transpose1' incorporates:
+ *  DataStoreRead: '<S951>/Data Store Read'
+ */
+/*@>127b4c4*/    for (/*@>12adb47*/i = /*@>12adb46*/0; /*@>12adb51*/i < /*@>12adb4f*/2; /*@>12adb4d*/i/*@>12adea7*/++) {
+/*@>127b4b4*/        for (/*@>12adb58*/colIdx = /*@>12adb57*/0; /*@>12adb62*/colIdx < /*@>12adb60*/6; /*@>12adb5e*/colIdx/*@>12adea8*/++) {
+            /*@>128988c*/PremixMatrix_m/*@>1285832*/[/*@>1289890*/colIdx/*@>128582e*/ + /*@>12896a1*/6/*@>128a8d3*/ * /*@>128988e*/i]/*@>127b4a7*/ = /*@>12a7807*/Model_Target_Medusa5H1Part3_DW./*@>12af115*/FRM_currentGain_CS/*@>12a5681*/[(/*@>12a567b*/colIdx/*@>12a5679*/ << /*@>12a567c*/1)/*@>12a5678*/ + /*@>12a567e*/i];
+        }
+    }
+/*@>127b58d*/    for (/*@>12adb36*/i = /*@>12adb35*/0; /*@>12adb40*/i < /*@>12adb3e*/12; /*@>12adb3c*/i/*@>12adea9*/++) {
+        rtb_Transpose1_o_0[i] = /*@>12a5685*/PremixMatrix_m/*@>12a5687*/[/*@>12a5684*/i];
+    }
+    /* {E!d846}End of Math: '<S951>/Transpose1' */
+
+    /* {S!d848}Product: '<S951>/Matrix Multiply1' incorporates:
+ *  Concatenate: '<S938>/Matrix Concatenate1'
+ *  Merge: '<S587>/Merge1'
+ */
+/*@>127b677*/    for (/*@>12adb03*/i = /*@>12adb02*/0; /*@>12adb0d*/i < /*@>12adb0b*/2; /*@>12adb09*/i/*@>12adeaa*/++) {
+/*@>127b667*/        for (/*@>12adb14*/colIdx = /*@>12adb13*/0; /*@>12adb1e*/colIdx < /*@>12adb1c*/32; /*@>12adb1a*/colIdx/*@>12adeab*/++) {
+            /*@>1296d72*/sample/*@>1296d74*/ = (/*@>128984c*/i/*@>128a8e5*/ << /*@>128a8e4*/5)/*@>1285846*/ + /*@>128984e*/colIdx;
+            /*@>1289850*/audioOut/*@>128584a*/[/*@>1296d76*/sample]/*@>127b684*/ = /*@>1289852*/0.0F;
+/*@>127b657*/            for (/*@>12adb25*/writeIndex = /*@>12adb24*/0; /*@>12adb2f*/writeIndex < /*@>12adb2d*/6; /*@>12adb2b*/writeIndex/*@>12adeac*/++) {
+                /*@>12896d4*/audioOut/*@>128586d*/[sample] += /*@>12a715d*/Model_Target_Medusa5H1Part3_B./*@>12aef80*/MatrixConcatenate1_j/*@>12a5698*/[(/*@>12a5692*/writeIndex/*@>12a5690*/ << /*@>12a5693*/5)/*@>12a568f*/ + /*@>12a5695*/colIdx]/*@>128fbfb*/ * /*@>12a56a1*/rtb_Transpose1_o_0/*@>12a56a3*/[/*@>12a569c*/6/*@>12a569b*/ * /*@>12a569e*/i/*@>12a569a*/ + /*@>12a56a0*/writeIndex];
+            }
+        }
+    }
+    /*@>12a1f41*/memcpy(&/*@>12a713f*/Model_Target_Medusa5H1Part3_B./*@>12aef77*/Merge1/*@>129e3ed*/[/*@>129e3db*/0], &/*@>129e3f4*/audioOut/*@>129e3f5*/[/*@>129e3e8*/0], /*@>129e3f7*/sizeof(real32_T)/*@>12ab4ad*/ << /*@>12ab4ac*/6U);
+    /* {E!d848}End of Product: '<S951>/Matrix Multiply1' */
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[324], "Output",2)
+
+    /* {S!d850}MATLAB Function: '<S952>/process' */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_process",324,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[12aacc8*/",SLibCGIRGenReusableSysCall("Model_Target_process", ["%<_modelSS>", "&/*@>12b0b52*/Model_Target_Medusa5H1Part3_DW./*@>12b0b51*/FRM_Freeze_CS", "/*@>12b0b5e*/Model_Target_Medusa5H1Part3_DW./*@>12b0b5d*/FRM_currentGain_CS", "/*@>12b0b6a*/Model_Target_Medusa5H1Part3_DW./*@>12b0b69*/FRM_frameCount_CS", "/*@>12b0b76*/Model_Target_Medusa5H1Part3_DW./*@>12b0b75*/FRM_rampCoeff_CS", "/*@>12b0b82*/Model_Target_Medusa5H1Part3_DW./*@>12b0b81*/FRM_targetGain_CS"], 324, 0, 6, 2, 6, 423),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[324]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B152)
+    /* {S!d852}M-S-Function: '<S953>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12aac81*/",tlcOutputsFcnOfS414B152,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B153)
+    /* {S!d854}M-S-Function: '<S934>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12aac82*/",tlcOutputsFcnOfS414B153,"/*@]*/")>\
+%endif
+    /* {S!d856}Math: '<S963>/Transpose1' incorporates:
+ *  DataStoreRead: '<S963>/Data Store Read'
+ */
+/*@>127b769*/    for (/*@>12adaf2*/i = /*@>12adaf1*/0; /*@>12adafc*/i < /*@>12adafa*/10; /*@>12adaf8*/i/*@>12adeae*/++) {
+        /*@>12895bc*/PremixMatrix_e/*@>12862a9*/[/*@>12895bb*/3/*@>128a90b*/ * /*@>12895b9*/i]/*@>12862a8*/ = /*@>12a782b*/Model_Target_Medusa5H1Part3_DW./*@>12af127*/FRM_currentGain_Left/*@>12a56af*/[/*@>12a56ac*/i];
+        /*@>12895b3*/PremixMatrix_e/*@>12862c1*/[/*@>12895b2*/3/*@>128a908*/ * /*@>12895b0*/i/*@>12862c3*/ + /*@>12895ab*/1]/*@>12862c0*/ = /*@>12a7831*/Model_Target_Medusa5H1Part3_DW./*@>12af12a*/FRM_currentGain_Left/*@>12a56b7*/[/*@>12a56b3*/i/*@>12a56b1*/ + /*@>12a56b4*/10];
+        /*@>12895a9*/PremixMatrix_e/*@>12862d9*/[/*@>12895a8*/3/*@>128a905*/ * /*@>12895a6*/i/*@>12862db*/ + /*@>12895a1*/2]/*@>12862d8*/ = /*@>12a7837*/Model_Target_Medusa5H1Part3_DW./*@>12af12d*/FRM_currentGain_Left/*@>12a56bf*/[/*@>12a56bb*/i/*@>12a56b9*/ + /*@>12a56bc*/20];
+    }
+    /* {E!d856}End of Math: '<S963>/Transpose1' */
+
+    /* {S!d858}Product: '<S963>/Matrix Multiply1' incorporates:
+ *  Concatenate: '<S938>/Matrix Concatenate'
+ *  Merge: '<S587>/Merge1'
+ */
+/*@>127b8db*/    for (/*@>12adad0*/i = /*@>12adacf*/0; /*@>12adada*/i < /*@>12adad8*/10; /*@>12adad6*/i/*@>12adeaf*/++) {
+/*@>127b8cb*/        for (/*@>12adae1*/colIdx = /*@>12adae0*/0; /*@>12adaeb*/colIdx < /*@>12adae9*/32; /*@>12adae7*/colIdx/*@>12adeb0*/++) {
+            /*@>1296d8a*/writeIndex/*@>1296d8c*/ = (/*@>128981a*/i/*@>128a95a*/ << /*@>128a959*/5)/*@>128589e*/ + /*@>128981c*/colIdx;
+            /*@>12a7175*/Model_Target_Medusa5H1Part3_B./*@>12aef89*/Left_CenterChannelInputs/*@>12858a2*/[/*@>1296d8e*/writeIndex]/*@>127b8e8*/ = /*@>1289820*/0.0F;
+            /*@>12a7181*/Model_Target_Medusa5H1Part3_B./*@>12aef8c*/Left_CenterChannelInputs/*@>1286224*/[writeIndex] += /*@>12a56cb*/PremixMatrix_e/*@>12a56cd*/[/*@>12a56c8*/3/*@>12a56c7*/ * /*@>12a56ca*/i]/*@>128fc25*/ * /*@>12a718d*/Model_Target_Medusa5H1Part3_B./*@>12aef8f*/Left_CenterChannelInputs_m/*@>12a56d3*/[/*@>12a56d0*/colIdx];
+            /*@>12a7193*/Model_Target_Medusa5H1Part3_B./*@>12aef92*/Left_CenterChannelInputs/*@>128625c*/[writeIndex] += /*@>12a56db*/PremixMatrix_e/*@>12a56dd*/[/*@>12a56d7*/3/*@>12a56d6*/ * /*@>12a56d9*/i/*@>12a56d5*/ + /*@>12a56da*/1]/*@>128fc41*/ * /*@>12a7199*/Model_Target_Medusa5H1Part3_B./*@>12aef95*/Left_CenterChannelInputs_m/*@>12a56e5*/[/*@>12a56e1*/colIdx/*@>12a56df*/ + /*@>12a56e2*/32];
+            /*@>12a71a5*/Model_Target_Medusa5H1Part3_B./*@>12aef98*/Left_CenterChannelInputs/*@>1286294*/[writeIndex] += /*@>12a56f3*/PremixMatrix_e/*@>12a56f5*/[/*@>12a56ef*/3/*@>12a56ee*/ * /*@>12a56f1*/i/*@>12a56ed*/ + /*@>12a56f2*/2]/*@>128fc61*/ * /*@>12a71ab*/Model_Target_Medusa5H1Part3_B./*@>12aef9b*/Left_CenterChannelInputs_m/*@>12a56fd*/[/*@>12a56f9*/colIdx/*@>12a56f7*/ + /*@>12a56fa*/64];
+        }
+    }
+    /*@>12a1f43*/memcpy(&/*@>12a7169*/Model_Target_Medusa5H1Part3_B./*@>12aef83*/Merge1/*@>129e325*/[/*@>129e313*/64], &/*@>12a716f*/Model_Target_Medusa5H1Part3_B./*@>12aef86*/Left_CenterChannelInputs/*@>129e32d*/[/*@>129e320*/0], /*@>129e323*/320U/*@>129e330*/ * /*@>129e32f*/sizeof(real32_T));
+    /* {E!d858}End of Product: '<S963>/Matrix Multiply1' */
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[325], "Output",2)
+
+    /* {S!d860}MATLAB Function: '<S964>/process' */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_process_o",325,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[12aaccb*/",SLibCGIRGenReusableSysCall("Model_Target_process_o", ["%<_modelSS>", "&/*@>12b0bd6*/Model_Target_Medusa5H1Part3_DW./*@>12b0bd5*/FRM_Freeze_Left", "/*@>12b0be2*/Model_Target_Medusa5H1Part3_DW./*@>12b0be1*/FRM_currentGain_Left", "/*@>12b0bee*/Model_Target_Medusa5H1Part3_DW./*@>12b0bed*/FRM_frameCount_Left", "/*@>12b0bfa*/Model_Target_Medusa5H1Part3_DW./*@>12b0bf9*/FRM_rampCoeff_Left", "/*@>12b0c06*/Model_Target_Medusa5H1Part3_DW./*@>12b0c05*/FRM_targetGain_Left"], 325, 0, 6, 2, 6, 423),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[325]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B155)
+    /* {S!d862}M-S-Function: '<S965>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12aac83*/",tlcOutputsFcnOfS414B155,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B156)
+    /* {S!d864}M-S-Function: '<S935>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12aac84*/",tlcOutputsFcnOfS414B156,"/*@]*/")>\
+%endif
+    /* {S!d866}Math: '<S975>/Transpose1' incorporates:
+ *  DataStoreRead: '<S975>/Data Store Read'
+ */
+/*@>127b9d1*/    for (/*@>12adabf*/i = /*@>12adabe*/0; /*@>12adac9*/i < /*@>12adac7*/10; /*@>12adac5*/i/*@>12adeb4*/++) {
+        /*@>1289638*/PremixMatrix_e/*@>12861af*/[/*@>1289637*/3/*@>128a961*/ * /*@>1289635*/i]/*@>12861ae*/ = /*@>12a785b*/Model_Target_Medusa5H1Part3_DW./*@>12af13f*/FRM_currentGain_Right/*@>12a5709*/[/*@>12a5706*/i];
+        /*@>128962f*/PremixMatrix_e/*@>12861c7*/[/*@>128962e*/3/*@>128a95e*/ * /*@>128962c*/i/*@>12861c9*/ + /*@>1289627*/1]/*@>12861c6*/ = /*@>12a7861*/Model_Target_Medusa5H1Part3_DW./*@>12af142*/FRM_currentGain_Right/*@>12a5711*/[/*@>12a570d*/i/*@>12a570b*/ + /*@>12a570e*/10];
+        /*@>1289625*/PremixMatrix_e/*@>12861df*/[/*@>1289624*/3/*@>128a95b*/ * /*@>1289622*/i/*@>12861e1*/ + /*@>128961d*/2]/*@>12861de*/ = /*@>12a7867*/Model_Target_Medusa5H1Part3_DW./*@>12af145*/FRM_currentGain_Right/*@>12a5719*/[/*@>12a5715*/i/*@>12a5713*/ + /*@>12a5716*/20];
+    }
+    /* {E!d866}End of Math: '<S975>/Transpose1' */
+
+    /* {S!d868}Product: '<S975>/Matrix Multiply1' incorporates:
+ *  Concatenate: '<S938>/Matrix Concatenate2'
+ *  Merge: '<S587>/Merge1'
+ */
+/*@>127bb43*/    for (/*@>12ada9d*/i = /*@>12ada9c*/0; /*@>12adaa7*/i < /*@>12adaa5*/10; /*@>12adaa3*/i/*@>12adeb5*/++) {
+/*@>127bb33*/        for (/*@>12adaae*/colIdx = /*@>12adaad*/0; /*@>12adab8*/colIdx < /*@>12adab6*/32; /*@>12adab4*/colIdx/*@>12adeb6*/++) {
+            /*@>1296dda*/writeIndex/*@>1296ddc*/ = (/*@>12897e7*/i/*@>128a9b0*/ << /*@>128a9af*/5)/*@>12858f4*/ + /*@>12897e9*/colIdx;
+            /*@>12a71c9*/Model_Target_Medusa5H1Part3_B./*@>12aefa4*/Left_CenterChannelInputs/*@>12858f8*/[/*@>1296dde*/writeIndex]/*@>127bb50*/ = /*@>12897ed*/0.0F;
+            /*@>12a71cf*/Model_Target_Medusa5H1Part3_B./*@>12aefa7*/Left_CenterChannelInputs/*@>128612a*/[writeIndex] += /*@>12a5725*/PremixMatrix_e/*@>12a5727*/[/*@>12a5722*/3/*@>12a5721*/ * /*@>12a5724*/i]/*@>128fc87*/ * /*@>12a71db*/Model_Target_Medusa5H1Part3_B./*@>12aefaa*/Right_CenterChannelInputs/*@>12a572d*/[/*@>12a572a*/colIdx];
+            /*@>12a71e1*/Model_Target_Medusa5H1Part3_B./*@>12aefad*/Left_CenterChannelInputs/*@>1286162*/[writeIndex] += /*@>12a5735*/PremixMatrix_e/*@>12a5737*/[/*@>12a5731*/3/*@>12a5730*/ * /*@>12a5733*/i/*@>12a572f*/ + /*@>12a5734*/1]/*@>128fca3*/ * /*@>12a71e7*/Model_Target_Medusa5H1Part3_B./*@>12aefb0*/Right_CenterChannelInputs/*@>12a573f*/[/*@>12a573b*/colIdx/*@>12a5739*/ + /*@>12a573c*/32];
+            /*@>12a71f3*/Model_Target_Medusa5H1Part3_B./*@>12aefb3*/Left_CenterChannelInputs/*@>128619a*/[writeIndex] += /*@>12a574d*/PremixMatrix_e/*@>12a574f*/[/*@>12a5749*/3/*@>12a5748*/ * /*@>12a574b*/i/*@>12a5747*/ + /*@>12a574c*/2]/*@>128fcc3*/ * /*@>12a71f9*/Model_Target_Medusa5H1Part3_B./*@>12aefb6*/Right_CenterChannelInputs/*@>12a5757*/[/*@>12a5753*/colIdx/*@>12a5751*/ + /*@>12a5754*/64];
+        }
+    }
+    /*@>12a1f45*/memcpy(&/*@>12a71bd*/Model_Target_Medusa5H1Part3_B./*@>12aef9e*/Merge1/*@>129e25b*/[/*@>129e249*/384], &/*@>12a71c3*/Model_Target_Medusa5H1Part3_B./*@>12aefa1*/Left_CenterChannelInputs/*@>129e263*/[/*@>129e256*/0], /*@>129e259*/320U/*@>129e266*/ * /*@>129e265*/sizeof(real32_T));
+    /* {E!d868}End of Product: '<S975>/Matrix Multiply1' */
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[326], "Output",2)
+
+    /* {S!d870}MATLAB Function: '<S976>/process' */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_process_i",326,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[12aaccc*/",SLibCGIRGenReusableSysCall("Model_Target_process_i", ["%<_modelSS>", "&/*@>12b0c5a*/Model_Target_Medusa5H1Part3_DW./*@>12b0c59*/FRM_Freeze_Right", "/*@>12b0c66*/Model_Target_Medusa5H1Part3_DW./*@>12b0c65*/FRM_currentGain_Right", "/*@>12b0c72*/Model_Target_Medusa5H1Part3_DW./*@>12b0c71*/FRM_frameCount_Right", "/*@>12b0c7e*/Model_Target_Medusa5H1Part3_DW./*@>12b0c7d*/FRM_rampCoeff_Right", "/*@>12b0c8a*/Model_Target_Medusa5H1Part3_DW./*@>12b0c89*/FRM_targetGain_Right"], 326, 0, 6, 2, 6, 423),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[326]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B158)
+    /* {S!d872}M-S-Function: '<S977>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12aac85*/",tlcOutputsFcnOfS414B158,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B159)
+    /* {S!d874}M-S-Function: '<S936>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12aac86*/",tlcOutputsFcnOfS414B159,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B160)
+    /* {S!d876}M-S-Function: '<S931>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12aac87*/",tlcOutputsFcnOfS414B160,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B161)
+    /* {S!d878}S-Function (TOP_MEX): '<S1139>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aac89*/",tlcOutputsFcnOfS414B161,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B162)
+    /* {S!d880}S-Function (TOP_MEX): '<S1137>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aac8b*/",tlcOutputsFcnOfS414B162,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B163)
+    /* {S!d882}S-Function (TOP_MEX): '<S1138>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aac8d*/",tlcOutputsFcnOfS414B163,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B164)
+    /* {S!d884}S-Function (TOP_MEX): '<S1141>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aac8f*/",tlcOutputsFcnOfS414B164,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B165)
+    /* {S!d886}S-Function (TOP_MEX): '<S1140>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aac91*/",tlcOutputsFcnOfS414B165,"/*@]*/")>\
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[407], "Output",2)
+    /* {S!d888}MATLAB Function: '<S1131>/Fade_Trigger_Generation' incorporates:
+ *  Abs: '<S1131>/Abs'
+ *  Abs: '<S1131>/Abs1'
+ *  Delay: '<S1131>/Delay'
+ *  Delay: '<S1131>/Delay1'
+ *  Sum: '<S1131>/Add'
+ *  Sum: '<S1131>/Subtract1'
+ *  Sum: '<S1131>/Subtract2'
+ */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_Fade_Trigger_Generation",407,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[12aaccd*/",SLibCGIRGenReusableSysCall("Model_Target_Fade_Trigger_Generation", ["%<_modelSS>", "/*@>12b0d52*/qhmath_abs_f(/*@>12b0d55*/Model_Target_Medusa5H1Part3_B./*@>12b0d54*/Selector_p/*@>12b0d53*/ - /*@>12b0d58*/Model_Target_Medusa5H1Part3_DW./*@>12b0d57*/Delay_DSTATE_p)/*@>12b0d50*/ + /*@>12b0d5b*/qhmath_abs_f(/*@>12b0d5e*/Model_Target_Medusa5H1Part3_B./*@>12b0d5d*/Selector2/*@>12b0d5c*/ - /*@>12b0d61*/Model_Target_Medusa5H1Part3_DW./*@>12b0d60*/Delay1_DSTATE_o)", "%<SLibCG_DumpSSCode("/*@[12b0d6c*/",(SLibCG_BOCSCAddr(720, 12, "", -1, "", 0)),"/*@]*/")>", "/*@>12b0d7f*/Model_Target_Medusa5H1Part3_B./*@>12b0d7e*/Selector_p", "%<SLibCG_DumpSSCode("/*@[12b0d8a*/",(SLibCG_BOCSC(724, 1, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[12b0d9c*/",(SLibCG_BOCSC(723, 1, "", -1, "", 0)),"/*@]*/")>", "/*@>12b0daf*/Model_Target_Medusa5H1Part3_B./*@>12b0dae*/Selector2", "%<SLibCG_DumpSSCode("/*@[12b0dba*/",(SLibCG_BOCSC(722, 1, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[12b0dcc*/",(SLibCG_BOCSC(721, 1, "", -1, "", 0)),"/*@]*/")>", "&/*@>12b0de0*/Model_Target_Medusa5H1Part3_B./*@>12b0ddf*/sf_Fade_Trigger_Generation_n"], 407, 0, 6, 2, 6, 423),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[407]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+/*@>12760c6*/    for (/*@>12ada8c*/i = /*@>12ada8b*/0; /*@>12ada96*/i < /*@>12ada94*/12; /*@>12ada92*/i/*@>12adeba*/++) {
+        /* {S!d890}Sum: '<S1133>/Add' incorporates:
+ *  Constant: '<S1133>/Constant'
+ *  DataStoreRead: '<S1144>/Data Store Read'
+ *  Product: '<S1133>/Matrix Multiply'
+ *  Product: '<S1142>/Matrix Multiply'
+ *  Sum: '<S1133>/Subtract'
+ */
+        /*@>12897d1*/PremixMatrix_m/*@>127bc36*/[/*@>12897cf*/i]/*@>12760ae*/ = (/*@>128fcd6*/1.0F/*@>128fcd5*/ - /*@>12a7228*/Model_Target_Medusa5H1Part3_B./*@>12aefcb*/sf_Fade_Trigger_Generation_n./*@>12aefc8*/downmix)/*@>128a9b3*/ * /*@>12a7897*/Model_Target_Medusa5H1Part3_DW./*@>12af15d*/VLSDrv_SLCGain/*@>12a5763*/[/*@>12a5760*/i]/*@>12760b5*/ + /*@>12a7233*/Model_Target_Medusa5H1Part3_B./*@>12aefd1*/sf_Fade_Trigger_Generation_n./*@>12aefce*/MatrixMultiply/*@>12a5769*/[/*@>12a5766*/i];
+    }
+    /* {S!d894}MATLAB Function: '<S1134>/MATLAB Function' */
+    /* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 3/On/VLS Gains Computation/VLS Gains Drv/Generate Ramp Trigger/MATLAB Function': '<S1151>:1' */
+    /* '<S1151>:1:3' rampOn = 0; */
+    /*  DEBUG parameter */
+    /*  Trigger ramping if SLC OR Fade is triggered */
+    /* '<S1151>:1:6' if(SLC_On || Fade_On) */
+    /*@>10db520*/if (/*@>1289eec*/rtb_SLC_On/*@>10db531*/ || /*@>12a723e*/Model_Target_Medusa5H1Part3_B./*@>12aefd7*/sf_Fade_Trigger_Generation_n./*@>12aefd4*/fadeOn) {
+        /* {S!d418}MATLAB Function: '<S1143>/control' */
+        /* {S!d892}MATLAB Function: '<S1143>/control' */
+        /* '<S1151>:1:7' rampOn = 1; */
+        /* '<S1151>:1:8' ramp(); */
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[409], "Output",2)
+%if SLibCG_SystemFcnArgAccessed("Model_Target_control_as",409,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[12aacce*/",SLibCGIRGenReusableSysCall("Model_Target_control_as", ["%<_modelSS>", "/*@>12b0e36*/PremixMatrix_m", "%<SLibCG_DumpSSCode("/*@[12b0e40*/",(SLibCG_BOCSC(648, 1, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[12b0e52*/",(SLibCG_BOCSC(649, 1, "", -1, "", 0)),"/*@]*/")>", "&/*@>12b0e66*/Model_Target_Medusa5H1Part3_DW./*@>12b0e65*/VLSDrv_Freeze", "/*@>12b0e72*/Model_Target_Medusa5H1Part3_DW./*@>12b0e71*/VLSDrv_currentGain", "/*@>12b0e7e*/Model_Target_Medusa5H1Part3_DW./*@>12b0e7d*/VLSDrv_frameCount", "/*@>12b0e8a*/Model_Target_Medusa5H1Part3_DW./*@>12b0e89*/VLSDrv_rampCoeff", "/*@>12b0e96*/Model_Target_Medusa5H1Part3_DW./*@>12b0e95*/VLSDrv_targetGain"], 409, 0, 6, 2, 6, 423),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[409]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+    }
+    /* {E!d894}End of MATLAB Function: '<S1134>/MATLAB Function' */
+/*@>1275ec7*/    for (/*@>12ada7b*/i = /*@>12ada7a*/0; /*@>12ada85*/i < /*@>12ada83*/12; /*@>12ada81*/i/*@>12adebb*/++) {
+        /* {S!d896}Merge: '<S587>/Merge2' incorporates:
+ *  DataStoreRead: '<S1133>/Mixing Gains'
+ */
+        /*@>12a724a*/Model_Target_Medusa5H1Part3_B./*@>12aefda*/Merge2/*@>127bc70*/[/*@>12897c7*/i]/*@>1275eb9*/ = /*@>12a78d9*/Model_Target_Medusa5H1Part3_DW./*@>12af17e*/VLSDrv_currentGain/*@>12a576f*/[/*@>12a576c*/i];
+    }
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[408], "Output",2)
+    /* {S!d898}MATLAB Function: '<S1143>/process' */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_process_c",408,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[12aaccf*/",SLibCGIRGenReusableSysCall("Model_Target_process_c", ["%<_modelSS>", "&/*@>12b0ed8*/Model_Target_Medusa5H1Part3_DW./*@>12b0ed7*/VLSDrv_Freeze", "/*@>12b0ee4*/Model_Target_Medusa5H1Part3_DW./*@>12b0ee3*/VLSDrv_currentGain", "/*@>12b0ef0*/Model_Target_Medusa5H1Part3_DW./*@>12b0eef*/VLSDrv_frameCount", "/*@>12b0efc*/Model_Target_Medusa5H1Part3_DW./*@>12b0efb*/VLSDrv_rampCoeff", "/*@>12b0f08*/Model_Target_Medusa5H1Part3_DW./*@>12b0f07*/VLSDrv_targetGain"], 408, 0, 6, 2, 6, 423),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[408]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B171)
+    /* {S!d900}M-S-Function: '<S1129>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12aac92*/",tlcOutputsFcnOfS414B171,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B172)
+    /* {S!d902}S-Function (TOP_MEX): '<S1164>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aac94*/",tlcOutputsFcnOfS414B172,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B173)
+    /* {S!d904}S-Function (TOP_MEX): '<S1162>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aac96*/",tlcOutputsFcnOfS414B173,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B174)
+    /* {S!d906}S-Function (TOP_MEX): '<S1163>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aac98*/",tlcOutputsFcnOfS414B174,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B175)
+    /* {S!d908}S-Function (TOP_MEX): '<S1166>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aac9a*/",tlcOutputsFcnOfS414B175,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B176)
+    /* {S!d910}S-Function (TOP_MEX): '<S1165>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12aac9c*/",tlcOutputsFcnOfS414B176,"/*@]*/")>\
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[407], "Output",2)
+    /* {S!d912}MATLAB Function: '<S1156>/Fade_Trigger_Generation' incorporates:
+ *  Abs: '<S1156>/Abs'
+ *  Abs: '<S1156>/Abs1'
+ *  Delay: '<S1156>/Delay'
+ *  Delay: '<S1156>/Delay1'
+ *  Sum: '<S1156>/Add'
+ *  Sum: '<S1156>/Subtract1'
+ *  Sum: '<S1156>/Subtract2'
+ */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_Fade_Trigger_Generation",407,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[12aacd0*/",SLibCGIRGenReusableSysCall("Model_Target_Fade_Trigger_Generation", ["%<_modelSS>", "/*@>12b0fbe*/qhmath_abs_f(/*@>12b0fc1*/Model_Target_Medusa5H1Part3_B./*@>12b0fc0*/Selector_p/*@>12b0fbf*/ - /*@>12b0fc4*/Model_Target_Medusa5H1Part3_DW./*@>12b0fc3*/Delay_DSTATE_e)/*@>12b0fbc*/ + /*@>12b0fc7*/qhmath_abs_f(/*@>12b0fca*/Model_Target_Medusa5H1Part3_B./*@>12b0fc9*/Selector2/*@>12b0fc8*/ - /*@>12b0fcd*/Model_Target_Medusa5H1Part3_DW./*@>12b0fcc*/Delay1_DSTATE_n)", "%<SLibCG_DumpSSCode("/*@[12b0fd8*/",(SLibCG_BOCSCAddr(725, 12, "", -1, "", 0)),"/*@]*/")>", "/*@>12b0feb*/Model_Target_Medusa5H1Part3_B./*@>12b0fea*/Selector_p", "%<SLibCG_DumpSSCode("/*@[12b0ff6*/",(SLibCG_BOCSC(729, 1, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[12b1008*/",(SLibCG_BOCSC(728, 1, "", -1, "", 0)),"/*@]*/")>", "/*@>12b101b*/Model_Target_Medusa5H1Part3_B./*@>12b101a*/Selector2", "%<SLibCG_DumpSSCode("/*@[12b1026*/",(SLibCG_BOCSC(727, 1, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[12b1038*/",(SLibCG_BOCSC(726, 1, "", -1, "", 0)),"/*@]*/")>", "&/*@>12b104c*/Model_Target_Medusa5H1Part3_B./*@>12b104b*/sf_Fade_Trigger_Generation_a"], 407, 1, 6, 2, 6, 423),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[407]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+/*@>12760ec*/    for (/*@>12ada6a*/i = /*@>12ada69*/0; /*@>12ada74*/i < /*@>12ada72*/12; /*@>12ada70*/i/*@>12adebc*/++) {
+        /* {S!d914}Sum: '<S1158>/Add' incorporates:
+ *  Constant: '<S1158>/Constant'
+ *  DataStoreRead: '<S1169>/Data Store Read'
+ *  Product: '<S1158>/Matrix Multiply'
+ *  Product: '<S1167>/Matrix Multiply'
+ *  Sum: '<S1158>/Subtract'
+ */
+        /*@>12897bd*/PremixMatrix_m/*@>127bccc*/[/*@>12897bb*/i]/*@>12760d4*/ = (/*@>128fcdb*/1.0F/*@>128fcda*/ - /*@>12a7273*/Model_Target_Medusa5H1Part3_B./*@>12aefef*/sf_Fade_Trigger_Generation_a./*@>12aefec*/downmix)/*@>128a9b7*/ * /*@>12a78eb*/Model_Target_Medusa5H1Part3_DW./*@>12af187*/VLSPax_SLCGain/*@>12a5775*/[/*@>12a5772*/i]/*@>12760db*/ + /*@>12a727e*/Model_Target_Medusa5H1Part3_B./*@>12aeff5*/sf_Fade_Trigger_Generation_a./*@>12aeff2*/MatrixMultiply/*@>12a577b*/[/*@>12a5778*/i];
+    }
+    /* {S!d918}MATLAB Function: '<S1159>/MATLAB Function' */
+    /* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 3/On/VLS Gains Computation/VLS Gains Pax/Generate Ramp Trigger/MATLAB Function': '<S1176>:1' */
+    /* '<S1176>:1:3' rampOn = 0; */
+    /*  DEBUG parameter */
+    /*  Trigger ramping if SLC OR Fade is triggered */
+    /* '<S1176>:1:6' if(SLC_On || Fade_On) */
+    /*@>10db53c*/if (/*@>1289ee8*/rtb_SLC_On/*@>10db54d*/ || /*@>12a7289*/Model_Target_Medusa5H1Part3_B./*@>12aeffb*/sf_Fade_Trigger_Generation_a./*@>12aeff8*/fadeOn) {
+        /* {S!d420}MATLAB Function: '<S1168>/control' */
+        /* {S!d916}MATLAB Function: '<S1168>/control' */
+        /* '<S1176>:1:7' rampOn = 1; */
+        /* '<S1176>:1:8' ramp(); */
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[412], "Output",2)
+%if SLibCG_SystemFcnArgAccessed("Model_Target_control_j",412,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[12aacd1*/",SLibCGIRGenReusableSysCall("Model_Target_control_j", ["%<_modelSS>", "/*@>12b10a2*/PremixMatrix_m", "%<SLibCG_DumpSSCode("/*@[12b10ac*/",(SLibCG_BOCSC(648, 1, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[12b10be*/",(SLibCG_BOCSC(649, 1, "", -1, "", 0)),"/*@]*/")>", "&/*@>12b10d2*/Model_Target_Medusa5H1Part3_DW./*@>12b10d1*/VLSPax_Freeze", "/*@>12b10de*/Model_Target_Medusa5H1Part3_DW./*@>12b10dd*/VLSPax_currentGain", "/*@>12b10ea*/Model_Target_Medusa5H1Part3_DW./*@>12b10e9*/VLSPax_frameCount", "/*@>12b10f6*/Model_Target_Medusa5H1Part3_DW./*@>12b10f5*/VLSPax_rampCoeff", "/*@>12b1102*/Model_Target_Medusa5H1Part3_DW./*@>12b1101*/VLSPax_targetGain"], 412, 0, 6, 2, 6, 423),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[412]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+    }
+    /* {E!d918}End of MATLAB Function: '<S1159>/MATLAB Function' */
+/*@>1275ee3*/    for (/*@>12ada59*/i = /*@>12ada58*/0; /*@>12ada63*/i < /*@>12ada61*/12; /*@>12ada5f*/i/*@>12adebd*/++) {
+        /* {S!d920}Merge: '<S587>/Merge3' incorporates:
+ *  DataStoreRead: '<S1158>/Mixing Gains'
+ */
+        /*@>12a7295*/Model_Target_Medusa5H1Part3_B./*@>12aeffe*/Merge3/*@>127bd06*/[/*@>12897b3*/i]/*@>1275ed5*/ = /*@>12a792d*/Model_Target_Medusa5H1Part3_DW./*@>12af1a8*/VLSPax_currentGain/*@>12a5781*/[/*@>12a577e*/i];
+    }
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[411], "Output",2)
+    /* {S!d922}MATLAB Function: '<S1168>/process' */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_process_e",411,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[12aacd2*/",SLibCGIRGenReusableSysCall("Model_Target_process_e", ["%<_modelSS>", "&/*@>12b1144*/Model_Target_Medusa5H1Part3_DW./*@>12b1143*/VLSPax_Freeze", "/*@>12b1150*/Model_Target_Medusa5H1Part3_DW./*@>12b114f*/VLSPax_currentGain", "/*@>12b115c*/Model_Target_Medusa5H1Part3_DW./*@>12b115b*/VLSPax_frameCount", "/*@>12b1168*/Model_Target_Medusa5H1Part3_DW./*@>12b1167*/VLSPax_rampCoeff", "/*@>12b1174*/Model_Target_Medusa5H1Part3_DW./*@>12b1173*/VLSPax_targetGain"], 411, 0, 6, 2, 6, 423),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[411]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B182)
+    /* {S!d924}M-S-Function: '<S1130>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12aac9d*/",tlcOutputsFcnOfS414B182,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B183)
+    /* {S!d422}S-Function (RTC_NTF): '<S1114>/NTF Trigger' */
+%<SLibCG_DumpSSCode("/*@[12aac9f*/",tlcOutputsFcnOfS414B183,"/*@]*/")>\
+%endif
+    /* {E!d422}End of Outputs for S-Function (RTC_NTF): '<S1114>/NTF Trigger' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS414B187)
+
+    /* {S!d926}M-S-Function: '<S1110>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12aaca0*/",tlcOutputsFcnOfS414B187,"/*@]*/")>\
+    /* {E!d359}End of Outputs for SubSystem: '<S587>/On' */
+%endif
+} else {
+    /* {S!d425}Outputs for IfAction SubSystem: '<S587>/Bypass' incorporates:
+ *  ActionPort: '<S885>/Action Port'
+ */
+    /* {S!d928}Merge: '<S587>/Merge' incorporates:
+ *  SignalConversion generated from: '<S885>/PremixOut'
+ */
+    /*@>12a1ee2*/memset(&/*@>12a6b41*/Model_Target_Medusa5H1Part3_B./*@>12aed8e*/Merge/*@>129eea0*/[/*@>129ee9c*/0], 0, /*@>129ee9e*/192U/*@>129eea6*/ * /*@>129eea5*/sizeof(real32_T));
+    /* {S!d930}Merge: '<S587>/Merge1' incorporates:
+ *  SignalConversion generated from: '<S885>/FRMixerOut'
+ */
+    /*@>12a1ee4*/memset(&/*@>12a6b4d*/Model_Target_Medusa5H1Part3_B./*@>12aed91*/Merge1/*@>129ee6b*/[/*@>129ee67*/0], 0, /*@>129ee69*/704U/*@>129ee71*/ * /*@>129ee70*/sizeof(real32_T));
+/*@>1275baf*/    for (/*@>12ada48*/i = /*@>12ada47*/0; /*@>12ada52*/i < /*@>12ada50*/12; /*@>12ada4e*/i/*@>12adec4*/++) {
+        /* {S!d932}Merge: '<S587>/Merge2' incorporates:
+ *  SignalConversion generated from: '<S885>/DgainsOut'
+ */
+        /*@>12a6b5f*/Model_Target_Medusa5H1Part3_B./*@>12aed94*/Merge2/*@>1279a6e*/[/*@>1289b7c*/i]/*@>1275ba1*/ = 0.0F;
+        /* {S!d934}Merge: '<S587>/Merge3' incorporates:
+ *  SignalConversion generated from: '<S885>/PgainsOut'
+ */
+        /*@>12a6b6b*/Model_Target_Medusa5H1Part3_B./*@>12aed97*/Merge3/*@>1279aa6*/[/*@>1289b78*/i]/*@>1275bbd*/ = 0.0F;
+    }
+    /* {E!d425}End of Outputs for SubSystem: '<S587>/Bypass' */
+}
+/* {E!d936}End of If: '<S587>/If' */
+/*@>1279875*/for (/*@>12ada26*/i = /*@>12ada25*/0; /*@>12ada30*/i < /*@>12ada2e*/18; /*@>12ada2c*/i/*@>12adebe*/++) {
+/*@>1279865*/    for (/*@>12ada37*/colIdx = /*@>12ada36*/0; /*@>12ada41*/colIdx < /*@>12ada3f*/8; /*@>12ada3d*/colIdx/*@>12adebf*/++) {
+        /* {S!d938}Selector: '<S888>/Selector' incorporates:
+ *  Merge: '<S587>/Merge'
+ */
+        /*@>12a6b77*/Model_Target_Medusa5H1Part3_B./*@>12aed9a*/Selector/*@>1284ca4*/[/*@>1289bc6*/colIdx/*@>1284ca0*/ + (/*@>1289bc4*/i/*@>128a9c6*/ << /*@>128a9c5*/3)]/*@>1279858*/ = /*@>12a6b7d*/Model_Target_Medusa5H1Part3_B./*@>12aed9d*/Merge/*@>12a5401*/[(/*@>12a53f9*/tmp/*@>12a53f8*/[/*@>12a53fb*/i]/*@>12a53f5*/ << /*@>12a53fc*/3)/*@>12a53f4*/ + /*@>12a53fe*/colIdx];
+    }
+}
+/*@>127991a*/for (/*@>12ada04*/i = /*@>12ada03*/0; /*@>12ada0e*/i < /*@>12ada0c*/6; /*@>12ada0a*/i/*@>12adec0*/++) {
+/*@>127990a*/    for (/*@>12ada15*/colIdx = /*@>12ada14*/0; /*@>12ada1f*/colIdx < /*@>12ada1d*/8; /*@>12ada1b*/colIdx/*@>12adec1*/++) {
+        /* {S!d940}Selector: '<S888>/Selector1' incorporates:
+ *  Merge: '<S587>/Merge'
+ */
+        /*@>12a6b89*/Model_Target_Medusa5H1Part3_B./*@>12aeda0*/LoRoLsRsLsrRsr/*@>1284cb9*/[/*@>1289bae*/colIdx/*@>1284cb5*/ + (/*@>1289bac*/i/*@>128a9d6*/ << /*@>128a9d5*/3)]/*@>12798fd*/ = /*@>12a6b8f*/Model_Target_Medusa5H1Part3_B./*@>12aeda3*/Merge/*@>12a5416*/[(/*@>12a540e*/tmp_0/*@>12a540d*/[/*@>12a5410*/i]/*@>12a540a*/ << /*@>12a5411*/3)/*@>12a5409*/ + /*@>12a5413*/colIdx];
+    }
+}
+/*@>12799f7*/for (/*@>12ad9e2*/i = /*@>12ad9e1*/0; /*@>12ad9ec*/i < /*@>12ad9ea*/22; /*@>12ad9e8*/i/*@>12adec2*/++) {
+/*@>12799e7*/    for (/*@>12ad9f3*/colIdx = /*@>12ad9f2*/0; /*@>12ad9fd*/colIdx < /*@>12ad9fb*/32; /*@>12ad9f9*/colIdx/*@>12adec3*/++) {
+        /* {S!d942}Selector: '<S888>/Selector4' incorporates:
+ *  Merge: '<S587>/Merge1'
+ */
+        /*@>12a6b95*/Model_Target_Medusa5H1Part3_B./*@>12aeda6*/Selector4/*@>1284cce*/[/*@>1289b92*/colIdx/*@>1284cca*/ + (/*@>1289b90*/i/*@>128a9e6*/ << /*@>128a9e5*/5)]/*@>12799da*/ = /*@>12a6b9b*/Model_Target_Medusa5H1Part3_B./*@>12aeda9*/Merge1/*@>12a542b*/[(/*@>12a5423*/tmp_1/*@>12a5422*/[/*@>12a5425*/i]/*@>12a541f*/ << /*@>12a5426*/5)/*@>12a541e*/ + /*@>12a5428*/colIdx];
+    }
+}
+%if !WHITE_SPACE(tlcOutputsFcnOfS423B2)
+/* {S!d427}S-Function (RTC_REQ_RSP): '<S889>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[12aaca2*/",tlcOutputsFcnOfS423B2,"/*@]*/")>\
+%endif
+/* {E!d427}End of Outputs for S-Function (RTC_REQ_RSP): '<S889>/RTC Request Response Trigger' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS423B7)
+
+/* {S!d429}S-Function (RTC_NTF): '<S889>/NTF Trigger' */
+%<SLibCG_DumpSSCode("/*@[12aaca4*/",tlcOutputsFcnOfS423B7,"/*@]*/")>\
+%endif
+/* {E!d429}End of Outputs for S-Function (RTC_NTF): '<S889>/NTF Trigger' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS423B11)
+
+/* {S!d944}M-S-Function: '<S587>/Partition' */
+%<SLibCG_DumpSSCode("/*@[12aaca5*/",tlcOutputsFcnOfS423B11,"/*@]*/")>\
+%endif
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_Medusa5H1Part3(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(122, 1, fcnProtoType)>
+%endfunction

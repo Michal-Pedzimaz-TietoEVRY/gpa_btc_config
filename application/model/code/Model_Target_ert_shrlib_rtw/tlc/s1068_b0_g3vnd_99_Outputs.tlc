@@ -1,0 +1,191 @@
+%implements s1068_b0_g3vnd_99_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+real32_T tmp[32];
+uint32_T tmp_0[4];
+%closefile localVarDecl
+%assign tlcOutputsFcnOfS314B1 = OpaqueTLCBlockFcn("Outputs", 314, 1, 99, 1, 0)
+%assign tlcOutputsFcnOfS314B3 = OpaqueTLCBlockFcn("Outputs", 314, 3, 99, 1, 1)
+%assign tlcOutputsFcnOfS314B4 = OpaqueTLCBlockFcn("Outputs", 314, 4, 99, 1, 2)
+%assign tlcOutputsFcnOfS314B5 = OpaqueTLCBlockFcn("Outputs", 314, 5, 99, 1, 3)
+%assign tlcOutputsFcnOfS314B6 = OpaqueTLCBlockFcn("Outputs", 314, 6, 99, 1, 4)
+%assign tlcOutputsFcnOfS314B9 = OpaqueTLCBlockFcn("Outputs", 314, 9, 99, 1, 5)
+%assign tlcOutputsFcnOfS314B13 = OpaqueTLCBlockFcn("Outputs", 314, 13, 99, 1, 6)
+%assign tlcOutputsFcnOfS314B14 = OpaqueTLCBlockFcn("Outputs", 314, 14, 99, 1, 7)
+%assign tlcOutputsFcnOfS314B17 = OpaqueTLCBlockFcn("Outputs", 314, 17, 99, 1, 8)
+/* Gain: '<S905>/Gain' incorporates:
+ *  Sum: '<S936>/Add'
+ */
+/*@>12525da*/memcpy(%<SLibCG_DumpSSCode("/*@[12530ba*/",(SLibCG_BOCSCAddr(740, 32, "", -1, "", 0)),"/*@]*/")>, %<SLibCG_DumpSSCode("/*@[125309d*/",(SLibCG_BOVAddr(346, 0, 314, 32, "", -1, "", 0)),"/*@]*/")>, /*@>1252003*/sizeof(real32_T)/*@>12530e3*/ << /*@>12530e2*/5U);
+%if !WHITE_SPACE(tlcOutputsFcnOfS314B1)
+/* S-Function (TOP_MEX): '<S904>/TOP' */
+%<SLibCG_DumpSSCode("/*@[1252f9c*/",tlcOutputsFcnOfS314B1,"/*@]*/")>\
+%endif
+/* MATLAB Function: '<S923>/FirEvenProcess' incorporates:
+ *  Constant: '<S894>/Constant'
+ *  Gain: '<S905>/Gain'
+ */
+/*  Extract configuration information from inputs */
+/* MATLAB Function 'FirEven/FirEven/Hexagon/FirEvenProcess': '<S925>:1' */
+/* '<S925>:1:4' [FilterLength, ~] = size(FlippedCoeffs); */
+/* '<S925>:1:5' [FrameSize, NumChannels] = size(u); */
+/*  Initialize variables */
+/*  persistent States; */
+/*  if isempty(States) */
+/*      States = single(zeros(FilterLength + FrameSize*2 + 2, NumChannels)); */
+/*  end */
+/*  Set correct data types */
+/* '<S925>:1:17' FilterLength = uint32(FilterLength); */
+/* '<S925>:1:18' FrameSize = uint32(FrameSize); */
+/* '<S925>:1:19' ActiveCoeffSet = uint32(ActiveCoeffSet); */
+/* '<S925>:1:22' if(coder.target('MATLAB') || coder.target('Sfun')) */
+/* '<S925>:1:25' else */
+/*  FIR EVEN HEXAGON */
+/* '<S925>:1:27' if (FilterLength > FrameSize) */
+/* '<S925>:1:28' y = fireven_hexagon_process_mt(single(u), uint32(ActiveCoeffSet), single(States), uint32(CodeWorkMemory)); */
+/*@>1250db3*/tmp_0/*@>12509ce*/[/*@>1250db5*/0]/*@>12509cd*/ = /*@>1250dbf*/0U;
+/*@>1250db6*/tmp_0/*@>12509dd*/[/*@>1250db8*/1]/*@>12509dc*/ = /*@>1250dc0*/1U;
+/*@>1250db9*/tmp_0/*@>12509ec*/[/*@>1250dbb*/2]/*@>12509eb*/ = /*@>1250dc1*/2U;
+/*@>1250dbc*/tmp_0/*@>12509fb*/[/*@>1250dbe*/3]/*@>12509fa*/ = /*@>1250dc2*/3U;
+/*@>1252441*/fireven_process_mt(&/*@>1252331*/tmp/*@>1252332*/[/*@>125232f*/0], %<SLibCG_DumpSSCode("/*@[125305d*/",(SLibCG_BOCSCAddr(740, 32, "", -1, "", 0)),"/*@]*/")>, &/*@>1250d91*/tmp_0/*@>12500fb*/[/*@>1250d93*/0], %<SLibCG_DumpSSCode("/*@[1253040*/",(SLibCG_CSCDWAddr(602, 1848, "", -1, "", 0)),"/*@]*/")>, %<SLibCG_DumpSSCode("/*@[1253023*/",(SLibCG_CSCDWAddr(603, 34, "", -1, "", 0)),"/*@]*/")>);
+/* Gain: '<S906>/Gain' incorporates:
+ *  MATLAB Function: '<S923>/FirEvenProcess'
+ */
+/*@>12525dc*/memcpy(%<SLibCG_DumpSSCode("/*@[125307a*/",(SLibCG_BOCSCAddr(742, 32, "", -1, "", 0)),"/*@]*/")>, &/*@>1251fa0*/tmp/*@>1251fa1*/[/*@>1251f95*/0], /*@>1251fa3*/sizeof(real32_T)/*@>12530e6*/ << /*@>12530e5*/5U);
+%if !WHITE_SPACE(tlcOutputsFcnOfS314B3)
+/* S-Function (AudioStats_MEX): '<S907>/AudioStats' */
+%<SLibCG_DumpSSCode("/*@[1252f9f*/",tlcOutputsFcnOfS314B3,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS314B4)
+/* S-Function (TOP_MEX): '<S907>/TOP' */
+%<SLibCG_DumpSSCode("/*@[1252fa1*/",tlcOutputsFcnOfS314B4,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS314B5)
+/* S-Function (TOP_MEX): '<S907>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[1252fa3*/",tlcOutputsFcnOfS314B5,"/*@]*/")>\
+%endif
+%assign   Outputs_open_ITC1_314_9 = ""
+%openfile Outputs_open_ITC1_314_9
+
+/* S-Function (InitTriggerControl): '<S919>/ITC1' */
+%closefile Outputs_open_ITC1_314_9
+
+%assign    Outputs_body_ITC1_314_9 = ""
+%openfile  Outputs_body_ITC1_314_9
+
+%<SLibCG_DumpSSCode("/*@[1252fa5*/",tlcOutputsFcnOfS314B6,"/*@]*/")>\
+%closefile Outputs_body_ITC1_314_9
+
+%assign    Outputs_close_ITC1_314_9 = ""
+%openfile  Outputs_close_ITC1_314_9
+
+/* End of Outputs for S-Function (InitTriggerControl): '<S919>/ITC1' */
+%closefile Outputs_close_ITC1_314_9
+%<SLibCG_DumpSSCode(Outputs_open_ITC1_314_9, Outputs_body_ITC1_314_9, Outputs_close_ITC1_314_9)>
+
+
+%assign   Outputs_open_ITC1_o_314_12 = ""
+%openfile Outputs_open_ITC1_o_314_12
+
+/* S-Function (InitTriggerControl): '<S911>/ITC1' */
+%closefile Outputs_open_ITC1_o_314_12
+
+%assign    Outputs_body_ITC1_o_314_12 = ""
+%openfile  Outputs_body_ITC1_o_314_12
+
+%<SLibCG_DumpSSCode("/*@[1252fa7*/",tlcOutputsFcnOfS314B9,"/*@]*/")>\
+%closefile Outputs_body_ITC1_o_314_12
+
+%assign    Outputs_close_ITC1_o_314_12 = ""
+%openfile  Outputs_close_ITC1_o_314_12
+
+/* End of Outputs for S-Function (InitTriggerControl): '<S911>/ITC1' */
+%closefile Outputs_close_ITC1_o_314_12
+%<SLibCG_DumpSSCode(Outputs_open_ITC1_o_314_12, Outputs_body_ITC1_o_314_12, Outputs_close_ITC1_o_314_12)>
+
+
+/* MATLAB Function: '<S910>/PoolIirProcess' incorporates:
+ *  Gain: '<S906>/Gain'
+ */
+/*  Process function for Pooliir */
+/*  */
+/*  Parameters: */
+/*    x:              input channels [frame size x number of inputs] */
+/*    NumStages:      array of filter lengths per channel [NumChannels x 1] */
+/*    CoeffsTarget:   coefficient set used for the specific target [total sim filter lengths x 1] */
+/*   */
+/*  Global parameters: */
+/*    states: working memory set up during roommode reset/init CRL */
+/*                    function call [StatesSize x 1] */
+/* -------------------------------------------------------------------------- */
+/* MATLAB Function 'PoolIirWithReset/PoolIir/TargetSpecific/PoolIirProcess': '<S914>:1' */
+/*  Extract configuration information from inputs */
+/* '<S914>:1:15' [~, NumChannels] = size(x); */
+/*  Initialize variables */
+/* '<S914>:1:20' VariantStr = char(VariantUint8); */
+/* '<S914>:1:22' if(coder.target('MATLAB') || coder.target('Sfun')) */
+/* '<S914>:1:29' else */
+/* '<S914>:1:30' switch(VariantStr) */
+/* '<S914>:1:31' case{"Hexagon"} */
+/* '<S914>:1:32' y = pooliir_hexagon_process(single(x), single(states)); */
+/*@>1252453*/pooliir_process(%<SLibCG_DumpSSCode("/*@[1253006*/",(SLibCG_BOCSCAddr(746, 32, "", -1, "", 0)),"/*@]*/")>, %<SLibCG_DumpSSCode("/*@[1252fe9*/",(SLibCG_BOCSCAddr(742, 32, "", -1, "", 0)),"/*@]*/")>, %<SLibCG_DumpSSCode("/*@[1252fcc*/",(SLibCG_CSCDWAddr(601, 337, "", -1, "", 0)),"/*@]*/")>);
+%if !WHITE_SPACE(tlcOutputsFcnOfS314B13)
+/* M-S-Function: '<S907>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[1252fa8*/",tlcOutputsFcnOfS314B13,"/*@]*/")>\
+%endif
+%assign   Outputs_open_ITC1_p_314_18 = ""
+%openfile Outputs_open_ITC1_p_314_18
+
+/* S-Function (InitTriggerControl): '<S927>/ITC1' */
+%closefile Outputs_open_ITC1_p_314_18
+
+%assign    Outputs_body_ITC1_p_314_18 = ""
+%openfile  Outputs_body_ITC1_p_314_18
+
+%<SLibCG_DumpSSCode("/*@[1252faa*/",tlcOutputsFcnOfS314B14,"/*@]*/")>\
+%closefile Outputs_body_ITC1_p_314_18
+
+%assign    Outputs_close_ITC1_p_314_18 = ""
+%openfile  Outputs_close_ITC1_p_314_18
+
+/* End of Outputs for S-Function (InitTriggerControl): '<S927>/ITC1' */
+%closefile Outputs_close_ITC1_p_314_18
+%<SLibCG_DumpSSCode(Outputs_open_ITC1_p_314_18, Outputs_body_ITC1_p_314_18, Outputs_close_ITC1_p_314_18)>
+
+
+%assign   Outputs_open_ITC1_j_314_21 = ""
+%openfile Outputs_open_ITC1_j_314_21
+
+/* S-Function (InitTriggerControl): '<S926>/ITC1' */
+%closefile Outputs_open_ITC1_j_314_21
+
+%assign    Outputs_body_ITC1_j_314_21 = ""
+%openfile  Outputs_body_ITC1_j_314_21
+
+%<SLibCG_DumpSSCode("/*@[1252fac*/",tlcOutputsFcnOfS314B17,"/*@]*/")>\
+%closefile Outputs_body_ITC1_j_314_21
+
+%assign    Outputs_close_ITC1_j_314_21 = ""
+%openfile  Outputs_close_ITC1_j_314_21
+
+/* End of Outputs for S-Function (InitTriggerControl): '<S926>/ITC1' */
+%closefile Outputs_close_ITC1_j_314_21
+%<SLibCG_DumpSSCode(Outputs_open_ITC1_j_314_21, Outputs_body_ITC1_j_314_21, Outputs_close_ITC1_j_314_21)>
+
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_ExpandTailComponents(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(99, 1, fcnProtoType)>
+%endfunction

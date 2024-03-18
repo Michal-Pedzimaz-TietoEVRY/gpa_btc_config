@@ -1,0 +1,250 @@
+%implements s1068_b0_g3vnd_104_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+int32_T i;
+boolean_T done;
+boolean_T done_c;
+boolean_T done_f;
+boolean_T done_h;
+boolean_T done_i;
+boolean_T done_k;
+boolean_T done_kk;
+boolean_T done_n;
+boolean_T exitg1;
+%closefile localVarDecl
+/* {S!d121}MATLAB Function: '<S998>/Split NTF_check_done' */
+/* {S!d122}MATLAB Function: '<S998>/Split NTF_check_done' incorporates:
+ *  MATLAB Function: '<S1073>/check sequence'
+ */
+/* {S!d146}MATLAB Function: '<S1073>/check sequence' */
+/*  Invoke the function trigger output */
+/* MATLAB Function 'RTC/NtfCheck': '<S1118>:1' */
+/* '<S1118>:1:3' go(); */
+/*  #codegen */
+/*  Splits the incoming function call */
+/* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 3/On/Premix/Premix with Mono-Surround & CAE with Fade Ramper/Split NTF_check_done': '<S1009>:1' */
+/* '<S1009>:1:4' fcncall_Left(); */
+/*  #codegen */
+/* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 3/On/Premix/Premix with Mono-Surround & CAE with Fade Ramper/Full Mixing Matrix_Left/Ramper/check sequence': '<S1078>:1' */
+/*  Assume the work is complete until proven otherwise */
+/* '<S1078>:1:8' done = true; */
+/*@>12587c0*/done_i/*@>10c0a39*/ = /*@>12587c2*/true;
+/* '<S1078>:1:10' for i=1:numel(Premix_targetGain_Left) */
+/*@>12587c3*/i/*@>10c0a4b*/ = /*@>125b2cc*/0;
+exitg1 = false;
+while/*@<10c0a53*/ ((!exitg1) && (/*@>12587c6*/i/*@>10c0a52*/ < /*@>12587c8*/77)) {
+    /* '<S1078>:1:11' if (Premix_targetGain_Left(i) ~= Premix_currentGain_Left(i)) */
+    /*@>10c0a44*/if (/*@>125ad4e*/Model_Target_Medusa5H1Part3_DW./*@>125b4ef*/Premix_targetGain_Left/*@>125aa62*/[/*@>125aa5f*/i]/*@>10c0a41*/ != /*@>125ad54*/Model_Target_Medusa5H1Part3_DW./*@>125b4f2*/Premix_currentGain_Left/*@>125aa68*/[/*@>125aa65*/i]) {
+        /* '<S1078>:1:12' done = false; */
+        /*@>12587ce*/done_i/*@>10c0a3e*/ = /*@>12587d0*/false;
+        /*  just proved otherwise */
+        exitg1 = true;
+    } else {
+        /*@>12587cc*/i/*@>125b392*/++;
+    }
+}
+/* {S!d123}MATLAB Function: '<S998>/Split NTF_check_done' incorporates:
+ *  MATLAB Function: '<S1061>/check sequence'
+ */
+/* {S!d148}MATLAB Function: '<S1061>/check sequence' */
+/* '<S1009>:1:5' fcncall_CS(); */
+/*  #codegen */
+/* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 3/On/Premix/Premix with Mono-Surround & CAE with Fade Ramper/Full Mixing Matrix_Center Surround/Ramper/check sequence': '<S1066>:1' */
+/*  Assume the work is complete until proven otherwise */
+/* '<S1066>:1:8' done = true; */
+/*@>12587d1*/done_n/*@>10c0a73*/ = /*@>12587d3*/true;
+/* '<S1066>:1:10' for i=1:numel(Premix_targetGain_CS) */
+/*@>12587d4*/i/*@>10c0a85*/ = /*@>125b2cf*/0;
+exitg1 = false;
+while/*@<10c0a8d*/ ((!exitg1) && (/*@>12587d7*/i/*@>10c0a8c*/ < /*@>12587d9*/20)) {
+    /* '<S1066>:1:11' if (Premix_targetGain_CS(i) ~= Premix_currentGain_CS(i)) */
+    /*@>10c0a7e*/if (/*@>125ad5a*/Model_Target_Medusa5H1Part3_DW./*@>125b4f5*/Premix_targetGain_CS/*@>125aa6e*/[/*@>125aa6b*/i]/*@>10c0a7b*/ != /*@>125ad60*/Model_Target_Medusa5H1Part3_DW./*@>125b4f8*/Premix_currentGain_CS/*@>125aa74*/[/*@>125aa71*/i]) {
+        /* '<S1066>:1:12' done = false; */
+        /*@>12587df*/done_n/*@>10c0a78*/ = /*@>12587e1*/false;
+        /*  just proved otherwise */
+        exitg1 = true;
+    } else {
+        /*@>12587dd*/i/*@>125b394*/++;
+    }
+}
+/* {S!d124}MATLAB Function: '<S998>/Split NTF_check_done' incorporates:
+ *  MATLAB Function: '<S1085>/check sequence'
+ */
+/* {S!d150}MATLAB Function: '<S1085>/check sequence' */
+/* '<S1009>:1:6' fcncall_Right(); */
+/*  #codegen */
+/* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 3/On/Premix/Premix with Mono-Surround & CAE with Fade Ramper/Full Mixing Matrix_Right/Ramper/check sequence': '<S1090>:1' */
+/*  Assume the work is complete until proven otherwise */
+/* '<S1090>:1:8' done = true; */
+/*@>12587e2*/done_h/*@>10c0aad*/ = /*@>12587e4*/true;
+/* '<S1090>:1:10' for i=1:numel(Premix_targetGain_Right) */
+/*@>12587e5*/i/*@>10c0abf*/ = /*@>125b2d2*/0;
+exitg1 = false;
+while/*@<10c0ac7*/ ((!exitg1) && (/*@>12587e8*/i/*@>10c0ac6*/ < /*@>12587ea*/77)) {
+    /* '<S1090>:1:11' if (Premix_targetGain_Right(i) ~= Premix_currentGain_Right(i)) */
+    /*@>10c0ab8*/if (/*@>125ad66*/Model_Target_Medusa5H1Part3_DW./*@>125b4fb*/Premix_targetGain_Right/*@>125aa7a*/[/*@>125aa77*/i]/*@>10c0ab5*/ != /*@>125ad6c*/Model_Target_Medusa5H1Part3_DW./*@>125b4fe*/Premix_currentGain_Right/*@>125aa80*/[/*@>125aa7d*/i]) {
+        /* '<S1090>:1:12' done = false; */
+        /*@>12587f0*/done_h/*@>10c0ab2*/ = /*@>12587f2*/false;
+        /*  just proved otherwise */
+        exitg1 = true;
+    } else {
+        /*@>12587ee*/i/*@>125b396*/++;
+    }
+}
+/* {S!d126}MATLAB Function: '<S931>/MATLAB Function' */
+/* {S!d127}MATLAB Function: '<S931>/MATLAB Function' incorporates:
+ *  MATLAB Function: '<S964>/check sequence'
+ */
+/* {S!d152}MATLAB Function: '<S964>/check sequence' */
+/* '<S1009>:1:7' fcncall_AND(); */
+/*  #codegen */
+/*  Splits the incoming function call */
+/* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 3/On/Full-rate Mixer/Full-Rate Mixer with CAE & Fade Ramper/MATLAB Function': '<S939>:1' */
+/* '<S939>:1:4' fcncall_Left(); */
+/*  #codegen */
+/* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 3/On/Full-rate Mixer/Full-Rate Mixer with CAE & Fade Ramper/Full Mixing Matrix_Left/Ramper/check sequence': '<S969>:1' */
+/*  Assume the work is complete until proven otherwise */
+/* '<S969>:1:7' done = true; */
+/*@>12587f3*/done_kk/*@>10c0ae7*/ = /*@>12587f5*/true;
+/* '<S969>:1:9' for i=1:numel(FRM_targetGain_Left) */
+/*@>12587f6*/i/*@>10c0af9*/ = /*@>125b2d5*/0;
+exitg1 = false;
+while/*@<10c0b01*/ ((!exitg1) && (/*@>12587f9*/i/*@>10c0b00*/ < /*@>12587fb*/30)) {
+    /* '<S969>:1:10' if (FRM_targetGain_Left(i) ~= FRM_currentGain_Left(i)) */
+    /*@>10c0af2*/if (/*@>125ad72*/Model_Target_Medusa5H1Part3_DW./*@>125b501*/FRM_targetGain_Left/*@>125aa86*/[/*@>125aa83*/i]/*@>10c0aef*/ != /*@>125ad78*/Model_Target_Medusa5H1Part3_DW./*@>125b504*/FRM_currentGain_Left/*@>125aa8c*/[/*@>125aa89*/i]) {
+        /* '<S969>:1:11' done = false; */
+        /*@>1258801*/done_kk/*@>10c0aec*/ = /*@>1258803*/false;
+        /*  just proved otherwise */
+        exitg1 = true;
+    } else {
+        /*@>12587ff*/i/*@>125b398*/++;
+    }
+}
+/* {S!d128}MATLAB Function: '<S931>/MATLAB Function' incorporates:
+ *  MATLAB Function: '<S952>/check sequence'
+ */
+/* {S!d154}MATLAB Function: '<S952>/check sequence' */
+/* '<S939>:1:5' fcncall_CS(); */
+/*  #codegen */
+/* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 3/On/Full-rate Mixer/Full-Rate Mixer with CAE & Fade Ramper/Full Mixing Matrix_Center Surround/Ramper/check sequence': '<S957>:1' */
+/*  Assume the work is complete until proven otherwise */
+/* '<S957>:1:7' done = true; */
+/*@>1258804*/done_k/*@>10c0b21*/ = /*@>1258806*/true;
+/* '<S957>:1:9' for i=1:numel(FRM_targetGain_CS) */
+/*@>1258807*/i/*@>10c0b33*/ = /*@>125b2d8*/0;
+exitg1 = false;
+while/*@<10c0b3b*/ ((!exitg1) && (/*@>125880a*/i/*@>10c0b3a*/ < /*@>125880c*/12)) {
+    /* '<S957>:1:10' if (FRM_targetGain_CS(i) ~= FRM_currentGain_CS(i)) */
+    /*@>10c0b2c*/if (/*@>125ad7e*/Model_Target_Medusa5H1Part3_DW./*@>125b507*/FRM_targetGain_CS/*@>125aa92*/[/*@>125aa8f*/i]/*@>10c0b29*/ != /*@>125ad84*/Model_Target_Medusa5H1Part3_DW./*@>125b50a*/FRM_currentGain_CS/*@>125aa98*/[/*@>125aa95*/i]) {
+        /* '<S957>:1:11' done = false; */
+        /*@>1258812*/done_k/*@>10c0b26*/ = /*@>1258814*/false;
+        /*  just proved otherwise */
+        exitg1 = true;
+    } else {
+        /*@>1258810*/i/*@>125b39a*/++;
+    }
+}
+/* {S!d129}MATLAB Function: '<S931>/MATLAB Function' incorporates:
+ *  MATLAB Function: '<S976>/check sequence'
+ */
+/* {S!d156}MATLAB Function: '<S976>/check sequence' */
+/* '<S939>:1:6' fcncall_Right(); */
+/*  #codegen */
+/* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 3/On/Full-rate Mixer/Full-Rate Mixer with CAE & Fade Ramper/Full Mixing Matrix_Right/Ramper/check sequence': '<S981>:1' */
+/*  Assume the work is complete until proven otherwise */
+/* '<S981>:1:7' done = true; */
+/*@>1258815*/done_f/*@>10c0b5b*/ = /*@>1258817*/true;
+/* '<S981>:1:9' for i=1:numel(FRM_targetGain_Right) */
+/*@>1258818*/i/*@>10c0b6d*/ = /*@>125b2db*/0;
+exitg1 = false;
+while/*@<10c0b75*/ ((!exitg1) && (/*@>125881b*/i/*@>10c0b74*/ < /*@>125881d*/30)) {
+    /* '<S981>:1:10' if (FRM_targetGain_Right(i) ~= FRM_currentGain_Right(i)) */
+    /*@>10c0b66*/if (/*@>125ad8a*/Model_Target_Medusa5H1Part3_DW./*@>125b50d*/FRM_targetGain_Right/*@>125aa9e*/[/*@>125aa9b*/i]/*@>10c0b63*/ != /*@>125ad90*/Model_Target_Medusa5H1Part3_DW./*@>125b510*/FRM_currentGain_Right/*@>125aaa4*/[/*@>125aaa1*/i]) {
+        /* '<S981>:1:11' done = false; */
+        /*@>1258823*/done_f/*@>10c0b60*/ = /*@>1258825*/false;
+        /*  just proved otherwise */
+        exitg1 = true;
+    } else {
+        /*@>1258821*/i/*@>125b39c*/++;
+    }
+}
+/* {S!d131}MATLAB Function: '<S1143>/check sequence' */
+/* {S!d158}MATLAB Function: '<S1143>/check sequence' */
+/* '<S939>:1:7' fcncall_AND(); */
+/*  #codegen */
+/* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 3/On/VLS Gains Computation/VLS Gains Drv/Gain Computation/Ramper/check sequence': '<S1146>:1' */
+/*  Assume the work is complete until proven otherwise */
+/* '<S1146>:1:8' done = true; */
+/*@>125879e*/done_c/*@>10c08af*/ = /*@>12587a0*/true;
+/* '<S1146>:1:10' for i=1:numel(VLSDrv_targetGain) */
+/*@>12587a1*/i/*@>10c08bf*/ = /*@>125b2de*/0;
+exitg1 = false;
+while/*@<10c08c7*/ ((!exitg1) && (/*@>12587a4*/i/*@>10c08c6*/ < /*@>12587a6*/12)) {
+    /* '<S1146>:1:11' if (VLSDrv_targetGain(i) ~= VLSDrv_currentGain(i)) */
+    /*@>10c08b8*/if (/*@>125ad96*/Model_Target_Medusa5H1Part3_DW./*@>125b513*/VLSDrv_targetGain/*@>125aaaa*/[/*@>125aaa7*/i]/*@>10c08b5*/ != /*@>125ad9c*/Model_Target_Medusa5H1Part3_DW./*@>125b516*/VLSDrv_currentGain/*@>125aab0*/[/*@>125aaad*/i]) {
+        /* '<S1146>:1:12' done = false; */
+        /*@>12587ac*/done_c/*@>10c08b4*/ = /*@>12587ae*/false;
+        /*  just proved otherwise */
+        exitg1 = true;
+    } else {
+        /*@>12587aa*/i/*@>125b39e*/++;
+    }
+}
+/* {S!d133}MATLAB Function: '<S1168>/check sequence' */
+/* {S!d160}MATLAB Function: '<S1168>/check sequence' */
+/*  #codegen */
+/* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 3/On/VLS Gains Computation/VLS Gains Pax/Gain Computation/Ramper/check sequence': '<S1171>:1' */
+/*  Assume the work is complete until proven otherwise */
+/* '<S1171>:1:8' done = true; */
+/*@>12587af*/done/*@>10c08e5*/ = /*@>12587b1*/true;
+/* '<S1171>:1:10' for i=1:numel(VLSPax_targetGain) */
+/*@>12587b2*/i/*@>10c08f5*/ = /*@>125b2e1*/0;
+exitg1 = false;
+while/*@<10c08fd*/ ((!exitg1) && (/*@>12587b5*/i/*@>10c08fc*/ < /*@>12587b7*/12)) {
+    /* '<S1171>:1:11' if (VLSPax_targetGain(i) ~= VLSPax_currentGain(i)) */
+    /*@>10c08ee*/if (/*@>125ada2*/Model_Target_Medusa5H1Part3_DW./*@>125b519*/VLSPax_targetGain/*@>125aab6*/[/*@>125aab3*/i]/*@>10c08eb*/ != /*@>125ada8*/Model_Target_Medusa5H1Part3_DW./*@>125b51c*/VLSPax_currentGain/*@>125aabc*/[/*@>125aab9*/i]) {
+        /* '<S1171>:1:12' done = false; */
+        /*@>12587bd*/done/*@>10c08ea*/ = /*@>12587bf*/false;
+        /*  just proved otherwise */
+        exitg1 = true;
+    } else {
+        /*@>12587bb*/i/*@>125b3a0*/++;
+    }
+}
+/* {S!d135}Outputs for Function Call SubSystem: '<S897>/Merge NTF_done' */
+/* {S!d136}MATLAB Function: '<S998>/Split NTF_check_done' */
+/* {S!d137}MATLAB Function: '<S998>/Split NTF_check_done' incorporates:
+ *  SubSystem: '<S998>/Merge NTF_done'
+ */
+/* {S!d138}MATLAB Function: '<S931>/MATLAB Function' */
+/* {S!d139}MATLAB Function: '<S931>/MATLAB Function' incorporates:
+ *  SubSystem: '<S931>/Merge NTF_done'
+ */
+/* {S!d162}Logic: '<S1109>/AND' incorporates:
+ *  Logic: '<S1007>/AND'
+ *  Logic: '<S940>/AND'
+ */
+/*@>125abdb*/Model_Target_Medusa5H1Part3_B./*@>125b4e9*/AND/*@>10c0860*/ = (/*@>1258826*/done_h/*@>125723a*/ && /*@>1258828*/done_n/*@>1257239*/ && /*@>125882a*/done_i/*@>10c0859*/ && (/*@>125882c*/done_f/*@>1257242*/ && /*@>125882e*/done_k/*@>1257241*/ && /*@>1258830*/done_kk)/*@>10c085c*/ && /*@>1258794*/done_c/*@>10c085f*/ && /*@>1258796*/done);
+/* {E!d135}End of Outputs for SubSystem: '<S897>/Merge NTF_done' */
+
+/* {S!d143}Outputs for Function Call SubSystem: '<S1110>/NTF_SLC' */
+/* {S!d164}SignalConversion generated from: '<S1112>/In1' */
+/*@>125abe1*/Model_Target_Medusa5H1Part3_B./*@>125b4ec*/In1/*@>10c086f*/ = %<SLibCG_DumpSSCode("/*@[125b202*/",(SLibCG_SE(SLibCG_BOCSC(647, 1, "", -1, "", 0))),"/*@]*/")>;
+/* {E!d143}End of Outputs for SubSystem: '<S1110>/NTF_SLC' */
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Outputs(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(104, 0, fcnProtoType)>
+%endfunction

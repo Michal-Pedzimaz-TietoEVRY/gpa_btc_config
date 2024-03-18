@@ -1,0 +1,181 @@
+%implements s1068_b0_g3vnd_520_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%assign _modelSS = ""
+
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[760], "Output",1)
+/* MATLAB Function: '<S2015>/rtcscalartovector' */
+/*  Invoke the function trigger output */
+/* MATLAB Function 'RTC/REQ': '<S2081>:1' */
+/* '<S2081>:1:3' go(); */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_rtcscalartovector",760,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[14db421*/",SLibCGIRGenReusableSysCall("Model_Target_rtcscalartovector", ["%<_modelSS>", "%<SLibCG_DumpSSCode("/*@[14db6a2*/",(SLibCG_BOCSC(28, 1, "", -1, "", 0)),"/*@]*/")>", "&/*@>14db6b6*/Model_Target_B./*@>14db6b5*/sf_rtcscalartovector_fe"], 760, 2, 6, 1, 6, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[760]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[761], "Output",1)
+
+/* MATLAB Function: '<S2015>/calculate_vol_gain' */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_calculate_vol_gain",761,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[14db422*/",SLibCGIRGenReusableSysCall("Model_Target_calculate_vol_gain", ["%<_modelSS>", "/*@>14db702*/Model_Target_B./*@>14db701*/sf_rtcscalartovector_fe./*@>14db700*/Outp", "%<SLibCG_DumpSSCode("/*@[14db70e*/",(SLibCG_BOCSCAddr(7, 16, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[14db720*/",(SLibCG_BOCSCAddr(144, 16, "", -1, "", 0)),"/*@]*/")>", "&/*@>14db734*/Model_Target_B./*@>14db733*/sf_calculate_vol_gain_clo"], 761, 2, 6, 1, 6, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[761]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[762], "Output",1)
+
+/* MATLAB Function: '<S2015>/rtcscalartovector2' */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_rtcscalartovector2",762,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[14db423*/",SLibCGIRGenReusableSysCall("Model_Target_rtcscalartovector2", ["%<_modelSS>", "%<SLibCG_DumpSSCode("/*@[14db76e*/",(SLibCG_BOCSC(29, 1, "", -1, "", 0)),"/*@]*/")>", "&/*@>14db782*/Model_Target_B./*@>14db781*/sf_rtcscalartovector2_a3"], 762, 2, 6, 1, 6, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[762]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[763], "Output",1)
+
+/* MATLAB Function: '<S2015>/rtcscalartovector3' */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_rtcscalartovector3",763,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[14db424*/",SLibCGIRGenReusableSysCall("Model_Target_rtcscalartovector3", ["%<_modelSS>", "%<SLibCG_DumpSSCode("/*@[14db7bc*/",(SLibCG_BOCSC(30, 1, "", -1, "", 0)),"/*@]*/")>", "&/*@>14db7d0*/Model_Target_B./*@>14db7cf*/sf_rtcscalartovector3_pj"], 763, 2, 6, 1, 6, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[763]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[764], "Output",1)
+
+/* MATLAB Function: '<S2015>/get_ramp_parameters' */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_get_ramp_parameters",764,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[14db425*/",SLibCGIRGenReusableSysCall("Model_Target_get_ramp_parameters", ["%<_modelSS>", "/*@>14db818*/Model_Target_B./*@>14db817*/sf_rtcscalartovector3_pj./*@>14db816*/Outp", "/*@>14db826*/Model_Target_B./*@>14db825*/sf_rtcscalartovector2_a3./*@>14db824*/Outp", "%<SLibCG_DumpSSCode("/*@[14db832*/",(SLibCG_BOCSC(142, 1, "", -1, "", 0)),"/*@]*/")>", "&/*@>14db846*/Model_Target_B./*@>14db845*/sf_get_ramp_parameters_my"], 764, 2, 6, 1, 6, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[764]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+%endif
+%assign   Outputs_open_SetDsm_b_825_88 = ""
+%openfile Outputs_open_SetDsm_b_825_88
+
+/* Outputs for Function Call SubSystem: '<S2085>/SetDsm' */
+%closefile Outputs_open_SetDsm_b_825_88
+
+%assign    Outputs_body_SetDsm_b_825_88 = ""
+%openfile  Outputs_body_SetDsm_b_825_88
+
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[823], "Output",1)
+%if SLibCG_SystemFcnArgAccessed("Model_Target_SetDsm_b",823,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[14db426*/",SLibCGIRGenReusableSysCall("Model_Target_SetDsm_b", ["%<_modelSS>", "/*@>14db873*/1U"], 823, 0, 6, 1, 6, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[823]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+%endif
+%closefile Outputs_body_SetDsm_b_825_88
+
+%assign    Outputs_close_SetDsm_b_825_88 = ""
+%openfile  Outputs_close_SetDsm_b_825_88
+
+/* End of Outputs for SubSystem: '<S2085>/SetDsm' */
+%closefile Outputs_close_SetDsm_b_825_88
+%<SLibCG_DumpSSCode(Outputs_open_SetDsm_b_825_88, Outputs_body_SetDsm_b_825_88, Outputs_close_SetDsm_b_825_88)>
+
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[824], "Output",1)
+
+/* MATLAB Function: '<S2085>/rgainy ramper control' */
+/* MATLAB Function: '<S2085>/rgainy ramper control' incorporates:
+ *  S-Function (AudioStats_MEX): '<S2085>/Audio Stats'
+ */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_rgainyrampercontrol_o",824,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[14db427*/",SLibCGIRGenReusableSysCall("Model_Target_rgainyrampercontrol_o", ["%<_modelSS>", "/*@>14db8c9*/Model_Target_B./*@>14db8c8*/sf_calculate_vol_gain_clo./*@>14db8c7*/gain_value", "/*@>14db8d7*/Model_Target_B./*@>14db8d6*/sf_get_ramp_parameters_my./*@>14db8d5*/ramp_rate", "/*@>14db8e5*/Model_Target_B./*@>14db8e4*/sf_get_ramp_parameters_my./*@>14db8e3*/ramp_ms", "%<SLibCG_DumpSSCode("/*@[14db8f1*/",(SLibCG_Expr(864, 289, 0, 1, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[14db905*/",(SLibCG_Expr(864, 289, 1, 1, "", -1, "", 0)),"/*@]*/")>"], 824, 0, 6, 1, 6, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[824]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+%endif
+%assign   Outputs_open_SetDsm1_ffi_825_90 = ""
+%openfile Outputs_open_SetDsm1_ffi_825_90
+
+/* Outputs for Function Call SubSystem: '<S2085>/SetDsm1' */
+%closefile Outputs_open_SetDsm1_ffi_825_90
+
+%assign    Outputs_body_SetDsm1_ffi_825_90 = ""
+%openfile  Outputs_body_SetDsm1_ffi_825_90
+
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[823], "Output",1)
+%if SLibCG_SystemFcnArgAccessed("Model_Target_SetDsm_b",823,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[14db428*/",SLibCGIRGenReusableSysCall("Model_Target_SetDsm_b", ["%<_modelSS>", "/*@>14db93b*/0U"], 823, 1, 6, 1, 6, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[823]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+%endif
+%closefile Outputs_body_SetDsm1_ffi_825_90
+
+%assign    Outputs_close_SetDsm1_ffi_825_90 = ""
+%openfile  Outputs_close_SetDsm1_ffi_825_90
+
+/* End of Outputs for SubSystem: '<S2085>/SetDsm1' */
+%closefile Outputs_close_SetDsm1_ffi_825_90
+%<SLibCG_DumpSSCode(Outputs_open_SetDsm1_ffi_825_90, Outputs_body_SetDsm1_ffi_825_90, Outputs_close_SetDsm1_ffi_825_90)>
+
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void HandleReqNearAnn3Ann3VolumeSet(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(520, 0, fcnProtoType)>
+%endfunction

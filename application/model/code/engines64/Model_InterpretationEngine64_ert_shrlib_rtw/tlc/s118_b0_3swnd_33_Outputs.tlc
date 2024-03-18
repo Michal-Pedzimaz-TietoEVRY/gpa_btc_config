@@ -1,0 +1,25 @@
+%implements s118_b0_3swnd_33_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+/* Outputs for Function Call SubSystem: '<S157>/Subsystem' */
+/* SignalConversion generated from: '<S159>/In1' */
+/*  This function serves only to invoke a function trigger output */
+/* MATLAB Function 'InterpretTrigger/ifunc': '<S160>:1' */
+/* '<S160>:1:3' f(); */
+/*@>60dc1*/Model_InterpretationEngine64_B./*@>60e31*/In1_dw/*@>530e4*/ = /*@>60dc7*/Model_InterpretationEngine64_B./*@>60e34*/TSP_ih;
+/* End of Outputs for SubSystem: '<S157>/Subsystem' */
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_InterpretationEngine64_ifunc_hv(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(33, 0, fcnProtoType)>
+%endfunction

@@ -1,0 +1,69 @@
+/*
+Copyright 2023 Bose Corporation
+Contact: Michal Pedzimaz (michal_pedzimaz@bose.com)
+$Revision: 3 $ $Date: 2023-12-20 14:39:52 -0400 (Fri, 22 Dec 2023) $
+*/
+
+%implements ctrl_io_signal "C"
+
+%% ------------------------------------------------------------------------
+%%    Function:    BlockTypeSetup
+%function BlockTypeSetup(block, system) void
+    %% Add appropriate includes to header file
+    
+    // Standard libraries
+    %<LibAddToCommonIncludes("<stdlib.h>")>
+    %<LibAddToCommonIncludes("<string.h>")>
+
+%endfunction %% BlockInstanceSetup
+
+%% ------------------------------------------------------------------------
+%% Function: Outputs ======================================================
+%%
+%function Outputs(block, system) Output
+    /* %<Type> Block: %<Name> (%<ParamSettings.FunctionName>) */
+    {
+        real32_T *straight_ptr, *bypass_ptr, *output_ptr, *ch_out_ptr, *ch_bypass_ptr;
+        uint32_T i;
+        int32_T mode = %<LibBlockInputSignal(2, "", "", 0)>;
+        uint32_T frame_size = %<LibBlockInputSignalDimensions(0)[0]>;
+        uint32_T nChStraight = %<LibBlockInputSignalDimensions(0)[1]>;	
+        uint32_T nChBypass = %<LibBlockInputSignalDimensions(1)[1]>;	
+
+		#define NUM_BYTES_PROCESS (sizeof(float) * frame_size * nChStraight)
+		
+        straight_ptr = (real32_T *)(%<LibBlockInputSignalAddr(0, "", "", 0)>);
+        bypass_ptr = (real32_T *)(%<LibBlockInputSignalAddr(1, "", "", 0)>);
+        output_ptr = (real32_T *)(%<LibBlockOutputSignalAddr(0, "", "", 0)>);           
+        //STRAIGHT mode
+        if (mode > 0) 
+		{
+			memcpy((void *)output_ptr, (void *)straight_ptr, NUM_BYTES_PROCESS);
+		}
+        //BYPASS mode
+        else if (mode < 0) 
+        {
+            //equal number of input and output channel in a block
+            if (nChStraight == nChBypass) 
+			{
+				memcpy((void *)output_ptr, (void *)bypass_ptr, NUM_BYTES_PROCESS);
+			}
+            else
+            {
+                //different number of input and output channel in a block. Copy input to output channels in a circular manner
+                for (i = 0; i < nChStraight; i++)
+                {
+                    ch_out_ptr = output_ptr + frame_size * i;
+                    ch_bypass_ptr = (real32_T *)bypass_ptr + (i % nChBypass) * frame_size;
+                    memcpy((void *)ch_out_ptr, (void *)ch_bypass_ptr, (sizeof(real32_T) * frame_size));
+                }
+            }
+        }
+        //MUTE mode
+        else 
+		{
+			memset((void *)output_ptr, 0x00, NUM_BYTES_PROCESS);
+		}
+    }
+
+%endfunction %% Outputs

@@ -1,0 +1,53 @@
+%implements s1068_b0_g3vnd_403_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+int32_T i;
+boolean_T exitg1;
+%closefile localVarDecl
+/* {S!d3245}MATLAB Function: '<S1452>/check sequence' */
+/* {S!d3250}MATLAB Function: '<S1452>/check sequence' */
+/*  Invoke the function trigger output */
+/* MATLAB Function 'RTC/NtfCheck': '<S1467>:1' */
+/* '<S1467>:1:3' go(); */
+/*   Function that checks whether all channels have completed their ramp to  */
+/*  target gain. */
+/*  If so, send out TRUE to RTC */
+/* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/SleepingBeauty/SleepingBeauty/Enabled/SleepingBeautyFR/InnerLink/check sequence': '<S1463>:1' */
+/*  Assume the work is complete until proven otherwise */
+/* '<S1463>:1:9' done = true; */
+/*@>14637e2*/Model_Target_B./*@>1463c3f*/done_o/*@>10cc3fe*/ = /*@>1463051*/true;
+/* '<S1463>:1:11' for i=1:MaskNumRampers */
+/*@>1463052*/i/*@>10cc410*/ = /*@>1463bed*/0;
+exitg1 = false;
+while/*@<10cc418*/ ((!exitg1) && (/*@>1463055*/i/*@>10cc417*/ < /*@>1463057*/4)) {
+    /* '<S1463>:1:12' if (Rampers(i).targetGain ~= Rampers(i).currentGain) */
+    /*@>10cc409*/if (%<SLibCG_DumpSSCode("/*@[1463b9f*/",(SLibCG_SE(SLibCG_CSCDW(7, 1, "[/*@>1463b76*/i].targetGain", -1, "", 0))),"/*@]*/")>/*@>10cc406*/ != %<SLibCG_DumpSSCode("/*@[1463b69*/",(SLibCG_SE(SLibCG_CSCDW(7, 1, "[/*@>1463b40*/i].currentGain", -1, "", 0))),"/*@]*/")>) {
+        /* '<S1463>:1:13' done = false; */
+        /*@>14637ee*/Model_Target_B./*@>1463c45*/done_o/*@>10cc405*/ = /*@>1463061*/false;
+        /*  just proved otherwise */
+        exitg1 = true;
+    } else {
+        /*@>146305d*/i/*@>1463c12*/++;
+    }
+}
+/* {S!d3247}Outputs for Function Call SubSystem: '<S1452>/Triggered Subsystem' */
+/* {S!d3252}SignalConversion generated from: '<S1456>/In1' */
+/*@>14637e8*/Model_Target_B./*@>1463c42*/In1_g2/*@>10cc3f2*/ = %<SLibCG_DumpSSCode("/*@[1463bbb*/",(SLibCG_SE(SLibCG_BOCSC(72, 1, "", -1, "", 0))),"/*@]*/")>;
+/* {E!d3247}End of Outputs for SubSystem: '<S1452>/Triggered Subsystem' */
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Outputs(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(403, 0, fcnProtoType)>
+%endfunction

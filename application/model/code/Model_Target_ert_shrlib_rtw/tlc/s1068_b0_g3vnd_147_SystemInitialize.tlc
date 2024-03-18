@@ -1,0 +1,23 @@
+%implements s1068_b0_g3vnd_147_SystemInitialize "C"
+
+%function SystemInitialize(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%<SLibCGIRDumpSystemUserCode(474, "Initialize", "Header")>\
+%<SLibCGIRDumpSystemUserCode(474, "Initialize", "Body")>\
+/* '<S1293>:1:18' delayIndex = int32(0); */
+/* '<S1294>:1:18' delayIndex = int32(0); */
+%<SLibCGIRDumpSystemUserCode(474, "Initialize", "Trailer")>\
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedSystemInitializeLocalVars", localVarDecl)>
+%endfunction
+%function SystemInitializeFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_Medusa5H1Part6_Init(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(147, 0, fcnProtoType)>
+%endfunction

@@ -1,0 +1,152 @@
+%implements s1068_b0_g3vnd_221_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+int32_T rtb_FindNonzeroElements[5];
+int32_T rtb_routerMapOut[5];
+int32_T ind;
+int32_T rtb_routerMapOut_h;
+int_T linIx;
+real32_T rtb_Assignment[160];
+boolean_T rtb_OR[5];
+%closefile localVarDecl
+%assign tlcOutputsFcnOfS8B0 = OpaqueTLCBlockFcn("Outputs", 8, 0, 221, 1, 0)
+%assign tlcOutputsFcnOfS8B1 = OpaqueTLCBlockFcn("Outputs", 8, 1, 221, 1, 1)
+%assign tlcOutputsFcnOfS8B6 = OpaqueTLCBlockFcn("Outputs", 8, 6, 221, 1, 2)
+%assign tlcOutputsFcnOfS8B10 = OpaqueTLCBlockFcn("Outputs", 8, 10, 221, 1, 3)
+%assign tlcOutputsFcnOfS8B12 = OpaqueTLCBlockFcn("Outputs", 8, 12, 221, 1, 4)
+%assign tlcOutputsFcnOfS8B13 = OpaqueTLCBlockFcn("Outputs", 8, 13, 221, 1, 5)
+%if !WHITE_SPACE(tlcOutputsFcnOfS8B0)
+/* {S!d1998}S-Function (TOP_MEX): '<S12>/TOP' */
+%<SLibCG_DumpSSCode("/*@[13543d1*/",tlcOutputsFcnOfS8B0,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS8B1)
+/* {S!d1993}S-Function (RTC_REQ_RSP): '<S15>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[13543d3*/",tlcOutputsFcnOfS8B1,"/*@]*/")>\
+%endif
+/* {E!d1993}End of Outputs for S-Function (RTC_REQ_RSP): '<S15>/RTC Request Response Trigger' */
+
+/* {S!d2000}MATLAB Function: '<S12>/MATLAB Function' incorporates:
+ *  S-Function (TOP_MEX): '<S12>/TOP'
+ */
+/*  tuneTopMap is provided via a tune variable. However  */
+/*  if parameters are provided through RTC, the block will use the values  */
+/*  given in the RTC messages. */
+/* MATLAB Function 'InputSelect/Router/MATLAB Function': '<S14>:1' */
+/* '<S14>:1:7' Numiters=size(rtcMap,1); */
+/* '<S14>:1:8' routerMapOut = int32(tuneTopMap); */
+/* '<S14>:1:9' for ind=1:Numiters */
+/*@>1350174*/for (/*@>1354733*/ind = /*@>1354732*/0; /*@>135473d*/ind < /*@>135473b*/5; /*@>1354739*/ind/*@>1354741*/++) {
+    /*@>135187e*/rtb_routerMapOut/*@>135062c*/[/*@>135187c*/ind]/*@>1350166*/ = %<SLibCG_DumpSSCode("/*@[13543f5*/",(SLibCG_SE(SLibCG_BOCSC(523, 5, "", -1, "/*@>1353a37*/ind", 0))),"/*@]*/")>;
+    /* '<S14>:1:10' if (rtcMap(ind)) */
+    /*@>10cf5dc*/if (%<SLibCG_DumpSSCode("/*@[1354410*/",(SLibCG_SE(SLibCG_BOCSC(524, 5, "", -1, "/*@>1353a3d*/ind", 0))),"/*@]*/")>/*@>10cf5d8*/ != /*@>1351895*/0) {
+        /* '<S14>:1:11' routerMapOut(ind) = rtcMap(ind); */
+        /*@>1351872*/rtb_routerMapOut/*@>1350685*/[/*@>1351870*/ind]/*@>10cf5d7*/ = %<SLibCG_DumpSSCode("/*@[135442b*/",(SLibCG_SE(SLibCG_BOCSC(524, 5, "", -1, "/*@>1353a43*/ind", 0))),"/*@]*/")>;
+    }
+}
+/* {E!d2000}End of MATLAB Function: '<S12>/MATLAB Function' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS8B6)
+
+/* {S!d1995}S-Function (RTC_NTF): '<S15>/NTF Trigger' */
+%<SLibCG_DumpSSCode("/*@[13543d5*/",tlcOutputsFcnOfS8B6,"/*@]*/")>\
+%endif
+/* {E!d1995}End of Outputs for S-Function (RTC_NTF): '<S15>/NTF Trigger' */
+/*@>1350c0c*/for (/*@>1354722*/ind = /*@>1354721*/0; /*@>135472c*/ind < /*@>135472a*/5; /*@>1354728*/ind/*@>1354742*/++) {
+    /* {S!d2002}S-Function (sdspperm2): '<S16>/Variable Selector' incorporates:
+ *  Assignment: '<S16>/Assignment'
+ *  SignalConversion generated from: '<S8>/In'
+ */
+    rtb_routerMapOut_h = /*@>1353a4a*/rtb_routerMapOut/*@>1353a4c*/[/*@>1353a49*/ind];
+    /*@>13518c4*/linIx/*@>10cf43a*/ = rtb_routerMapOut_h;
+    /*@>10cf43d*/if (rtb_routerMapOut_h/*@>134f7a1*/ - /*@>135188a*/1/*@>10cf43c*/ < /*@>13518c3*/0) {
+        /*@>13518c1*/linIx/*@>10cf43f*/ = /*@>13546c5*/1;
+    } else /*@>10cf442*/if (rtb_routerMapOut_h/*@>134f7aa*/ - /*@>1351889*/1/*@>10cf441*/ >= /*@>13518bf*/5) {
+        /*@>13518bd*/linIx/*@>10cf444*/ = /*@>13546c8*/5;
+    }
+    /*@>1353699*/memcpy(&/*@>1353217*/rtb_Assignment/*@>1353218*/[/*@>13531f4*/ind/*@>1354438*/ << /*@>1354437*/5], &/*@>1353cfa*/Model_Target_B./*@>1354855*/In/*@>1353227*/[(/*@>135320d*/linIx/*@>135443b*/ << /*@>135443a*/5)/*@>1353209*/ + /*@>135320f*/-32], /*@>1353229*/sizeof(real32_T)/*@>135443e*/ << /*@>135443d*/5U);
+    /* {E!d2002}End of S-Function (sdspperm2): '<S16>/Variable Selector' */
+
+    /* {S!d2004}Logic: '<S16>/OR' incorporates:
+ *  Constant: '<S23>/Constant'
+ *  Constant: '<S24>/Constant'
+ *  RelationalOperator: '<S23>/Compare'
+ *  RelationalOperator: '<S24>/Compare'
+ */
+    /*@>135186e*/rtb_OR/*@>1350717*/[/*@>135186c*/ind]/*@>135013d*/ = ((rtb_routerMapOut_h/*@>1350145*/ <= /*@>1351813*/0)/*@>1350144*/ || (rtb_routerMapOut_h/*@>135014e*/ > /*@>1351812*/5));
+}
+/* {S!d2006}Find: '<S16>/Find Nonzero Elements' incorporates:
+ *  Logic: '<S16>/OR'
+ */
+/*@>13518b9*/ind/*@>10cf486*/ = /*@>13546bf*/0;
+/*@>13518b6*/linIx/*@>10cf48a*/ = /*@>13546c2*/0;
+/*@>1350bea*/for (/*@>1354711*/rtb_routerMapOut_h = /*@>1354710*/0; /*@>135471b*/rtb_routerMapOut_h < /*@>1354719*/5; /*@>1354717*/rtb_routerMapOut_h/*@>1354743*/++) {
+    /*@>10cf4b1*/if (/*@>1353a50*/rtb_OR/*@>1353a52*/[/*@>1353a4f*/linIx]) {
+        /*@>1351856*/rtb_FindNonzeroElements/*@>1350816*/[/*@>1351854*/ind]/*@>10cf4a8*/ = /*@>13518b4*/rtb_routerMapOut_h/*@>1350c3d*/ + /*@>13517e8*/1;
+        /*@>13518af*/ind/*@>1354744*/++;
+    }
+    /*@>13518aa*/linIx/*@>1354745*/++;
+}
+/*@>1353fc7*/Model_Target_DW./*@>135486a*/FindNonzeroElements_DIMS1_fm/*@>10cf4ca*/ = /*@>135188d*/ind;
+/* {E!d2006}End of Find: '<S16>/Find Nonzero Elements' */
+
+/* {S!d2008}Assignment: '<S16>/Assignment' incorporates:
+ *  Constant: '<S16>/Constant3'
+ *  Find: '<S16>/Find Nonzero Elements'
+ */
+/*@>13508bf*/for (/*@>13546eb*/ind = /*@>13546ea*/0; /*@>13546fa*/ind < /*@>13546f6*/Model_Target_DW./*@>135486d*/FindNonzeroElements_DIMS1_fm; /*@>13546f1*/ind/*@>1354746*/++) {
+/*@>13508ab*/    for (/*@>1354700*/rtb_routerMapOut_h = /*@>13546ff*/0; /*@>135470a*/rtb_routerMapOut_h < /*@>1354708*/32; /*@>1354706*/rtb_routerMapOut_h/*@>1354747*/++) {
+        /*@>1351852*/rtb_Assignment/*@>1351203*/[/*@>1351850*/rtb_routerMapOut_h/*@>13511ff*/ + ((/*@>1353a56*/rtb_FindNonzeroElements/*@>1353a58*/[/*@>1353a55*/ind]/*@>1350897*/ - /*@>135184b*/1)/*@>135194a*/ << /*@>135203d*/5)]/*@>135089e*/ = /*@>1351811*/0.0F;
+    }
+}
+/* {E!d2008}End of Assignment: '<S16>/Assignment' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS8B10)
+
+/* {S!d2010}M-S-Function: '<S12>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[13543d6*/",tlcOutputsFcnOfS8B10,"/*@]*/")>\
+%endif
+/* {S!d2012}S-Function (sdspperm2): '<S3>/Variable Selector1' incorporates:
+ *  Assignment: '<S16>/Assignment'
+ */
+/*@>1350bb8*/for (/*@>13546da*/ind = /*@>13546d9*/0; /*@>13546e4*/ind < /*@>13546e2*/2; /*@>13546e0*/ind/*@>1354748*/++) {
+    /*@>13518a8*/linIx/*@>10cf4d8*/ = /*@>1353e4d*/Model_Target_ConstP./*@>1354861*/VariableSelector1_Elements/*@>1353a5e*/[/*@>1353a5b*/ind];
+    /*@>10cf4db*/if (/*@>1353e53*/Model_Target_ConstP./*@>1354864*/VariableSelector1_Elements/*@>1353a64*/[/*@>1353a61*/ind]/*@>10cf4da*/ < /*@>13518a7*/0) {
+        /*@>13518a5*/linIx/*@>10cf4dd*/ = /*@>13546cb*/0;
+    } else /*@>10cf4e0*/if (/*@>1353e59*/Model_Target_ConstP./*@>1354867*/VariableSelector1_Elements/*@>1353a6a*/[/*@>1353a67*/ind]/*@>10cf4df*/ >= /*@>13518a3*/5) {
+        /*@>13518a1*/linIx/*@>10cf4e2*/ = /*@>13546ce*/4;
+    }
+    /*@>135369b*/memcpy(&/*@>1353d1e*/Model_Target_B./*@>135485e*/VariableSelector1/*@>13531a8*/[/*@>135318a*/ind/*@>1354441*/ << /*@>1354440*/5], &/*@>13531b4*/rtb_Assignment/*@>13531b5*/[/*@>135319f*/linIx/*@>1354444*/ << /*@>1354443*/5], /*@>13531b7*/sizeof(real32_T)/*@>1354447*/ << /*@>1354446*/5U);
+}
+/* {E!d2012}End of S-Function (sdspperm2): '<S3>/Variable Selector1' */
+
+/* {S!d2014}S-Function (sdspperm2): '<S3>/Variable Selector2' incorporates:
+ *  Assignment: '<S16>/Assignment'
+ */
+/*@>135369d*/memcpy(&/*@>1353d0c*/Model_Target_B./*@>1354858*/VariableSelector2/*@>135314b*/[/*@>135313a*/0], &/*@>1353152*/rtb_Assignment/*@>1353153*/[/*@>1353147*/0], /*@>1353155*/sizeof(real32_T)/*@>135444a*/ << /*@>1354449*/6U);
+/* {S!d2016}S-Function (sdspperm2): '<S3>/Variable Selector3' incorporates:
+ *  Assignment: '<S16>/Assignment'
+ */
+/*@>135369f*/memcpy(&/*@>1353d18*/Model_Target_B./*@>135485b*/VariableSelector3/*@>13530ef*/[/*@>13530de*/0], &/*@>13530f8*/rtb_Assignment/*@>13530f9*/[/*@>13530eb*/128], /*@>13530fb*/sizeof(real32_T)/*@>135444d*/ << /*@>135444c*/5U);
+/* {S!d2018}M-S-Function: '<S3>/FeaturePath' */
+/* MATLAB Function 'InputSelect/cross-partition buffer': '<S13>:1' */
+/* '<S13>:1:3' y = u; */
+%<SLibCG_DumpSSCode("/*@[13543d7*/",tlcOutputsFcnOfS8B12,"/*@]*/")>\
+%if !WHITE_SPACE(tlcOutputsFcnOfS8B13)
+/* {S!d2020}M-S-Function: '<S3>/Partition' */
+%<SLibCG_DumpSSCode("/*@[13543d8*/",tlcOutputsFcnOfS8B13,"/*@]*/")>\
+%endif
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_InputSelect(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(221, 1, fcnProtoType)>
+%endfunction

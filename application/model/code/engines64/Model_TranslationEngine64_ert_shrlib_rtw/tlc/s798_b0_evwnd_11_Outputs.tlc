@@ -1,0 +1,55 @@
+%implements s798_b0_evwnd_11_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%assign _modelSS = ""
+
+%if SLibCG_FcnCallArgAccessed(11,1,0,0)
+%<SLibCG_AccessArg(11 ,1, 1)>
+%<SLibCG_AccessArg(11 ,1, 2)>
+%endif
+%if SLibCG_FcnCallArgAccessed(11,1,0,1)
+%<SLibCG_AccessArg(11 ,1, 0)>
+%endif
+
+/* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 2/Decimated-Rate FDP/Fdp/FreqDomainProcessing/Reverb Extractions/Trivial Translation3': '<S657>:1' */
+/* '<S657>:1:3' DirectPathDec = round(DirectPathSec.Value*FrameRate)*FrameSize; */
+/*@>cbef5d*/localB->/*@>cbf0d5*/DirectPathDec/*@>c6bad6*/ = %<SLibCG_DumpSSCode("/*@[cbf074*/",(SLibCGCallSubFcn("rt_roundd_snf", ["rtu_DirectPathSec->Value/*@>cbf0e9*/ * /*@>cbf0ed*/rtu_FrameRate", "/*@>cbf0f7*/%<::tSimStruct>"], 11, 1, 0)),"/*@]*/")>/*@>cbe8fd*/ * /*@>cbe8d5*/rtu_FrameSize;
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[11].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(11, 1, 0)>
+%endif
+%if SLibCG_ArgAccessed(11, 1, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(11, 1, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_TranslationEngine64_TrivialTranslation3_l(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(11, 1, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_TranslationEngine64_TrivialTranslation3_l", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>const bus_double_1_1 *rtu_DirectPathSec\
+%assign comma = ", "
+%<comma>real_T rtu_FrameRate\
+%assign comma = ", "
+%<comma>real_T rtu_FrameSize\
+%assign comma = ", "
+%<comma>B_TrivialTranslation3_Model_TranslationEngine64_p_T *localB\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(11, 1, fcnProtoType)>
+%endfunction

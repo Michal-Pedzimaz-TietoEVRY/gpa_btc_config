@@ -1,0 +1,31 @@
+%implements s1068_b0_g3vnd_367_ConstCode "C"
+
+%function ConstCode(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%assign tlcOutputsFcnOfS247B39 = OpaqueTLCBlockFcn("Outputs", 247, 39, 367, 3, 0)
+%assign tlcOutputsFcnOfS247B40 = OpaqueTLCBlockFcn("Outputs", 247, 40, 367, 3, 1)
+%if !WHITE_SPACE(tlcOutputsFcnOfS247B39)
+/* ConstCode for S-Function (CapturedConst): '<S600>/CapturedTuneConst' incorporates:
+ *  S-Function (AudioStats_MEX): '<S600>/AudioStats'
+ */
+%<SLibCG_DumpSSCode("/*@[13b6bfd*/",tlcOutputsFcnOfS247B39,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS247B40)
+/* ConstCode for S-Function (CapturedConst): '<S615>/CapturedTuneConst' incorporates:
+ *  S-Function (AudioStats_MEX): '<S615>/AudioStats'
+ */
+%<SLibCG_DumpSSCode("/*@[13b6bff*/",tlcOutputsFcnOfS247B40,"/*@]*/")>\
+%endif
+%closefile cfgTxt
+%<cfgTxt>
+%endfunction
+%function ConstCodeFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_Medusa5H1Part1_Const(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(367, 3, fcnProtoType)>
+%endfunction

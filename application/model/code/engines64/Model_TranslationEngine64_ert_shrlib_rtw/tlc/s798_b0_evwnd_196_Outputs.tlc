@@ -1,0 +1,35 @@
+%implements s798_b0_evwnd_196_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+real32_T Coef_tmp;
+%closefile localVarDecl
+/* MATLAB Function: '<S187>/tau2coef' */
+/* MATLAB Function: '<S187>/tau2coef' incorporates:
+ *  S-Function (TuneVarMEX): '<S187>/Tune Variable'
+ */
+/*  Invoke the function trigger output */
+/* MATLAB Function 'TranslateTrigger/tfunc': '<S190>:1' */
+/* '<S190>:1:3' f(); */
+/*  Convert time constant into filter coefficient */
+/* MATLAB Function 'ModelPreAmp/DecRate/AudioPilot35/Audiopilot_3_5/GainCalculation/RampedEnable/EnableRampCoef/tau2coef': '<S189>:1' */
+/* '<S189>:1:5' Coef = (1 - sin(1/(Tau.Value * FrameRate))) ... */
+/* '<S189>:1:6'     / cos(1/(Tau.Value * FrameRate)); */
+/*@>e806d8*/Coef_tmp/*@>e806da*/ = /*@>e805e7*/1.0F/*@>c722ca*/ / (/*@>e80bc4*/Model_TranslationEngine64_B./*@>e80cb6*/EnableRampTauS.Value/*@>e805f8*/ * /*@>e805f2*/1384.61536F);
+/*@>e80bca*/Model_TranslationEngine64_B./*@>e80cb9*/Coef/*@>c722c5*/ = (/*@>e805e8*/1.0F/*@>c722c9*/ - /*@>e80857*/sinf(/*@>e806dc*/Coef_tmp))/*@>c722c4*/ / /*@>e80859*/cosf(Coef_tmp);
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void FuncTranslation_Model_117_44_328(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(196, 0, fcnProtoType)>
+%endfunction

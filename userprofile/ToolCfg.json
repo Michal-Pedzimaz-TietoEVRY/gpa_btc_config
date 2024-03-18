@@ -1,0 +1,22 @@
+{
+  "Python": {
+    "path": "C:/Users/mt1047270/AppData/Local/Microsoft/WindowsApps/python3.exe"
+  },
+  "MinGW": {
+    "path": "C:/MinGW64/mingw64-6.3.0/bin"
+  },
+  "Matlab": {
+    "path": ""
+  },
+  "CCES": {
+    "path": "C:/Analog Devices/CrossCore Embedded Studio 2.9.1"
+  },
+  "HexagonSDK": {
+    "path": "C:/Qualcomm/Hexagon_SDK/5.3.0.0"
+  },
+  "QNX": {
+    "path": "C:/QNX/qnx710",
+    "armv7_compiler": "host/win64/x86_64/usr/bin/arm-unknown-nto-qnx7.1.0eabi-gcc-8.3.0.exe",
+    "armv8_compiler": "host/win64/x86_64/usr/bin/aarch64-unknown-nto-qnx7.1.0-gcc-8.3.0.exe"
+  }
+}

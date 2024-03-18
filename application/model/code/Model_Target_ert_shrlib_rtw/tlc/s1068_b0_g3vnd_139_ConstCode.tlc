@@ -1,0 +1,56 @@
+%implements s1068_b0_g3vnd_139_ConstCode "C"
+
+%function ConstCode(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%assign tlcOutputsFcnOfS452B64 = OpaqueTLCBlockFcn("Outputs", 452, 64, 139, 4, 0)
+%assign tlcOutputsFcnOfS452B67 = OpaqueTLCBlockFcn("Outputs", 452, 67, 139, 4, 1)
+%assign tlcOutputsFcnOfS452B68 = OpaqueTLCBlockFcn("Outputs", 452, 68, 139, 4, 2)
+%assign   ConstCode_open_On_461_2 = ""
+%openfile ConstCode_open_On_461_2
+
+/* ConstCode for IfAction SubSystem: '<S588>/On' */
+%closefile ConstCode_open_On_461_2
+
+%assign    ConstCode_body_On_461_2 = ""
+%openfile  ConstCode_body_On_461_2
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS452B64)
+/* ConstCode for S-Function (CapturedConst): '<S1210>/CapturedTuneConst' incorporates:
+ *  S-Function (AudioStats_MEX): '<S1210>/AudioStats'
+ */
+%<SLibCG_DumpSSCode("/*@[12cfcc8*/",tlcOutputsFcnOfS452B64,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS452B67)
+/* ConstCode for S-Function (CapturedConst): '<S1257>/CapturedTuneConst' incorporates:
+ *  S-Function (AudioStats_MEX): '<S1257>/AudioStats'
+ */
+%<SLibCG_DumpSSCode("/*@[12cfcca*/",tlcOutputsFcnOfS452B67,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS452B68)
+/* ConstCode for S-Function (CapturedConst): '<S1228>/CapturedTuneConst' incorporates:
+ *  S-Function (AudioStats_MEX): '<S1228>/AudioStats'
+ */
+%<SLibCG_DumpSSCode("/*@[12cfccc*/",tlcOutputsFcnOfS452B68,"/*@]*/")>\
+%endif
+%closefile ConstCode_body_On_461_2
+
+%assign    ConstCode_close_On_461_2 = ""
+%openfile  ConstCode_close_On_461_2
+
+/* End of ConstCode for SubSystem: '<S588>/On' */
+%closefile ConstCode_close_On_461_2
+%<SLibCG_DumpSSCode(ConstCode_open_On_461_2, ConstCode_body_On_461_2, ConstCode_close_On_461_2)>
+
+%closefile cfgTxt
+%<cfgTxt>
+%endfunction
+%function ConstCodeFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_Medusa5H1Part4_Const(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(139, 4, fcnProtoType)>
+%endfunction

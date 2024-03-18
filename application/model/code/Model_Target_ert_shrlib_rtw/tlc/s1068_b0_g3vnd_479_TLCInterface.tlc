@@ -1,0 +1,22 @@
+%implements s1068_b0_g3vnd_479_TLCInterface "C"
+
+%function getInputAddr_749_0_479_0_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_BOCSCAddr(block, 56, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getInput_749_0_479_0_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_BOCSC(block, 56, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getInputAddr_749_0_479_0_0_2_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_BOCSCAddr(block, 57, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getInput_749_0_479_0_0_2_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_BOCSC(block, 57, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+

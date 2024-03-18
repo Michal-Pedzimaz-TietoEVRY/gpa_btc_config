@@ -1,0 +1,36 @@
+%implements s1068_b0_g3vnd_409_SystemInitialize "C"
+
+%function SystemInitialize(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%<SLibCGIRDumpSystemUserCode(578, "Initialize", "Header")>\
+%<SLibCGIRDumpSystemUserCode(578, "Initialize", "Body")>\
+/* {S!d3275}SystemInitialize for Atomic SubSystem: '<S1400>/Ramping_Subsystem' */
+/* {S!d3276}SystemInitialize for IfAction SubSystem: '<S1404>/ifActionSubsystem' */
+/* {S!d3284}InitializeConditions for DiscreteFilter: '<S1407>/ramping_filter' */
+/*@>1489727*/Model_Target_DW./*@>148ccfb*/ramping_filter_icLoad_i/*@>10cd68e*/ = /*@>148cce5*/1U;
+/* {E!d3276}End of SystemInitialize for SubSystem: '<S1404>/ifActionSubsystem' */
+/* {E!d3275}End of SystemInitialize for SubSystem: '<S1400>/Ramping_Subsystem' */
+
+/* {S!d3279}SystemInitialize for Atomic SubSystem: '<S1413>/Ramping_Subsystem' */
+/* {S!d3280}SystemInitialize for IfAction SubSystem: '<S1417>/ifActionSubsystem' */
+/* {S!d3286}InitializeConditions for DiscreteFilter: '<S1420>/ramping_filter' */
+/*@>148972d*/Model_Target_DW./*@>148ccfe*/ramping_filter_icLoad_f/*@>10cd69a*/ = /*@>148cce8*/1U;
+/* {E!d3280}End of SystemInitialize for SubSystem: '<S1417>/ifActionSubsystem' */
+/* {E!d3279}End of SystemInitialize for SubSystem: '<S1413>/Ramping_Subsystem' */
+/* '<S1381>:1:12' filterStates = zeros(1,channel_count,'single'); */
+/* '<S1388>:1:12' filterStates = zeros(1,channel_count,'single'); */
+%<SLibCGIRDumpSystemUserCode(578, "Initialize", "Trailer")>\
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedSystemInitializeLocalVars", localVarDecl)>
+%endfunction
+%function SystemInitializeFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_Enabled_Init(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(409, 2, fcnProtoType)>
+%endfunction

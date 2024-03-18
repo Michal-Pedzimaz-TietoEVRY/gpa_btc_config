@@ -1,0 +1,145 @@
+%implements s1068_b0_g3vnd_122_SystemInitialize "C"
+
+%function SystemInitialize(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+int32_T i;
+%closefile localVarDecl
+%<SLibCGIRDumpSystemUserCode(423, "Initialize", "Header")>\
+%<SLibCGIRDumpSystemUserCode(423, "Initialize", "Body")>\
+/* {S!d266}Start for If: '<S587>/If' */
+/*@>12a7447*/Model_Target_Medusa5H1Part3_DW./*@>12ad623*/If_ActiveSubsystem/*@>10cd3a5*/ = /*@>12ad47c*/-1;
+/* {S!d268}Start for DataStoreMemory: '<S587>/Data Store Memory' */
+/*@>12a744d*/Model_Target_Medusa5H1Part3_DW./*@>12ad626*/MedusaPostUpmixEnable/*@>10cd3a7*/ = /*@>12893a5*/1U;
+/* {S!d255}SystemInitialize for IfAction SubSystem: '<S587>/On' */
+%<SLibCG_DumpSSCode("/*@[12aa2d6*/",SLibCGIRDumpSystemUserCode(414, "Initialize", "Header"),"/*@]*/")>\
+%<SLibCG_DumpSSCode("/*@[12aa2d7*/",SLibCGIRDumpSystemUserCode(414, "Initialize", "Body"),"/*@]*/")>\
+/*@>1275414*/for (/*@>12ad4ce*/i = /*@>12ad4cd*/0; /*@>12ad4d8*/i < /*@>12ad4d6*/20; /*@>12ad4d4*/i/*@>12ad4dc*/++) {
+    /* {S!d270}Start for DataStoreMemory: '<S1061>/Data Store Memory2' */
+    /*@>12a7471*/Model_Target_Medusa5H1Part3_DW./*@>12ad629*/Premix_rampCoeff_CS/*@>1278ccb*/[/*@>1289317*/i]/*@>1275406*/ = 1.0F;
+    /* {S!d272}Start for DataStoreMemory: '<S1002>/Data Store Memory2' */
+    /*@>12a747d*/Model_Target_Medusa5H1Part3_DW./*@>12ad62c*/Premix_SLCGain_CS/*@>1278d02*/[/*@>128931b*/i]/*@>1275422*/ = 1.0F;
+    /* {S!d274}Start for DataStoreMemory: '<S1002>/Data Store Memory3' */
+    /*@>12a7489*/Model_Target_Medusa5H1Part3_DW./*@>12ad62f*/Premix_targetGain_CS/*@>1278d39*/[/*@>128931f*/i]/*@>127543e*/ = 1.0F;
+    /* {S!d276}Start for DataStoreMemory: '<S1002>/Data Store Memory4' */
+    /*@>12a7495*/Model_Target_Medusa5H1Part3_DW./*@>12ad632*/Premix_currentGain_CS/*@>1278d70*/[/*@>1289323*/i]/*@>127545a*/ = 1.0F;
+}
+/*@>1275484*/for (/*@>12ad4bd*/i = /*@>12ad4bc*/0; /*@>12ad4c7*/i < /*@>12ad4c5*/77; /*@>12ad4c3*/i/*@>12ad4dd*/++) {
+    /* {S!d278}Start for DataStoreMemory: '<S1073>/Data Store Memory2' */
+    /*@>12a74b9*/Model_Target_Medusa5H1Part3_DW./*@>12ad635*/Premix_rampCoeff_Left/*@>1278da7*/[/*@>1289327*/i]/*@>1275476*/ = 1.0F;
+    /* {S!d280}Start for DataStoreMemory: '<S1003>/Data Store Memory2' */
+    /*@>12a74c5*/Model_Target_Medusa5H1Part3_DW./*@>12ad638*/Premix_SLCGain_Left/*@>1278dde*/[/*@>128932b*/i]/*@>1275492*/ = 1.0F;
+    /* {S!d282}Start for DataStoreMemory: '<S1003>/Data Store Memory3' */
+    /*@>12a74d1*/Model_Target_Medusa5H1Part3_DW./*@>12ad63b*/Premix_targetGain_Left/*@>1278e15*/[/*@>128932f*/i]/*@>12754ae*/ = 1.0F;
+    /* {S!d284}Start for DataStoreMemory: '<S1003>/Data Store Memory4' */
+    /*@>12a74dd*/Model_Target_Medusa5H1Part3_DW./*@>12ad63e*/Premix_currentGain_Left/*@>1278e4c*/[/*@>1289333*/i]/*@>12754ca*/ = 1.0F;
+    /* {S!d286}Start for DataStoreMemory: '<S1085>/Data Store Memory2' */
+    /*@>12a74e3*/Model_Target_Medusa5H1Part3_DW./*@>12ad641*/Premix_rampCoeff_Right/*@>1278e83*/[/*@>1289337*/i]/*@>12754e6*/ = 1.0F;
+    /* {S!d288}Start for DataStoreMemory: '<S1004>/Data Store Memory2' */
+    /*@>12a74e9*/Model_Target_Medusa5H1Part3_DW./*@>12ad644*/Premix_SLCGain_Right/*@>1278eba*/[/*@>128933b*/i]/*@>1275502*/ = 1.0F;
+    /* {S!d290}Start for DataStoreMemory: '<S1004>/Data Store Memory3' */
+    /*@>12a74fb*/Model_Target_Medusa5H1Part3_DW./*@>12ad64a*/Premix_targetGain_Right/*@>1278ef1*/[/*@>128933f*/i]/*@>127551e*/ = 1.0F;
+    /* {S!d292}Start for DataStoreMemory: '<S1004>/Data Store Memory4' */
+    /*@>12a750d*/Model_Target_Medusa5H1Part3_DW./*@>12ad650*/Premix_currentGain_Right/*@>1278f28*/[/*@>1289343*/i]/*@>127553a*/ = 1.0F;
+}
+/*@>1275564*/for (/*@>12ad4ac*/i = /*@>12ad4ab*/0; /*@>12ad4b6*/i < /*@>12ad4b4*/12; /*@>12ad4b2*/i/*@>12ad4de*/++) {
+    /* {S!d294}Start for DataStoreMemory: '<S952>/Data Store Memory2' */
+    /*@>12a74f5*/Model_Target_Medusa5H1Part3_DW./*@>12ad647*/FRM_rampCoeff_CS/*@>1278f5f*/[/*@>1289347*/i]/*@>1275556*/ = 1.0F;
+    /* {S!d296}Start for DataStoreMemory: '<S934>/Data Store Memory2' */
+    /*@>12a7507*/Model_Target_Medusa5H1Part3_DW./*@>12ad64d*/FRM_SLCGain_CS/*@>1278f96*/[/*@>128934b*/i]/*@>1275572*/ = 1.0E-5F;
+    /* {S!d298}Start for DataStoreMemory: '<S934>/Data Store Memory3' */
+    /*@>12a7519*/Model_Target_Medusa5H1Part3_DW./*@>12ad653*/FRM_targetGain_CS/*@>1278fcd*/[/*@>128934f*/i]/*@>127558e*/ = 1.0E-5F;
+    /* {S!d300}Start for DataStoreMemory: '<S934>/Data Store Memory4' */
+    /*@>12a7525*/Model_Target_Medusa5H1Part3_DW./*@>12ad656*/FRM_currentGain_CS/*@>1279004*/[/*@>1289353*/i]/*@>12755aa*/ = 1.0E-5F;
+}
+/*@>12755d4*/for (/*@>12ad49b*/i = /*@>12ad49a*/0; /*@>12ad4a5*/i < /*@>12ad4a3*/30; /*@>12ad4a1*/i/*@>12ad4df*/++) {
+    /* {S!d302}Start for DataStoreMemory: '<S964>/Data Store Memory2' */
+    /*@>12a7549*/Model_Target_Medusa5H1Part3_DW./*@>12ad659*/FRM_rampCoeff_Left/*@>127903b*/[/*@>1289357*/i]/*@>12755c6*/ = 1.0F;
+    /* {S!d304}Start for DataStoreMemory: '<S935>/Data Store Memory1' */
+    /*@>12a7555*/Model_Target_Medusa5H1Part3_DW./*@>12ad65c*/FRM_SLCGain_Left/*@>1279072*/[/*@>128935b*/i]/*@>12755e2*/ = 1.0E-5F;
+    /* {S!d306}Start for DataStoreMemory: '<S935>/Data Store Memory3' */
+    /*@>12a7561*/Model_Target_Medusa5H1Part3_DW./*@>12ad65f*/FRM_targetGain_Left/*@>12790a9*/[/*@>128935f*/i]/*@>12755fe*/ = 1.0E-5F;
+    /* {S!d308}Start for DataStoreMemory: '<S935>/Data Store Memory4' */
+    /*@>12a756d*/Model_Target_Medusa5H1Part3_DW./*@>12ad662*/FRM_currentGain_Left/*@>12790e0*/[/*@>1289363*/i]/*@>127561a*/ = 1.0E-5F;
+    /* {S!d310}Start for DataStoreMemory: '<S976>/Data Store Memory2' */
+    /*@>12a7579*/Model_Target_Medusa5H1Part3_DW./*@>12ad665*/FRM_rampCoeff_Right/*@>1279117*/[/*@>1289367*/i]/*@>1275636*/ = 1.0F;
+    /* {S!d312}Start for DataStoreMemory: '<S936>/Data Store Memory2' */
+    /*@>12a7585*/Model_Target_Medusa5H1Part3_DW./*@>12ad668*/FRM_SLCGain_Right/*@>127914e*/[/*@>128936b*/i]/*@>1275652*/ = 1.0E-5F;
+    /* {S!d314}Start for DataStoreMemory: '<S936>/Data Store Memory3' */
+    /*@>12a7591*/Model_Target_Medusa5H1Part3_DW./*@>12ad66b*/FRM_targetGain_Right/*@>1279185*/[/*@>128936f*/i]/*@>127566e*/ = 1.0E-5F;
+    /* {S!d316}Start for DataStoreMemory: '<S936>/Data Store Memory4' */
+    /*@>12a759d*/Model_Target_Medusa5H1Part3_DW./*@>12ad66e*/FRM_currentGain_Right/*@>12791bc*/[/*@>1289373*/i]/*@>127568a*/ = 1.0E-5F;
+}
+/*@>12756b4*/for (/*@>12ad48a*/i = /*@>12ad489*/0; /*@>12ad494*/i < /*@>12ad492*/12; /*@>12ad490*/i/*@>12ad4e0*/++) {
+    /* {S!d318}Start for DataStoreMemory: '<S1143>/Ramp Coeff' */
+    /*@>12a75a3*/Model_Target_Medusa5H1Part3_DW./*@>12ad671*/VLSDrv_rampCoeff/*@>12791f3*/[/*@>1289377*/i]/*@>12756a6*/ = 1.0F;
+    /* {S!d320}Start for DataStoreMemory: '<S1133>/Data Store Memory2' */
+    /*@>12a75a9*/Model_Target_Medusa5H1Part3_DW./*@>12ad674*/VLSDrv_SLCGain/*@>127922a*/[/*@>128937b*/i]/*@>12756c2*/ = 1.0E-5F;
+    /* {S!d322}Start for DataStoreMemory: '<S1133>/Data Store Memory3' */
+    /*@>12a75b5*/Model_Target_Medusa5H1Part3_DW./*@>12ad67a*/VLSDrv_targetGain/*@>1279261*/[/*@>128937f*/i]/*@>12756de*/ = 1.0E-5F;
+    /* {S!d324}Start for DataStoreMemory: '<S1133>/Data Store Memory4' */
+    /*@>12a75c1*/Model_Target_Medusa5H1Part3_DW./*@>12ad680*/VLSDrv_currentGain/*@>1279298*/[/*@>1289383*/i]/*@>12756fa*/ = 1.0E-5F;
+    /* {S!d326}Start for DataStoreMemory: '<S1168>/Ramp Coeff' */
+    /*@>12a75c7*/Model_Target_Medusa5H1Part3_DW./*@>12ad683*/VLSPax_rampCoeff/*@>12792cf*/[/*@>1289387*/i]/*@>1275716*/ = 1.0F;
+    /* {S!d328}Start for DataStoreMemory: '<S1158>/Data Store Memory2' */
+    /*@>12a75cd*/Model_Target_Medusa5H1Part3_DW./*@>12ad686*/VLSPax_SLCGain/*@>1279306*/[/*@>128938b*/i]/*@>1275732*/ = 1.0E-5F;
+    /* {S!d330}Start for DataStoreMemory: '<S1158>/Data Store Memory3' */
+    /*@>12a75d3*/Model_Target_Medusa5H1Part3_DW./*@>12ad689*/VLSPax_targetGain/*@>127933d*/[/*@>128938f*/i]/*@>127574e*/ = 1.0E-5F;
+    /* {S!d332}Start for DataStoreMemory: '<S1158>/Data Store Memory4' */
+    /*@>12a75d9*/Model_Target_Medusa5H1Part3_DW./*@>12ad68c*/VLSPax_currentGain/*@>1279372*/[/*@>1289393*/i]/*@>127576a*/ = 1.0E-5F;
+}
+/* {S!d256}SystemInitialize for Enabled SubSystem: '<S999>/Mono-Surround' */
+%<SLibCG_DumpSSCode("/*@[12aa2d8*/",SLibCGIRDumpSystemUserCode(345, "Initialize", "Header"),"/*@]*/")>\
+%<SLibCG_DumpSSCode("/*@[12aa2d9*/",SLibCGIRDumpSystemUserCode(345, "Initialize", "Body"),"/*@]*/")>\
+/* {S!d334}Start for If: '<S1015>/If' */
+/*@>12a75af*/Model_Target_Medusa5H1Part3_DW./*@>12ad677*/If_ActiveSubsystem_b/*@>10cd4b2*/ = /*@>12ad47f*/-1;
+/* {S!d336}Start for If: '<S1016>/If' */
+/*@>12a75bb*/Model_Target_Medusa5H1Part3_DW./*@>12ad67d*/If_ActiveSubsystem_k/*@>10cd4b4*/ = /*@>12ad482*/-1;
+/* {S!d257}SystemInitialize for IfAction SubSystem: '<S1015>/Hilbert SOS A' */
+%<SLibCG_DumpSSCode("/*@[12aa2da*/",SLibCGIRDumpSystemUserCode(337, "Initialize", "Header"),"/*@]*/")>\
+%<SLibCG_DumpSSCode("/*@[12aa2db*/",SLibCGIRDumpSystemUserCode(337, "Initialize", "Body"),"/*@]*/")>\
+%<SLibCG_DumpSSCode("/*@[12aa2dc*/",SLibCGIRDumpSystemUserCode(337, "Initialize", "Trailer"),"/*@]*/")>\
+/* {E!d257}End of SystemInitialize for SubSystem: '<S1015>/Hilbert SOS A' */
+
+/* {S!d259}SystemInitialize for IfAction SubSystem: '<S1016>/Hilbert SOS B' */
+%<SLibCG_DumpSSCode("/*@[12aa2dd*/",SLibCGIRDumpSystemUserCode(344, "Initialize", "Header"),"/*@]*/")>\
+%<SLibCG_DumpSSCode("/*@[12aa2de*/",SLibCGIRDumpSystemUserCode(344, "Initialize", "Body"),"/*@]*/")>\
+%<SLibCG_DumpSSCode("/*@[12aa2df*/",SLibCGIRDumpSystemUserCode(344, "Initialize", "Trailer"),"/*@]*/")>\
+/* {E!d259}End of SystemInitialize for SubSystem: '<S1016>/Hilbert SOS B' */
+%<SLibCG_DumpSSCode("/*@[12aa2e0*/",SLibCGIRDumpSystemUserCode(345, "Initialize", "Trailer"),"/*@]*/")>\
+/* {E!d256}End of SystemInitialize for SubSystem: '<S999>/Mono-Surround' */
+
+/* {S!d262}SystemInitialize for Atomic SubSystem: '<S887>/Expand Tail Components' */
+/* '<S899>:1:18' delayIndex = int32(0); */
+/* '<S900>:1:18' delayIndex = int32(0); */
+/* '<S901>:1:18' delayIndex = int32(0); */
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[314], "SystemInitialize",2)
+%<SLibCG_DumpSSCode("/*@[12aa2e3*/",SLibCGIRGenReusableSysCall("Model_Target_ExpandTailComponents_Init", [], 314, 0, 4, 2, 4, 423),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[314]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d262}End of SystemInitialize for SubSystem: '<S887>/Expand Tail Components' */
+%endif
+/* '<S1116>:1:9' previousCount = single(0); */
+%<SLibCG_DumpSSCode("/*@[12aa2e1*/",SLibCGIRDumpSystemUserCode(414, "Initialize", "Trailer"),"/*@]*/")>\
+/* {E!d255}End of SystemInitialize for SubSystem: '<S587>/On' */
+%<SLibCGIRDumpSystemUserCode(423, "Initialize", "Trailer")>\
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedSystemInitializeLocalVars", localVarDecl)>
+%endfunction
+%function SystemInitializeFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_Medusa5H1Part3_Init(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(122, 0, fcnProtoType)>
+%endfunction

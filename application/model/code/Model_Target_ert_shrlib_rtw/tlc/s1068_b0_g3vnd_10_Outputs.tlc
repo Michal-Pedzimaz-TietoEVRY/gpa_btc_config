@@ -1,0 +1,60 @@
+%implements s1068_b0_g3vnd_10_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+int32_T i;
+%closefile localVarDecl
+/* MATLAB Function 'LeastSquareSmooth/MATLAB Function': '<S676>:1' */
+/* '<S676>:1:3' if isempty(xLast) */
+/* '<S676>:1:8' if isempty(yLast) */
+/* '<S676>:1:12' y = (gain * (x + xLast)) + (pole * yLast); */
+/*  Update states */
+/* '<S676>:1:15' xLast = x; */
+/* '<S676>:1:16' yLast = y; */
+/*@>1169f2c*/for (/*@>116ac55*/i = /*@>116ac54*/0; /*@>116ac5f*/i < /*@>116ac5d*/129; /*@>116ac5b*/i/*@>116ac63*/++) {
+    /*@>116aa42*/localB->/*@>116acbc*/y/*@>116a0c8*/[/*@>116a41c*/i]/*@>1169f09*/ = (/*@>116a9dc*/rtu_x/*@>116a9de*/[/*@>116a9da*/i]/*@>1169f14*/ + /*@>116ab6f*/localDW->/*@>116acc2*/xLast/*@>116a9e4*/[/*@>116a9e1*/i])/*@>116a435*/ * /*@>116a405*/rtu_gain/*@>1169f10*/ + /*@>116a407*/rtu_pole/*@>116a439*/ * /*@>116ab76*/localDW->/*@>116acc5*/yLast/*@>116a9ea*/[/*@>116a9e7*/i];
+    /*@>116ab7d*/localDW->/*@>116acc8*/xLast/*@>116a102*/[/*@>116a424*/i]/*@>1169f3a*/ = /*@>116a9ef*/rtu_x/*@>116a9f1*/[/*@>116a9ed*/i];
+    /*@>116ab84*/localDW->/*@>116accb*/yLast/*@>116a139*/[/*@>116a42c*/i]/*@>1169f57*/ = /*@>116aa49*/localB->/*@>116acbf*/y/*@>116a9f7*/[/*@>116a9f4*/i];
+}
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[10].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(10, 0, 0)>
+%endif
+%if SLibCG_ArgAccessed(10, 0, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(10, 0, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_MATLABFunction(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(10, 0, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_Target_MATLABFunction", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>const real32_T rtu_x[129]\
+%assign comma = ", "
+%<comma>real32_T rtu_pole\
+%assign comma = ", "
+%<comma>real32_T rtu_gain\
+%assign comma = ", "
+%<comma>B_MATLABFunction_Model_Target_T *localB\
+%assign comma = ", "
+%<comma>DW_MATLABFunction_Model_Target_T *localDW\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(10, 0, fcnProtoType)>
+%endfunction

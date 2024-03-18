@@ -1,0 +1,46 @@
+%implements "chartSource" "C"
+%function ChartConfig(block, system) void
+  %createrecord chartConfiguration { ...
+          executeAtInitialization  0 ...
+  }
+  %return chartConfiguration
+%endfunction
+%function ChartDataMap(block, system) void
+  %createrecord ChartDataElements {\
+    NumChartData   4 \
+    ChartDataDefaults {\
+      RecordType   "ChartData"\
+      Dimensions   []\
+      IsTestPoint  0\
+    }\
+    ChartData {\
+      Name         "PrevChange"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "SpeedBoundsNoiseSlew:176:126-136"\
+    }\
+    ChartData {\
+      Name         "PrevDelta"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "SpeedBoundsNoiseSlew:176:137-146"\
+    }\
+    ChartData {\
+      Name         "PrevPostSlew"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "SpeedBoundsNoiseSlew:176:147-159"\
+    }\
+    ChartData {\
+      Name         "PrevPostSlew_not_empty"\
+      Description  "EmlPersistentSentinel"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "SpeedBoundsNoiseSlew:176:147-159"\
+    }\
+  }
+  %return ChartDataElements
+%endfunction

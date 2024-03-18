@@ -1,0 +1,35 @@
+--------------------------------------------------------------------
+Module Name:
+------------
+    medusa
+
+Description:
+-------------------
+Repository for Simulink customizations enabling
+code generation for production audio features.
+
+Current Module Externals
+-------------------------------
+    +------------------------------------+
+    |                                    |
+    |** MEDUSA=tags/medusa5h2_v220004    |
+    |                                    |
+    +------------------------------------+
+    
+    /asd2/obfuscate/medusa5h/${MEDUSA}/module   medusa
+
+Required Simulink Project References
+-------------------------------
+    blocklib.prj V220019
+	Talaria.prj  V2200AU
+
+Source control URL:
+-------------------------------
+    https://svn.bose.com/asd2/talaria/tags		//Point to obfuscated url
+
+(development takes place in a separate asd2/medusa5h repo)
+
+....................................................................
+-------------------
+Release Log:
+-------------------

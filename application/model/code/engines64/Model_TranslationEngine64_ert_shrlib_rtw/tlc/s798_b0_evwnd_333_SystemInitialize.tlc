@@ -1,0 +1,21 @@
+%implements s798_b0_evwnd_333_SystemInitialize "C"
+
+%function SystemInitialize(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%<SLibCGIRDumpSystemUserCode(445, "Initialize", "Header")>\
+%<SLibCGIRDumpSystemUserCode(445, "Initialize", "Body")>\
+%<SLibCGIRDumpSystemUserCode(445, "Initialize", "Trailer")>\
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedSystemInitializeLocalVars", localVarDecl)>
+%endfunction
+%function SystemInitializeFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_TranslationEngine64_Enabled_Init(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(333, 0, fcnProtoType)>
+%endfunction

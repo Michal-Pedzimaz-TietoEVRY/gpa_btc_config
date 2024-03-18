@@ -1,0 +1,59 @@
+%implements s1068_b0_g3vnd_409_ConstCode "C"
+
+%function ConstCode(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%assign tlcOutputsFcnOfS578B121 = OpaqueTLCBlockFcn("Outputs", 578, 121, 409, 5, 0)
+%assign tlcOutputsFcnOfS578B122 = OpaqueTLCBlockFcn("Outputs", 578, 122, 409, 5, 1)
+%assign tlcOutputsFcnOfS578B123 = OpaqueTLCBlockFcn("Outputs", 578, 123, 409, 5, 2)
+%assign tlcOutputsFcnOfS578B124 = OpaqueTLCBlockFcn("Outputs", 578, 124, 409, 5, 3)
+%assign tlcOutputsFcnOfS578B125 = OpaqueTLCBlockFcn("Outputs", 578, 125, 409, 5, 4)
+%assign tlcOutputsFcnOfS578B126 = OpaqueTLCBlockFcn("Outputs", 578, 126, 409, 5, 5)
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B121)
+/* ConstCode for S-Function (CapturedConst): '<S1375>/Captured Tune Const' incorporates:
+ *  S-Function (AudioStats_MEX): '<S1375>/Audio Stats'
+ */
+%<SLibCG_DumpSSCode("/*@[148b87c*/",tlcOutputsFcnOfS578B121,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B122)
+/* ConstCode for S-Function (CapturedConst): '<S1375>/Captured Tune Const1' incorporates:
+ *  S-Function (AudioStats_MEX): '<S1375>/Audio Stats'
+ */
+%<SLibCG_DumpSSCode("/*@[148b87e*/",tlcOutputsFcnOfS578B122,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B123)
+/* ConstCode for S-Function (CapturedConst): '<S1382>/Captured Tune Const' incorporates:
+ *  S-Function (AudioStats_MEX): '<S1382>/Audio Stats'
+ */
+%<SLibCG_DumpSSCode("/*@[148b880*/",tlcOutputsFcnOfS578B123,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B124)
+/* ConstCode for S-Function (CapturedConst): '<S1382>/Captured Tune Const1' incorporates:
+ *  S-Function (AudioStats_MEX): '<S1382>/Audio Stats'
+ */
+%<SLibCG_DumpSSCode("/*@[148b882*/",tlcOutputsFcnOfS578B124,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B125)
+/* ConstCode for S-Function (CapturedConst): '<S1432>/Captured Tune Const' incorporates:
+ *  S-Function (AudioStats_MEX): '<S1432>/Audio Stats'
+ */
+%<SLibCG_DumpSSCode("/*@[148b884*/",tlcOutputsFcnOfS578B125,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B126)
+/* ConstCode for S-Function (CapturedConst): '<S1452>/Captured Tune Const' incorporates:
+ *  S-Function (AudioStats_MEX): '<S1452>/Audio Stats'
+ */
+%<SLibCG_DumpSSCode("/*@[148b886*/",tlcOutputsFcnOfS578B126,"/*@]*/")>\
+%endif
+%closefile cfgTxt
+%<cfgTxt>
+%endfunction
+%function ConstCodeFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_Enabled_Const(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(409, 5, fcnProtoType)>
+%endfunction

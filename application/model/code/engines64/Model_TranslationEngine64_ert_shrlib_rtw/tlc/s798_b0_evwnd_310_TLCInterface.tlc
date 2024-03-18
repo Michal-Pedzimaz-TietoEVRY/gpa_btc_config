@@ -1,0 +1,997 @@
+%implements s798_b0_evwnd_310_TLCInterface "C"
+
+%function getOutputAddr_284_1_310_1_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3ec51*//*@>f3ec45*/Model_TranslationEngine64_B./*@>f3ec57*/LsSmoothCutoff"
+%endfunction
+
+%function getOutput_284_1_310_1_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3ec65*/Model_TranslationEngine64_B./*@>f3ec78*/LsSmoothCutoff"
+%endfunction
+
+%function getOutputAddr_284_2_310_1_1_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3eca5*//*@>f3ec99*/Model_TranslationEngine64_B./*@>f3ecab*/SlowPsdSmoothCutoff"
+%endfunction
+
+%function getOutput_284_2_310_1_1_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3ecb9*/Model_TranslationEngine64_B./*@>f3eccc*/SlowPsdSmoothCutoff"
+%endfunction
+
+%function getOutputAddr_284_3_310_1_2_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3ecf9*//*@>f3eced*/Model_TranslationEngine64_B./*@>f3ecff*/FastPsdSmoothCutoff"
+%endfunction
+
+%function getOutput_284_3_310_1_2_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3ed0d*/Model_TranslationEngine64_B./*@>f3ed20*/FastPsdSmoothCutoff"
+%endfunction
+
+%function getOutputAddr_284_4_310_1_3_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3ed4d*//*@>f3ed41*/Model_TranslationEngine64_B./*@>f3ed53*/DirectPathSec"
+%endfunction
+
+%function getOutput_284_4_310_1_3_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3ed61*/Model_TranslationEngine64_B./*@>f3ed74*/DirectPathSec"
+%endfunction
+
+%function getOutputAddr_284_5_310_1_4_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3eda1*//*@>f3ed95*/Model_TranslationEngine64_B./*@>f3eda7*/XpMax"
+%endfunction
+
+%function getOutput_284_5_310_1_4_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3edb5*/Model_TranslationEngine64_B./*@>f3edc8*/XpMax"
+%endfunction
+
+%function getOutputAddr_284_6_310_1_5_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3edf5*//*@>f3ede9*/Model_TranslationEngine64_B./*@>f3edfb*/XpMin"
+%endfunction
+
+%function getOutput_284_6_310_1_5_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3ee09*/Model_TranslationEngine64_B./*@>f3ee1c*/XpMin"
+%endfunction
+
+%function getInputAddr_284_10_310_1_7_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3ee60*//*@>f3ee54*/Model_TranslationEngine64_B./*@>f3ee66*/XpMax_g"
+%endfunction
+
+%function getInput_284_10_310_1_7_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3ee74*/Model_TranslationEngine64_B./*@>f3ee87*/XpMax_g"
+%endfunction
+
+%function getInputAddr_284_11_310_1_8_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3eeb4*//*@>f3eea8*/Model_TranslationEngine64_B./*@>f3eeba*/LokRokMaxScaleFactor_a"
+%endfunction
+
+%function getInput_284_11_310_1_8_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3eec8*/Model_TranslationEngine64_B./*@>f3eedb*/LokRokMaxScaleFactor_a"
+%endfunction
+
+%function getInputAddr_284_12_310_1_9_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3ef08*//*@>f3eefc*/Model_TranslationEngine64_B./*@>f3ef0e*/XpMin_d"
+%endfunction
+
+%function getInput_284_12_310_1_9_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3ef1c*/Model_TranslationEngine64_B./*@>f3ef2f*/XpMin_d"
+%endfunction
+
+%function getOutputAddr_284_13_310_1_10_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3ef5c*//*@>f3ef50*/Model_TranslationEngine64_B./*@>f3ef62*/ESDUpperbounddB"
+%endfunction
+
+%function getOutput_284_13_310_1_10_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3ef70*/Model_TranslationEngine64_B./*@>f3ef83*/ESDUpperbounddB"
+%endfunction
+
+%function getOutputAddr_284_14_310_1_11_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3efb0*//*@>f3efa4*/Model_TranslationEngine64_B./*@>f3efb6*/ESDLowerbounddB"
+%endfunction
+
+%function getOutput_284_14_310_1_11_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3efc4*/Model_TranslationEngine64_B./*@>f3efd7*/ESDLowerbounddB"
+%endfunction
+
+%function getInputAddr_284_18_310_1_13_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3f01d*//*@>f3f010*/Model_TranslationEngine64_B./*@>f3f028*/sf_TrivialTranslation3./*@>f3f025*/ESDUpperbounddB"
+%endfunction
+
+%function getInput_284_18_310_1_13_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3f037*/Model_TranslationEngine64_B./*@>f3f050*/sf_TrivialTranslation3./*@>f3f04d*/ESDUpperbounddB"
+%endfunction
+
+%function getInputAddr_284_19_310_1_14_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3f07f*//*@>f3f072*/Model_TranslationEngine64_B./*@>f3f08a*/sf_TrivialTranslation3./*@>f3f087*/ESDLowerbounddB"
+%endfunction
+
+%function getInput_284_19_310_1_14_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3f099*/Model_TranslationEngine64_B./*@>f3f0b2*/sf_TrivialTranslation3./*@>f3f0af*/ESDLowerbounddB"
+%endfunction
+
+%function getInputAddr_284_20_310_1_15_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3f0e1*//*@>f3f0d4*/Model_TranslationEngine64_B./*@>f3f0ec*/sf_TrivialTranslation3./*@>f3f0e9*/ESDStepSize"
+%endfunction
+
+%function getInput_284_20_310_1_15_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3f0fb*/Model_TranslationEngine64_B./*@>f3f114*/sf_TrivialTranslation3./*@>f3f111*/ESDStepSize"
+%endfunction
+
+%function getInputAddr_284_25_310_1_18_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3f16f*//*@>f3f162*/Model_TranslationEngine64_B./*@>f3f17a*/sf_TrivialTranslation1./*@>f3f177*/FastPsdSmoothFactor"
+%endfunction
+
+%function getInput_284_25_310_1_18_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3f189*/Model_TranslationEngine64_B./*@>f3f1a2*/sf_TrivialTranslation1./*@>f3f19f*/FastPsdSmoothFactor"
+%endfunction
+
+%function getInputAddr_284_26_310_1_19_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3f1d1*//*@>f3f1c4*/Model_TranslationEngine64_B./*@>f3f1dc*/sf_TrivialTranslation1./*@>f3f1d9*/SlowPsdSmoothFactor"
+%endfunction
+
+%function getInput_284_26_310_1_19_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3f1eb*/Model_TranslationEngine64_B./*@>f3f204*/sf_TrivialTranslation1./*@>f3f201*/SlowPsdSmoothFactor"
+%endfunction
+
+%function getInputAddr_284_30_310_1_21_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3f24a*//*@>f3f23d*/Model_TranslationEngine64_B./*@>f3f255*/sf_TrivialTranslation3_l./*@>f3f252*/DirectPathDec"
+%endfunction
+
+%function getInput_284_30_310_1_21_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3f264*/Model_TranslationEngine64_B./*@>f3f27d*/sf_TrivialTranslation3_l./*@>f3f27a*/DirectPathDec"
+%endfunction
+
+%function getInputAddr_284_34_310_1_23_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3f2c3*//*@>f3f2b6*/Model_TranslationEngine64_B./*@>f3f2ce*/sf_TrivialTranslation4./*@>f3f2cb*/LsSmoothFactor"
+%endfunction
+
+%function getInput_284_34_310_1_23_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3f2dd*/Model_TranslationEngine64_B./*@>f3f2f6*/sf_TrivialTranslation4./*@>f3f2f3*/LsSmoothFactor"
+%endfunction
+
+%function getOutputAddr_284_36_310_1_25_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3f338*//*@>f3f32c*/Model_TranslationEngine64_B./*@>f3f33e*/SpumOverwrite"
+%endfunction
+
+%function getOutput_284_36_310_1_25_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3f34c*/Model_TranslationEngine64_B./*@>f3f35f*/SpumOverwrite"
+%endfunction
+
+%function getInputAddr_284_40_310_1_27_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3f3a3*//*@>f3f397*/Model_TranslationEngine64_B./*@>f3f3a9*/Value_du"
+%endfunction
+
+%function getInput_284_40_310_1_27_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3f3b7*/Model_TranslationEngine64_B./*@>f3f3ca*/Value_du"
+%endfunction
+
+%function getOutputAddr_284_43_310_1_30_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3f421*//*@>f3f415*/Model_TranslationEngine64_B./*@>f3f427*/LsSmoothCutoff_c"
+%endfunction
+
+%function getOutput_284_43_310_1_30_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3f435*/Model_TranslationEngine64_B./*@>f3f448*/LsSmoothCutoff_c"
+%endfunction
+
+%function getOutputAddr_284_44_310_1_31_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3f475*//*@>f3f469*/Model_TranslationEngine64_B./*@>f3f47b*/SlowPsdSmoothCutoff_a"
+%endfunction
+
+%function getOutput_284_44_310_1_31_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3f489*/Model_TranslationEngine64_B./*@>f3f49c*/SlowPsdSmoothCutoff_a"
+%endfunction
+
+%function getOutputAddr_284_45_310_1_32_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3f4c9*//*@>f3f4bd*/Model_TranslationEngine64_B./*@>f3f4cf*/FastPsdSmoothCutoff_j"
+%endfunction
+
+%function getOutput_284_45_310_1_32_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3f4dd*/Model_TranslationEngine64_B./*@>f3f4f0*/FastPsdSmoothCutoff_j"
+%endfunction
+
+%function getOutputAddr_284_46_310_1_33_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3f51d*//*@>f3f511*/Model_TranslationEngine64_B./*@>f3f523*/DirectPathSec_p"
+%endfunction
+
+%function getOutput_284_46_310_1_33_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3f531*/Model_TranslationEngine64_B./*@>f3f544*/DirectPathSec_p"
+%endfunction
+
+%function getOutputAddr_284_47_310_1_34_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3f571*//*@>f3f565*/Model_TranslationEngine64_B./*@>f3f577*/XpMax_c"
+%endfunction
+
+%function getOutput_284_47_310_1_34_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3f585*/Model_TranslationEngine64_B./*@>f3f598*/XpMax_c"
+%endfunction
+
+%function getOutputAddr_284_48_310_1_35_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3f5c5*//*@>f3f5b9*/Model_TranslationEngine64_B./*@>f3f5cb*/XpMax_ce"
+%endfunction
+
+%function getOutput_284_48_310_1_35_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3f5d9*/Model_TranslationEngine64_B./*@>f3f5ec*/XpMax_ce"
+%endfunction
+
+%function getOutputAddr_284_49_310_1_36_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3f619*//*@>f3f60d*/Model_TranslationEngine64_B./*@>f3f61f*/XpMin_c"
+%endfunction
+
+%function getOutput_284_49_310_1_36_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3f62d*/Model_TranslationEngine64_B./*@>f3f640*/XpMin_c"
+%endfunction
+
+%function getInputAddr_284_53_310_1_38_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3f684*//*@>f3f678*/Model_TranslationEngine64_B./*@>f3f68a*/XpMax_n"
+%endfunction
+
+%function getInput_284_53_310_1_38_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3f698*/Model_TranslationEngine64_B./*@>f3f6ab*/XpMax_n"
+%endfunction
+
+%function getInputAddr_284_54_310_1_39_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3f6d8*//*@>f3f6cc*/Model_TranslationEngine64_B./*@>f3f6de*/LokRokMaxScaleFactor"
+%endfunction
+
+%function getInput_284_54_310_1_39_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3f6ec*/Model_TranslationEngine64_B./*@>f3f6ff*/LokRokMaxScaleFactor"
+%endfunction
+
+%function getInputAddr_284_55_310_1_40_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3f72c*//*@>f3f720*/Model_TranslationEngine64_B./*@>f3f732*/XpMin_h"
+%endfunction
+
+%function getInput_284_55_310_1_40_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3f740*/Model_TranslationEngine64_B./*@>f3f753*/XpMin_h"
+%endfunction
+
+%function getOutputAddr_284_56_310_1_41_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3f780*//*@>f3f774*/Model_TranslationEngine64_B./*@>f3f786*/ESDUpperbounddB_b"
+%endfunction
+
+%function getOutput_284_56_310_1_41_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3f794*/Model_TranslationEngine64_B./*@>f3f7a7*/ESDUpperbounddB_b"
+%endfunction
+
+%function getOutputAddr_284_57_310_1_42_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3f7d4*//*@>f3f7c8*/Model_TranslationEngine64_B./*@>f3f7da*/ESDLowerbounddB_k"
+%endfunction
+
+%function getOutput_284_57_310_1_42_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3f7e8*/Model_TranslationEngine64_B./*@>f3f7fb*/ESDLowerbounddB_k"
+%endfunction
+
+%function getInputAddr_284_61_310_1_44_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3f841*//*@>f3f834*/Model_TranslationEngine64_B./*@>f3f84c*/sf_TrivialTranslation3_hi./*@>f3f849*/ESDUpperbounddB"
+%endfunction
+
+%function getInput_284_61_310_1_44_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3f85b*/Model_TranslationEngine64_B./*@>f3f874*/sf_TrivialTranslation3_hi./*@>f3f871*/ESDUpperbounddB"
+%endfunction
+
+%function getInputAddr_284_62_310_1_45_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3f8a3*//*@>f3f896*/Model_TranslationEngine64_B./*@>f3f8ae*/sf_TrivialTranslation3_hi./*@>f3f8ab*/ESDLowerbounddB"
+%endfunction
+
+%function getInput_284_62_310_1_45_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3f8bd*/Model_TranslationEngine64_B./*@>f3f8d6*/sf_TrivialTranslation3_hi./*@>f3f8d3*/ESDLowerbounddB"
+%endfunction
+
+%function getInputAddr_284_63_310_1_46_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3f905*//*@>f3f8f8*/Model_TranslationEngine64_B./*@>f3f910*/sf_TrivialTranslation3_hi./*@>f3f90d*/ESDStepSize"
+%endfunction
+
+%function getInput_284_63_310_1_46_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3f91f*/Model_TranslationEngine64_B./*@>f3f938*/sf_TrivialTranslation3_hi./*@>f3f935*/ESDStepSize"
+%endfunction
+
+%function getInputAddr_284_68_310_1_49_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3f993*//*@>f3f986*/Model_TranslationEngine64_B./*@>f3f99e*/sf_TrivialTranslation1_fu./*@>f3f99b*/FastPsdSmoothFactor"
+%endfunction
+
+%function getInput_284_68_310_1_49_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3f9ad*/Model_TranslationEngine64_B./*@>f3f9c6*/sf_TrivialTranslation1_fu./*@>f3f9c3*/FastPsdSmoothFactor"
+%endfunction
+
+%function getInputAddr_284_69_310_1_50_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3f9f5*//*@>f3f9e8*/Model_TranslationEngine64_B./*@>f3fa00*/sf_TrivialTranslation1_fu./*@>f3f9fd*/SlowPsdSmoothFactor"
+%endfunction
+
+%function getInput_284_69_310_1_50_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3fa0f*/Model_TranslationEngine64_B./*@>f3fa28*/sf_TrivialTranslation1_fu./*@>f3fa25*/SlowPsdSmoothFactor"
+%endfunction
+
+%function getInputAddr_284_73_310_1_52_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3fa6e*//*@>f3fa61*/Model_TranslationEngine64_B./*@>f3fa79*/sf_TrivialTranslation3_ll1./*@>f3fa76*/DirectPathDec"
+%endfunction
+
+%function getInput_284_73_310_1_52_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3fa88*/Model_TranslationEngine64_B./*@>f3faa1*/sf_TrivialTranslation3_ll1./*@>f3fa9e*/DirectPathDec"
+%endfunction
+
+%function getInputAddr_284_77_310_1_54_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3fae7*//*@>f3fada*/Model_TranslationEngine64_B./*@>f3faf2*/sf_TrivialTranslation4_jo./*@>f3faef*/LsSmoothFactor"
+%endfunction
+
+%function getInput_284_77_310_1_54_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3fb01*/Model_TranslationEngine64_B./*@>f3fb1a*/sf_TrivialTranslation4_jo./*@>f3fb17*/LsSmoothFactor"
+%endfunction
+
+%function getOutputAddr_284_79_310_1_56_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3fb5c*//*@>f3fb50*/Model_TranslationEngine64_B./*@>f3fb62*/SpumOverwrite_b"
+%endfunction
+
+%function getOutput_284_79_310_1_56_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3fb70*/Model_TranslationEngine64_B./*@>f3fb83*/SpumOverwrite_b"
+%endfunction
+
+%function getInputAddr_284_83_310_1_58_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3fbc7*//*@>f3fbbb*/Model_TranslationEngine64_B./*@>f3fbcd*/Value_ne"
+%endfunction
+
+%function getInput_284_83_310_1_58_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3fbdb*/Model_TranslationEngine64_B./*@>f3fbee*/Value_ne"
+%endfunction
+
+%function getOutputAddr_284_86_310_1_61_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3fc45*//*@>f3fc39*/Model_TranslationEngine64_B./*@>f3fc4b*/LevelCutoff"
+%endfunction
+
+%function getOutput_284_86_310_1_61_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3fc59*/Model_TranslationEngine64_B./*@>f3fc6c*/LevelCutoff"
+%endfunction
+
+%function getOutputAddr_284_87_310_1_62_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3fc99*//*@>f3fc8d*/Model_TranslationEngine64_B./*@>f3fc9f*/LSSmoothCutoff"
+%endfunction
+
+%function getOutput_284_87_310_1_62_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3fcad*/Model_TranslationEngine64_B./*@>f3fcc0*/LSSmoothCutoff"
+%endfunction
+
+%function getOutputAddr_284_88_310_1_63_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3fced*//*@>f3fce1*/Model_TranslationEngine64_B./*@>f3fcf3*/LSSmoothResetCutoff"
+%endfunction
+
+%function getOutput_284_88_310_1_63_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3fd01*/Model_TranslationEngine64_B./*@>f3fd14*/LSSmoothResetCutoff"
+%endfunction
+
+%function getInputAddr_284_92_310_1_65_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3fd58*//*@>f3fd4c*/Model_TranslationEngine64_B./*@>f3fd5e*/LevelPole"
+%endfunction
+
+%function getInput_284_92_310_1_65_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3fd6c*/Model_TranslationEngine64_B./*@>f3fd7f*/LevelPole"
+%endfunction
+
+%function getInputAddr_284_93_310_1_66_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3fdac*//*@>f3fda0*/Model_TranslationEngine64_B./*@>f3fdb2*/LevelGain"
+%endfunction
+
+%function getInput_284_93_310_1_66_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3fdc0*/Model_TranslationEngine64_B./*@>f3fdd3*/LevelGain"
+%endfunction
+
+%function getInputAddr_284_94_310_1_67_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3fe00*//*@>f3fdf4*/Model_TranslationEngine64_B./*@>f3fe06*/LSSmoothPole"
+%endfunction
+
+%function getInput_284_94_310_1_67_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3fe14*/Model_TranslationEngine64_B./*@>f3fe27*/LSSmoothPole"
+%endfunction
+
+%function getInputAddr_284_95_310_1_68_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3fe54*//*@>f3fe48*/Model_TranslationEngine64_B./*@>f3fe5a*/LSSmoothGain"
+%endfunction
+
+%function getInput_284_95_310_1_68_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3fe68*/Model_TranslationEngine64_B./*@>f3fe7b*/LSSmoothGain"
+%endfunction
+
+%function getInputAddr_284_96_310_1_69_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3fea8*//*@>f3fe9c*/Model_TranslationEngine64_B./*@>f3feae*/LSSmoothResetPole"
+%endfunction
+
+%function getInput_284_96_310_1_69_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3febc*/Model_TranslationEngine64_B./*@>f3fecf*/LSSmoothResetPole"
+%endfunction
+
+%function getInputAddr_284_97_310_1_70_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3fefc*//*@>f3fef0*/Model_TranslationEngine64_B./*@>f3ff02*/LSSmoothResetGain"
+%endfunction
+
+%function getInput_284_97_310_1_70_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3ff10*/Model_TranslationEngine64_B./*@>f3ff23*/LSSmoothResetGain"
+%endfunction
+
+%function getOutputAddr_284_98_310_1_71_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3ff50*//*@>f3ff44*/Model_TranslationEngine64_B./*@>f3ff56*/HPFCutoff"
+%endfunction
+
+%function getOutput_284_98_310_1_71_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3ff64*/Model_TranslationEngine64_B./*@>f3ff77*/HPFCutoff"
+%endfunction
+
+%function getInputAddr_284_102_310_1_73_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f3ffbb*//*@>f3ffaf*/Model_TranslationEngine64_B./*@>f3ffc1*/HPFNumStages" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInput_284_102_310_1_73_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f3ffcf*/Model_TranslationEngine64_B./*@>f3ffe2*/HPFNumStages" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInputAddr_284_103_310_1_74_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f4000f*//*@>f40003*/Model_TranslationEngine64_B./*@>f40015*/HPFCoeffs" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInput_284_103_310_1_74_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f40023*/Model_TranslationEngine64_B./*@>f40036*/HPFCoeffs" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getOutputAddr_284_104_310_1_75_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f40063*//*@>f40057*/Model_TranslationEngine64_B./*@>f40069*/NoiseFloordB"
+%endfunction
+
+%function getOutput_284_104_310_1_75_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f40077*/Model_TranslationEngine64_B./*@>f4008a*/NoiseFloordB"
+%endfunction
+
+%function getInputAddr_284_108_310_1_77_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f400ce*//*@>f400c2*/Model_TranslationEngine64_B./*@>f400d4*/ThresholdZeroLevel"
+%endfunction
+
+%function getInput_284_108_310_1_77_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f400e2*/Model_TranslationEngine64_B./*@>f400f5*/ThresholdZeroLevel"
+%endfunction
+
+%function getOutputAddr_284_109_310_1_78_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f40122*//*@>f40116*/Model_TranslationEngine64_B./*@>f40128*/LRMatchTolerancedB"
+%endfunction
+
+%function getOutput_284_109_310_1_78_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f40136*/Model_TranslationEngine64_B./*@>f40149*/LRMatchTolerancedB"
+%endfunction
+
+%function getInputAddr_284_113_310_1_80_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f4018d*//*@>f40181*/Model_TranslationEngine64_B./*@>f40193*/LRMatchTolerance"
+%endfunction
+
+%function getInput_284_113_310_1_80_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f401a1*/Model_TranslationEngine64_B./*@>f401b4*/LRMatchTolerance"
+%endfunction
+
+%function getOutputAddr_284_114_310_1_81_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f401e1*//*@>f401d5*/Model_TranslationEngine64_B./*@>f401e7*/ThresholdMonoInput"
+%endfunction
+
+%function getOutput_284_114_310_1_81_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f401f5*/Model_TranslationEngine64_B./*@>f40208*/ThresholdMonoInput"
+%endfunction
+
+%function getOutputAddr_284_115_310_1_82_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f40235*//*@>f40229*/Model_TranslationEngine64_B./*@>f4023b*/ThresholdStereoInput"
+%endfunction
+
+%function getOutput_284_115_310_1_82_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f40249*/Model_TranslationEngine64_B./*@>f4025c*/ThresholdStereoInput"
+%endfunction
+
+%function getInputAddr_284_119_310_1_84_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f402a0*//*@>f40294*/Model_TranslationEngine64_B./*@>f402a6*/ThresholdMono"
+%endfunction
+
+%function getInput_284_119_310_1_84_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f402b4*/Model_TranslationEngine64_B./*@>f402c7*/ThresholdMono"
+%endfunction
+
+%function getInputAddr_284_120_310_1_85_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f402f4*//*@>f402e8*/Model_TranslationEngine64_B./*@>f402fa*/ThresholdStereo"
+%endfunction
+
+%function getInput_284_120_310_1_85_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f40308*/Model_TranslationEngine64_B./*@>f4031b*/ThresholdStereo"
+%endfunction
+
+%function getOutputAddr_284_121_310_1_86_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f40348*//*@>f4033c*/Model_TranslationEngine64_B./*@>f4034e*/Enable"
+%endfunction
+
+%function getOutput_284_121_310_1_86_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f4035c*/Model_TranslationEngine64_B./*@>f4036f*/Enable"
+%endfunction
+
+%function getInputAddr_284_125_310_1_88_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f403b3*//*@>f403a7*/Model_TranslationEngine64_B./*@>f403b9*/Value_fw"
+%endfunction
+
+%function getInput_284_125_310_1_88_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f403c7*/Model_TranslationEngine64_B./*@>f403da*/Value_fw"
+%endfunction
+
+%function getOutputAddr_284_127_310_1_90_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f4041c*//*@>f40410*/Model_TranslationEngine64_B./*@>f40422*/PSDSmoothCutoff"
+%endfunction
+
+%function getOutput_284_127_310_1_90_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f40430*/Model_TranslationEngine64_B./*@>f40443*/PSDSmoothCutoff"
+%endfunction
+
+%function getInputAddr_284_131_310_1_92_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f40487*//*@>f4047b*/Model_TranslationEngine64_B./*@>f4048d*/PSDSmoothFactor"
+%endfunction
+
+%function getInput_284_131_310_1_92_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f4049b*/Model_TranslationEngine64_B./*@>f404ae*/PSDSmoothFactor"
+%endfunction
+
+%function getOutputAddr_284_132_310_1_93_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f404db*//*@>f404cf*/Model_TranslationEngine64_B./*@>f404e1*/DecaySmoothCutoff"
+%endfunction
+
+%function getOutput_284_132_310_1_93_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f404ef*/Model_TranslationEngine64_B./*@>f40502*/DecaySmoothCutoff"
+%endfunction
+
+%function getInputAddr_284_136_310_1_95_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f40546*//*@>f4053a*/Model_TranslationEngine64_B./*@>f4054c*/DecaySmoothFactor"
+%endfunction
+
+%function getInput_284_136_310_1_95_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f4055a*/Model_TranslationEngine64_B./*@>f4056d*/DecaySmoothFactor"
+%endfunction
+
+%function getOutputAddr_284_137_310_1_96_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f4059a*//*@>f4058e*/Model_TranslationEngine64_B./*@>f405a0*/FastAttackCutoff"
+%endfunction
+
+%function getOutput_284_137_310_1_96_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f405ae*/Model_TranslationEngine64_B./*@>f405c1*/FastAttackCutoff"
+%endfunction
+
+%function getOutputAddr_284_138_310_1_97_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f405ee*//*@>f405e2*/Model_TranslationEngine64_B./*@>f405f4*/SlowAttackCutoff"
+%endfunction
+
+%function getOutput_284_138_310_1_97_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f40602*/Model_TranslationEngine64_B./*@>f40615*/SlowAttackCutoff"
+%endfunction
+
+%function getInputAddr_284_142_310_1_99_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f40659*//*@>f4064d*/Model_TranslationEngine64_B./*@>f4065f*/FastAttack"
+%endfunction
+
+%function getInput_284_142_310_1_99_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f4066d*/Model_TranslationEngine64_B./*@>f40680*/FastAttack"
+%endfunction
+
+%function getInputAddr_284_143_310_1_100_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f406ad*//*@>f406a1*/Model_TranslationEngine64_B./*@>f406b3*/SlowAttack"
+%endfunction
+
+%function getInput_284_143_310_1_100_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f406c1*/Model_TranslationEngine64_B./*@>f406d4*/SlowAttack"
+%endfunction
+
+%function getOutputAddr_284_144_310_1_101_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f40701*//*@>f406f5*/Model_TranslationEngine64_B./*@>f40707*/StepSize"
+%endfunction
+
+%function getOutput_284_144_310_1_101_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f40715*/Model_TranslationEngine64_B./*@>f40728*/StepSize"
+%endfunction
+
+%function getInputAddr_284_148_310_1_103_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f4076c*//*@>f40760*/Model_TranslationEngine64_B./*@>f40772*/StepIncrement"
+%endfunction
+
+%function getInput_284_148_310_1_103_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f40780*/Model_TranslationEngine64_B./*@>f40793*/StepIncrement"
+%endfunction
+
+%function getInputAddr_284_149_310_1_104_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f407c0*//*@>f407b4*/Model_TranslationEngine64_B./*@>f407c6*/StepDecrement"
+%endfunction
+
+%function getInput_284_149_310_1_104_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f407d4*/Model_TranslationEngine64_B./*@>f407e7*/StepDecrement"
+%endfunction
+
+%function getOutputAddr_284_150_310_1_105_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f40814*//*@>f40808*/Model_TranslationEngine64_B./*@>f4081a*/DirectPathSec_k"
+%endfunction
+
+%function getOutput_284_150_310_1_105_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f40828*/Model_TranslationEngine64_B./*@>f4083b*/DirectPathSec_k"
+%endfunction
+
+%function getInputAddr_284_154_310_1_107_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f4087f*//*@>f40873*/Model_TranslationEngine64_B./*@>f40885*/DirectPathFramesFs"
+%endfunction
+
+%function getInput_284_154_310_1_107_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f40893*/Model_TranslationEngine64_B./*@>f408a6*/DirectPathFramesFs"
+%endfunction
+
+%function getOutputAddr_284_155_310_1_108_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f408d3*//*@>f408c7*/Model_TranslationEngine64_B./*@>f408d9*/NoiseFloor"
+%endfunction
+
+%function getOutput_284_155_310_1_108_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f408e7*/Model_TranslationEngine64_B./*@>f408fa*/NoiseFloor"
+%endfunction
+
+%function getInputAddr_284_159_310_1_110_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f4093e*//*@>f40932*/Model_TranslationEngine64_B./*@>f40944*/Value_g2"
+%endfunction
+
+%function getInput_284_159_310_1_110_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f40952*/Model_TranslationEngine64_B./*@>f40965*/Value_g2"
+%endfunction
+
+%function getOutputAddr_284_160_310_1_111_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f40992*//*@>f40986*/Model_TranslationEngine64_B./*@>f40998*/OnsetThreshold"
+%endfunction
+
+%function getOutput_284_160_310_1_111_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f409a6*/Model_TranslationEngine64_B./*@>f409b9*/OnsetThreshold"
+%endfunction
+
+%function getInputAddr_284_164_310_1_113_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f409fd*//*@>f409f1*/Model_TranslationEngine64_B./*@>f40a03*/Value_i2"
+%endfunction
+
+%function getInput_284_164_310_1_113_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f40a11*/Model_TranslationEngine64_B./*@>f40a24*/Value_i2"
+%endfunction
+
+%function getOutputAddr_284_165_310_1_114_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f40a51*//*@>f40a45*/Model_TranslationEngine64_B./*@>f40a57*/SlewThreshold"
+%endfunction
+
+%function getOutput_284_165_310_1_114_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f40a65*/Model_TranslationEngine64_B./*@>f40a78*/SlewThreshold"
+%endfunction
+
+%function getInputAddr_284_169_310_1_116_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f40abc*//*@>f40ab0*/Model_TranslationEngine64_B./*@>f40ac2*/Value_e0"
+%endfunction
+
+%function getInput_284_169_310_1_116_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f40ad0*/Model_TranslationEngine64_B./*@>f40ae3*/Value_e0"
+%endfunction
+
+%function getOutputAddr_284_170_310_1_117_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f40b10*//*@>f40b04*/Model_TranslationEngine64_B./*@>f40b16*/sosCoefficients_f"
+%endfunction
+
+%function getOutput_284_170_310_1_117_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f40b24*/Model_TranslationEngine64_B./*@>f40b37*/sosCoefficients_f"
+%endfunction
+
+%function getOutputAddr_284_171_310_1_118_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f40b64*//*@>f40b58*/Model_TranslationEngine64_B./*@>f40b6a*/numStages_e"
+%endfunction
+
+%function getOutput_284_171_310_1_118_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f40b78*/Model_TranslationEngine64_B./*@>f40b8b*/numStages_e"
+%endfunction
+
+%function getInputAddr_284_175_310_1_120_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f40bcf*//*@>f40bc3*/Model_TranslationEngine64_B./*@>f40bd5*/PoolNumStages_o" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInput_284_175_310_1_120_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f40be3*/Model_TranslationEngine64_B./*@>f40bf6*/PoolNumStages_o" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInputAddr_284_176_310_1_121_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<f40c23*//*@>f40c17*/Model_TranslationEngine64_B./*@>f40c29*/PoolCoeffs_b2" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInput_284_176_310_1_121_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>f40c37*/Model_TranslationEngine64_B./*@>f40c4a*/PoolCoeffs_b2" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getSystemOutputFcnCallInfo_284_7_310_1_235_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>f3ebbb*/FuncTranslation_Model_141_1560"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_284_15_310_1_237_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>f3ebbf*/FuncTranslation_Model_141_1561"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_284_22_310_1_239_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>f3ebc3*/FuncTranslation_Model_141_1988"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_284_27_310_1_241_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>f3ebc7*/FuncTranslation_Model_141_1989"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_284_31_310_1_243_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>f3ebcb*/FuncTranslation_Model_141_1990"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_284_37_310_1_245_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>f3ebcf*/FuncTranslation_Model_141_2031_67_18"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_284_50_310_1_247_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>f3ebd3*/FuncTranslation_Model_141_2423"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_284_58_310_1_248_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>f3ebd7*/FuncTranslation_Model_141_2424"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_284_65_310_1_249_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>f3ebdb*/FuncTranslation_Model_141_2654"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_284_70_310_1_250_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>f3ebdf*/FuncTranslation_Model_141_2655"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_284_74_310_1_251_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>f3ebe3*/FuncTranslation_Model_141_2656"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_284_80_310_1_253_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>f3ebe7*/FuncTranslation_Model_141_2697_67_18"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_284_89_310_1_255_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>f3ebeb*/FuncTranslation_Model_141_2783"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_284_99_310_1_263_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>f3ebef*/FuncTranslation_Model_141_2787"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_284_105_310_1_257_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>f3ebf3*/FuncTranslation_Model_141_2784"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_284_110_310_1_259_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>f3ebf7*/FuncTranslation_Model_141_2785"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_284_116_310_1_261_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>f3ebfb*/FuncTranslation_Model_141_2786"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_284_122_310_1_265_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>f3ebff*/FuncTranslation_Model_141_2808_67_18"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_284_128_310_1_267_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>f3ec03*/FuncTranslation_Model_141_2849"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_284_133_310_1_269_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>f3ec07*/FuncTranslation_Model_141_2850"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_284_139_310_1_271_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>f3ec0b*/FuncTranslation_Model_141_2851"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_284_145_310_1_273_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>f3ec0f*/FuncTranslation_Model_141_2852"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_284_151_310_1_275_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>f3ec13*/FuncTranslation_Model_141_2853"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_284_156_310_1_277_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>f3ec17*/FuncTranslation_Model_141_2865_67_18"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_284_161_310_1_279_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>f3ec1b*/FuncTranslation_Model_141_2866_67_18"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_284_166_310_1_281_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>f3ec1f*/FuncTranslation_Model_141_2867_67_18"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_284_172_310_1_283_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>f3ec23*/FuncTranslation_Model_141_2878_50_36"; Args [] }
+%return fcnInfo
+%endfunction

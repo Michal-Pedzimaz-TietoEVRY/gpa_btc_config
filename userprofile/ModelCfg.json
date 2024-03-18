@@ -1,0 +1,8 @@
+{
+"partition_and_generate":"+c +p",
+"platform_mode":"BASIC",
+"inside_generator":"disabled",
+"audio_interleave":"enabled",
+"num_of_loop":10000,
+"truncate_size":524288
+}

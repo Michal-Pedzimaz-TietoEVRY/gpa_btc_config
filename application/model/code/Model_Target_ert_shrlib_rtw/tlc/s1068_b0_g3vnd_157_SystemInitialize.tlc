@@ -1,0 +1,49 @@
+%implements s1068_b0_g3vnd_157_SystemInitialize "C"
+
+%function SystemInitialize(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%<SLibCGIRDumpSystemUserCode(493, "Initialize", "Header")>\
+%<SLibCGIRDumpSystemUserCode(493, "Initialize", "Body")>\
+/* Start for If: '<S1296>/If' */
+/*@>12e51bf*/Model_Target_MedusaPostHoligram_DW./*@>12e5dcf*/If_ActiveSubsystem/*@>10cd597*/ = /*@>12e5db1*/-1;
+/* Start for DataStoreMemory: '<S1296>/Data Store Memory' */
+/*@>12e51c5*/Model_Target_MedusaPostHoligram_DW./*@>12e5dd2*/MedusaPostHoligramEnable/*@>10cd599*/ = /*@>12e1470*/1U;
+%assign   SystemInitialize_open_On_493_3 = ""
+%openfile SystemInitialize_open_On_493_3
+
+/* SystemInitialize for IfAction SubSystem: '<S1296>/On' */
+%closefile SystemInitialize_open_On_493_3
+
+%assign    SystemInitialize_body_On_493_3 = ""
+%openfile  SystemInitialize_body_On_493_3
+
+%<SLibCG_DumpSSCode("/*@[12e573c*/",SLibCGIRDumpSystemUserCode(484, "Initialize", "Header"),"/*@]*/")>\
+%<SLibCG_DumpSSCode("/*@[12e573d*/",SLibCGIRDumpSystemUserCode(484, "Initialize", "Body"),"/*@]*/")>\
+%<SLibCG_DumpSSCode("/*@[12e573e*/",SLibCGIRDumpSystemUserCode(484, "Initialize", "Trailer"),"/*@]*/")>\
+%closefile SystemInitialize_body_On_493_3
+
+%assign    SystemInitialize_close_On_493_3 = ""
+%openfile  SystemInitialize_close_On_493_3
+
+/* End of SystemInitialize for SubSystem: '<S1296>/On' */
+%closefile SystemInitialize_close_On_493_3
+%<SLibCG_DumpSSCode(SystemInitialize_open_On_493_3, SystemInitialize_body_On_493_3, SystemInitialize_close_On_493_3)>
+
+
+/* SystemInitialize for Merge: '<S1296>/Merge' */
+/*@>12e44e2*/memset(&/*@>12e4ed3*/Model_Target_MedusaPostHoligram_B./*@>12e5dcc*/Merge/*@>12e3cc8*/[/*@>12e3cc4*/0], 0, /*@>12e3cc6*/768U/*@>12e3cce*/ * /*@>12e3ccd*/sizeof(real32_T));
+%<SLibCGIRDumpSystemUserCode(493, "Initialize", "Trailer")>\
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedSystemInitializeLocalVars", localVarDecl)>
+%endfunction
+%function SystemInitializeFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_MedusaPostHoligram_Init(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(157, 0, fcnProtoType)>
+%endfunction

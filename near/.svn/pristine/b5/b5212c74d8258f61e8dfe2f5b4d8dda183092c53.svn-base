@@ -1,0 +1,35 @@
+--------------------------------------------------------------------
+Module Name:
+------------
+    Near
+
+Description:
+-------------------
+Repository for Simulink customizations enabling
+code generation for production audio features.
+
+Current Module Externals
+-------------------------------
+    +-------------------------------+
+    |                               |
+    |   ** NEAR=tags/V220017        |
+    |                               |
+    +-------------------------------+
+    
+    /asd2/obfuscate/Near/${NEAR}/module   near
+
+Required Simulink Project References
+-------------------------------
+    Near.prj
+
+Source control URL:
+-------------------------------
+    https://svn.bose.com/asd2/obfuscate/Near/tags
+
+...................................................................
+-------------------
+Release Log:
+-------------------
+============ 220017 =========================== 2023-07-12
+• [APZ-48] - Create first obfuscation release for NEAR
+

@@ -1,0 +1,539 @@
+%implements s1068_b0_g3vnd_183_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+int32_T i;
+int32_T s;
+real32_T rtb_y_l[64];
+real32_T rtb_out_h[32];
+real32_T rtb_thresh[32];
+real32_T musicVolumeLimited;
+real32_T musicVolumeLimited_tmp_0;
+%closefile localVarDecl
+%assign _modelSS = ""
+
+%assign tlcOutputsFcnOfS639B0 = OpaqueTLCBlockFcn("Outputs", 639, 0, 183, 1, 0)
+%assign tlcOutputsFcnOfS639B1 = OpaqueTLCBlockFcn("Outputs", 639, 1, 183, 1, 1)
+%assign tlcOutputsFcnOfS639B2 = OpaqueTLCBlockFcn("Outputs", 639, 2, 183, 1, 2)
+%assign tlcOutputsFcnOfS639B3 = OpaqueTLCBlockFcn("Outputs", 639, 3, 183, 1, 3)
+%assign tlcOutputsFcnOfS639B4 = OpaqueTLCBlockFcn("Outputs", 639, 4, 183, 1, 4)
+%assign tlcOutputsFcnOfS639B5 = OpaqueTLCBlockFcn("Outputs", 639, 5, 183, 1, 5)
+%assign tlcOutputsFcnOfS639B6 = OpaqueTLCBlockFcn("Outputs", 639, 6, 183, 1, 6)
+%assign tlcOutputsFcnOfS639B15 = OpaqueTLCBlockFcn("Outputs", 639, 15, 183, 1, 7)
+%assign tlcOutputsFcnOfS639B16 = OpaqueTLCBlockFcn("Outputs", 639, 16, 183, 1, 8)
+%assign tlcOutputsFcnOfS639B17 = OpaqueTLCBlockFcn("Outputs", 639, 17, 183, 1, 9)
+%assign tlcOutputsFcnOfS639B23 = OpaqueTLCBlockFcn("Outputs", 639, 23, 183, 1, 10)
+%assign tlcOutputsFcnOfS639B24 = OpaqueTLCBlockFcn("Outputs", 639, 24, 183, 1, 11)
+%assign tlcOutputsFcnOfS639B25 = OpaqueTLCBlockFcn("Outputs", 639, 25, 183, 1, 12)
+%assign tlcOutputsFcnOfS639B26 = OpaqueTLCBlockFcn("Outputs", 639, 26, 183, 1, 13)
+%assign tlcOutputsFcnOfS639B28 = OpaqueTLCBlockFcn("Outputs", 639, 28, 183, 1, 14)
+%assign tlcOutputsFcnOfS639B31 = OpaqueTLCBlockFcn("Outputs", 639, 31, 183, 1, 15)
+%assign tlcOutputsFcnOfS639B32 = OpaqueTLCBlockFcn("Outputs", 639, 32, 183, 1, 16)
+%assign tlcOutputsFcnOfS639B34 = OpaqueTLCBlockFcn("Outputs", 639, 34, 183, 1, 17)
+%assign tlcOutputsFcnOfS639B37 = OpaqueTLCBlockFcn("Outputs", 639, 37, 183, 1, 18)
+%assign tlcOutputsFcnOfS639B38 = OpaqueTLCBlockFcn("Outputs", 639, 38, 183, 1, 19)
+%assign tlcOutputsFcnOfS639B39 = OpaqueTLCBlockFcn("Outputs", 639, 39, 183, 1, 20)
+%assign tlcOutputsFcnOfS639B40 = OpaqueTLCBlockFcn("Outputs", 639, 40, 183, 1, 21)
+%assign tlcOutputsFcnOfS639B41 = OpaqueTLCBlockFcn("Outputs", 639, 41, 183, 1, 22)
+%assign tlcOutputsFcnOfS639B42 = OpaqueTLCBlockFcn("Outputs", 639, 42, 183, 1, 23)
+%assign tlcOutputsFcnOfS639B43 = OpaqueTLCBlockFcn("Outputs", 639, 43, 183, 1, 24)
+%assign tlcOutputsFcnOfS639B44 = OpaqueTLCBlockFcn("Outputs", 639, 44, 183, 1, 25)
+%assign tlcOutputsFcnOfS639B53 = OpaqueTLCBlockFcn("Outputs", 639, 53, 183, 1, 26)
+%assign tlcOutputsFcnOfS639B54 = OpaqueTLCBlockFcn("Outputs", 639, 54, 183, 1, 27)
+%assign tlcOutputsFcnOfS639B55 = OpaqueTLCBlockFcn("Outputs", 639, 55, 183, 1, 28)
+%assign tlcOutputsFcnOfS639B61 = OpaqueTLCBlockFcn("Outputs", 639, 61, 183, 1, 29)
+%assign tlcOutputsFcnOfS639B62 = OpaqueTLCBlockFcn("Outputs", 639, 62, 183, 1, 30)
+%assign tlcOutputsFcnOfS639B65 = OpaqueTLCBlockFcn("Outputs", 639, 65, 183, 1, 31)
+%assign tlcOutputsFcnOfS639B66 = OpaqueTLCBlockFcn("Outputs", 639, 66, 183, 1, 32)
+%assign tlcOutputsFcnOfS639B67 = OpaqueTLCBlockFcn("Outputs", 639, 67, 183, 1, 33)
+%assign tlcOutputsFcnOfS639B68 = OpaqueTLCBlockFcn("Outputs", 639, 68, 183, 1, 34)
+%assign tlcOutputsFcnOfS639B69 = OpaqueTLCBlockFcn("Outputs", 639, 69, 183, 1, 35)
+%assign tlcOutputsFcnOfS639B70 = OpaqueTLCBlockFcn("Outputs", 639, 70, 183, 1, 36)
+%assign tlcOutputsFcnOfS639B71 = OpaqueTLCBlockFcn("Outputs", 639, 71, 183, 1, 37)
+%assign tlcOutputsFcnOfS639B72 = OpaqueTLCBlockFcn("Outputs", 639, 72, 183, 1, 38)
+%assign tlcOutputsFcnOfS639B73 = OpaqueTLCBlockFcn("Outputs", 639, 73, 183, 1, 39)
+%assign tlcOutputsFcnOfS639B74 = OpaqueTLCBlockFcn("Outputs", 639, 74, 183, 1, 40)
+%assign tlcOutputsFcnOfS639B75 = OpaqueTLCBlockFcn("Outputs", 639, 75, 183, 1, 41)
+%assign tlcOutputsFcnOfS639B84 = OpaqueTLCBlockFcn("Outputs", 639, 84, 183, 1, 42)
+%assign tlcOutputsFcnOfS639B90 = OpaqueTLCBlockFcn("Outputs", 639, 90, 183, 1, 43)
+%assign tlcOutputsFcnOfS639B91 = OpaqueTLCBlockFcn("Outputs", 639, 91, 183, 1, 44)
+%if !WHITE_SPACE(tlcOutputsFcnOfS639B0)
+/* {S!d1560}S-Function (TOP_MEX): '<S1523>/Boost_dB TOP' */
+%<SLibCG_DumpSSCode("/*@[1316a98*/",tlcOutputsFcnOfS639B0,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS639B1)
+/* {S!d1562}S-Function (TOP_MEX): '<S1523>/Cut_dB TOP' */
+%<SLibCG_DumpSSCode("/*@[1316a9a*/",tlcOutputsFcnOfS639B1,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS639B2)
+/* {S!d1564}S-Function (AudioStats_MEX): '<S1523>/Audio Stats' */
+%<SLibCG_DumpSSCode("/*@[1316a9e*/",tlcOutputsFcnOfS639B2,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS639B3)
+/* {S!d1566}S-Function (TOP_MEX): '<S1532>/TOP' */
+%<SLibCG_DumpSSCode("/*@[1316aa0*/",tlcOutputsFcnOfS639B3,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS639B4)
+/* {S!d1568}S-Function (TOP_MEX): '<S1533>/TOP' */
+%<SLibCG_DumpSSCode("/*@[1316aa2*/",tlcOutputsFcnOfS639B4,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS639B5)
+/* {S!d1570}S-Function (TOP_MEX): '<S1531>/TOP' */
+%<SLibCG_DumpSSCode("/*@[1316aa4*/",tlcOutputsFcnOfS639B5,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS639B6)
+/* {S!d1547}S-Function (RTC_REQ_RSP): '<S1527>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[1316aa6*/",tlcOutputsFcnOfS639B6,"/*@]*/")>\
+%endif
+/* {E!d1547}End of Outputs for S-Function (RTC_REQ_RSP): '<S1527>/RTC Request Response Trigger' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS639B15)
+
+/* {S!d1572}S-Function (TOP_MEX): '<S1523>/BoostCoeffs' */
+%<SLibCG_DumpSSCode("/*@[1316aa8*/",tlcOutputsFcnOfS639B15,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS639B16)
+/* {S!d1574}S-Function (TOP_MEX): '<S1523>/CutCoeffs' */
+%<SLibCG_DumpSSCode("/*@[1316aaa*/",tlcOutputsFcnOfS639B16,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS639B17)
+/* {S!d1549}S-Function (RTC_NTF): '<S1527>/NTF Trigger' */
+%<SLibCG_DumpSSCode("/*@[1316aaf*/",tlcOutputsFcnOfS639B17,"/*@]*/")>\
+%endif
+/* {E!d1549}End of Outputs for S-Function (RTC_NTF): '<S1527>/NTF Trigger' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS639B23)
+
+/* {S!d1576}S-Function (TOP_MEX): '<S1568>/TOP' */
+%<SLibCG_DumpSSCode("/*@[1316ab1*/",tlcOutputsFcnOfS639B23,"/*@]*/")>\
+%endif
+/*@>1309db2*/for (/*@>1317cde*/i = /*@>1317cdd*/0; /*@>1317ce8*/i < /*@>1317ce6*/64; /*@>1317ce4*/i/*@>1317cec*/++) {
+    /* {S!d1578}Product: '<S1564>/Product' incorporates:
+ *  S-Function (SampleRateConverter_sfunc): '<S1599>/S-Function'
+ */
+    /*@>13157d0*/Model_Target_PreAmpPart1_B./*@>1317fa6*/AttenuatedOutput/*@>130ad41*/[/*@>130e1b7*/i]/*@>1309da1*/ = /*@>131591d*/Model_Target_B./*@>1317fa9*/SFunction_g/*@>13152b9*/[/*@>13152b6*/i]/*@>130e353*/ * %<SLibCG_DumpSSCode("/*@[1316b95*/",(SLibCG_SE(SLibCG_BOCSC(578, 1, "", -1, "", 0))),"/*@]*/")>;
+}
+%if !WHITE_SPACE(tlcOutputsFcnOfS639B24)
+/* {S!d1580}S-Function (TOP_MEX): '<S1576>/attack' */
+%<SLibCG_DumpSSCode("/*@[1316ab3*/",tlcOutputsFcnOfS639B24,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS639B25)
+/* {S!d1582}S-Function (TOP_MEX): '<S1578>/TOP' */
+%<SLibCG_DumpSSCode("/*@[1316ab5*/",tlcOutputsFcnOfS639B25,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS639B26)
+/* {S!d1584}S-Function (TOP_MEX): '<S1577>/TOP' */
+%<SLibCG_DumpSSCode("/*@[1316ab7*/",tlcOutputsFcnOfS639B26,"/*@]*/")>\
+%endif
+/* {S!d1586}MATLAB Function: '<S1566>/MaxAnnVolume' */
+/* MATLAB Function 'ModelPreAmp/PreAmpPart1/NEARPreAmp/MusicLimiter/MaxAnnVolume': '<S1573>:1' */
+/* '<S1573>:1:3' out = single(ones(1,32)); */
+/*@>1309dc9*/for (/*@>1317ccd*/i = /*@>1317ccc*/0; /*@>1317cd7*/i < /*@>1317cd5*/32; /*@>1317cd3*/i/*@>1317ced*/++) {
+    /*@>130e1a7*/rtb_out_h/*@>1309dc1*/[/*@>130e190*/i]/*@>1309dc0*/ = /*@>130e192*/1.0F;
+}
+/* '<S1573>:1:4' for idx = 1:size(in, 2) */
+/* '<S1573>:1:5' out(idx) = max(in(:, idx)); */
+/*@>130e29b*/rtb_out_h/*@>130d30c*/[/*@>130e29f*/0]/*@>130d30b*/ = /*@>1315924*/Model_Target_B./*@>1317fac*/Mean/*@>13152be*/[/*@>13152bb*/0];
+/* '<S1573>:1:5' out(idx) = max(in(:, idx)); */
+/*@>130e2a1*/rtb_out_h/*@>130d31b*/[/*@>130e2a5*/1]/*@>130d31a*/ = /*@>131592b*/Model_Target_B./*@>1317faf*/Mean/*@>13152c3*/[/*@>13152c0*/1];
+/* {E!d1586}End of MATLAB Function: '<S1566>/MaxAnnVolume' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS639B28)
+
+/* {S!d1588}S-Function (TOP_MEX): '<S1575>/TOP' */
+%<SLibCG_DumpSSCode("/*@[1316ab9*/",tlcOutputsFcnOfS639B28,"/*@]*/")>\
+%endif
+/* {S!d1590}MATLAB Function: '<S1566>/Threshold Logic' incorporates:
+ *  Constant: '<S1566>/MaxGain'
+ *  Constant: '<S1566>/MinGain'
+ *  Delay: '<S26>/Delay'
+ *  MATLAB Function: '<S1576>/CalcThreshold'
+ *  S-Function (TOP_MEX): '<S1576>/attack'
+ */
+/*  Keep the music limited to the minimum of the specifed music threshold or */
+/*  the current level of the phone minus a tuned offset */
+/* MATLAB Function 'ModelPreAmp/PreAmpPart1/NEARPreAmp/MusicLimiter/Threshold Logic': '<S1574>:1' */
+/* '<S1574>:1:5' thresh = single(annVolume); */
+/*  Limit announcement and entertainment volumes to 1 or less */
+/* '<S1574>:1:8' annVolumeLimited = min(1.0, annVolume); */
+/* '<S1574>:1:9' musicVolumeLimited = min(1.0, musicVolume); */
+/*@>130e0c0*/musicVolumeLimited/*@>10d74e8*/ = /*@>1313fea*/fminf(/*@>130e0c4*/1.0F, /*@>1315b35*/Model_Target_PreAmpPart1_DW./*@>1317ff7*/Delay_DSTATE);
+/*  Calculate target threshold */
+/* '<S1574>:1:12' annTargetLevel = predAnn * annVolumeLimited / (phoneOffsetLinear + eps); */
+/* '<S1574>:1:13' targetLevel = min(musicThreshLinear, annTargetLevel); */
+/* '<S1574>:1:14' musicVolumeSamp = musicVolumeLimited(floor((0:(numel(targetLevel)-1)) / frameSize) + 1); */
+/* '<S1574>:1:15' thresh = targetLevel ./ (musicVolumeSamp + eps); */
+/*  Check limits */
+/* '<S1574>:1:18' thresh = thresh / musicThreshLinear; */
+/* '<S1574>:1:19' thresh = min(maxGain, thresh); */
+/* '<S1574>:1:20' thresh = max(minGain, thresh); */
+/* MATLAB Function 'ModelPreAmp/PreAmpPart1/NEARPreAmp/MusicLimiter/limiter/CalcThreshold': '<S1579>:1' */
+/* '<S1579>:1:3' thresholdOut = attack ./ single(thresholdIn); */
+/*@>10d74df*/for (/*@>1317cbc*/i = /*@>1317cbb*/0; /*@>1317cc6*/i < /*@>1317cc4*/32; /*@>1317cc2*/i/*@>1317cee*/++) {
+    /*@>130e249*/rtb_thresh/*@>130c88c*/[/*@>130e24b*/i] = /*@>1313ffa*/qhmath_div_f(%<SLibCG_DumpSSCode("/*@[1316c3c*/",(SLibCG_BOCSC(579, 32, "", -1, "/*@>13152c6*/i", 0)),"/*@]*/")>, /*@>1313ff8*/fmaxf(/*@>130fc49*/9.99999902E-5F, /*@>1313ff6*/fminf(/*@>130fc4c*/1.0F, /*@>1313ff4*/qhmath_div_f(/*@>1313ff2*/qhmath_div_f(/*@>1313ff0*/fminf(%<SLibCG_DumpSSCode("/*@[1316c21*/",(SLibCG_BOCSC(580, 1, "", -1, "", 0)),"/*@]*/")>, /*@>1313fee*/qhmath_div_f(%<SLibCG_DumpSSCode("/*@[1316c05*/",(SLibCG_SE(SLibCG_BOCSC(582, 1, "", -1, "", 0))),"/*@]*/")>/*@>130fd9c*/ * /*@>1313fec*/fminf(/*@>130fda1*/1.0F, /*@>13152cd*/rtb_out_h/*@>13152cf*/[/*@>13152cc*/i]), %<SLibCG_DumpSSCode("/*@[1316be9*/",(SLibCG_SE(SLibCG_BOCSC(581, 1, "", -1, "", 0))),"/*@]*/")>/*@>130fda7*/ + /*@>130fdaa*/2.22044605E-16F)), /*@>130fdad*/musicVolumeLimited/*@>130fdab*/ + /*@>130fdae*/2.22044605E-16F), %<SLibCG_DumpSSCode("/*@[1316bcd*/",(SLibCG_BOCSC(580, 1, "", -1, "", 0)),"/*@]*/")>))));
+}
+/* {E!d1590}End of MATLAB Function: '<S1566>/Threshold Logic' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS639B31)
+
+/* {S!d1592}S-Function (TOP_MEX): '<S1576>/decay' */
+%<SLibCG_DumpSSCode("/*@[1316abb*/",tlcOutputsFcnOfS639B31,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS639B32)
+/* {S!d1594}S-Function (TOP_MEX): '<S1576>/maxAttack' */
+%<SLibCG_DumpSSCode("/*@[1316abd*/",tlcOutputsFcnOfS639B32,"/*@]*/")>\
+%endif
+/* {S!d1596}MATLAB Function: '<S1576>/MATLAB Function' incorporates:
+ *  Product: '<S1564>/Product'
+ *  S-Function (TOP_MEX): '<S1576>/attack'
+ *  S-Function (TOP_MEX): '<S1576>/decay'
+ *  S-Function (TOP_MEX): '<S1576>/maxAttack'
+ */
+/*  Grab data from input */
+/* MATLAB Function 'ModelPreAmp/PreAmpPart1/NEARPreAmp/MusicLimiter/limiter/MATLAB Function': '<S1580>:1' */
+/* '<S1580>:1:4' y = coder.nullcopy(u); */
+/* '<S1580>:1:5' [frameSize, channelCount] = size(u); */
+/* '<S1580>:1:7' maxGain = single(1); */
+/* '<S1580>:1:10' if isempty(state) */
+/*  Process the audio */
+/* '<S1580>:1:15' for i = 1:channelCount */
+/*@>10d7595*/for (/*@>1317c9a*/i = /*@>1317c99*/0; /*@>1317ca4*/i < /*@>1317ca2*/2; /*@>1317ca0*/i/*@>1317cef*/++) {
+    /* '<S1580>:1:16' k0 = 1 + attack(i); */
+    /* '<S1580>:1:17' g1 = state(i); */
+    /*@>130e0d2*/musicVolumeLimited/*@>10d757d*/ = /*@>1315b3b*/Model_Target_PreAmpPart1_DW./*@>1317ffa*/state/*@>13152d5*/[/*@>13152d2*/i];
+    /* '<S1580>:1:19' for s = 1:frameSize */
+/*@>10d7598*/    for (/*@>1317cab*/s = /*@>1317caa*/0; /*@>1317cb5*/s < /*@>1317cb3*/32; /*@>1317cb1*/s/*@>1317cf0*/++) {
+        int32_T musicVolumeLimited_tmp;
+        /*  Compute the gain for this sample. Implementation copied from BDSP */
+        /* '<S1580>:1:21' p1 = k1(i) * g1; */
+        /* '<S1580>:1:22' p2 = u(s, i); */
+        /* '<S1580>:1:23' p2 = abs(p2); */
+        /* '<S1580>:1:24' g1 = g1 * decay(i); */
+        /* '<S1580>:1:25' p2 = p2 * p1; */
+        /* '<S1580>:1:26' p2 = max(p2, attack(i)); */
+        /* '<S1580>:1:27' p2 = k0 - p2; */
+        /* '<S1580>:1:28' p2 = max(p2, maxAttack(i)); */
+        /* '<S1580>:1:29' g1 = g1 * p2; */
+        /* '<S1580>:1:30' g1 = min(g1, maxGain); */
+        /*@>13112f2*/musicVolumeLimited_tmp/*@>13112f4*/ = (/*@>130e1fe*/i/*@>130e3a4*/ << /*@>130e3a3*/5)/*@>130cc0a*/ + /*@>130e1fc*/s;
+        /*@>1311302*/musicVolumeLimited_tmp_0/*@>1311304*/ = /*@>131593f*/Model_Target_PreAmpPart1_B./*@>1317fb8*/AttenuatedOutput/*@>13152fd*/[/*@>13152fa*/musicVolumeLimited_tmp];
+        /*@>130e0dd*/musicVolumeLimited/*@>10d75cd*/ = /*@>1314006*/fminf(/*@>1314004*/fmaxf((%<SLibCG_DumpSSCode("/*@[1316b79*/",(SLibCG_SE(SLibCG_BOCSC(579, 32, "", -1, "/*@>1315300*/i", 0))),"/*@]*/")>/*@>10d7603*/ + /*@>130e0e2*/1.0F)/*@>10d75ea*/ - /*@>1314002*/fmaxf(/*@>1315307*/rtb_thresh/*@>1315309*/[/*@>1315306*/i]/*@>130e3a7*/ * /*@>130e185*/musicVolumeLimited/*@>130e39b*/ * /*@>1314000*/qhmath_abs_f(/*@>1311306*/musicVolumeLimited_tmp_0), %<SLibCG_DumpSSCode("/*@[1316b5e*/",(SLibCG_BOCSC(579, 32, "", -1, "/*@>131530c*/i", 0)),"/*@]*/")>), %<SLibCG_DumpSSCode("/*@[1316b43*/",(SLibCG_BOCSC(584, 32, "", -1, "/*@>1315312*/i", 0)),"/*@]*/")>)/*@>130e393*/ * (/*@>130e183*/musicVolumeLimited/*@>130e397*/ * %<SLibCG_DumpSSCode("/*@[1316b28*/",(SLibCG_SE(SLibCG_BOCSC(583, 32, "", -1, "/*@>1315318*/i", 0))),"/*@]*/")>), /*@>130e0df*/1.0F);
+        /*  Apply the gain */
+        /* '<S1580>:1:33' y(s, i) = u(s, i) * g1; */
+        /*@>130e210*/rtb_y_l/*@>130cc19*/[musicVolumeLimited_tmp]/*@>10d7588*/ = musicVolumeLimited_tmp_0/*@>130e387*/ * /*@>130e0db*/musicVolumeLimited;
+    }
+    /* '<S1580>:1:36' state(i) = g1; */
+    /*@>1315b41*/Model_Target_PreAmpPart1_DW./*@>1317ffd*/state/*@>10d7589*/[/*@>130e0e0*/i]/*@>10d758b*/ = /*@>130e0d9*/musicVolumeLimited;
+}
+/* {E!d1596}End of MATLAB Function: '<S1576>/MATLAB Function' */
+
+/* {S!d1598}Product: '<S1571>/Divide' incorporates:
+ *  Constant: '<S1571>/Constant3'
+ *  Selector: '<S1571>/Selector1'
+ *  Selector: '<S1571>/Selector6'
+ *  Sum: '<S1571>/Add'
+ */
+/*@>130b0d4*/for (/*@>1317c89*/i = /*@>1317c88*/0; /*@>1317c93*/i < /*@>1317c91*/32; /*@>1317c8f*/i/*@>1317cf1*/++) {
+    /*@>130e1cc*/rtb_out_h/*@>130b0c6*/[/*@>130e1ca*/i]/*@>130b0c7*/ = /*@>1314008*/qhmath_div_f(/*@>13152db*/rtb_y_l/*@>13152dd*/[/*@>13152d9*/i/*@>13152d7*/ + /*@>13152da*/32]/*@>130b082*/ + /*@>13152e1*/rtb_y_l/*@>13152e3*/[/*@>13152e0*/i], /*@>130e234*/2.0F);
+}
+/* {E!d1598}End of Product: '<S1571>/Divide' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS639B34)
+
+/* {S!d1600}S-Function (TOP_MEX): '<S1572>/TOP' */
+%<SLibCG_DumpSSCode("/*@[1316abf*/",tlcOutputsFcnOfS639B34,"/*@]*/")>\
+%endif
+/*@>130b1c7*/for (/*@>1317c78*/i = /*@>1317c77*/0; /*@>1317c82*/i < /*@>1317c80*/32; /*@>1317c7e*/i/*@>1317cf2*/++) {
+    /* {S!d1602}Product: '<S1571>/Multiply' incorporates:
+ *  Constant: '<S1571>/Constant4'
+ *  Constant: '<S1571>/Constant5'
+ *  Product: '<S1571>/Divide1'
+ *  Selector: '<S1571>/Selector1'
+ *  Selector: '<S1571>/Selector6'
+ *  Sum: '<S1571>/Subtract'
+ *  Sum: '<S1571>/Subtract1'
+ */
+    musicVolumeLimited/*@>130b1ba*/ = /*@>131400c*/qhmath_div_f(/*@>13152e7*/rtb_y_l/*@>13152e9*/[/*@>13152e6*/i]/*@>130b171*/ - /*@>13152ef*/rtb_y_l/*@>13152f1*/[/*@>13152ed*/i/*@>13152eb*/ + /*@>13152ee*/32], /*@>130e236*/2.0F)/*@>130e3b4*/ * (/*@>130f938*/1.0F/*@>130f937*/ - %<SLibCG_DumpSSCode("/*@[1316bb1*/",(SLibCG_SE(SLibCG_BOCSC(585, 1, "", -1, "", 0))),"/*@]*/")>);
+    /* {S!d1604}Sum: '<S1571>/Add1' incorporates:
+ *  Product: '<S1571>/Divide'
+ */
+    musicVolumeLimited_tmp_0 = /*@>13152f5*/rtb_out_h/*@>13152f7*/[/*@>13152f4*/i];
+    /*@>130e1e6*/rtb_y_l/*@>130b21c*/[/*@>130e1e8*/i]/*@>130b223*/ = musicVolumeLimited_tmp_0/*@>130b201*/ + musicVolumeLimited;
+    /* {S!d1606}Sum: '<S1571>/Subtract2' incorporates:
+ *  Product: '<S1571>/Divide'
+ */
+    /*@>130e1ef*/rtb_y_l/*@>130b284*/[/*@>130e1f2*/i/*@>130b289*/ + /*@>130e1f1*/32]/*@>130b28d*/ = musicVolumeLimited_tmp_0/*@>130b267*/ - musicVolumeLimited;
+}
+/* {S!d1608}MATLAB Function: '<S1563>/Crossfade ' incorporates:
+ *  Concatenate: '<S1571>/Matrix Concatenate'
+ *  S-Function (SampleRateConverter_sfunc): '<S1599>/S-Function'
+ */
+/*  fadetime in ms */
+/*  sigSelect = 0 passes normalEnt, sigSelect = 1 passes monoEnt */
+/* MATLAB Function 'CrossFader/Crossfade ': '<S1567>:1' */
+/*  first run init */
+/* '<S1567>:1:9' if (isempty(currentFadeInd)) */
+/*  Selection changed */
+/* '<S1567>:1:15' startFade = 0; */
+/*@>130e0e7*/i/*@>10d7617*/ = /*@>1317c56*/0;
+/* '<S1567>:1:16' if (currentSig ~= sigSelect) */
+/*@>10d764c*/if (/*@>1315b47*/Model_Target_PreAmpPart1_DW./*@>1318000*/currentSig/*@>10d7639*/ != /*@>1315932*/Model_Target_B./*@>1317fb2*/y) {
+    /*     currentSig = sigSelect; */
+    /* '<S1567>:1:18' currentSig = uint32(sigSelect); */
+    /*@>1315b4d*/Model_Target_PreAmpPart1_DW./*@>1318003*/currentSig/*@>10d7619*/ = /*@>1315939*/Model_Target_B./*@>1317fb5*/y;
+    /* '<S1567>:1:19' currentFadeInd = 0; */
+    /*@>1315b53*/Model_Target_PreAmpPart1_DW./*@>1318006*/currentFadeInd/*@>10d761a*/ = /*@>130e0f0*/0.0;
+    /* '<S1567>:1:20' startFade = 1; */
+    /*@>130e0f1*/i/*@>10d761b*/ = /*@>1317c59*/1;
+}
+/* '<S1567>:1:23' crossfadedOutput = single(zeros(size(normalEnt))); */
+/* '<S1567>:1:24' normalEntOutput = single(zeros(size(normalEnt))); */
+/* '<S1567>:1:25' monoEntOutput = single(zeros(size(normalEnt))); */
+/*  Process the audio */
+/* '<S1567>:1:28' if ((currentFadeInd ~= 0)||(startFade)) */
+/*@>10d7655*/if ((/*@>1315b59*/Model_Target_PreAmpPart1_DW./*@>1318009*/currentFadeInd/*@>10d763a*/ != /*@>130e0f6*/0.0)/*@>10d773e*/ || (/*@>130e0f7*/i/*@>10d763b*/ != /*@>130e0f9*/0)) {
+    /*  Apply the cross fade gains, either because we're mid-ramp or we're */
+    /*  starting over */
+    /* '<S1567>:1:31' for (samp = 1:size(normalEnt, 1) */
+/*@>10d765b*/    for (/*@>1317c67*/i = /*@>1317c66*/0; /*@>1317c71*/i < /*@>1317c6f*/32; /*@>1317c6d*/i/*@>1317cf3*/++) {
+        real_T monoEntGain;
+        real_T normalEntGain;
+        /* '<S1567>:1:32' currentFadeInd = currentFadeInd + 1; */
+        /*@>1315b65*/Model_Target_PreAmpPart1_DW./*@>131800f*/currentFadeInd/*@>1317cf4*/++;
+        /*  lookup gains for this sample */
+        /* '<S1567>:1:34' if (currentFadeInd > fadeSamples) */
+        /*@>10d765f*/if (/*@>1315b83*/Model_Target_PreAmpPart1_DW./*@>131801b*/currentFadeInd/*@>10d763d*/ > /*@>13159eb*/Model_Target_PreAmpPart1_ConstB./*@>1317feb*/Product) {
+            /*  we hit the end of the ramp, but we're still working */
+            /*  a frame that was ramping */
+            /* '<S1567>:1:37' if (currentSig) */
+            /*@>10d7662*/if (/*@>1315b8f*/Model_Target_PreAmpPart1_DW./*@>1318021*/currentSig/*@>10d763e*/ != /*@>130e113*/0U) {
+                /* '<S1567>:1:38' normalEntGain = 0; */
+                /*@>130e114*/normalEntGain/*@>10d7625*/ = /*@>130e116*/0.0;
+                /* '<S1567>:1:39' monoEntGain = 1; */
+                /*@>130e123*/monoEntGain/*@>10d7626*/ = /*@>130e125*/1.0;
+            } else {
+                /* '<S1567>:1:40' else */
+                /* '<S1567>:1:41' normalEntGain = 1; */
+                /*@>130e11c*/normalEntGain/*@>10d7627*/ = /*@>130e11e*/1.0;
+                /* '<S1567>:1:42' monoEntGain = 0; */
+                /*@>130e126*/monoEntGain/*@>10d7628*/ = /*@>130e128*/0.0;
+            }
+
+            /* '<S1567>:1:44' else */
+            /*  actively ramping */
+            /* '<S1567>:1:46' if (currentSig) */
+        } else /*@>10d7668*/if (/*@>1315b89*/Model_Target_PreAmpPart1_DW./*@>131801e*/currentSig/*@>10d763f*/ != /*@>130e110*/0U) {
+            /*                  sig1Gain = fadeDownGain(currentFadeInd); */
+            /* '<S1567>:1:48' normalEntGain = 1-(currentFadeInd/fadeSamples); */
+            /*@>131131a*/monoEntGain/*@>131131c*/ = /*@>1315b95*/Model_Target_PreAmpPart1_DW./*@>1318024*/currentFadeInd/*@>10d7640*/ / /*@>13159f1*/Model_Target_PreAmpPart1_ConstB./*@>1317fee*/Product;
+            /*@>130e11a*/normalEntGain/*@>10d762b*/ = /*@>130e119*/1.0/*@>10d7641*/ - /*@>131131e*/monoEntGain;
+            /*                  sig2Gain = fadeUpGain(currentFadeInd); */
+            /* '<S1567>:1:50' monoEntGain = (currentFadeInd/fadeSamples); */
+        } else {
+            /* '<S1567>:1:51' else */
+            /*                  sig1Gain = fadeUpGain(currentFadeInd); */
+            /* '<S1567>:1:53' normalEntGain = (currentFadeInd/fadeSamples); */
+            /*@>130e121*/normalEntGain/*@>10d762f*/ = /*@>1315b9b*/Model_Target_PreAmpPart1_DW./*@>1318027*/currentFadeInd/*@>10d7643*/ / /*@>13159f7*/Model_Target_PreAmpPart1_ConstB./*@>1317ff1*/Product;
+            /*                  sig2Gain = fadeDownGain(currentFadeInd); */
+            /* '<S1567>:1:55' monoEntGain = 1-(currentFadeInd/fadeSamples); */
+            /*@>130e130*/monoEntGain/*@>10d7631*/ = /*@>130e12f*/1.0/*@>10d7645*/ - /*@>1315ba1*/Model_Target_PreAmpPart1_DW./*@>131802a*/currentFadeInd/*@>10d7644*/ / /*@>13159fd*/Model_Target_PreAmpPart1_ConstB./*@>1317ff4*/Product;
+        }
+        /*  apply gains */
+        /* '<S1567>:1:59' normalEntOutput(samp,:) = (normalEnt(samp,:)*normalEntGain); */
+        /* '<S1567>:1:60' monoEntOutput(samp,:) = (monoEnt(samp,:)*monoEntGain); */
+        /* '<S1567>:1:61' crossfadedOutput(samp,:) = single(normalEnt(samp,:)*normalEntGain + monoEnt(samp,:)*monoEntGain); */
+        /*@>131597b*/Model_Target_PreAmpPart1_B./*@>1317fca*/crossfadedOutput/*@>130d2ae*/[/*@>130e27a*/i]/*@>130d2ad*/ = /*@>1315982*/Model_Target_B./*@>1317fcd*/SFunction_g/*@>1315321*/[/*@>131531e*/i]/*@>130e3c9*/ * /*@>130d2c3*/(real32_T)/*@>130e280*/normalEntGain/*@>130d2b7*/ + /*@>1315325*/rtb_y_l/*@>1315327*/[/*@>1315324*/i]/*@>130e3cd*/ * /*@>130d2d1*/(real32_T)/*@>130e286*/monoEntGain;
+        /*@>1315988*/Model_Target_PreAmpPart1_B./*@>1317fd0*/crossfadedOutput/*@>130d2da*/[/*@>130e28a*/i/*@>130d2dc*/ + /*@>130e2aa*/32]/*@>130d2d9*/ = /*@>131598f*/Model_Target_B./*@>1317fd3*/SFunction_g/*@>131532f*/[/*@>131532b*/i/*@>1315329*/ + /*@>131532c*/32]/*@>130e3c1*/ * /*@>130d2ef*/(real32_T)/*@>130e290*/normalEntGain/*@>130d2e3*/ + /*@>1315335*/rtb_y_l/*@>1315337*/[/*@>1315333*/i/*@>1315331*/ + /*@>1315334*/32]/*@>130e3c5*/ * /*@>130d2fd*/(real32_T)/*@>130e296*/monoEntGain;
+    }
+    /*  reset fade if finished */
+    /* '<S1567>:1:64' if (currentFadeInd > fadeSamples) */
+    /*@>10d7674*/if (/*@>1315b71*/Model_Target_PreAmpPart1_DW./*@>1318012*/currentFadeInd/*@>10d7647*/ > /*@>13159e5*/Model_Target_PreAmpPart1_ConstB./*@>1317fe8*/Product) {
+        /* '<S1567>:1:65' currentFadeInd = 0; */
+        /*@>1315b7d*/Model_Target_PreAmpPart1_DW./*@>1318018*/currentFadeInd/*@>10d7635*/ = /*@>130e10b*/0.0;
+    }
+
+    /* '<S1567>:1:67' else */
+    /*  Just pass selected signal */
+    /* '<S1567>:1:69' if (currentSig) */
+} else /*@>10d7677*/if (/*@>1315b5f*/Model_Target_PreAmpPart1_DW./*@>131800c*/currentSig/*@>10d7648*/ != /*@>130e0fc*/0U) {
+    /* '<S1567>:1:70' crossfadedOutput = single(monoEnt(1:size(normalEnt,1),1:size(normalEnt,2))); */
+    /*@>1314527*/memcpy(&/*@>1315951*/Model_Target_PreAmpPart1_B./*@>1317fbb*/crossfadedOutput/*@>13134fe*/[/*@>13134ed*/0], &/*@>1313505*/rtb_y_l/*@>1313506*/[/*@>13134fa*/0], /*@>1313508*/sizeof(real32_T)/*@>1316d0e*/ << /*@>1316d0d*/6U);
+} else {
+    /* '<S1567>:1:71' else */
+    /* '<S1567>:1:72' crossfadedOutput = single(normalEnt); */
+    /*@>1314525*/memcpy(&/*@>1315957*/Model_Target_PreAmpPart1_B./*@>1317fbe*/crossfadedOutput/*@>1313558*/[/*@>1313547*/0], &/*@>131595e*/Model_Target_B./*@>1317fc1*/SFunction_g/*@>1313560*/[/*@>1313554*/0], /*@>1313562*/sizeof(real32_T)/*@>1316d11*/ << /*@>1316d10*/6U);
+}
+/* {E!d1608}End of MATLAB Function: '<S1563>/Crossfade ' */
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[610], "Output",2)
+
+/* {S!d1610}MATLAB Function: '<S1523>/tone' */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_tone",610,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[1316b02*/",SLibCGIRGenReusableSysCall("Model_Target_tone", ["%<_modelSS>", "%<SLibCG_DumpSSCode("/*@[131841b*/",(SLibCG_BOCSCAddr(576, 3, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[131842d*/",(SLibCG_BOCSCAddr(577, 3, "", -1, "", 0)),"/*@]*/")>", "/*@>1318440*/Model_Target_PreAmpPart1_B./*@>131843f*/crossfadedOutput", "&/*@>131844d*/Model_Target_PreAmpPart1_B./*@>131844c*/sf_tone", "&/*@>131845a*/Model_Target_PreAmpPart1_DW./*@>1318459*/sf_tone"], 610, 0, 6, 2, 6, 639),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[610]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS639B37)
+/* {S!d1612}M-S-Function: '<S1523>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[1316ac0*/",tlcOutputsFcnOfS639B37,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS639B38)
+/* {S!d1614}S-Function (TOP_MEX): '<S1524>/Boost_dB TOP' */
+%<SLibCG_DumpSSCode("/*@[1316ac2*/",tlcOutputsFcnOfS639B38,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS639B39)
+/* {S!d1616}S-Function (TOP_MEX): '<S1524>/Cut_dB TOP' */
+%<SLibCG_DumpSSCode("/*@[1316ac4*/",tlcOutputsFcnOfS639B39,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS639B40)
+/* {S!d1618}S-Function (AudioStats_MEX): '<S1524>/Audio Stats' */
+%<SLibCG_DumpSSCode("/*@[1316ac8*/",tlcOutputsFcnOfS639B40,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS639B41)
+/* {S!d1620}S-Function (TOP_MEX): '<S1551>/TOP' */
+%<SLibCG_DumpSSCode("/*@[1316aca*/",tlcOutputsFcnOfS639B41,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS639B42)
+/* {S!d1622}S-Function (TOP_MEX): '<S1549>/TOP' */
+%<SLibCG_DumpSSCode("/*@[1316acc*/",tlcOutputsFcnOfS639B42,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS639B43)
+/* {S!d1624}S-Function (TOP_MEX): '<S1550>/TOP' */
+%<SLibCG_DumpSSCode("/*@[1316ace*/",tlcOutputsFcnOfS639B43,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS639B44)
+/* {S!d1551}S-Function (RTC_REQ_RSP): '<S1545>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[1316ad0*/",tlcOutputsFcnOfS639B44,"/*@]*/")>\
+%endif
+/* {E!d1551}End of Outputs for S-Function (RTC_REQ_RSP): '<S1545>/RTC Request Response Trigger' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS639B53)
+
+/* {S!d1626}S-Function (TOP_MEX): '<S1524>/BoostCoeffs' */
+%<SLibCG_DumpSSCode("/*@[1316ad2*/",tlcOutputsFcnOfS639B53,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS639B54)
+/* {S!d1628}S-Function (TOP_MEX): '<S1524>/CutCoeffs' */
+%<SLibCG_DumpSSCode("/*@[1316ad4*/",tlcOutputsFcnOfS639B54,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS639B55)
+/* {S!d1553}S-Function (RTC_NTF): '<S1545>/NTF Trigger' */
+%<SLibCG_DumpSSCode("/*@[1316ad9*/",tlcOutputsFcnOfS639B55,"/*@]*/")>\
+%endif
+/* {E!d1553}End of Outputs for S-Function (RTC_NTF): '<S1545>/NTF Trigger' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS639B61)
+
+/* {S!d1630}S-Function (TOP_MEX): '<S1526>/BoostCoeffs' */
+%<SLibCG_DumpSSCode("/*@[1316adb*/",tlcOutputsFcnOfS639B61,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS639B62)
+/* {S!d1632}S-Function (TOP_MEX): '<S1526>/CutCoeffs' */
+%<SLibCG_DumpSSCode("/*@[1316add*/",tlcOutputsFcnOfS639B62,"/*@]*/")>\
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[638], "Output",2)
+/* {S!d1634}MATLAB Function: '<S1526>/tone' */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_tone_j",638,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[1316b08*/",SLibCGIRGenReusableSysCall("Model_Target_tone_j", ["%<_modelSS>", "%<SLibCG_DumpSSCode("/*@[131851e*/",(SLibCG_BOCSCAddr(593, 3, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[1318530*/",(SLibCG_BOCSCAddr(594, 3, "", -1, "", 0)),"/*@]*/")>", "/*@>1318544*/Model_Target_PreAmpPart1_B./*@>1318543*/sf_tone./*@>1318542*/audioOut", "&/*@>1318552*/Model_Target_PreAmpPart1_B./*@>1318551*/sf_tone_j", "&/*@>131855f*/Model_Target_PreAmpPart1_DW./*@>131855e*/sf_tone_j"], 638, 0, 6, 2, 6, 639),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[638]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[622], "Output",2)
+
+/* {S!d1636}MATLAB Function: '<S1524>/tone' */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_tone_k",622,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[1316b09*/",SLibCGIRGenReusableSysCall("Model_Target_tone_k", ["%<_modelSS>", "%<SLibCG_DumpSSCode("/*@[13185ae*/",(SLibCG_BOCSCAddr(591, 5, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[13185c0*/",(SLibCG_BOCSCAddr(592, 5, "", -1, "", 0)),"/*@]*/")>", "/*@>13185d4*/Model_Target_PreAmpPart1_B./*@>13185d3*/sf_tone_j./*@>13185d2*/audioOut", "&/*@>13185e2*/Model_Target_PreAmpPart1_B./*@>13185e1*/sf_tone_k", "&/*@>13185ef*/Model_Target_PreAmpPart1_DW./*@>13185ee*/sf_tone_k"], 622, 0, 6, 2, 6, 639),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[622]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS639B65)
+/* {S!d1638}M-S-Function: '<S1524>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[1316ade*/",tlcOutputsFcnOfS639B65,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS639B66)
+/* {S!d1640}S-Function (AudioStats_MEX): '<S1563>/AudioStats' */
+%<SLibCG_DumpSSCode("/*@[1316ae1*/",tlcOutputsFcnOfS639B66,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS639B67)
+/* {S!d1642}S-Function (AudioStats_MEX): '<S1576>/Audio Stats' */
+%<SLibCG_DumpSSCode("/*@[1316ae4*/",tlcOutputsFcnOfS639B67,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS639B68)
+/* {S!d1644}M-S-Function: '<S1576>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[1316ae5*/",tlcOutputsFcnOfS639B68,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS639B69)
+/* {S!d1646}S-Function (TOP_MEX): '<S1526>/Boost_dB TOP' */
+%<SLibCG_DumpSSCode("/*@[1316ae7*/",tlcOutputsFcnOfS639B69,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS639B70)
+/* {S!d1648}S-Function (TOP_MEX): '<S1526>/Cut_dB TOP' */
+%<SLibCG_DumpSSCode("/*@[1316ae9*/",tlcOutputsFcnOfS639B70,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS639B71)
+/* {S!d1650}S-Function (AudioStats_MEX): '<S1526>/Audio Stats' */
+%<SLibCG_DumpSSCode("/*@[1316aed*/",tlcOutputsFcnOfS639B71,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS639B72)
+/* {S!d1652}S-Function (TOP_MEX): '<S1586>/TOP' */
+%<SLibCG_DumpSSCode("/*@[1316aef*/",tlcOutputsFcnOfS639B72,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS639B73)
+/* {S!d1654}S-Function (TOP_MEX): '<S1587>/TOP' */
+%<SLibCG_DumpSSCode("/*@[1316af1*/",tlcOutputsFcnOfS639B73,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS639B74)
+/* {S!d1656}S-Function (TOP_MEX): '<S1585>/TOP' */
+%<SLibCG_DumpSSCode("/*@[1316af3*/",tlcOutputsFcnOfS639B74,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS639B75)
+/* {S!d1555}S-Function (RTC_REQ_RSP): '<S1581>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[1316af5*/",tlcOutputsFcnOfS639B75,"/*@]*/")>\
+%endif
+/* {E!d1555}End of Outputs for S-Function (RTC_REQ_RSP): '<S1581>/RTC Request Response Trigger' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS639B84)
+
+/* {S!d1557}S-Function (RTC_NTF): '<S1581>/NTF Trigger' */
+%<SLibCG_DumpSSCode("/*@[1316afa*/",tlcOutputsFcnOfS639B84,"/*@]*/")>\
+%endif
+/* {E!d1557}End of Outputs for S-Function (RTC_NTF): '<S1581>/NTF Trigger' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS639B90)
+
+/* {S!d1658}M-S-Function: '<S1526>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[1316afb*/",tlcOutputsFcnOfS639B90,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS639B91)
+/* {S!d1660}M-S-Function: '<S26>/Partition' */
+%<SLibCG_DumpSSCode("/*@[1316afc*/",tlcOutputsFcnOfS639B91,"/*@]*/")>\
+%endif
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_PreAmpPart1(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(183, 1, fcnProtoType)>
+%endfunction

@@ -1,0 +1,156 @@
+%implements s1068_b0_g3vnd_2_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+int32_T db_offset;
+int32_T tmp;
+real32_T percent;
+uint32_T idx;
+uint8_T j;
+boolean_T exitg1;
+%closefile localVarDecl
+/*@>1156729*/idx/*@>10c7284*/ = /*@>115673f*/rtu_idx;
+/*@>1156704*/db_offset/*@>10c7287*/ = /*@>1156741*/rtu_db_offset;
+/*  */
+/*  Lookup volume table  */
+/*  Output Gain vlue from table */
+/*  */
+/* MATLAB Function 'ModelPreAmp/DecRate/AudioPilot35/Volume/Index2DbTable/lookup db from index': '<S542>:1' */
+/* '<S542>:1:8' j = uint8(1); */
+/*@>1156706*/j/*@>10c7289*/ = /*@>1158f9f*/1U;
+/* '<S542>:1:9' gain_value = single(0.0); */
+/*@>1158a63*/localB->/*@>11590a8*/gain_value/*@>10c728a*/ = /*@>1156731*/0.0F;
+/* '<S542>:1:10' interpolated_gain_dB=single(0.0); */
+/* '<S542>:1:11' interpolated_gain_dB_with_offset=single(0.0); */
+/*  workaround to type problem */
+/* '<S542>:1:14' idx = cast(idx, class(volTableIdx(end))); */
+/*   bounds checking for vol - clip to max idx */
+/* '<S542>:1:17' if (idx > volTableIdx(end)) */
+/*@>10c72b0*/if (/*@>1156743*/rtu_idx/*@>10c729d*/ > /*@>115895b*/rtu_volTableIdx/*@>115895d*/[/*@>1158959*/7]) {
+    /* '<S542>:1:18' idx = volTableIdx(end); */
+    /*@>115670a*/idx/*@>10c728d*/ = /*@>1158961*/rtu_volTableIdx/*@>1158963*/[/*@>115895f*/7];
+}
+/*   bounds checking for gain offset(No Boost) - clip to max offset level */
+/* '<S542>:1:21' if (db_offset > int32(maxgain)) */
+/*@>11575a3*/percent/*@>11575a5*/ = /*@>1158434*/roundf(/*@>1156747*/rtu_maxgain);
+/*@>11573dd*/if (/*@>11576ba*/percent/*@>115703d*/ < /*@>1157040*/2.14748365E+9F) {
+    /*@>11573e2*/if (/*@>11576bc*/percent/*@>1157042*/ >= /*@>1157045*/-2.14748365E+9F) {
+        /*@>11573e6*/tmp/*@>11573e5*/ = /*@>1157046*/(int32_T)/*@>11576be*/percent;
+    } else {
+        /*@>11573e1*/tmp/*@>11573e0*/ = /*@>1157049*/MIN_int32_T;
+    }
+} else {
+    /*@>11573d6*/tmp/*@>11573d8*/ = /*@>115704a*/MAX_int32_T;
+}
+/*@>10c72b4*/if (/*@>1156745*/rtu_db_offset/*@>10c72a0*/ > /*@>11573da*/tmp) {
+    /* '<S542>:1:22' db_offset = int32(maxgain); */
+    /*@>11573ca*/if (percent/*@>1157051*/ < /*@>1157054*/2.14748365E+9F) {
+        /*@>11573cf*/if (percent/*@>1157056*/ >= /*@>1157059*/-2.14748365E+9F) {
+            /*@>11573d3*/db_offset/*@>11573d2*/ = /*@>115705a*/(int32_T)percent;
+        } else {
+            /*@>11573ce*/db_offset/*@>11573cd*/ = /*@>115705d*/MIN_int32_T;
+        }
+    } else {
+        /*@>115670c*/db_offset/*@>10c728e*/ = /*@>115705e*/MAX_int32_T;
+    }
+}
+/* '<S542>:1:24' if (db_offset < int32(-10.0)) */
+/*@>10c72b7*/if (/*@>115670e*/db_offset/*@>10c72a2*/ < /*@>1156732*/-10) {
+    /* '<S542>:1:25' db_offset = int32(-10.0); */
+    /*@>1156710*/db_offset/*@>10c7290*/ = /*@>1158fa2*/-10;
+}
+/*  search through volume table to find index closest to vol */
+/* '<S542>:1:29' while (j <= numel(volTableIdx)) */
+exitg1 = false;
+while/*@<10c72bc*/ ((!exitg1) && (/*@>1156712*/j/*@>10c72a3*/ <= /*@>1156734*/8)) {
+    uint32_T q0;
+    /* '<S542>:1:30' if (idx <= volTableIdx(j)) */
+    /*@>11575c3*/q0/*@>11575c5*/ = /*@>115896b*/rtu_volTableIdx/*@>115896d*/[/*@>1158968*/j/*@>1158965*/ - /*@>1158969*/1];
+    /*@>10c72bd*/if (/*@>1156714*/idx/*@>10c72a6*/ <= /*@>11575c7*/q0) {
+        /* '<S542>:1:31' if (j <= 1) */
+        /*@>10c72be*/if (/*@>1156716*/j/*@>10c72a7*/ <= /*@>1156718*/1) {
+            /*  first indexed value is linearly interpolated to zero */
+            /* '<S542>:1:32' if (volTableIdx(j)) */
+            /*@>10c72c0*/if (/*@>1158971*/rtu_volTableIdx/*@>1158973*/[/*@>115896f*/0]/*@>10c72a9*/ != /*@>115671e*/0U) {
+                /* '<S542>:1:33' percent = single(idx) / single(volTableIdx(j)); */
+                /*@>1156725*/percent/*@>10c72fc*/ = /*@>115843c*/qhmath_div_f(/*@>10c7318*/(real32_T)/*@>115672b*/idx, /*@>10c731b*/(real32_T)/*@>1158977*/rtu_volTableIdx/*@>1158979*/[/*@>1158975*/0]);
+            } else {
+                /* '<S542>:1:34' else */
+                /* '<S542>:1:35' percent = single(1); */
+                /*@>115671f*/percent/*@>10c7297*/ = /*@>1156735*/1.0F;
+            }
+            /* '<S542>:1:37' gain_value = percent * 10 ^ ( (volTabledB(j)+ single(db_offset)) / 20); */
+            /*@>1158a6a*/localB->/*@>11590ab*/gain_value/*@>10c7299*/ = /*@>1158440*/qhmath_pow_f(/*@>1156737*/10.0F, /*@>115843e*/qhmath_div_f(/*@>1158987*/rtu_volTabledB/*@>1158989*/[/*@>1158985*/0]/*@>10c7326*/ + /*@>10c732c*/(real32_T)/*@>115672f*/db_offset, /*@>1156736*/20.0F))/*@>11567ed*/ * /*@>1156721*/percent;
+        } else {
+            uint32_T qY;
+            uint32_T qY_tmp;
+            /* '<S542>:1:38' else */
+            /*  other values are interpolated in db space */
+            /* '<S542>:1:39' lastIdx = volTableIdx(j-1); */
+            /* '<S542>:1:40' percent = single(idx - lastIdx) / single(volTableIdx(j) - lastIdx); */
+            /* '<S542>:1:41' interpolated_gain_dB = (percent * (volTabledB(j) - volTabledB(j-1) ) ) + volTabledB(j-1); */
+            /* '<S542>:1:42' interpolated_gain_dB_with_offset= interpolated_gain_dB + single(db_offset); */
+            /* '<S542>:1:43' gain_value = 10 ^ ( (interpolated_gain_dB_with_offset) / 20); */
+            /*@>11575e3*/qY_tmp/*@>11575e5*/ = /*@>1158981*/rtu_volTableIdx/*@>1158983*/[/*@>115897e*/j/*@>115897b*/ - /*@>115897f*/2];
+            /*@>11567a9*/qY/*@>11567ab*/ = /*@>1157031*/idx/*@>11567a8*/ - /*MW:OvSatOk*/ /*@>11575e7*/qY_tmp;
+            /*@>11567ba*/if (/*@>11567b0*/qY/*@>11567b3*/ > /*@>1157033*/idx) {
+                /*@>11567b6*/qY/*@>11567b8*/ = /*@>11567b5*/0U;
+            }
+            /*@>11567c9*/idx/*@>11567cb*/ = q0/*@>11567c8*/ - /*MW:OvSatOk*/ qY_tmp;
+            /*@>11567da*/if (/*@>11567d0*/idx/*@>11567d3*/ > q0) {
+                /*@>11567d6*/idx/*@>11567d8*/ = /*@>11567d5*/0U;
+            }
+            /*@>115760b*/percent/*@>115760d*/ = /*@>1158991*/rtu_volTabledB/*@>1158993*/[/*@>115898e*/j/*@>115898b*/ - /*@>115898f*/2];
+            /*@>1158a71*/localB->/*@>11590ae*/gain_value/*@>10c7303*/ = /*@>115843a*/qhmath_pow_f(/*@>1156739*/10.0F, /*@>1158438*/qhmath_div_f(((/*@>115899b*/rtu_volTabledB/*@>115899d*/[/*@>1158998*/j/*@>1158995*/ - /*@>1158999*/1]/*@>10c734a*/ - /*@>115760f*/percent)/*@>1156794*/ * /*@>1158436*/qhmath_div_f(/*@>10c733b*/(real32_T)/*@>11567bc*/qY, /*@>10c733f*/(real32_T)/*@>11567dc*/idx)/*@>10c7338*/ + percent)/*@>10c7321*/ + /*@>10c7322*/(real32_T)/*@>115672d*/db_offset, /*@>1156738*/20.0F));
+        }
+        exitg1 = true;
+    } else {
+        /* '<S542>:1:46' else */
+        /* '<S542>:1:47' j = j + 1; */
+        /*@>115671c*/j/*@>1158fce*/++;
+    }
+}
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[2].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(2, 0, 0)>
+%endif
+%if SLibCG_ArgAccessed(2, 0, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(2, 0, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_lookupdbfromindex(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(2, 0, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_Target_lookupdbfromindex", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>const uint32_T rtu_volTableIdx[8]\
+%assign comma = ", "
+%<comma>const real32_T rtu_volTabledB[8]\
+%assign comma = ", "
+%<comma>uint32_T rtu_idx\
+%assign comma = ", "
+%<comma>int32_T rtu_db_offset\
+%assign comma = ", "
+%<comma>real32_T rtu_maxgain\
+%assign comma = ", "
+%<comma>B_lookupdbfromindex_Model_Target_T *localB\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(2, 0, fcnProtoType)>
+%endfunction

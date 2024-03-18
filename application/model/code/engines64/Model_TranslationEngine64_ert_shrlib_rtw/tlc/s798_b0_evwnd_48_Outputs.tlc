@@ -1,0 +1,121 @@
+%implements s798_b0_evwnd_48_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+int32_T i;
+int32_T xpageoffset;
+char_T c_data[93];
+char_T d_data[75];
+int8_T nz[6];
+boolean_T x[12];
+static const char_T e[93] = %<(TLC_STR_CTX(40))>;
+static const char_T f[75] = %<(TLC_STR_CTX(41))>;
+%closefile localVarDecl
+/* {S!d53}MATLAB Function: '<S778>/Trivial Translation' */
+/* {S!d56}MATLAB Function: '<S778>/Trivial Translation' incorporates:
+ *  S-Function (TuneVarMEX): '<S778>/Tune Variable'
+ */
+/*  Invoke the function trigger output */
+/* MATLAB Function 'TranslateTrigger/tfunc': '<S791>:1' */
+/* '<S791>:1:3' f(); */
+/* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 3/On/Full-rate Mixer/Full-Rate Mixer with CAE & Fade Ramper/Fade Tuning/Downmix Weights CS/Trivial Translation': '<S790>:1' */
+/* '<S790>:1:3' numCSIn = MedusaFRMConfig.CS_in; */
+/* '<S790>:1:4' NumCAEWeights = MedusaFRMConfig.NumTailComp.CS; */
+/* '<S790>:1:6' NumRows = MedusaFRMConfig.CS_out; */
+/* '<S790>:1:7' NumColumns = numCSIn + NumCAEWeights; */
+/* '<S790>:1:8' if(~ MedusaFRMConfig.includeCAE) */
+/* '<S790>:1:9' NumColumns = numCSIn; */
+/*  Checks if the parameter satisfies dimensionality requirements */
+/* '<S790>:1:13' if(downmix_wts_CS.Size(1) ~= NumRows || downmix_wts_CS.Size(2) ~= NumColumns) */
+/*@>c66235*/if ((/*@>d31e82*/Model_TranslationEngine64_Medusa5H1Part3_B./*@>d3226b*/DownmixWeights_CS_c./*@>d32262*/Size/*@>d31d0b*/[/*@>d31d04*/0]/*@>c6622f*/ != /*@>d303b9*/2.0)/*@>d32101*/ || (/*@>d31e88*/Model_TranslationEngine64_Medusa5H1Part3_B./*@>d3226e*/DownmixWeights_CS_c./*@>d32265*/Size/*@>d31d14*/[/*@>d31d0d*/1]/*@>c66231*/ != /*@>d303ba*/6.0)) {
+    /* '<S790>:1:14' TranslateError('The parameter ''medusa_frm_downmix_cs'' must be a matrix consisting of %<"\%d rows and \%d columns.\', NumRows, NumColumns);"> */
+    /* TRANSLATEERROR (For use in Functions triggered by TranslationTrigger blocks.) */
+    /* Print error message during tune data translation. */
+    /*   Do not include a final newline as this behavior is already built in. */
+    /*   Note that escape sequences such as '\n' will not work here. To emit */
+    /*   special characters, pass them in as arguments to %<"\%c or \%s format"> */
+    /*   specifiers. */
+    /*    Copyright 2018-2019 Bose Corporation */
+    /* 'TranslateError:10' coder.extrinsic('gcb') */
+    /* 'TranslateError:11' coder.extrinsic('warning') */
+    /* 'TranslateError:12' coder.allowpcode('plain'); */
+    /*  enable code generation from p-file */
+    /* 'TranslateError:14' if (coder.target('MATLAB')) */
+    /* 'TranslateError:18' if (coder.target('Sfun')) */
+    /* 'TranslateError:21' else */
+    /* 'TranslateError:22' count = numel(varargin); */
+    /* 'TranslateError:23' fixedArgs = varargin; */
+    /* 'TranslateError:24' for i=1:count */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:26' fixedArgs{i} = [varargin{i} char(0)]; */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:29' coder.ceval('TranslateError',fixedArgs{:}); */
+    /*@>d319fc*/memcpy(&/*@>d3165b*/c_data[/*@>d3164b*/0], &/*@>d31663*/e/*@>d31664*/[/*@>d31658*/0], /*@>d3165a*/93U/*@>d31667*/ * /*@>d31666*/sizeof(char_T));
+    /*@>d318e6*/TranslateError(&/*@>d31330*/c_data/*@>d31343*/[/*@>d303c1*/0], /*@>d303c2*/2.0, /*@>d303c3*/6.0);
+}
+/*  Checks if the parameter values follow bound requirements */
+/* '<S790>:1:18' checkValues = (downmix_wts_CS.Value < 0); */
+/*@>d2f93d*/for (/*@>d32193*/i = /*@>d32192*/0; /*@>d3219d*/i < /*@>d3219b*/12; /*@>d32199*/i/*@>d321a1*/++) {
+    /*@>d30400*/x/*@>d2f92f*/[/*@>d303fe*/i]/*@>d2f930*/ = (/*@>d31e8e*/Model_TranslationEngine64_Medusa5H1Part3_B./*@>d32271*/DownmixWeights_CS_c./*@>d32268*/Value/*@>d31d1e*/[/*@>d31d17*/i]/*@>d2f91f*/ < /*@>d303ee*/0.0);
+}
+/* '<S790>:1:19' if(sum(sum(checkValues))) */
+/*@>c662a9*/for (/*@>d32182*/i = /*@>d32181*/0; /*@>d3218c*/i < /*@>d3218a*/6; /*@>d32188*/i/*@>d321a2*/++) {
+    /*@>d303d0*/xpageoffset/*@>c6629f*/ = /*@>d303df*/i/*@>d30491*/ << /*@>d30490*/1;
+    /*@>d3044a*/nz/*@>d3011c*/[/*@>d3044c*/i] = (int8_T)(/*@>d31d29*/x/*@>d31d2b*/[/*@>d31d27*/xpageoffset/*@>d31d25*/ + /*@>d31d28*/1]/*@>d308d5*/ + /*@>d31d2f*/x/*@>d31d31*/[/*@>d31d2e*/xpageoffset]);
+}
+/*@>d303d2*/xpageoffset/*@>c662bc*/ = /*@>d31d21*/nz/*@>d31d23*/[/*@>d31d20*/0];
+/*@>c662c5*/for (/*@>d32171*/i = /*@>d32170*/0; /*@>d3217b*/i < /*@>d32179*/5; /*@>d32177*/i/*@>d321a3*/++) {
+    /*@>d303db*/xpageoffset/*@>d321a4*/ += /*@>d31d37*/nz/*@>d31d39*/[/*@>d31d35*/i/*@>d31d33*/ + /*@>d31d36*/1];
+}
+/*@>c6623b*/if (/*@>d303bb*/xpageoffset/*@>c66234*/ != /*@>d303bd*/0) {
+    /*  Results in 0 if all values in the matrix respect the bound requirements */
+    /* '<S790>:1:20' TranslateError('The weights in ''medusa_frm_downmix_CS'' must be greater than or equal to 0.'); */
+    /* TRANSLATEERROR (For use in Functions triggered by TranslationTrigger blocks.) */
+    /* Print error message during tune data translation. */
+    /*   Do not include a final newline as this behavior is already built in. */
+    /*   Note that escape sequences such as '\n' will not work here. To emit */
+    /*   special characters, pass them in as arguments to %<"\%c or \%s format"> */
+    /*   specifiers. */
+    /*    Copyright 2018-2019 Bose Corporation */
+    /* 'TranslateError:10' coder.extrinsic('gcb') */
+    /* 'TranslateError:11' coder.extrinsic('warning') */
+    /* 'TranslateError:12' coder.allowpcode('plain'); */
+    /*  enable code generation from p-file */
+    /* 'TranslateError:14' if (coder.target('MATLAB')) */
+    /* 'TranslateError:18' if (coder.target('Sfun')) */
+    /* 'TranslateError:21' else */
+    /* 'TranslateError:22' count = numel(varargin); */
+    /* 'TranslateError:23' fixedArgs = varargin; */
+    /* 'TranslateError:24' for i=1:count */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:26' fixedArgs{i} = [varargin{i} char(0)]; */
+    /* 'TranslateError:29' coder.ceval('TranslateError',fixedArgs{:}); */
+    /*@>d319fe*/memcpy(&/*@>d315f9*/d_data[/*@>d315e9*/0], &/*@>d31601*/f/*@>d31602*/[/*@>d315f6*/0], /*@>d315f8*/75U/*@>d31605*/ * /*@>d31604*/sizeof(char_T));
+    /*@>d318ea*/TranslateError(&/*@>d3138e*/d_data/*@>d313a1*/[/*@>d303c7*/0]);
+}
+/*  Assigning the parameter values to respective tuneTOPS */
+/* '<S790>:1:24' TOP = downmix_wts_CS.Value(:, 1:numCSIn); */
+/*@>d31a00*/memcpy(&/*@>d31e9a*/Model_TranslationEngine64_Medusa5H1Part3_B./*@>d32274*/TOP_g/*@>d3159a*/[/*@>d31589*/0], &/*@>d31ea0*/Model_TranslationEngine64_Medusa5H1Part3_B./*@>d32277*/DownmixWeights_CS_c./*@>d3225f*/Value[0], /*@>d31598*/12U/*@>d315ab*/ * /*@>d315aa*/sizeof(real_T));
+/* '<S790>:1:25' if(~ MedusaFRMConfig.includeCAE) */
+/* '<S790>:1:26' TOP_CAE = zeros(NumRows, NumCAEWeights); */
+/*@>d31ea6*/Model_TranslationEngine64_Medusa5H1Part3_B./*@>d3227a*/TOP_CAE_o/*@>d301e4*/[/*@>d30458*/0]/*@>d301e3*/ = /*@>d30457*/0.0;
+/*@>d31eac*/Model_TranslationEngine64_Medusa5H1Part3_B./*@>d3227d*/TOP_CAE_o/*@>d301ed*/[/*@>d3045c*/1]/*@>d301ec*/ = /*@>d3045b*/0.0;
+/*@>d31eb2*/Model_TranslationEngine64_Medusa5H1Part3_B./*@>d32280*/TOP_CAE_o/*@>d301f6*/[/*@>d30460*/2]/*@>d301f5*/ = /*@>d3045f*/0.0;
+/*@>d31eb8*/Model_TranslationEngine64_Medusa5H1Part3_B./*@>d32283*/TOP_CAE_o/*@>d301ff*/[/*@>d30464*/3]/*@>d301fe*/ = /*@>d30463*/0.0;
+/* {E!d56}End of MATLAB Function: '<S778>/Trivial Translation' */
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void FuncTranslation_Model_141_2939(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(48, 0, fcnProtoType)>
+%endfunction

@@ -1,0 +1,47 @@
+%implements s1068_b0_g3vnd_157_TLCInterface "C"
+
+%function getOutputAddr_484_13_157_1_10_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_BOCSCAddr(block, 613, 24, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getOutput_484_13_157_1_10_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_BOCSC(block, 613, 24, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getSystemOutputFcnCallInfo_484_0_157_1_481_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>12e5b0e*/InitTrigger_Model_150_610_446"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_493_2_157_1_489_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>12e5b1a*/Outputs"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_493_2_157_1_491_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>12e5b1e*/HandleReqPreAmpMedusaPostHoligramDisable"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_493_2_157_1_492_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>12e5b22*/Outputs"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_493_7_157_1_488_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>12e5b26*/Outputs"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_484_5_157_1_479_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>12e5b12*/InitTrigger_Model_150_610_443_224"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_484_8_157_1_477_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>12e5b16*/InitTrigger_Model_150_610_443_99"; Args [] }
+%return fcnInfo
+%endfunction

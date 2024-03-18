@@ -1,0 +1,24 @@
+%implements s1068_b0_g3vnd_164_ConstCode "C"
+
+%function ConstCode(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%assign tlcOutputsFcnOfS597B40 = OpaqueTLCBlockFcn("Outputs", 597, 40, 164, 3, 0)
+%if !WHITE_SPACE(tlcOutputsFcnOfS597B40)
+/* ConstCode for S-Function (CapturedConst): '<S1482>/CapturedTuneConst' incorporates:
+ *  S-Function (AudioStats_MEX): '<S1482>/AudioStats'
+ */
+%<SLibCG_DumpSSCode("/*@[12fc0f6*/",tlcOutputsFcnOfS597B40,"/*@]*/")>\
+%endif
+%closefile cfgTxt
+%<cfgTxt>
+%endfunction
+%function ConstCodeFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_VLS_Const(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(164, 3, fcnProtoType)>
+%endfunction

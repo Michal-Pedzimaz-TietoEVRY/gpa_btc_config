@@ -1,0 +1,1630 @@
+%implements s798_b0_evwnd_347_Functions "C"
+
+%function Model_TranslationEngine64_merge_Fcn0(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+%assign cfgTxt = ""
+%openfile cfgTxt
+int32_T q;
+/*@>b4279b*/if (/*@>fcdab1*/nq/*@>fea63a*/ != /*@>fcdab3*/0) {
+    int32_T iout;
+    int32_T n;
+    int32_T qend;
+    /*@>fe42c3*/qend/*@>fe42c5*/ = /*@>fcdab4*/np/*@>b4273e*/ + /*@>fcdab6*/nq;
+/*@>b4279d*/    for (/*@>10062eb*/q = /*@>10062ea*/0; /*@>10062f8*/q < /*@>10062f5*/qend; /*@>10062f1*/q/*@>10062fb*/++) {
+        /*@>fee89d*/iwork_data/*@>fb8c8f*/[/*@>fcdb02*/q]/*@>b4278a*/ = /*@>fff3fd*/idx_data[/*@>fff3f9*/offset/*@>fff3f7*/ + /*@>fff3fb*/q];
+        /*@>fee8d1*/xwork_data/*@>fb8d1e*/[/*@>fcdb0d*/q]/*@>b42783*/ = /*@>fff407*/x_data[/*@>fff403*/offset/*@>fff401*/ + /*@>fff405*/q];
+    }
+    /*@>fcdac0*/n/*@>b42782*/ = /*@>10062a5*/0;
+    /*@>fcdac5*/q/*@>b42781*/ = /*@>fcdac3*/np;
+    /*@>fcdacf*/iout/*@>b4277d*/ = /*@>fcdacd*/offset/*@>b46436*/ - /*@>fcdaf8*/1;
+    int32_T exitg1;
+    do {
+        exitg1 = 0;
+        /*@>fcdad4*/iout/*@>10062fc*/++;
+        /*@>b427a8*/if (/*@>fff40e*/xwork_data/*@>fff410*/[/*@>fff40c*/n]/*@>b42725*/ <= /*@>fff415*/xwork_data/*@>fff417*/[/*@>fff413*/q]) {
+            /*@>fee93d*/idx_data[iout]/*@>b4276f*/ = /*@>fff423*/iwork_data/*@>fff425*/[/*@>fff421*/n];
+            /*@>fee993*/x_data[iout]/*@>b42769*/ = /*@>fff431*/xwork_data/*@>fff433*/[/*@>fff42f*/n];
+            /*@>b427ab*/if (/*@>fcdada*/n/*@>b4642d*/ + /*@>fcdaf5*/1/*@>b42715*/ < /*@>fcdadc*/np) {
+                /*@>fcdaec*/n/*@>10062fd*/++;
+            } else {
+                exitg1 = 1;
+            }
+        } else {
+            /*@>fee912*/idx_data[iout]/*@>b42760*/ = /*@>fff41c*/iwork_data/*@>fff41e*/[/*@>fff41a*/q];
+            /*@>fee968*/x_data[iout]/*@>b4275a*/ = /*@>fff42a*/xwork_data/*@>fff42c*/[/*@>fff428*/q];
+            /*@>b427af*/if (/*@>fcdad6*/q/*@>b46433*/ + /*@>fcdaf7*/1/*@>b42705*/ < qend) {
+                /*@>fcdae7*/q/*@>10062fe*/++;
+            } else {
+                /*@>fcdae2*/qend/*@>b42753*/ = /*@>fcdade*/iout/*@>b42703*/ - /*@>fcdae0*/n;
+/*@>b427b3*/                for (/*@>10062db*/q = /*@>10062d9*/n/*@>10062d7*/ + /*@>10062da*/1; /*@>10062e6*/q <= /*@>10062e4*/np; /*@>10062e1*/q/*@>10062ff*/++) {
+                    iout = /*@>ff2b55*/qend/*@>ff2b53*/ + /*@>ff2b57*/q;
+                    /*@>fee9d3*/idx_data[iout]/*@>b4274d*/ = /*@>fff43a*/iwork_data/*@>fff43c*/[/*@>fff437*/q/*@>fff435*/ - /*@>fff438*/1];
+                    /*@>fee9fe*/x_data[iout]/*@>b42748*/ = /*@>fff443*/xwork_data/*@>fff445*/[/*@>fff440*/q/*@>fff43e*/ - /*@>fff441*/1];
+                }
+                exitg1 = 1;
+            }
+        }
+    } while (exitg1 == 0);
+}
+%closefile cfgTxt
+%<cfgTxt>
+%closefile fcnBuff
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_TranslationEngine64_merge(\
+%assign comma = ""
+%<comma>int32_T idx_data[]\
+%assign comma = ", "
+%<comma>real_T x_data[]\
+%assign comma = ", "
+%<comma>int32_T offset\
+%assign comma = ", "
+%<comma>int32_T np\
+%assign comma = ", "
+%<comma>int32_T nq\
+%assign comma = ", "
+%<comma>int32_T iwork_data[]\
+%assign comma = ", "
+%<comma>real_T xwork_data[]\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(347, 0, fcnProtoType)>
+%return fcnBuff
+%endfunction
+
+%function Model_TranslationEngine64_sort_Fcn1(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+%assign cfgTxt = ""
+%openfile cfgTxt
+real_T b_x_data[20];
+real_T xwork_data[20];
+real_T x4[4];
+int32_T idx_data[20];
+int32_T iwork_data[20];
+int32_T b_x_size[2];
+int32_T nPairs;
+int32_T tailOffset;
+int8_T idx4[4];
+int8_T perm[4];
+%assign _modelSS = ""
+
+%if SLibCG_FcnCallArgAccessed(347,1,0,4)
+%<SLibCG_AccessArg(347 ,1, 1)>
+%endif
+
+b_x_size/*@>fb7904*/[/*@>fcd847*/1]/*@>fa620d*/ = x_size/*@>fff288*/[/*@>fff284*/1];
+/*@>fcd85c*/nPairs/*@>fb7a5e*/ = x_size/*@>fff28e*/[/*@>fff28a*/1];
+if (/*@>ff4fde*/nPairs/*@>ff4fdc*/ - /*@>ff4fdf*/1 >= /*@>ff4fdb*/0) {
+    /*@>ffa1e5*/memcpy(&/*@>ff4fbb*/b_x_data[/*@>ff4fab*/0], &/*@>ff4fc5*/x_data[/*@>ff4fba*/0], /*@>ff4fa9*/(uint32_T)/*@>ff4fa8*/nPairs/*@>ff4fc9*/ * /*@>ff4fc8*/sizeof(real_T));
+}
+/*@>b42225*/if (x_size/*@>fff294*/[/*@>fff290*/1]/*@>fea637*/ != /*@>fcd7a7*/0) {
+    int32_T i2;
+    int32_T ib;
+    int32_T n;
+    /*@>fcd898*/nPairs/*@>fb7c81*/ = x_size/*@>fff29a*/[/*@>fff296*/1];
+    if (/*@>ff639b*/nPairs/*@>ff6399*/ - /*@>ff639c*/1 >= /*@>ff6398*/0) {
+        /*@>ffa1e7*/memset(&/*@>ff6383*/idx_data[/*@>ff6382*/0], /*@>1006405*/0, /*@>ff6380*/(uint32_T)/*@>ff637f*/nPairs/*@>ff638a*/ * /*@>ff6389*/sizeof(int32_T));
+    }
+    b_x_size/*@>fb7cfa*/[/*@>fcd8a4*/1]/*@>fa62d6*/ = x_size/*@>fff2aa*/[/*@>fff2a6*/1];
+    /*@>fcd8b9*/nPairs/*@>fb7e54*/ = x_size/*@>fff2b0*/[/*@>fff2ac*/1];
+    if (/*@>ff4f61*/nPairs/*@>ff4f5f*/ - /*@>ff4f62*/1 >= /*@>ff4f5e*/0) {
+        /*@>ffa1e9*/memcpy(&/*@>ff4f3e*/b_x_data[/*@>ff4f2e*/0], &/*@>ff4f48*/x_data[/*@>ff4f3d*/0], /*@>ff4f2c*/(uint32_T)/*@>ff4f2b*/nPairs/*@>ff4f4c*/ * /*@>ff4f4b*/sizeof(real_T));
+    }
+    /*@>fcd6b5*/n/*@>b422f0*/ = x_size/*@>fff2b6*/[/*@>fff2b2*/1];
+    /*@>fcda0b*/x4/*@>fc5839*/[/*@>fcda11*/0]/*@>fc5838*/ = /*@>fcda0d*/0.0;
+    /*@>fcda0e*/idx4/*@>fc5840*/[/*@>fcda12*/0]/*@>fc583f*/ = /*@>1006408*/0;
+    /*@>fcda13*/x4/*@>fc584a*/[/*@>fcda19*/1]/*@>fc5849*/ = /*@>fcda15*/0.0;
+    /*@>fcda16*/idx4/*@>fc5851*/[/*@>fcda1a*/1]/*@>fc5850*/ = /*@>100640b*/0;
+    /*@>fcda1b*/x4/*@>fc585b*/[/*@>fcda21*/2]/*@>fc585a*/ = /*@>fcda1d*/0.0;
+    /*@>fcda1e*/idx4/*@>fc5862*/[/*@>fcda22*/2]/*@>fc5861*/ = /*@>100640e*/0;
+    /*@>fcda23*/x4/*@>fc586c*/[/*@>fcda29*/3]/*@>fc586b*/ = /*@>fcda25*/0.0;
+    /*@>fcda26*/idx4/*@>fc5873*/[/*@>fcda2a*/3]/*@>fc5872*/ = /*@>1006411*/0;
+    /*@>fcd6b7*/ib/*@>b422ed*/ = /*@>1006414*/0;
+    /*@>fcd6ba*/tailOffset/*@>b42297*/ = x_size/*@>fff2bc*/[/*@>fff2b8*/1];
+/*@>b422f6*/    for (/*@>10064bb*/nPairs = /*@>10064ba*/0; /*@>10064c8*/nPairs < /*@>10064c5*/tailOffset; /*@>10064c1*/nPairs/*@>10064cb*/++) {
+        /*@>fcd6c8*/ib/*@>10064cc*/++;
+        /*@>fcd7e5*/idx4/*@>b422e8*/[/*@>fcd6ce*/ib/*@>b42288*/ - /*@>fcd6d0*/1]/*@>b422e6*/ = /*@>fd4ae5*/(int8_T)(/*@>fcd7da*/nPairs/*@>b463eb*/ + /*@>fcd7d6*/1);
+        /*@>fcd8d7*/x4/*@>fb8020*/[/*@>fcd8d9*/ib/*@>fb8025*/ - /*@>fcd8db*/1]/*@>b422e0*/ = /*@>fff2c6*/b_x_data[/*@>fff2c5*/nPairs];
+        /*@>b422fc*/if (/*@>fcd6d7*/ib/*@>b4228a*/ == /*@>fcd6d9*/4) {
+            real_T tmp;
+            real_T tmp_0;
+            int32_T i3;
+            int32_T i4;
+            /*@>b424cc*/if (/*@>fff2d1*/x4/*@>fff2d3*/[/*@>fff2d0*/0]/*@>b424bb*/ <= /*@>fff2d6*/x4/*@>fff2d8*/[/*@>fff2d5*/1]) {
+                /*@>fcd6fb*/ib/*@>b42455*/ = /*@>1006429*/1;
+                /*@>fcd701*/i2/*@>b42456*/ = /*@>1006435*/2;
+            } else {
+                /*@>fcd6f8*/ib/*@>b42457*/ = /*@>1006426*/2;
+                /*@>fcd6fe*/i2/*@>b42458*/ = /*@>1006432*/1;
+            }
+            /*@>b424d2*/if (/*@>fff30e*/x4/*@>fff310*/[/*@>fff30d*/2]/*@>b424bc*/ <= /*@>fff313*/x4/*@>fff315*/[/*@>fff312*/3]) {
+                /*@>fcd707*/i3/*@>b4245b*/ = /*@>100646b*/3;
+                /*@>fcd70d*/i4/*@>b4245c*/ = /*@>100647a*/4;
+            } else {
+                /*@>fcd704*/i3/*@>b4245d*/ = /*@>1006468*/4;
+                /*@>fcd70a*/i4/*@>b4245e*/ = /*@>1006477*/3;
+            }
+            /*@>fe4208*/tmp/*@>fe420a*/ = /*@>fff330*/x4/*@>fff332*/[/*@>fff32e*/ib/*@>fff32c*/ - /*@>fff32f*/1];
+            /*@>fe4218*/tmp_0/*@>fe421a*/ = /*@>fff341*/x4/*@>fff343*/[/*@>fff33f*/i3/*@>fff33d*/ - /*@>fff340*/1];
+            /*@>b424d8*/if (/*@>fe420c*/tmp/*@>b424bf*/ <= /*@>fe421c*/tmp_0) {
+                /*@>fe4238*/tmp/*@>fe423a*/ = /*@>fff357*/x4/*@>fff359*/[/*@>fff355*/i2/*@>fff353*/ - /*@>fff356*/1];
+                /*@>b424d9*/if (/*@>fe423c*/tmp/*@>b424c2*/ <= tmp_0) {
+                    /*@>fcd811*/perm/*@>b42467*/[/*@>fcd713*/0]/*@>b42469*/ = /*@>fd4bd4*/(int8_T)/*@>fcd714*/ib;
+                    /*@>fcd81d*/perm/*@>b4246a*/[/*@>fcd725*/1]/*@>b4246c*/ = /*@>fd4bee*/(int8_T)/*@>fcd726*/i2;
+                    /*@>fcd829*/perm/*@>b4246d*/[/*@>fcd737*/2]/*@>b4246f*/ = /*@>fd4c09*/(int8_T)/*@>fcd738*/i3;
+                    /*@>fcd835*/perm/*@>b42470*/[/*@>fcd749*/3]/*@>b42472*/ = /*@>fd4c21*/(int8_T)/*@>fcd74a*/i4;
+                } else /*@>b424de*/if (tmp/*@>b424c5*/ <= /*@>fff36d*/x4/*@>fff36f*/[/*@>fff36b*/i4/*@>fff369*/ - /*@>fff36c*/1]) {
+                    /*@>fcd81b*/perm/*@>b42477*/[/*@>fcd722*/0]/*@>b42479*/ = /*@>fd4bea*/(int8_T)/*@>fcd723*/ib;
+                    /*@>fcd827*/perm/*@>b4247a*/[/*@>fcd734*/1]/*@>b4247c*/ = /*@>fd4c05*/(int8_T)/*@>fcd735*/i3;
+                    /*@>fcd833*/perm/*@>b4247d*/[/*@>fcd746*/2]/*@>b4247f*/ = /*@>fd4c1d*/(int8_T)/*@>fcd747*/i2;
+                    /*@>fcd83d*/perm/*@>b42480*/[/*@>fcd755*/3]/*@>b42482*/ = /*@>fd4c36*/(int8_T)/*@>fcd756*/i4;
+                } else {
+                    /*@>fcd819*/perm/*@>b42483*/[/*@>fcd71f*/0]/*@>b42485*/ = /*@>fd4be6*/(int8_T)/*@>fcd720*/ib;
+                    /*@>fcd825*/perm/*@>b42486*/[/*@>fcd731*/1]/*@>b42488*/ = /*@>fd4c01*/(int8_T)/*@>fcd732*/i3;
+                    /*@>fcd831*/perm/*@>b42489*/[/*@>fcd743*/2]/*@>b4248b*/ = /*@>fd4c19*/(int8_T)/*@>fcd744*/i4;
+                    /*@>fcd83b*/perm/*@>b4248c*/[/*@>fcd752*/3]/*@>b4248e*/ = /*@>fd4c32*/(int8_T)/*@>fcd753*/i2;
+                }
+            } else {
+                /*@>fe4228*/tmp_0/*@>fe422a*/ = /*@>fff34f*/x4/*@>fff351*/[/*@>fff34d*/i4/*@>fff34b*/ - /*@>fff34e*/1];
+                /*@>b424e9*/if (tmp/*@>b424c8*/ <= /*@>fe422c*/tmp_0) {
+                    /*@>b424ea*/if (/*@>fff365*/x4/*@>fff367*/[/*@>fff363*/i2/*@>fff361*/ - /*@>fff364*/1]/*@>b424cb*/ <= tmp_0) {
+                        /*@>fcd817*/perm/*@>b42497*/[/*@>fcd71c*/0]/*@>b42499*/ = /*@>fd4be2*/(int8_T)/*@>fcd71d*/i3;
+                        /*@>fcd823*/perm/*@>b4249a*/[/*@>fcd72e*/1]/*@>b4249c*/ = /*@>fd4bfd*/(int8_T)/*@>fcd72f*/ib;
+                        /*@>fcd82f*/perm/*@>b4249d*/[/*@>fcd740*/2]/*@>b4249f*/ = /*@>fd4c15*/(int8_T)/*@>fcd741*/i2;
+                        /*@>fcd839*/perm/*@>b424a0*/[/*@>fcd74f*/3]/*@>b424a2*/ = /*@>fd4c2e*/(int8_T)/*@>fcd750*/i4;
+                    } else {
+                        /*@>fcd815*/perm/*@>b424a3*/[/*@>fcd719*/0]/*@>b424a5*/ = /*@>fd4bde*/(int8_T)/*@>fcd71a*/i3;
+                        /*@>fcd821*/perm/*@>b424a6*/[/*@>fcd72b*/1]/*@>b424a8*/ = /*@>fd4bf9*/(int8_T)/*@>fcd72c*/ib;
+                        /*@>fcd82d*/perm/*@>b424a9*/[/*@>fcd73d*/2]/*@>b424ab*/ = /*@>fd4c11*/(int8_T)/*@>fcd73e*/i4;
+                        /*@>fcd837*/perm/*@>b424ac*/[/*@>fcd74c*/3]/*@>b424ae*/ = /*@>fd4c2a*/(int8_T)/*@>fcd74d*/i2;
+                    }
+                } else {
+                    /*@>fcd80f*/perm/*@>b424af*/[/*@>fcd710*/0]/*@>b424b1*/ = /*@>fd4bc8*/(int8_T)/*@>fcd711*/i3;
+                    /*@>fcd813*/perm/*@>b424b2*/[/*@>fcd716*/1]/*@>b424b4*/ = /*@>fd4bda*/(int8_T)/*@>fcd717*/i4;
+                    /*@>fcd81f*/perm/*@>b424b5*/[/*@>fcd728*/2]/*@>b424b7*/ = /*@>fd4bf5*/(int8_T)/*@>fcd729*/ib;
+                    /*@>fcd82b*/perm/*@>b424b8*/[/*@>fcd73a*/3]/*@>b424ba*/ = /*@>fd4c0d*/(int8_T)/*@>fcd73b*/i2;
+                }
+            }
+            /*@>fee791*/idx_data[/*@>100246a*/nPairs/*@>1002468*/ - /*@>100246b*/3]/*@>b422d9*/ = /*@>fff383*/idx4/*@>fff385*/[/*@>fff380*/perm/*@>fff37f*/[/*@>fff381*/0]/*@>fff37c*/ - /*@>fff382*/1];
+            /*@>fee7b0*/idx_data[/*@>1002470*/nPairs/*@>100246e*/ - /*@>1002471*/2]/*@>b422d3*/ = /*@>fff393*/idx4/*@>fff395*/[/*@>fff390*/perm/*@>fff38f*/[/*@>fff391*/1]/*@>fff38c*/ - /*@>fff392*/1];
+            /*@>fee7cf*/idx_data[/*@>1002476*/nPairs/*@>1002474*/ - /*@>1002477*/1]/*@>b422cd*/ = /*@>fff3a3*/idx4/*@>fff3a5*/[/*@>fff3a0*/perm/*@>fff39f*/[/*@>fff3a1*/2]/*@>fff39c*/ - /*@>fff3a2*/1];
+            /*@>fee7ee*/idx_data[nPairs]/*@>b422c7*/ = /*@>fff3b3*/idx4/*@>fff3b5*/[/*@>fff3b0*/perm/*@>fff3af*/[/*@>fff3b1*/3]/*@>fff3ac*/ - /*@>fff3b2*/1];
+            /*@>fee80d*/b_x_data[/*@>100247c*/nPairs/*@>100247a*/ - /*@>100247d*/3]/*@>b422c1*/ = /*@>fff3c3*/x4/*@>fff3c5*/[/*@>fff3c0*/perm/*@>fff3bf*/[/*@>fff3c1*/0]/*@>fff3bc*/ - /*@>fff3c2*/1];
+            /*@>fee82c*/b_x_data[/*@>1002482*/nPairs/*@>1002480*/ - /*@>1002483*/2]/*@>b422bb*/ = /*@>fff3d3*/x4/*@>fff3d5*/[/*@>fff3d0*/perm/*@>fff3cf*/[/*@>fff3d1*/1]/*@>fff3cc*/ - /*@>fff3d2*/1];
+            /*@>fee84b*/b_x_data[/*@>1002488*/nPairs/*@>1002486*/ - /*@>1002489*/1]/*@>b422b5*/ = /*@>fff3e3*/x4/*@>fff3e5*/[/*@>fff3e0*/perm/*@>fff3df*/[/*@>fff3e1*/2]/*@>fff3dc*/ - /*@>fff3e2*/1];
+            /*@>fee86a*/b_x_data[nPairs]/*@>b422af*/ = /*@>fff3f3*/x4/*@>fff3f5*/[/*@>fff3f0*/perm/*@>fff3ef*/[/*@>fff3f1*/3]/*@>fff3ec*/ - /*@>fff3f2*/1];
+            /*@>fcd6da*/ib/*@>b422ae*/ = /*@>100647d*/0;
+        }
+    }
+    /*@>b42307*/if (/*@>fcd6c2*/ib/*@>b42257*/ > /*@>fcd6c4*/0) {
+        /*@>fcd9fc*/perm/*@>fc5819*/[/*@>fcd9ff*/1]/*@>fc5818*/ = /*@>1006417*/0;
+        /*@>fcda00*/perm/*@>fc5822*/[/*@>fcda03*/2]/*@>fc5821*/ = /*@>100641a*/0;
+        /*@>fcda04*/perm/*@>fc582b*/[/*@>fcda07*/3]/*@>fc582a*/ = /*@>100641d*/0;
+        switch (/*@>fcd7a5*/ib) {
+          case /*@>fcd6e1*/1:
+            /*@>fcd7e7*/perm/*@>b423e3*/[/*@>fcd6e3*/0]/*@>b423e2*/ = /*@>1006423*/1;
+            break;
+          case /*@>fcd6e2*/2:
+            /*@>b423e9*/if (/*@>fff2e5*/x4/*@>fff2e7*/[/*@>fff2e4*/0]/*@>b423b0*/ <= /*@>fff2ea*/x4/*@>fff2ec*/[/*@>fff2e9*/1]) {
+                /*@>fcd7eb*/perm/*@>b423df*/[/*@>fcd6e5*/0]/*@>b423de*/ = /*@>100642f*/1;
+                /*@>fcd7f5*/perm/*@>b423dd*/[/*@>fcd6eb*/1]/*@>b423dc*/ = /*@>1006444*/2;
+            } else {
+                /*@>fcd7e9*/perm/*@>b423db*/[/*@>fcd6e4*/0]/*@>b423da*/ = /*@>100642c*/2;
+                /*@>fcd7f3*/perm/*@>b423d9*/[/*@>fcd6ea*/1]/*@>b423d8*/ = /*@>1006441*/1;
+            }
+            break;
+          default:
+            /*@>b423ef*/if (/*@>fff2db*/x4/*@>fff2dd*/[/*@>fff2da*/0]/*@>b423af*/ <= /*@>fff2e0*/x4/*@>fff2e2*/[/*@>fff2df*/1]) {
+                /*@>b423f0*/if (/*@>fff2f9*/x4/*@>fff2fb*/[/*@>fff2f8*/1]/*@>b423ae*/ <= /*@>fff2fe*/x4/*@>fff300*/[/*@>fff2fd*/2]) {
+                    /*@>fcd7f1*/perm/*@>b423d3*/[/*@>fcd6e9*/0]/*@>b423d2*/ = /*@>100643e*/1;
+                    /*@>fcd7ff*/perm/*@>b423d1*/[/*@>fcd6f0*/1]/*@>b423d0*/ = /*@>1006456*/2;
+                    /*@>fcd809*/perm/*@>b423cf*/[/*@>fcd6f5*/2]/*@>b423ce*/ = /*@>1006465*/3;
+                } else /*@>b423f4*/if (/*@>fff309*/x4/*@>fff30b*/[/*@>fff308*/0]/*@>b423ad*/ <= /*@>fcd6e8*/0.0) {
+                    /*@>fcd7fd*/perm/*@>b423cc*/[/*@>fcd6ef*/0]/*@>b423cb*/ = /*@>1006453*/1;
+                    /*@>fcd807*/perm/*@>b423ca*/[/*@>fcd6f4*/1]/*@>b423c9*/ = /*@>1006462*/3;
+                    /*@>fcd80d*/perm/*@>b423c8*/[/*@>fcd6f7*/2]/*@>b423c7*/ = /*@>1006474*/2;
+                } else {
+                    /*@>fcd7fb*/perm/*@>b423c6*/[/*@>fcd6ee*/0]/*@>b423c5*/ = /*@>1006450*/3;
+                    /*@>fcd805*/perm/*@>b423c4*/[/*@>fcd6f3*/1]/*@>b423c3*/ = /*@>100645f*/1;
+                    /*@>fcd80b*/perm/*@>b423c2*/[/*@>fcd6f6*/2]/*@>b423c1*/ = /*@>1006471*/2;
+                }
+            } else /*@>b423fd*/if (/*@>fff2ef*/x4/*@>fff2f1*/[/*@>fff2ee*/0]/*@>b423ac*/ <= /*@>fff2f4*/x4/*@>fff2f6*/[/*@>fff2f3*/2]) {
+                /*@>fcd7ef*/perm/*@>b423be*/[/*@>fcd6e7*/0]/*@>b423bd*/ = /*@>100643b*/2;
+                /*@>fcd7f9*/perm/*@>b423bc*/[/*@>fcd6ed*/1]/*@>b423bb*/ = /*@>100644d*/1;
+                /*@>fcd803*/perm/*@>b423ba*/[/*@>fcd6f2*/2]/*@>b423b9*/ = /*@>100645c*/3;
+            } else {
+                /*@>fcd7ed*/perm/*@>b423b8*/[/*@>fcd6e6*/0]/*@>b423b7*/ = /*@>1006438*/2;
+                /*@>fcd7f7*/perm/*@>b423b6*/[/*@>fcd6ec*/1]/*@>b423b5*/ = /*@>100644a*/3;
+                /*@>fcd801*/perm/*@>b423b4*/[/*@>fcd6f1*/2]/*@>b423b3*/ = /*@>1006459*/1;
+            }
+            break;
+        }
+        /*@>fcd6cc*/tailOffset/*@>b42256*/ = /*@>fcec55*/(uint8_T)/*@>fcd6ca*/ib;
+/*@>b42309*/        for (/*@>10064a8*/nPairs = /*@>10064a7*/0; /*@>10064b5*/nPairs < /*@>10064b2*/tailOffset; /*@>10064ae*/nPairs/*@>10064cd*/++) {
+            int8_T perm_0;
+            perm_0 = /*@>fff319*/perm/*@>fff31b*/[/*@>fff318*/nPairs];
+            i2 = (/*@>ff2846*/n/*@>ff2844*/ - /*@>ff2848*/ib)/*@>ff2843*/ + /*@>ff284a*/nPairs;
+            /*@>fee630*/idx_data[i2]/*@>b422a3*/ = /*@>fff328*/idx4/*@>fff32a*/[perm_0/*@>fff323*/ - /*@>fff327*/1];
+            /*@>fee662*/b_x_data[i2]/*@>b4229a*/ = /*@>fff339*/x4/*@>fff33b*/[perm_0/*@>fff334*/ - /*@>fff338*/1];
+        }
+    }
+    /*@>b4222f*/if (x_size/*@>fff2c2*/[/*@>fff2be*/1]/*@>b42229*/ > /*@>fcd6b4*/1) {
+        /*@>fcda2e*/nPairs/*@>fb8069*/ = x_size/*@>fff2ce*/[/*@>fff2ca*/1];
+        if (/*@>ff61a8*/nPairs/*@>ff61a6*/ - /*@>ff61a9*/1 >= /*@>ff61a5*/0) {
+            /*@>ffa1eb*/memset(&/*@>ff6190*/iwork_data/*@>ff6191*/[/*@>ff618f*/0], /*@>1006420*/0, /*@>ff618d*/(uint32_T)/*@>ff618c*/nPairs/*@>ff6197*/ * /*@>ff6196*/sizeof(int32_T));
+        }
+        /*@>fcda34*/nPairs/*@>fb81d6*/ = x_size/*@>fff306*/[/*@>fff302*/1];
+        if (/*@>ff6164*/nPairs/*@>ff6162*/ - /*@>ff6165*/1 >= /*@>ff6161*/0) {
+            /*@>ffa1ed*/memset(&/*@>ff614c*/xwork_data/*@>ff614d*/[/*@>ff614b*/0], /*@>1006447*/0, /*@>ff6149*/(uint32_T)/*@>ff6148*/nPairs/*@>ff6153*/ * /*@>ff6152*/sizeof(real_T));
+        }
+        /*@>fcd759*/nPairs/*@>b42572*/ = x_size/*@>fff321*/[/*@>fff31d*/1]/*@>b4259e*/ >> /*@>fcd758*/2;
+        /*@>fcd75b*/n/*@>b42573*/ = /*@>100646e*/4;
+        while/*@<b425b6*/ (/*@>fcd75e*/nPairs/*@>b4259f*/ > /*@>fcd760*/1) {
+            /*@>b425b7*/if ((/*@>fd5dd1*/(uint32_T)/*@>fcd763*/nPairs/*@>fd5dd4*/ & /*@>fd5dd3*/1U)/*@>b425a1*/ != /*@>fd5dd6*/0U) {
+                /*@>fcd76f*/nPairs/*@>10064ce*/--;
+                /*@>fcd77a*/tailOffset/*@>b4257a*/ = /*@>fcd776*/n/*@>fcecaa*/ * /*@>fcd778*/nPairs;
+                /*@>fcd783*/ib/*@>b4257c*/ = x_size/*@>fff375*/[/*@>fff371*/1]/*@>b425a4*/ - /*@>fcd781*/tailOffset;
+                /*@>b425bb*/if (/*@>fcd789*/ib/*@>b425a5*/ > /*@>fcd78b*/n) {
+                    %<SLibCG_DumpSSCode("/*@[1005fd5*/",(SLibCGCallSubFcn("Model_TranslationEngine64_merge", ["/*@>10068cc*/idx_data", "/*@>10068d6*/b_x_data", "/*@>10068e0*/tailOffset", "/*@>10068ea*/n", "/*@>10068f5*/ib/*@>10068f4*/ - /*@>10068f6*/n", "/*@>1006900*/iwork_data", "/*@>100690a*/xwork_data"], 347, 1, 1)),"/*@]*/")>;
+                }
+            }
+            /*@>fcd774*/ib/*@>b42588*/ = /*@>fcd771*/n/*@>fceca9*/ << /*@>fcd773*/1;
+            /*@>fcd77f*/nPairs/*@>10064cf*/ >>= /*@>fcd77e*/1;
+/*@>b425c2*/            for (/*@>1006495*/tailOffset = /*@>1006494*/0; /*@>10064a2*/tailOffset < /*@>100649f*/nPairs; /*@>100649b*/tailOffset/*@>10064d0*/++) {
+                %<SLibCG_DumpSSCode("/*@[1005ff2*/",(SLibCGCallSubFcn("Model_TranslationEngine64_merge", ["/*@>1006914*/idx_data", "/*@>100691e*/b_x_data", "/*@>1006929*/tailOffset/*@>1006928*/ * /*@>100692a*/ib", "/*@>1006934*/n", "/*@>100693e*/n", "/*@>1006948*/iwork_data", "/*@>1006952*/xwork_data"], 347, 1, 2)),"/*@]*/")>;
+            }
+            /*@>fcd79d*/n/*@>b42594*/ = /*@>fcd79b*/ib;
+        }
+        /*@>b425c7*/if (x_size/*@>fff349*/[/*@>fff345*/1]/*@>b425b0*/ > /*@>fcd761*/n) {
+            %<SLibCG_DumpSSCode("/*@[1005fb8*/",(SLibCGCallSubFcn("Model_TranslationEngine64_merge", ["/*@>100695c*/idx_data", "/*@>1006966*/b_x_data", "/*@>1006970*/0", "/*@>100697a*/n", "x_size/*@>1006985*/[/*@>1006987*/1]/*@>1006984*/ - /*@>1006988*/n", "/*@>1006992*/iwork_data", "/*@>100699c*/xwork_data"], 347, 1, 0)),"/*@]*/")>;
+        }
+    }
+}
+x_size/*@>fb7aec*/[/*@>fcd869*/0]/*@>fb7aee*/ = /*@>1006402*/1;
+x_size/*@>fb7aff*/[/*@>fcd86f*/1]/*@>fb7b01*/ = b_x_size/*@>fff29f*/[/*@>fff29c*/1];
+/*@>fcd881*/nPairs/*@>fb7b3c*/ = b_x_size/*@>fff2a4*/[/*@>fff2a1*/1];
+if (/*@>ff4e80*/nPairs/*@>ff4e7e*/ - /*@>ff4e81*/1 >= /*@>ff4e7d*/0) {
+    /*@>ffa1ef*/memcpy(&/*@>ff4e61*/x_data[/*@>ff4e50*/0], &/*@>ff4e69*/b_x_data[/*@>ff4e5f*/0], /*@>ff4e4e*/(uint32_T)/*@>ff4e4d*/nPairs/*@>ff4e6d*/ * /*@>ff4e6c*/sizeof(real_T));
+}
+%closefile cfgTxt
+%<cfgTxt>
+%closefile fcnBuff
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_TranslationEngine64_sort(\
+%assign comma = ""
+%<comma>real_T x_data[]\
+%assign comma = ", "
+%<comma>int32_T x_size[2]\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(347, 1, fcnProtoType)>
+%return fcnBuff
+%endfunction
+
+%function Model_TranslationEngine64_cplxpair_Fcn2(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign _modelSS = ""
+
+%if SLibCG_FcnCallArgAccessed(347,2,0,0)
+%<SLibCG_AccessArg(347 ,2, 0)>
+%endif
+%if SLibCG_FcnCallArgAccessed(347,2,0,1)
+%<SLibCG_AccessArg(347 ,2, 1)>
+%endif
+
+/*@>b421c6*/if (x_size/*@>fff282*/[/*@>fff27e*/1]/*@>fea634*/ != /*@>fcd627*/0) {
+    %<SLibCG_DumpSSCode("/*@[100600a*/",(SLibCGCallSubFcn("Model_TranslationEngine64_sort", ["/*@>10069c6*/x_data", "x_size"], 347, 2, 0)),"/*@]*/")>;
+}
+%closefile cfgTxt
+%<cfgTxt>
+%closefile fcnBuff
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_TranslationEngine64_cplxpair(\
+%assign comma = ""
+%<comma>real_T x_data[]\
+%assign comma = ", "
+%<comma>int32_T x_size[2]\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(347, 2, fcnProtoType)>
+%return fcnBuff
+%endfunction
+
+%function rt_hypotd_snf_Fcn3(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+%assign cfgTxt = ""
+%openfile cfgTxt
+real_T a;
+real_T b;
+real_T y;
+a = fabs(u0);
+b = fabs(u1);
+if (a < b) {
+    a /= b;
+    y = sqrt(a * a + 1.0) * b;
+} else if (a > b) {
+    b /= a;
+    y = sqrt(b * b + 1.0) * a;
+} else if (rtIsNaN(b)) {
+    y = %<LibGetMathConstant(LibRealNonFinite("nan"), FcnGetDataTypeIdFromName("double"))>;
+} else {
+    y = a * 1.4142135623730951;
+}
+return y;
+%closefile cfgTxt
+%<cfgTxt>
+%closefile fcnBuff
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+extern real_T rt_hypotd_snf(\
+%assign comma = ""
+%<comma>real_T u0\
+%assign comma = ", "
+%<comma>real_T u1\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(347, 3, fcnProtoType)>
+%return fcnBuff
+%endfunction
+
+%function Model_TranslationEngine64_cplxpairv_Fcn4(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+%assign cfgTxt = ""
+%openfile cfgTxt
+real_T absx_data[20];
+real_T zi_data[20];
+real_T zr_data[20];
+real_T absxk;
+real_T absxk_tmp;
+real_T absxk_tmp_0;
+int32_T b_iwork_data[20];
+int32_T idx_data[20];
+int32_T iwork_data[20];
+int32_T absxk_tmp_tmp;
+int32_T b_i;
+int32_T b_i2;
+int32_T b_kEnd;
+int32_T b_n;
+int32_T b_p;
+int32_T b_pEnd;
+int32_T b_q;
+int32_T b_qEnd;
+int32_T d_j;
+int32_T i_k;
+int32_T idx_tmp;
+int32_T n;
+boolean_T exitg1;
+boolean_T pairable;
+/*@>fcdd20*/n/*@>b429fc*/ = x_size/*@>fff481*/[/*@>fff47d*/1];
+b_n/*@>fa67bf*/ = x_size/*@>fff487*/[/*@>fff483*/1];
+/*@>fcdf86*/b_i/*@>fb98ed*/ = x_size/*@>fff48d*/[/*@>fff489*/1];
+/*@>fb98d8*/for (/*@>1006b4c*/i_k = /*@>1006b4b*/0; /*@>1006b59*/i_k < /*@>1006b56*/b_i; /*@>1006b52*/i_k/*@>1006b5c*/++) {
+    /*@>feeb95*/zr_data[i_k]/*@>fb98be*/ = /*@>fff492*/x_data[i_k].re;
+}
+if (b_n/*@>ff665e*/ - /*@>ff6661*/1 >= /*@>ff665d*/0) {
+    /*@>ffa1f1*/memset(&/*@>ff6648*/idx_data[/*@>ff6647*/0], /*@>1006a38*/0, /*@>ff6645*/(uint32_T)b_n/*@>ff664f*/ * /*@>ff664e*/sizeof(int32_T));
+}
+/*@>b42c9a*/if (x_size/*@>fff49a*/[/*@>fff496*/1]/*@>fea63f*/ != /*@>fcdeef*/0) {
+    /*@>fcde50*/b_i2/*@>b42e9a*/ = x_size/*@>fff4a0*/[/*@>fff49c*/1]/*@>fbdff5*/ - /*@>fce1e7*/1;
+/*@>b42ef7*/    for (/*@>1006b3c*/b_i = /*@>1006b3b*/1; /*@>1006b47*/b_i <= /*@>1006b45*/b_i2; /*@>1006b42*/b_i += /*@>1006b3e*/2) {
+        absxk_tmp = /*@>fff4aa*/zr_data[/*@>fff4a9*/b_i];
+        /*@>b42ef9*/if ((/*@>fff4c2*/zr_data[/*@>1002830*/b_i/*@>100282e*/ - /*@>1002831*/1]/*@>f9e5ec*/ <= absxk_tmp) || /*@>ff8bac*/rtIsNaN(absxk_tmp)) {
+            /*@>feedaa*/idx_data[/*@>100283c*/b_i/*@>100283a*/ - /*@>100283d*/1]/*@>b42e3f*/ = /*@>fcde5d*/b_i;
+            /*@>feedf2*/idx_data[/*@>fce003*/b_i]/*@>b42e41*/ = /*@>fcde64*/b_i/*@>b42ea1*/ + /*@>fcde66*/1;
+        } else {
+            /*@>feed8c*/idx_data[/*@>1002836*/b_i/*@>1002834*/ - /*@>1002837*/1]/*@>b42e43*/ = /*@>fcde5a*/b_i/*@>b42ea7*/ + /*@>fcde5c*/1;
+            /*@>feedd4*/idx_data[/*@>fcdffe*/b_i]/*@>b42e45*/ = /*@>fcde62*/b_i;
+        }
+    }
+    /*@>b42eff*/if ((/*@>fd5de3*/(uint32_T)x_size/*@>fff4a6*/[/*@>fff4a2*/1]/*@>fd5de6*/ & /*@>fd5de5*/1U)/*@>b42eb4*/ != /*@>fd5de8*/0U) {
+        /*@>feed69*/idx_data[x_size/*@>fff4b8*/[/*@>fff4b4*/1]/*@>fb9e3d*/ - /*@>fcdfeb*/1]/*@>b42e47*/ = x_size/*@>fff4be*/[/*@>fff4ba*/1];
+    }
+    /*@>fcde5f*/b_i/*@>b42e48*/ = /*@>1006a41*/2;
+    while/*@<b42f04*/ (/*@>fcde67*/b_i/*@>b42ebb*/ < b_n) {
+        /*@>fcdedb*/b_i2/*@>b42fca*/ = /*@>fcdee5*/b_i/*@>fcecd4*/ << /*@>fcecd3*/1;
+        /*@>fcde69*/d_j/*@>b42e4a*/ = /*@>1006a44*/1;
+        /*@>fcde6f*/b_pEnd/*@>b42e4c*/ = /*@>fcde6c*/b_i/*@>b42ebc*/ + /*@>fcde6e*/1;
+        while/*@<b42f08*/ (/*@>fcde71*/b_pEnd/*@>b42ebd*/ < b_n/*@>ff2fa7*/ + /*@>ff2faa*/1) {
+            /*@>fcde79*/b_p/*@>b42e4f*/ = /*@>fcde77*/d_j;
+            /*@>fcde7d*/b_q/*@>b42e51*/ = /*@>fcde7b*/b_pEnd/*@>b46510*/ - /*@>fcdf05*/1;
+            /*@>fcde83*/b_qEnd/*@>b42e54*/ = /*@>fcde7f*/d_j/*@>b42ebe*/ + /*@>fcde81*/b_i2;
+            /*@>b42f0c*/if (/*@>fcde85*/b_qEnd/*@>b42ebf*/ > b_n/*@>ff2fb2*/ + /*@>ff2fb5*/1) {
+                /*@>fcde87*/b_qEnd/*@>b42e56*/ = b_n/*@>ff2fb8*/ + /*@>ff2fbb*/1;
+            }
+            /*@>fcde89*/i_k/*@>b42e57*/ = /*@>1006a4d*/0;
+            /*@>fcde90*/b_kEnd/*@>b42e5a*/ = /*@>fcde8c*/b_qEnd/*@>b42ec0*/ - /*@>fcde8e*/d_j;
+            while/*@<b42f12*/ (/*@>fcde92*/i_k/*@>b46521*/ + /*@>fcdf08*/1/*@>b42ec1*/ <= /*@>fcde94*/b_kEnd) {
+                absxk_tmp_tmp = /*@>fff516*/idx_data[/*@>fff515*/b_q];
+                /*@>fe434e*/absxk_tmp/*@>fe4350*/ = /*@>fff52c*/zr_data[absxk_tmp_tmp/*@>fff528*/ - /*@>fff52b*/1];
+                idx_tmp = /*@>fff53a*/idx_data[/*@>fff538*/b_p/*@>fff536*/ - /*@>fff539*/1];
+                /*@>b42f13*/if ((/*@>fff542*/zr_data[idx_tmp/*@>fff53e*/ - /*@>fff541*/1]/*@>f9e634*/ <= /*@>fe4352*/absxk_tmp) || /*@>ff8bb8*/rtIsNaN(absxk_tmp)) {
+                    /*@>fef269*/b_iwork_data/*@>fbae3c*/[/*@>fce0d6*/i_k]/*@>b42e62*/ = idx_tmp;
+                    /*@>fcdea5*/b_p/*@>1006b5e*/++;
+                    /*@>b42f16*/if (/*@>fcdeaf*/b_p/*@>b42ec9*/ == /*@>fcdeb1*/b_pEnd) {
+                        while/*@<b42f18*/ (/*@>fcdebd*/b_q/*@>b46513*/ + /*@>fcdf06*/1/*@>b42eca*/ < /*@>fcdebf*/b_qEnd) {
+                            /*@>fcdece*/i_k/*@>1006b5f*/++;
+                            /*@>fef2d9*/b_iwork_data/*@>fbb0e3*/[/*@>fce105*/i_k]/*@>b42e70*/ = /*@>fff564*/idx_data[/*@>fff563*/b_q];
+                            /*@>fcded8*/b_q/*@>1006b60*/++;
+                        }
+                    }
+                } else {
+                    /*@>fef243*/b_iwork_data/*@>fbadc0*/[/*@>fce0cd*/i_k]/*@>b42e78*/ = absxk_tmp_tmp;
+                    /*@>fcdea0*/b_q/*@>1006b62*/++;
+                    /*@>b42f1f*/if (/*@>fcdeab*/b_q/*@>b46516*/ + /*@>fcdf07*/1/*@>b42eda*/ == /*@>fcdead*/b_qEnd) {
+                        while/*@<b42f21*/ (/*@>fcdeb9*/b_p/*@>b42edb*/ < /*@>fcdebb*/b_pEnd) {
+                            /*@>fcdec9*/i_k/*@>1006b63*/++;
+                            /*@>fef2b3*/b_iwork_data/*@>fbb067*/[/*@>fce0fc*/i_k]/*@>b42e86*/ = /*@>fff55e*/idx_data[/*@>fff55c*/b_p/*@>fff55a*/ - /*@>fff55d*/1];
+                            /*@>fcded3*/b_p/*@>1006b64*/++;
+                        }
+                    }
+                }
+                /*@>fcdec4*/i_k/*@>1006b61*/++;
+            }
+/*@>b42f28*/            for (/*@>1006b29*/b_pEnd = /*@>1006b28*/0; /*@>1006b36*/b_pEnd < /*@>1006b33*/b_kEnd; /*@>1006b2f*/b_pEnd/*@>1006b65*/++) {
+                /*@>fef1f4*/idx_data[(/*@>fce0df*/d_j/*@>fbaeca*/ + /*@>fce0e1*/b_pEnd)/*@>fbaec9*/ - /*@>fce0e3*/1]/*@>b42e91*/ = /*@>fff532*/b_iwork_data/*@>fff534*/[/*@>fff531*/b_pEnd];
+            }
+            /*@>fcdea9*/d_j/*@>b42e93*/ = /*@>fcdea7*/b_qEnd;
+            /*@>fcdeb7*/b_pEnd/*@>b42e95*/ = /*@>fcdeb3*/b_qEnd/*@>b42ef4*/ + /*@>fcdeb5*/b_i;
+        }
+        /*@>fcde75*/b_i/*@>b42e97*/ = /*@>fcde73*/b_i2;
+    }
+}
+/*@>fcdd26*/b_i/*@>b42a00*/ = /*@>1006a3b*/0;
+/*@>fcdd29*/b_n/*@>b42a01*/ = /*@>1006a3e*/0;
+/*@>fcdd2c*/b_kEnd/*@>b42a78*/ = x_size/*@>fff4b2*/[/*@>fff4ae*/1];
+/*@>b42b44*/for (/*@>1006b16*/b_qEnd = /*@>1006b15*/0; /*@>1006b23*/b_qEnd < /*@>1006b20*/b_kEnd; /*@>1006b1c*/b_qEnd/*@>1006b66*/++) {
+    i_k = /*@>fff4c8*/idx_data[/*@>fff4c7*/b_qEnd];
+    /*@>fe4326*/absxk_tmp/*@>fe4328*/ = /*@>fff4d1*/x_data[i_k/*@>fff4cc*/ - /*@>fff4cf*/1].re;
+    /*@>fe433e*/absxk_tmp_0/*@>fe4340*/ = /*@>fff4e3*/x_data[i_k/*@>1002840*/ - /*@>1002843*/1].im;
+    /*@>fcdedd*/absxk/*@>b42fe2*/ = %<SLibCG_DumpSSCode("/*@[1006022*/",(SLibCGCallSubFcn("rt_hypotd_snf", ["/*@>10070a4*/absxk_tmp", "/*@>10070ae*/absxk_tmp_0"], 347, 4, 0)),"/*@]*/")>;
+    /*@>b42b47*/if (/*@>ff8bb0*/fabs(/*@>fff4f6*/x_data[i_k/*@>1002846*/ - /*@>1002849*/1].im)/*@>b42a7f*/ <= /*@>fcdd48*/2.2204460492503131E-14/*@>fcecda*/ * /*@>fcdd46*/absxk) {
+        /*@>fcdd51*/b_i/*@>1006b67*/++;
+        d_j = /*@>fce059*/n/*@>fba5ef*/ - /*@>fce05b*/b_i;
+        /*@>fef001*/zr_data[d_j]/*@>b42a09*/ = absxk_tmp;
+        /*@>fef042*/zi_data[d_j]/*@>b42a0d*/ = /*@>fcdd55*/0.0;
+        /*@>fef085*/absx_data[/*@>fce070*/b_qEnd]/*@>b42a11*/ = /*@>fcdd5b*/absxk;
+    } else {
+        /*@>fcdd4c*/b_n/*@>1006b68*/++;
+        /*@>feefe2*/zr_data[/*@>100284f*/b_n/*@>100284d*/ - /*@>1002850*/1]/*@>b42a16*/ = absxk_tmp;
+        /*@>fef023*/zi_data[/*@>1002855*/b_n/*@>1002853*/ - /*@>1002856*/1]/*@>b42a19*/ = absxk_tmp_0;
+        /*@>fef067*/absx_data[/*@>fce089*/b_n/*@>fba8c9*/ - /*@>fce08b*/1]/*@>b42a1d*/ = /*@>fcdd59*/absxk;
+    }
+}
+/*@>b42b51*/for (/*@>1006b03*/d_j = /*@>1006b02*/0; /*@>1006b10*/d_j < /*@>1006b0d*/b_i; /*@>1006b09*/d_j/*@>1006b69*/++) {
+    b_qEnd = /*@>ff2ed0*/b_n/*@>ff2ece*/ + /*@>ff2ed2*/d_j;
+    /*@>feeea0*/x_data[b_qEnd]./*@>1007033*/re/*@>fc6748*/ = /*@>fff4dc*/zr_data[(/*@>fff4d8*/n/*@>fff4d6*/ - /*@>fff4da*/d_j)/*@>fff4d5*/ - /*@>fff4db*/1];
+    /*@>feef38*/x_data[b_qEnd]./*@>1007036*/im/*@>b42a26*/ = /*@>fcdd45*/0.0;
+}
+/*@>b42b56*/for (/*@>1006af0*/n = /*@>1006aef*/0; /*@>1006afd*/n < /*@>1006afa*/b_n; /*@>1006af6*/n/*@>1006b6a*/++) {
+    /*@>feeef0*/x_data[n]./*@>1007039*/re/*@>fc6763*/ = /*@>fff4e9*/zr_data[n];
+    /*@>feef8d*/x_data[n]./*@>100703c*/im/*@>b42a30*/ = /*@>fff4ef*/zi_data[n];
+}
+/*@>fcddc3*/pairable/*@>b42c8d*/ = ((/*@>fcdf00*/b_n/*@>fcecc7*/ & /*@>fcdf02*/1)/*@>b43290*/ != /*@>fcdef6*/1);
+/*@>b42b5a*/if (/*@>fcdd53*/pairable) {
+    /*@>fcdd56*/n/*@>b42b8c*/ = /*@>1006a47*/1;
+    exitg1 = false;
+    while/*@<b42b95*/ ((!exitg1) && (/*@>fcdd62*/n/*@>b42b94*/ <= /*@>fcdd64*/b_n)) {
+        /*@>b42b5b*/if (/*@>fff4fc*/zr_data[/*@>fff4fb*/n]/*@>b42ad7*/ - /*@>fff502*/zr_data[/*@>1002867*/n/*@>1002865*/ - /*@>1002868*/1]/*@>b42aee*/ > /*@>fff508*/absx_data[/*@>100286c*/n/*@>100286a*/ - /*@>100286d*/1]/*@>fcecde*/ * /*@>fcdd66*/2.2204460492503131E-14) {
+            /*@>fcdd70*/pairable/*@>b42a38*/ = /*@>fcdd72*/false;
+            exitg1 = true;
+        } else {
+            /*@>fcdd6e*/n/*@>1006b6c*/ += /*@>fcdd6d*/2;
+        }
+    }
+}
+/*@>b42b5f*/if (/*@>fcdd5d*/pairable) {
+    /*@>fcdd5f*/n/*@>b42a3a*/ = /*@>1006a4a*/1;
+    exitg1 = false;
+    while/*@<b42b62*/ ((!exitg1) && (/*@>fcdd67*/n/*@>b42aef*/ < /*@>fcdd69*/b_n)) {
+        uint32_T pairable_tmp;
+        /*@>fcdd73*/absxk/*@>b42a40*/ = /*@>fff510*/zr_data[/*@>fff50e*/n/*@>fff50c*/ - /*@>fff50f*/1];
+        /*@>fcdd77*/b_i2/*@>b42a42*/ = /*@>fcdd75*/n;
+        /*@>fcdd7c*/b_i/*@>b42a43*/ = /*@>fcdd79*/n/*@>b42af6*/ - /*@>fcdd7b*/2;
+        while/*@<b42b67*/ ((/*@>fcdd7e*/n/*@>b42af7*/ < /*@>fcdd80*/b_n)/*@>1005a3a*/ && (/*@>fff51c*/zr_data[/*@>fff51b*/n]/*@>b42afd*/ - /*@>fcdd82*/absxk/*@>b42b05*/ <= /*@>fff524*/absx_data[/*@>fff522*/n/*@>fff520*/ - /*@>fff523*/1]/*@>fcece4*/ * /*@>fcdd84*/2.2204460492503131E-14)) {
+            /*@>fcdd8e*/n/*@>1006b6e*/++;
+        }
+        /*@>fcdd89*/d_j/*@>b42a51*/ = (/*@>fcdd85*/n/*@>b42b07*/ - /*@>fcdd87*/b_i2)/*@>fbe011*/ + /*@>fce1f0*/1;
+        /*@>fe4376*/pairable_tmp/*@>fe4378*/ = /*@>fd5dd7*/(uint32_T)/*@>fcdd90*/d_j/*@>fd5dda*/ & /*@>fd5dd9*/1U;
+        /*@>fcdd94*/pairable/*@>b42a53*/ = (/*@>fe437a*/pairable_tmp/*@>b42b0a*/ == /*@>fd5ddc*/0U);
+        /*@>b42b6d*/if (!/*@<b42b0b*//*@>fcdd96*/pairable) {
+            exitg1 = true;
+        } else {
+            boolean_T exitg2;
+/*@>b42d65*/            for (/*@>1006ade*/b_qEnd = /*@>1006add*/1; /*@>1006aeb*/b_qEnd <= /*@>1006ae8*/d_j/*@>1006ae6*/ - /*@>1006ae9*/1; /*@>1006ae4*/b_qEnd += /*@>1006ae0*/2) {
+                /*@>fcdedf*/absxk/*@>b42fea*/ = /*@>fff54d*/zi_data[(/*@>fff549*/b_i/*@>fff547*/ + /*@>fff54b*/b_qEnd)/*@>fff546*/ + /*@>fff54c*/1];
+                /*@>b42d67*/if ((/*@>fff556*/zi_data[/*@>fff553*/b_i/*@>fff551*/ + /*@>fff555*/b_qEnd]/*@>f9e698*/ <= /*@>fcdf12*/absxk) || /*@>ff8bb2*/rtIsNaN(/*@>fcdf15*/absxk)) {
+                    /*@>ff094b*/b_kEnd/*@>ff094d*/ = /*@>fce127*/b_i/*@>fbb2d4*/ + /*@>fce129*/b_qEnd;
+                    /*@>fef374*/idx_data[/*@>ff094f*/b_kEnd]/*@>b42ca4*/ = /*@>fcddd0*/b_qEnd;
+                    /*@>fef3b1*/idx_data[b_kEnd/*@>fbb396*/ + /*@>fce13a*/1]/*@>b42ca6*/ = /*@>fcddd7*/b_qEnd/*@>b42d07*/ + /*@>fcddd9*/1;
+                } else {
+                    /*@>fe4386*/i_k/*@>fe4388*/ = /*@>fce120*/b_i/*@>fbb274*/ + /*@>fce122*/b_qEnd;
+                    /*@>fef392*/idx_data[/*@>fe438a*/i_k]/*@>b42ca8*/ = /*@>fcddcd*/b_qEnd/*@>b42d0e*/ + /*@>fcddcf*/1;
+                    /*@>fef3d1*/idx_data[i_k/*@>fbb334*/ + /*@>fce132*/1]/*@>b42caa*/ = /*@>fcddd5*/b_qEnd;
+                }
+            }
+            /*@>b42d6d*/if (pairable_tmp/*@>b42d1d*/ != /*@>fd5de2*/0U) {
+                /*@>fef32b*/idx_data[/*@>fce112*/b_i/*@>fbb1b0*/ + /*@>fce114*/d_j]/*@>b42cac*/ = /*@>fcdee9*/d_j;
+            }
+            /*@>fcddd2*/b_qEnd/*@>b42cad*/ = /*@>1006a50*/2;
+            while/*@<b42d72*/ (/*@>fcddda*/b_qEnd/*@>b42d25*/ < /*@>fcdeeb*/d_j) {
+                /*@>fcde4e*/b_kEnd/*@>b42e38*/ = /*@>fcdeed*/b_qEnd/*@>fceced*/ << /*@>fcecec*/1;
+                /*@>fcdddc*/b_pEnd/*@>b42caf*/ = /*@>1006a53*/1;
+                /*@>fcdde2*/i_k/*@>b42cb1*/ = /*@>fcdddf*/b_qEnd/*@>b42d26*/ + /*@>fcdde1*/1;
+                while/*@<b42d76*/ (/*@>fcdde4*/i_k/*@>b42d27*/ < /*@>fcdef7*/d_j/*@>b43131*/ + /*@>fcdef9*/1) {
+                    int32_T f_k;
+                    int32_T p;
+                    int32_T q;
+                    /*@>fcddec*/p/*@>b42cb4*/ = /*@>fcddea*/b_pEnd;
+                    /*@>fcddf0*/q/*@>b42cb6*/ = /*@>fcddee*/i_k;
+                    /*@>fcddf6*/b_p/*@>b42cb9*/ = /*@>fcddf2*/b_pEnd/*@>b42d28*/ + /*@>fcddf4*/b_kEnd;
+                    /*@>b42d7a*/if (/*@>fcddf8*/b_p/*@>b42d29*/ > /*@>fcdefa*/d_j/*@>b43135*/ + /*@>fcdefc*/1) {
+                        /*@>fcddfa*/b_p/*@>b42cbb*/ = /*@>fcdefd*/d_j/*@>b43139*/ + /*@>fcdeff*/1;
+                    }
+                    /*@>fcddfc*/f_k/*@>b42cbc*/ = /*@>1006a56*/0;
+                    /*@>fcde03*/b_q/*@>b42cbf*/ = /*@>fcddff*/b_p/*@>b42d2a*/ - /*@>fcde01*/b_pEnd;
+                    while/*@<b42d80*/ (/*@>fcde05*/f_k/*@>b4653a*/ + /*@>fcdf0a*/1/*@>b42d2b*/ <= /*@>fcde07*/b_q) {
+                        absxk_tmp_tmp = /*@>fff5ba*/idx_data[/*@>fff5b7*/b_i/*@>fff5b5*/ + /*@>fff5b9*/q];
+                        /*@>fcdee1*/absxk/*@>b42fec*/ = /*@>fff5c3*/zi_data[absxk_tmp_tmp/*@>fff5be*/ + /*@>fff5c2*/b_i];
+                        idx_tmp = /*@>fff5d2*/idx_data[/*@>fff5cf*/b_i/*@>fff5cd*/ + /*@>fff5d1*/p];
+                        /*@>b42d81*/if ((/*@>fff5db*/zi_data[idx_tmp/*@>fff5d6*/ + /*@>fff5da*/b_i]/*@>f9e6d5*/ <= /*@>fcdf17*/absxk) || /*@>ff8bb6*/rtIsNaN(/*@>fcdf1a*/absxk)) {
+                            /*@>fef6db*/iwork_data/*@>fbbae8*/[/*@>fce1ba*/f_k]/*@>b42cc7*/ = idx_tmp;
+                            /*@>fcde18*/p/*@>1006b70*/++;
+                            /*@>b42d84*/if (/*@>fcde22*/p/*@>b42d34*/ == /*@>fcde24*/i_k) {
+                                while/*@<b42d86*/ (/*@>fcde30*/q/*@>b42d35*/ < /*@>fcde32*/b_p) {
+                                    /*@>fcde41*/f_k/*@>1006b71*/++;
+                                    /*@>fef71f*/iwork_data/*@>fbbcf7*/[/*@>fce1e3*/f_k]/*@>b42cd5*/ = /*@>fff5ed*/idx_data[/*@>fff5ea*/b_i/*@>fff5e8*/ + /*@>fff5ec*/q];
+                                    /*@>fcde4b*/q/*@>1006b72*/++;
+                                }
+                            }
+                        } else {
+                            /*@>fef6d5*/iwork_data/*@>fbba69*/[/*@>fce1af*/f_k]/*@>b42cdd*/ = absxk_tmp_tmp;
+                            /*@>fcde13*/q/*@>1006b74*/++;
+                            /*@>b42d8d*/if (/*@>fcde1e*/q/*@>b42d47*/ == /*@>fcde20*/b_p) {
+                                while/*@<b42d8f*/ (/*@>fcde2c*/p/*@>b42d48*/ < /*@>fcde2e*/i_k) {
+                                    /*@>fcde3c*/f_k/*@>1006b75*/++;
+                                    /*@>fef6f8*/iwork_data/*@>fbbc78*/[/*@>fce1d8*/f_k]/*@>b42ceb*/ = /*@>fff5e4*/idx_data[/*@>fff5e1*/b_i/*@>fff5df*/ + /*@>fff5e3*/p];
+                                    /*@>fcde46*/p/*@>1006b76*/++;
+                                }
+                            }
+                        }
+                        /*@>fcde37*/f_k/*@>1006b73*/++;
+                    }
+/*@>b42d96*/                    for (/*@>1006acb*/i_k = /*@>1006aca*/0; /*@>1006ad8*/i_k < /*@>1006ad5*/b_q; /*@>1006ad1*/i_k/*@>1006b77*/++) {
+                        /*@>fef668*/idx_data[(/*@>fce1a0*/b_i/*@>fbb9ea*/ + /*@>fce1a2*/b_pEnd)/*@>fbb9e9*/ + /*@>fce1a4*/i_k]/*@>b42cf6*/ = /*@>fff5c9*/iwork_data/*@>fff5cb*/[/*@>fff5c8*/i_k];
+                    }
+                    /*@>fcde1c*/b_pEnd/*@>b42cf8*/ = /*@>fcde1a*/b_p;
+                    /*@>fcde2a*/i_k/*@>b42cfa*/ = /*@>fcde26*/b_p/*@>b42d62*/ + /*@>fcde28*/b_qEnd;
+                }
+                /*@>fcdde8*/b_qEnd/*@>b42cfc*/ = /*@>fcdde6*/b_kEnd;
+            }
+            /*@>fcdd9a*/b_kEnd/*@>b42b98*/ = /*@>fcdd98*/b_i2;
+            exitg2 = false;
+            while/*@<b42ba1*/ ((!exitg2) && (/*@>fcdd9c*/b_kEnd/*@>b42ba0*/ <= /*@>fcdd9e*/n)) {
+                b_qEnd = /*@>fff56c*/idx_data[/*@>fff56a*/b_kEnd/*@>fff568*/ - /*@>fff56b*/1]/*@>ff2f0b*/ + /*@>ff2f18*/b_i;
+                /*@>b42b6f*/if (/*@>ff8bb4*/fabs(/*@>fff58e*/zi_data[/*@>fff581*/idx_data[((/*@>fff586*/n/*@>fff584*/ - /*@>fff588*/b_kEnd)/*@>fff583*/ + /*@>fff58a*/b_i2)/*@>fff582*/ - /*@>fff58b*/1]/*@>fff57e*/ + /*@>fff58d*/b_i]/*@>b43237*/ + /*@>fff594*/zi_data[b_qEnd])/*@>b42b1a*/ > /*@>fcddab*/2.2204460492503131E-14/*@>fcecf0*/ * /*@>fff59a*/absx_data[b_qEnd]) {
+                    /*@>fcddb7*/pairable/*@>b42a5c*/ = /*@>fcddb9*/false;
+                    exitg2 = true;
+                } else {
+                    /*@>fcddb5*/b_kEnd/*@>1006b79*/++;
+                }
+            }
+            /*@>b42b72*/if (!/*@<b42b1b*//*@>fcdda4*/pairable) {
+                exitg1 = true;
+            } else {
+                /*@>fcdda9*/b_pEnd/*@>b42a5f*/ = /*@>fcdda6*/d_j/*@>b42b1c*/ >> /*@>fcdda8*/1;
+/*@>b42b74*/                for (/*@>1006ab8*/b_kEnd = /*@>1006ab7*/0; /*@>1006ac5*/b_kEnd < /*@>1006ac2*/b_pEnd; /*@>1006abe*/b_kEnd/*@>1006b7a*/++) {
+                    /*@>fe43a6*/i_k/*@>fe43a8*/ = ((/*@>fce219*/b_kEnd/*@>fc6785*/ + /*@>fce21b*/1)/*@>fced12*/ << /*@>fced11*/1)/*@>fc6780*/ + /*@>fce216*/b_i;
+                    b_qEnd = /*@>fff5a5*/idx_data[(/*@>fff5a1*/n/*@>fff59f*/ - /*@>fff5a3*/b_kEnd)/*@>fff59e*/ - /*@>fff5a4*/1]/*@>ff2f22*/ + /*@>ff2f32*/b_i;
+                    absxk_tmp = /*@>fff5ab*/zr_data[b_qEnd];
+                    /*@>fef4f2*/x_data[/*@>100288a*/i_k/*@>1002888*/ - /*@>100288b*/1]./*@>100703f*/re/*@>fc677a*/ = absxk_tmp;
+                    absxk_tmp_0 = /*@>fff5b1*/zi_data[b_qEnd];
+                    /*@>fef53c*/x_data[/*@>1002890*/i_k/*@>100288e*/ - /*@>1002891*/1]./*@>1007042*/im/*@>b42a69*/ = -/*@<fced0a*/absxk_tmp_0;
+                    /*@>fef588*/x_data[i_k]./*@>1007045*/re/*@>fc679b*/ = absxk_tmp;
+                    /*@>fef5d0*/x_data[i_k]./*@>1007048*/im/*@>b42a6c*/ = absxk_tmp_0;
+                }
+                /*@>fcddbd*/n/*@>1006b7b*/++;
+            }
+        }
+    }
+}
+return pairable;
+%closefile cfgTxt
+%<cfgTxt>
+%closefile fcnBuff
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static boolean_T Model_TranslationEngine64_cplxpairv(\
+%assign comma = ""
+%<comma>creal_T x_data[]\
+%assign comma = ", "
+%<comma>const int32_T x_size[2]\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(347, 4, fcnProtoType)>
+%return fcnBuff
+%endfunction
+
+%function Model_TranslationEngine64_cplxpair_b_Fcn5(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign _modelSS = ""
+
+%if SLibCG_FcnCallArgAccessed(347,5,2,0)
+%<SLibCG_AccessArg(347 ,5, 0)>
+%endif
+%if SLibCG_FcnCallArgAccessed(347,5,2,1)
+%<SLibCG_AccessArg(347 ,5, 1)>
+%endif
+
+%if SLibCG_FcnCallArgAccessed(347,5,1,0)
+%<SLibCG_AccessArg(347 ,5, 0)>
+%endif
+%if SLibCG_FcnCallArgAccessed(347,5,1,1)
+%<SLibCG_AccessArg(347 ,5, 1)>
+%endif
+
+%if SLibCG_FcnCallArgAccessed(347,5,0,0)
+%<SLibCG_AccessArg(347 ,5, 0)>
+%endif
+%if SLibCG_FcnCallArgAccessed(347,5,0,1)
+%<SLibCG_AccessArg(347 ,5, 0)>
+%endif
+
+switch (x_size/*@>fff44b*/[/*@>fff447*/1]) {
+  case /*@>fcdbd2*/0:
+    break;
+  case /*@>fcdbd3*/1:
+    %<SLibCG_DumpSSCode("/*@[1006052*/",(SLibCGCallSubFcn("Model_TranslationEngine64_cplxpairv", ["/*@>100718a*/x_data", "x_size"], 347, 5, 1)),"/*@]*/")>;
+    break;
+  default: {
+    /*@>b428c4*/if (x_size/*@>fff451*/[/*@>fff44d*/1]/*@>b428b2*/ != /*@>fcdbb6*/1) {
+        %<SLibCG_DumpSSCode("/*@[100606a*/",(SLibCGCallSubFcn("Model_TranslationEngine64_cplxpairv", ["/*@>100719e*/x_data", "x_size"], 347, 5, 2)),"/*@]*/")>;
+    } else {
+        creal_T vwork_data;
+        real_T zi_data_idx_0;
+        real_T zr_data_idx_0;
+        int32_T nc;
+        int32_T nr;
+        /*@>feea77*/vwork_data/*@>fc6d90*/ = /*@>fff455*/x_data/*@>fff457*/[/*@>fff453*/0];
+        /*@>fcdbbc*/nr/*@>b4291b*/ = /*@>10070c2*/-1;
+        /*@>fcdbbf*/nc/*@>b4291a*/ = /*@>10070c5*/-1;
+        /*@>b42925*/if (/*@>ff8ba2*/fabs(/*@>fff45b*/x_data/*@>fff45d*/[/*@>fff459*/0].im)/*@>b428fe*/ <= /*@>fcdbcb*/2.2204460492503131E-14/*@>fcecc5*/ * %<SLibCG_DumpSSCode("/*@[100603a*/",(SLibCGCallSubFcn("rt_hypotd_snf", ["/*@>10071b4*/x_data/*@>10071b3*/[/*@>10071b5*/0].re", "/*@>10071c2*/x_data/*@>10071c1*/[/*@>10071c3*/0].im"], 347, 5, 0)),"/*@]*/")>) {
+            /*@>fcdc0e*/nr/*@>fc58d8*/ = /*@>10070cb*/0;
+            /*@>fefe46*/zr_data_idx_0/*@>fc58e9*/ = /*@>fff473*/x_data/*@>fff475*/[/*@>fff471*/0].re;
+            /*@>fefe48*/zi_data_idx_0/*@>fc58f3*/ = /*@>fcdc1f*/0.0;
+        } else {
+            /*@>fcdc26*/nc/*@>fc5906*/ = /*@>10070c8*/0;
+            /*@>fefe4c*/zr_data_idx_0/*@>fc5917*/ = /*@>fff46d*/x_data/*@>fff46f*/[/*@>fff46b*/0].re;
+            /*@>fefe4e*/zi_data_idx_0/*@>fc591f*/ = /*@>fff479*/x_data/*@>fff47b*/[/*@>fff477*/0].im;
+        }
+        /*@>fe079b*/if (/*@>fe0798*/nr/*@>fe38c4*/ >= /*@>fe0799*/0) {
+            /*@>feeb14*/vwork_data./*@>1007162*/re/*@>fc66f7*/ = /*@>fefe50*/zr_data_idx_0;
+            /*@>feeb1d*/vwork_data./*@>1007165*/im/*@>b42908*/ = /*@>fcdbca*/0.0;
+        }
+        /*@>fe0763*/if (/*@>fe0760*/nc/*@>fe38c9*/ >= /*@>fe0761*/0) {
+            /*@>feeb22*/vwork_data./*@>1007168*/re/*@>fc6705*/ = /*@>fefe53*/zr_data_idx_0;
+            /*@>feeb35*/vwork_data./*@>100716b*/im/*@>b42901*/ = /*@>fefe3f*/zi_data_idx_0;
+        }
+        /*@>feeb2d*/x_data/*@>fc6d96*/[/*@>fcdc6b*/0]/*@>fc6d9c*/ = /*@>feeb32*/vwork_data;
+    }
+}
+    break;
+}
+%closefile cfgTxt
+%<cfgTxt>
+%closefile fcnBuff
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_TranslationEngine64_cplxpair_b(\
+%assign comma = ""
+%<comma>creal_T x_data[]\
+%assign comma = ", "
+%<comma>const int32_T x_size[2]\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(347, 5, fcnProtoType)>
+%return fcnBuff
+%endfunction
+
+%function Model_TranslationEngine64_abs_Fcn6(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+%assign cfgTxt = ""
+%openfile cfgTxt
+int32_T b;
+int32_T k;
+y_size/*@>fb7171*/[/*@>fcd530*/0]/*@>fb7179*/ = /*@>10071cf*/1;
+y_size/*@>fb7184*/[/*@>fcd533*/1]/*@>fb718c*/ = x_size/*@>fff236*/[/*@>fff232*/1];
+/*@>fcd51f*/b/*@>b37b7c*/ = x_size/*@>fff23c*/[/*@>fff238*/1];
+/*@>b37b98*/for (/*@>10071d7*/k = /*@>10071d6*/0; /*@>10071e4*/k < /*@>10071e1*/b; /*@>10071dd*/k/*@>10071e7*/++) {
+    /*@>ff8a87*/y_data[k]/*@>b3a1f6*/ = /*@>ff8b8a*/fabs(/*@>fff241*/x_data[k]);
+}
+%closefile cfgTxt
+%<cfgTxt>
+%closefile fcnBuff
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_TranslationEngine64_abs(\
+%assign comma = ""
+%<comma>const real_T x_data[]\
+%assign comma = ", "
+%<comma>const int32_T x_size[2]\
+%assign comma = ", "
+%<comma>real_T y_data[]\
+%assign comma = ", "
+%<comma>int32_T y_size[2]\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(347, 6, fcnProtoType)>
+%return fcnBuff
+%endfunction
+
+%function Model_TranslationEngine64_eml_find_Fcn7(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+%assign cfgTxt = ""
+%openfile cfgTxt
+int32_T idx;
+int32_T ii;
+boolean_T exitg1;
+/*@>fcd55c*/idx/*@>b37bf6*/ = /*@>100722e*/0;
+i_size/*@>fb7311*/[/*@>fcd58d*/0]/*@>fb7319*/ = /*@>1007231*/1;
+i_size/*@>fb7324*/[/*@>fcd590*/1]/*@>fb732c*/ = x_size/*@>fff249*/[/*@>fff245*/1];
+/*@>fcd561*/ii/*@>b37c4c*/ = /*@>1007234*/0;
+exitg1 = false;
+while/*@<b37c56*/ ((!exitg1) && (/*@>fcd564*/ii/*@>b37c55*/ <= x_size/*@>fff24f*/[/*@>fff24b*/1]/*@>b49370*/ - /*@>fcd578*/1)) {
+    /*@>b37c34*/if (/*@>fff254*/x_data[/*@>fff252*/ii]) {
+        /*@>fcd56d*/idx/*@>100726f*/++;
+        /*@>ff8a9d*/i_data[/*@>fcd5a2*/idx/*@>fb746e*/ - /*@>fcd5a4*/1]/*@>b37c00*/ = /*@>fcd576*/ii/*@>fbdec9*/ + /*@>fcd5c2*/1;
+        /*@>b37c37*/if (/*@>fcd574*/idx/*@>b37c16*/ >= x_size/*@>fff262*/[/*@>fff25e*/1]) {
+            exitg1 = true;
+        } else {
+            /*@>1007262*/ii/*@>1007270*/++;
+        }
+    } else {
+        /*@>fcd572*/ii/*@>1007271*/++;
+    }
+}
+/*@>b37c3a*/if (x_size/*@>fff25c*/[/*@>fff258*/1]/*@>b37c17*/ == /*@>fcd566*/1) {
+    /*@>b37c3b*/if (/*@>fcd567*/idx/*@>b37c18*/ == /*@>fcd569*/0) {
+        i_size/*@>fb74bd*/[/*@>fcd5aa*/0]/*@>fa6106*/ = /*@>100723a*/1;
+        i_size/*@>fb74e2*/[/*@>fcd5ad*/1]/*@>fa6112*/ = /*@>100723d*/0;
+    }
+} else /*@>fdc70d*/if (/*@>fcd579*/idx/*@>f9e1b7*/ < /*@>fcd57b*/1) {
+    i_size/*@>fdc711*/[/*@>fdc714*/1]/*@>fdc710*/ = /*@>1007237*/0;
+} else {
+    i_size/*@>fc534b*/[/*@>fcd5c5*/1]/*@>fc534a*/ = /*@>fcd57d*/idx;
+}
+%closefile cfgTxt
+%<cfgTxt>
+%closefile fcnBuff
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_TranslationEngine64_eml_find(\
+%assign comma = ""
+%<comma>const boolean_T x_data[]\
+%assign comma = ", "
+%<comma>const int32_T x_size[2]\
+%assign comma = ", "
+%<comma>int32_T i_data[]\
+%assign comma = ", "
+%<comma>int32_T i_size[2]\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(347, 7, fcnProtoType)>
+%return fcnBuff
+%endfunction
+
+%function Model_TranslationEngine64_nullAssignment_Fcn8(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+%assign cfgTxt = ""
+%openfile cfgTxt
+int32_T b_size_idx_1;
+int32_T c;
+int32_T e;
+int32_T k0;
+int32_T nxout;
+boolean_T b_data[20];
+b_size_idx_1/*@>fa71da*/ = x_size/*@>fff5f5*/[/*@>fff5f1*/1];
+/*@>fce354*/nxout/*@>fbbe91*/ = x_size/*@>fff5fb*/[/*@>fff5f7*/1];
+if (/*@>ff66da*/nxout/*@>ff66d8*/ - /*@>ff66db*/1 >= /*@>ff66d7*/0) {
+    /*@>ffa1f3*/memset(&/*@>ff66c2*/b_data[/*@>ff66c1*/0], /*@>10072e5*/0, /*@>ff66bf*/(uint32_T)/*@>ff66be*/nxout/*@>ff66c9*/ * /*@>ff66c8*/sizeof(boolean_T));
+}
+/*@>fce2fa*/e/*@>b4333a*/ = idx_size/*@>fff601*/[/*@>fff5fd*/1];
+/*@>b4334a*/for (/*@>100731c*/nxout = /*@>100731b*/0; /*@>1007329*/nxout < /*@>1007326*/e; /*@>1007322*/nxout/*@>100732c*/++) {
+    /*@>fef7e5*/b_data[/*@>fff606*/idx_data[/*@>fff604*/nxout]/*@>fbbf81*/ - /*@>fce363*/1]/*@>b43337*/ = /*@>fce302*/true;
+}
+/*@>fce305*/nxout/*@>b43361*/ = /*@>10072e8*/0;
+/*@>b43372*/for (/*@>1007309*/e = /*@>1007308*/0; /*@>1007316*/e < b_size_idx_1; /*@>100730f*/e/*@>100732d*/++) {
+    /*@>fce312*/nxout/*@>100732e*/ += /*@>fff612*/b_data[/*@>fff611*/e];
+}
+/*@>fce2e8*/nxout/*@>b432cf*/ = x_size/*@>fff60e*/[/*@>fff60a*/1]/*@>b432df*/ - /*@>fce303*/nxout;
+/*@>fce2ea*/k0/*@>b432d0*/ = /*@>10072eb*/-1;
+/*@>fce2ed*/c/*@>b432e0*/ = x_size/*@>fff61a*/[/*@>fff616*/1];
+/*@>b43300*/for (/*@>10072f6*/e = /*@>10072f5*/0; /*@>1007303*/e < /*@>1007300*/c; /*@>10072fc*/e/*@>100732f*/++) {
+    /*@>b43303*/if ((/*@>fce315*/e/*@>b46553*/ + /*@>fce314*/1/*@>b432e6*/ > b_size_idx_1)/*@>1005a3b*/ || (!/*@<b432ed*//*@>fff61e*/b_data[/*@>fff61d*/e])) {
+        /*@>fce2f8*/k0/*@>1007330*/++;
+        /*@>fef8cc*/x_data[/*@>fce390*/k0]/*@>b432dd*/ = /*@>fff625*/x_data[/*@>fff623*/e];
+    }
+}
+/*@>fdc71c*/if (/*@>fce317*/nxout/*@>f9eb23*/ < /*@>fce319*/1) {
+    x_size/*@>fdc720*/[/*@>fdc724*/1]/*@>fdc71f*/ = /*@>10072ee*/0;
+} else {
+    x_size/*@>fc535b*/[/*@>fce398*/1]/*@>fc535a*/ = /*@>fce31b*/nxout;
+}
+%closefile cfgTxt
+%<cfgTxt>
+%closefile fcnBuff
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_TranslationEngine64_nullAssignment(\
+%assign comma = ""
+%<comma>real_T x_data[]\
+%assign comma = ", "
+%<comma>int32_T x_size[2]\
+%assign comma = ", "
+%<comma>const int32_T idx_data[]\
+%assign comma = ", "
+%<comma>const int32_T idx_size[2]\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(347, 8, fcnProtoType)>
+%return fcnBuff
+%endfunction
+
+%function Model_TranslationEngine64_binary_expand_op_j5plg_Fcn9(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+%assign cfgTxt = ""
+%openfile cfgTxt
+int32_T i;
+int32_T loop_ub;
+int32_T stride_0_1;
+int32_T stride_1_1;
+in1_size/*@>fbd2ba*/[/*@>fce73b*/0]/*@>fbd2bc*/ = /*@>10073e8*/1;
+in1_size/*@>fbd2e8*/[/*@>fce752*/1]/*@>fbd2ea*/ = /*@>ff8bf6*/div_s32(/*@>fce73c*/in7/*@>fbd2c2*/ - /*@>fce73e*/in5, /*@>fce740*/in6)/*@>fbd2c0*/ + /*@>fce742*/1/*@>fbd2bf*/ == /*@>fce743*/1/*@>fbd2bf*/ ? /*@>ff8bf8*/div_s32(/*@>fce744*/in4, /*@>fce746*/in3)/*@>fbd2cb*/ + /*@>fce748*/1 : /*@>ff8bfa*/div_s32(/*@>fce749*/in7/*@>fbd2d6*/ - /*@>fce74b*/in5, /*@>fce74d*/in6)/*@>fbd2d4*/ + /*@>fce74f*/1;
+/*@>fce77e*/stride_0_1/*@>fbd38a*/ = (/*@>ff8bfc*/div_s32(/*@>fce7a1*/in4, /*@>fce7a3*/in3)/*@>fc33a9*/ + /*@>fce7a5*/1/*@>fc33b7*/ != /*@>fce7a6*/1);
+/*@>fce780*/stride_1_1/*@>fbd396*/ = (/*@>ff8bfe*/div_s32(/*@>fce7a7*/in7/*@>fc33d1*/ - /*@>fce7a9*/in5, /*@>fce7ab*/in6)/*@>fc33cf*/ + /*@>fce7ad*/1/*@>fc33e0*/ != /*@>fce7ae*/1);
+/*@>fce788*/loop_ub/*@>fbd3c0*/ = /*@>ff8c00*/div_s32(/*@>fce766*/in7/*@>fbd34c*/ - /*@>fce768*/in5, /*@>fce76a*/in6)/*@>fbd34a*/ + /*@>fce76c*/1/*@>fbd349*/ == /*@>fce76d*/1/*@>fbd349*/ ? /*@>ff8c02*/div_s32(/*@>fce76e*/in4, /*@>fce770*/in3)/*@>fbd355*/ + /*@>fce772*/1 : /*@>ff8c04*/div_s32(/*@>fce773*/in7/*@>fbd360*/ - /*@>fce775*/in5, /*@>fce777*/in6)/*@>fbd35e*/ + /*@>fce779*/1;
+/*@>fbd373*/for (/*@>10073f0*/i = /*@>10073ef*/0; /*@>10073fd*/i < /*@>10073fa*/loop_ub; /*@>10073f6*/i/*@>1007400*/++) {
+    /*@>fefcc6*/in1_data[/*@>fce762*/i]/*@>fbd346*/ = -/*@<fcee3b*//*@>fff6f2*/in2_data/*@>fff6f4*/[/*@>fff6ec*/i * /*@>fff6ee*/stride_0_1/*@>fff6e9*/ * /*@>fff6f0*/in3]/*@>fbd2ef*/ - /*@>fff702*/in2_data/*@>fff704*/[/*@>fff6fa*/i * /*@>fff6fc*/stride_1_1/*@>fff6f7*/ * /*@>fff6fe*/in6/*@>fff6f6*/ + /*@>fff700*/in5];
+}
+%closefile cfgTxt
+%<cfgTxt>
+%closefile fcnBuff
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_TranslationEngine64_binary_expand_op_j5plg(\
+%assign comma = ""
+%<comma>real_T in1_data[]\
+%assign comma = ", "
+%<comma>int32_T in1_size[2]\
+%assign comma = ", "
+%<comma>const real_T in2_data[]\
+%assign comma = ", "
+%<comma>int32_T in3\
+%assign comma = ", "
+%<comma>int32_T in4\
+%assign comma = ", "
+%<comma>int32_T in5\
+%assign comma = ", "
+%<comma>int32_T in6\
+%assign comma = ", "
+%<comma>int32_T in7\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(347, 9, fcnProtoType)>
+%return fcnBuff
+%endfunction
+
+%function Model_TranslationEngine64_binary_expand_op_j5pl_Fcn10(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+%assign cfgTxt = ""
+%openfile cfgTxt
+int32_T i;
+int32_T loop_ub;
+int32_T stride_0_1;
+int32_T stride_1_1;
+in1_size/*@>fbcf6a*/[/*@>fce694*/0]/*@>fbcf6c*/ = /*@>1007480*/1;
+in1_size/*@>fbcf98*/[/*@>fce6ab*/1]/*@>fbcf9a*/ = /*@>ff8be6*/div_s32(/*@>fce695*/in7/*@>fbcf72*/ - /*@>fce697*/in5, /*@>fce699*/in6)/*@>fbcf70*/ + /*@>fce69b*/1/*@>fbcf6f*/ == /*@>fce69c*/1/*@>fbcf6f*/ ? /*@>ff8be8*/div_s32(/*@>fce69d*/in4, /*@>fce69f*/in3)/*@>fbcf7b*/ + /*@>fce6a1*/1 : /*@>ff8bea*/div_s32(/*@>fce6a2*/in7/*@>fbcf86*/ - /*@>fce6a4*/in5, /*@>fce6a6*/in6)/*@>fbcf84*/ + /*@>fce6a8*/1;
+/*@>fce6d7*/stride_0_1/*@>fbd039*/ = (/*@>ff8bec*/div_s32(/*@>fce6fa*/in4, /*@>fce6fc*/in3)/*@>fc3342*/ + /*@>fce6fe*/1/*@>fc3350*/ != /*@>fce6ff*/1);
+/*@>fce6d9*/stride_1_1/*@>fbd045*/ = (/*@>ff8bee*/div_s32(/*@>fce700*/in7/*@>fc336a*/ - /*@>fce702*/in5, /*@>fce704*/in6)/*@>fc3368*/ + /*@>fce706*/1/*@>fc3379*/ != /*@>fce707*/1);
+/*@>fce6e1*/loop_ub/*@>fbd06f*/ = /*@>ff8bf0*/div_s32(/*@>fce6bf*/in7/*@>fbcffb*/ - /*@>fce6c1*/in5, /*@>fce6c3*/in6)/*@>fbcff9*/ + /*@>fce6c5*/1/*@>fbcff8*/ == /*@>fce6c6*/1/*@>fbcff8*/ ? /*@>ff8bf2*/div_s32(/*@>fce6c7*/in4, /*@>fce6c9*/in3)/*@>fbd004*/ + /*@>fce6cb*/1 : /*@>ff8bf4*/div_s32(/*@>fce6cc*/in7/*@>fbd00f*/ - /*@>fce6ce*/in5, /*@>fce6d0*/in6)/*@>fbd00d*/ + /*@>fce6d2*/1;
+/*@>fbd022*/for (/*@>1007488*/i = /*@>1007487*/0; /*@>1007495*/i < /*@>1007492*/loop_ub; /*@>100748e*/i/*@>1007498*/++) {
+    /*@>fefc08*/in1_data[/*@>fce6bb*/i]/*@>fbcff5*/ = /*@>fff6d8*/in2_data/*@>fff6da*/[/*@>fff6d0*/i * /*@>fff6d2*/stride_1_1/*@>fff6cd*/ * /*@>fff6d4*/in6/*@>fff6cc*/ + /*@>fff6d6*/in5]/*@>fcee0f*/ * /*@>fff6e5*/in2_data/*@>fff6e7*/[/*@>fff6df*/i * /*@>fff6e1*/stride_0_1/*@>fff6dc*/ * /*@>fff6e3*/in3];
+}
+%closefile cfgTxt
+%<cfgTxt>
+%closefile fcnBuff
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_TranslationEngine64_binary_expand_op_j5pl(\
+%assign comma = ""
+%<comma>real_T in1_data[]\
+%assign comma = ", "
+%<comma>int32_T in1_size[2]\
+%assign comma = ", "
+%<comma>const real_T in2_data[]\
+%assign comma = ", "
+%<comma>int32_T in3\
+%assign comma = ", "
+%<comma>int32_T in4\
+%assign comma = ", "
+%<comma>int32_T in5\
+%assign comma = ", "
+%<comma>int32_T in6\
+%assign comma = ", "
+%<comma>int32_T in7\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(347, 10, fcnProtoType)>
+%return fcnBuff
+%endfunction
+
+%function Model_TranslationEngine64_binary_expand_op_j5p_Fcn11(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+%assign cfgTxt = ""
+%openfile cfgTxt
+int32_T i;
+int32_T loop_ub;
+int32_T stride_0_1;
+int32_T stride_1_1;
+in1_size/*@>fbcbf9*/[/*@>fce5e9*/0]/*@>fbcbfb*/ = /*@>1007518*/1;
+in1_size/*@>fbcc27*/[/*@>fce600*/1]/*@>fbcc29*/ = /*@>ff8bd6*/div_s32(/*@>fce5ea*/in7/*@>fbcc01*/ - /*@>fce5ec*/in5, /*@>fce5ee*/in6)/*@>fbcbff*/ + /*@>fce5f0*/1/*@>fbcbfe*/ == /*@>fce5f1*/1/*@>fbcbfe*/ ? /*@>ff8bd8*/div_s32(/*@>fce5f2*/in4, /*@>fce5f4*/in3)/*@>fbcc0a*/ + /*@>fce5f6*/1 : /*@>ff8bda*/div_s32(/*@>fce5f7*/in7/*@>fbcc15*/ - /*@>fce5f9*/in5, /*@>fce5fb*/in6)/*@>fbcc13*/ + /*@>fce5fd*/1;
+/*@>fce62c*/stride_0_1/*@>fbcce9*/ = (/*@>ff8bdc*/div_s32(/*@>fce64f*/in4, /*@>fce651*/in3)/*@>fc32db*/ + /*@>fce653*/1/*@>fc32e9*/ != /*@>fce654*/1);
+/*@>fce62e*/stride_1_1/*@>fbccf5*/ = (/*@>ff8bde*/div_s32(/*@>fce655*/in7/*@>fc3303*/ - /*@>fce657*/in5, /*@>fce659*/in6)/*@>fc3301*/ + /*@>fce65b*/1/*@>fc3312*/ != /*@>fce65c*/1);
+/*@>fce636*/loop_ub/*@>fbcd1f*/ = /*@>ff8be0*/div_s32(/*@>fce614*/in7/*@>fbccab*/ - /*@>fce616*/in5, /*@>fce618*/in6)/*@>fbcca9*/ + /*@>fce61a*/1/*@>fbcca8*/ == /*@>fce61b*/1/*@>fbcca8*/ ? /*@>ff8be2*/div_s32(/*@>fce61c*/in4, /*@>fce61e*/in3)/*@>fbccb4*/ + /*@>fce620*/1 : /*@>ff8be4*/div_s32(/*@>fce621*/in7/*@>fbccbf*/ - /*@>fce623*/in5, /*@>fce625*/in6)/*@>fbccbd*/ + /*@>fce627*/1;
+/*@>fbccd2*/for (/*@>1007520*/i = /*@>100751f*/0; /*@>100752d*/i < /*@>100752a*/loop_ub; /*@>1007526*/i/*@>1007530*/++) {
+    /*@>fefb48*/in1_data[/*@>fce610*/i]/*@>fbcca5*/ = -/*@<fcede2*//*@>fff6b8*/in2_data/*@>fff6ba*/[/*@>fff6b2*/i * /*@>fff6b4*/stride_0_1/*@>fff6af*/ * /*@>fff6b6*/in3].re/*@>fbcc2e*/ - /*@>fff6c8*/in2_data/*@>fff6ca*/[/*@>fff6c0*/i * /*@>fff6c2*/stride_1_1/*@>fff6bd*/ * /*@>fff6c4*/in6/*@>fff6bc*/ + /*@>fff6c6*/in5].re;
+}
+%closefile cfgTxt
+%<cfgTxt>
+%closefile fcnBuff
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_TranslationEngine64_binary_expand_op_j5p(\
+%assign comma = ""
+%<comma>real_T in1_data[]\
+%assign comma = ", "
+%<comma>int32_T in1_size[2]\
+%assign comma = ", "
+%<comma>const creal_T in2_data[]\
+%assign comma = ", "
+%<comma>int32_T in3\
+%assign comma = ", "
+%<comma>int32_T in4\
+%assign comma = ", "
+%<comma>int32_T in5\
+%assign comma = ", "
+%<comma>int32_T in6\
+%assign comma = ", "
+%<comma>int32_T in7\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(347, 11, fcnProtoType)>
+%return fcnBuff
+%endfunction
+
+%function Model_TranslationEngine64_binary_expand_op_j5_Fcn12(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+%assign cfgTxt = ""
+%openfile cfgTxt
+int32_T i;
+int32_T loop_ub;
+int32_T stride_0_1;
+int32_T stride_1_1;
+in1_size/*@>fbc88a*/[/*@>fce4de*/0]/*@>fbc88c*/ = /*@>10075bc*/1;
+in1_size/*@>fbc8b8*/[/*@>fce4f5*/1]/*@>fbc8ba*/ = /*@>ff8bc6*/div_s32(/*@>fce4df*/in7/*@>fbc892*/ - /*@>fce4e1*/in5, /*@>fce4e3*/in6)/*@>fbc890*/ + /*@>fce4e5*/1/*@>fbc88f*/ == /*@>fce4e6*/1/*@>fbc88f*/ ? /*@>ff8bc8*/div_s32(/*@>fce4e7*/in4, /*@>fce4e9*/in3)/*@>fbc89b*/ + /*@>fce4eb*/1 : /*@>ff8bca*/div_s32(/*@>fce4ec*/in7/*@>fbc8a6*/ - /*@>fce4ee*/in5, /*@>fce4f0*/in6)/*@>fbc8a4*/ + /*@>fce4f2*/1;
+/*@>fce513*/stride_0_1/*@>fbc978*/ = (/*@>ff8bcc*/div_s32(/*@>fce52e*/in4, /*@>fce530*/in3)/*@>fc3274*/ + /*@>fce532*/1/*@>fc3282*/ != /*@>fce533*/1);
+/*@>fce515*/stride_1_1/*@>fbc984*/ = (/*@>ff8bce*/div_s32(/*@>fce534*/in7/*@>fc329c*/ - /*@>fce536*/in5, /*@>fce538*/in6)/*@>fc329a*/ + /*@>fce53a*/1/*@>fc32ab*/ != /*@>fce53b*/1);
+/*@>fce51d*/loop_ub/*@>fbc9ae*/ = /*@>ff8bd0*/div_s32(/*@>fce4fb*/in7/*@>fbc93a*/ - /*@>fce4fd*/in5, /*@>fce4ff*/in6)/*@>fbc938*/ + /*@>fce501*/1/*@>fbc937*/ == /*@>fce502*/1/*@>fbc937*/ ? /*@>ff8bd2*/div_s32(/*@>fce503*/in4, /*@>fce505*/in3)/*@>fbc943*/ + /*@>fce507*/1 : /*@>ff8bd4*/div_s32(/*@>fce508*/in7/*@>fbc94e*/ - /*@>fce50a*/in5, /*@>fce50c*/in6)/*@>fbc94c*/ + /*@>fce50e*/1;
+/*@>fbc961*/for (/*@>10075c4*/i = /*@>10075c3*/0; /*@>10075d1*/i < /*@>10075ce*/loop_ub; /*@>10075ca*/i/*@>10075d4*/++) {
+    int32_T tmp;
+    /*@>fe4477*/tmp/*@>fe4479*/ = /*@>fdac4e*/i/*@>fdac4c*/ * /*@>fdac50*/stride_1_1/*@>fdac49*/ * /*@>fdac4b*/in6/*@>fdac46*/ + /*@>fdac48*/in5;
+    /*@>fefa77*/in1_data[/*@>fce4f7*/i]/*@>fbc934*/ = /*@>fff697*/in2_data/*@>fff699*/[/*@>fff691*/i/*@>fff68f*/ * /*@>fff693*/stride_0_1/*@>fff68e*/ * /*@>fff695*/in3].re/*@>fdac2a*/ * /*@>fff68a*/in2_data/*@>fff68c*/[/*@>fff688*/tmp].re/*@>fdac29*/ - /*@>fff6ab*/in2_data/*@>fff6ad*/[/*@>fff6a5*/i/*@>fff6a3*/ * /*@>fff6a7*/stride_0_1/*@>fff6a2*/ * /*@>fff6a9*/in3].im/*@>fdac52*/ * /*@>fff69e*/in2_data/*@>fff6a0*/[tmp].im;
+}
+%closefile cfgTxt
+%<cfgTxt>
+%closefile fcnBuff
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_TranslationEngine64_binary_expand_op_j5(\
+%assign comma = ""
+%<comma>real_T in1_data[]\
+%assign comma = ", "
+%<comma>int32_T in1_size[2]\
+%assign comma = ", "
+%<comma>const creal_T in2_data[]\
+%assign comma = ", "
+%<comma>int32_T in3\
+%assign comma = ", "
+%<comma>int32_T in4\
+%assign comma = ", "
+%<comma>int32_T in5\
+%assign comma = ", "
+%<comma>int32_T in6\
+%assign comma = ", "
+%<comma>int32_T in7\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(347, 12, fcnProtoType)>
+%return fcnBuff
+%endfunction
+
+%function Model_TranslationEngine64_abs_h_Fcn13(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+%assign cfgTxt = ""
+%openfile cfgTxt
+int32_T b;
+int32_T k;
+%assign _modelSS = ""
+
+%if SLibCG_FcnCallArgAccessed(347,13,0,0)
+%<SLibCG_AccessArg(347 ,13, 0)>
+%endif
+%if SLibCG_FcnCallArgAccessed(347,13,0,1)
+%<SLibCG_AccessArg(347 ,13, 0)>
+%endif
+
+y_size/*@>fb763b*/[/*@>fcd5fb*/0]/*@>fb7643*/ = /*@>1007687*/1;
+y_size/*@>fb764e*/[/*@>fcd5fe*/1]/*@>fb7656*/ = x_size/*@>fff268*/[/*@>fff264*/1];
+/*@>fcd5e8*/b/*@>b37e71*/ = x_size/*@>fff26e*/[/*@>fff26a*/1];
+/*@>b37e8d*/for (/*@>100768f*/k = /*@>100768e*/0; /*@>100769c*/k < /*@>1007699*/b; /*@>1007695*/k/*@>100769f*/++) {
+    /*@>ff8ac8*/y_data[k]/*@>b3a4bc*/ = %<SLibCG_DumpSSCode("/*@[1006082*/",(SLibCGCallSubFcn("rt_hypotd_snf", ["/*@>10076f6*/x_data[k].re", "/*@>1007704*/x_data[k].im"], 347, 13, 0)),"/*@]*/")>;
+}
+%closefile cfgTxt
+%<cfgTxt>
+%closefile fcnBuff
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_TranslationEngine64_abs_h(\
+%assign comma = ""
+%<comma>const creal_T x_data[]\
+%assign comma = ", "
+%<comma>const int32_T x_size[2]\
+%assign comma = ", "
+%<comma>real_T y_data[]\
+%assign comma = ", "
+%<comma>int32_T y_size[2]\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(347, 13, fcnProtoType)>
+%return fcnBuff
+%endfunction
+
+%function Model_TranslationEngine64_zp2sos_Fcn14(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+%assign cfgTxt = ""
+%openfile cfgTxt
+__m128d tmp;
+creal_T pr_temp_data[40];
+creal_T p_conj_data[20];
+creal_T p_real_data[20];
+creal_T pc_data[20];
+real_T zr_temp_data[40];
+real_T prms_data[21];
+real_T prp_data[21];
+real_T zrms_data[21];
+real_T zrp_data[21];
+real_T ind_complement_data[20];
+real_T ind_data[20];
+real_T tmp_data[20];
+real_T z_real_data[20];
+real_T zcm2r_data[20];
+real_T nprsec;
+real_T nzrsec;
+real_T varargin_1;
+int32_T ind_data_0[20];
+int32_T ind_complement_size[2];
+int32_T ind_size[2];
+int32_T pc_size[2];
+int32_T tmp_size[2];
+int32_T tmp_size_0[2];
+int32_T zc_size[2];
+int32_T c;
+int32_T d;
+int32_T e;
+int32_T f;
+int32_T loop_ub;
+int32_T npc;
+int32_T npr;
+int32_T nzc;
+int32_T nzr;
+int32_T p_real_size_idx_1;
+int32_T y_size_idx_1;
+int32_T z_real_size_idx_1;
+int8_T y_data[20];
+boolean_T tmp_data_0[20];
+%assign _modelSS = ""
+
+%if SLibCG_FcnCallArgAccessed(347,14,1,0)
+%<SLibCG_AccessArg(347 ,14, 2)>
+%endif
+%if SLibCG_FcnCallArgAccessed(347,14,1,1)
+%<SLibCG_AccessArg(347 ,14, 3)>
+%endif
+
+%if SLibCG_FcnCallArgAccessed(347,14,0,0)
+%<SLibCG_AccessArg(347 ,14, 0)>
+%endif
+%if SLibCG_FcnCallArgAccessed(347,14,0,1)
+%<SLibCG_AccessArg(347 ,14, 1)>
+%endif
+
+/*  The zp2sos Function stated below supports code generation!  */
+/*  Most of the code is scripted refering to the Matlab's zp2sos.m and */
+/*  https://searchcode.com/codesearch/view/9505959/  */
+/*  Integration of two codes was majorily required due to cplxreal function  */
+/*  which is no more supported in Matlab Scripts.  */
+/* '<S1387>:1:154' if nargin < 3 */
+/* '<S1387>:1:157' if nargin < 2 */
+/*  Sort the numbers z into complex-conjugate-valued and real-valued elements. */
+/*  The positive imaginary complex numbers of each complex conjugate pair  */
+/*  are returned in zc and the real numbers are returned in zr. */
+/*  pair up the conjugate poles and zeros using cplxpair */
+/* '<S1387>:1:166' z = cplxpair(z); */
+%<SLibCG_DumpSSCode("/*@[100609a*/",(SLibCGCallSubFcn("Model_TranslationEngine64_cplxpair", ["/*@>100835c*/z_data", "z_size"], 347, 14, 0)),"/*@]*/")>;
+/* '<S1387>:1:167' p = cplxpair(p); */
+%<SLibCG_DumpSSCode("/*@[10060b2*/",(SLibCGCallSubFcn("Model_TranslationEngine64_cplxpair_b", ["/*@>1008370*/p_data", "p_size"], 347, 14, 1)),"/*@]*/")>;
+/*  Get the number of poles and zeros */
+/* '<S1387>:1:170' lz = length(z); */
+/* '<S1387>:1:171' lp = length(p); */
+/* '<S1387>:1:173' ind = find(abs(imag(p)) > 0); */
+ind_size/*@>fb24f4*/[/*@>fccd4e*/0]/*@>fad871*/ = /*@>100776b*/1;
+ind_size/*@>fb2545*/[/*@>fccd54*/1]/*@>fad87d*/ = p_size/*@>ffefe2*/[/*@>ffefde*/1];
+/*@>fccd69*/loop_ub/*@>fb269c*/ = p_size/*@>ffefe8*/[/*@>ffefe4*/1];
+/*@>fb2687*/for (/*@>1007a3b*/d = /*@>1007a3a*/0; /*@>1007a48*/d < /*@>1007a45*/loop_ub; /*@>1007a41*/d/*@>1007a4b*/++) {
+    /*@>fec9db*/ind_data[d]/*@>fb266f*/ = /*@>ffefed*/p_data[d].im;
+}
+%<SLibCG_DumpSSCode("/*@[1006178*/",(SLibCGCallSubFcn("Model_TranslationEngine64_abs", ["/*@>1008384*/ind_data", "ind_size", "/*@>1008398*/tmp_data", "tmp_size"], 347, 14, 8)),"/*@]*/")>;
+tmp_size_0/*@>fb26e4*/[/*@>fccd6f*/0]/*@>fad8e7*/ = /*@>100776e*/1;
+tmp_size_0/*@>fb2735*/[/*@>fccd75*/1]/*@>fad8f3*/ = tmp_size/*@>ffeff4*/[/*@>ffeff1*/1];
+/*@>fccd8a*/loop_ub/*@>fb287e*/ = tmp_size/*@>ffeff9*/[/*@>ffeff6*/1];
+/*@>fb2869*/for (/*@>1007a28*/d = /*@>1007a27*/0; /*@>1007a35*/d < /*@>1007a32*/loop_ub; /*@>1007a2e*/d/*@>1007a4c*/++) {
+    /*@>feca7a*/tmp_data_0[d]/*@>fb2851*/ = (/*@>ffeffd*/tmp_data[d]/*@>fb283c*/ > /*@>fccd1d*/0.0);
+}
+%<SLibCG_DumpSSCode("/*@[1006192*/",(SLibCGCallSubFcn("Model_TranslationEngine64_eml_find", ["/*@>10083ac*/tmp_data_0", "tmp_size_0", "/*@>10083c0*/ind_data_0", "tmp_size"], 347, 14, 9)),"/*@]*/")>;
+ind_size/*@>fb2917*/[/*@>fccd96*/1]/*@>fad965*/ = tmp_size/*@>fff004*/[/*@>fff001*/1];
+/*@>fccdab*/loop_ub/*@>fb2a6e*/ = tmp_size/*@>fff009*/[/*@>fff006*/1];
+/*@>fb2a59*/for (/*@>1007a15*/d = /*@>1007a14*/0; /*@>1007a22*/d < /*@>1007a1f*/loop_ub; /*@>1007a1b*/d/*@>1007a4d*/++) {
+    /*@>fecaf8*/ind_data[d]/*@>fb2a41*/ = /*@>fff00d*/ind_data_0[d];
+}
+/* '<S1387>:1:174' p_conj = p(ind); */
+npr/*@>fa5468*/ = tmp_size/*@>fff014*/[/*@>fff011*/1];
+/*@>fccdc2*/loop_ub/*@>fb2ca6*/ = tmp_size/*@>fff019*/[/*@>fff016*/1];
+/*@>fb2c91*/for (/*@>1007a02*/d = /*@>1007a01*/0; /*@>1007a0f*/d < /*@>1007a0c*/loop_ub; /*@>1007a08*/d/*@>1007a4e*/++) {
+    /*@>fecb76*/p_conj_data[d]/*@>fc6d5e*/ = /*@>fff02a*/p_data[/*@>fff022*/(int32_T)/*@>fff025*/ind_data[d]/*@>fff021*/ - /*@>fff028*/1];
+}
+/*  poles that have conjugate pairs */
+/* '<S1387>:1:176' coder.varsize('ind_complement'); */
+/* '<S1387>:1:177' B = p_conj(imag(p_conj) >= 0); */
+/* '<S1387>:1:178' ind_complement = 1:lp; */
+/*@>b371c4*/if (p_size/*@>fff032*/[/*@>fff02e*/1]/*@>b371b9*/ < /*@>fccb4b*/1) {
+    ind_complement_size/*@>fb2db3*/[/*@>fccdf0*/0]/*@>fa54ba*/ = /*@>1007774*/1;
+    ind_complement_size/*@>fb2dd8*/[/*@>fccdf3*/1]/*@>fa54c6*/ = /*@>1007777*/0;
+} else {
+    ind_complement_size/*@>fb2d38*/[/*@>fccdd3*/0]/*@>fb2d3a*/ = /*@>1007771*/1;
+    ind_complement_size/*@>fb2d4c*/[/*@>fccdda*/1]/*@>fb2d4e*/ = p_size/*@>fff038*/[/*@>fff034*/1];
+    /*@>fccdea*/loop_ub/*@>fb2d90*/ = p_size/*@>fff03e*/[/*@>fff03a*/1]/*@>fb2d65*/ - /*@>fccde5*/1;
+/*@>fb2d75*/    for (/*@>10079f2*/d = /*@>10079f1*/0; /*@>10079fd*/d <= /*@>10079fb*/loop_ub; /*@>10079f8*/d/*@>1007a73*/++) {
+        /*@>fecc52*/ind_complement_data[/*@>fccddf*/d]/*@>fb2d61*/ = /*@>fd3f6a*/(real_T)/*@>fccddb*/d/*@>fb2d56*/ + /*@>fccddd*/1.0;
+    }
+}
+/* '<S1387>:1:179' if ~isempty(ind) */
+/*@>ac28cb*/if (tmp_size/*@>fff043*/[/*@>fff040*/1]/*@>b41155*/ != /*@>fccb47*/0) {
+    /* '<S1387>:1:180' ind_complement(ind) = []; */
+    tmp_size/*@>fb2ec8*/[/*@>fccdf9*/0]/*@>fada87*/ = /*@>100777a*/1;
+    /*@>fcce1d*/loop_ub/*@>fb3140*/ = ind_size/*@>fff04d*/[/*@>fff04a*/1];
+/*@>fb312b*/    for (/*@>10079df*/d = /*@>10079de*/0; /*@>10079ec*/d < /*@>10079e9*/loop_ub; /*@>10079e5*/d/*@>1007a4f*/++) {
+        /*@>fecd05*/ind_data_0[d]/*@>fb3113*/ = /*@>fd3f87*/(int32_T)/*@>fff056*/ind_data[d];
+    }
+    %<SLibCG_DumpSSCode("/*@[10060cc*/",(SLibCGCallSubFcn("Model_TranslationEngine64_nullAssignment", ["/*@>10083d4*/ind_complement_data", "ind_complement_size", "/*@>10083e8*/ind_data_0", "tmp_size"], 347, 14, 2)),"/*@]*/")>;
+}
+/* '<S1387>:1:182' p_real = p(ind_complement); */
+p_real_size_idx_1/*@>fa5577*/ = ind_complement_size/*@>fff048*/[/*@>fff045*/1];
+/*@>fcce2b*/loop_ub/*@>fb32a8*/ = ind_complement_size/*@>fff052*/[/*@>fff04f*/1];
+/*@>fb3293*/for (/*@>10079cc*/d = /*@>10079cb*/0; /*@>10079d9*/d < /*@>10079d6*/loop_ub; /*@>10079d2*/d/*@>1007a50*/++) {
+    /*@>fecd43*/p_real_data[d]/*@>fc6d72*/ = /*@>fff069*/p_data[/*@>fff061*/(int32_T)/*@>fff064*/ind_complement_data[d]/*@>fff060*/ - /*@>fff067*/1];
+}
+/*  poles that are real */
+/*  break up conjugate pairs and real zeros */
+/* '<S1387>:1:185' ind = find(abs(imag(z)) > 0); */
+ind_size/*@>fb32ee*/[/*@>fcce31*/0]/*@>fadbcd*/ = /*@>100777d*/1;
+ind_size/*@>fb333f*/[/*@>fcce37*/1]/*@>fadbd9*/ = z_size/*@>fff071*/[/*@>fff06d*/1];
+/*@>fcce47*/loop_ub/*@>fb3499*/ = z_size/*@>fff077*/[/*@>fff073*/1];
+if (/*@>ff5fcc*/loop_ub/*@>ff5fca*/ - /*@>ff5fcd*/1 >= /*@>ff5fc9*/0) {
+    /*@>ffa1dd*/memset(&/*@>ff5fb4*/ind_data[/*@>ff5fb3*/0], /*@>1007780*/0, /*@>ff5fb1*/(uint32_T)/*@>ff5fb0*/loop_ub/*@>ff5fbb*/ * /*@>ff5fba*/sizeof(real_T));
+}
+%<SLibCG_DumpSSCode("/*@[10061ac*/",(SLibCGCallSubFcn("Model_TranslationEngine64_abs", ["/*@>10083fc*/ind_data", "ind_size", "/*@>1008410*/tmp_data", "tmp_size"], 347, 14, 10)),"/*@]*/")>;
+tmp_size_0/*@>fb34e1*/[/*@>fcce4d*/0]/*@>fadc43*/ = /*@>1007783*/1;
+tmp_size_0/*@>fb3532*/[/*@>fcce53*/1]/*@>fadc4f*/ = tmp_size/*@>fff07c*/[/*@>fff079*/1];
+/*@>fcce68*/loop_ub/*@>fb367b*/ = tmp_size/*@>fff081*/[/*@>fff07e*/1];
+/*@>fb3666*/for (/*@>10079b9*/d = /*@>10079b8*/0; /*@>10079c6*/d < /*@>10079c3*/loop_ub; /*@>10079bf*/d/*@>1007a51*/++) {
+    /*@>fece7d*/tmp_data_0[d]/*@>fb364e*/ = (/*@>fff085*/tmp_data[d]/*@>fb3639*/ > /*@>fccd2b*/0.0);
+}
+%<SLibCG_DumpSSCode("/*@[10061c6*/",(SLibCGCallSubFcn("Model_TranslationEngine64_eml_find", ["/*@>1008424*/tmp_data_0", "tmp_size_0", "/*@>1008438*/ind_data_0", "tmp_size"], 347, 14, 11)),"/*@]*/")>;
+ind_size/*@>fb3714*/[/*@>fcce74*/1]/*@>fadcc1*/ = tmp_size/*@>fff08c*/[/*@>fff089*/1];
+/*@>fcce89*/loop_ub/*@>fb386b*/ = tmp_size/*@>fff091*/[/*@>fff08e*/1];
+/*@>fb3856*/for (/*@>10079a6*/d = /*@>10079a5*/0; /*@>10079b3*/d < /*@>10079b0*/loop_ub; /*@>10079ac*/d/*@>1007a52*/++) {
+    /*@>fecefb*/ind_data[d]/*@>fb383e*/ = /*@>fff095*/ind_data_0[d];
+}
+/* '<S1387>:1:186' z_conj = z(ind); */
+/*  zeros that have conjugate pairs */
+/* '<S1387>:1:187' C = z_conj(imag(z_conj) >= 0); */
+/* '<S1387>:1:188' ind_complement = 1:lz; */
+/*@>b371ff*/if (z_size/*@>fff09d*/[/*@>fff099*/1]/*@>b371f4*/ < /*@>fccb4a*/1) {
+    ind_complement_size/*@>fb3978*/[/*@>fcceb7*/0]/*@>fa55ea*/ = /*@>1007789*/1;
+    ind_complement_size/*@>fb399d*/[/*@>fcceba*/1]/*@>fa55f6*/ = /*@>100778c*/0;
+} else {
+    ind_complement_size/*@>fb38fd*/[/*@>fcce9a*/0]/*@>fb38ff*/ = /*@>1007786*/1;
+    ind_complement_size/*@>fb3911*/[/*@>fccea1*/1]/*@>fb3913*/ = z_size/*@>fff0a3*/[/*@>fff09f*/1];
+    /*@>fcceb1*/loop_ub/*@>fb3955*/ = z_size/*@>fff0a9*/[/*@>fff0a5*/1]/*@>fb392a*/ - /*@>fcceac*/1;
+/*@>fb393a*/    for (/*@>1007996*/d = /*@>1007995*/0; /*@>10079a1*/d <= /*@>100799f*/loop_ub; /*@>100799c*/d/*@>1007a72*/++) {
+        /*@>fecfb0*/ind_complement_data[/*@>fccea6*/d]/*@>fb3926*/ = /*@>fd3fd9*/(real_T)/*@>fccea2*/d/*@>fb391b*/ + /*@>fccea4*/1.0;
+    }
+}
+/* '<S1387>:1:189' if ~isempty(ind) */
+/*@>ac28db*/if (tmp_size/*@>fff0ae*/[/*@>fff0ab*/1]/*@>b41165*/ != /*@>fccb46*/0) {
+    /* '<S1387>:1:190' ind_complement(ind) = []; */
+    tmp_size/*@>fb3a8d*/[/*@>fccec0*/0]/*@>fadd34*/ = /*@>100778f*/1;
+    /*@>fccee4*/loop_ub/*@>fb3d05*/ = ind_size/*@>fff0b8*/[/*@>fff0b5*/1];
+/*@>fb3cf0*/    for (/*@>1007983*/d = /*@>1007982*/0; /*@>1007990*/d < /*@>100798d*/loop_ub; /*@>1007989*/d/*@>1007a53*/++) {
+        /*@>fed063*/ind_data_0[d]/*@>fb3cd8*/ = /*@>fd3ff6*/(int32_T)/*@>fff0c1*/ind_data[d];
+    }
+    %<SLibCG_DumpSSCode("/*@[10060e6*/",(SLibCGCallSubFcn("Model_TranslationEngine64_nullAssignment", ["/*@>100844c*/ind_complement_data", "ind_complement_size", "/*@>1008460*/ind_data_0", "tmp_size"], 347, 14, 3)),"/*@]*/")>;
+}
+/* '<S1387>:1:192' z_real = z(ind_complement); */
+z_real_size_idx_1/*@>fa56a7*/ = ind_complement_size/*@>fff0b3*/[/*@>fff0b0*/1];
+/*@>fccf00*/loop_ub/*@>fb3e6d*/ = ind_complement_size/*@>fff0bd*/[/*@>fff0ba*/1];
+/*@>fb3e58*/for (/*@>1007970*/d = /*@>100796f*/0; /*@>100797d*/d < /*@>100797a*/loop_ub; /*@>1007976*/d/*@>1007a54*/++) {
+    /*@>fed0a1*/z_real_data[d]/*@>fb3e40*/ = /*@>fff0d4*/z_data[/*@>fff0cc*/(int32_T)/*@>fff0cf*/ind_complement_data[d]/*@>fff0cb*/ - /*@>fff0d2*/1];
+}
+/* '<S1387>:1:194' zr = z_real; */
+/*  zeroes that are real */
+/* '<S1387>:1:195' pr = p_real ; */
+/*  poles that are real */
+/* '<S1387>:1:196' pc = B; */
+nzc = npr - 1;
+npc = 0;
+for (npr = 0; npr <= nzc; npr++) {
+    if (/*@>fff0da*/p_conj_data[npr].im/*@>b2d977*/ >= /*@>fccc2a*/0.0) {
+        npc++;
+    }
+}
+pc_size[0] = 1;
+pc_size[1] = npc;
+npc = 0;
+for (npr = 0; npr <= nzc; npr++) {
+    nzrsec = /*@>fff0e0*/p_conj_data[npr].im;
+    if (nzrsec/*@>b2d9b7*/ >= /*@>fccc1b*/0.0) {
+        pc_data[npc].re/*@>fc6642*/ = /*@>fff0eb*/p_conj_data[npr].re;
+        pc_data[npc].im/*@>b2d9bc*/ = nzrsec;
+        npc++;
+    }
+}
+/*  positive conjugate poles */
+/* '<S1387>:1:197' zc = C ; */
+nzc = ind_size/*@>fff0e7*/[/*@>fff0e4*/1];
+npc = 0;
+for (npr = 0; npr < nzc; npr++) {
+    npc++;
+}
+y_size_idx_1 = npc;
+for (npr = 0; npr < nzc; npr++) {
+    y_data[npr]/*@>b2daa7*/ = /*@>fd4039*/(int8_T)(npr + 1);
+}
+zc_size/*@>fb41c7*/[/*@>fccf2b*/0]/*@>fa5831*/ = /*@>100779e*/1;
+zc_size/*@>fb4219*/[/*@>fccf31*/1]/*@>fa583d*/ = npc;
+/*@>fb4446*/for (/*@>1007917*/d = /*@>1007916*/0; /*@>1007924*/d < npc; /*@>100791d*/d/*@>1007a5c*/++) {
+    /*@>fed28b*/ind_complement_data[d]/*@>fb442e*/ = /*@>fff110*/z_data[/*@>fff102*/(int32_T)/*@>fff105*/ind_data[/*@>fff10a*/y_data[d]/*@>fff106*/ - /*@>fff10d*/1]/*@>fff101*/ - /*@>fff10e*/1];
+}
+/*  positive conjugate zeros */
+/*  zc,zr,pc,pr found */
+/* '<S1387>:1:201' nzc = length(zc); */
+/*@>fccbf8*/nzc/*@>ac29fe*/ = npc;
+/* '<S1387>:1:202' npc = length(pc); */
+/*@>fccbf6*/npc/*@>ac2a03*/ = pc_size/*@>fff117*/[/*@>fff114*/1];
+/* '<S1387>:1:204' nzr = length(zr); */
+/*@>fccbf4*/nzr/*@>ac2a08*/ = ind_complement_size/*@>fff11c*/[/*@>fff119*/1]/*@>fbde76*/ - /*@>fcd274*/1;
+/* '<S1387>:1:205' npr = length(pr); */
+/*@>fccbf2*/npr/*@>ac2a0d*/ = p_real_size_idx_1/*@>fbde82*/ - /*@>fcd278*/1;
+/*  Pair up real zeros: */
+/* '<S1387>:1:208' if nzr */
+/*@>ac28f6*/if (ind_complement_size/*@>fff121*/[/*@>fff11e*/1]/*@>afd461*/ != /*@>fccbf1*/0) {
+    /* '<S1387>:1:209' if mod(nzr,2)==1 */
+    /*@>ac2955*/if (/*@>ff8b3e*/fmod(ind_complement_size/*@>fff126*/[/*@>fff123*/1], /*@>fccc41*/2.0)/*@>aff176*/ == /*@>fccbf0*/1.0) {
+        /* '<S1387>:1:210' zr_temp = [zr;0]; */
+        ind_size/*@>fb4658*/[/*@>fccf73*/0]/*@>fae035*/ = /*@>10077a1*/2;
+        ind_size/*@>fb46ff*/[/*@>fccf7f*/1]/*@>fae041*/ = /*@>10077a7*/1;
+        /*@>fed3dd*/zr_temp_data/*@>fc5744*/[/*@>fcd2d8*/0]/*@>fc5743*/ = /*@>fff12e*/z_real_data/*@>fff130*/[/*@>fff12d*/0];
+        /*@>fed40c*/zr_temp_data/*@>fc5758*/[/*@>fcd2df*/1]/*@>fc5757*/ = /*@>fcd3d9*/0.0;
+        /* '<S1387>:1:211' nzr = nzr+1; */
+        /*@>fccbeb*/nzr/*@>ac2a1f*/ = ind_complement_size/*@>fff135*/[/*@>fff132*/1];
+    } else {
+        /* '<S1387>:1:212' else */
+        /* '<S1387>:1:213' zr_temp = zr; */
+        ind_size/*@>fb462d*/[/*@>fccf70*/0]/*@>fa591d*/ = /*@>10077a4*/1;
+        ind_size/*@>fb46d4*/[/*@>fccf7c*/1]/*@>fa5929*/ = ind_complement_size/*@>fff12b*/[/*@>fff128*/1];
+        if (z_real_size_idx_1/*@>ff4b4b*/ - /*@>ff4b4e*/1 >= /*@>ff4b4a*/0) {
+            /*@>ffa1df*/memcpy(&/*@>ff4b2c*/zr_temp_data/*@>ff4b2d*/[/*@>ff4b1c*/0], &/*@>ff4b34*/z_real_data[/*@>ff4b2b*/0], /*@>ff4b1a*/(uint32_T)z_real_size_idx_1/*@>ff4b38*/ * /*@>ff4b37*/sizeof(real_T));
+        }
+    }
+    /* '<S1387>:1:215' nzrsec = nzr/2; */
+    /*@>fccbe6*/nzrsec/*@>ac2a2a*/ = (/*@>fd408e*/(real_T)/*@>fccbe9*/nzr/*@>fbde7f*/ + /*@>fcd277*/1.0)/*@>b01d71*/ / /*@>fccbe8*/2.0;
+    /* '<S1387>:1:216' zrms = real(-zr_temp(1:2:nzr-1) - zr_temp(2:2:nzr)); */
+    /*@>b01dc3*/if (/*@>fccb1c*/nzr/*@>b411e5*/ < /*@>fccb45*/1) {
+        /*@>fccbe2*/c/*@>b01dde*/ = /*@>10077ad*/1;
+        /*@>fccbdc*/z_real_size_idx_1/*@>b01dcf*/ = /*@>10077b0*/-1;
+        /*@>fccbd2*/f/*@>b02a9d*/ = /*@>10077b6*/0;
+        /*@>fccbca*/e/*@>b02a8e*/ = /*@>10077bc*/1;
+        /*@>fccbc4*/d/*@>b02a7f*/ = /*@>10077bf*/-1;
+    } else {
+        /*@>fccbd9*/c/*@>b01dd8*/ = /*@>10077aa*/2;
+        /*@>fccbd6*/z_real_size_idx_1/*@>b01dc9*/ = /*@>fccb43*/nzr/*@>b3e03f*/ - /*@>fccb42*/1;
+        /*@>fccbc7*/f/*@>b02a97*/ = /*@>10077b3*/1;
+        /*@>fccbc1*/e/*@>b02a88*/ = /*@>10077b9*/2;
+        /*@>fccbbc*/d/*@>b02a79*/ = /*@>fccbbe*/nzr;
+    }
+    /*@>fe4085*/loop_ub/*@>fe4087*/ = /*@>ff8b42*/div_s32(/*@>fccc83*/z_real_size_idx_1, /*@>fccc81*/c);
+    if (/*@>ff8b44*/div_s32(/*@>fccc8a*/d/*@>fabd5e*/ - /*@>fccc86*/f, /*@>fccc88*/e)/*@>fabd62*/ + /*@>fccc8c*/1 == /*@>fe5566*/loop_ub/*@>fe5564*/ + /*@>fe5567*/1) {
+/*@>fb4eb6*/        for (/*@>1007907*/d = /*@>1007906*/0; /*@>1007912*/d <= loop_ub; /*@>100790d*/d/*@>1007a5d*/++) {
+            /*@>fed6bf*/zrms_data[/*@>fcd006*/d]/*@>fb4ea0*/ = -/*@<fcebdc*//*@>fff141*/zr_temp_data/*@>fff143*/[/*@>fff13e*/c/*@>fff13c*/ * /*@>fff140*/d]/*@>fb4e4e*/ - /*@>fff14d*/zr_temp_data/*@>fff14f*/[/*@>fff148*/e/*@>fff146*/ * /*@>fff14a*/d/*@>fff145*/ + /*@>fff14c*/f];
+        }
+    } else {
+        %<SLibCG_DumpSSCode("/*@[100615e*/",(SLibCGCallSubFcn("Model_TranslationEngine64_binary_expand_op_j5plg", ["/*@>1008474*/zrms_data", "ind_size", "/*@>1008488*/zr_temp_data", "c", "z_real_size_idx_1", "f", "e", "d"], 347, 14, 7)),"/*@]*/")>;
+    }
+    /* '<S1387>:1:217' zrp = real(zr_temp(1:2:nzr-1) .* zr_temp(2:2:nzr)); */
+    /*@>b02b73*/if (/*@>fccb1a*/nzr/*@>b41243*/ < /*@>fccb3e*/1) {
+        /*@>fccba9*/c/*@>b02b8e*/ = /*@>10077da*/1;
+        /*@>fccba0*/z_real_size_idx_1/*@>b02b7f*/ = /*@>10077e0*/-1;
+        /*@>fccb91*/f/*@>b02c5e*/ = /*@>10077e6*/0;
+        /*@>fccb8e*/e/*@>b02c4f*/ = /*@>10077ec*/1;
+        /*@>fccb88*/nzr/*@>b02c40*/ = /*@>10077ef*/-1;
+    } else {
+        /*@>fccb9a*/c/*@>b02b88*/ = /*@>10077d7*/2;
+        /*@>fccb93*/z_real_size_idx_1/*@>b02b79*/ = /*@>fccb3c*/nzr/*@>b3e090*/ - /*@>fccb3b*/1;
+        /*@>fccb8b*/f/*@>b02c58*/ = /*@>10077e3*/1;
+        /*@>fccb85*/e/*@>b02c49*/ = /*@>10077e9*/2;
+    }
+    /*@>fe40a5*/loop_ub/*@>fe40a7*/ = /*@>ff8b48*/div_s32(/*@>fccc8f*/z_real_size_idx_1, /*@>fccc8d*/c);
+    if (/*@>ff8b4a*/div_s32(/*@>fccc96*/nzr/*@>fabe0b*/ - /*@>fccc92*/f, /*@>fccc94*/e)/*@>fabe0f*/ + /*@>fccc98*/1 == /*@>fe557f*/loop_ub/*@>fe557d*/ + /*@>fe5580*/1) {
+/*@>fb55eb*/        for (/*@>10078f7*/d = /*@>10078f6*/0; /*@>1007902*/d <= loop_ub; /*@>10078fd*/d/*@>1007a5e*/++) {
+            /*@>fed810*/zrp_data[/*@>fcd086*/d]/*@>fb55d5*/ = /*@>fff184*/zr_temp_data/*@>fff186*/[/*@>fff17f*/e/*@>fff17d*/ * /*@>fff181*/d/*@>fff17c*/ + /*@>fff183*/f]/*@>fcebe5*/ * /*@>fff18d*/zr_temp_data/*@>fff18f*/[/*@>fff18a*/c/*@>fff188*/ * /*@>fff18c*/d];
+        }
+    } else {
+        %<SLibCG_DumpSSCode("/*@[1006140*/",(SLibCGCallSubFcn("Model_TranslationEngine64_binary_expand_op_j5pl", ["/*@>10084c4*/zrp_data", "ind_size", "/*@>10084d8*/zr_temp_data", "c", "z_real_size_idx_1", "f", "e", "/*@>100850a*/nzr"], 347, 14, 6)),"/*@]*/")>;
+    }
+} else {
+    /* '<S1387>:1:218' else */
+    /* '<S1387>:1:219' nzrsec = 0; */
+    /*@>fccbee*/nzrsec/*@>ac2a55*/ = /*@>fccbed*/0.0;
+    /* '<S1387>:1:220' zrms = 0; */
+    /*@>fed3e7*/zrms_data[0]/*@>fb487c*/ = /*@>fccf8c*/0.0;
+    /* '<S1387>:1:221' zrp = 0; */
+    /*@>fed47c*/zrp_data[0]/*@>fb4add*/ = /*@>fccfb5*/0.0;
+}
+/*  Pair up real poles: */
+/* '<S1387>:1:225' if npr */
+/*@>ac2901*/if (p_real_size_idx_1/*@>b02d05*/ != /*@>fccbe5*/0) {
+    /* '<S1387>:1:226' if mod(npr,2) == 1 */
+    /*@>ac2945*/if (/*@>ff8b4e*/fmod(p_real_size_idx_1, /*@>fccc43*/2.0)/*@>b02d09*/ == /*@>fccbe4*/1.0) {
+        /* '<S1387>:1:227' pr_temp = [pr;0]; */
+        /*@>fed568*/pr_temp_data/*@>fdc6e3*/[/*@>fdc6e7*/0]/*@>fdc6e8*/ = /*@>fff138*/p_real_data/*@>fff13a*/[/*@>fff137*/0];
+        /*@>fed5ad*/pr_temp_data/*@>fc66d0*/[/*@>fcd36c*/1]./*@>1008245*/re/*@>fc66cf*/ = /*@>fd0d66*/0.0;
+        /*@>fed5cb*/pr_temp_data/*@>fc572b*/[/*@>fcd2ce*/1]./*@>1008248*/im/*@>fc572a*/ = /*@>fd0d6a*/0.0;
+        /* '<S1387>:1:228' npr = npr+1; */
+        /*@>fccbd4*/npr/*@>ac2a6d*/ = p_real_size_idx_1;
+    } else {
+        /* '<S1387>:1:229' else */
+        /* '<S1387>:1:230' pr_temp = pr; */
+        /*@>ffa1e1*/memcpy(&/*@>ff4a97*/pr_temp_data/*@>ff4a98*/[/*@>ff4a87*/0], &/*@>ff4a9f*/p_real_data[/*@>ff4a96*/0], /*@>ff4a85*/(uint32_T)p_real_size_idx_1/*@>ff4aa3*/ * /*@>ff4aa2*/sizeof(creal_T));
+    }
+    /* '<S1387>:1:232' nprsec = npr/2; */
+    /*@>fccbcc*/nprsec/*@>ac2a78*/ = (/*@>fd40fa*/(real_T)/*@>fccbcf*/npr/*@>fbde8b*/ + /*@>fcd27b*/1.0)/*@>b042e7*/ / /*@>fccbce*/2.0;
+    /* '<S1387>:1:233' prms = real(-pr_temp(1:2:npr-1) - pr_temp(2:2:npr)); */
+    /*@>b04337*/if (/*@>fccb18*/npr/*@>b412b0*/ < /*@>fccb37*/1) {
+        /*@>fccbba*/nzr/*@>b04352*/ = /*@>10077c5*/1;
+        /*@>fccbb7*/c/*@>b04343*/ = /*@>10077c8*/-1;
+        /*@>fccbaf*/z_real_size_idx_1/*@>b04425*/ = /*@>10077ce*/0;
+        /*@>fccbac*/f/*@>b04416*/ = /*@>10077d4*/1;
+        /*@>fccba3*/e/*@>b04407*/ = /*@>10077dd*/-1;
+    } else {
+        /*@>fccbb4*/nzr/*@>b0434c*/ = /*@>10077c2*/2;
+        /*@>fccbb1*/c/*@>b0433d*/ = /*@>fccb35*/npr/*@>b3e159*/ - /*@>fccb34*/1;
+        /*@>fccba6*/z_real_size_idx_1/*@>b0441f*/ = /*@>10077cb*/1;
+        /*@>fccb9d*/f/*@>b04410*/ = /*@>10077d1*/2;
+        /*@>fccb95*/e/*@>b04401*/ = /*@>fccb97*/npr;
+    }
+    /*@>fe40c5*/loop_ub/*@>fe40c7*/ = /*@>ff8b52*/div_s32(/*@>fccc9b*/c, /*@>fccc99*/nzr);
+    if (/*@>ff8b54*/div_s32(/*@>fccca2*/e/*@>fabebd*/ - /*@>fccc9e*/z_real_size_idx_1, /*@>fccca0*/f)/*@>fabec1*/ + /*@>fccca4*/1 == /*@>fe559a*/loop_ub/*@>fe5598*/ + /*@>fe559b*/1) {
+/*@>fb59df*/        for (/*@>10078e7*/d = /*@>10078e6*/0; /*@>10078f2*/d <= loop_ub; /*@>10078ed*/d/*@>1007a5f*/++) {
+            /*@>fed952*/prms_data[/*@>fcd0dc*/d]/*@>fb59c9*/ = -/*@<fcebed*//*@>fff16c*/pr_temp_data/*@>fff16e*/[/*@>fff169*/nzr/*@>fff167*/ * /*@>fff16b*/d].re/*@>fb5959*/ - /*@>fff178*/pr_temp_data/*@>fff17a*/[/*@>fff173*/f/*@>fff171*/ * /*@>fff175*/d/*@>fff170*/ + /*@>fff177*/z_real_size_idx_1].re;
+        }
+    } else {
+        %<SLibCG_DumpSSCode("/*@[1006122*/",(SLibCGCallSubFcn("Model_TranslationEngine64_binary_expand_op_j5p", ["/*@>1008514*/prms_data", "ind_size", "/*@>1008528*/pr_temp_data", "/*@>1008532*/nzr", "c", "z_real_size_idx_1", "f", "e"], 347, 14, 5)),"/*@]*/")>;
+    }
+    /* '<S1387>:1:234' prp = real(pr_temp(1:2:npr-1) .* pr_temp(2:2:npr)); */
+    /*@>b044f7*/if (/*@>fccb16*/npr/*@>b4130e*/ < /*@>fccb30*/1) {
+        /*@>fccb7e*/nzr/*@>b04512*/ = /*@>10077f5*/1;
+        /*@>fccb7b*/c/*@>b04503*/ = /*@>10077f8*/-1;
+        /*@>fccb73*/z_real_size_idx_1/*@>b045e2*/ = /*@>10077fe*/0;
+        /*@>fccb6c*/f/*@>b045d3*/ = /*@>1007804*/1;
+        /*@>fccb66*/npr/*@>b045c4*/ = /*@>1007807*/-1;
+    } else {
+        /*@>fccb78*/nzr/*@>b0450c*/ = /*@>10077f2*/2;
+        /*@>fccb75*/c/*@>b044fd*/ = /*@>fccb2e*/npr/*@>b3e1aa*/ - /*@>fccb2d*/1;
+        /*@>fccb69*/z_real_size_idx_1/*@>b045dc*/ = /*@>10077fb*/1;
+        /*@>fccb63*/f/*@>b045cd*/ = /*@>1007801*/2;
+    }
+    /*@>fe40e5*/loop_ub/*@>fe40e7*/ = /*@>ff8b58*/div_s32(/*@>fccca7*/c, /*@>fccca5*/nzr);
+    if (/*@>ff8b5a*/div_s32(/*@>fcccae*/npr/*@>fabf6c*/ - /*@>fcccaa*/z_real_size_idx_1, /*@>fcccac*/f)/*@>fabf70*/ + /*@>fcccb0*/1 == /*@>fe55b3*/loop_ub/*@>fe55b1*/ + /*@>fe55b4*/1) {
+/*@>fb5ff7*/        for (/*@>10078d7*/d = /*@>10078d6*/0; /*@>10078e2*/d <= loop_ub; /*@>10078dd*/d/*@>1007a60*/++) {
+            /*@>fe40f5*/npr/*@>fe40f7*/ = /*@>fd97ba*/f/*@>fd97b8*/ * /*@>fd97bc*/d/*@>fd97b5*/ + /*@>fd97b7*/z_real_size_idx_1;
+            /*@>fe4105*/c/*@>fe4107*/ = /*@>fd97a9*/nzr/*@>fd97a7*/ * /*@>fd97ab*/d;
+            /*@>fedac4*/prp_data[/*@>fcd157*/d]/*@>fb5fe1*/ = /*@>fff1a9*/pr_temp_data/*@>fff1ab*/[/*@>fff1a8*/npr].re/*@>fd979e*/ * /*@>fff1af*/pr_temp_data/*@>fff1b1*/[/*@>fff1ae*/c].re/*@>fd979d*/ - /*@>fff1b5*/pr_temp_data/*@>fff1b7*/[npr].im/*@>fd97be*/ * /*@>fff1bb*/pr_temp_data/*@>fff1bd*/[c].im;
+        }
+    } else {
+        %<SLibCG_DumpSSCode("/*@[1006104*/",(SLibCGCallSubFcn("Model_TranslationEngine64_binary_expand_op_j5", ["/*@>1008564*/prp_data", "ind_size", "/*@>1008578*/pr_temp_data", "/*@>1008582*/nzr", "c", "z_real_size_idx_1", "f", "/*@>10085aa*/npr"], 347, 14, 4)),"/*@]*/")>;
+    }
+} else {
+    /* '<S1387>:1:235' else */
+    /* '<S1387>:1:236' nprsec = 0; */
+    /*@>fccbdf*/nprsec/*@>ac2aa3*/ = /*@>fccbde*/0.0;
+    /* '<S1387>:1:237' prp = 0; */
+    /*@>fed588*/prp_data[0]/*@>fb50fe*/ = /*@>fcd02e*/0.0;
+    /* '<S1387>:1:238' prms = 0; */
+    /*@>fed66d*/prms_data[0]/*@>fb5367*/ = /*@>fcd04a*/0.0;
+}
+/* '<S1387>:1:241' nsecs = max(ceil(lz/2), ceil(lp/2)); */
+/*@>fccb48*/npr/*@>b3b89a*/ = /*@>fd4106*/(int32_T)/*@>ff8b62*/fmax(/*@>ff8b5e*/ceil(/*@>fd4103*/(real_T)z_size/*@>fff155*/[/*@>fff151*/1]/*@>b3e5ab*/ / /*@>fccb15*/2.0), /*@>ff8b60*/ceil(/*@>fd4105*/(real_T)p_size/*@>fff15b*/[/*@>fff157*/1]/*@>b3e5b3*/ / /*@>fccb14*/2.0));
+/*  Convert complex zeros and poles to real 2nd-order section form: */
+/* '<S1387>:1:244' zcm2r = -2*real(zc); */
+/*@>fcd100*/loop_ub/*@>fb5aed*/ = zc_size/*@>fff160*/[/*@>fff15d*/1];
+nzr = (zc_size/*@>fff165*/[/*@>fff162*/1] / 2) << 1;
+z_real_size_idx_1 = nzr - 2;
+for (d = /*@>10078c6*/0; d <= z_real_size_idx_1; d += 2) {
+    tmp = _mm_loadu_pd(&/*@>fed7f2*/ind_complement_data[d]);
+    _mm_storeu_pd(&/*@>fed842*/zcm2r_data[d], _mm_mul_pd(_mm_set1_pd(/*@>fe55de*/-2.0), tmp));
+}
+/*@>fb5ad8*/for (/*@>10078b4*/d = nzr; /*@>10078c1*/d < /*@>10078be*/loop_ub; /*@>10078ba*/d/*@>1007a62*/++) {
+    /*@>fed86f*/zcm2r_data[d]/*@>fb5ac0*/ = /*@>fccd3c*/-2.0/*@>fcec22*/ * /*@>fff193*/ind_complement_data[d];
+}
+/* '<S1387>:1:245' zca2 = abs(zc) .^ 2; */
+%<SLibCG_DumpSSCode("/*@[10061e0*/",(SLibCGCallSubFcn("Model_TranslationEngine64_abs", ["/*@>10085b4*/ind_complement_data", "zc_size", "/*@>10085c8*/tmp_data", "tmp_size"], 347, 14, 12)),"/*@]*/")>;
+/*@>fcd125*/loop_ub/*@>fb5cdf*/ = tmp_size/*@>fff19a*/[/*@>fff197*/1];
+nzr = (tmp_size/*@>fff19f*/[/*@>fff19c*/1] / 2) << 1;
+z_real_size_idx_1 = nzr - 2;
+for (d = /*@>10078a2*/0; d <= z_real_size_idx_1; d += 2) {
+    tmp = _mm_loadu_pd(&/*@>fed9bf*/tmp_data[d]);
+    _mm_storeu_pd(&/*@>fed9eb*/ind_complement_data[d], _mm_mul_pd(tmp, tmp));
+}
+/*@>fb5cca*/for (/*@>1007890*/d = nzr; /*@>100789d*/d < /*@>100789a*/loop_ub; /*@>1007896*/d/*@>1007a64*/++) {
+    /*@>fd8198*/varargin_1/*@>fd819a*/ = /*@>fff1a3*/tmp_data[d];
+    /*@>feda4c*/ind_complement_data[d]/*@>fb5cb2*/ = /*@>fd97ec*/varargin_1/*@>fd97ea*/ * /*@>fd97ee*/varargin_1;
+}
+/* '<S1387>:1:246' pcm2r = -2 * real(pc); */
+/*@>fcd17b*/loop_ub/*@>fb616e*/ = pc_size/*@>fff1c2*/[/*@>fff1bf*/1];
+/*@>fb6159*/for (/*@>100787c*/d = /*@>100787b*/0; /*@>1007889*/d < /*@>1007886*/loop_ub; /*@>1007882*/d/*@>1007a65*/++) {
+    /*@>fedb05*/z_real_data[d]/*@>fb6141*/ = /*@>fccd40*/-2.0/*@>fcec2b*/ * /*@>fff1c6*/pc_data[d].re;
+}
+/* '<S1387>:1:247' pca2 = abs(pc) .^ 2; */
+%<SLibCG_DumpSSCode("/*@[10061fa*/",(SLibCGCallSubFcn("Model_TranslationEngine64_abs_h", ["/*@>10085dc*/pc_data", "pc_size", "/*@>10085f0*/tmp_data", "tmp_size"], 347, 14, 13)),"/*@]*/")>;
+/*@>fcd1a0*/loop_ub/*@>fb6354*/ = tmp_size/*@>fff1cd*/[/*@>fff1ca*/1];
+nzr = (tmp_size/*@>fff1d2*/[/*@>fff1cf*/1] / 2) << 1;
+z_real_size_idx_1 = nzr - 2;
+for (d = /*@>100786b*/0; d <= z_real_size_idx_1; d += 2) {
+    tmp = _mm_loadu_pd(&/*@>fedbb2*/tmp_data[d]);
+    _mm_storeu_pd(&/*@>fedbcf*/ind_data[d], _mm_mul_pd(tmp, tmp));
+}
+/*@>fb633f*/for (/*@>1007859*/d = nzr; /*@>1007866*/d < /*@>1007863*/loop_ub; /*@>100785f*/d/*@>1007a67*/++) {
+    /*@>fd81c9*/varargin_1/*@>fd81cb*/ = /*@>fff1d6*/tmp_data[d];
+    /*@>fedc11*/ind_data[d]/*@>fb6327*/ = /*@>fd97fd*/varargin_1/*@>fd97fb*/ * /*@>fd97ff*/varargin_1;
+}
+/* '<S1387>:1:249' sos = zeros(nsecs, 6); */
+sos_size/*@>fb6377*/[/*@>fcd1a6*/0]/*@>fa5cf9*/ = /*@>fccc7c*/npr;
+sos_size/*@>fb639c*/[/*@>fcd1a9*/1]/*@>fa5d05*/ = /*@>100780a*/6;
+/*@>fcd1c0*/loop_ub/*@>fb645c*/ = /*@>fcd1b9*/npr/*@>fcea5c*/ * /*@>fcd1bb*/6;
+if (/*@>ff5ebf*/loop_ub/*@>ff5ebd*/ - /*@>ff5ec0*/1 >= /*@>ff5ebc*/0) {
+    /*@>ffa1e3*/memset(&/*@>ff8a35*/sos_data/*@>ff5ea8*/[/*@>ff5ea6*/0], /*@>100780d*/0, /*@>ff5ea4*/(uint32_T)/*@>ff5ea3*/loop_ub/*@>ff5eae*/ * /*@>ff5ead*/sizeof(real_T));
+}
+/* '<S1387>:1:250' sos(:,1) = ones(nsecs, 1); */
+/*@>fb64ed*/for (/*@>1007845*/d = /*@>1007844*/0; /*@>1007852*/d < /*@>100784f*/npr; /*@>100784b*/d/*@>1007a68*/++) {
+    /*@>ff8a38*/sos_data[/*@>fcd1cb*/d]/*@>fb64dc*/ = /*@>fcd1c8*/1.0;
+}
+/*  all 2nd-order polynomials are monic */
+/* '<S1387>:1:251' sos(end,1) = g*sos(end, 1); */
+/*@>ff8a3b*/sos_data[/*@>1001d76*/npr/*@>1001d74*/ - /*@>1001d77*/1]/*@>1007a69*/ *= /*@>fccb80*/g;
+/* '<S1387>:1:252' sos(:,4) = ones(nsecs, 1); */
+/*@>fb6674*/for (/*@>1007832*/d = /*@>1007831*/0; /*@>100783f*/d < /*@>100783c*/npr; /*@>1007838*/d/*@>1007a6a*/++) {
+    /*@>ff8a41*/sos_data[/*@>fcd1eb*/d + /*@>ff1ccc*/npr * /*@>fcd1ed*/3]/*@>fb6663*/ = /*@>fcd1e8*/1.0;
+}
+/* '<S1387>:1:254' nzrl = nzc + nzrsec; */
+/*@>fccb6e*/nzrsec/*@>1007a6b*/ += /*@>fd427d*/(real_T)y_size_idx_1;
+/*  index of last real zero section */
+/* '<S1387>:1:255' nprl = npc + nprsec; */
+/*@>fccb5e*/nprsec/*@>1007a6c*/ += /*@>fd4281*/(real_T)pc_size/*@>fff1e4*/[/*@>fff1e1*/1];
+/*  index of last real pole section */
+/* '<S1387>:1:257' for i = 1:nsecs */
+/*@>ac2925*/for (/*@>100781f*/nzr = /*@>100781e*/0; /*@>100782c*/nzr < /*@>1007829*/npr; /*@>1007825*/nzr/*@>1007a6d*/++) {
+    /* '<S1387>:1:259' if i <= nzc */
+    /*@>ac2929*/if (/*@>fccb28*/nzr/*@>b3e2b3*/ + /*@>fccb27*/1/*@>b08861*/ <= /*@>fccb52*/nzc) {
+        /*  lay down a complex zero pair: */
+        /* '<S1387>:1:260' sos(i,2:3) = [zcm2r(i) zca2(i)]; */
+        /*@>ff8a56*/sos_data[/*@>fcd208*/nzr + /*@>ff1cfb*/npr]/*@>fb68f0*/ = /*@>fff1e8*/zcm2r_data[nzr];
+        /*@>ff8a59*/sos_data[/*@>fcd20d*/nzr + (/*@>ff1d02*/npr/*@>1005a14*/ << /*@>1005a13*/1)]/*@>fb691f*/ = /*@>fff1ee*/ind_complement_data[nzr];
+        /* '<S1387>:1:261' sos(end,2:3) = g*sos(end,2:3); */
+        d = (/*@>ff1d07*/npr + /*@>ff1d0a*/npr) - /*@>fd9864*/1;
+        /*@>ff8a5c*/sos_data[d]/*@>1007a6e*/ *= /*@>fd985d*/g;
+        d = ((/*@>ff1d16*/npr/*@>1005a17*/ << /*@>1005a16*/1) + /*@>ff1d13*/npr)/*@>ff391d*/ - /*@>fd987d*/1;
+        /*@>ff8a62*/sos_data[d]/*@>1007a6f*/ *= /*@>fd9876*/g;
+    } else /*@>ac292a*/if (/*@>fd4289*/(real_T)/*@>fccb25*/nzr/*@>b3e2b9*/ + /*@>fccb24*/1.0/*@>b08f0b*/ <= /*@>fccb50*/nzrsec) {
+        /* '<S1387>:1:262' elseif i <= nzrl */
+        /*  lay down a pair of real zeros: */
+        /* '<S1387>:1:263' sos(i,2:3) = [zrms(i-nzc) zrp(i-nzc)]; */
+        d = /*@>ff1cd1*/nzr/*@>ff1ccf*/ - /*@>ff1cd3*/nzc;
+        /*@>ff8a44*/sos_data[/*@>fcd220*/nzr + /*@>ff1cd7*/npr]/*@>fb6a89*/ = /*@>fff1f4*/zrms_data[d];
+        /*@>ff8a47*/sos_data[/*@>fcd225*/nzr + (/*@>ff1cde*/npr/*@>1005a20*/ << /*@>1005a1f*/1)]/*@>fb6ab8*/ = /*@>fff1fa*/zrp_data[d];
+        /* '<S1387>:1:264' sos(end,2:3) = g*sos(end,2:3); */
+        d = (/*@>ff1ce3*/npr + /*@>ff1ce6*/npr) - /*@>fd9832*/1;
+        /*@>ff8a4a*/sos_data[d]/*@>1007a70*/ *= /*@>fd982b*/g;
+        d = ((/*@>ff1cf2*/npr/*@>1005a23*/ << /*@>1005a22*/1) + /*@>ff1cef*/npr)/*@>ff3919*/ - /*@>fd984b*/1;
+        /*@>ff8a50*/sos_data[d]/*@>1007a71*/ *= /*@>fd9844*/g;
+    }
+    /* '<S1387>:1:267' if i <= npc */
+    /*@>ac292e*/if (/*@>fccb22*/nzr/*@>b3e30b*/ + /*@>fccb21*/1/*@>b0908d*/ <= /*@>fccb4e*/npc) {
+        /*  lay down a complex pole pair: */
+        /* '<S1387>:1:268' sos(i,5:6) = [pcm2r(i) pca2(i)]; */
+        /*@>ff8a6e*/sos_data[/*@>fcd23f*/nzr + (/*@>ff1d35*/npr/*@>1005a1a*/ << /*@>1005a19*/2)]/*@>fb6db2*/ = /*@>fff207*/z_real_data[nzr];
+        /*@>ff8a71*/sos_data[/*@>fcd244*/nzr + /*@>ff1d3c*/npr * /*@>fcd246*/5]/*@>fb6de1*/ = /*@>fff20d*/ind_data[nzr];
+    } else /*@>ac292f*/if (/*@>fd42a6*/(real_T)/*@>fccb1f*/nzr/*@>b3e311*/ + /*@>fccb1e*/1.0/*@>b0913e*/ <= /*@>fccb4c*/nprsec) {
+        /* '<S1387>:1:269' elseif i <= nprl */
+        /*  lay down a pair of real poles: */
+        /* '<S1387>:1:270' sos(i,5:6) = [prms(i-npc) prp(i-npc)]; */
+        d = /*@>ff1d23*/nzr/*@>ff1d21*/ - /*@>ff1d25*/npc;
+        /*@>ff8a68*/sos_data[/*@>fcd25c*/nzr + (/*@>ff1d29*/npr/*@>1005a1d*/ << /*@>1005a1c*/2)]/*@>fb7043*/ = /*@>fff221*/prms_data[d];
+        /*@>ff8a6b*/sos_data[/*@>fcd261*/nzr + /*@>ff1d30*/npr * /*@>fcd263*/5]/*@>fb7072*/ = /*@>fff227*/prp_data[d];
+    }
+}
+%closefile cfgTxt
+%<cfgTxt>
+%closefile fcnBuff
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_TranslationEngine64_zp2sos(\
+%assign comma = ""
+%<comma>real_T z_data[]\
+%assign comma = ", "
+%<comma>int32_T z_size[2]\
+%assign comma = ", "
+%<comma>creal_T p_data[]\
+%assign comma = ", "
+%<comma>const int32_T p_size[2]\
+%assign comma = ", "
+%<comma>real_T g\
+%assign comma = ", "
+%<comma>real_T sos_data[]\
+%assign comma = ", "
+%<comma>int32_T sos_size[2]\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(347, 14, fcnProtoType)>
+%return fcnBuff
+%endfunction
+

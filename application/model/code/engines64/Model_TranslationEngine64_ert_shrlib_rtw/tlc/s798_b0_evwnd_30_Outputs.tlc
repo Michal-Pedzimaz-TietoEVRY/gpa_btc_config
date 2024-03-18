@@ -1,0 +1,65 @@
+%implements s798_b0_evwnd_30_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+/* MATLAB Function 'NEAR/Near1p1/DrProc/FsEQDr/Subsystem1/Translation': '<S1319>:1' */
+/* '<S1319>:1:9' eqdelays = single([ F1.Value,... */
+/* '<S1319>:1:10'                         F2.Value,... */
+/* '<S1319>:1:11'                         F3.Value,... */
+/* '<S1319>:1:12'                         F4.Value,... */
+/* '<S1319>:1:13'                         F5.Value,... */
+/* '<S1319>:1:14'                         F6.Value,... */
+/* '<S1319>:1:15'                         F7.Value]); */
+/*@>ce4aa6*/localB->/*@>ce4c31*/eqdelays/*@>ce438e*/[/*@>ce4645*/0]/*@>ce438d*/ = rtu_F1->Value;
+/*@>ce4aad*/localB->/*@>ce4c34*/eqdelays/*@>ce439a*/[/*@>ce4649*/1]/*@>ce4399*/ = rtu_F2->Value;
+/*@>ce4ab4*/localB->/*@>ce4c37*/eqdelays/*@>ce43a6*/[/*@>ce464d*/2]/*@>ce43a5*/ = rtu_F3->Value;
+/*@>ce4abb*/localB->/*@>ce4c3a*/eqdelays/*@>ce43b2*/[/*@>ce4651*/3]/*@>ce43b1*/ = rtu_F4->Value;
+/*@>ce4ac2*/localB->/*@>ce4c3d*/eqdelays/*@>ce43be*/[/*@>ce4655*/4]/*@>ce43bd*/ = rtu_F5->Value;
+/*@>ce4ac9*/localB->/*@>ce4c40*/eqdelays/*@>ce43ca*/[/*@>ce4659*/5]/*@>ce43c9*/ = rtu_F6->Value;
+/*@>ce4ad0*/localB->/*@>ce4c43*/eqdelays/*@>ce43d6*/[/*@>ce465d*/6]/*@>ce43d5*/ = rtu_F7->Value;
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[30].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(30, 0, 0)>
+%endif
+%if SLibCG_ArgAccessed(30, 0, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(30, 0, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_TranslationEngine64_Translation_p(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(30, 0, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_TranslationEngine64_Translation_p", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>const bus_single_1_1 *rtu_F1\
+%assign comma = ", "
+%<comma>const bus_single_1_1 *rtu_F2\
+%assign comma = ", "
+%<comma>const bus_single_1_1 *rtu_F3\
+%assign comma = ", "
+%<comma>const bus_single_1_1 *rtu_F4\
+%assign comma = ", "
+%<comma>const bus_single_1_1 *rtu_F5\
+%assign comma = ", "
+%<comma>const bus_single_1_1 *rtu_F6\
+%assign comma = ", "
+%<comma>const bus_single_1_1 *rtu_F7\
+%assign comma = ", "
+%<comma>B_Translation_Model_TranslationEngine64_e_T *localB\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(30, 0, fcnProtoType)>
+%endfunction

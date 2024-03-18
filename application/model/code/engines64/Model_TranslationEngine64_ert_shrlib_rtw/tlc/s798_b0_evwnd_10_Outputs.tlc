@@ -1,0 +1,102 @@
+%implements s798_b0_evwnd_10_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+int32_T i;
+char_T c_data[70];
+char_T b_data[55];
+static const char_T d[55] = %<(TLC_STR_CTX(3))>;
+static const char_T e[70] = %<(TLC_STR_CTX(4))>;
+%closefile localVarDecl
+/*  Cutoff is the inverse of time constant in Hz. So this function */
+/*  basically converts reciprocal of time constant to first order iir */
+/*  filter coefficient. */
+/*  Reference: https://bosecorp.sharepoint.com/sites/ASD3/DSPTeam/Shared%<"\%20Documents/DSP_Topics/Comparison\%20of\%20time\%20constant\%20conversion\%20methods.docx"> */
+/* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 2/Decimated-Rate FDP/Fdp/FreqDomainProcessing/Reverb Extractions/Trivial Translation1': '<S656>:1' */
+/* '<S656>:1:7' if FastPsdSmoothCutoff.Value >= SlowPsdSmoothCutoff.Value */
+/*@>c6ba4f*/if (rtu_FastPsdSmoothCutoff->Value/*@>c6ba46*/ >= rtu_SlowPsdSmoothCutoff->Value) {
+    real_T wn;
+    /* '<S656>:1:8' wn = 2 * pi * FastPsdSmoothCutoff.Value / FrameRate; */
+    /*@>cbd2d1*/wn/*@>c6ba3f*/ = /*@>cbd2d0*/6.2831853071795862/*@>cbd373*/ * rtu_FastPsdSmoothCutoff->Value/*@>c6ba48*/ / /*@>cbd301*/rtu_FrameRate;
+    /* '<S656>:1:9' FastPsdSmoothFactor = (1 - sin(wn)) ./ cos(wn); */
+    /*@>cbe236*/localB->/*@>cbe4b7*/FastPsdSmoothFactor/*@>c6ba40*/ = (/*@>cbd2d3*/1.0/*@>c6ba49*/ - /*@>cbdebc*/sin(/*@>cbd2ea*/wn))/*@>c6ba4a*/ / /*@>cbdebe*/cos(/*@>cbd2ec*/wn);
+    /* '<S656>:1:10' wn = 2 * pi * SlowPsdSmoothCutoff.Value / FrameRate; */
+    /*@>cbd2d6*/wn/*@>c6ba42*/ = /*@>cbd2d5*/6.2831853071795862/*@>cbd363*/ * rtu_SlowPsdSmoothCutoff->Value/*@>c6ba4c*/ / /*@>cbd305*/rtu_FrameRate;
+    /* '<S656>:1:11' SlowPsdSmoothFactor = (1 - sin(wn)) ./ cos(wn); */
+    /*@>cbe23d*/localB->/*@>cbe4ba*/SlowPsdSmoothFactor/*@>c6ba43*/ = (/*@>cbd2d9*/1.0/*@>c6ba4d*/ - /*@>cbdec0*/sin(/*@>cbd2ee*/wn))/*@>c6ba4e*/ / /*@>cbdec2*/cos(/*@>cbd2f0*/wn);
+} else {
+    /* '<S656>:1:12' else */
+    /* '<S656>:1:13' TranslateError('Cutoff frequency of single pole averager for smoothing'...  */
+    /* '<S656>:1:14'        ,'fast PSD should be less than or equal to that for smoothing slow PSD.'); */
+    /* TRANSLATEERROR (For use in Functions triggered by TranslationTrigger blocks.) */
+    /* Print error message during tune data translation. */
+    /*   Do not include a final newline as this behavior is already built in. */
+    /*   Note that escape sequences such as '\n' will not work here. To emit */
+    /*   special characters, pass them in as arguments to %<"\%c or \%s format"> */
+    /*   specifiers. */
+    /*    Copyright 2018-2019 Bose Corporation */
+    /* 'TranslateError:10' coder.extrinsic('gcb') */
+    /* 'TranslateError:11' coder.extrinsic('warning') */
+    /* 'TranslateError:12' coder.allowpcode('plain'); */
+    /*  enable code generation from p-file */
+    /* 'TranslateError:14' if (coder.target('MATLAB')) */
+    /* 'TranslateError:18' if (coder.target('Sfun')) */
+    /* 'TranslateError:21' else */
+    /* 'TranslateError:22' count = numel(varargin); */
+    /* 'TranslateError:23' fixedArgs = varargin; */
+    /* 'TranslateError:24' for i=1:count */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:26' fixedArgs{i} = [varargin{i} char(0)]; */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:26' fixedArgs{i} = [varargin{i} char(0)]; */
+    /* 'TranslateError:29' coder.ceval('TranslateError',fixedArgs{:}); */
+/*@>cbcee2*/    for (/*@>cbe42e*/i = /*@>cbe42d*/0; /*@>cbe438*/i < /*@>cbe436*/55; /*@>cbe434*/i/*@>cbe43c*/++) {
+        /*@>cbdb0e*/b_data[/*@>cbd328*/i]/*@>cbced5*/ = /*@>cbe1ae*/d/*@>cbe1b0*/[/*@>cbe1ad*/i];
+    }
+    /*@>cbdf75*/memcpy(&/*@>cbdcfa*/c_data[/*@>cbdcea*/0], &/*@>cbdd02*/e/*@>cbdd03*/[/*@>cbdcf7*/0], /*@>cbdcf9*/70U/*@>cbdd06*/ * /*@>cbdd05*/sizeof(char_T));
+    /*@>cbdeba*/TranslateError(&/*@>cbdb54*/b_data/*@>cbdb67*/[/*@>cbd2dd*/0], &/*@>cbdb6a*/c_data/*@>cbdb7d*/[/*@>cbd2e1*/0]);
+    /* '<S656>:1:15' FastPsdSmoothFactor = 0; */
+    /*@>cbe244*/localB->/*@>cbe4bd*/FastPsdSmoothFactor/*@>c6ba44*/ = /*@>cbd2d4*/0.0;
+    /* '<S656>:1:16' SlowPsdSmoothFactor = 0; */
+    /*@>cbe24b*/localB->/*@>cbe4c0*/SlowPsdSmoothFactor/*@>c6ba45*/ = /*@>cbd2d8*/0.0;
+}
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[10].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(10, 0, 0)>
+%endif
+%if SLibCG_ArgAccessed(10, 0, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(10, 0, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_TranslationEngine64_TrivialTranslation1(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(10, 0, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_TranslationEngine64_TrivialTranslation1", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>const bus_double_1_1 *rtu_FastPsdSmoothCutoff\
+%assign comma = ", "
+%<comma>const bus_double_1_1 *rtu_SlowPsdSmoothCutoff\
+%assign comma = ", "
+%<comma>real_T rtu_FrameRate\
+%assign comma = ", "
+%<comma>B_TrivialTranslation1_Model_TranslationEngine64_T *localB\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(10, 0, fcnProtoType)>
+%endfunction

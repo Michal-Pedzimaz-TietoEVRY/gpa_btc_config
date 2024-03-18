@@ -1,0 +1,23 @@
+%implements s1068_b0_g3vnd_146_SystemInitialize "C"
+
+%function SystemInitialize(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%<SLibCGIRDumpSystemUserCode(471, "Initialize", "Header")>\
+%<SLibCGIRDumpSystemUserCode(471, "Initialize", "Body")>\
+/* Start for DataStoreMemory: '<S589>/Data Store Memory' */
+/*@>12d50b9*/Model_Target_Medusa5H1Part5_DW./*@>12d54d4*/MedusaOverheadHoligramEnable/*@>10cd552*/ = /*@>12d3d53*/1.0;
+%<SLibCGIRDumpSystemUserCode(471, "Initialize", "Trailer")>\
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedSystemInitializeLocalVars", localVarDecl)>
+%endfunction
+%function SystemInitializeFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_Medusa5H1Part5_Init(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(146, 0, fcnProtoType)>
+%endfunction

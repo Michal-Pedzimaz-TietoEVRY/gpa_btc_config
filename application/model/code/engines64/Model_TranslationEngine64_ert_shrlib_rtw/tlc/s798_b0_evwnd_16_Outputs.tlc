@@ -1,0 +1,75 @@
+%implements s798_b0_evwnd_16_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+char_T b_data[67];
+static const char_T c[67] = %<(TLC_STR_CTX(8))>;
+%closefile localVarDecl
+/*  Checks if the parameter satisfies dimensionality requirements */
+/* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 3/On/Full-rate Mixer/Full-Rate Mixer with CAE & Fade Ramper/Fade Tuning/Foward Downmix Max/Trivial Translation': '<S802>:1' */
+/* '<S802>:1:4' if(numel(ForwardDownmixMax.Value) ~= 1) */
+/*  Checks if the parameter value follows bound requirements */
+/* '<S802>:1:9' if((ForwardDownmixMax.Value < 0) || (ForwardDownmixMax.Value > 1)) */
+/*@>c65bd0*/if ((rtu_ForwardDownmixMax->Value/*@>c65bcd*/ < /*@>cc2d35*/0.0)/*@>c65c06*/ || (rtu_ForwardDownmixMax->Value/*@>c65bce*/ > /*@>cc2d36*/1.0)) {
+    /* '<S802>:1:10' TranslateError('The value of ''medusa_forward_downmix_max'' must be between 0 and 1.'); */
+    /* TRANSLATEERROR (For use in Functions triggered by TranslationTrigger blocks.) */
+    /* Print error message during tune data translation. */
+    /*   Do not include a final newline as this behavior is already built in. */
+    /*   Note that escape sequences such as '\n' will not work here. To emit */
+    /*   special characters, pass them in as arguments to %<"\%c or \%s format"> */
+    /*   specifiers. */
+    /*    Copyright 2018-2019 Bose Corporation */
+    /* 'TranslateError:10' coder.extrinsic('gcb') */
+    /* 'TranslateError:11' coder.extrinsic('warning') */
+    /* 'TranslateError:12' coder.allowpcode('plain'); */
+    /*  enable code generation from p-file */
+    /* 'TranslateError:14' if (coder.target('MATLAB')) */
+    /* 'TranslateError:18' if (coder.target('Sfun')) */
+    /* 'TranslateError:21' else */
+    /* 'TranslateError:22' count = numel(varargin); */
+    /* 'TranslateError:23' fixedArgs = varargin; */
+    /* 'TranslateError:24' for i=1:count */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:26' fixedArgs{i} = [varargin{i} char(0)]; */
+    /* 'TranslateError:29' coder.ceval('TranslateError',fixedArgs{:}); */
+    /*@>cc346f*/memcpy(&/*@>cc330e*/b_data[/*@>cc32fe*/0], &/*@>cc3316*/c/*@>cc3317*/[/*@>cc330b*/0], /*@>cc330d*/67U/*@>cc331a*/ * /*@>cc3319*/sizeof(char_T));
+    /*@>cc33f9*/TranslateError(&/*@>cc31f5*/b_data/*@>cc3208*/[/*@>cc2d3a*/0]);
+}
+/* '<S802>:1:13' TOP = ForwardDownmixMax.Value; */
+/*@>cc35c5*/localB->/*@>cc370e*/TOP/*@>c65bcc*/ = rtu_ForwardDownmixMax->Value;
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[16].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(16, 0, 0)>
+%endif
+%if SLibCG_ArgAccessed(16, 0, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(16, 0, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_TranslationEngine64_TrivialTranslation_pz(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(16, 0, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_TranslationEngine64_TrivialTranslation_pz", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>const bus_double_1_1 *rtu_ForwardDownmixMax\
+%assign comma = ", "
+%<comma>B_TrivialTranslation_Model_TranslationEngine64_a_T *localB\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(16, 0, fcnProtoType)>
+%endfunction

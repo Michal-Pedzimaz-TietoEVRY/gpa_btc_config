@@ -1,0 +1,19 @@
+%implements s1068_b0_g3vnd_183_Update "C"
+
+%function Update(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+/* Update for Delay: '<S26>/Delay' */
+/*@>1315bb3*/Model_Target_PreAmpPart1_DW./*@>1318687*/Delay_DSTATE/*@>10dd2e4*/ = /*@>13159dc*/Model_Target_B./*@>1318684*/gainSingleChannel;
+%closefile cfgTxt
+%<cfgTxt>
+%endfunction
+%function UpdateFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_PreAmpPart1_Update(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(183, 2, fcnProtoType)>
+%endfunction

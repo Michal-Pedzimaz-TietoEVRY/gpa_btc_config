@@ -1,0 +1,21 @@
+%implements s118_b0_3swnd_51_SystemInitialize "C"
+
+%function SystemInitialize(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%<SLibCGIRDumpSystemUserCode(87, "Initialize", "Header")>\
+%<SLibCGIRDumpSystemUserCode(87, "Initialize", "Body")>\
+%<SLibCGIRDumpSystemUserCode(87, "Initialize", "Trailer")>\
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedSystemInitializeLocalVars", localVarDecl)>
+%endfunction
+%function SystemInitializeFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_InterpretationEngine64_Medusa5H1Part1_Init(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(51, 0, fcnProtoType)>
+%endfunction

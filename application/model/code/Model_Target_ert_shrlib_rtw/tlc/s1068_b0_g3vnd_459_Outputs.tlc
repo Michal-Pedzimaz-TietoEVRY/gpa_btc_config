@@ -1,0 +1,134 @@
+%implements s1068_b0_g3vnd_459_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+int32_T channel;
+int32_T i;
+int32_T sample;
+int32_T stateIndex;
+real32_T state[114];
+%closefile localVarDecl
+/* {S!d3620}MATLAB Function: '<S1766>/ifir' */
+/*  An interpolated FIR filter is an FIR filter with a sparse set of */
+/*  coefficients.  That is, the coefficients contain I-1 zeros between */
+/*  each point, so the effective length of  filter is len(input_coeffs) * I   */
+/*  The function support multiple channels, with each */
+/*  channel sharing the same set of filter coefficients. */
+/*   */
+/*  p : coefficient set (non-zero coefficients) */
+/*  I : interpolation factor, I-1 zeros are inserted between each coefficient */
+/*   */
+/*  NOTES:  */
+/*  The legacy IFIR block supported coefficient sets.  Currently */
+/*  this only supports one coefficient set.  */
+/*  The coefficients are stored flipped in time. The unflipped coeffs are */
+/*  passed to block mask, and the flipping is done in mask initialization. */
+/* MATLAB Function 'Ifir/ifir': '<S1776>:1' */
+/*  Initialize variables */
+/* '<S1776>:1:19' [frameSize, numChannels] = size(audioIn); */
+/* '<S1776>:1:20' [filterLength, ~] = size(FlippedCoefficients); */
+/* '<S1776>:1:22' frameSize   = uint32(frameSize); */
+/* '<S1776>:1:23' numChannels = uint32(numChannels); */
+/* '<S1776>:1:24' filterLength = int32(filterLength); */
+/* '<S1776>:1:25' activeCoeffSet = coder.const(uint32(zeros(1,numChannels))); */
+/*  State is a circular buffer that holds previous stateLen samples,  */
+/*  where state_index points to the last/oldest sample in the buffer, which  */
+/*  during processing will be overwritten by the current input sample. */
+/* '<S1776>:1:33' if isempty(state_index) */
+/* '<S1776>:1:37' audioOut = IFIR(audioIn, frameSize, numChannels, states, filterLength, ... */
+/* '<S1776>:1:38'                     state_index, FlippedCoefficients, activeCoeffSet, InterpolationFactor); */
+/*  If code gen'ing, generate warning if this is not replaced with IFIR.asm */
+/* '<S1776>:1:45' coder.replace('-warnifnoreplacement'); */
+/*  We have to use a different state buffer and state index than the one  */
+/*  passed in.  Matlab value objects are passed by value, not by reference,  */
+/*  so the saving of states here does not work.  The state buffer and index  */
+/*  are still necessary to pass allocate in the calling function and pass  */
+/*  here in order to trigger CRL. This double buffering is annoying, however  */
+/*  only happens during simulation, not code generation. (taken from pooliir) */
+/* '<S1776>:1:55' if isempty(state_index) */
+/* '<S1776>:1:59' y = coder.nullcopy(audioIn); */
+/* '<S1776>:1:60' stateLen = filterLength * InterpolationFactor; */
+/* '<S1776>:1:62' for channel = 1:numChannels */
+/*@>10d6ba5*/for (/*@>14b77c4*/channel = /*@>14b77c3*/0; /*@>14b77ce*/channel < /*@>14b77cc*/2; /*@>14b77ca*/channel/*@>14b77f4*/++) {
+    /* '<S1776>:1:63' state = states(:,channel); */
+    /*@>14b6a7f*/memcpy(&/*@>14b653d*/state/*@>14b653e*/[/*@>14b6504*/0], &/*@>14b73c3*/Model_Target_DW./*@>14b78c0*/states_g/*@>14b654b*/[/*@>14b651a*/channel/*@>14b6517*/ * /*@>14b651b*/114], /*@>14b653c*/114U/*@>14b654e*/ * /*@>14b654d*/sizeof(real32_T));
+    /* '<S1776>:1:64' stateIndex = state_index; */
+    /*@>14b40c3*/stateIndex/*@>10d6b61*/ = /*@>14b73c9*/Model_Target_DW./*@>14b78c3*/state_index;
+    /* '<S1776>:1:65' coeffs = FlippedCoefficients(:,activeCoeffSet(channel)+1); */
+    /* '<S1776>:1:67' for sample = 1:frameSize */
+/*@>10d6ba9*/    for (/*@>14b77d5*/sample = /*@>14b77d4*/0; /*@>14b77df*/sample < /*@>14b77dd*/32; /*@>14b77db*/sample/*@>14b77f5*/++) {
+        int32_T qY_tmp_tmp;
+        int32_T state_tmp;
+        real32_T accum;
+        /*  overwrite oldest sample with the current input sample */
+        /* '<S1776>:1:69' state(stateIndex+1) = audioIn(sample, channel); */
+        /*@>14b5320*/if (/*@>14b4f99*/stateIndex/*@>14b4f97*/ > /*@>14b4f9a*/2147483646) {
+            /*@>14b5324*/i/*@>14b5323*/ = /*@>14b4f9b*/MAX_int32_T;
+        } else {
+            /*@>14b5319*/i/*@>14b531b*/ = /*@>14b4f9e*/stateIndex/*@>14b4f9c*/ + /*@>14b4f9f*/1;
+        }
+        /*@>14b5980*/state_tmp/*@>14b5982*/ = (/*@>14b4117*/channel/*@>14b42cd*/ << /*@>14b42cc*/5)/*@>14b3d3f*/ + /*@>14b4115*/sample;
+        /*@>14b4119*/state/*@>14b3624*/[/*@>14b531d*/i/*@>14b3629*/ - /*@>14b411e*/1]/*@>10d6b66*/ = /*@>14b711f*/Model_Target_B./*@>14b78b4*/LoRoLimpRimp/*@>14b6f1a*/[/*@>14b6f17*/state_tmp];
+        /*  go to the oldest sample (previously the 2nd oldest) */
+        /* '<S1776>:1:71' stateIndex = stateIndex + InterpolationFactor; */
+        /*@>14b5312*/if (/*@>14b4f77*/stateIndex/*@>14b4261*/ > /*@>14b4a2b*/2147483645) {
+            /*@>14b5316*/stateIndex/*@>14b5315*/ = /*@>14b4264*/MAX_int32_T;
+        } else {
+            /*@>14b4265*/stateIndex/*@>14b77fb*/ += /*@>14b4a2d*/2;
+        }
+        /* '<S1776>:1:72' if (stateIndex >= stateLen) */
+        /*@>10d6baf*/if (/*@>14b4f7b*/stateIndex/*@>10d6b8d*/ >= /*@>14b4138*/114) {
+            /* '<S1776>:1:73' stateIndex = stateIndex - stateLen; */
+            /*@>14b40d2*/stateIndex/*@>14b77f6*/ -= /*@>14b4fa6*/114;
+        }
+        /* '<S1776>:1:76' accum = single(0); */
+        /*@>14b40d4*/accum/*@>10d6b6e*/ = /*@>14b40f6*/0.0F;
+        /* '<S1776>:1:77' for i = 1:filterLength */
+/*@>10d6bb3*/        for (/*@>14b77e6*/i = /*@>14b77e5*/0; /*@>14b77f0*/i < /*@>14b77ee*/57; /*@>14b77ec*/i/*@>14b77f7*/++) {
+            /* '<S1776>:1:78' accum = accum + (state(stateIndex+1) * coeffs(i)); */
+            /*@>14b40df*/accum/*@>14b77f8*/ += /*@>14b6f1e*/state/*@>14b6f20*/[/*@>14b6f1d*/stateIndex]/*@>14b4366*/ * /*@>14b7254*/Model_Target_ConstP./*@>14b78ba*/ifir_FlippedCoefficients_j/*@>14b6f26*/[/*@>14b6f23*/i];
+            /* '<S1776>:1:79' stateIndex = stateIndex + InterpolationFactor; */
+            /*@>14b617b*/qY_tmp_tmp/*@>14b617d*/ = /*@>14b4f83*/stateIndex/*@>14b4358*/ + /*@>14b4a3f*/2;
+            /*@>14b40e3*/stateIndex/*@>14b77f9*/ += /*@>14b6221*/2;
+            /*  skip zero coefficients */
+            /* '<S1776>:1:80' if (stateIndex >= stateLen) */
+            /*@>10d6bb8*/if (/*@>14b6202*/qY_tmp_tmp/*@>10d6b96*/ >= /*@>14b413a*/114) {
+                /* '<S1776>:1:81' stateIndex = stateIndex - stateLen; */
+                /*@>14b40f4*/stateIndex/*@>10d6b7c*/ = /*@>14b6204*/qY_tmp_tmp/*@>14b4fb3*/ - /*@>14b4fb6*/114;
+            }
+        }
+        /* '<S1776>:1:84' y(sample, channel) = accum; */
+        /*@>14b7125*/Model_Target_B./*@>14b78b7*/FRIn/*@>14b3d5f*/[state_tmp]/*@>10d6b7f*/ = /*@>14b40db*/accum;
+        /*  update stateIndex for next sample */
+        /*  because we subtract here state_index type is int32 not uint32 */
+        /* '<S1776>:1:88' stateIndex = stateIndex - (InterpolationFactor-1); */
+        /*@>14b618b*/qY_tmp_tmp/*@>14b618d*/ = /*@>14b4f8b*/stateIndex/*@>14b41d1*/ - /*@>14b4a4d*/1;
+        /*@>14b40e7*/stateIndex/*@>14b77fa*/--;
+        /* '<S1776>:1:89' if (stateIndex < 0) */
+        /*@>10d6bbf*/if (/*@>14b6208*/qY_tmp_tmp/*@>10d6b9a*/ < /*@>14b40eb*/0) {
+            /* '<S1776>:1:90' stateIndex = stateIndex + stateLen; */
+            /*@>14b40f0*/stateIndex/*@>10d6b85*/ = /*@>14b620a*/qY_tmp_tmp/*@>14b4fbe*/ + /*@>14b4fc1*/114;
+        }
+    }
+    /* '<S1776>:1:94' states(:, channel) = state; */
+    /*@>14b6a81*/memcpy(&/*@>14b73cf*/Model_Target_DW./*@>14b78c6*/states_g/*@>14b651f*/[/*@>14b64d5*/channel/*@>14b64d2*/ * /*@>14b64d6*/114], &/*@>14b6526*/state/*@>14b6527*/[/*@>14b64e3*/0], /*@>14b651d*/114U/*@>14b652a*/ * /*@>14b6529*/sizeof(real32_T));
+}
+/* '<S1776>:1:97' state_index = stateIndex; */
+/*@>14b73bd*/Model_Target_DW./*@>14b78bd*/state_index/*@>10d6b8a*/ = /*@>14b40bd*/stateIndex;
+/* {E!d3620}End of MATLAB Function: '<S1766>/ifir' */
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_Ifir_k(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(459, 0, fcnProtoType)>
+%endfunction

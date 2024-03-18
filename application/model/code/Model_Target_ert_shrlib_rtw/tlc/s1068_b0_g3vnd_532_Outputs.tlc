@@ -1,0 +1,101 @@
+%implements s1068_b0_g3vnd_532_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+real32_T quantum_ms;
+real32_T x;
+%closefile localVarDecl
+%assign _modelSS = ""
+
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[530], "Output",2)
+/* {S!d3879}MATLAB Function: '<S2124>/calculate_ramp_rate' */
+/* {S!d3884}MATLAB Function: '<S2124>/calculate_ramp_rate' */
+/*  Invoke the function trigger output */
+/* MATLAB Function 'RTC/REQ': '<S2133>:1' */
+/* '<S2133>:1:3' go(); */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_calculate_ramp_rate",530,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[14e2175*/",SLibCGIRGenReusableSysCall("Model_Target_calculate_ramp_rate", ["%<_modelSS>", "%<SLibCG_DumpSSCode("/*@[14e2448*/",(SLibCG_BOCSC(22, 1, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[14e245a*/",(SLibCG_BOCSC(23, 1, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[14e246c*/",(SLibCG_BOCSC(207, 1, "", -1, "", 0)),"/*@]*/")>", "&/*@>14e2480*/Model_Target_B./*@>14e247f*/sf_calculate_ramp_rate_bo"], 530, 4, 6, 2, 6, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[530]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+%endif
+/* {S!d3881}MATLAB Function: '<S2125>/get_ramp_coeffs' */
+/* {S!d3886}MATLAB Function: '<S2125>/get_ramp_coeffs' incorporates:
+ *  DataStoreRead: '<S2125>/Data Store Read'
+ *  S-Function (AudioStats_MEX): '<S2125>/Audio Stats'
+ */
+/*@>14e117e*/x/*@>10d67fa*/ = /*@>14e1d2d*/Model_Target_B./*@>14e23d7*/sf_calculate_ramp_rate_bo./*@>14e23d4*/ramptime;
+/* MATLAB Function 'MuteRamper/get_ramp_coeffs': '<S2138>:1' */
+/* '<S2138>:1:5' targetLinearGain = single(1.0); */
+%<SLibCG_DumpSSCode("/*@[14e21ae*/",SLibCG_SetCSCDW(193, 1, "", -1, "", 0, "/*@>14e2493*/1.0F"),"/*@]*/")>\
+/* '<S2138>:1:7' if muteSwitch */
+/*@>10d6802*/if (%<SLibCG_DumpSSCode("/*@[14e2190*/",(SLibCG_SE(SLibCG_BOCSC(21, 1, "", -1, "", 0))),"/*@]*/")>/*@>10d67fe*/ != /*@>14e1170*/0U) {
+    /* '<S2138>:1:8' targetLinearGain = single(max(0, silentGainLinear)); */
+%<SLibCG_DumpSSCode("/*@[14e21ca*/",SLibCG_SetCSCDW(193, 1, "", -1, "", 0, "/*@>14e24a5*/4.7315126E-7F"),"/*@]*/")>\
+}
+/*  %<"\% Nudge the gain values a bit if they are sitting at zero."> */
+/*  %<"\% If current gain is zero, replace with a value very close to zero. What we"> */
+/*  %<"\% really want is a value which is on the edge of perception - not too small"> */
+/*  %<"\% or large. If the value is too small, we\'ll waste some of our ramp time"> */
+/*  %<"\% in perceived silence. If the value is too large, the audio will lurch"> */
+/*  %<"\% into perceptability at the start of the ramp."> */
+/*  %<"\% So, \'max(currentGainValue, silentGainLinear)\' & \'max(TargetGain, silentGainLinear)\' are"> */
+/*  %<"\% used in equations"> */
+/*  In order to have the desired ramp time, the slope must vary dependent */
+/*  on the gain difference between target and current value. */
+/*  Equivalent ramp rate is therefore calculated as follows: */
+/* '<S2138>:1:24' if (rampingRate_dBPerSec) */
+/*@>10d6810*/if (/*@>14e1d38*/Model_Target_B./*@>14e23dd*/sf_calculate_ramp_rate_bo./*@>14e23da*/rampRate/*@>10d6800*/ != /*@>14e1173*/0.0F) {
+    /* '<S2138>:1:25' currentGain_db = 20*log10(max(currentGainValue, silentGainLinear)); */
+    /* '<S2138>:1:26' targetGain_db = 20*log10( targetLinearGain); */
+    /* '<S2138>:1:27' diff = abs(currentGain_db - targetGain_db); */
+    /* '<S2138>:1:28' rampingTime_ms = diff / single(rampingRate_dBPerSec) * 1000; */
+    /*@>14e117c*/x/*@>10d6832*/ = /*@>14e196d*/qhmath_div_f(/*@>14e196b*/qhmath_abs_f(/*@>14e119d*/20.0F/*@>14e11fc*/ * /*@>14e1967*/qhmath_log10_f(/*@>14e1965*/fmaxf(%<SLibCG_DumpSSCode("/*@[14e2200*/",(SLibCG_CSCDW(191, 1, "", -1, "", 0)),"/*@]*/")>, /*@>14e11b6*/4.7315126E-7F))/*@>10d6859*/ - /*@>14e119e*/20.0F/*@>14e1200*/ * /*@>14e1969*/qhmath_log10_f(%<SLibCG_DumpSSCode("/*@[14e21e4*/",(SLibCG_CSCDW(193, 1, "", -1, "", 0)),"/*@]*/")>)), /*@>14e1d43*/Model_Target_B./*@>14e23e3*/sf_calculate_ramp_rate_bo./*@>14e23e0*/rampRate)/*@>14e11ef*/ * /*@>14e119f*/1000.0F;
+}
+/* '<S2138>:1:31' quantum_ms = 1000 * frameSize / Fs_Hz; */
+/*@>14e1174*/quantum_ms/*@>10d6837*/ = /*@>14e196f*/qhmath_div_f(/*@>14e11b5*/32000.0F, %<SLibCG_DumpSSCode("/*@[14e2222*/",(SLibCG_Expr(864, 312, 0, 1, "", -1, "", 0)),"/*@]*/")>);
+/* '<S2138>:1:32' numFrames = rampingTime_ms / quantum_ms; */
+/*  Do a ceil rather than a round to insure that we create enough */
+/*  frames. i.e. a fraction of a frame is promoted to an addition frame */
+/* '<S2138>:1:35' nFrames = max (1, ceil(numFrames)); */
+%<SLibCG_DumpSSCode("/*@[14e22b6*/",SLibCG_SetCSCDW(192, 1, "", -1, "", 0, "/*@>14e24b8*/fmaxf(/*@>14e24b9*/1.0F, /*@>14e24bb*/qhmath_ceil_f(/*@>14e24bd*/qhmath_div_f(/*@>14e24be*/x, /*@>14e24bf*/quantum_ms)))"),"/*@]*/")>\
+/* '<S2138>:1:36' quantized_rampTime_ms = nFrames * quantum_ms; */
+/*  In order to have the desired ramp time, the slope must vary dependent */
+/*  on the gain differencebetween target and current value. */
+/*  Ramper's coefficient is therefore calculated as follows: */
+/*  */
+/*    TargetGain = CurrentGain *( RampCoef ^ (Fs*RampTime_ms/1000) ) */
+/*  */
+/*  therefore... */
+/*  */
+/*                      log(TargetGain/CurrentGain) */
+/*    log(RampCoef) = ------------------------------ */
+/*                         Fs*(RampTime_ms/1000) */
+/*  */
+/* '<S2138>:1:50' ramping_coeff= exp(log( targetLinearGain /max(currentGainValue, silentGainLinear) ) / (Fs_Hz * quantized_rampTime_ms / 1000)); */
+/*@>14e1d49*/Model_Target_B./*@>14e23e6*/ramping_coeff/*@>10d683b*/ = /*@>14e197f*/qhmath_div_f(/*@>14e197b*/qhmath_log_f(/*@>14e1979*/qhmath_div_f(%<SLibCG_DumpSSCode("/*@[14e2298*/",(SLibCG_CSCDW(193, 1, "", -1, "", 0)),"/*@]*/")>, /*@>14e1977*/fmaxf(%<SLibCG_DumpSSCode("/*@[14e227c*/",(SLibCG_CSCDW(191, 1, "", -1, "", 0)),"/*@]*/")>, /*@>14e11b7*/4.7315126E-7F))), /*@>14e197d*/qhmath_div_f(%<SLibCG_DumpSSCode("/*@[14e2260*/",(SLibCG_SE(SLibCG_CSCDW(192, 1, "", -1, "", 0))),"/*@]*/")>/*@>14e11d9*/ * /*@>14e1196*/quantum_ms/*@>14e11d5*/ * %<SLibCG_DumpSSCode("/*@[14e2244*/",(SLibCG_SE(SLibCG_Expr(864, 312, 0, 1, "", -1, "", 0))),"/*@]*/")>, /*@>14e11a1*/1000.0F));
+/*@>14e1d4f*/Model_Target_B./*@>14e23e9*/ramping_coeff/*@>10d6841*/ = /*@>14e1981*/qhmath_exp_f(/*@>14e1d55*/Model_Target_B./*@>14e23ec*/ramping_coeff);
+/* {E!d3886}End of MATLAB Function: '<S2125>/get_ramp_coeffs' */
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void HandleReqNearAnn4Ann4MuteSet(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(532, 0, fcnProtoType)>
+%endfunction

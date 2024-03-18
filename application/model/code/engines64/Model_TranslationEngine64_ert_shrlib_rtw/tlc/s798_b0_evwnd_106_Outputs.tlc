@@ -1,0 +1,34 @@
+%implements s798_b0_evwnd_106_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+/* MATLAB Function: '<S1001>/translation' */
+/* MATLAB Function: '<S1001>/translation' incorporates:
+ *  S-Function (TuneVarMEX): '<S1001>/Tune Variable'
+ *  S-Function (TuneVarMEX): '<S1001>/Tune Variable1'
+ *  S-Function (TuneVarMEX): '<S1001>/Tune Variable2'
+ */
+/*  Invoke the function trigger output */
+/* MATLAB Function 'TranslateTrigger/tfunc': '<S1033>:1' */
+/* '<S1033>:1:3' f(); */
+/* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 4/On/Headrest Comp EQ/translation': '<S1028>:1' */
+/* '<S1028>:1:3' FIRCoeffs = FIRCoeffsIn.Value; */
+/*@>dd2d4b*/memcpy(&/*@>dd2e2b*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd2f4c*/FIRCoeffs_p/*@>dd2c1e*/[/*@>dd2c0d*/0], &/*@>dd2e31*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd2f4f*/FIRCoeffs_e./*@>dd2f49*/Value[0], /*@>dd2c1c*/6384U/*@>dd2c2f*/ * /*@>dd2c2e*/sizeof(real_T));
+/* '<S1028>:1:4' FIRLengths = FIRLengthsIn.Value; */
+/* '<S1028>:1:5' PaddedFIRLengths = PaddedFIRLengthsIn.Value; */
+/*@>dd2d4d*/memcpy(&/*@>dd2e43*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd2f52*/FIRLengths_e/*@>dd2b99*/[/*@>dd2b6c*/0], &/*@>dd2e49*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd2f55*/FIRLengths_j./*@>dd2f43*/Value[0], /*@>dd2b97*/12U/*@>dd2baa*/ * /*@>dd2ba9*/sizeof(real_T));
+/*@>dd2d4f*/memcpy(&/*@>dd2e4f*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd2f58*/PaddedFIRLengths_k/*@>dd2bbe*/[/*@>dd2b88*/0], &/*@>dd2e55*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd2f5b*/PaddedFIRLengths_f./*@>dd2f46*/Value[0], /*@>dd2bbc*/12U/*@>dd2bcf*/ * /*@>dd2bce*/sizeof(real_T));
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void FuncTranslation_Model_141_595_191(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(106, 0, fcnProtoType)>
+%endfunction

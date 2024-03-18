@@ -1,0 +1,745 @@
+%implements s1068_b0_g3vnd_139_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+int32_T delayChans[66];
+int32_T delayChans_0[12];
+int32_T rtb_y_k_size[2];
+int32_T i;
+int32_T i_0;
+int32_T readIdx;
+int32_T writeIdx;
+real32_T rtb_y_gq[144];
+real32_T rtb_y_mg[96];
+real32_T tmp[96];
+int8_T rtAction;
+int8_T rtPrevAction;
+%closefile localVarDecl
+%assign tlcDisableFcnOfS452B15 = OpaqueTLCBlockFcn("Disable", 452, 15, 139, 2, 0)
+%assign tlcDisableFcnOfS452B23 = OpaqueTLCBlockFcn("Disable", 452, 23, 139, 2, 1)
+%assign tlcDisableFcnOfS452B26 = OpaqueTLCBlockFcn("Disable", 452, 26, 139, 2, 2)
+%assign tlcDisableFcnOfS452B41 = OpaqueTLCBlockFcn("Disable", 452, 41, 139, 2, 3)
+%assign tlcDisableFcnOfS452B49 = OpaqueTLCBlockFcn("Disable", 452, 49, 139, 2, 4)
+%assign tlcDisableFcnOfS452B50 = OpaqueTLCBlockFcn("Disable", 452, 50, 139, 2, 5)
+%assign tlcDisableFcnOfS452B61 = OpaqueTLCBlockFcn("Disable", 452, 61, 139, 2, 6)
+%assign tlcDisableFcnOfS452B62 = OpaqueTLCBlockFcn("Disable", 452, 62, 139, 2, 7)
+%assign tlcEnableFcnOfS452B9 = OpaqueTLCBlockFcn("Enable", 452, 9, 139, 2, 8)
+%assign tlcEnableFcnOfS452B12 = OpaqueTLCBlockFcn("Enable", 452, 12, 139, 2, 9)
+%assign tlcEnableFcnOfS452B17 = OpaqueTLCBlockFcn("Enable", 452, 17, 139, 2, 10)
+%assign tlcEnableFcnOfS452B20 = OpaqueTLCBlockFcn("Enable", 452, 20, 139, 2, 11)
+%assign tlcEnableFcnOfS452B35 = OpaqueTLCBlockFcn("Enable", 452, 35, 139, 2, 12)
+%assign tlcEnableFcnOfS452B38 = OpaqueTLCBlockFcn("Enable", 452, 38, 139, 2, 13)
+%assign tlcEnableFcnOfS452B43 = OpaqueTLCBlockFcn("Enable", 452, 43, 139, 2, 14)
+%assign tlcEnableFcnOfS452B46 = OpaqueTLCBlockFcn("Enable", 452, 46, 139, 2, 15)
+%assign tlcEnableFcnOfS452B54 = OpaqueTLCBlockFcn("Enable", 452, 54, 139, 2, 16)
+%assign tlcEnableFcnOfS452B57 = OpaqueTLCBlockFcn("Enable", 452, 57, 139, 2, 17)
+%assign tlcOutputsFcnOfS452B0 = OpaqueTLCBlockFcn("Outputs", 452, 0, 139, 2, 18)
+%assign tlcOutputsFcnOfS452B1 = OpaqueTLCBlockFcn("Outputs", 452, 1, 139, 2, 19)
+%assign tlcOutputsFcnOfS452B2 = OpaqueTLCBlockFcn("Outputs", 452, 2, 139, 2, 20)
+%assign tlcOutputsFcnOfS452B4 = OpaqueTLCBlockFcn("Outputs", 452, 4, 139, 2, 21)
+%assign tlcOutputsFcnOfS452B6 = OpaqueTLCBlockFcn("Outputs", 452, 6, 139, 2, 22)
+%assign tlcOutputsFcnOfS452B7 = OpaqueTLCBlockFcn("Outputs", 452, 7, 139, 2, 23)
+%assign tlcOutputsFcnOfS452B9 = OpaqueTLCBlockFcn("Outputs", 452, 9, 139, 2, 24)
+%assign tlcOutputsFcnOfS452B12 = OpaqueTLCBlockFcn("Outputs", 452, 12, 139, 2, 25)
+%assign tlcOutputsFcnOfS452B15 = OpaqueTLCBlockFcn("Outputs", 452, 15, 139, 2, 26)
+%assign tlcOutputsFcnOfS452B16 = OpaqueTLCBlockFcn("Outputs", 452, 16, 139, 2, 27)
+%assign tlcOutputsFcnOfS452B17 = OpaqueTLCBlockFcn("Outputs", 452, 17, 139, 2, 28)
+%assign tlcOutputsFcnOfS452B20 = OpaqueTLCBlockFcn("Outputs", 452, 20, 139, 2, 29)
+%assign tlcOutputsFcnOfS452B23 = OpaqueTLCBlockFcn("Outputs", 452, 23, 139, 2, 30)
+%assign tlcOutputsFcnOfS452B24 = OpaqueTLCBlockFcn("Outputs", 452, 24, 139, 2, 31)
+%assign tlcOutputsFcnOfS452B26 = OpaqueTLCBlockFcn("Outputs", 452, 26, 139, 2, 32)
+%assign tlcOutputsFcnOfS452B27 = OpaqueTLCBlockFcn("Outputs", 452, 27, 139, 2, 33)
+%assign tlcOutputsFcnOfS452B28 = OpaqueTLCBlockFcn("Outputs", 452, 28, 139, 2, 34)
+%assign tlcOutputsFcnOfS452B30 = OpaqueTLCBlockFcn("Outputs", 452, 30, 139, 2, 35)
+%assign tlcOutputsFcnOfS452B32 = OpaqueTLCBlockFcn("Outputs", 452, 32, 139, 2, 36)
+%assign tlcOutputsFcnOfS452B33 = OpaqueTLCBlockFcn("Outputs", 452, 33, 139, 2, 37)
+%assign tlcOutputsFcnOfS452B35 = OpaqueTLCBlockFcn("Outputs", 452, 35, 139, 2, 38)
+%assign tlcOutputsFcnOfS452B38 = OpaqueTLCBlockFcn("Outputs", 452, 38, 139, 2, 39)
+%assign tlcOutputsFcnOfS452B41 = OpaqueTLCBlockFcn("Outputs", 452, 41, 139, 2, 40)
+%assign tlcOutputsFcnOfS452B42 = OpaqueTLCBlockFcn("Outputs", 452, 42, 139, 2, 41)
+%assign tlcOutputsFcnOfS452B43 = OpaqueTLCBlockFcn("Outputs", 452, 43, 139, 2, 42)
+%assign tlcOutputsFcnOfS452B46 = OpaqueTLCBlockFcn("Outputs", 452, 46, 139, 2, 43)
+%assign tlcOutputsFcnOfS452B49 = OpaqueTLCBlockFcn("Outputs", 452, 49, 139, 2, 44)
+%assign tlcOutputsFcnOfS452B50 = OpaqueTLCBlockFcn("Outputs", 452, 50, 139, 2, 45)
+%assign tlcOutputsFcnOfS452B51 = OpaqueTLCBlockFcn("Outputs", 452, 51, 139, 2, 46)
+%assign tlcOutputsFcnOfS452B52 = OpaqueTLCBlockFcn("Outputs", 452, 52, 139, 2, 47)
+%assign tlcOutputsFcnOfS452B53 = OpaqueTLCBlockFcn("Outputs", 452, 53, 139, 2, 48)
+%assign tlcOutputsFcnOfS452B54 = OpaqueTLCBlockFcn("Outputs", 452, 54, 139, 2, 49)
+%assign tlcOutputsFcnOfS452B57 = OpaqueTLCBlockFcn("Outputs", 452, 57, 139, 2, 50)
+%assign tlcOutputsFcnOfS452B61 = OpaqueTLCBlockFcn("Outputs", 452, 61, 139, 2, 51)
+%assign tlcOutputsFcnOfS452B62 = OpaqueTLCBlockFcn("Outputs", 452, 62, 139, 2, 52)
+%assign tlcOutputsFcnOfS461B2 = OpaqueTLCBlockFcn("Outputs", 461, 2, 139, 2, 53)
+%assign tlcOutputsFcnOfS461B7 = OpaqueTLCBlockFcn("Outputs", 461, 7, 139, 2, 54)
+%assign tlcOutputsFcnOfS461B11 = OpaqueTLCBlockFcn("Outputs", 461, 11, 139, 2, 55)
+/* {S!d1188}If: '<S588>/If' incorporates:
+ *  DataStoreRead: '<S588>/Enable State Read'
+ */
+/*@>12c3b9e*/rtPrevAction/*@>10db6c0*/ = /*@>12ce655*/Model_Target_Medusa5H1Part4_DW./*@>12d11f8*/If_ActiveSubsystem;
+/*@>12c3ba0*/rtAction/*@>10db6c8*/ = (int8_T)(/*@>12ce65b*/Model_Target_Medusa5H1Part4_DW./*@>12d11fb*/MedusaHoligramEnable/*@>12bb8f5*/ <= /*@>12c3ee4*/0U);
+/*@>12ce661*/Model_Target_Medusa5H1Part4_DW./*@>12d11fe*/If_ActiveSubsystem/*@>10db6cc*/ = /*@>12c3ba2*/rtAction;
+/*@>10db6d0*/if ((/*@>12c3ba8*/rtPrevAction/*@>10db6cf*/ != /*@>12c3ba6*/rtAction)/*@>12cfcd5*/ && (/*@>12c4081*/rtPrevAction/*@>12c4210*/ == /*@>12c420d*/0)) {
+%if !WHITE_SPACE(tlcDisableFcnOfS452B15)
+    /* {S!d1084}Disable for M-S-Function: '<S1195>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12cf94c*/",tlcDisableFcnOfS452B15,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcDisableFcnOfS452B23)
+    /* {S!d1086}Disable for M-S-Function: '<S1210>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12cf94d*/",tlcDisableFcnOfS452B23,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcDisableFcnOfS452B26)
+    /* {S!d1088}Disable for M-S-Function: '<S1191>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12cf94e*/",tlcDisableFcnOfS452B26,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcDisableFcnOfS452B41)
+    /* {S!d1090}Disable for M-S-Function: '<S1244>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12cf94f*/",tlcDisableFcnOfS452B41,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcDisableFcnOfS452B49)
+    /* {S!d1092}Disable for M-S-Function: '<S1257>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12cf950*/",tlcDisableFcnOfS452B49,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcDisableFcnOfS452B50)
+    /* {S!d1094}Disable for M-S-Function: '<S1193>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12cf951*/",tlcDisableFcnOfS452B50,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcDisableFcnOfS452B61)
+    /* {S!d1096}Disable for M-S-Function: '<S1228>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12cf952*/",tlcDisableFcnOfS452B61,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcDisableFcnOfS452B62)
+    /* {S!d1098}Disable for M-S-Function: '<S1192>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12cf953*/",tlcDisableFcnOfS452B62,"/*@]*/")>\
+%endif
+}
+/*@>12c46e7*/if (/*@>12c3baa*/rtAction/*@>12c46e6*/ == /*@>12c46e9*/0) {
+    int32_T loop_ub;
+    /*@>10db6d8*/if (/*@>12c3bae*/rtPrevAction/*@>12c4fda*/ != /*@>12c4eb0*/0) {
+%if !WHITE_SPACE(tlcEnableFcnOfS452B9)
+        /* {S!d1033}Enable for IfAction SubSystem: '<S588>/On' incorporates:
+ *  ActionPort: '<S1189>/Action Port'
+ */
+        /* {S!d1034}Enable for S-Function (InitTriggerControl): '<S1207>/ITC1' */
+        /* {S!d1100}Enable for If: '<S588>/If' */
+%<SLibCG_DumpSSCode("/*@[12cf955*/",tlcEnableFcnOfS452B9,"/*@]*/")>\
+        /* {E!d1034}End of Enable for S-Function (InitTriggerControl): '<S1207>/ITC1' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS452B12)
+
+        /* {S!d1036}Enable for S-Function (InitTriggerControl): '<S1203>/ITC1' */
+%<SLibCG_DumpSSCode("/*@[12cf957*/",tlcEnableFcnOfS452B12,"/*@]*/")>\
+        /* {E!d1036}End of Enable for S-Function (InitTriggerControl): '<S1203>/ITC1' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS452B17)
+
+        /* {S!d1038}Enable for S-Function (InitTriggerControl): '<S1222>/ITC1' */
+%<SLibCG_DumpSSCode("/*@[12cf959*/",tlcEnableFcnOfS452B17,"/*@]*/")>\
+        /* {E!d1038}End of Enable for S-Function (InitTriggerControl): '<S1222>/ITC1' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS452B20)
+
+        /* {S!d1040}Enable for S-Function (InitTriggerControl): '<S1214>/ITC1' */
+%<SLibCG_DumpSSCode("/*@[12cf95b*/",tlcEnableFcnOfS452B20,"/*@]*/")>\
+        /* {E!d1040}End of Enable for S-Function (InitTriggerControl): '<S1214>/ITC1' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS452B35)
+
+        /* {S!d1042}Enable for S-Function (InitTriggerControl): '<S1254>/ITC1' */
+%<SLibCG_DumpSSCode("/*@[12cf95d*/",tlcEnableFcnOfS452B35,"/*@]*/")>\
+        /* {E!d1042}End of Enable for S-Function (InitTriggerControl): '<S1254>/ITC1' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS452B38)
+
+        /* {S!d1044}Enable for S-Function (InitTriggerControl): '<S1250>/ITC1' */
+%<SLibCG_DumpSSCode("/*@[12cf95f*/",tlcEnableFcnOfS452B38,"/*@]*/")>\
+        /* {E!d1044}End of Enable for S-Function (InitTriggerControl): '<S1250>/ITC1' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS452B43)
+
+        /* {S!d1046}Enable for S-Function (InitTriggerControl): '<S1269>/ITC1' */
+%<SLibCG_DumpSSCode("/*@[12cf961*/",tlcEnableFcnOfS452B43,"/*@]*/")>\
+        /* {E!d1046}End of Enable for S-Function (InitTriggerControl): '<S1269>/ITC1' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS452B46)
+
+        /* {S!d1048}Enable for S-Function (InitTriggerControl): '<S1261>/ITC1' */
+%<SLibCG_DumpSSCode("/*@[12cf963*/",tlcEnableFcnOfS452B46,"/*@]*/")>\
+        /* {E!d1048}End of Enable for S-Function (InitTriggerControl): '<S1261>/ITC1' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS452B54)
+
+        /* {S!d1050}Enable for S-Function (InitTriggerControl): '<S1240>/ITC1' */
+%<SLibCG_DumpSSCode("/*@[12cf965*/",tlcEnableFcnOfS452B54,"/*@]*/")>\
+        /* {E!d1050}End of Enable for S-Function (InitTriggerControl): '<S1240>/ITC1' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS452B57)
+
+        /* {S!d1052}Enable for S-Function (InitTriggerControl): '<S1232>/ITC1' */
+%<SLibCG_DumpSSCode("/*@[12cf967*/",tlcEnableFcnOfS452B57,"/*@]*/")>\
+        /* {E!d1052}End of Enable for S-Function (InitTriggerControl): '<S1232>/ITC1' */
+        /* {E!d1033}End of Enable for SubSystem: '<S588>/On' */
+%endif
+    }
+%if !WHITE_SPACE(tlcOutputsFcnOfS452B0)
+    /* {S!d1055}Outputs for IfAction SubSystem: '<S588>/On' incorporates:
+ *  ActionPort: '<S1189>/Action Port'
+ */
+    /* {S!d1102}S-Function (TOP_MEX): '<S1198>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12cf969*/",tlcOutputsFcnOfS452B0,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS452B1)
+    /* {S!d1104}S-Function (TOP_MEX): '<S1198>/TOP2' */
+%<SLibCG_DumpSSCode("/*@[12cf96b*/",tlcOutputsFcnOfS452B1,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS452B2)
+    /* {S!d1106}S-Function (TOP_MEX): '<S1225>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12cf96d*/",tlcOutputsFcnOfS452B2,"/*@]*/")>\
+%endif
+    /* {S!d1108}S-Function (TOP_MEX): '<S1198>/TOP1' */
+    /*  Generic FIR function to work with M inputs, N outputs and K filters */
+    /*  */
+    /*  Parameters: */
+    /*    u:              input channels [frame size x number of inputs] */
+    /*    CoeffsTarget:   coefficient sets, translated to target specfic format [total filter lengths x 1] */
+    /*    CoeffsLengths:  array of filter lengths [number of filters x 1] */
+    /*    InputMapping:   zero-based input mapping for each filter  [number of outputs x 1] */
+    /*    CoeffsMapping:  zero-based filter mapping for each filter [number of outputs x 1] */
+    /*    VariantStr:     string corresponding to the variant type */
+    /*  */
+    /*  Global parameters: */
+    /*    States:         array of states [totalBufferSize x 1] */
+    /*    CodeWorkMemory: working memory set up during roommode reset/init CRL */
+    /*                    function call [codeWorkMemorySize x 1] */
+    /* -------------------------------------------------------------------------- */
+    /* MATLAB Function 'Fir/Fir/TargetSpecific/FirGenericProcessFcn': '<S1202>:1' */
+    /*  Extract configuration information from inputs */
+    /* '<S1202>:1:20' [FrameSize, ~]  = size(u); */
+    /* '<S1202>:1:21' NumOutputs = numel(InputMapping); */
+    /*  Define persistent variables for SharcPlusAccel Variant */
+    /*  Set correct data types */
+    /* '<S1202>:1:29' CoeffsLengths = uint32(CoeffsLengths); */
+    /* '<S1202>:1:30' FrameSize = uint32(FrameSize); */
+    /* '<S1202>:1:31' NumOutputs = uint32(NumOutputs); */
+    /* '<S1202>:1:32' InputMapping = uint32(InputMapping); */
+    /*  Reconstitute Variant */
+    /* '<S1202>:1:35' VariantSelect = char(VariantUint8); */
+    /*  Simulation */
+    /* '<S1202>:1:38' if(coder.target('MATLAB') || coder.target('Sfun')) */
+    /* '<S1202>:1:58' else */
+    /* '<S1202>:1:59' switch(VariantSelect) */
+    /* '<S1202>:1:65' case {'Hexagon'} */
+    /* '<S1202>:1:66' y = fir_hexagon_process(u, CodeWorkMemory, NumOutputs); */
+%<SLibCG_DumpSSCode("/*@[12cf96f*/",tlcOutputsFcnOfS452B4,"/*@]*/")>\
+    /* {S!d1110}MATLAB Function: '<S1191>/Delay Line Update' incorporates:
+ *  S-Function (TOP_MEX): '<S1198>/TOP1'
+ *  S-Function (TOP_MEX): '<S1225>/TOP'
+ *  Selector: '<S888>/Selector'
+ */
+    /*  Note: This block only reads 'states' to get the delayed samples. A */
+    /*  separate function is responsible for writing to 'states' to update the  */
+    /*  delay line Data Store Memory. Thus it is important to ensure all DSM   */
+    /*  write happens before DSM read. */
+    /*  */
+    /*  This is different from pooldelay, as the delay for ALL channel is */
+    /*  intentionally set to be the max amount to allow for 'double' sharing */
+    /*  between FIR filter and delay buffer. */
+    /* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 4/On/DR Mix Matrix with Hybrid Holigram EQ/Delay Line Update': '<S1194>:1' */
+    /* '<S1194>:1:15' numOutput = numel(delayChans); */
+    /* '<S1194>:1:16' [frameSize, numChannelIn] = size(u); */
+    /* '<S1194>:1:17' y = single(zeros(frameSize, numOutput)); */
+    /* '<S1194>:1:18' delayChans = int32(delayChans); */
+/*@>12bead2*/    for (/*@>12d0e67*/i = /*@>12d0e66*/0; /*@>12d0e71*/i < /*@>12d0e6f*/66; /*@>12d0e6d*/i/*@>12d0e75*/++) {
+        /*@>12c3f37*/delayChans/*@>12bf9e3*/[/*@>12c3f39*/i]/*@>12beac3*/ = /*@>12c41b9*/(int32_T)%<SLibCG_DumpSSCode("/*@[12cfbd5*/",(SLibCG_SE(SLibCG_BOCSC(621, 66, "", -1, "/*@>12cdd81*/i", 0))),"/*@]*/")>;
+    }
+    /*  Write incoming input to delay line */
+    /* '<S1194>:1:21' writeIdx = stateIndex; */
+    /*@>12c3e33*/writeIdx/*@>10dba95*/ = /*@>12ce667*/Model_Target_Medusa5H1Part4_DW./*@>12d1201*/stateIndex;
+    /* '<S1194>:1:22' for sample = 1:frameSize */
+/*@>10dbab0*/    for (/*@>12d0e45*/readIdx = /*@>12d0e44*/0; /*@>12d0e4f*/readIdx < /*@>12d0e4d*/8; /*@>12d0e4b*/readIdx/*@>12d0e76*/++) {
+        /* '<S1194>:1:23' for i = 1:numChannelIn */
+/*@>10dbab2*/        for (/*@>12d0e56*/i = /*@>12d0e55*/0; /*@>12d0e60*/i < /*@>12d0e5e*/18; /*@>12d0e5c*/i/*@>12d0e77*/++) {
+            /* '<S1194>:1:24' states(writeIdx+1,i) = u(sample, i); */
+%<SLibCG_DumpSSCode("/*@[12cfa0f*/",SLibCG_SetCSCDW(513, 11880, "", -1, "/*@>12d16b8*/writeIdx/*@>12d16b7*/ + /*@>12d16ba*/660/*@>12d16b9*/ * /*@>12d16bb*/i", 0, "/*@>12d16c0*/Model_Target_Medusa5H1Part3_B./*@>12d16bf*/Selector/*@>12d16be*/[(/*@>12d16c4*/i/*@>12d16c3*/ << /*@>12d16c5*/3)/*@>12d16c2*/ + /*@>12d16c6*/readIdx]"),"/*@]*/")>\
+            /*  add 1 for Matlab indexing */
+        }
+        /* '<S1194>:1:26' writeIdx = circindex(writeIdx, int32(1), fixedDelayLength); */
+        /*@>12c3e4e*/writeIdx/*@>10dba9d*/ = /*@>12cf5c7*/circindex(/*@>12c3e4a*/writeIdx, /*@>12d0d2d*/1, /*@>12c3e4d*/Model_Target_fixedDelayLength);
+    }
+    /* '<S1194>:1:28' stateIndex = writeIdx; */
+    /*@>12ce66d*/Model_Target_Medusa5H1Part4_DW./*@>12d1204*/stateIndex/*@>10dba9f*/ = /*@>12c3e3a*/writeIdx;
+    /*  Read out values from delay line */
+    /* '<S1194>:1:31' for i = 1:numOutput */
+/*@>10dbaba*/    for (/*@>12d0e23*/writeIdx = /*@>12d0e22*/0; /*@>12d0e2d*/writeIdx < /*@>12d0e2b*/66; /*@>12d0e29*/writeIdx/*@>12d0e78*/++) {
+        /* '<S1194>:1:32' inputIdx = inputMapping(i); */
+        /*  which input to delay */
+        /* '<S1194>:1:33' delay = delayChans(i); */
+        /*  delay amount */
+        /* '<S1194>:1:34' offset = - (delay + frameSize); */
+        /*  offset from start index */
+        /* '<S1194>:1:35' readIdx = circindex(stateIndex, offset, fixedDelayLength); */
+        /*@>12c3e53*/readIdx/*@>10dbaa2*/ = /*@>12cf5ca*/circindex(/*@>12ce673*/Model_Target_Medusa5H1Part4_DW./*@>12d1207*/stateIndex, -/*@<12c41c5*/(/*@>12cdd93*/delayChans/*@>12cdd95*/[/*@>12cdd92*/writeIdx]/*@>10dbb11*/ + /*@>12c3e60*/8), /*@>12c3e52*/Model_Target_fixedDelayLength);
+        /* '<S1194>:1:37' for sample = 1:frameSize */
+/*@>10dbac0*/        for (/*@>12d0e34*/i = /*@>12d0e33*/0; /*@>12d0e3e*/i < /*@>12d0e3c*/8; /*@>12d0e3a*/i/*@>12d0e79*/++) {
+            /* '<S1194>:1:38' y(sample, i) = states(readIdx+1, inputIdx+1); */
+            /*@>12ce4a1*/Model_Target_Medusa5H1Part4_B./*@>12d11c5*/y_k/*@>12c2340*/[/*@>12c3f59*/i/*@>12c233c*/ + (/*@>12c3f5b*/writeIdx/*@>12c41cd*/ << /*@>12c41cc*/3)]/*@>10dbaa8*/ = %<SLibCG_DumpSSCode("/*@[12cfa43*/",(SLibCG_SE(SLibCG_CSCDW(513, 11880, "", -1, "/*@>12cdd9f*/660/*@>12cdd9e*/ * /*@>12cdda0*/(int32_T)%<SLibCG_DumpSSCode("/*@[12cfa28*/",(SLibCG_SE(SLibCG_BOCSC(620, 66, "", -1, "/*@>12cdda5*/writeIdx", 0))),"/*@]*/")>/*@>12cdd9d*/ + /*@>12cdda7*/readIdx", 0))),"/*@]*/")>;
+            /*  add 1 for Matlab indexing */
+            /* '<S1194>:1:39' readIdx = circindex(readIdx, int32(1), fixedDelayLength); */
+            /*@>12c3e5e*/readIdx/*@>10dbaaa*/ = /*@>12cf5cd*/circindex(/*@>12c3e5a*/readIdx, /*@>12d0d30*/1, /*@>12c3e5d*/Model_Target_fixedDelayLength);
+        }
+    }
+    /* {E!d1110}End of MATLAB Function: '<S1191>/Delay Line Update' */
+
+    /* {S!d1112}Gain: '<S1196>/Gain' */
+    /*@>12cc612*/memcpy(%<SLibCG_DumpSSCode("/*@[12cfcb5*/",(SLibCG_BOCSCAddr(628, 528, "", -1, "", 0)),"/*@]*/")>, &/*@>12ce49b*/Model_Target_Medusa5H1Part4_B./*@>12d11c2*/y_k/*@>12cad69*/[/*@>12cad5d*/0], /*@>12cad5f*/528U/*@>12cad6c*/ * /*@>12cad6b*/sizeof(real32_T));
+%if !WHITE_SPACE(tlcOutputsFcnOfS452B6)
+    /* {S!d1114}S-Function (TOP_MEX): '<S1210>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12cf971*/",tlcOutputsFcnOfS452B6,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS452B7)
+    /* {S!d1116}S-Function (TOP_MEX): '<S1210>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[12cf973*/",tlcOutputsFcnOfS452B7,"/*@]*/")>\
+%endif
+    /* {S!d1118}MATLAB Function: '<S1213>/PoolIirProcess' incorporates:
+ *  Gain: '<S1196>/Gain'
+ */
+    /*  Process function for Pooliir */
+    /*  */
+    /*  Parameters: */
+    /*    x:              input channels [frame size x number of inputs] */
+    /*    NumStages:      array of filter lengths per channel [NumChannels x 1] */
+    /*    CoeffsTarget:   coefficient set used for the specific target [total sim filter lengths x 1] */
+    /*   */
+    /*  Global parameters: */
+    /*    states: working memory set up during roommode reset/init CRL */
+    /*                    function call [StatesSize x 1] */
+    /* -------------------------------------------------------------------------- */
+    /* MATLAB Function 'PoolIirWithReset/PoolIir/TargetSpecific/PoolIirProcess': '<S1217>:1' */
+    /*  Extract configuration information from inputs */
+    /* '<S1217>:1:15' [~, NumChannels] = size(x); */
+    /*  Initialize variables */
+    /* '<S1217>:1:20' VariantStr = char(VariantUint8); */
+    /* '<S1217>:1:22' if(coder.target('MATLAB') || coder.target('Sfun')) */
+    /* '<S1217>:1:29' else */
+    /* '<S1217>:1:30' switch(VariantStr) */
+    /* '<S1217>:1:31' case{"Hexagon"} */
+    /* '<S1217>:1:32' y = pooliir_hexagon_process(single(x), single(states)); */
+    /*@>12cbf5d*/pooliir_process(%<SLibCG_DumpSSCode("/*@[12cfa9a*/",(SLibCG_BOCSCAddr(642, 528, "", -1, "", 0)),"/*@]*/")>, %<SLibCG_DumpSSCode("/*@[12cfa7d*/",(SLibCG_BOCSCAddr(628, 528, "", -1, "", 0)),"/*@]*/")>, %<SLibCG_DumpSSCode("/*@[12cfa60*/",(SLibCG_CSCDWAddr(512, 174257, "", -1, "", 0)),"/*@]*/")>);
+    /* {S!d1120}MATLAB Function: '<S1200>/FirGenericProcessFcn' incorporates:
+ *  Selector: '<S888>/Selector'
+ */
+    /*@>12cbf5f*/fir_process(&Model_Target_Medusa5H1Part4_B.y_k[0], &/*@>12ce4ae*/Model_Target_Medusa5H1Part3_B./*@>12d11cb*/Selector/*@>12bfbb1*/[/*@>12c3f6a*/0], %<SLibCG_DumpSSCode("/*@[12cfb9d*/",(SLibCG_CSCDWAddr(521, 1929, "", -1, "", 0)),"/*@]*/")>, /*@>12c3ee5*/66U);
+    /* {S!d1122}Sum: '<S1191>/Add' incorporates:
+ *  MATLAB Function: '<S1200>/FirGenericProcessFcn'
+ */
+/*@>12bfc2c*/    for (/*@>12d0e12*/i = /*@>12d0e11*/0; /*@>12d0e1c*/i < /*@>12d0e1a*/528; /*@>12d0e18*/i/*@>12d0e7a*/++) {
+        /*@>12ce4b4*/Model_Target_Medusa5H1Part4_B./*@>12d11ce*/y_k/*@>12c7bfb*/[/*@>12c7bfe*/i] += %<SLibCG_DumpSSCode("/*@[12cfc26*/",(SLibCG_SE(SLibCG_BOCSC(642, 528, "", -1, "/*@>12cddb3*/i", 0))),"/*@]*/")>;
+    }
+    /* {E!d1122}End of Sum: '<S1191>/Add' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS452B9)
+
+    /* {S!d1056}S-Function (InitTriggerControl): '<S1207>/ITC1' */
+%<SLibCG_DumpSSCode("/*@[12cf975*/",tlcOutputsFcnOfS452B9,"/*@]*/")>\
+%endif
+    /* {E!d1056}End of Outputs for S-Function (InitTriggerControl): '<S1207>/ITC1' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS452B12)
+
+    /* {S!d1058}S-Function (InitTriggerControl): '<S1203>/ITC1' */
+%<SLibCG_DumpSSCode("/*@[12cf977*/",tlcOutputsFcnOfS452B12,"/*@]*/")>\
+%endif
+    /* {E!d1058}End of Outputs for S-Function (InitTriggerControl): '<S1203>/ITC1' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS452B15)
+
+    /* {S!d1124}M-S-Function: '<S1195>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12cf978*/",tlcOutputsFcnOfS452B15,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS452B16)
+    /* {S!d1126}S-Function (AudioStats_MEX): '<S1210>/AudioStats' */
+%<SLibCG_DumpSSCode("/*@[12cf97b*/",tlcOutputsFcnOfS452B16,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS452B17)
+    /* {S!d1060}S-Function (InitTriggerControl): '<S1222>/ITC1' */
+%<SLibCG_DumpSSCode("/*@[12cf97d*/",tlcOutputsFcnOfS452B17,"/*@]*/")>\
+%endif
+    /* {E!d1060}End of Outputs for S-Function (InitTriggerControl): '<S1222>/ITC1' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS452B20)
+
+    /* {S!d1062}S-Function (InitTriggerControl): '<S1214>/ITC1' */
+%<SLibCG_DumpSSCode("/*@[12cf97f*/",tlcOutputsFcnOfS452B20,"/*@]*/")>\
+%endif
+    /* {E!d1062}End of Outputs for S-Function (InitTriggerControl): '<S1214>/ITC1' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS452B23)
+
+    /* {S!d1128}M-S-Function: '<S1210>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12cf980*/",tlcOutputsFcnOfS452B23,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS452B24)
+    /* {S!d1130}S-Function (TOP_MEX): '<S1226>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12cf982*/",tlcOutputsFcnOfS452B24,"/*@]*/")>\
+%endif
+    /* {S!d1132}MATLAB Function: '<S1191>/Sum Channels' incorporates:
+ *  S-Function (TOP_MEX): '<S1226>/TOP'
+ *  Sum: '<S1191>/Add'
+ */
+    /* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 4/On/DR Mix Matrix with Hybrid Holigram EQ/Sum Channels': '<S1197>:1' */
+    /* '<S1197>:1:2' [frame_size, ~] = size(in); */
+    /* '<S1197>:1:3' [num_output, ~] = size(startIdx); */
+    /* '<S1197>:1:5' y = coder.nullcopy(single(zeros(frame_size, num_output))); */
+    /* '<S1197>:1:6' for iter = 1:num_output-1 */
+/*@>10dbb61*/    for (/*@>12d0ddd*/writeIdx = /*@>12d0ddc*/0; /*@>12d0de7*/writeIdx < /*@>12d0de5*/17; /*@>12d0de3*/writeIdx/*@>12d0e7c*/++) {
+        real32_T tmp_0;
+        /* '<S1197>:1:7' start_idx = startIdx(iter); */
+        /* '<S1197>:1:8' end_idx = startIdx(iter+1)-1; */
+        /* '<S1197>:1:9' y(:,iter) = sum(in(:,start_idx+1:end_idx+1),2); */
+        /*@>12c7fff*/tmp_0/*@>12c8001*/ = (%<SLibCG_DumpSSCode("/*@[12cfc41*/",(SLibCG_SE(SLibCG_BOCSC(630, 18, "", -1, "/*@>12cddc4*/writeIdx/*@>12cddc2*/ + /*@>12cddc5*/1", 0))),"/*@]*/")>/*@>10dbbb2*/ - /*@>12c3e85*/1.0F)/*@>10dbbb1*/ + /*@>12c3e86*/1.0F;
+        /*@>10dbb63*/if (%<SLibCG_DumpSSCode("/*@[12cf9d5*/",(SLibCG_SE(SLibCG_BOCSC(630, 18, "", -1, "/*@>12cddcb*/writeIdx", 0))),"/*@]*/")>/*@>10dbbaa*/ + /*@>12c3e84*/1.0F/*@>10dbb9f*/ > /*@>12c8003*/tmp_0) {
+            /*@>12c3e78*/readIdx/*@>10dbb56*/ = /*@>12d0d3c*/0;
+            /*@>12c3e7d*/i/*@>10dbb52*/ = /*@>12d0d42*/0;
+        } else {
+            /*@>12c3e76*/readIdx/*@>10dbb55*/ = /*@>12c41df*/(int32_T)(%<SLibCG_DumpSSCode("/*@[12cfab5*/",(SLibCG_SE(SLibCG_BOCSC(630, 18, "", -1, "/*@>12cddd1*/writeIdx", 0))),"/*@]*/")>/*@>10dbba0*/ + /*@>12c3e80*/1.0F)/*@>10dbbf0*/ - /*@>12c3e8a*/1;
+            /*@>12c3e7b*/i/*@>10dbb51*/ = /*@>12c41dc*/(int32_T)tmp_0;
+        }
+        rtb_y_k_size/*@>12bfe83*/[/*@>12c3fc0*/0]/*@>12bfe85*/ = /*@>12d0d45*/8;
+        /*@>12c801f*/loop_ub/*@>12c8021*/ = /*@>12c3fc1*/i/*@>12bfe88*/ - /*@>12c3fc3*/readIdx;
+        rtb_y_k_size/*@>12bfe97*/[/*@>12c3fc7*/1]/*@>12bfe99*/ = /*@>12c8023*/loop_ub;
+/*@>12bfef2*/        for (/*@>12d0dee*/i = /*@>12d0ded*/0; /*@>12d0dfb*/i < loop_ub; /*@>12d0df4*/i/*@>12d0e7d*/++) {
+/*@>12bfedb*/            for (/*@>12d0e01*/i_0 = /*@>12d0e00*/0; /*@>12d0e0b*/i_0 < /*@>12d0e09*/8; /*@>12d0e07*/i_0/*@>12d0e7e*/++) {
+                /*@>12ce4eb*/Model_Target_Medusa5H1Part4_B./*@>12d11e0*/rtb_y_k_data[/*@>12c3fce*/i_0 + (/*@>12c3fd0*/i << /*@>12cfccf*/3)]/*@>12bfece*/ = /*@>12ce4f1*/Model_Target_Medusa5H1Part4_B./*@>12d11e3*/y_k/*@>12cddf0*/[((/*@>12cdde8*/readIdx/*@>12cdde6*/ + /*@>12cddea*/i)/*@>12cdde5*/ << /*@>12cddeb*/3)/*@>12cdde4*/ + /*@>12cdded*/i_0];
+            }
+        }
+        %<SLibCG_DumpSSCode("/*@[12d0356*/",(SLibCGCallSubFcn("Model_Target_sum", ["/*@>12d172b*/Model_Target_Medusa5H1Part4_B./*@>12d172a*/rtb_y_k_data", "rtb_y_k_size", "&/*@>12d1742*/rtb_y_gq/*@>12d1741*/[/*@>12d1744*/writeIdx/*@>12d1743*/ << /*@>12d1745*/3]"], 139, 2, 0)),"/*@]*/")>;
+    }
+    /* '<S1197>:1:11' start_idx = startIdx(end); */
+    /* '<S1197>:1:12' y(:,end) = sum(in(:,start_idx+1:end),2); */
+    /*@>10dbb6a*/if (%<SLibCG_DumpSSCode("/*@[12cf9f2*/",(SLibCG_SE(SLibCG_BOCSC(630, 18, "", -1, "", 17))),"/*@]*/")>/*@>10dbbc8*/ + /*@>12c3e88*/1.0F/*@>10dbba6*/ > /*@>12c3e82*/66.0F) {
+        /*@>12c3e6d*/writeIdx/*@>10dbb5d*/ = /*@>12d0d33*/0;
+        /*@>12c3e73*/readIdx/*@>10dbb59*/ = /*@>12d0d39*/0;
+    } else {
+        /*@>12c3e6b*/writeIdx/*@>10dbb5c*/ = /*@>12c41b6*/(int32_T)(%<SLibCG_DumpSSCode("/*@[12cfad2*/",(SLibCG_SE(SLibCG_BOCSC(630, 18, "", -1, "", 17))),"/*@]*/")>/*@>10dbba8*/ + /*@>12c3e83*/1.0F)/*@>10dbbee*/ - /*@>12c3e89*/1;
+        /*@>12c3e70*/readIdx/*@>10dbb58*/ = /*@>12d0d36*/66;
+    }
+    rtb_y_k_size/*@>12bfd46*/[/*@>12c3f94*/0]/*@>12bfd48*/ = /*@>12d0d3f*/8;
+    /*@>12c800f*/loop_ub/*@>12c8011*/ = /*@>12c3f95*/readIdx/*@>12bfd4b*/ - /*@>12c3f97*/writeIdx;
+    rtb_y_k_size/*@>12bfd5a*/[/*@>12c3f9b*/1]/*@>12bfd5c*/ = /*@>12c8013*/loop_ub;
+/*@>12bfdb5*/    for (/*@>12d0db9*/i = /*@>12d0db8*/0; /*@>12d0dc6*/i < loop_ub; /*@>12d0dbf*/i/*@>12d0e7f*/++) {
+/*@>12bfd9e*/        for (/*@>12d0dcc*/i_0 = /*@>12d0dcb*/0; /*@>12d0dd6*/i_0 < /*@>12d0dd4*/8; /*@>12d0dd2*/i_0/*@>12d0e80*/++) {
+            /*@>12ce4d9*/Model_Target_Medusa5H1Part4_B./*@>12d11d7*/rtb_y_k_data[/*@>12c3fa2*/i_0 + (/*@>12c3fa4*/i << /*@>12cfcd2*/3)]/*@>12bfd91*/ = /*@>12ce4df*/Model_Target_Medusa5H1Part4_B./*@>12d11da*/y_k/*@>12cdde2*/[((/*@>12cddda*/writeIdx/*@>12cddd8*/ + /*@>12cdddc*/i)/*@>12cddd7*/ << /*@>12cdddd*/3)/*@>12cddd6*/ + /*@>12cdddf*/i_0];
+        }
+    }
+    %<SLibCG_DumpSSCode("/*@[12d036f*/",(SLibCGCallSubFcn("Model_Target_sum", ["/*@>12d1750*/Model_Target_Medusa5H1Part4_B./*@>12d174f*/rtb_y_k_data", "rtb_y_k_size", "&/*@>12d1767*/rtb_y_gq/*@>12d1766*/[/*@>12d1768*/136]"], 139, 2, 1)),"/*@]*/")>;
+    /* {E!d1132}End of MATLAB Function: '<S1191>/Sum Channels' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS452B26)
+
+    /* {S!d1134}M-S-Function: '<S1191>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12cf983*/",tlcOutputsFcnOfS452B26,"/*@]*/")>\
+%endif
+    /* {S!d1136}SignalConversion generated from: '<S1189>/PeripheralOut' incorporates:
+ *  Concatenate: '<S1279>/Matrix Concatenate'
+ */
+    /*@>12cc614*/memcpy(&/*@>12ce4d3*/Model_Target_Medusa5H1Part5_B./*@>12d11d4*/MatrixConcatenate/*@>12cac55*/[/*@>12cac44*/0], &/*@>12cac5c*/rtb_y_gq/*@>12cac5d*/[/*@>12cac51*/0], /*@>12cac53*/144U/*@>12cac60*/ * /*@>12cac5f*/sizeof(real32_T));
+%if !WHITE_SPACE(tlcOutputsFcnOfS452B27)
+    /* {S!d1138}S-Function (TOP_MEX): '<S1193>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12cf985*/",tlcOutputsFcnOfS452B27,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS452B28)
+    /* {S!d1140}S-Function (TOP_MEX): '<S1193>/TOP2' */
+%<SLibCG_DumpSSCode("/*@[12cf987*/",tlcOutputsFcnOfS452B28,"/*@]*/")>\
+%endif
+    /* {S!d1142}S-Function (TOP_MEX): '<S1193>/TOP1' */
+    /*  Generic FIR function to work with M inputs, N outputs and K filters */
+    /*  */
+    /*  Parameters: */
+    /*    u:              input channels [frame size x number of inputs] */
+    /*    CoeffsTarget:   coefficient sets, translated to target specfic format [total filter lengths x 1] */
+    /*    CoeffsLengths:  array of filter lengths [number of filters x 1] */
+    /*    InputMapping:   zero-based input mapping for each filter  [number of outputs x 1] */
+    /*    CoeffsMapping:  zero-based filter mapping for each filter [number of outputs x 1] */
+    /*    VariantStr:     string corresponding to the variant type */
+    /*  */
+    /*  Global parameters: */
+    /*    States:         array of states [totalBufferSize x 1] */
+    /*    CodeWorkMemory: working memory set up during roommode reset/init CRL */
+    /*                    function call [codeWorkMemorySize x 1] */
+    /* -------------------------------------------------------------------------- */
+    /* MATLAB Function 'Fir/Fir/TargetSpecific/FirGenericProcessFcn': '<S1249>:1' */
+    /*  Extract configuration information from inputs */
+    /* '<S1249>:1:20' [FrameSize, ~]  = size(u); */
+    /* '<S1249>:1:21' NumOutputs = numel(InputMapping); */
+    /*  Define persistent variables for SharcPlusAccel Variant */
+    /*  Set correct data types */
+    /* '<S1249>:1:29' CoeffsLengths = uint32(CoeffsLengths); */
+    /* '<S1249>:1:30' FrameSize = uint32(FrameSize); */
+    /* '<S1249>:1:31' NumOutputs = uint32(NumOutputs); */
+    /* '<S1249>:1:32' InputMapping = uint32(InputMapping); */
+    /*  Reconstitute Variant */
+    /* '<S1249>:1:35' VariantSelect = char(VariantUint8); */
+    /*  Simulation */
+    /* '<S1249>:1:38' if(coder.target('MATLAB') || coder.target('Sfun')) */
+    /* '<S1249>:1:58' else */
+    /* '<S1249>:1:59' switch(VariantSelect) */
+    /* '<S1249>:1:65' case {'Hexagon'} */
+    /* '<S1249>:1:66' y = fir_hexagon_process(u, CodeWorkMemory, NumOutputs); */
+%<SLibCG_DumpSSCode("/*@[12cf989*/",tlcOutputsFcnOfS452B30,"/*@]*/")>\
+    /* {S!d1144}MATLAB Function: '<S1193>/Delay Line Update' incorporates:
+ *  Constant: '<S1193>/filterMapping1'
+ *  S-Function (TOP_MEX): '<S1193>/TOP1'
+ *  Selector: '<S888>/Selector1'
+ */
+    /*  Note: This block only reads 'states' to get the delayed samples. A */
+    /*  separate function is responsible for writing to 'states' to update the  */
+    /*  delay line Data Store Memory. Thus it is important to ensure all DSM   */
+    /*  write happens before DSM read. */
+    /*  */
+    /*  This is different from pooldelay, as the delay for ALL channel is */
+    /*  intentionally set to be the max amount to allow for 'double' sharing */
+    /*  between FIR filter and delay buffer. */
+    /* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 4/On/Headrest Comp EQ/Delay Line Update': '<S1243>:1' */
+    /* '<S1243>:1:15' numOutput = numel(delayChans); */
+    /* '<S1243>:1:16' [frameSize, numChannelIn] = size(u); */
+    /* '<S1243>:1:17' y = single(zeros(frameSize, numOutput)); */
+    /* '<S1243>:1:18' delayChans = int32(delayChans); */
+/*@>12beaef*/    for (/*@>12d0da8*/i = /*@>12d0da7*/0; /*@>12d0db2*/i < /*@>12d0db0*/12; /*@>12d0dae*/i/*@>12d0e81*/++) {
+        /*@>12c3ff5*/delayChans_0/*@>12bffe5*/[/*@>12c3ff7*/i]/*@>12beae0*/ = /*@>12c41f2*/(int32_T)%<SLibCG_DumpSSCode("/*@[12cfbf0*/",(SLibCG_SE(SLibCG_BOCSC(624, 12, "", -1, "/*@>12cddf3*/i", 0))),"/*@]*/")>;
+    }
+    /*  Write incoming input to delay line */
+    /* '<S1243>:1:21' writeIdx = stateIndex; */
+    /*@>12c3e8f*/writeIdx/*@>10dbc25*/ = /*@>12ce679*/Model_Target_Medusa5H1Part4_DW./*@>12d120a*/stateIndex_e;
+    /* '<S1243>:1:22' for sample = 1:frameSize */
+/*@>10dbc40*/    for (/*@>12d0d86*/readIdx = /*@>12d0d85*/0; /*@>12d0d90*/readIdx < /*@>12d0d8e*/8; /*@>12d0d8c*/readIdx/*@>12d0e82*/++) {
+        /* '<S1243>:1:23' for i = 1:numChannelIn */
+/*@>10dbc42*/        for (/*@>12d0d97*/i = /*@>12d0d96*/0; /*@>12d0da1*/i < /*@>12d0d9f*/6; /*@>12d0d9d*/i/*@>12d0e83*/++) {
+            /* '<S1243>:1:24' states(writeIdx+1,i) = u(sample, i); */
+            /*@>12ce685*/Model_Target_Medusa5H1Part4_DW./*@>12d1210*/states/*@>12c2395*/[/*@>12c3fff*/writeIdx/*@>12c2391*/ + /*@>12c407b*/540/*@>12c41f3*/ * /*@>12c4001*/i]/*@>10dbc2b*/ = /*@>12ce4f8*/Model_Target_Medusa5H1Part3_B./*@>12d11e6*/LoRoLsRsLsrRsr/*@>12cde01*/[(/*@>12cddfb*/i/*@>12cddf9*/ << /*@>12cddfc*/3)/*@>12cddf8*/ + /*@>12cddfe*/readIdx];
+            /*  add 1 for Matlab indexing */
+        }
+        /* '<S1243>:1:26' writeIdx = circindex(writeIdx, int32(1), fixedDelayLength); */
+        /*@>12c3eaa*/writeIdx/*@>10dbc2d*/ = /*@>12cf5d0*/circindex(/*@>12c3ea6*/writeIdx, /*@>12d0d48*/1, /*@>12c3ea9*/Model_Target_fixedDelayLength_l);
+    }
+    /* '<S1243>:1:28' stateIndex = writeIdx; */
+    /*@>12ce67f*/Model_Target_Medusa5H1Part4_DW./*@>12d120d*/stateIndex_e/*@>10dbc2f*/ = /*@>12c3e96*/writeIdx;
+    /*  Read out values from delay line */
+    /* '<S1243>:1:31' for i = 1:numOutput */
+/*@>10dbc4a*/    for (/*@>12d0d64*/writeIdx = /*@>12d0d63*/0; /*@>12d0d6e*/writeIdx < /*@>12d0d6c*/12; /*@>12d0d6a*/writeIdx/*@>12d0e84*/++) {
+        /* '<S1243>:1:32' inputIdx = inputMapping(i); */
+        /*  which input to delay */
+        /* '<S1243>:1:33' delay = delayChans(i); */
+        /*  delay amount */
+        /* '<S1243>:1:34' offset = - (delay + frameSize); */
+        /*  offset from start index */
+        /* '<S1243>:1:35' readIdx = circindex(stateIndex, offset, fixedDelayLength); */
+        /*@>12c3eaf*/readIdx/*@>10dbc32*/ = /*@>12cf5d3*/circindex(/*@>12ce68b*/Model_Target_Medusa5H1Part4_DW./*@>12d1213*/stateIndex_e, -/*@<12c41fe*/(/*@>12cde05*/delayChans_0/*@>12cde07*/[/*@>12cde04*/writeIdx]/*@>10dbca1*/ + /*@>12c3ebc*/8), /*@>12c3eae*/Model_Target_fixedDelayLength_l);
+        /* '<S1243>:1:37' for sample = 1:frameSize */
+/*@>10dbc50*/        for (/*@>12d0d75*/i = /*@>12d0d74*/0; /*@>12d0d7f*/i < /*@>12d0d7d*/8; /*@>12d0d7b*/i/*@>12d0e85*/++) {
+            /* '<S1243>:1:38' y(sample, i) = states(readIdx+1, inputIdx+1); */
+            /*@>12c4013*/rtb_y_mg/*@>12c23aa*/[/*@>12c4015*/i/*@>12c23a6*/ + (/*@>12c4017*/writeIdx/*@>12c4206*/ << /*@>12c4205*/3)]/*@>10dbc38*/ = /*@>12ce691*/Model_Target_Medusa5H1Part4_DW./*@>12d1216*/states/*@>12cde1c*/[/*@>12cde11*/540/*@>12cde10*/ * /*@>12cde12*/(int32_T)/*@>12ce63c*/Model_Target_ConstP./*@>12d11f5*/filterMapping1_Value/*@>12cde14*/[/*@>12cde17*/writeIdx]/*@>12cde0f*/ + /*@>12cde19*/readIdx];
+            /*  add 1 for Matlab indexing */
+            /* '<S1243>:1:39' readIdx = circindex(readIdx, int32(1), fixedDelayLength); */
+            /*@>12c3eba*/readIdx/*@>10dbc3a*/ = /*@>12cf5d6*/circindex(/*@>12c3eb6*/readIdx, /*@>12d0d4b*/1, /*@>12c3eb9*/Model_Target_fixedDelayLength_l);
+        }
+    }
+    /* {E!d1144}End of MATLAB Function: '<S1193>/Delay Line Update' */
+
+    /* {S!d1146}Gain: '<S1245>/Gain' */
+    /*@>12cc61f*/memcpy(%<SLibCG_DumpSSCode("/*@[12cfc98*/",(SLibCG_BOCSCAddr(632, 96, "", -1, "", 0)),"/*@]*/")>, &/*@>12cabed*/rtb_y_mg/*@>12cabee*/[/*@>12cabe2*/0], /*@>12cabe4*/96U/*@>12cabf1*/ * /*@>12cabf0*/sizeof(real32_T));
+%if !WHITE_SPACE(tlcOutputsFcnOfS452B32)
+    /* {S!d1148}S-Function (TOP_MEX): '<S1257>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12cf98b*/",tlcOutputsFcnOfS452B32,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS452B33)
+    /* {S!d1150}S-Function (TOP_MEX): '<S1257>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[12cf98d*/",tlcOutputsFcnOfS452B33,"/*@]*/")>\
+%endif
+    /* {S!d1152}MATLAB Function: '<S1260>/PoolIirProcess' incorporates:
+ *  Gain: '<S1245>/Gain'
+ */
+    /*  Process function for Pooliir */
+    /*  */
+    /*  Parameters: */
+    /*    x:              input channels [frame size x number of inputs] */
+    /*    NumStages:      array of filter lengths per channel [NumChannels x 1] */
+    /*    CoeffsTarget:   coefficient set used for the specific target [total sim filter lengths x 1] */
+    /*   */
+    /*  Global parameters: */
+    /*    states: working memory set up during roommode reset/init CRL */
+    /*                    function call [StatesSize x 1] */
+    /* -------------------------------------------------------------------------- */
+    /* MATLAB Function 'PoolIirWithReset/PoolIir/TargetSpecific/PoolIirProcess': '<S1264>:1' */
+    /*  Extract configuration information from inputs */
+    /* '<S1264>:1:15' [~, NumChannels] = size(x); */
+    /*  Initialize variables */
+    /* '<S1264>:1:20' VariantStr = char(VariantUint8); */
+    /* '<S1264>:1:22' if(coder.target('MATLAB') || coder.target('Sfun')) */
+    /* '<S1264>:1:29' else */
+    /* '<S1264>:1:30' switch(VariantStr) */
+    /* '<S1264>:1:31' case{"Hexagon"} */
+    /* '<S1264>:1:32' y = pooliir_hexagon_process(single(x), single(states)); */
+    /*@>12cbf97*/pooliir_process(%<SLibCG_DumpSSCode("/*@[12cfb29*/",(SLibCG_BOCSCAddr(637, 96, "", -1, "", 0)),"/*@]*/")>, %<SLibCG_DumpSSCode("/*@[12cfb0c*/",(SLibCG_BOCSCAddr(632, 96, "", -1, "", 0)),"/*@]*/")>, %<SLibCG_DumpSSCode("/*@[12cfaef*/",(SLibCG_CSCDWAddr(515, 5777, "", -1, "", 0)),"/*@]*/")>);
+    /* {S!d1154}MATLAB Function: '<S1247>/FirGenericProcessFcn' incorporates:
+ *  Selector: '<S888>/Selector1'
+ */
+    /*@>12cbf99*/fir_process(&tmp[0], &/*@>12ce4ff*/Model_Target_Medusa5H1Part3_B./*@>12d11e9*/LoRoLsRsLsrRsr/*@>12c01b3*/[/*@>12c4026*/0], %<SLibCG_DumpSSCode("/*@[12cfbba*/",(SLibCG_CSCDWAddr(522, 393, "", -1, "", 0)),"/*@]*/")>, /*@>12c3ee6*/12U);
+    /* {S!d1156}Sum: '<S1193>/Add' incorporates:
+ *  Concatenate: '<S1279>/Matrix Concatenate'
+ *  MATLAB Function: '<S1247>/FirGenericProcessFcn'
+ */
+/*@>12c0243*/    for (/*@>12d0d53*/i = /*@>12d0d52*/0; /*@>12d0d5d*/i < /*@>12d0d5b*/96; /*@>12d0d59*/i/*@>12d0e86*/++) {
+        /*@>12ce506*/Model_Target_Medusa5H1Part5_B./*@>12d11ec*/MatrixConcatenate/*@>12c022d*/[/*@>12c4035*/i/*@>12c0232*/ + /*@>12c4034*/152]/*@>12c0236*/ = /*@>12cde20*/tmp/*@>12cde22*/[/*@>12cde1f*/i]/*@>12c0214*/ + %<SLibCG_DumpSSCode("/*@[12cfc0b*/",(SLibCG_SE(SLibCG_BOCSC(637, 96, "", -1, "/*@>12cde25*/i", 0))),"/*@]*/")>;
+    }
+    /* {E!d1156}End of Sum: '<S1193>/Add' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS452B35)
+
+    /* {S!d1064}S-Function (InitTriggerControl): '<S1254>/ITC1' */
+%<SLibCG_DumpSSCode("/*@[12cf98f*/",tlcOutputsFcnOfS452B35,"/*@]*/")>\
+%endif
+    /* {E!d1064}End of Outputs for S-Function (InitTriggerControl): '<S1254>/ITC1' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS452B38)
+
+    /* {S!d1066}S-Function (InitTriggerControl): '<S1250>/ITC1' */
+%<SLibCG_DumpSSCode("/*@[12cf991*/",tlcOutputsFcnOfS452B38,"/*@]*/")>\
+%endif
+    /* {E!d1066}End of Outputs for S-Function (InitTriggerControl): '<S1250>/ITC1' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS452B41)
+
+    /* {S!d1158}M-S-Function: '<S1244>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12cf992*/",tlcOutputsFcnOfS452B41,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS452B42)
+    /* {S!d1160}S-Function (AudioStats_MEX): '<S1257>/AudioStats' */
+%<SLibCG_DumpSSCode("/*@[12cf995*/",tlcOutputsFcnOfS452B42,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS452B43)
+    /* {S!d1068}S-Function (InitTriggerControl): '<S1269>/ITC1' */
+%<SLibCG_DumpSSCode("/*@[12cf997*/",tlcOutputsFcnOfS452B43,"/*@]*/")>\
+%endif
+    /* {E!d1068}End of Outputs for S-Function (InitTriggerControl): '<S1269>/ITC1' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS452B46)
+
+    /* {S!d1070}S-Function (InitTriggerControl): '<S1261>/ITC1' */
+%<SLibCG_DumpSSCode("/*@[12cf999*/",tlcOutputsFcnOfS452B46,"/*@]*/")>\
+%endif
+    /* {E!d1070}End of Outputs for S-Function (InitTriggerControl): '<S1261>/ITC1' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS452B49)
+
+    /* {S!d1162}M-S-Function: '<S1257>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12cf99a*/",tlcOutputsFcnOfS452B49,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS452B50)
+    /* {S!d1164}M-S-Function: '<S1193>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12cf99b*/",tlcOutputsFcnOfS452B50,"/*@]*/")>\
+%endif
+    /* {S!d1166}Gain: '<S1227>/Gain' incorporates:
+ *  Selector: '<S888>/Selector4'
+ */
+    /*@>12cc621*/memcpy(%<SLibCG_DumpSSCode("/*@[12cfc7b*/",(SLibCG_BOCSCAddr(634, 704, "", -1, "", 0)),"/*@]*/")>, &/*@>12ce50d*/Model_Target_Medusa5H1Part3_B./*@>12d11ef*/Selector4/*@>12cab83*/[/*@>12cab77*/0], /*@>12cab79*/704U/*@>12cab86*/ * /*@>12cab85*/sizeof(real32_T));
+%if !WHITE_SPACE(tlcOutputsFcnOfS452B51)
+    /* {S!d1168}S-Function (AudioStats_MEX): '<S1228>/AudioStats' */
+%<SLibCG_DumpSSCode("/*@[12cf99e*/",tlcOutputsFcnOfS452B51,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS452B52)
+    /* {S!d1170}S-Function (TOP_MEX): '<S1228>/TOP' */
+%<SLibCG_DumpSSCode("/*@[12cf9a0*/",tlcOutputsFcnOfS452B52,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS452B53)
+    /* {S!d1172}S-Function (TOP_MEX): '<S1228>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[12cf9a2*/",tlcOutputsFcnOfS452B53,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS452B54)
+    /* {S!d1072}S-Function (InitTriggerControl): '<S1240>/ITC1' */
+%<SLibCG_DumpSSCode("/*@[12cf9a4*/",tlcOutputsFcnOfS452B54,"/*@]*/")>\
+%endif
+    /* {E!d1072}End of Outputs for S-Function (InitTriggerControl): '<S1240>/ITC1' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS452B57)
+
+    /* {S!d1074}S-Function (InitTriggerControl): '<S1232>/ITC1' */
+%<SLibCG_DumpSSCode("/*@[12cf9a6*/",tlcOutputsFcnOfS452B57,"/*@]*/")>\
+%endif
+    /* {E!d1074}End of Outputs for S-Function (InitTriggerControl): '<S1232>/ITC1' */
+
+    /* {S!d1174}MATLAB Function: '<S1231>/PoolIirProcess' incorporates:
+ *  Gain: '<S1227>/Gain'
+ */
+    /*  Process function for Pooliir */
+    /*  */
+    /*  Parameters: */
+    /*    x:              input channels [frame size x number of inputs] */
+    /*    NumStages:      array of filter lengths per channel [NumChannels x 1] */
+    /*    CoeffsTarget:   coefficient set used for the specific target [total sim filter lengths x 1] */
+    /*   */
+    /*  Global parameters: */
+    /*    states: working memory set up during roommode reset/init CRL */
+    /*                    function call [StatesSize x 1] */
+    /* -------------------------------------------------------------------------- */
+    /* MATLAB Function 'PoolIirWithReset/PoolIir/TargetSpecific/PoolIirProcess': '<S1235>:1' */
+    /*  Extract configuration information from inputs */
+    /* '<S1235>:1:15' [~, NumChannels] = size(x); */
+    /*  Initialize variables */
+    /* '<S1235>:1:20' VariantStr = char(VariantUint8); */
+    /* '<S1235>:1:22' if(coder.target('MATLAB') || coder.target('Sfun')) */
+    /* '<S1235>:1:29' else */
+    /* '<S1235>:1:30' switch(VariantStr) */
+    /* '<S1235>:1:31' case{"Hexagon"} */
+    /* '<S1235>:1:32' y = pooliir_hexagon_process(single(x), single(states)); */
+    /*@>12cbfc3*/pooliir_process(%<SLibCG_DumpSSCode("/*@[12cfb80*/",(SLibCG_BOCSCAddr(640, 704, "", -1, "", 0)),"/*@]*/")>, %<SLibCG_DumpSSCode("/*@[12cfb63*/",(SLibCG_BOCSCAddr(634, 704, "", -1, "", 0)),"/*@]*/")>, %<SLibCG_DumpSSCode("/*@[12cfb46*/",(SLibCG_CSCDWAddr(517, 7761, "", -1, "", 0)),"/*@]*/")>);
+    /* {S!d1176}Merge: '<S588>/Merge2' incorporates:
+ *  Gain: '<S1238>/Gain'
+ */
+    /*@>12cc623*/memcpy(&/*@>12ce519*/Model_Target_Medusa5H1Part4_B./*@>12d11f2*/Merge2/*@>12cab19*/[/*@>12cab08*/0], %<SLibCG_DumpSSCode("/*@[12cfc5e*/",(SLibCG_BOCSCAddr(640, 704, "", -1, "", 0)),"/*@]*/")>, /*@>12cab17*/704U/*@>12cab24*/ * /*@>12cab23*/sizeof(real32_T));
+%if !WHITE_SPACE(tlcOutputsFcnOfS452B61)
+    /* {S!d1178}M-S-Function: '<S1228>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12cf9a7*/",tlcOutputsFcnOfS452B61,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS452B62)
+    /* {S!d1180}M-S-Function: '<S1192>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12cf9a8*/",tlcOutputsFcnOfS452B62,"/*@]*/")>\
+    /* {E!d1055}End of Outputs for SubSystem: '<S588>/On' */
+%endif
+} else {
+    /* {S!d1077}Outputs for IfAction SubSystem: '<S588>/Bypass' incorporates:
+ *  ActionPort: '<S1187>/Action Port'
+ */
+    /* {S!d1182}SignalConversion generated from: '<S1187>/PeripheralOut' incorporates:
+ *  Concatenate: '<S1279>/Matrix Concatenate'
+ */
+    /*@>12cc5f1*/memset(&/*@>12ce441*/Model_Target_Medusa5H1Part5_B./*@>12d11b6*/MatrixConcatenate/*@>12cb0f0*/[/*@>12cb0d5*/0], 0, /*@>12cb0ee*/144U/*@>12cb0f6*/ * /*@>12cb0f5*/sizeof(real32_T));
+    /* {S!d1184}SignalConversion generated from: '<S1187>/HeadrestOut' incorporates:
+ *  Concatenate: '<S1279>/Matrix Concatenate'
+ */
+    /*@>12cc5f3*/memset(&/*@>12ce448*/Model_Target_Medusa5H1Part5_B./*@>12d11b9*/MatrixConcatenate/*@>12cb0d9*/[/*@>12cb0c7*/152], 0, /*@>12cb0d7*/96U/*@>12cb0df*/ * /*@>12cb0de*/sizeof(real32_T));
+    /* {S!d1186}Merge: '<S588>/Merge2' incorporates:
+ *  SignalConversion generated from: '<S1187>/FROut'
+ */
+    /*@>12cc5f5*/memset(&/*@>12ce454*/Model_Target_Medusa5H1Part4_B./*@>12d11bc*/Merge2/*@>12cb07c*/[/*@>12cb078*/0], 0, /*@>12cb07a*/704U/*@>12cb082*/ * /*@>12cb081*/sizeof(real32_T));
+    /* {E!d1077}End of Outputs for SubSystem: '<S588>/Bypass' */
+}
+/* {E!d1188}End of If: '<S588>/If' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS461B2)
+
+/* {S!d1079}S-Function (RTC_REQ_RSP): '<S1190>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[12cf9aa*/",tlcOutputsFcnOfS461B2,"/*@]*/")>\
+%endif
+/* {E!d1079}End of Outputs for S-Function (RTC_REQ_RSP): '<S1190>/RTC Request Response Trigger' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS461B7)
+
+/* {S!d1081}S-Function (RTC_NTF): '<S1190>/NTF Trigger' */
+%<SLibCG_DumpSSCode("/*@[12cf9ac*/",tlcOutputsFcnOfS461B7,"/*@]*/")>\
+%endif
+/* {E!d1081}End of Outputs for S-Function (RTC_NTF): '<S1190>/NTF Trigger' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS461B11)
+
+/* {S!d1190}M-S-Function: '<S588>/Partition' */
+%<SLibCG_DumpSSCode("/*@[12cf9ad*/",tlcOutputsFcnOfS461B11,"/*@]*/")>\
+%endif
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_Medusa5H1Part4(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(139, 2, fcnProtoType)>
+%endfunction

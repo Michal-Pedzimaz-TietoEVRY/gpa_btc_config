@@ -1,0 +1,41 @@
+%implements s798_b0_evwnd_5_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+/* MATLAB Function 'ModelPreAmp/DecRate/AudioPilot35/EntertainmentLevelDetection/AudiopilotLevelDetect/AudiopilotLevelDetect/FastDecay/sec2samples': '<S484>:1' */
+/* '<S484>:1:4' y = -abs(u.Value/FrameRate); */
+/*@>caa1f7*/localB->/*@>caa285*/y/*@>c6b428*/ = -/*@<caa00c*//*@>caa1af*/fabsf(rtu_u->Value/*@>c6b42e*/ / /*@>caa00a*/1378.125F);
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[5].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(5, 0, 0)>
+%endif
+%if SLibCG_ArgAccessed(5, 0, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(5, 0, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_TranslationEngine64_sec2samples(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(5, 0, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_TranslationEngine64_sec2samples", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>const bus_single_1_1 *rtu_u\
+%assign comma = ", "
+%<comma>B_sec2samples_Model_TranslationEngine64_T *localB\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(5, 0, fcnProtoType)>
+%endfunction

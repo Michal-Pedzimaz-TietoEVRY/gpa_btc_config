@@ -1,0 +1,23 @@
+%implements s1068_b0_g3vnd_447_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%assign tlcOutputsFcnOfS700B0 = OpaqueTLCBlockFcn("Outputs", 700, 0, 447, 0, 0)
+%if !WHITE_SPACE(tlcOutputsFcnOfS700B0)
+/* S-Function (RTC_BytePack): '<S1751>/PackNTF' */
+%<SLibCG_DumpSSCode("/*@[14acdc7*/",tlcOutputsFcnOfS700B0,"/*@]*/")>\
+%endif
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Outputs(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(447, 0, fcnProtoType)>
+%endfunction

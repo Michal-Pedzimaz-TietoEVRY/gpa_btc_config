@@ -1,0 +1,56 @@
+%implements s1068_b0_g3vnd_0_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+int32_T i;
+real32_T rtu_gain_0[64];
+%closefile localVarDecl
+/*  This applies a frame of gains to the input audio */
+/*  It should work for any number of channels */
+/* MATLAB Function 'ModelPreAmp/DecRate/AudioPilot35/Audiopilot_3_5/GainApplication/Compensation/ApplyBpfGain': '<S73>:1' */
+/* '<S73>:1:5' numchan = size(audio,2); */
+/* '<S73>:1:6' out = audio .* (gain * ones(1,numchan)); */
+/*@>11529bc*/for (/*@>115339f*/i = /*@>115339e*/0; /*@>11533a9*/i < /*@>11533a7*/2; /*@>11533a5*/i/*@>11533ad*/++) {
+    /*@>11530fc*/memcpy(&/*@>115300f*/rtu_gain_0/*@>1153010*/[/*@>1152ffd*/i/*@>115336f*/ << /*@>115336e*/5], &/*@>1153019*/rtu_gain/*@>115301a*/[/*@>115300b*/0], /*@>115301c*/sizeof(real32_T)/*@>1153372*/ << /*@>1153371*/5U);
+}
+/*@>1152a15*/for (/*@>115338e*/i = /*@>115338d*/0; /*@>1153398*/i < /*@>1153396*/64; /*@>1153394*/i/*@>11533ae*/++) {
+    /*@>11531d0*/localB->/*@>11533ea*/out/*@>1152a07*/[/*@>1152c3a*/i]/*@>1152a08*/ = /*@>115317d*/rtu_audio/*@>115317f*/[/*@>115317b*/i]/*@>1152c53*/ * /*@>1153183*/rtu_gain_0/*@>1153185*/[/*@>1153182*/i];
+}
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[0].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(0, 0, 0)>
+%endif
+%if SLibCG_ArgAccessed(0, 0, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(0, 0, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_ApplyBpfGain(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(0, 0, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_Target_ApplyBpfGain", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>const real32_T rtu_audio[64]\
+%assign comma = ", "
+%<comma>const real32_T rtu_gain[32]\
+%assign comma = ", "
+%<comma>B_ApplyBpfGain_Model_Target_T *localB\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 0, fcnProtoType)>
+%endfunction

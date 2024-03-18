@@ -1,0 +1,59 @@
+%implements s1068_b0_g3vnd_72_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+int32_T ind;
+%closefile localVarDecl
+/*  tuneTopMap is provided via a tune variable. However  */
+/*  if parameters are provided through RTC, the block will use the values  */
+/*  given in the RTC messages. */
+/* MATLAB Function 'NEAR/Near1p1/DrProc/RouterDr/InnerLink/MATLAB Function': '<S1655>:1' */
+/* '<S1655>:1:7' Numiters=size(rtcMap,1); */
+/* '<S1655>:1:8' routerMapOut = int32(tuneTopMap); */
+/* '<S1655>:1:9' for ind=1:Numiters */
+/*@>12299aa*/for (/*@>122a329*/ind = /*@>122a328*/0; /*@>122a333*/ind < /*@>122a331*/18; /*@>122a32f*/ind/*@>122a337*/++) {
+    /*@>122a15e*/localB->/*@>122a36e*/routerMapOut/*@>1229a6c*/[/*@>1229c7a*/ind]/*@>122999b*/ = /*@>122a118*/rtu_tuneTopMap/*@>122a11a*/[/*@>122a116*/ind];
+    /* '<S1655>:1:10' if (rtcMap(ind)) */
+    /*@>10d7062*/if (/*@>122a11f*/rtu_rtcMap/*@>122a121*/[/*@>122a11d*/ind]/*@>10d705e*/ != /*@>1229c6e*/0) {
+        /* '<S1655>:1:11' routerMapOut(ind) = rtcMap(ind); */
+        /*@>122a165*/localB->/*@>122a371*/routerMapOut/*@>1229ac7*/[/*@>1229c86*/ind]/*@>10d705d*/ = /*@>122a126*/rtu_rtcMap/*@>122a128*/[/*@>122a124*/ind];
+    }
+}
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[72].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(72, 0, 0)>
+%endif
+%if SLibCG_ArgAccessed(72, 0, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(72, 0, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_MATLABFunction_m(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(72, 0, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_Target_MATLABFunction_m", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>const int32_T rtu_tuneTopMap[18]\
+%assign comma = ", "
+%<comma>const int32_T rtu_rtcMap[18]\
+%assign comma = ", "
+%<comma>B_MATLABFunction_Model_Target_h_T *localB\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(72, 0, fcnProtoType)>
+%endfunction

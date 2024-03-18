@@ -1,0 +1,74 @@
+%implements s798_b0_evwnd_27_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+real32_T B0;
+real32_T B0_tmp;
+real32_T B0_tmp_0;
+real32_T FilterCoeffs_tmp;
+real32_T omega;
+%closefile localVarDecl
+/*  Compute the discrete frequency */
+/* MATLAB Function 'ModelPreAmp/PreAmpPart1/Midrange/tone filter tune translate1': '<S1216>:1' */
+/* '<S1216>:1:4' omega = 2 * pi * FilterFrequencyHz.Value / Fs; */
+/*@>ce0f36*/omega/*@>c69cd2*/ = /*@>c69cd0*/(real32_T)(/*@>ce0f3d*/6.2831853071795862/*@>ce0fa9*/ * rtu_FilterFrequencyHz->Value)/*@>c69cd1*/ / /*@>ce0f43*/rtu_Fs;
+/* '<S1216>:1:5' Q = Qval.Value; */
+/*  Equations for computing filter coefficients of a bandpass filter */
+/*  Compute the denominator coeffs */
+/* '<S1216>:1:9' A1 = (-4 * Q * cos(omega)) / (2 * Q + sin(omega)); */
+/* '<S1216>:1:10' A2 = (2 * Q - sin(omega)) / (2 * Q + sin(omega)); */
+/*  Compute the numerator coeffs */
+/* '<S1216>:1:12' B0 = sin(omega)/ (2 * Q + sin(omega)); */
+/*@>ce0f47*/B0_tmp/*@>ce0a8d*/ = /*@>ce1583*/sinf(/*@>ce0f3b*/omega);
+/*@>ce11a5*/B0_tmp_0/*@>ce11a7*/ = /*@>c69ce4*/(real32_T)(/*@>ce0f3a*/2.0/*@>ce0fa5*/ * rtu_Qval->Value);
+/*@>ce0f38*/B0/*@>c69cd6*/ = B0_tmp/*@>c69cd5*/ / (/*@>ce11a9*/B0_tmp_0/*@>c69ce3*/ + /*@>ce0f49*/B0_tmp);
+/* '<S1216>:1:13' B1 = 0; */
+/* '<S1216>:1:14' B2 = -B0; */
+/*  Concatenate to obtain the final coeffs */
+/* '<S1216>:1:16' FilterCoeffs = single([A1 A2 B0 B1 B2]); */
+/*@>ce11b5*/FilterCoeffs_tmp/*@>ce11b7*/ = /*@>ce0cad*/(real32_T)(/*@>ce0f55*/2.0/*@>ce0fa1*/ * rtu_Qval->Value)/*@>ce0cac*/ + /*@>ce1585*/sinf(/*@>ce0f5a*/omega);
+/*@>ce16df*/localB->/*@>ce18f7*/FilterCoeffs/*@>ce0c99*/[/*@>ce0f4d*/0]/*@>ce0c98*/ = /*@>ce0ca0*/(real32_T)(/*@>ce0f4e*/-4.0/*@>ce0f9d*/ * rtu_Qval->Value)/*@>ce0f99*/ * /*@>ce1587*/cosf(/*@>ce0f53*/omega)/*@>ce0c9e*/ / /*@>ce11b9*/FilterCoeffs_tmp;
+/*@>ce16e6*/localB->/*@>ce18fa*/FilterCoeffs/*@>ce0cbb*/[/*@>ce0f5c*/1]/*@>ce0cba*/ = (B0_tmp_0/*@>ce0cc1*/ - B0_tmp)/*@>ce0cc0*/ / FilterCoeffs_tmp;
+/*@>ce16ed*/localB->/*@>ce18fd*/FilterCoeffs/*@>ce0cdb*/[/*@>ce0f6a*/2]/*@>ce0cda*/ = /*@>ce0f6b*/B0;
+/*@>ce16f4*/localB->/*@>ce1900*/FilterCoeffs/*@>ce0ce4*/[/*@>ce0f6d*/3]/*@>ce0ce3*/ = /*@>ce0f6e*/0.0F;
+/*@>ce16fb*/localB->/*@>ce1903*/FilterCoeffs/*@>ce0cec*/[/*@>ce0f6f*/4]/*@>ce0ceb*/ = -/*@<ce0f82*//*@>ce0f70*/B0;
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[27].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(27, 0, 0)>
+%endif
+%if SLibCG_ArgAccessed(27, 0, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(27, 0, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_TranslationEngine64_tonefiltertunetranslate1_n(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(27, 0, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_TranslationEngine64_tonefiltertunetranslate1_n", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>const bus_double_1_1 *rtu_FilterFrequencyHz\
+%assign comma = ", "
+%<comma>real32_T rtu_Fs\
+%assign comma = ", "
+%<comma>const bus_double_1_1 *rtu_Qval\
+%assign comma = ", "
+%<comma>B_tonefiltertunetranslate1_Model_TranslationEngine64_m_T *localB\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(27, 0, fcnProtoType)>
+%endfunction

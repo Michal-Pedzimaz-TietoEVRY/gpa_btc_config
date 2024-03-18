@@ -1,0 +1,142 @@
+%implements s1068_b0_g3vnd_114_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%assign _modelSS = ""
+
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[395], "Output",2)
+/* MATLAB Function: '<S1074>/Initialization and RMDL' */
+/*  Invoke the function trigger output */
+/* MATLAB Function 'RTC/REQ': '<S1126>:1' */
+/* '<S1126>:1:3' go(); */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_InitializationandRMDL",395,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[126207d*/",SLibCGIRGenReusableSysCall("Model_Target_InitializationandRMDL", ["%<_modelSS>", "%<SLibCG_DumpSSCode("/*@[12627a5*/",(SLibCG_BOCSCAddr(679, 77, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[12627b7*/",(SLibCG_BOCSCAddr(681, 77, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[12627c9*/",(SLibCG_BOCSCAddr(683, 77, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[12627db*/",(SLibCG_BOCSC(678, 1, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[12627ed*/",(SLibCG_BOCSC(647, 1, "", -1, "", 0)),"/*@]*/")>", "/*@>1262800*/Model_Target_Medusa5H1Part3_DW./*@>12627ff*/Premix_SLCGain_Left", "/*@>126280c*/Model_Target_Medusa5H1Part3_DW./*@>126280b*/Premix_currentGain_Left", "/*@>1262818*/Model_Target_Medusa5H1Part3_DW./*@>1262817*/Premix_frameCount_Left", "/*@>1262824*/Model_Target_Medusa5H1Part3_DW./*@>1262823*/Premix_targetGain_Left"], 395, 0, 6, 2, 6, 423),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[395]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[396], "Output",2)
+
+/* MATLAB Function: '<S1062>/Initialization and RMDL' */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_InitializationandRMDL_f",396,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[126207e*/",SLibCGIRGenReusableSysCall("Model_Target_InitializationandRMDL_f", ["%<_modelSS>", "%<SLibCG_DumpSSCode("/*@[1262891*/",(SLibCG_BOCSCAddr(685, 20, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[12628a3*/",(SLibCG_BOCSCAddr(687, 20, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[12628b5*/",(SLibCG_BOCSCAddr(689, 20, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[12628c7*/",(SLibCG_BOCSC(678, 1, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[12628d9*/",(SLibCG_BOCSC(647, 1, "", -1, "", 0)),"/*@]*/")>", "/*@>12628ec*/Model_Target_Medusa5H1Part3_DW./*@>12628eb*/Premix_SLCGain_CS", "/*@>12628f8*/Model_Target_Medusa5H1Part3_DW./*@>12628f7*/Premix_currentGain_CS", "/*@>1262904*/Model_Target_Medusa5H1Part3_DW./*@>1262903*/Premix_frameCount_CS", "/*@>1262910*/Model_Target_Medusa5H1Part3_DW./*@>126290f*/Premix_targetGain_CS"], 396, 0, 6, 2, 6, 423),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[396]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[397], "Output",2)
+
+/* MATLAB Function: '<S1086>/Initialization and RMDL' */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_InitializationandRMDL_n",397,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[126207f*/",SLibCGIRGenReusableSysCall("Model_Target_InitializationandRMDL_n", ["%<_modelSS>", "%<SLibCG_DumpSSCode("/*@[126297d*/",(SLibCG_BOCSCAddr(672, 77, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[126298f*/",(SLibCG_BOCSCAddr(674, 77, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[12629a1*/",(SLibCG_BOCSCAddr(676, 77, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[12629b3*/",(SLibCG_BOCSC(678, 1, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[12629c5*/",(SLibCG_BOCSC(647, 1, "", -1, "", 0)),"/*@]*/")>", "/*@>12629d8*/Model_Target_Medusa5H1Part3_DW./*@>12629d7*/Premix_SLCGain_Right", "/*@>12629e4*/Model_Target_Medusa5H1Part3_DW./*@>12629e3*/Premix_currentGain_Right", "/*@>12629f0*/Model_Target_Medusa5H1Part3_DW./*@>12629ef*/Premix_frameCount_Right", "/*@>12629fc*/Model_Target_Medusa5H1Part3_DW./*@>12629fb*/Premix_targetGain_Right"], 397, 0, 6, 2, 6, 423),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[397]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[398], "Output",2)
+
+/* MATLAB Function: '<S965>/Initialization and RMDL' */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_InitializationandRMDL_o",398,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[1262080*/",SLibCGIRGenReusableSysCall("Model_Target_InitializationandRMDL_o", ["%<_modelSS>", "%<SLibCG_DumpSSCode("/*@[1262a69*/",(SLibCG_BOCSCAddr(698, 30, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[1262a7b*/",(SLibCG_BOCSCAddr(700, 30, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[1262a8d*/",(SLibCG_BOCSCAddr(702, 30, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[1262a9f*/",(SLibCG_BOCSC(697, 1, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[1262ab1*/",(SLibCG_BOCSC(647, 1, "", -1, "", 0)),"/*@]*/")>", "/*@>1262ac4*/Model_Target_Medusa5H1Part3_DW./*@>1262ac3*/FRM_SLCGain_Left", "/*@>1262ad0*/Model_Target_Medusa5H1Part3_DW./*@>1262acf*/FRM_currentGain_Left", "/*@>1262adc*/Model_Target_Medusa5H1Part3_DW./*@>1262adb*/FRM_frameCount_Left", "/*@>1262ae8*/Model_Target_Medusa5H1Part3_DW./*@>1262ae7*/FRM_targetGain_Left"], 398, 0, 6, 2, 6, 423),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[398]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[399], "Output",2)
+
+/* MATLAB Function: '<S953>/Initialization and RMDL' */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_InitializationandRMDL_k",399,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[1262081*/",SLibCGIRGenReusableSysCall("Model_Target_InitializationandRMDL_k", ["%<_modelSS>", "%<SLibCG_DumpSSCode("/*@[1262b55*/",(SLibCG_BOCSCAddr(704, 12, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[1262b67*/",(SLibCG_BOCSCAddr(706, 12, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[1262b79*/",(SLibCG_BOCSCAddr(708, 12, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[1262b8b*/",(SLibCG_BOCSC(697, 1, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[1262b9d*/",(SLibCG_BOCSC(647, 1, "", -1, "", 0)),"/*@]*/")>", "/*@>1262bb0*/Model_Target_Medusa5H1Part3_DW./*@>1262baf*/FRM_SLCGain_CS", "/*@>1262bbc*/Model_Target_Medusa5H1Part3_DW./*@>1262bbb*/FRM_currentGain_CS", "/*@>1262bc8*/Model_Target_Medusa5H1Part3_DW./*@>1262bc7*/FRM_frameCount_CS", "/*@>1262bd4*/Model_Target_Medusa5H1Part3_DW./*@>1262bd3*/FRM_targetGain_CS"], 399, 0, 6, 2, 6, 423),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[399]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[400], "Output",2)
+
+/* MATLAB Function: '<S977>/Initialization and RMDL' */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_InitializationandRMDL_ou",400,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[1262082*/",SLibCGIRGenReusableSysCall("Model_Target_InitializationandRMDL_ou", ["%<_modelSS>", "%<SLibCG_DumpSSCode("/*@[1262c41*/",(SLibCG_BOCSCAddr(691, 30, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[1262c53*/",(SLibCG_BOCSCAddr(693, 30, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[1262c65*/",(SLibCG_BOCSCAddr(695, 30, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[1262c77*/",(SLibCG_BOCSC(697, 1, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[1262c89*/",(SLibCG_BOCSC(647, 1, "", -1, "", 0)),"/*@]*/")>", "/*@>1262c9c*/Model_Target_Medusa5H1Part3_DW./*@>1262c9b*/FRM_SLCGain_Right", "/*@>1262ca8*/Model_Target_Medusa5H1Part3_DW./*@>1262ca7*/FRM_currentGain_Right", "/*@>1262cb4*/Model_Target_Medusa5H1Part3_DW./*@>1262cb3*/FRM_frameCount_Right", "/*@>1262cc0*/Model_Target_Medusa5H1Part3_DW./*@>1262cbf*/FRM_targetGain_Right"], 400, 0, 6, 2, 6, 423),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[400]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[401], "Output",2)
+
+/* MATLAB Function: '<S1144>/Initialization and RMDL' */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_InitializationandRMDL_o4",401,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[1262083*/",SLibCGIRGenReusableSysCall("Model_Target_InitializationandRMDL_o4", ["%<_modelSS>", "%<SLibCG_DumpSSCode("/*@[1262d2d*/",(SLibCG_BOCSCAddr(668, 12, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[1262d3f*/",(SLibCG_BOCSCAddr(669, 12, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[1262d51*/",(SLibCG_BOCSCAddr(670, 12, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[1262d63*/",(SLibCG_BOCSC(671, 1, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[1262d75*/",(SLibCG_BOCSC(647, 1, "", -1, "", 0)),"/*@]*/")>", "/*@>1262d88*/Model_Target_Medusa5H1Part3_DW./*@>1262d87*/VLSDrv_SLCGain", "/*@>1262d94*/Model_Target_Medusa5H1Part3_DW./*@>1262d93*/VLSDrv_currentGain", "/*@>1262da0*/Model_Target_Medusa5H1Part3_DW./*@>1262d9f*/VLSDrv_frameCount", "/*@>1262dac*/Model_Target_Medusa5H1Part3_DW./*@>1262dab*/VLSDrv_targetGain"], 401, 0, 6, 2, 6, 423),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[401]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[402], "Output",2)
+
+/* MATLAB Function: '<S1169>/Initialization and RMDL' */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_InitializationandRMDL_b",402,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[1262084*/",SLibCGIRGenReusableSysCall("Model_Target_InitializationandRMDL_b", ["%<_modelSS>", "%<SLibCG_DumpSSCode("/*@[1262e19*/",(SLibCG_BOCSCAddr(664, 12, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[1262e2b*/",(SLibCG_BOCSCAddr(665, 12, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[1262e3d*/",(SLibCG_BOCSCAddr(666, 12, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[1262e4f*/",(SLibCG_BOCSC(667, 1, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[1262e61*/",(SLibCG_BOCSC(647, 1, "", -1, "", 0)),"/*@]*/")>", "/*@>1262e74*/Model_Target_Medusa5H1Part3_DW./*@>1262e73*/VLSPax_SLCGain", "/*@>1262e80*/Model_Target_Medusa5H1Part3_DW./*@>1262e7f*/VLSPax_currentGain", "/*@>1262e8c*/Model_Target_Medusa5H1Part3_DW./*@>1262e8b*/VLSPax_frameCount", "/*@>1262e98*/Model_Target_Medusa5H1Part3_DW./*@>1262e97*/VLSPax_targetGain"], 402, 0, 6, 2, 6, 423),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[402]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void HandleReqPreAmpMedusaSurroundLevelControlReset(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(114, 0, fcnProtoType)>
+%endfunction

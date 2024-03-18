@@ -1,0 +1,22 @@
+%implements s1068_b0_g3vnd_410_Terminate "C"
+
+%function Terminate(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%assign tlcTerminateFcnOfS640B0 = OpaqueTLCBlockFcn("Terminate", 640, 0, 410, 3, 0)
+%if !WHITE_SPACE(tlcTerminateFcnOfS640B0)
+/* Terminate for S-Function (SampleRateConverter_sfunc): '<S1599>/S-Function' */
+%<SLibCG_DumpSSCode("/*@[1491404*/",tlcTerminateFcnOfS640B0,"/*@]*/")>\
+%endif
+%closefile cfgTxt
+%<cfgTxt>
+%endfunction
+%function TerminateFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_SrcDownEnt_Term(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(410, 3, fcnProtoType)>
+%endfunction

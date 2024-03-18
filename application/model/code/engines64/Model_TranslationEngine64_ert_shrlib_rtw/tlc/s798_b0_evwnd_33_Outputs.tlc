@@ -1,0 +1,136 @@
+%implements s798_b0_evwnd_33_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+real_T endOfMap;
+real_T loopCount;
+real_T mapDifference;
+real_T mapLength;
+int32_T i;
+%closefile localVarDecl
+%assign _modelSS = ""
+
+%if SLibCG_FcnCallArgAccessed(33,1,0,0)
+%<SLibCG_AccessArg(33 ,1, 1)>
+%endif
+%if SLibCG_FcnCallArgAccessed(33,1,0,1)
+%<SLibCG_AccessArg(33 ,1, 0)>
+%endif
+
+/*  ----- To access TuneVar maximum size, current size, and current value: */
+/*    Note: TuneVar signals arrive with exposed variable size information. */
+/*          The expressions below illustrate for the "Map" input argument. */
+/*  */
+/*    size(Map.Value) : the maximum possible size of the Map variable */
+/*  */
+/*    Tune.Size   : the current size of *valid* data in Map.Value */
+/*  */
+/*    Map.Size(1) : Number of rows present in Map - this does not vary. */
+/*  */
+/*    Map.Size(2) : Number of columns currently valid in Map - this is */
+/*        the variable part of size that can change (if allowed by TuneVar). */
+/*  */
+/*    Map.Value : the current value of the tune variable... but end-padded  */
+/*        to the maximum available size with undefined/invalid data. */
+/*  */
+/*    numel(Map.Value) : another way of looking at the maximum number of */
+/*        elements that could arrive in Map.Value */
+/*  */
+/*  ----- To register an error, use the following method (works like printf): */
+/*    TranslateError( <format string>, <arguments ... ) */
+/*    ... this error will cause the build process to abort. */
+/* MATLAB Function 'NEAR/Near1p1/DrProc/RouterDr/InnerLink/Trivial Translation': '<S1333>:1' */
+/*  The below logic ensures that an output map gets filled in in the  */
+/*  "round robin" manner. This is to occur when the supplied map is shorter */
+/*  than the number of channel outputs. For instance, */
+/*  nChanIn = 4 */
+/*  nChanOut = 9 */
+/*  outputMapSupplied = [4 3 2 2] */
+/*   */
+/*  This logic would run and return OutMap = [4 3 2 2 1 2 3 4 1] */
+/*  */
+/*  If no outputMap was supplied (i.e. = [];) THEN */
+/*  This logic would run and return OutMap = [1 2 3 4 1 2 3 4 1]; */
+/*  First part finds the number of output map indices that were left blank */
+/* '<S1333>:1:42' nChanOut = numel(Map.Value); */
+/* '<S1333>:1:43' mapLength = Map.Size(2); */
+/*@>cf7813*/mapLength/*@>c6da73*/ = /*@>cf8bb8*/rtu_Map->/*@>cf90b4*/Size/*@>cf8bbe*/[/*@>cf8bb6*/1];
+/* '<S1333>:1:44' mapDifference = nChanOut - mapLength; */
+/*@>cf7815*/mapDifference/*@>c6da74*/ = /*@>cf784b*/18.0/*@>c6da8a*/ - /*@>cf8bc2*/rtu_Map->/*@>cf90b7*/Size/*@>cf8bc8*/[/*@>cf8bc0*/1];
+/* '<S1333>:1:45' OutMap = int32(Map.Value); */
+/*@>cf7281*/for (/*@>cf9012*/i = /*@>cf9011*/0; /*@>cf901c*/i < /*@>cf901a*/18; /*@>cf9018*/i/*@>cf9020*/++) {
+    /*@>cf8c97*/localB->/*@>cf90c3*/OutMap/*@>cf743a*/[/*@>cf7867*/i]/*@>cf726f*/ = /*@>cf788a*/(int32_T)%<SLibCG_DumpSSCode("/*@[cf8fa5*/",(SLibCGCallSubFcn("rt_roundd_snf", ["/*@>cf90e2*/rtu_Map->/*@>cf90e1*/Value/*@>cf90e0*/[/*@>cf90e4*/i]", "/*@>cf90ee*/%<::tSimStruct>"], 33, 1, 0)),"/*@]*/")>;
+}
+/*  This loop appropriates the correct input channel number to the */
+/*  corresponding output channel, based on the mapDifference found above */
+/* '<S1333>:1:49' if (mapLength == 1) && Map.Value(1) == 0 */
+/*@>c6daa9*/if ((/*@>cf8bd7*/rtu_Map->/*@>cf90bd*/Size/*@>cf8bdd*/[/*@>cf8bd5*/1]/*@>c6da8c*/ == /*@>cf7817*/1.0)/*@>cf8f31*/ && (/*@>cf8be1*/rtu_Map->/*@>cf90c0*/Value/*@>cf8be7*/[/*@>cf8bdf*/0]/*@>c6da8e*/ == /*@>cf7818*/0.0)) {
+    /* '<S1333>:1:50' mapLength = 0; */
+    /*@>cf7819*/mapLength/*@>c6da79*/ = /*@>cf781b*/0.0;
+    /* '<S1333>:1:51' mapDifference = nChanOut; */
+    /*@>cf781f*/mapDifference/*@>c6da7a*/ = /*@>cf784c*/18.0;
+}
+/* '<S1333>:1:53' endOfMap = 0; */
+/*@>cf781c*/endOfMap/*@>c6da7b*/ = /*@>cf781e*/0.0;
+/* '<S1333>:1:54' loopCount = 0; */
+/*@>cf7821*/loopCount/*@>c6da7c*/ = /*@>cf7823*/0.0;
+/* '<S1333>:1:55' while endOfMap < mapDifference */
+while/*@<c6dab0*/ (/*@>cf7824*/endOfMap/*@>c6da8f*/ < /*@>cf7826*/mapDifference) {
+    boolean_T exitg1;
+    /* '<S1333>:1:56' for inputChan = 1 : nInRouterMask */
+    /*@>cf7828*/i/*@>c6dac6*/ = /*@>cf8feb*/0;
+    exitg1 = false;
+    while/*@<c6dacf*/ ((!exitg1) && (/*@>cf782b*/i/*@>c6dace*/ <= /*@>cf788d*/(int32_T)/*@>cf784d*/rtp_nInRouterMask/*@>c6dacc*/ - /*@>cf782d*/1)) {
+        /* '<S1333>:1:57' OutMap(mapLength+inputChan+loopCount) = inputChan; */
+        /*@>cf8c9e*/localB->/*@>cf90c6*/OutMap/*@>c6da81*/[/*@>cf7890*/(int32_T)((/*@>cf782e*/mapLength/*@>c6da93*/ + (/*@>cf7b20*/(real_T)/*@>cf7846*/i/*@>c6db27*/ + /*@>cf7845*/1.0))/*@>c6da94*/ + /*@>cf7830*/loopCount)/*@>c6da96*/ - /*@>cf7832*/1]/*@>c6da82*/ = /*@>cf7849*/i/*@>c6db2b*/ + /*@>cf7848*/1;
+        /* '<S1333>:1:58' endOfMap = endOfMap + 1; */
+        /*@>cf783a*/endOfMap/*@>cf9022*/++;
+        /* '<S1333>:1:59' if endOfMap == mapDifference */
+        /*@>c6dab3*/if (/*@>cf783c*/endOfMap/*@>c6da91*/ == /*@>cf783e*/mapDifference) {
+            exitg1 = true;
+        } else {
+            /*@>cf7843*/i/*@>cf9023*/++;
+        }
+    }
+    /* '<S1333>:1:63' inputChan = 1; */
+    /* '<S1333>:1:64' loopCount = loopCount + nInRouterMask; */
+    /*@>cf7835*/loopCount/*@>cf9024*/ += /*@>cf784f*/rtp_nInRouterMask;
+}
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[33].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(33, 1, 0)>
+%endif
+%if SLibCG_ArgAccessed(33, 1, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(33, 1, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_TranslationEngine64_TrivialTranslation_pe(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(33, 1, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_TranslationEngine64_TrivialTranslation_pe", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>const bus_double_1_18 *rtu_Map\
+%assign comma = ", "
+%<comma>real_T rtp_nInRouterMask\
+%assign comma = ", "
+%<comma>B_TrivialTranslation_Model_TranslationEngine64_jd_T *localB\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(33, 1, fcnProtoType)>
+%endfunction

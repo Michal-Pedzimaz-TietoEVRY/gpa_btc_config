@@ -1,0 +1,29 @@
+{
+    "x86_build":
+    {
+        "profile_level": "all",
+        "profile_target": "software",
+        "profile_data": "profiledata.bin"
+    },
+    "hexagon_build":
+    {
+        "profile_level": "all",
+        "profile_target": "software",
+        "profile_data": "profiledata.bin"
+    },
+    "armandroid_build":
+    {
+        "profile_level": "all",
+        "profile_target": "hardware",
+        "profile_data": "profiledata.bin"
+    },
+    "armqnx_build":
+    {
+        "profile_level": "all",
+        "profile_target": "hardware",
+        "profile_data": "profiledata.bin",
+        "ip_address": "192.168.1.1",
+        "username": "root",
+        "password": ""
+    }
+}

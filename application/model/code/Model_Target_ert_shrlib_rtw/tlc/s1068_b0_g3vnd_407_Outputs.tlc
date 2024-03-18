@@ -1,0 +1,311 @@
+%implements s1068_b0_g3vnd_407_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+real32_T currentGainLinear_idx_0;
+real32_T currentGainLinear_idx_1;
+real32_T currentGainLinear_idx_2;
+real32_T currentGainLinear_idx_3;
+real32_T diff_idx_0;
+real32_T diff_idx_1;
+real32_T diff_idx_2;
+real32_T diff_idx_3;
+real32_T quantumMs;
+real32_T targetGainLinear;
+real32_T targetGainLinear_0;
+real32_T targetGainLinear_1;
+real32_T targetGainLinear_2;
+%closefile localVarDecl
+%assign _modelSS = ""
+
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[560], "Output",2)
+/* {S!d3257}MATLAB Function: '<S1452>/calculate_SB_gains' */
+/* {S!d3268}MATLAB Function: '<S1452>/calculate_SB_gains' */
+/*  Invoke the function trigger output */
+/* MATLAB Function 'RTC/REQ': '<S1469>:1' */
+/* '<S1469>:1:3' go(); */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_calculate_SB_gains",560,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[146c606*/",SLibCGIRGenReusableSysCall("Model_Target_calculate_SB_gains", ["%<_modelSS>", "%<SLibCG_DumpSSCode("/*@[146cfec*/",(SLibCG_BOCSC(72, 1, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[146cffe*/",(SLibCG_BOCSCAddr(285, 30, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[146d010*/",(SLibCG_BOCSCAddr(286, 30, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[146d022*/",(SLibCG_BOCSC(287, 1, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[146d034*/",(SLibCG_BOCSC(288, 1, "", -1, "", 0)),"/*@]*/")>", "&/*@>146d048*/Model_Target_B./*@>146d047*/sf_calculate_SB_gains_hk"], 560, 1, 6, 2, 6, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[560]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[561], "Output",2)
+
+/* {S!d3259}MATLAB Function: '<S1452>/calculate_ramp_parameters' */
+/* {S!d3270}MATLAB Function: '<S1452>/calculate_ramp_parameters' */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_calculate_ramp_parameters",561,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[146c607*/",SLibCGIRGenReusableSysCall("Model_Target_calculate_ramp_parameters", ["%<_modelSS>", "%<SLibCG_DumpSSCode("/*@[146d096*/",(SLibCG_BOCSC(284, 1, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[146d0a8*/",(SLibCG_BOCSC(73, 1, "", -1, "", 0)),"/*@]*/")>", "%<SLibCG_DumpSSCode("/*@[146d0ba*/",(SLibCG_BOCSC(74, 1, "", -1, "", 0)),"/*@]*/")>", "&/*@>146d0ce*/Model_Target_B./*@>146d0cd*/sf_calculate_ramp_parameters_c2"], 561, 1, 6, 2, 6, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[561]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[573], "Output",2)
+
+/* {S!d3261}Outputs for Function Call SubSystem: '<S1452>/SetDsm' */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_SetDsm_lc",573,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[146c608*/",SLibCGIRGenReusableSysCall("Model_Target_SetDsm_lc", ["%<_modelSS>", "/*@>146d0fb*/1U"], 573, 0, 6, 2, 6, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[573]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d3261}End of Outputs for SubSystem: '<S1452>/SetDsm' */
+
+%endif
+/* {S!d3263}MATLAB Function: '<S1452>/control' */
+/* {S!d3272}MATLAB Function: '<S1452>/control' incorporates:
+ *  S-Function (AudioStats_MEX): '<S1452>/Audio Stats'
+ */
+/*  %<"\% inputs"> */
+/*  parameters */
+/* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/SleepingBeauty/SleepingBeauty/Enabled/SleepingBeautyFR/InnerLink/control': '<S1464>:1' */
+/*  CONTROL LOGIC: */
+/*  Shift of 'balance' between the 'Right' and 'Left' channel groups is */
+/*  achieved by multiplying the corresponding 'cut' or 'boost' gain. As the */
+/*  index increases from 0, the balance shifts from left to right. */
+/*  rampdbPerSec takes precidence: */
+/*    If dbPerSec has a non-zero value then any ramp_times_ms values are */
+/*    ignored and the dbPerSec is used to determine ramper timing. */
+/*  Inputs: */
+/*    targetGainLinear: Indicates the gain (in linear scale) which needs to */
+/*        be applied to the audio. Gain values can be mapped to the ramper */
+/*        configuration. */
+/*    rampTimeMs: Indicates the time in milliseconds in which the gain of the */
+/*        rampers must change from their current to target values. */
+/*    rampdbPerSecond: Indicates the rate in dB/second at which the gain of the */
+/*        rampers must change from their current to target values. If this */
+/*        value is non-zero, it is used to compute the ramp time and */
+/*        'rampTimeMs' is discarded (if specified). */
+/*    rgain_SILENT_GAIN: Parameter defined in the initFcn callback. */
+/*  Control Data: */
+/*    Freeze(1) freezes the processing during this control operation */
+/*    Rampers(1) is the ramper for the left speaker */
+/*    Rampers(2) is the ramper for the right speaker */
+/*    Rampers(3) is the ramper for the center speaker */
+/*    Rampers(4) is the ramper for the mono speaker */
+/* '<S1464>:1:34' rgain_SILENT_GAIN = RgainBusUtil.GetSilentGainLinear(); */
+/*  Step 1: FREEZE the gain ramper so that we can perform calculations based */
+/*  on the current gain value. This step now done externally on canvas */
+/*  Step 2: Nudge the gain values a bit if they are sitting at zero. */
+/*  When this control set goes live, ensure that the current gain will move. */
+/*  If current gain is zero, replace with a value very close to zero. What we */
+/*  really want is a value which is on the edge of perception - not too small */
+/*  or large. If the value is too small, we'll waste some of our ramp time */
+/*  in perceived silence. If the value is too large, the audio will lurch */
+/*  into perceptability at the start of the ramp. */
+/*  UPDATE: This will now loop over 4 rampers */
+/* '<S1464>:1:48' currentGainLinear = zeros(1,MaskNumRampers,'single'); */
+/* '<S1464>:1:49' for i = 1:MaskNumRampers */
+/* '<S1464>:1:50' currentGainLinear(i) = max(Rampers(i).currentGain, rgain_SILENT_GAIN); */
+/*@>1468512*/currentGainLinear_idx_0/*@>1467b0d*/ = /*@>146b176*/fmaxf(%<SLibCG_DumpSSCode("/*@[146c63b*/",(SLibCG_CSCDW(7, 1, "[/*@>146c614*/0].currentGain", -1, "", 0)),"/*@]*/")>, /*@>1468474*/5.0118723E-7F);
+/* '<S1464>:1:51' targetGainLinear(i) = max(targetGainLinear(i), rgain_SILENT_GAIN); */
+targetGainLinear/*@>1467b1e*/ = /*@>146b178*/fmaxf(/*@>146bcd4*/Model_Target_B./*@>146cf34*/sf_calculate_SB_gains_hk./*@>146cf31*/targetGainsSB/*@>146b97e*/[/*@>146b97b*/0], /*@>146847a*/5.0118723E-7F);
+/* '<S1464>:1:50' currentGainLinear(i) = max(Rampers(i).currentGain, rgain_SILENT_GAIN); */
+/*@>1468518*/currentGainLinear_idx_1/*@>1467b3c*/ = /*@>146b17a*/fmaxf(%<SLibCG_DumpSSCode("/*@[146c66e*/",(SLibCG_CSCDW(7, 1, "[/*@>146c647*/1].currentGain", -1, "", 0)),"/*@]*/")>, /*@>1468484*/5.0118723E-7F);
+/* '<S1464>:1:51' targetGainLinear(i) = max(targetGainLinear(i), rgain_SILENT_GAIN); */
+targetGainLinear_0/*@>1467b4d*/ = /*@>146b17c*/fmaxf(/*@>146bcdf*/Model_Target_B./*@>146cf3a*/sf_calculate_SB_gains_hk./*@>146cf37*/targetGainsSB/*@>146b988*/[/*@>146b985*/1], /*@>146848a*/5.0118723E-7F);
+/* '<S1464>:1:50' currentGainLinear(i) = max(Rampers(i).currentGain, rgain_SILENT_GAIN); */
+/*@>146851e*/currentGainLinear_idx_2/*@>1467b6b*/ = /*@>146b17e*/fmaxf(%<SLibCG_DumpSSCode("/*@[146c6a1*/",(SLibCG_CSCDW(7, 1, "[/*@>146c67a*/2].currentGain", -1, "", 0)),"/*@]*/")>, /*@>1468494*/5.0118723E-7F);
+/* '<S1464>:1:51' targetGainLinear(i) = max(targetGainLinear(i), rgain_SILENT_GAIN); */
+targetGainLinear_1/*@>1467b7c*/ = /*@>146b180*/fmaxf(/*@>146bcea*/Model_Target_B./*@>146cf40*/sf_calculate_SB_gains_hk./*@>146cf3d*/targetGainsSB/*@>146b992*/[/*@>146b98f*/2], /*@>146849a*/5.0118723E-7F);
+/* '<S1464>:1:50' currentGainLinear(i) = max(Rampers(i).currentGain, rgain_SILENT_GAIN); */
+/*@>1468524*/currentGainLinear_idx_3/*@>1467b9a*/ = /*@>146b182*/fmaxf(%<SLibCG_DumpSSCode("/*@[146c6d4*/",(SLibCG_CSCDW(7, 1, "[/*@>146c6ad*/3].currentGain", -1, "", 0)),"/*@]*/")>, /*@>14684a4*/5.0118723E-7F);
+/* '<S1464>:1:51' targetGainLinear(i) = max(targetGainLinear(i), rgain_SILENT_GAIN); */
+targetGainLinear_2/*@>1467bab*/ = /*@>146b184*/fmaxf(/*@>146bcf5*/Model_Target_B./*@>146cf46*/sf_calculate_SB_gains_hk./*@>146cf43*/targetGainsSB/*@>146b99c*/[/*@>146b999*/3], /*@>14684aa*/5.0118723E-7F);
+/*  Step 3a: If a slope in dB/second is provided, ignore the ramp time */
+/*  and instead calculate a new ramp time that matches the slope. */
+/* '<S1464>:1:56' rampMs = zeros(1,MaskNumRampers,'single'); */
+/* '<S1464>:1:57' if (rampdbPerSec) */
+/*@>10cc22a*/if (/*@>146bd00*/Model_Target_B./*@>146cf4c*/sf_calculate_ramp_parameters_c2./*@>146cf49*/rampRate/*@>10cc1fd*/ != /*@>1468290*/0.0F) {
+    /* '<S1464>:1:58' currentGainDb = 20*log10(currentGainLinear); */
+    /* '<S1464>:1:59' targetGainDb = 20*log10(targetGainLinear); */
+    /* '<S1464>:1:60' diff = abs(currentGainDb - targetGainDb); */
+    /* '<S1464>:1:61' rampMs = diff / single(rampdbPerSec) * 1000; */
+    /*@>14684e2*/diff_idx_0 = /*@>146b18c*/qhmath_div_f(/*@>146b18a*/qhmath_abs_f(/*@>14697da*/20.0F/*@>14697d9*/ * /*@>146b186*/qhmath_log10_f(/*@>14697de*/currentGainLinear_idx_0)/*@>14697d8*/ - /*@>14697e0*/20.0F/*@>14697df*/ * /*@>146b188*/qhmath_log10_f(targetGainLinear)), /*@>146bd2c*/Model_Target_B./*@>146cf64*/sf_calculate_ramp_parameters_c2./*@>146cf61*/rampRate)/*@>1469452*/ * /*@>1469459*/1000.0F;
+    /*@>14684e6*/diff_idx_1 = /*@>146b194*/qhmath_div_f(/*@>146b192*/qhmath_abs_f(/*@>14697ea*/20.0F/*@>14697e9*/ * /*@>146b18e*/qhmath_log10_f(/*@>14697ee*/currentGainLinear_idx_1)/*@>14697e8*/ - /*@>14697f0*/20.0F/*@>14697ef*/ * /*@>146b190*/qhmath_log10_f(targetGainLinear_0)), /*@>146bd42*/Model_Target_B./*@>146cf70*/sf_calculate_ramp_parameters_c2./*@>146cf6d*/rampRate)/*@>146945b*/ * /*@>1469462*/1000.0F;
+    /*@>14684ea*/diff_idx_2 = /*@>146b19c*/qhmath_div_f(/*@>146b19a*/qhmath_abs_f(/*@>14697f8*/20.0F/*@>14697f7*/ * /*@>146b196*/qhmath_log10_f(/*@>14697fc*/currentGainLinear_idx_2)/*@>14697f6*/ - /*@>14697fe*/20.0F/*@>14697fd*/ * /*@>146b198*/qhmath_log10_f(targetGainLinear_1)), /*@>146bd4d*/Model_Target_B./*@>146cf76*/sf_calculate_ramp_parameters_c2./*@>146cf73*/rampRate)/*@>1469464*/ * /*@>146946b*/1000.0F;
+    /*@>14684ee*/diff_idx_3 = /*@>146b1a4*/qhmath_div_f(/*@>146b1a2*/qhmath_abs_f(/*@>146966e*/20.0F/*@>146966d*/ * /*@>146b19e*/qhmath_log10_f(/*@>1469807*/currentGainLinear_idx_3)/*@>146966c*/ - /*@>1469672*/20.0F/*@>1469671*/ * /*@>146b1a0*/qhmath_log10_f(targetGainLinear_2)), /*@>146bd58*/Model_Target_B./*@>146cf7c*/sf_calculate_ramp_parameters_c2./*@>146cf79*/rampRate)/*@>1469471*/ * /*@>1469478*/1000.0F;
+} else {
+    /* '<S1464>:1:62' else */
+    /* '<S1464>:1:63' rampMs(:) = single(rampTimesMs); */
+    /*@>1468508*/diff_idx_0/*@>1467ad7*/ = /*@>146bd0b*/Model_Target_B./*@>146cf52*/sf_calculate_ramp_parameters_c2./*@>146cf4f*/ramptime;
+    /*@>146850a*/diff_idx_1/*@>1467ae1*/ = /*@>146bd16*/Model_Target_B./*@>146cf58*/sf_calculate_ramp_parameters_c2./*@>146cf55*/ramptime;
+    /*@>146850c*/diff_idx_2/*@>1467aeb*/ = /*@>146bd21*/Model_Target_B./*@>146cf5e*/sf_calculate_ramp_parameters_c2./*@>146cf5b*/ramptime;
+    /*@>146850e*/diff_idx_3/*@>1467af5*/ = /*@>146bd37*/Model_Target_B./*@>146cf6a*/sf_calculate_ramp_parameters_c2./*@>146cf67*/ramptime;
+}
+/*  Step 3b: QUANTIZE the desired ramp time to our FrameSize. Also retrieve  */
+/*  the whole number of frames required to best match requested ramp time. */
+/*  Ensure that at least one frame is used. The frame size will therefore */
+/*  determine the steepest ramp (i.e. within one frame you can go anywhere). */
+/* '<S1464>:1:70' quantumMs = 1000 * frameSize / sampleRateInHertz; */
+/*@>1468291*/quantumMs/*@>10cc282*/ = /*@>146b1a6*/qhmath_div_f(/*@>1468299*/1000.0F/*@>14686cd*/ * %<SLibCG_DumpSSCode("/*@[146c718*/",(SLibCG_SE(SLibCG_Expr(578, 88, 1, 1, "", -1, "", 0))),"/*@]*/")>, %<SLibCG_DumpSSCode("/*@[146c6f6*/",(SLibCG_Expr(578, 88, 0, 1, "", -1, "", 0)),"/*@]*/")>);
+/* '<S1464>:1:71' numFrames = rampMs / quantumMs; */
+/* '<S1464>:1:72' numFrames = max (1, ceil(numFrames)); */
+/* '<S1464>:1:73' quantizedRampTimeMs = numFrames * quantumMs; */
+/*  UPDATE: Loop over 4 rampers now (L, R, C, and Mono) */
+/* '<S1464>:1:76' for ramper=1:MaskNumRampers */
+diff_idx_0/*@>146773b*/ = /*@>146b1ac*/fmaxf(/*@>14682ce*/1.0F, /*@>146b1aa*/qhmath_ceil_f(/*@>146b1a8*/qhmath_div_f(/*@>146967b*/diff_idx_0, /*@>146967d*/quantumMs)));
+/*  In order to have the desired ramp time, the slope must vary dependent */
+/*  on the gain differencebetween target and current value. */
+/*  Ramper's coefficient is therefore calculated as follows: */
+/*  */
+/*    TargetGain = CurrentGain *( RampCoef ^ (Fs*RampTime_ms/1000) ) */
+/*  */
+/*  therefore... */
+/*  */
+/*                      log(TargetGain/CurrentGain) */
+/*    log(RampCoef) = ------------------------------ */
+/*                         Fs*(RampTime_ms/1000) */
+/*  */
+/* '<S1464>:1:89' factor = log( targetGainLinear(ramper) / currentGainLinear(ramper) ); */
+/* '<S1464>:1:90' RampCoef = double(exp(factor / (sampleRateInHertz * quantizedRampTimeMs(ramper) / 1000))); */
+/*  Output control signals */
+/* '<S1464>:1:93' Rampers(ramper).frameCount  = int32(numFrames(ramper)); */
+/*@>1469d30*/if (diff_idx_0/*@>146948e*/ < /*@>1469491*/2.14748365E+9F) {
+%<SLibCG_DumpSSCode("/*@[146cb09*/",SLibCG_SetCSCDW(7, 1, "[/*@>146cae0*/0].frameCount", -1, "", 0, "/*@>146d10d*/(int32_T)diff_idx_0"),"/*@]*/")>\
+} else {
+%<SLibCG_DumpSSCode("/*@[146c74e*/",SLibCG_SetCSCDW(7, 1, "[/*@>146c724*/0].frameCount", -1, "", 0, "MAX_int32_T"),"/*@]*/")>\
+}
+/* '<S1464>:1:94' Rampers(ramper).targetGain  = targetGainLinear(ramper); */
+%<SLibCG_DumpSSCode("/*@[146c781*/",SLibCG_SetCSCDW(7, 1, "[/*@>146c758*/0].targetGain", -1, "", 0, "targetGainLinear"),"/*@]*/")>\
+/* '<S1464>:1:95' Rampers(ramper).rampCoeff = single(RampCoef); */
+%<SLibCG_DumpSSCode("/*@[146c7d6*/",SLibCG_SetCSCDW(7, 1, "[/*@>146c7ad*/0].rampCoeff", -1, "", 0, "/*@>146d144*/qhmath_exp_f(/*@>146d146*/qhmath_div_f(/*@>146d148*/qhmath_log_f(/*@>146d14a*/qhmath_div_f(targetGainLinear, /*@>146d14c*/currentGainLinear_idx_0)), /*@>146d14e*/qhmath_div_f(diff_idx_0/*@>146d150*/ * /*@>146d152*/quantumMs/*@>146d14f*/ * %<SLibCG_DumpSSCode("/*@[146d153*/",(SLibCG_SE(SLibCG_Expr(578, 88, 0, 1, "", -1, "", 0))),"/*@]*/")>, /*@>146d160*/1000.0F)))"),"/*@]*/")>\
+/* '<S1464>:1:96' Rampers(ramper).currentGain = currentGainLinear(ramper); */
+%<SLibCG_DumpSSCode("/*@[146c809*/",SLibCG_SetCSCDW(7, 1, "[/*@>146c7e0*/0].currentGain", -1, "", 0, "/*@>146d172*/currentGainLinear_idx_0"),"/*@]*/")>\
+diff_idx_0/*@>14677ce*/ = /*@>146b1bc*/fmaxf(/*@>146830e*/1.0F, /*@>146b1ba*/qhmath_ceil_f(/*@>146b1b8*/qhmath_div_f(/*@>1469690*/diff_idx_1, /*@>1469692*/quantumMs)));
+/*  In order to have the desired ramp time, the slope must vary dependent */
+/*  on the gain differencebetween target and current value. */
+/*  Ramper's coefficient is therefore calculated as follows: */
+/*  */
+/*    TargetGain = CurrentGain *( RampCoef ^ (Fs*RampTime_ms/1000) ) */
+/*  */
+/*  therefore... */
+/*  */
+/*                      log(TargetGain/CurrentGain) */
+/*    log(RampCoef) = ------------------------------ */
+/*                         Fs*(RampTime_ms/1000) */
+/*  */
+/* '<S1464>:1:89' factor = log( targetGainLinear(ramper) / currentGainLinear(ramper) ); */
+/* '<S1464>:1:90' RampCoef = double(exp(factor / (sampleRateInHertz * quantizedRampTimeMs(ramper) / 1000))); */
+/*  Output control signals */
+/* '<S1464>:1:93' Rampers(ramper).frameCount  = int32(numFrames(ramper)); */
+/*@>1469d39*/if (diff_idx_0/*@>14694b4*/ < /*@>14694b7*/2.14748365E+9F) {
+%<SLibCG_DumpSSCode("/*@[146cb3c*/",SLibCG_SetCSCDW(7, 1, "[/*@>146cb13*/1].frameCount", -1, "", 0, "/*@>146d184*/(int32_T)diff_idx_0"),"/*@]*/")>\
+} else {
+%<SLibCG_DumpSSCode("/*@[146c83d*/",SLibCG_SetCSCDW(7, 1, "[/*@>146c813*/1].frameCount", -1, "", 0, "MAX_int32_T"),"/*@]*/")>\
+}
+/* '<S1464>:1:94' Rampers(ramper).targetGain  = targetGainLinear(ramper); */
+%<SLibCG_DumpSSCode("/*@[146c870*/",SLibCG_SetCSCDW(7, 1, "[/*@>146c847*/1].targetGain", -1, "", 0, "targetGainLinear_0"),"/*@]*/")>\
+/* '<S1464>:1:95' Rampers(ramper).rampCoeff = single(RampCoef); */
+%<SLibCG_DumpSSCode("/*@[146c8c5*/",SLibCG_SetCSCDW(7, 1, "[/*@>146c89c*/1].rampCoeff", -1, "", 0, "/*@>146d1bb*/qhmath_exp_f(/*@>146d1bd*/qhmath_div_f(/*@>146d1bf*/qhmath_log_f(/*@>146d1c1*/qhmath_div_f(targetGainLinear_0, /*@>146d1c3*/currentGainLinear_idx_1)), /*@>146d1c5*/qhmath_div_f(diff_idx_0/*@>146d1c7*/ * /*@>146d1c9*/quantumMs/*@>146d1c6*/ * %<SLibCG_DumpSSCode("/*@[146d1ca*/",(SLibCG_SE(SLibCG_Expr(578, 88, 0, 1, "", -1, "", 0))),"/*@]*/")>, /*@>146d1d7*/1000.0F)))"),"/*@]*/")>\
+/* '<S1464>:1:96' Rampers(ramper).currentGain = currentGainLinear(ramper); */
+%<SLibCG_DumpSSCode("/*@[146c8f8*/",SLibCG_SetCSCDW(7, 1, "[/*@>146c8cf*/1].currentGain", -1, "", 0, "/*@>146d1e9*/currentGainLinear_idx_1"),"/*@]*/")>\
+diff_idx_0/*@>1467861*/ = /*@>146b1cc*/fmaxf(/*@>146834e*/1.0F, /*@>146b1ca*/qhmath_ceil_f(/*@>146b1c8*/qhmath_div_f(/*@>14696a5*/diff_idx_2, /*@>14696a7*/quantumMs)));
+/*  In order to have the desired ramp time, the slope must vary dependent */
+/*  on the gain differencebetween target and current value. */
+/*  Ramper's coefficient is therefore calculated as follows: */
+/*  */
+/*    TargetGain = CurrentGain *( RampCoef ^ (Fs*RampTime_ms/1000) ) */
+/*  */
+/*  therefore... */
+/*  */
+/*                      log(TargetGain/CurrentGain) */
+/*    log(RampCoef) = ------------------------------ */
+/*                         Fs*(RampTime_ms/1000) */
+/*  */
+/* '<S1464>:1:89' factor = log( targetGainLinear(ramper) / currentGainLinear(ramper) ); */
+/* '<S1464>:1:90' RampCoef = double(exp(factor / (sampleRateInHertz * quantizedRampTimeMs(ramper) / 1000))); */
+/*  Output control signals */
+/* '<S1464>:1:93' Rampers(ramper).frameCount  = int32(numFrames(ramper)); */
+/*@>1469d42*/if (diff_idx_0/*@>14694da*/ < /*@>14694dd*/2.14748365E+9F) {
+%<SLibCG_DumpSSCode("/*@[146cb6f*/",SLibCG_SetCSCDW(7, 1, "[/*@>146cb46*/2].frameCount", -1, "", 0, "/*@>146d1fb*/(int32_T)diff_idx_0"),"/*@]*/")>\
+} else {
+%<SLibCG_DumpSSCode("/*@[146c92c*/",SLibCG_SetCSCDW(7, 1, "[/*@>146c902*/2].frameCount", -1, "", 0, "MAX_int32_T"),"/*@]*/")>\
+}
+/* '<S1464>:1:94' Rampers(ramper).targetGain  = targetGainLinear(ramper); */
+%<SLibCG_DumpSSCode("/*@[146c95f*/",SLibCG_SetCSCDW(7, 1, "[/*@>146c936*/2].targetGain", -1, "", 0, "targetGainLinear_1"),"/*@]*/")>\
+/* '<S1464>:1:95' Rampers(ramper).rampCoeff = single(RampCoef); */
+%<SLibCG_DumpSSCode("/*@[146c9b4*/",SLibCG_SetCSCDW(7, 1, "[/*@>146c98b*/2].rampCoeff", -1, "", 0, "/*@>146d232*/qhmath_exp_f(/*@>146d234*/qhmath_div_f(/*@>146d236*/qhmath_log_f(/*@>146d238*/qhmath_div_f(targetGainLinear_1, /*@>146d23a*/currentGainLinear_idx_2)), /*@>146d23c*/qhmath_div_f(diff_idx_0/*@>146d23e*/ * /*@>146d240*/quantumMs/*@>146d23d*/ * %<SLibCG_DumpSSCode("/*@[146d241*/",(SLibCG_SE(SLibCG_Expr(578, 88, 0, 1, "", -1, "", 0))),"/*@]*/")>, /*@>146d24e*/1000.0F)))"),"/*@]*/")>\
+/* '<S1464>:1:96' Rampers(ramper).currentGain = currentGainLinear(ramper); */
+%<SLibCG_DumpSSCode("/*@[146c9e7*/",SLibCG_SetCSCDW(7, 1, "[/*@>146c9be*/2].currentGain", -1, "", 0, "/*@>146d260*/currentGainLinear_idx_2"),"/*@]*/")>\
+diff_idx_0/*@>14678f4*/ = /*@>146b1dc*/fmaxf(/*@>146838e*/1.0F, /*@>146b1da*/qhmath_ceil_f(/*@>146b1d8*/qhmath_div_f(/*@>14696ba*/diff_idx_3, /*@>14696bc*/quantumMs)));
+/*  In order to have the desired ramp time, the slope must vary dependent */
+/*  on the gain differencebetween target and current value. */
+/*  Ramper's coefficient is therefore calculated as follows: */
+/*  */
+/*    TargetGain = CurrentGain *( RampCoef ^ (Fs*RampTime_ms/1000) ) */
+/*  */
+/*  therefore... */
+/*  */
+/*                      log(TargetGain/CurrentGain) */
+/*    log(RampCoef) = ------------------------------ */
+/*                         Fs*(RampTime_ms/1000) */
+/*  */
+/* '<S1464>:1:89' factor = log( targetGainLinear(ramper) / currentGainLinear(ramper) ); */
+/* '<S1464>:1:90' RampCoef = double(exp(factor / (sampleRateInHertz * quantizedRampTimeMs(ramper) / 1000))); */
+/*  Output control signals */
+/* '<S1464>:1:93' Rampers(ramper).frameCount  = int32(numFrames(ramper)); */
+/*@>1469d4b*/if (diff_idx_0/*@>1469500*/ < /*@>1469503*/2.14748365E+9F) {
+%<SLibCG_DumpSSCode("/*@[146cba2*/",SLibCG_SetCSCDW(7, 1, "[/*@>146cb79*/3].frameCount", -1, "", 0, "/*@>146d272*/(int32_T)diff_idx_0"),"/*@]*/")>\
+} else {
+%<SLibCG_DumpSSCode("/*@[146ca1b*/",SLibCG_SetCSCDW(7, 1, "[/*@>146c9f1*/3].frameCount", -1, "", 0, "MAX_int32_T"),"/*@]*/")>\
+}
+/* '<S1464>:1:94' Rampers(ramper).targetGain  = targetGainLinear(ramper); */
+%<SLibCG_DumpSSCode("/*@[146ca4e*/",SLibCG_SetCSCDW(7, 1, "[/*@>146ca25*/3].targetGain", -1, "", 0, "targetGainLinear_2"),"/*@]*/")>\
+/* '<S1464>:1:95' Rampers(ramper).rampCoeff = single(RampCoef); */
+%<SLibCG_DumpSSCode("/*@[146caa3*/",SLibCG_SetCSCDW(7, 1, "[/*@>146ca7a*/3].rampCoeff", -1, "", 0, "/*@>146d2a9*/qhmath_exp_f(/*@>146d2ab*/qhmath_div_f(/*@>146d2ad*/qhmath_log_f(/*@>146d2af*/qhmath_div_f(targetGainLinear_2, /*@>146d2b1*/currentGainLinear_idx_3)), /*@>146d2b3*/qhmath_div_f(diff_idx_0/*@>146d2b5*/ * /*@>146d2b7*/quantumMs/*@>146d2b4*/ * %<SLibCG_DumpSSCode("/*@[146d2b8*/",(SLibCG_SE(SLibCG_Expr(578, 88, 0, 1, "", -1, "", 0))),"/*@]*/")>, /*@>146d2c5*/1000.0F)))"),"/*@]*/")>\
+/* '<S1464>:1:96' Rampers(ramper).currentGain = currentGainLinear(ramper); */
+%<SLibCG_DumpSSCode("/*@[146cad6*/",SLibCG_SetCSCDW(7, 1, "[/*@>146caad*/3].currentGain", -1, "", 0, "/*@>146d2d7*/currentGainLinear_idx_3"),"/*@]*/")>\
+/* {E!d3272}End of MATLAB Function: '<S1452>/control' */
+
+/* {S!d3265}Outputs for Function Call SubSystem: '<S1452>/SetDsm1' */
+/*  unfreeze the gain. This step now done externally on canvas */
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[573], "Output",2)
+%if SLibCG_SystemFcnArgAccessed("Model_Target_SetDsm_lc",573,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[146c609*/",SLibCGIRGenReusableSysCall("Model_Target_SetDsm_lc", ["%<_modelSS>", "/*@>146d303*/0U"], 573, 1, 6, 2, 6, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[573]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d3265}End of Outputs for SubSystem: '<S1452>/SetDsm1' */
+%endif
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void HandleReqPreAmpSleepingBeautyFRSet(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(407, 0, fcnProtoType)>
+%endfunction

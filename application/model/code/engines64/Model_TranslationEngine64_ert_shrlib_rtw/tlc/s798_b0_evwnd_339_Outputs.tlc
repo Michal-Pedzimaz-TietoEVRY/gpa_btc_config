@@ -1,0 +1,201 @@
+%implements s798_b0_evwnd_339_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+int32_T i;
+int32_T i_0;
+int32_T i_1;
+int32_T mix_j_tmp;
+real32_T x[175];
+real32_T b_x[50];
+%closefile localVarDecl
+/* {S!d2463}MATLAB Function: '<S1335>/Translation' */
+/* {S!d2466}MATLAB Function: '<S1335>/Translation' incorporates:
+ *  S-Function (TuneVarMEX): '<S1336>/Tune Variable'
+ *  S-Function (TuneVarMEX): '<S1336>/Tune Variable1'
+ *  S-Function (TuneVarMEX): '<S1336>/Tune Variable2'
+ *  S-Function (TuneVarMEX): '<S1336>/Tune Variable3'
+ *  S-Function (TuneVarMEX): '<S1336>/Tune Variable4'
+ *  S-Function (TuneVarMEX): '<S1336>/Tune Variable5'
+ *  S-Function (TuneVarMEX): '<S1336>/Tune Variable7'
+ *  S-Function (TuneVarMEX): '<S1337>/Tune Variable'
+ *  S-Function (TuneVarMEX): '<S1337>/Tune Variable1'
+ *  S-Function (TuneVarMEX): '<S1337>/Tune Variable10'
+ *  S-Function (TuneVarMEX): '<S1337>/Tune Variable11'
+ *  S-Function (TuneVarMEX): '<S1337>/Tune Variable2'
+ *  S-Function (TuneVarMEX): '<S1337>/Tune Variable3'
+ *  S-Function (TuneVarMEX): '<S1337>/Tune Variable4'
+ *  S-Function (TuneVarMEX): '<S1337>/Tune Variable5'
+ *  S-Function (TuneVarMEX): '<S1337>/Tune Variable6'
+ *  S-Function (TuneVarMEX): '<S1337>/Tune Variable7'
+ *  S-Function (TuneVarMEX): '<S1337>/Tune Variable8'
+ *  S-Function (TuneVarMEX): '<S1337>/Tune Variable9'
+ *  S-Function (TuneVarMEX): '<S1338>/Tune Variable'
+ *  S-Function (TuneVarMEX): '<S1338>/Tune Variable1'
+ *  S-Function (TuneVarMEX): '<S1338>/Tune Variable10'
+ *  S-Function (TuneVarMEX): '<S1338>/Tune Variable11'
+ *  S-Function (TuneVarMEX): '<S1338>/Tune Variable2'
+ *  S-Function (TuneVarMEX): '<S1338>/Tune Variable3'
+ *  S-Function (TuneVarMEX): '<S1338>/Tune Variable4'
+ *  S-Function (TuneVarMEX): '<S1338>/Tune Variable5'
+ *  S-Function (TuneVarMEX): '<S1338>/Tune Variable6'
+ *  S-Function (TuneVarMEX): '<S1338>/Tune Variable7'
+ *  S-Function (TuneVarMEX): '<S1338>/Tune Variable8'
+ *  S-Function (TuneVarMEX): '<S1338>/Tune Variable9'
+ *  S-Function (TuneVarMEX): '<S1339>/Tune Variable'
+ *  S-Function (TuneVarMEX): '<S1339>/Tune Variable1'
+ *  S-Function (TuneVarMEX): '<S1339>/Tune Variable2'
+ *  S-Function (TuneVarMEX): '<S1339>/Tune Variable3'
+ */
+/*  Invoke the function trigger output */
+/* MATLAB Function 'TranslateTrigger/tfunc': '<S1342>:1' */
+/* '<S1342>:1:3' f(); */
+/*  mix = cat(3, F1.Value, F1.Value);                     */
+/*  mix = cat(              3,...  */
+/*                          F1.Value,... */
+/*                          F2.Value,... */
+/*                          F3.Value,... */
+/*                          F4.Value,... */
+/*                          F5.Value,... */
+/*                          F6.Value,... */
+/*                          F7.Value,... */
+/*                          LFI0.Value,... */
+/*                          LFT0.Value,... */
+/*                          RFI0.Value,... */
+/*                          RFT0.Value,... */
+/*                          LSI0.Value,... */
+/*                          LST0.Value,... */
+/*                          RSI0.Value,... */
+/*                          RST0.Value,... */
+/*                          LCI0.Value,... */
+/*                          LCT0.Value,... */
+/*                          RCI0.Value,... */
+/*                          RCT0.Value,... */
+/*                          LFI1.Value,... */
+/*                          LFT1.Value,... */
+/*                          RFI1.Value,... */
+/*                          RFT1.Value,... */
+/*                          LSI1.Value,... */
+/*                          LST1.Value,... */
+/*                          RSI1.Value,... */
+/*                          RST1.Value,... */
+/*                          LCI1.Value,... */
+/*                          LCT1.Value,... */
+/*                          RCI1.Value,... */
+/*                          RCT1.Value,... */
+/*                          nv0l.Value,... */
+/*                          nv0r.Value,... */
+/*                          nv1l.Value,... */
+/*                          nv1r.Value); */
+/* MATLAB Function 'NEAR/Near1p1/DrProc/Upmixer1p1Dr/Subsystem1/Translation': '<S1341>:1' */
+/*  f = size(fArr, 1); */
+/*  hr = size(hrArr, 1); */
+/*  cph = size(cphArr, 1); */
+/* '<S1341>:1:79' f = FrontPeripheralChannelCount; */
+/* '<S1341>:1:80' hr = HeadrestCount; */
+/* '<S1341>:1:81' cph = ChannelsPerHeadrest; */
+/* '<S1341>:1:82' mixSize = f + hr*cph; */
+/*  s = size(F1.Value, 1); */
+/* '<S1341>:1:84' s = size(LFI0.Value, 1); */
+/* '<S1341>:1:85' mix = single(zeros(s, s, mixSize)); */
+/*@>f820fc*/memset(&/*@>f82bae*/Model_TranslationEngine64_B./*@>f83738*/mix_j/*@>f81b2a*/[/*@>f81b26*/0], /*@>f833db*/0, /*@>f81b28*/875U/*@>f81b30*/ * /*@>f81b2f*/sizeof(real32_T));
+/* '<S1341>:1:87' x = cat(3, F1.Value, F2.Value, F3.Value, F4.Value, F5.Value, F6.Value, F7.Value); */
+/*@>c76f45*/for (/*@>f8349e*/i = /*@>f8349d*/0; /*@>f834a8*/i < /*@>f834a6*/25; /*@>f834a4*/i/*@>f834ac*/++) {
+    /*@>f7f447*/x/*@>f7c7ad*/[/*@>f7f552*/i]/*@>c76f00*/ = /*@>f82bb4*/Model_TranslationEngine64_B./*@>f8373b*/f1_mix./*@>f83717*/Value/*@>f825cc*/[/*@>f825c5*/i];
+    /*@>f7f44e*/x/*@>f7c7ef*/[/*@>f7f54d*/i + /*@>f7f54f*/25]/*@>c76f07*/ = /*@>f82bba*/Model_TranslationEngine64_B./*@>f8373e*/f2_mix./*@>f8371a*/Value/*@>f825d6*/[/*@>f825cf*/i];
+    /*@>f7f455*/x/*@>f7c831*/[/*@>f7f548*/i + /*@>f7f54a*/50]/*@>c76f0e*/ = /*@>f82bc0*/Model_TranslationEngine64_B./*@>f83741*/f3_mix./*@>f8371d*/Value/*@>f825e0*/[/*@>f825d9*/i];
+    /*@>f7f45c*/x/*@>f7c873*/[/*@>f7f543*/i + /*@>f7f545*/75]/*@>c76f15*/ = /*@>f82bc6*/Model_TranslationEngine64_B./*@>f83744*/f4_mix./*@>f83720*/Value/*@>f825ea*/[/*@>f825e3*/i];
+    /*@>f7f463*/x/*@>f7c8b5*/[/*@>f7f53e*/i + /*@>f7f540*/100]/*@>c76f1c*/ = /*@>f82bcc*/Model_TranslationEngine64_B./*@>f83747*/f5_mix./*@>f83723*/Value/*@>f825f4*/[/*@>f825ed*/i];
+    /*@>f7f46a*/x/*@>f7c8f7*/[/*@>f7f539*/i + /*@>f7f53b*/125]/*@>c76f23*/ = /*@>f82bd2*/Model_TranslationEngine64_B./*@>f8374a*/f6_mix./*@>f83726*/Value/*@>f825fe*/[/*@>f825f7*/i];
+    /*@>f7f490*/x/*@>f7c9df*/[/*@>f7f534*/i + /*@>f7f536*/150]/*@>c76f2a*/ = /*@>f82bd8*/Model_TranslationEngine64_B./*@>f8374d*/f7_mix./*@>f83729*/Value/*@>f82608*/[/*@>f82601*/i];
+}
+/* '<S1341>:1:88' mix(:,:,1:f) = x(:,:,1:f); */
+/*@>f7c9a5*/for (/*@>f8346b*/i = /*@>f8346a*/0; /*@>f83475*/i < /*@>f83473*/5; /*@>f83471*/i/*@>f834ad*/++) {
+/*@>f7c995*/    for (/*@>f8347c*/i_1 = /*@>f8347b*/0; /*@>f83486*/i_1 < /*@>f83484*/7; /*@>f83482*/i_1/*@>f834ae*/++) {
+/*@>f7c985*/        for (/*@>f8348d*/i_0 = /*@>f8348c*/0; /*@>f83497*/i_0 < /*@>f83495*/5; /*@>f83493*/i_0/*@>f834af*/++) {
+            /*@>f82bde*/Model_TranslationEngine64_B./*@>f83750*/mix_j/*@>f7e2e1*/[(/*@>f7f476*/i_0/*@>f7e2d8*/ + /*@>f7f556*/5/*@>f7f6b5*/ * /*@>f7f478*/i)/*@>f7e2dd*/ + /*@>f7f557*/25/*@>f7f6b8*/ * /*@>f7f47a*/i_1]/*@>f7c978*/ = /*@>f82616*/x/*@>f82618*/[(/*@>f8260d*/5/*@>f8260c*/ * /*@>f8260f*/i/*@>f8260b*/ + /*@>f82611*/i_0)/*@>f8260a*/ + /*@>f82613*/25/*@>f82612*/ * /*@>f82615*/i_1];
+        }
+    }
+}
+/* '<S1341>:1:89' if cph == 14 */
+/* '<S1341>:1:90' x = cat(        3,...  */
+/* '<S1341>:1:91'                     LFI0.Value,... */
+/* '<S1341>:1:92'                     LFT0.Value,... */
+/* '<S1341>:1:93'                     RFI0.Value,... */
+/* '<S1341>:1:94'                     RFT0.Value,... */
+/* '<S1341>:1:95'                     LSI0.Value,... */
+/* '<S1341>:1:96'                     LST0.Value,... */
+/* '<S1341>:1:97'                     RSI0.Value,... */
+/* '<S1341>:1:98'                     RST0.Value,... */
+/* '<S1341>:1:99'                     LCI0.Value,... */
+/* '<S1341>:1:100'                     LCT0.Value,... */
+/* '<S1341>:1:101'                     RCI0.Value,... */
+/* '<S1341>:1:102'                     RCT0.Value); */
+%<SLibCG_DumpSSCode("/*@[f83290*/",(SLibCGCallSubFcn("Model_TranslationEngine64_cat", ["/*@>f837df*/Model_TranslationEngine64_B./*@>f837de*/LFI0_mix./*@>f837dd*/Value", "/*@>f837ed*/Model_TranslationEngine64_B./*@>f837ec*/LFT0_mix./*@>f837eb*/Value", "/*@>f837fb*/Model_TranslationEngine64_B./*@>f837fa*/RFI0_mix./*@>f837f9*/Value", "/*@>f83809*/Model_TranslationEngine64_B./*@>f83808*/RFT0_mix./*@>f83807*/Value", "/*@>f83817*/Model_TranslationEngine64_B./*@>f83816*/LSI0_mix./*@>f83815*/Value", "/*@>f83825*/Model_TranslationEngine64_B./*@>f83824*/LST0_mix./*@>f83823*/Value", "/*@>f83833*/Model_TranslationEngine64_B./*@>f83832*/RSI0_mix./*@>f83831*/Value", "/*@>f83841*/Model_TranslationEngine64_B./*@>f83840*/RST0_mix./*@>f8383f*/Value", "/*@>f8384f*/Model_TranslationEngine64_B./*@>f8384e*/LCI0_mix./*@>f8384d*/Value", "/*@>f8385d*/Model_TranslationEngine64_B./*@>f8385c*/LCT0_mix./*@>f8385b*/Value", "/*@>f8386b*/Model_TranslationEngine64_B./*@>f8386a*/RCI0_mix./*@>f83869*/Value", "/*@>f83879*/Model_TranslationEngine64_B./*@>f83878*/RCT0_mix./*@>f83877*/Value", "&/*@>f83888*/Model_TranslationEngine64_B./*@>f83887*/mix_j/*@>f83886*/[/*@>f8388a*/175]"], 339, 1, 0)),"/*@]*/")>;
+/* '<S1341>:1:103' mix(:,:,f+1:f+12) = x; */
+/* '<S1341>:1:104' if hr == 2 */
+/* '<S1341>:1:105' x = cat(    3,...  */
+/* '<S1341>:1:106'                     LFI1.Value,... */
+/* '<S1341>:1:107'                     LFT1.Value,... */
+/* '<S1341>:1:108'                     RFI1.Value,... */
+/* '<S1341>:1:109'                     RFT1.Value,... */
+/* '<S1341>:1:110'                     LSI1.Value,... */
+/* '<S1341>:1:111'                     LST1.Value,... */
+/* '<S1341>:1:112'                     RSI1.Value,... */
+/* '<S1341>:1:113'                     RST1.Value,... */
+/* '<S1341>:1:114'                     LCI1.Value,... */
+/* '<S1341>:1:115'                     LCT1.Value,... */
+/* '<S1341>:1:116'                     RCI1.Value,... */
+/* '<S1341>:1:117'                     RCT1.Value); */
+%<SLibCG_DumpSSCode("/*@[f832b3*/",(SLibCGCallSubFcn("Model_TranslationEngine64_cat", ["/*@>f83896*/Model_TranslationEngine64_B./*@>f83895*/LFI1_mix./*@>f83894*/Value", "/*@>f838a4*/Model_TranslationEngine64_B./*@>f838a3*/LFT1_mix./*@>f838a2*/Value", "/*@>f838b2*/Model_TranslationEngine64_B./*@>f838b1*/RFI1_mix./*@>f838b0*/Value", "/*@>f838c0*/Model_TranslationEngine64_B./*@>f838bf*/RFT1_mix./*@>f838be*/Value", "/*@>f838ce*/Model_TranslationEngine64_B./*@>f838cd*/LSI1_mix./*@>f838cc*/Value", "/*@>f838dc*/Model_TranslationEngine64_B./*@>f838db*/LST1_mix./*@>f838da*/Value", "/*@>f838ea*/Model_TranslationEngine64_B./*@>f838e9*/RSI1_mix./*@>f838e8*/Value", "/*@>f838f8*/Model_TranslationEngine64_B./*@>f838f7*/RST1_mix./*@>f838f6*/Value", "/*@>f83906*/Model_TranslationEngine64_B./*@>f83905*/LCI1_mix./*@>f83904*/Value", "/*@>f83914*/Model_TranslationEngine64_B./*@>f83913*/LCT1_mix./*@>f83912*/Value", "/*@>f83922*/Model_TranslationEngine64_B./*@>f83921*/RCI1_mix./*@>f83920*/Value", "/*@>f83930*/Model_TranslationEngine64_B./*@>f8392f*/RCT1_mix./*@>f8392e*/Value", "&/*@>f8393f*/Model_TranslationEngine64_B./*@>f8393e*/mix_j/*@>f8393d*/[/*@>f83941*/475]"], 339, 1, 1)),"/*@]*/")>;
+/* '<S1341>:1:118' mix(:,:,f+13:f+24) = x; */
+/* '<S1341>:1:121' x = cat(    3,...  */
+/* '<S1341>:1:122'             nv0l.Value,... */
+/* '<S1341>:1:123'             nv0r.Value); */
+/*@>c76fc7*/for (/*@>f8345a*/i = /*@>f83459*/0; /*@>f83464*/i < /*@>f83462*/25; /*@>f83460*/i/*@>f834b0*/++) {
+    /*@>f7f49b*/b_x/*@>f7cccb*/[/*@>f7f530*/i]/*@>c76fb4*/ = /*@>f82c80*/Model_TranslationEngine64_B./*@>f837a1*/nv0l_mix./*@>f8372c*/Value/*@>f82622*/[/*@>f8261b*/i];
+    /*@>f7f4c2*/b_x/*@>f7cdb7*/[/*@>f7f52b*/i + /*@>f7f52d*/25]/*@>c76fbb*/ = /*@>f82c86*/Model_TranslationEngine64_B./*@>f837a4*/nv0r_mix./*@>f8372f*/Value/*@>f8262c*/[/*@>f82625*/i];
+}
+/* '<S1341>:1:124' mix(:,:,f+((cph-2)*hr)+1:f+((cph-2)*hr)+2) = x; */
+/*@>f7cd7d*/for (/*@>f83427*/i = /*@>f83426*/0; /*@>f83431*/i < /*@>f8342f*/5; /*@>f8342d*/i/*@>f834b1*/++) {
+/*@>f7cd6d*/    for (/*@>f83438*/i_1 = /*@>f83437*/0; /*@>f83442*/i_1 < /*@>f83440*/2; /*@>f8343e*/i_1/*@>f834b2*/++) {
+/*@>f7cd5d*/        for (/*@>f83449*/i_0 = /*@>f83448*/0; /*@>f83453*/i_0 < /*@>f83451*/5; /*@>f8344f*/i_0/*@>f834b3*/++) {
+            /*@>f80c52*/mix_j_tmp/*@>f80c54*/ = /*@>f7f560*/5/*@>f7f6c7*/ * /*@>f7f49f*/i/*@>f7ebdd*/ + /*@>f7f49d*/i_0;
+            /*@>f82c8c*/Model_TranslationEngine64_B./*@>f837a7*/mix_j/*@>f7e302*/[mix_j_tmp/*@>f7e2fe*/ + /*@>f7f55b*/25/*@>f7f6c4*/ * (/*@>f7f4ac*/i_1/*@>f7cd4c*/ + /*@>f7f4ab*/31)]/*@>f7cd50*/ = /*@>f82635*/b_x/*@>f82637*/[/*@>f82632*/25/*@>f82631*/ * /*@>f82634*/i_1/*@>f8262e*/ + /*@>f82630*/mix_j_tmp];
+        }
+    }
+}
+/* '<S1341>:1:125' if hr == 2 */
+/* '<S1341>:1:126' x = cat(    3,...  */
+/* '<S1341>:1:127'                 nv1l.Value,... */
+/* '<S1341>:1:128'                 nv1r.Value); */
+/*@>c76ffe*/for (/*@>f83416*/i = /*@>f83415*/0; /*@>f83420*/i < /*@>f8341e*/25; /*@>f8341c*/i/*@>f834b4*/++) {
+    /*@>f7f4c9*/b_x/*@>f7cdfd*/[/*@>f7f527*/i]/*@>c76feb*/ = /*@>f82c92*/Model_TranslationEngine64_B./*@>f837aa*/nv1l_mix./*@>f83732*/Value/*@>f82641*/[/*@>f8263a*/i];
+    /*@>f7f4f0*/b_x/*@>f7cee9*/[/*@>f7f522*/i + /*@>f7f524*/25]/*@>c76ff2*/ = /*@>f82c98*/Model_TranslationEngine64_B./*@>f837ad*/nv1r_mix./*@>f83735*/Value/*@>f8264b*/[/*@>f82644*/i];
+}
+/* '<S1341>:1:129' mix(:,:,f+((cph-2)*hr)+3:f+((cph-2)*hr)+4) = x; */
+/*@>f7ceaf*/for (/*@>f833e3*/i = /*@>f833e2*/0; /*@>f833ed*/i < /*@>f833eb*/5; /*@>f833e9*/i/*@>f834b5*/++) {
+/*@>f7ce9f*/    for (/*@>f833f4*/i_1 = /*@>f833f3*/0; /*@>f833fe*/i_1 < /*@>f833fc*/2; /*@>f833fa*/i_1/*@>f834b6*/++) {
+/*@>f7ce8f*/        for (/*@>f83405*/i_0 = /*@>f83404*/0; /*@>f8340f*/i_0 < /*@>f8340d*/5; /*@>f8340b*/i_0/*@>f834b7*/++) {
+            /*@>f80c62*/mix_j_tmp/*@>f80c64*/ = /*@>f7f562*/5/*@>f7f6d3*/ * /*@>f7f4cd*/i/*@>f7ec04*/ + /*@>f7f4cb*/i_0;
+            /*@>f82c9e*/Model_TranslationEngine64_B./*@>f837b0*/mix_j/*@>f7e315*/[mix_j_tmp/*@>f7e311*/ + /*@>f7f55d*/25/*@>f7f6d0*/ * (/*@>f7f4da*/i_1/*@>f7ce7e*/ + /*@>f7f4d9*/33)]/*@>f7ce82*/ = /*@>f82654*/b_x/*@>f82656*/[/*@>f82651*/25/*@>f82650*/ * /*@>f82653*/i_1/*@>f8264d*/ + /*@>f8264f*/mix_j_tmp];
+        }
+    }
+}
+/* {E!d2466}End of MATLAB Function: '<S1335>/Translation' */
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void FuncTranslation_Model_1026(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(339, 1, fcnProtoType)>
+%endfunction

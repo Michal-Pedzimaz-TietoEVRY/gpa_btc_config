@@ -1,0 +1,41 @@
+%implements s798_b0_evwnd_34_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+/* MATLAB Function 'NEAR/Near1p1/VolumeMute/AnnouncementLevelDetector/ch1_level/fast_decay/sec2samples': '<S1416>:1' */
+/* '<S1416>:1:4' y = -abs(u.Value/FrameRate); */
+/*@>cf9454*/localB->/*@>cf94e2*/y/*@>c6db4d*/ = -/*@<cf9269*//*@>cf940c*/fabsf(rtu_u->Value/*@>c6db53*/ / /*@>cf9263*/1378.125F);
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[34].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(34, 0, 0)>
+%endif
+%if SLibCG_ArgAccessed(34, 0, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(34, 0, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_TranslationEngine64_sec2samples_p(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(34, 0, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_TranslationEngine64_sec2samples_p", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>const bus_single_1_1 *rtu_u\
+%assign comma = ", "
+%<comma>B_sec2samples_Model_TranslationEngine64_h_T *localB\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(34, 0, fcnProtoType)>
+%endfunction

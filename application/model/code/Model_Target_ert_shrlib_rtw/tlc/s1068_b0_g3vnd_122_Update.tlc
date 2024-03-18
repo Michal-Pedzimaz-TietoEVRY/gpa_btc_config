@@ -1,0 +1,52 @@
+%implements s1068_b0_g3vnd_122_Update "C"
+
+%function Update(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+/* {S!d970}Update for If: '<S587>/If' */
+/*@>1285ef1*/if (/*@>12a7933*/Model_Target_Medusa5H1Part3_DW./*@>12b124c*/If_ActiveSubsystem/*@>128a9f3*/ == /*@>128a9f0*/0) {
+    /* {S!d945}Update for IfAction SubSystem: '<S587>/On' incorporates:
+ *  ActionPort: '<S887>/Action Port'
+ */
+    /* {S!d948}Update for Delay: '<S1000>/Delay' */
+    /*@>12a7939*/Model_Target_Medusa5H1Part3_DW./*@>12b124f*/Delay_DSTATE/*@>10dd328*/ = /*@>12a729b*/Model_Target_Medusa5H1Part3_B./*@>12b1228*/Selector_p;
+    /* {S!d950}Update for Delay: '<S887>/Delay6' */
+    /*@>12a793f*/Model_Target_Medusa5H1Part3_DW./*@>12b1252*/Delay6_DSTATE/*@>128654b*/[/*@>128a74b*/0]/*@>128654a*/ = /*@>12a72a7*/Model_Target_B./*@>12b122e*/sf_fade_l./*@>12b122b*/tgtGains/*@>12a5786*/[/*@>12a5783*/0];
+    /*@>12a7945*/Model_Target_Medusa5H1Part3_DW./*@>12b1255*/Delay6_DSTATE/*@>1286559*/[/*@>128a751*/1]/*@>1286558*/ = /*@>12a72b3*/Model_Target_B./*@>12b1234*/sf_fade_l./*@>12b1231*/tgtGains/*@>12a578b*/[/*@>12a5788*/1];
+    /* {S!d952}Update for Delay: '<S1000>/Delay2' incorporates:
+ *  Constant: '<S887>/Constant3'
+ */
+    /*@>12a794b*/Model_Target_Medusa5H1Part3_DW./*@>12b1258*/Delay2_DSTATE/*@>10dd347*/ = /*@>12b11b2*/0;
+    /* {S!d954}Update for Delay: '<S1000>/Delay1' */
+    /*@>12a7951*/Model_Target_Medusa5H1Part3_DW./*@>12b125b*/Delay1_DSTATE/*@>10dd353*/ = /*@>12a72b9*/Model_Target_Medusa5H1Part3_B./*@>12b1237*/Selector2;
+    /* {S!d956}Update for Delay: '<S932>/Delay' */
+    /*@>12a7957*/Model_Target_Medusa5H1Part3_DW./*@>12b125e*/Delay_DSTATE_c/*@>10dd35f*/ = /*@>12a72bf*/Model_Target_Medusa5H1Part3_B./*@>12b123a*/Selector_p;
+    /* {S!d958}Update for Delay: '<S932>/Delay2' incorporates:
+ *  Constant: '<S887>/Constant3'
+ */
+    /*@>12a795d*/Model_Target_Medusa5H1Part3_DW./*@>12b1261*/Delay2_DSTATE_k/*@>10dd36b*/ = /*@>12b11b5*/0;
+    /* {S!d960}Update for Delay: '<S932>/Delay1' */
+    /*@>12a7963*/Model_Target_Medusa5H1Part3_DW./*@>12b1264*/Delay1_DSTATE_m/*@>10dd377*/ = /*@>12a72c5*/Model_Target_Medusa5H1Part3_B./*@>12b123d*/Selector2;
+    /* {S!d962}Update for Delay: '<S1131>/Delay' */
+    /*@>12a7969*/Model_Target_Medusa5H1Part3_DW./*@>12b1267*/Delay_DSTATE_p/*@>10dd383*/ = /*@>12a72cb*/Model_Target_Medusa5H1Part3_B./*@>12b1240*/Selector_p;
+    /* {S!d964}Update for Delay: '<S1131>/Delay1' */
+    /*@>12a796f*/Model_Target_Medusa5H1Part3_DW./*@>12b126a*/Delay1_DSTATE_o/*@>10dd38f*/ = /*@>12a72d1*/Model_Target_Medusa5H1Part3_B./*@>12b1243*/Selector2;
+    /* {S!d966}Update for Delay: '<S1156>/Delay' */
+    /*@>12a7975*/Model_Target_Medusa5H1Part3_DW./*@>12b126d*/Delay_DSTATE_e/*@>10dd39b*/ = /*@>12a72d7*/Model_Target_Medusa5H1Part3_B./*@>12b1246*/Selector_p;
+    /* {S!d968}Update for Delay: '<S1156>/Delay1' */
+    /*@>12a797b*/Model_Target_Medusa5H1Part3_DW./*@>12b1270*/Delay1_DSTATE_n/*@>10dd3a7*/ = /*@>12a72dd*/Model_Target_Medusa5H1Part3_B./*@>12b1249*/Selector2;
+    /* {E!d945}End of Update for SubSystem: '<S587>/On' */
+}
+/* {E!d970}End of Update for If: '<S587>/If' */
+%closefile cfgTxt
+%<cfgTxt>
+%endfunction
+%function UpdateFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_Medusa5H1Part3_Update(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(122, 2, fcnProtoType)>
+%endfunction

@@ -1,0 +1,47 @@
+%implements "chartSource" "C"
+%function ChartConfig(block, system) void
+  %createrecord chartConfiguration { ...
+          executeAtInitialization  0 ...
+  }
+  %return chartConfiguration
+%endfunction
+%function ChartDataMap(block, system) void
+  %createrecord ChartDataElements {\
+    NumChartData   4 \
+    ChartDataDefaults {\
+      RecordType   "ChartData"\
+      Dimensions   []\
+      IsTestPoint  0\
+    }\
+    ChartData {\
+      Name         "PreRatioLinLP"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "Model_Target:117:2160:207-220"\
+    }\
+    ChartData {\
+      Name         "ImpFiltState"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "Model_Target:117:2160:221-233"\
+      Dimensions   [1,2]\
+    }\
+    ChartData {\
+      Name         "ImpRejFiltOut"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "Model_Target:117:2160:234-247"\
+    }\
+    ChartData {\
+      Name         "ImpRejFiltOut_not_empty"\
+      Description  "EmlPersistentSentinel"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "Model_Target:117:2160:234-247"\
+    }\
+  }
+  %return ChartDataElements
+%endfunction

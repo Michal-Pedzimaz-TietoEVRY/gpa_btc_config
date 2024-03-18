@@ -1,0 +1,86 @@
+%implements s1068_b0_g3vnd_146_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+int32_T i;
+int32_T i_0;
+static const int8_T tmp[30] = %<(TLC_STR_CTX(4))>;
+%closefile localVarDecl
+%assign tlcOutputsFcnOfS471B2 = OpaqueTLCBlockFcn("Outputs", 471, 2, 146, 1, 0)
+%assign tlcOutputsFcnOfS471B7 = OpaqueTLCBlockFcn("Outputs", 471, 7, 146, 1, 1)
+%assign tlcOutputsFcnOfS471B11 = OpaqueTLCBlockFcn("Outputs", 471, 11, 146, 1, 2)
+/* {S!d1230}If: '<S589>/If' incorporates:
+ *  Constant: '<S1283>/Constant'
+ *  DataStoreRead: '<S589>/Data Store Read'
+ */
+/*@>10dbd0f*/if (/*@>12d50bf*/Model_Target_Medusa5H1Part5_DW./*@>12d55c9*/MedusaOverheadHoligramEnable/*@>10dbd0e*/ > /*@>12d3d63*/0.0) {
+    /* {S!d1213}Outputs for IfAction SubSystem: '<S589>/On' incorporates:
+ *  ActionPort: '<S1279>/Action Port'
+ */
+/*@>12d357a*/    for (/*@>12d5538*/i = /*@>12d5537*/0; /*@>12d5542*/i < /*@>12d5540*/8; /*@>12d553e*/i/*@>12d5546*/++) {
+        /*@>12d4f6a*/Model_Target_Medusa5H1Part5_B./*@>12d55b7*/MatrixConcatenate/*@>12d3821*/[/*@>12d3dc2*/i/*@>12d3826*/ + /*@>12d3dc4*/144]/*@>12d3566*/ = 0.0F;
+    }
+/*@>12d37ef*/    for (/*@>12d5516*/i = /*@>12d5515*/0; /*@>12d5520*/i < /*@>12d551e*/30; /*@>12d551c*/i/*@>12d5547*/++) {
+/*@>12d37df*/        for (/*@>12d5527*/i_0 = /*@>12d5526*/0; /*@>12d5531*/i_0 < /*@>12d552f*/8; /*@>12d552d*/i_0/*@>12d5548*/++) {
+            /* {S!d1222}Merge: '<S589>/Merge' incorporates:
+ *  Concatenate: '<S1279>/Matrix Concatenate'
+ *  Selector: '<S1279>/Selector'
+ */
+            /*@>12d4f8d*/Model_Target_Medusa5H1Part5_B./*@>12d55c3*/Merge/*@>12d3b2e*/[/*@>12d3db0*/i_0/*@>12d3b2a*/ + (/*@>12d3db2*/i/*@>12d3df2*/ << /*@>12d3df1*/3)]/*@>12d37d2*/ = /*@>12d4f93*/Model_Target_Medusa5H1Part5_B./*@>12d55c6*/MatrixConcatenate/*@>12d4e7a*/[(/*@>12d4e72*/tmp/*@>12d4e71*/[/*@>12d4e74*/i]/*@>12d4e6e*/ << /*@>12d4e75*/3)/*@>12d4e6d*/ + /*@>12d4e77*/i_0];
+        }
+    }
+    /* {S!d1224}Merge: '<S589>/Merge1' incorporates:
+ *  Constant: '<S1283>/Constant'
+ *  Merge: '<S588>/Merge2'
+ *  SignalConversion generated from: '<S1279>/FRMixerOut'
+ */
+    /*@>12d4c8f*/memcpy(&/*@>12d4f7c*/Model_Target_Medusa5H1Part5_B./*@>12d55bd*/Merge1/*@>12d49a6*/[/*@>12d4995*/0], &/*@>12d4f87*/Model_Target_Medusa5H1Part4_B./*@>12d55c0*/Merge2/*@>12d49ae*/[/*@>12d49a2*/0], /*@>12d49a4*/704U/*@>12d49b1*/ * /*@>12d49b0*/sizeof(real32_T));
+    /* {E!d1213}End of Outputs for SubSystem: '<S589>/On' */
+} else {
+    /* {S!d1215}Outputs for IfAction SubSystem: '<S589>/Bypass' incorporates:
+ *  ActionPort: '<S1278>/Action Port'
+ */
+    /* {S!d1226}Merge: '<S589>/Merge' incorporates:
+ *  SignalConversion generated from: '<S1278>/DRBypass'
+ */
+    /*@>12d4c80*/memset(&/*@>12d4f58*/Model_Target_Medusa5H1Part5_B./*@>12d55b4*/Merge/*@>12d4a87*/[/*@>12d4a83*/0], 0, /*@>12d4a85*/240U/*@>12d4a8d*/ * /*@>12d4a8c*/sizeof(real32_T));
+    /* {S!d1228}Merge: '<S589>/Merge1' incorporates:
+ *  SignalConversion generated from: '<S1278>/FRBypass'
+ */
+    /*@>12d4c82*/memset(&/*@>12d4f70*/Model_Target_Medusa5H1Part5_B./*@>12d55ba*/Merge1/*@>12d4a52*/[/*@>12d4a4e*/0], 0, /*@>12d4a50*/704U/*@>12d4a58*/ * /*@>12d4a57*/sizeof(real32_T));
+    /* {E!d1215}End of Outputs for SubSystem: '<S589>/Bypass' */
+}
+/* {E!d1230}End of If: '<S589>/If' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS471B2)
+
+/* {S!d1217}S-Function (RTC_REQ_RSP): '<S1280>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[12d5305*/",tlcOutputsFcnOfS471B2,"/*@]*/")>\
+%endif
+/* {E!d1217}End of Outputs for S-Function (RTC_REQ_RSP): '<S1280>/RTC Request Response Trigger' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS471B7)
+
+/* {S!d1219}S-Function (RTC_NTF): '<S1280>/NTF Trigger' */
+%<SLibCG_DumpSSCode("/*@[12d5307*/",tlcOutputsFcnOfS471B7,"/*@]*/")>\
+%endif
+/* {E!d1219}End of Outputs for S-Function (RTC_NTF): '<S1280>/NTF Trigger' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS471B11)
+
+/* {S!d1232}M-S-Function: '<S589>/Partition' */
+%<SLibCG_DumpSSCode("/*@[12d5308*/",tlcOutputsFcnOfS471B11,"/*@]*/")>\
+%endif
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_Medusa5H1Part5(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(146, 1, fcnProtoType)>
+%endfunction

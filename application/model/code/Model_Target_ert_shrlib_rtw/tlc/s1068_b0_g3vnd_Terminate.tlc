@@ -1,0 +1,70 @@
+%implements s1068_b0_g3vnd_Terminate "C"
+
+%function Terminate(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[642], "Terminate",0)
+/* {S!d5985}Terminate for Atomic SubSystem: '<S4>/SrcUp' */
+%<SLibCG_DumpSSCode("/*@[1641c26*/",SLibCGIRGenReusableSysCall("Model_Target_SrcUp_Term", [], 642, 0, 18, 0, 18, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[642]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d5985}End of Terminate for SubSystem: '<S4>/SrcUp' */
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[640], "Terminate",0)
+
+/* {S!d5987}Terminate for Atomic SubSystem: '<S4>/SrcDownEnt' */
+%<SLibCG_DumpSSCode("/*@[1641c27*/",SLibCGIRGenReusableSysCall("Model_Target_SrcDownEnt_Term", [], 640, 0, 18, 0, 18, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[640]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d5987}End of Terminate for SubSystem: '<S4>/SrcDownEnt' */
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[641], "Terminate",0)
+
+/* {S!d5989}Terminate for Atomic SubSystem: '<S4>/SrcDownMic' */
+%<SLibCG_DumpSSCode("/*@[1641c28*/",SLibCGIRGenReusableSysCall("Model_Target_SrcDownMic_Term", [], 641, 0, 18, 0, 18, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[641]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d5989}End of Terminate for SubSystem: '<S4>/SrcDownMic' */
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[863], "Terminate",0)
+
+/* {S!d5991}Terminate for Atomic SubSystem: '<Root>/NEAR' */
+/* {S!d5992}Terminate for Atomic SubSystem: '<S5>/SrcDownAnn' */
+%<SLibCG_DumpSSCode("/*@[1641c29*/",SLibCGIRGenReusableSysCall("Model_Target_SrcDownAnn_Term", [], 863, 0, 18, 0, 18, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[863]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d5992}End of Terminate for SubSystem: '<S5>/SrcDownAnn' */
+/* {E!d5991}End of Terminate for SubSystem: '<Root>/NEAR' */
+%endif
+%closefile cfgTxt
+%<cfgTxt>
+%endfunction
+%function TerminateFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Terminate(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(577, 15, fcnProtoType)>
+%endfunction

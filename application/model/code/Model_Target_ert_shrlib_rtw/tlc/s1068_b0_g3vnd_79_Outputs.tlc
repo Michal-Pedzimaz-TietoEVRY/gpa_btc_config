@@ -1,0 +1,45 @@
+%implements s1068_b0_g3vnd_79_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+/*  */
+/*  Convert input vector into a matrix */
+/*  */
+/* MATLAB Function 'NEAR/Near1p1/VolumeMute/VolMuteCh1/Volume/rtcscalartovector2': '<S1916>:1' */
+/* '<S1916>:1:5' Inpsize=size(Inp,1); */
+/* '<S1916>:1:7' Outp=(Inp').*uint32(ones(1,Inpsize)); */
+/*@>12345d1*/localB->/*@>1234754*/Outp/*@>10cc63b*/ = /*@>12343e1*/rtu_Inp;
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[79].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(79, 0, 0)>
+%endif
+%if SLibCG_ArgAccessed(79, 0, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(79, 0, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_rtcscalartovector2(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(79, 0, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_Target_rtcscalartovector2", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>uint32_T rtu_Inp\
+%assign comma = ", "
+%<comma>B_rtcscalartovector2_Model_Target_T *localB\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(79, 0, fcnProtoType)>
+%endfunction

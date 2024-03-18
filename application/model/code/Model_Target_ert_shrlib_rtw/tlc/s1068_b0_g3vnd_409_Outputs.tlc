@@ -1,0 +1,845 @@
+%implements s1068_b0_g3vnd_409_Outputs "C"
+
+%function Outputs(block, system) Output
+%<SLibCGIRAccessLocalDWork(662, 2)> %% ForEach_itr_j
+%<SLibCGIRAccessLocalDWork(661, 2)> %% ForEach_itr
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+int32_T d_data[30];
+int32_T d_data_0[22];
+int32_T d_size[2];
+int32_T b;
+int32_T ch;
+int32_T d_tmp;
+int32_T i;
+int32_T ramper;
+real32_T rampCoeffMultipliers_0[32];
+real32_T rtb_Merge[32];
+real32_T rampCoeffMultipliers[8];
+real32_T rtb_Merge_o2[8];
+real32_T gain;
+real32_T rtb_Max_b;
+real32_T rtb_yLpf_a_tmp;
+real32_T rtb_yLpf_e;
+real32_T tmp_1;
+boolean_T tmp[30];
+boolean_T tmp_0[22];
+boolean_T rtb_Merge_b;
+%closefile localVarDecl
+%assign _modelSS = ""
+
+%assign tlcOutputsFcnOfS578B0 = OpaqueTLCBlockFcn("Outputs", 578, 0, 409, 3, 0)
+%assign tlcOutputsFcnOfS578B2 = OpaqueTLCBlockFcn("Outputs", 578, 2, 409, 3, 1)
+%assign tlcOutputsFcnOfS578B3 = OpaqueTLCBlockFcn("Outputs", 578, 3, 409, 3, 2)
+%assign tlcOutputsFcnOfS578B4 = OpaqueTLCBlockFcn("Outputs", 578, 4, 409, 3, 3)
+%assign tlcOutputsFcnOfS578B5 = OpaqueTLCBlockFcn("Outputs", 578, 5, 409, 3, 4)
+%assign tlcOutputsFcnOfS578B13 = OpaqueTLCBlockFcn("Outputs", 578, 13, 409, 3, 5)
+%assign tlcOutputsFcnOfS578B21 = OpaqueTLCBlockFcn("Outputs", 578, 21, 409, 3, 6)
+%assign tlcOutputsFcnOfS578B22 = OpaqueTLCBlockFcn("Outputs", 578, 22, 409, 3, 7)
+%assign tlcOutputsFcnOfS578B25 = OpaqueTLCBlockFcn("Outputs", 578, 25, 409, 3, 8)
+%assign tlcOutputsFcnOfS578B26 = OpaqueTLCBlockFcn("Outputs", 578, 26, 409, 3, 9)
+%assign tlcOutputsFcnOfS578B27 = OpaqueTLCBlockFcn("Outputs", 578, 27, 409, 3, 10)
+%assign tlcOutputsFcnOfS578B28 = OpaqueTLCBlockFcn("Outputs", 578, 28, 409, 3, 11)
+%assign tlcOutputsFcnOfS578B29 = OpaqueTLCBlockFcn("Outputs", 578, 29, 409, 3, 12)
+%assign tlcOutputsFcnOfS578B30 = OpaqueTLCBlockFcn("Outputs", 578, 30, 409, 3, 13)
+%assign tlcOutputsFcnOfS578B31 = OpaqueTLCBlockFcn("Outputs", 578, 31, 409, 3, 14)
+%assign tlcOutputsFcnOfS578B32 = OpaqueTLCBlockFcn("Outputs", 578, 32, 409, 3, 15)
+%assign tlcOutputsFcnOfS578B33 = OpaqueTLCBlockFcn("Outputs", 578, 33, 409, 3, 16)
+%assign tlcOutputsFcnOfS578B34 = OpaqueTLCBlockFcn("Outputs", 578, 34, 409, 3, 17)
+%assign tlcOutputsFcnOfS578B46 = OpaqueTLCBlockFcn("Outputs", 578, 46, 409, 3, 18)
+%assign tlcOutputsFcnOfS578B54 = OpaqueTLCBlockFcn("Outputs", 578, 54, 409, 3, 19)
+%assign tlcOutputsFcnOfS578B55 = OpaqueTLCBlockFcn("Outputs", 578, 55, 409, 3, 20)
+%assign tlcOutputsFcnOfS578B56 = OpaqueTLCBlockFcn("Outputs", 578, 56, 409, 3, 21)
+%assign tlcOutputsFcnOfS578B59 = OpaqueTLCBlockFcn("Outputs", 578, 59, 409, 3, 22)
+%assign tlcOutputsFcnOfS578B60 = OpaqueTLCBlockFcn("Outputs", 578, 60, 409, 3, 23)
+%assign tlcOutputsFcnOfS578B61 = OpaqueTLCBlockFcn("Outputs", 578, 61, 409, 3, 24)
+%assign tlcOutputsFcnOfS578B64 = OpaqueTLCBlockFcn("Outputs", 578, 64, 409, 3, 25)
+%assign tlcOutputsFcnOfS578B65 = OpaqueTLCBlockFcn("Outputs", 578, 65, 409, 3, 26)
+%assign tlcOutputsFcnOfS578B66 = OpaqueTLCBlockFcn("Outputs", 578, 66, 409, 3, 27)
+%assign tlcOutputsFcnOfS578B67 = OpaqueTLCBlockFcn("Outputs", 578, 67, 409, 3, 28)
+%assign tlcOutputsFcnOfS578B68 = OpaqueTLCBlockFcn("Outputs", 578, 68, 409, 3, 29)
+%assign tlcOutputsFcnOfS578B69 = OpaqueTLCBlockFcn("Outputs", 578, 69, 409, 3, 30)
+%assign tlcOutputsFcnOfS578B70 = OpaqueTLCBlockFcn("Outputs", 578, 70, 409, 3, 31)
+%assign tlcOutputsFcnOfS578B71 = OpaqueTLCBlockFcn("Outputs", 578, 71, 409, 3, 32)
+%assign tlcOutputsFcnOfS578B72 = OpaqueTLCBlockFcn("Outputs", 578, 72, 409, 3, 33)
+%assign tlcOutputsFcnOfS578B81 = OpaqueTLCBlockFcn("Outputs", 578, 81, 409, 3, 34)
+%assign tlcOutputsFcnOfS578B87 = OpaqueTLCBlockFcn("Outputs", 578, 87, 409, 3, 35)
+%assign tlcOutputsFcnOfS578B88 = OpaqueTLCBlockFcn("Outputs", 578, 88, 409, 3, 36)
+%assign tlcOutputsFcnOfS578B89 = OpaqueTLCBlockFcn("Outputs", 578, 89, 409, 3, 37)
+%assign tlcOutputsFcnOfS578B90 = OpaqueTLCBlockFcn("Outputs", 578, 90, 409, 3, 38)
+%assign tlcOutputsFcnOfS578B91 = OpaqueTLCBlockFcn("Outputs", 578, 91, 409, 3, 39)
+%assign tlcOutputsFcnOfS578B92 = OpaqueTLCBlockFcn("Outputs", 578, 92, 409, 3, 40)
+%assign tlcOutputsFcnOfS578B93 = OpaqueTLCBlockFcn("Outputs", 578, 93, 409, 3, 41)
+%assign tlcOutputsFcnOfS578B94 = OpaqueTLCBlockFcn("Outputs", 578, 94, 409, 3, 42)
+%assign tlcOutputsFcnOfS578B103 = OpaqueTLCBlockFcn("Outputs", 578, 103, 409, 3, 43)
+%assign tlcOutputsFcnOfS578B109 = OpaqueTLCBlockFcn("Outputs", 578, 109, 409, 3, 44)
+%assign tlcOutputsFcnOfS578B110 = OpaqueTLCBlockFcn("Outputs", 578, 110, 409, 3, 45)
+%assign tlcOutputsFcnOfS578B115 = OpaqueTLCBlockFcn("Outputs", 578, 115, 409, 3, 46)
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B0)
+/* {S!d3332}S-Function (TOP_MEX): '<S1432>/TOP' */
+%<SLibCG_DumpSSCode("/*@[148b133*/",tlcOutputsFcnOfS578B0,"/*@]*/")>\
+%endif
+/* {S!d3334}MATLAB Function: '<S1432>/sleepingBeautyProcess' incorporates:
+ *  S-Function (TOP_MEX): '<S1432>/TOP'
+ */
+/*  %<"\% inputs"> */
+/*  parameters */
+/* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/SleepingBeauty/SleepingBeauty/Enabled/SleepingBeautyDR/InnerLink/sleepingBeautyProcess': '<S1445>:1' */
+/*  Applies the Left and Right gains to the respective channels via multiple */
+/*    rampers */
+/*  Inputs: */
+/*   audioIn: Input audio */
+/*   channelToRamperMap: Input channels mapped to their corresponding ramper. */
+/*   MaskNumRampers: Number of rampers (set in the Mask file) = 4 */
+/*  Data Store objects (registered in "Edit Data" dialog) */
+/*  Figure out the frame size, channel count and number of rampers */
+/* '<S1445>:1:16' [frameSize, ~] = size(audioIn); */
+/*  set the size and datatype of the output buffer */
+/* '<S1445>:1:19' audioOut = coder.nullcopy(audioIn); */
+/*    Every channel needs a ramper, but every ramper does not need to be on a */
+/*    channel necessarily. */
+/* '<S1445>:1:23' for ramper = 1:MaskNumRampers */
+/*@>10dc35c*/for (/*@>148cf85*/ramper = /*@>148cf84*/0; /*@>148cf8f*/ramper < /*@>148cf8d*/4; /*@>148cf8b*/ramper/*@>148cfea*/++) {
+    /*  Get the gains */
+    /* '<S1445>:1:25' gain = Rampers(ramper).currentGain; */
+    /*@>147ba2b*/gain/*@>10dc318*/ = %<SLibCG_DumpSSCode("/*@[148b1f4*/",(SLibCG_SE(SLibCG_CSCDW(6, 1, "[/*@>148b1cb*/ramper].currentGain", -1, "", 0))),"/*@]*/")>;
+    /* '<S1445>:1:26' rampCoeffMultipliers = ones(1, frameSize, 'single'); */
+/*@>1475a91*/    for (/*@>148cfdc*/i = /*@>148cfdb*/0; /*@>148cfe6*/i < /*@>148cfe4*/8; /*@>148cfe2*/i/*@>148cfeb*/++) {
+        /*@>147b895*/rampCoeffMultipliers/*@>1479bd6*/[/*@>147b897*/i]/*@>1475a84*/ = /*@>147b899*/1.0F;
+    }
+    /* '<S1445>:1:27' if (Freeze(1) == false) */
+    /*@>10dc361*/if (%<SLibCG_DumpSSCode("/*@[148b210*/",(SLibCG_SE(SLibCG_CSCDW(321, 1, "", -1, "", 0))),"/*@]*/")>/*@>10dc338*/ == /*@>147ba20*/0U) {
+        /* '<S1445>:1:28' if (Rampers(ramper).frameCount == 0) */
+        /*@>10dc362*/if (%<SLibCG_DumpSSCode("/*@[148b246*/",(SLibCG_SE(SLibCG_CSCDW(6, 1, "[/*@>148b21d*/ramper].frameCount", -1, "", 0))),"/*@]*/")>/*@>10dc339*/ == /*@>147ba1e*/0) {
+            /*  The ramp is finished. Stop ramping and SNAP to the target */
+            /* '<S1445>:1:30' gain = Rampers(ramper).targetGain; */
+            /*@>147ba1b*/gain/*@>10dc321*/ = %<SLibCG_DumpSSCode("/*@[148b27c*/",(SLibCG_SE(SLibCG_CSCDW(6, 1, "[/*@>148b253*/ramper].targetGain", -1, "", 0))),"/*@]*/")>;
+        } else {
+            /* '<S1445>:1:31' else */
+            /*  The ramp is *NOT* frozen or done: gain is moving */
+            /* '<S1445>:1:33' k = Rampers(ramper).rampCoeff; */
+            /* '<S1445>:1:34' rampCoeffMultipliers = (k * rampCoeffMultipliers) .^ (1:frameSize); */
+/*@>1475ce2*/            for (/*@>148cfcb*/i = /*@>148cfca*/0; /*@>148cfd5*/i < /*@>148cfd3*/8; /*@>148cfd1*/i/*@>148cfef*/++) {
+                /*@>147b854*/rampCoeffMultipliers/*@>1479be2*/[/*@>147b856*/i]/*@>1475cd5*/ = /*@>14869e5*/qhmath_pow_f(%<SLibCG_DumpSSCode("/*@[148b2b2*/",(SLibCG_CSCDW(6, 1, "[/*@>148b289*/ramper].rampCoeff", -1, "", 0)),"/*@]*/")>, /*@>147ea81*/(real32_T)(/*@>147ec5d*/(real_T)/*@>147ec5f*/i/*@>147ec5c*/ + /*@>147ec60*/1.0));
+            }
+            /* '<S1445>:1:35' Rampers(ramper).frameCount = Rampers(ramper).frameCount - 1; */
+            /*@>147be84*/i/*@>147be86*/ = %<SLibCG_DumpSSCode("/*@[148b2e8*/",(SLibCG_SE(SLibCG_CSCDW(6, 1, "[/*@>148b2bf*/ramper].frameCount", -1, "", 0))),"/*@]*/")>;
+            /*@>147f796*/if (/*@>147ea8b*/i/*@>147ea89*/ < /*@>147ea8c*/-2147483647) {
+%<SLibCG_DumpSSCode("/*@[148b7c5*/",SLibCG_SetCSCDW(6, 1, "[/*@>148b799*/ramper].frameCount", -1, "", 0, "MIN_int32_T"),"/*@]*/")>\
+            } else {
+%<SLibCG_DumpSSCode("/*@[148b320*/",SLibCG_SetCSCDW(6, 1, "[/*@>148b2f5*/ramper].frameCount", -1, "", 0, "/*@>148d8e5*/i/*@>148d8e4*/ - /*@>148d8e6*/1"),"/*@]*/")>\
+            }
+        }
+    }
+    /*  Apply the gains to the corresponding channels via the Mask parameter */
+    /*  and tuneTop paramter "channelToRamperMap".   */
+    /* '<S1445>:1:41' currentChannelGroup = find(channelToRamperMap == ramper); */
+/*@>1475c51*/    for (/*@>148cfba*/i = /*@>148cfb9*/0; /*@>148cfc4*/i < /*@>148cfc2*/30; /*@>148cfc0*/i/*@>148cfec*/++) {
+        /*@>147b86a*/tmp/*@>1479bfa*/[/*@>147b86c*/i]/*@>1475c44*/ = (/*@>147d62e*/(real_T)(/*@>147ea95*/ramper/*@>147ea93*/ + /*@>147ea96*/1)/*@>1475c30*/ == %<SLibCG_DumpSSCode("/*@[148b339*/",(SLibCG_SE(SLibCG_BOCSC(266, 30, "", -1, "/*@>14888f9*/i", 0))),"/*@]*/")>);
+    }
+    %<SLibCG_DumpSSCode("/*@[148bf20*/",(SLibCGCallSubFcn("Model_Target_eml_find_i", ["/*@>148d8f0*/tmp", "/*@>148d8fa*/d_data", "d_size"], 409, 3, 0)),"/*@]*/")>;
+    /* '<S1445>:1:42' for ch = 1:numel(currentChannelGroup) */
+    /*@>147ba19*/b/*@>10dc33b*/ = d_size/*@>1488907*/[/*@>1488904*/1];
+/*@>10dc36a*/    for (/*@>148cf96*/ch = /*@>148cf95*/0; /*@>148cfa3*/ch < /*@>148cfa0*/b; /*@>148cf9c*/ch/*@>148cfed*/++) {
+        /* '<S1445>:1:43' audioOut(:,currentChannelGroup(ch)) = (gain * rampCoeffMultipliers)' .* audioIn(:,currentChannelGroup(ch)); */
+        d_tmp = /*@>1488916*/d_data[/*@>1488915*/ch];
+/*@>1475f8f*/        for (/*@>148cfa9*/i = /*@>148cfa8*/0; /*@>148cfb3*/i < /*@>148cfb1*/8; /*@>148cfaf*/i/*@>148cfee*/++) {
+            /*@>1489394*/Model_Target_B./*@>148d4cc*/audioOut_n/*@>14796b3*/[/*@>147b828*/i/*@>14796af*/ + ((d_tmp/*@>14783c4*/ - /*@>147b6c3*/1)/*@>147bedb*/ << /*@>147e6e9*/3)]/*@>1475f82*/ = /*@>148939e*/Model_Target_Medusa5H1Part6_B./*@>148d4cf*/audioOut_d/*@>1488925*/[((d_tmp/*@>148891c*/ - /*@>148891f*/1)/*@>148891b*/ << /*@>1488920*/3)/*@>148891a*/ + /*@>1488922*/i]/*@>147bede*/ * (/*@>147ba0b*/gain/*@>147bee2*/ * /*@>1488929*/rampCoeffMultipliers/*@>148892b*/[/*@>1488928*/i]);
+        }
+    }
+    /* '<S1445>:1:45' Rampers(ramper).currentGain = gain * rampCoeffMultipliers(end); */
+%<SLibCG_DumpSSCode("/*@[148b371*/",SLibCG_SetCSCDW(6, 1, "[/*@>148b346*/ramper].currentGain", -1, "", 0, "/*@>148d917*/gain/*@>148d916*/ * /*@>148d919*/rampCoeffMultipliers/*@>148d918*/[/*@>148d91a*/7]"),"/*@]*/")>\
+}
+/*  If ramper value of -1 is encountered, this indicates an unused channel. */
+/*  Assign values of zero to all samples of these channels. */
+/* '<S1445>:1:50' unusedChannelGroup = find(channelToRamperMap == -1); */
+/*@>1475a3c*/for (/*@>148cf74*/i = /*@>148cf73*/0; /*@>148cf7e*/i < /*@>148cf7c*/30; /*@>148cf7a*/i/*@>148cff0*/++) {
+    /*@>147b8a1*/tmp/*@>1479c2d*/[/*@>147b8a3*/i]/*@>1475a2f*/ = (%<SLibCG_DumpSSCode("/*@[148b38a*/",(SLibCG_SE(SLibCG_BOCSC(266, 30, "", -1, "/*@>14888dc*/i", 0))),"/*@]*/")>/*@>1475a1b*/ == /*@>147b8b4*/-1.0F);
+}
+%<SLibCG_DumpSSCode("/*@[148bf39*/",(SLibCGCallSubFcn("Model_Target_eml_find_i", ["/*@>148d924*/tmp", "/*@>148d92e*/d_data", "d_size"], 409, 3, 1)),"/*@]*/")>;
+/* '<S1445>:1:51' for unusedCh = 1:numel(unusedChannelGroup) */
+/*@>147ba29*/ramper/*@>10dc344*/ = d_size/*@>14888e4*/[/*@>14888e1*/1];
+/*@>10dc371*/for (/*@>148cf50*/b = /*@>148cf4f*/0; /*@>148cf5d*/b < /*@>148cf5a*/ramper; /*@>148cf56*/b/*@>148cff1*/++) {
+    /* '<S1445>:1:52' audioOut(:,unusedChannelGroup(unusedCh)) = 0; */
+    /*@>147b8e9*/ch/*@>1474b5c*/ = /*@>14888ee*/d_data[/*@>14888ed*/b];
+/*@>1475c05*/    for (/*@>148cf63*/i = /*@>148cf62*/0; /*@>148cf6d*/i < /*@>148cf6b*/8; /*@>148cf69*/i/*@>148cff2*/++) {
+        /*@>1489388*/Model_Target_B./*@>148d4c6*/audioOut_n/*@>14796d8*/[/*@>147b87b*/i/*@>14796d4*/ + ((/*@>147b879*/ch/*@>14783bb*/ - /*@>147b6c6*/1)/*@>147bef3*/ << /*@>147e6e7*/3)]/*@>1475bf8*/ = /*@>147b87f*/0.0F;
+    }
+}
+/* {E!d3334}End of MATLAB Function: '<S1432>/sleepingBeautyProcess' */
+
+/* {S!d3336}DataStoreRead: '<S1400>/Data Store Read' */
+/*@>1489370*/Model_Target_B./*@>148d4c0*/DataStoreRead_f3/*@>10dbf71*/ = %<SLibCG_DumpSSCode("/*@[148b3a6*/",(SLibCG_SE(SLibCG_CSCDW(212, 1, "", -1, "", 0))),"/*@]*/")>;
+/* {S!d3338}DataStoreRead: '<S1400>/Data Store Read1' */
+/*@>147bcc8*/gain/*@>10dbf73*/ = %<SLibCG_DumpSSCode("/*@[148b3c2*/",(SLibCG_SE(SLibCG_CSCDW(214, 1, "", -1, "", 0))),"/*@]*/")>;
+/* {S!d3340}DataStoreRead: '<S1413>/Data Store Read' */
+/*@>1489376*/Model_Target_B./*@>148d4c3*/DataStoreRead_b/*@>10dbf75*/ = %<SLibCG_DumpSSCode("/*@[148b3de*/",(SLibCG_SE(SLibCG_CSCDW(215, 1, "", -1, "", 0))),"/*@]*/")>;
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B2)
+/* {S!d3342}S-Function (AudioStats_MEX): '<S1413>/Audio Stats' */
+%<SLibCG_DumpSSCode("/*@[148b136*/",tlcOutputsFcnOfS578B2,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B3)
+/* {S!d3344}S-Function (AudioStats_MEX): '<S1400>/Audio Stats' */
+%<SLibCG_DumpSSCode("/*@[148b139*/",tlcOutputsFcnOfS578B3,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B4)
+/* {S!d3346}S-Function (TOP_MEX): '<S1392>/TOP' */
+%<SLibCG_DumpSSCode("/*@[148b13b*/",tlcOutputsFcnOfS578B4,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B5)
+/* {S!d3287}S-Function (RTC_REQ_RSP): '<S1390>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[148b13d*/",tlcOutputsFcnOfS578B5,"/*@]*/")>\
+%endif
+/* {E!d3287}End of Outputs for S-Function (RTC_REQ_RSP): '<S1390>/RTC Request Response Trigger' */
+
+/* {S!d3289}Outputs for Atomic SubSystem: '<S1400>/Ramping_Subsystem' */
+/* {S!d3348}MinMax: '<S1404>/Max' incorporates:
+ *  Constant: '<S1404>/minGain'
+ */
+/*@>147ba00*/rtb_Max_b/*@>10dc442*/ = /*@>1486a05*/fmaxf(/*@>148938e*/Model_Target_B./*@>148d4c9*/DataStoreRead_f3, /*@>147b6d7*/4.7315126E-7F);
+/* {S!d3362}If: '<S1404>/If' incorporates:
+ *  Abs: '<S1404>/Abs3'
+ *  Constant: '<S1400>/snapThresh'
+ *  DataStoreRead: '<S1404>/frames'
+ *  Sum: '<S1404>/Add'
+ */
+/*@>10dc29f*/if ((/*@>1486a07*/qhmath_abs_f(/*@>147b8fb*/gain/*@>1470ea9*/ - /*@>147b8f9*/rtb_Max_b)/*@>10dc29b*/ > /*@>147b6d6*/1.0E-9F)/*@>10dc29e*/ && (%<SLibCG_DumpSSCode("/*@[148b3fa*/",(SLibCG_SE(SLibCG_CSCDW(213, 1, "", -1, "", 0))),"/*@]*/")>/*@>10dc29d*/ > /*@>147ba52*/0.0F)) {
+    /* {S!d3290}Outputs for IfAction SubSystem: '<S1404>/ifActionSubsystem' incorporates:
+ *  ActionPort: '<S1407>/Action Port'
+ */
+    /* {S!d3350}DataStoreWrite: '<S1407>/Data Store Write' incorporates:
+ *  Constant: '<S1407>/Constant1'
+ *  Sum: '<S1407>/Add'
+ */
+%<SLibCG_DumpSSCode("/*@[148b434*/",SLibCG_SetCSCDW(213, 1, "", -1, "", 0, "%<SLibCG_DumpSSCode("/*@[148d96f*/",(SLibCG_SE(SLibCG_CSCDW(213, 1, "", -1, "", 0))),"/*@]*/")>/*@>148d96e*/ - /*@>148d97a*/1.0F"),"/*@]*/")>\
+    /* {S!d3352}If: '<S1409>/If' incorporates:
+ *  Delay: '<S1409>/Delay'
+ *  Sum: '<S1409>/Add2'
+ */
+    /*@>10dc46e*/if (/*@>147b90e*/gain/*@>1470cc2*/ - /*@>1489733*/Model_Target_DW./*@>148d526*/Delay_DSTATE_c/*@>10dc46d*/ == /*@>147b9fb*/0.0F) {
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[535], "Output",2)
+        /* {S!d3291}Outputs for IfAction SubSystem: '<S1409>/If Action Subsystem' incorporates:
+ *  ActionPort: '<S1410>/Action Port'
+ */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_IfActionSubsystem",535,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[148b1a6*/",SLibCGIRGenReusableSysCall("Model_Target_IfActionSubsystem", ["%<_modelSS>", "&/*@>148d9a8*/rtb_Merge_b"], 535, 0, 6, 2, 6, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[535]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+        /* {E!d3291}End of Outputs for SubSystem: '<S1409>/If Action Subsystem' */
+%endif
+    } else {
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[536], "Output",2)
+        /* {S!d3293}Outputs for IfAction SubSystem: '<S1409>/If Action Subsystem1' incorporates:
+ *  ActionPort: '<S1411>/Action Port'
+ */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_IfActionSubsystem1",536,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[148b1a5*/",SLibCGIRGenReusableSysCall("Model_Target_IfActionSubsystem1", ["%<_modelSS>", "&/*@>148d9d6*/rtb_Merge_b"], 536, 0, 6, 2, 6, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[536]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+        /* {E!d3293}End of Outputs for SubSystem: '<S1409>/If Action Subsystem1' */
+%endif
+    }
+    /* {E!d3352}End of If: '<S1409>/If' */
+
+    /* {S!d3354}DiscreteFilter: '<S1407>/ramping_filter' incorporates:
+ *  Merge: '<S1404>/Merge'
+ *  Product: '<S1407>/Matrix Multiply'
+ *  Product: '<S1408>/Multiply'
+ */
+    /*@>10dc475*/if (/*@>147b9f5*/rtb_Merge_b) {
+        /*@>1489739*/Model_Target_DW./*@>148d529*/ramping_filter_icLoad_i/*@>10dc827*/ = /*@>148cdc4*/1U;
+    }
+    /*@>10dc82e*/if (/*@>148973f*/Model_Target_DW./*@>148d52c*/ramping_filter_icLoad_i/*@>10dc82d*/ != /*@>147b99b*/0) {
+        /*@>1489745*/Model_Target_DW./*@>148d52f*/ramping_filter_states_e/*@>10dc833*/ = /*@>14893a4*/Model_Target_B./*@>148d4d2*/ramping_coeff_m/*@>147be77*/ * /*@>147b908*/rtb_Max_b;
+    }
+    /*@>147b997*/ramper/*@>10dc838*/ = /*@>148cdc7*/0;
+/*@>147749c*/    for (/*@>148cf3f*/ch = /*@>148cf3e*/0; /*@>148cf49*/ch < /*@>148cf47*/8; /*@>148cf45*/ch/*@>148cff3*/++) {
+        /*@>147b806*/rtb_Merge_o2/*@>1476107*/[/*@>147b804*/ramper]/*@>10dc85b*/ = /*@>1489751*/Model_Target_DW./*@>148d535*/ramping_filter_states_e;
+        /*@>148975d*/Model_Target_DW./*@>148d53b*/ramping_filter_states_e/*@>10dc88a*/ = /*@>147b912*/0.0F/*@>146f088*/ - -/*@<147eaaa*//*@>14893bc*/Model_Target_B./*@>148d4db*/ramping_coeff_m/*@>147bef6*/ * /*@>1488940*/rtb_Merge_o2/*@>1488942*/[/*@>148893f*/ramper];
+        /*@>147b98f*/ramper/*@>148cff4*/++;
+    }
+    /* {E!d3354}End of DiscreteFilter: '<S1407>/ramping_filter' */
+
+    /* {S!d3356}Update for Delay: '<S1409>/Delay' */
+    /*@>148974b*/Model_Target_DW./*@>148d532*/Delay_DSTATE_c/*@>10dc902*/ = /*@>147b98d*/gain;
+    /* {S!d3358}Update for DiscreteFilter: '<S1407>/ramping_filter' */
+    /*@>1489757*/Model_Target_DW./*@>148d538*/ramping_filter_icLoad_i/*@>10dc905*/ = /*@>148cdca*/0U;
+    /* {E!d3290}End of Outputs for SubSystem: '<S1404>/ifActionSubsystem' */
+} else {
+    /* {S!d3296}Outputs for IfAction SubSystem: '<S1404>/elseActionSubsystem' incorporates:
+ *  ActionPort: '<S1406>/Action Port'
+ */
+    /* {S!d3360}Product: '<S1406>/Multiply' incorporates:
+ *  Merge: '<S1404>/Merge'
+ */
+/*@>1473e30*/    for (/*@>148cf2e*/i = /*@>148cf2d*/0; /*@>148cf38*/i < /*@>148cf36*/8; /*@>148cf34*/i/*@>148d007*/++) {
+        /*@>147b81f*/rtb_Merge_o2/*@>1475fc5*/[/*@>147b81d*/i]/*@>1473e1f*/ = /*@>147b8f2*/gain;
+    }
+    /* {E!d3360}End of Product: '<S1406>/Multiply' */
+    /* {E!d3296}End of Outputs for SubSystem: '<S1404>/elseActionSubsystem' */
+}
+/* {E!d3362}End of If: '<S1404>/If' */
+
+/* {S!d3364}S-Function (sdspperm2): '<S1401>/Variable Selector' incorporates:
+ *  DataStoreWrite: '<S1400>/Data Store Write'
+ *  Merge: '<S1404>/Merge'
+ */
+%<SLibCG_DumpSSCode("/*@[148b450*/",SLibCG_SetCSCDW(212, 1, "", -1, "", 0, "/*@>148d9e9*/rtb_Merge_o2/*@>148d9e8*/[/*@>148d9ea*/7]"),"/*@]*/")>\
+/* {S!d3298}Outputs for Iterator SubSystem: '<S1405>/For Each Subsystem' incorporates:
+ *  ForEach: '<S1412>/For Each'
+ */
+/*@>148cf07*/for (/*@>148cf03*/ForEach_itr_j/*@>148cf02*/ = /*@>148cf04*/0; /*@>148cefa*/ForEach_itr_j/*@>148cef8*/ < /*@>148cefb*/8; /*@>148cefd*/ForEach_itr_j/*@>148cff5*/++) {
+    /* {S!d3366}ForEachSliceSelector generated from: '<S1412>/In1' incorporates:
+ *  Merge: '<S1404>/Merge'
+ */
+    /*@>147b8df*/gain/*@>1474bd7*/ = /*@>1488934*/rtb_Merge_o2/*@>1488936*/[/*@>1488933*/ForEach_itr_j];
+    /* {S!d3368}ForEachSliceAssignment generated from: '<S1412>/Out1' incorporates:
+ *  Product: '<S1412>/Multiply'
+ */
+/*@>147609e*/    for (/*@>148cf1d*/i = /*@>148cf1c*/0; /*@>148cf27*/i < /*@>148cf25*/30; /*@>148cf23*/i/*@>148cff6*/++) {
+        /*@>14817dd*/ramper/*@>14817df*/ = (/*@>147b815*/i/*@>147bf0b*/ << /*@>147bf0a*/3)/*@>14797f2*/ + /*@>147b817*/ForEach_itr_j;
+        /*@>14893b0*/Model_Target_B./*@>148d4d5*/ImpAsg_InsertedFor_Out1_at_inport_0_n/*@>14797ec*/[ramper]/*@>1476091*/ = /*@>14893b6*/Model_Target_B./*@>148d4d8*/audioOut_n/*@>148893c*/[/*@>1488939*/ramper]/*@>147bf02*/ * /*@>147b8dd*/gain;
+    }
+}
+/* {E!d3298}End of Outputs for SubSystem: '<S1405>/For Each Subsystem' */
+/* {E!d3289}End of Outputs for SubSystem: '<S1400>/Ramping_Subsystem' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B13)
+
+/* {S!d3301}S-Function (RTC_NTF): '<S1390>/NTF Trigger' */
+%<SLibCG_DumpSSCode("/*@[148b142*/",tlcOutputsFcnOfS578B13,"/*@]*/")>\
+%endif
+/* {E!d3301}End of Outputs for S-Function (RTC_NTF): '<S1390>/NTF Trigger' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B21)
+
+/* {S!d3370}M-S-Function: '<S1400>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[148b143*/",tlcOutputsFcnOfS578B21,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B22)
+/* {S!d3372}S-Function (TOP_MEX): '<S1452>/TOP' */
+%<SLibCG_DumpSSCode("/*@[148b145*/",tlcOutputsFcnOfS578B22,"/*@]*/")>\
+%endif
+/* {S!d3374}MATLAB Function: '<S1452>/sleepingBeautyProcess' incorporates:
+ *  S-Function (TOP_MEX): '<S1452>/TOP'
+ */
+/*  %<"\% inputs"> */
+/*  parameters */
+/* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/SleepingBeauty/SleepingBeauty/Enabled/SleepingBeautyFR/InnerLink/sleepingBeautyProcess': '<S1465>:1' */
+/*  Applies the Left and Right gains to the respective channels via multiple */
+/*    rampers */
+/*  Inputs: */
+/*   audioIn: Input audio */
+/*   channelToRamperMap: Input channels mapped to their corresponding ramper. */
+/*   MaskNumRampers: Number of rampers (set in the Mask file) = 4 */
+/*  Data Store objects (registered in "Edit Data" dialog) */
+/*  Figure out the frame size, channel count and number of rampers */
+/* '<S1465>:1:16' [frameSize, ~] = size(audioIn); */
+/*  set the size and datatype of the output buffer */
+/* '<S1465>:1:19' audioOut = coder.nullcopy(audioIn); */
+/*    Every channel needs a ramper, but every ramper does not need to be on a */
+/*    channel necessarily. */
+/* '<S1465>:1:23' for ramper = 1:MaskNumRampers */
+/*@>10dc578*/for (/*@>148ce93*/ramper = /*@>148ce92*/0; /*@>148ce9d*/ramper < /*@>148ce9b*/4; /*@>148ce99*/ramper/*@>148cff7*/++) {
+    /*  Get the gains */
+    /* '<S1465>:1:25' gain = Rampers(ramper).currentGain; */
+    /*@>147b9e7*/gain/*@>10dc534*/ = %<SLibCG_DumpSSCode("/*@[148b484*/",(SLibCG_SE(SLibCG_CSCDW(7, 1, "[/*@>148b45b*/ramper].currentGain", -1, "", 0))),"/*@]*/")>;
+    /* '<S1465>:1:26' rampCoeffMultipliers = ones(1, frameSize, 'single'); */
+/*@>1476247*/    for (/*@>148ceea*/i = /*@>148cee9*/0; /*@>148cef4*/i < /*@>148cef2*/32; /*@>148cef0*/i/*@>148cff8*/++) {
+        /*@>147b7e6*/rampCoeffMultipliers_0/*@>1479c9d*/[/*@>147b7e8*/i]/*@>147623a*/ = /*@>147b7ea*/1.0F;
+    }
+    /* '<S1465>:1:27' if (Freeze(1) == false) */
+    /*@>10dc57d*/if (%<SLibCG_DumpSSCode("/*@[148b4a0*/",(SLibCG_SE(SLibCG_CSCDW(322, 1, "", -1, "", 0))),"/*@]*/")>/*@>10dc554*/ == /*@>147b9dc*/0U) {
+        /* '<S1465>:1:28' if (Rampers(ramper).frameCount == 0) */
+        /*@>10dc57e*/if (%<SLibCG_DumpSSCode("/*@[148b4d6*/",(SLibCG_SE(SLibCG_CSCDW(7, 1, "[/*@>148b4ad*/ramper].frameCount", -1, "", 0))),"/*@]*/")>/*@>10dc555*/ == /*@>147b9da*/0) {
+            /*  The ramp is finished. Stop ramping and SNAP to the target */
+            /* '<S1465>:1:30' gain = Rampers(ramper).targetGain; */
+            /*@>147b9d7*/gain/*@>10dc53d*/ = %<SLibCG_DumpSSCode("/*@[148b50c*/",(SLibCG_SE(SLibCG_CSCDW(7, 1, "[/*@>148b4e3*/ramper].targetGain", -1, "", 0))),"/*@]*/")>;
+        } else {
+            /* '<S1465>:1:31' else */
+            /*  The ramp is *NOT* frozen or done: gain is moving */
+            /* '<S1465>:1:33' k = Rampers(ramper).rampCoeff; */
+            /* '<S1465>:1:34' rampCoeffMultipliers = (k * rampCoeffMultipliers) .^ (1:frameSize); */
+/*@>1476499*/            for (/*@>148ced9*/i = /*@>148ced8*/0; /*@>148cee3*/i < /*@>148cee1*/32; /*@>148cedf*/i/*@>148cffc*/++) {
+                /*@>147b7a5*/rampCoeffMultipliers_0/*@>1479ca9*/[/*@>147b7a7*/i]/*@>147648c*/ = /*@>1486a17*/qhmath_pow_f(%<SLibCG_DumpSSCode("/*@[148b542*/",(SLibCG_CSCDW(7, 1, "[/*@>148b519*/ramper].rampCoeff", -1, "", 0)),"/*@]*/")>, /*@>147eabf*/(real32_T)(/*@>147ec7f*/(real_T)/*@>147ec81*/i/*@>147ec7e*/ + /*@>147ec82*/1.0));
+            }
+            /* '<S1465>:1:35' Rampers(ramper).frameCount = Rampers(ramper).frameCount - 1; */
+            /*@>147bf16*/i/*@>147bf18*/ = %<SLibCG_DumpSSCode("/*@[148b578*/",(SLibCG_SE(SLibCG_CSCDW(7, 1, "[/*@>148b54f*/ramper].frameCount", -1, "", 0))),"/*@]*/")>;
+            /*@>147f7a0*/if (/*@>147eac9*/i/*@>147eac7*/ < /*@>147eaca*/-2147483647) {
+%<SLibCG_DumpSSCode("/*@[148b7fc*/",SLibCG_SetCSCDW(7, 1, "[/*@>148b7d0*/ramper].frameCount", -1, "", 0, "MIN_int32_T"),"/*@]*/")>\
+            } else {
+%<SLibCG_DumpSSCode("/*@[148b5b0*/",SLibCG_SetCSCDW(7, 1, "[/*@>148b585*/ramper].frameCount", -1, "", 0, "/*@>148da29*/i/*@>148da28*/ - /*@>148da2a*/1"),"/*@]*/")>\
+            }
+        }
+    }
+    /*  Apply the gains to the corresponding channels via the Mask parameter */
+    /*  and tuneTop paramter "channelToRamperMap".   */
+    /* '<S1465>:1:41' currentChannelGroup = find(channelToRamperMap == ramper); */
+/*@>1476407*/    for (/*@>148cec8*/i = /*@>148cec7*/0; /*@>148ced2*/i < /*@>148ced0*/22; /*@>148cece*/i/*@>148cff9*/++) {
+        /*@>147b7bb*/tmp_0/*@>1479cc1*/[/*@>147b7bd*/i]/*@>14763fa*/ = (/*@>147d714*/(real_T)(/*@>147ead3*/ramper/*@>147ead1*/ + /*@>147ead4*/1)/*@>14763e6*/ == %<SLibCG_DumpSSCode("/*@[148b5c9*/",(SLibCG_SE(SLibCG_BOCSC(268, 22, "", -1, "/*@>148896d*/i", 0))),"/*@]*/")>);
+    }
+    %<SLibCG_DumpSSCode("/*@[148bf52*/",(SLibCGCallSubFcn("Model_Target_eml_find_e", ["/*@>148da34*/tmp_0", "/*@>148da3e*/d_data_0", "d_size"], 409, 3, 2)),"/*@]*/")>;
+    /* '<S1465>:1:42' for ch = 1:numel(currentChannelGroup) */
+    /*@>147b9d5*/b/*@>10dc557*/ = d_size/*@>148897b*/[/*@>1488978*/1];
+/*@>10dc586*/    for (/*@>148cea4*/ch = /*@>148cea3*/0; /*@>148ceb1*/ch < /*@>148ceae*/b; /*@>148ceaa*/ch/*@>148cffa*/++) {
+        /* '<S1465>:1:43' audioOut(:,currentChannelGroup(ch)) = (gain * rampCoeffMultipliers)' .* audioIn(:,currentChannelGroup(ch)); */
+        d_tmp = /*@>1488990*/d_data_0[/*@>148898f*/ch];
+/*@>147683e*/        for (/*@>148ceb7*/i = /*@>148ceb6*/0; /*@>148cec1*/i < /*@>148cebf*/32; /*@>148cebd*/i/*@>148cffb*/++) {
+            /*@>14893f8*/Model_Target_B./*@>148d4f0*/audioOut/*@>147971b*/[/*@>147b764*/i/*@>1479717*/ + ((d_tmp/*@>14783de*/ - /*@>147b6be*/1)/*@>147bf68*/ << /*@>147e6ef*/5)]/*@>1476831*/ = /*@>14893ff*/Model_Target_Medusa5H1Part6_B./*@>148d4f3*/audioOut/*@>14889ab*/[((d_tmp/*@>14889a2*/ - /*@>14889a5*/1)/*@>14889a1*/ << /*@>14889a6*/5)/*@>14889a0*/ + /*@>14889a8*/i]/*@>147bf6b*/ * (/*@>147b9c7*/gain/*@>147bf6f*/ * /*@>14889af*/rampCoeffMultipliers_0/*@>14889b1*/[/*@>14889ae*/i]);
+        }
+    }
+    /* '<S1465>:1:45' Rampers(ramper).currentGain = gain * rampCoeffMultipliers(end); */
+%<SLibCG_DumpSSCode("/*@[148b601*/",SLibCG_SetCSCDW(7, 1, "[/*@>148b5d6*/ramper].currentGain", -1, "", 0, "/*@>148da5b*/gain/*@>148da5a*/ * /*@>148da5d*/rampCoeffMultipliers_0/*@>148da5c*/[/*@>148da5e*/31]"),"/*@]*/")>\
+}
+/*  If ramper value of -1 is encountered, this indicates an unused channel. */
+/*  Assign values of zero to all samples of these channels. */
+/* '<S1465>:1:50' unusedChannelGroup = find(channelToRamperMap == -1); */
+/*@>14761f2*/for (/*@>148ce82*/i = /*@>148ce81*/0; /*@>148ce8c*/i < /*@>148ce8a*/22; /*@>148ce88*/i/*@>148cffd*/++) {
+    /*@>147b7f2*/tmp_0/*@>1479cf2*/[/*@>147b7f4*/i]/*@>14761e5*/ = (%<SLibCG_DumpSSCode("/*@[148b61a*/",(SLibCG_SE(SLibCG_BOCSC(268, 22, "", -1, "/*@>148894b*/i", 0))),"/*@]*/")>/*@>14761d1*/ == /*@>147b8b1*/-1.0F);
+}
+%<SLibCG_DumpSSCode("/*@[148bf6b*/",(SLibCGCallSubFcn("Model_Target_eml_find_e", ["/*@>148da68*/tmp_0", "/*@>148da72*/d_data_0", "d_size"], 409, 3, 3)),"/*@]*/")>;
+/* '<S1465>:1:51' for unusedCh = 1:numel(unusedChannelGroup) */
+/*@>147b9e5*/ramper/*@>10dc560*/ = d_size/*@>1488953*/[/*@>1488950*/1];
+/*@>10dc58d*/for (/*@>148ce6f*/b = /*@>148ce6e*/0; /*@>148ce7c*/b < /*@>148ce79*/ramper; /*@>148ce75*/b/*@>148cffe*/++) {
+    /* '<S1465>:1:52' audioOut(:,unusedChannelGroup(unusedCh)) = 0; */
+    /*@>147b8d9*/ch/*@>1474c29*/ = /*@>148895d*/d_data_0[/*@>148895c*/b];
+    /*@>1487206*/memset(&/*@>14893ce*/Model_Target_B./*@>148d4e1*/audioOut/*@>1485a7f*/[(/*@>1485a78*/ch/*@>148b88a*/ << /*@>148b889*/5)/*@>1485a74*/ + /*@>1485a7a*/-32], /*@>148cdcd*/0, /*@>1485a84*/sizeof(real32_T)/*@>148b88d*/ << /*@>148b88c*/5U);
+}
+/* {E!d3374}End of MATLAB Function: '<S1452>/sleepingBeautyProcess' */
+
+/* {S!d3303}Outputs for Atomic SubSystem: '<S1413>/Ramping_Subsystem' */
+/* {S!d3376}MinMax: '<S1417>/Max' incorporates:
+ *  Constant: '<S1417>/minGain'
+ */
+/*@>147b9bc*/gain/*@>10dc65e*/ = /*@>1486a2b*/fmaxf(/*@>14893c8*/Model_Target_B./*@>148d4de*/DataStoreRead_b, /*@>147b6d4*/4.7315126E-7F);
+/* {S!d3388}If: '<S1417>/If' incorporates:
+ *  Abs: '<S1417>/Abs3'
+ *  Constant: '<S1413>/snapThresh'
+ *  DataStoreRead: '<S1413>/Data Store Read1'
+ *  DataStoreRead: '<S1417>/frames'
+ *  Sum: '<S1417>/Add'
+ */
+/*@>10dc2df*/if ((/*@>1486a2d*/qhmath_abs_f(%<SLibCG_DumpSSCode("/*@[148b652*/",(SLibCG_SE(SLibCG_CSCDW(217, 1, "", -1, "", 0))),"/*@]*/")>/*@>1470ec3*/ - /*@>147b8f4*/gain)/*@>10dc2db*/ > /*@>147b6d3*/1.0E-9F)/*@>10dc2de*/ && (%<SLibCG_DumpSSCode("/*@[148b636*/",(SLibCG_SE(SLibCG_CSCDW(216, 1, "", -1, "", 0))),"/*@]*/")>/*@>10dc2dd*/ > /*@>147ba44*/0.0F)) {
+    /* {S!d3304}Outputs for IfAction SubSystem: '<S1417>/ifActionSubsystem' incorporates:
+ *  ActionPort: '<S1420>/Action Port'
+ */
+    /* {S!d3378}DataStoreWrite: '<S1420>/Data Store Write' incorporates:
+ *  Constant: '<S1420>/Constant1'
+ *  Sum: '<S1420>/Add'
+ */
+%<SLibCG_DumpSSCode("/*@[148b68c*/",SLibCG_SetCSCDW(216, 1, "", -1, "", 0, "%<SLibCG_DumpSSCode("/*@[148da8f*/",(SLibCG_SE(SLibCG_CSCDW(216, 1, "", -1, "", 0))),"/*@]*/")>/*@>148da8e*/ - /*@>148da9a*/1.0F"),"/*@]*/")>\
+    /* {S!d3380}If: '<S1422>/If' incorporates:
+ *  Delay: '<S1422>/Delay'
+ *  Sum: '<S1422>/Add2'
+ */
+    /*@>10dc67f*/if (%<SLibCG_DumpSSCode("/*@[148b6a6*/",(SLibCG_SE(SLibCG_CSCDW(217, 1, "", -1, "", 0))),"/*@]*/")>/*@>1470cec*/ - /*@>1489763*/Model_Target_DW./*@>148d53e*/Delay_DSTATE_n/*@>10dc67e*/ == /*@>147b9b7*/0.0F) {
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[535], "Output",2)
+        /* {S!d3305}Outputs for IfAction SubSystem: '<S1422>/If Action Subsystem' incorporates:
+ *  ActionPort: '<S1423>/Action Port'
+ */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_IfActionSubsystem",535,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[148b1ab*/",SLibCGIRGenReusableSysCall("Model_Target_IfActionSubsystem", ["%<_modelSS>", "&/*@>148dac8*/rtb_Merge_b"], 535, 1, 6, 2, 6, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[535]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+        /* {E!d3305}End of Outputs for SubSystem: '<S1422>/If Action Subsystem' */
+%endif
+    } else {
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[536], "Output",2)
+        /* {S!d3307}Outputs for IfAction SubSystem: '<S1422>/If Action Subsystem1' incorporates:
+ *  ActionPort: '<S1424>/Action Port'
+ */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_IfActionSubsystem1",536,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[148b1aa*/",SLibCGIRGenReusableSysCall("Model_Target_IfActionSubsystem1", ["%<_modelSS>", "&/*@>148daf6*/rtb_Merge_b"], 536, 1, 6, 2, 6, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[536]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+        /* {E!d3307}End of Outputs for SubSystem: '<S1422>/If Action Subsystem1' */
+%endif
+    }
+    /* {E!d3380}End of If: '<S1422>/If' */
+
+    /* {S!d3382}DiscreteFilter: '<S1420>/ramping_filter' incorporates:
+ *  Merge: '<S1417>/Merge'
+ *  Product: '<S1420>/Matrix Multiply'
+ *  Product: '<S1421>/Multiply'
+ */
+    /*@>10dc686*/if (/*@>147b9b1*/rtb_Merge_b) {
+        /*@>1489769*/Model_Target_DW./*@>148d541*/ramping_filter_icLoad_f/*@>10dc918*/ = /*@>148cdd3*/1U;
+    }
+    /*@>10dc91f*/if (/*@>148976f*/Model_Target_DW./*@>148d544*/ramping_filter_icLoad_f/*@>10dc91e*/ != /*@>147b982*/0) {
+        /*@>1489775*/Model_Target_DW./*@>148d547*/ramping_filter_states_i/*@>10dc924*/ = /*@>14893da*/Model_Target_B./*@>148d4e4*/ramping_coeff_l/*@>147be72*/ * /*@>147b8fe*/gain;
+    }
+    /*@>147b97e*/ramper/*@>10dc929*/ = /*@>148cdd6*/0;
+/*@>1477435*/    for (/*@>148ce5e*/ch = /*@>148ce5d*/0; /*@>148ce68*/ch < /*@>148ce66*/32; /*@>148ce64*/ch/*@>148cfff*/++) {
+        /*@>147b75b*/rtb_Merge/*@>147687f*/[/*@>147b759*/ramper]/*@>10dc94c*/ = /*@>1489781*/Model_Target_DW./*@>148d54d*/ramping_filter_states_i;
+        /*@>148978d*/Model_Target_DW./*@>148d553*/ramping_filter_states_i/*@>10dc97b*/ = /*@>147b913*/0.0F/*@>146f051*/ - -/*@<147eae8*//*@>14893f2*/Model_Target_B./*@>148d4ed*/ramping_coeff_l/*@>147bf83*/ * /*@>148899c*/rtb_Merge/*@>148899e*/[/*@>148899b*/ramper];
+        /*@>147b976*/ramper/*@>148d000*/++;
+    }
+    /* {E!d3382}End of DiscreteFilter: '<S1420>/ramping_filter' */
+
+    /* {S!d3384}Update for Delay: '<S1422>/Delay' */
+    /*@>148977b*/Model_Target_DW./*@>148d54a*/Delay_DSTATE_n/*@>10dc9f3*/ = %<SLibCG_DumpSSCode("/*@[148b6c2*/",(SLibCG_SE(SLibCG_CSCDW(217, 1, "", -1, "", 0))),"/*@]*/")>;
+    /* {S!d3386}Update for DiscreteFilter: '<S1420>/ramping_filter' */
+    /*@>1489787*/Model_Target_DW./*@>148d550*/ramping_filter_icLoad_f/*@>10dc9f6*/ = /*@>148cdd9*/0U;
+    /* {E!d3304}End of Outputs for SubSystem: '<S1417>/ifActionSubsystem' */
+} else {
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[543], "Output",2)
+    /* {S!d3310}Outputs for IfAction SubSystem: '<S1417>/elseActionSubsystem' incorporates:
+ *  ActionPort: '<S1419>/Action Port'
+ */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_elseActionSubsystem",543,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[148b1a9*/",SLibCGIRGenReusableSysCall("Model_Target_elseActionSubsystem", ["%<_modelSS>", "%<SLibCG_DumpSSCode("/*@[148db2c*/",(SLibCG_CSCDW(217, 1, "", -1, "", 0)),"/*@]*/")>", "/*@>148db3e*/rtb_Merge"], 543, 0, 6, 2, 6, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[543]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+    /* {E!d3310}End of Outputs for SubSystem: '<S1417>/elseActionSubsystem' */
+%endif
+}
+/* {E!d3388}End of If: '<S1417>/If' */
+
+/* {S!d3390}S-Function (sdspperm2): '<S1414>/Variable Selector' incorporates:
+ *  DataStoreWrite: '<S1413>/Data Store Write'
+ *  Merge: '<S1417>/Merge'
+ */
+%<SLibCG_DumpSSCode("/*@[148b6e0*/",SLibCG_SetCSCDW(215, 1, "", -1, "", 0, "/*@>148db51*/rtb_Merge/*@>148db50*/[/*@>148db52*/31]"),"/*@]*/")>\
+/* {S!d3312}Outputs for Iterator SubSystem: '<S1418>/For Each Subsystem' incorporates:
+ *  ForEach: '<S1425>/For Each'
+ */
+/*@>148ce37*/for (/*@>148ce33*/ForEach_itr/*@>148ce32*/ = /*@>148ce34*/0; /*@>148ce2a*/ForEach_itr/*@>148ce28*/ < /*@>148ce2b*/32; /*@>148ce2d*/ForEach_itr/*@>148d001*/++) {
+    /* {S!d3392}ForEachSliceSelector generated from: '<S1425>/In1' incorporates:
+ *  Merge: '<S1417>/Merge'
+ */
+    /*@>147b8cf*/gain/*@>1474c93*/ = /*@>1488985*/rtb_Merge/*@>1488987*/[/*@>1488984*/ForEach_itr];
+    /* {S!d3394}ForEachSliceAssignment generated from: '<S1425>/Out1' incorporates:
+ *  Product: '<S1425>/Multiply'
+ */
+/*@>1476660*/    for (/*@>148ce4d*/i = /*@>148ce4c*/0; /*@>148ce57*/i < /*@>148ce55*/22; /*@>148ce53*/i/*@>148d002*/++) {
+        /*@>14817ed*/ramper/*@>14817ef*/ = (/*@>147b787*/i/*@>147bf98*/ << /*@>147bf97*/5)/*@>14797dd*/ + /*@>147b789*/ForEach_itr;
+        /*@>14893e6*/Model_Target_B./*@>148d4e7*/ImpAsg_InsertedFor_Out1_at_inport_0/*@>14797d7*/[ramper]/*@>1476653*/ = /*@>14893ec*/Model_Target_B./*@>148d4ea*/audioOut/*@>1488998*/[/*@>1488995*/ramper]/*@>147bf8f*/ * /*@>147b8cd*/gain;
+    }
+}
+/* {E!d3312}End of Outputs for SubSystem: '<S1418>/For Each Subsystem' */
+/* {E!d3303}End of Outputs for SubSystem: '<S1413>/Ramping_Subsystem' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B25)
+
+/* {S!d3396}M-S-Function: '<S1413>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[148b146*/",tlcOutputsFcnOfS578B25,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B26)
+/* {S!d3398}S-Function (AudioStats_MEX): '<S1382>/Audio Stats' */
+%<SLibCG_DumpSSCode("/*@[148b14b*/",tlcOutputsFcnOfS578B26,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B27)
+/* {S!d3400}S-Function (AudioStats_MEX): '<S1375>/Audio Stats' */
+%<SLibCG_DumpSSCode("/*@[148b150*/",tlcOutputsFcnOfS578B27,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B28)
+/* {S!d3402}S-Function (TOP_MEX): '<S1366>/TOP' */
+%<SLibCG_DumpSSCode("/*@[148b152*/",tlcOutputsFcnOfS578B28,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B29)
+/* {S!d3404}S-Function (TOP_MEX): '<S1364>/TOPDb' */
+%<SLibCG_DumpSSCode("/*@[148b154*/",tlcOutputsFcnOfS578B29,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B30)
+/* {S!d3406}S-Function (TOP_MEX): '<S1364>/TOPIndex' */
+%<SLibCG_DumpSSCode("/*@[148b156*/",tlcOutputsFcnOfS578B30,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B31)
+/* {S!d3408}S-Function (TOP_MEX): '<S1362>/TOP' */
+%<SLibCG_DumpSSCode("/*@[148b158*/",tlcOutputsFcnOfS578B31,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B32)
+/* {S!d3410}S-Function (TOP_MEX): '<S1363>/TOP' */
+%<SLibCG_DumpSSCode("/*@[148b15a*/",tlcOutputsFcnOfS578B32,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B33)
+/* {S!d3412}S-Function (TOP_MEX): '<S1365>/TOP' */
+%<SLibCG_DumpSSCode("/*@[148b15c*/",tlcOutputsFcnOfS578B33,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B34)
+/* {S!d3315}S-Function (RTC_REQ_RSP): '<S1360>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[148b15e*/",tlcOutputsFcnOfS578B34,"/*@]*/")>\
+%endif
+/* {E!d3315}End of Outputs for S-Function (RTC_REQ_RSP): '<S1360>/RTC Request Response Trigger' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B46)
+
+/* {S!d3317}S-Function (RTC_NTF): '<S1360>/NTF Trigger' */
+%<SLibCG_DumpSSCode("/*@[148b163*/",tlcOutputsFcnOfS578B46,"/*@]*/")>\
+%endif
+/* {E!d3317}End of Outputs for S-Function (RTC_NTF): '<S1360>/NTF Trigger' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B54)
+
+/* {S!d3414}M-S-Function: '<S1359>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[148b164*/",tlcOutputsFcnOfS578B54,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B55)
+/* {S!d3416}S-Function (TOP_MEX): '<S1375>/TOP' */
+%<SLibCG_DumpSSCode("/*@[148b166*/",tlcOutputsFcnOfS578B55,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B56)
+/* {S!d3418}S-Function (TOP_MEX): '<S1375>/TOP_ChanRampMap' */
+%<SLibCG_DumpSSCode("/*@[148b168*/",tlcOutputsFcnOfS578B56,"/*@]*/")>\
+%endif
+/* {S!d3420}MATLAB Function: '<S1375>/lpf' incorporates:
+ *  ForEachSliceAssignment generated from: '<S1412>/Out1'
+ *  S-Function (TOP_MEX): '<S1375>/TOP'
+ */
+/*  Applies the filter coefficients to the input audio */
+/*  Inputs:  */
+/*   audioIn: Input audio */
+/*   lpfCoeffs: Filter coefficients */
+/* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/SleepingBeauty/SleepingBeauty/Enabled/FadeRamperDR/InnerLink/lpf': '<S1381>:1' */
+/* '<S1381>:1:8' [frameSize, channel_count] = size(audioIn); */
+/* '<S1381>:1:11' if (isempty(filterStates)) */
+/* '<S1381>:1:15' yLpf = coder.nullcopy(audioIn); */
+/*  Get filter coefficients */
+/* '<S1381>:1:18' bCoeffs = lpfCoeffs(1:2); */
+/* '<S1381>:1:19' aCoeffs = lpfCoeffs(3); */
+/*  Apply the filter to the audio */
+/* '<S1381>:1:22' for n = 1:frameSize */
+/*@>147b8cb*/gain/*@>1474cd8*/ = %<SLibCG_DumpSSCode("/*@[148b6fb*/",(SLibCG_SE(SLibCG_BOCSC(275, 3, "", -1, "", 0))),"/*@]*/")>;
+/*@>147b8c7*/rtb_Max_b/*@>1474ce9*/ = %<SLibCG_DumpSSCode("/*@[148b718*/",(SLibCG_SE(SLibCG_BOCSC(275, 3, "", -1, "", 1))),"/*@]*/")>;
+/*@>147b8c3*/tmp_1/*@>1474cf5*/ = %<SLibCG_DumpSSCode("/*@[148b735*/",(SLibCG_SE(SLibCG_BOCSC(275, 3, "", -1, "", 2))),"/*@]*/")>;
+/*@>10dc74b*/for (/*@>148ce09*/ramper = /*@>148ce08*/0; /*@>148ce13*/ramper < /*@>148ce11*/8; /*@>148ce0f*/ramper/*@>148d003*/++) {
+    /* '<S1381>:1:23' yLpf(n,:) = bCoeffs(1) * audioIn(n,:) + filterStates; */
+    /* '<S1381>:1:24' filterStates = bCoeffs(2) * audioIn(n,:) + aCoeffs * yLpf(n,:); */
+/*@>1476a02*/    for (/*@>148ce1a*/i = /*@>148ce19*/0; /*@>148ce24*/i < /*@>148ce22*/30; /*@>148ce20*/i/*@>148d004*/++) {
+        /*@>14817fd*/b/*@>14817ff*/ = (/*@>147b74e*/i/*@>147bfbc*/ << /*@>147bfbb*/3)/*@>1479769*/ + /*@>147b750*/ramper;
+        /*@>148180d*/rtb_yLpf_a_tmp/*@>148180f*/ = /*@>1489423*/Model_Target_B./*@>148d4ff*/ImpAsg_InsertedFor_Out1_at_inport_0_n/*@>14889c6*/[/*@>14889c3*/b];
+        rtb_yLpf_e/*@>14769f5*/ = /*@>1481811*/rtb_yLpf_a_tmp/*@>147bfb3*/ * /*@>147b8c9*/gain/*@>14769ac*/ + /*@>1489793*/Model_Target_DW./*@>148d556*/filterStates_p/*@>14889cc*/[/*@>14889c9*/i];
+        /*@>1489799*/Model_Target_DW./*@>148d559*/filterStates_p/*@>1476b0b*/[/*@>147b739*/i]/*@>1476b0c*/ = rtb_yLpf_a_tmp/*@>147bfa3*/ * /*@>147b8c5*/rtb_Max_b/*@>1476ac1*/ + /*@>147b8c1*/tmp_1/*@>147bfaf*/ * rtb_yLpf_e;
+        /*@>1489429*/Model_Target_B./*@>148d502*/yLpf_a/*@>1479783*/[b] = rtb_yLpf_e;
+    }
+}
+/* {E!d3420}End of MATLAB Function: '<S1375>/lpf' */
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[518], "Output",2)
+
+/* {S!d3422}MATLAB Function: '<S1375>/fade' */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_fade",518,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[148b1b1*/",SLibCGIRGenReusableSysCall("Model_Target_fade", ["%<_modelSS>", "/*@>148dc12*/Model_Target_B./*@>148dc11*/ImpAsg_InsertedFor_Out1_at_inport_0_n", "%<SLibCG_DumpSSCode("/*@[148dc1d*/",(SLibCG_BOCSCAddr(276, 30, "", -1, "", 0)),"/*@]*/")>", "/*@>148dc30*/Model_Target_B./*@>148dc2f*/yLpf_a", "&/*@>148dc3d*/Model_Target_B./*@>148dc3c*/sf_fade"], 518, 0, 6, 2, 6, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[518]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B59)
+/* {S!d3424}M-S-Function: '<S1375>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[148b169*/",tlcOutputsFcnOfS578B59,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B60)
+/* {S!d3426}S-Function (TOP_MEX): '<S1382>/TOP' */
+%<SLibCG_DumpSSCode("/*@[148b16b*/",tlcOutputsFcnOfS578B60,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B61)
+/* {S!d3428}S-Function (TOP_MEX): '<S1382>/TOP_ChanRampMap' */
+%<SLibCG_DumpSSCode("/*@[148b16d*/",tlcOutputsFcnOfS578B61,"/*@]*/")>\
+%endif
+/* {S!d3430}MATLAB Function: '<S1382>/lpf' incorporates:
+ *  ForEachSliceAssignment generated from: '<S1425>/Out1'
+ *  S-Function (TOP_MEX): '<S1382>/TOP'
+ */
+/*  Applies the filter coefficients to the input audio */
+/*  Inputs:  */
+/*   audioIn: Input audio */
+/*   lpfCoeffs: Filter coefficients */
+/* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/SleepingBeauty/SleepingBeauty/Enabled/FadeRamperFR/InnerLink/lpf': '<S1388>:1' */
+/* '<S1388>:1:8' [frameSize, channel_count] = size(audioIn); */
+/* '<S1388>:1:11' if (isempty(filterStates)) */
+/* '<S1388>:1:15' yLpf = coder.nullcopy(audioIn); */
+/*  Get filter coefficients */
+/* '<S1388>:1:18' bCoeffs = lpfCoeffs(1:2); */
+/* '<S1388>:1:19' aCoeffs = lpfCoeffs(3); */
+/*  Apply the filter to the audio */
+/* '<S1388>:1:22' for n = 1:frameSize */
+/*@>147b8bf*/gain/*@>1474d07*/ = %<SLibCG_DumpSSCode("/*@[148b752*/",(SLibCG_SE(SLibCG_BOCSC(277, 3, "", -1, "", 0))),"/*@]*/")>;
+/*@>147b8bb*/rtb_Max_b/*@>1474d1a*/ = %<SLibCG_DumpSSCode("/*@[148b76f*/",(SLibCG_SE(SLibCG_BOCSC(277, 3, "", -1, "", 1))),"/*@]*/")>;
+/*@>147b8b7*/tmp_1/*@>1474d26*/ = %<SLibCG_DumpSSCode("/*@[148b78c*/",(SLibCG_SE(SLibCG_BOCSC(277, 3, "", -1, "", 2))),"/*@]*/")>;
+/*@>10dc7b7*/for (/*@>148cde7*/ramper = /*@>148cde6*/0; /*@>148cdf1*/ramper < /*@>148cdef*/32; /*@>148cded*/ramper/*@>148d005*/++) {
+    /* '<S1388>:1:23' yLpf(n,:) = bCoeffs(1) * audioIn(n,:) + filterStates; */
+    /* '<S1388>:1:24' filterStates = bCoeffs(2) * audioIn(n,:) + aCoeffs * yLpf(n,:); */
+/*@>1476c12*/    for (/*@>148cdf8*/i = /*@>148cdf7*/0; /*@>148ce02*/i < /*@>148ce00*/22; /*@>148cdfe*/i/*@>148d006*/++) {
+        /*@>1481825*/b/*@>1481827*/ = (/*@>147b730*/i/*@>147bfe0*/ << /*@>147bfdf*/5)/*@>1479789*/ + /*@>147b732*/ramper;
+        /*@>1481835*/rtb_yLpf_a_tmp/*@>1481837*/ = /*@>1489464*/Model_Target_B./*@>148d517*/ImpAsg_InsertedFor_Out1_at_inport_0/*@>14889e1*/[/*@>14889de*/b];
+        rtb_yLpf_e/*@>1476c05*/ = /*@>1481839*/rtb_yLpf_a_tmp/*@>147bfd7*/ * /*@>147b8bd*/gain/*@>1476bbc*/ + /*@>148979f*/Model_Target_DW./*@>148d55c*/filterStates/*@>14889e7*/[/*@>14889e4*/i];
+        /*@>14897a5*/Model_Target_DW./*@>148d55f*/filterStates/*@>1476e44*/[/*@>147b6ee*/i]/*@>1476e45*/ = rtb_yLpf_a_tmp/*@>147bfc7*/ * /*@>147b8b9*/rtb_Max_b/*@>1476dfa*/ + /*@>147b8b5*/tmp_1/*@>147bfd3*/ * rtb_yLpf_e;
+        /*@>1489482*/Model_Target_B./*@>148d523*/yLpf/*@>14797a3*/[b] = rtb_yLpf_e;
+    }
+}
+/* {E!d3430}End of MATLAB Function: '<S1382>/lpf' */
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[520], "Output",2)
+
+/* {S!d3432}MATLAB Function: '<S1382>/fade' */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_fade_l",520,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[148b1b2*/",SLibCGIRGenReusableSysCall("Model_Target_fade_l", ["%<_modelSS>", "/*@>148dc9b*/Model_Target_B./*@>148dc9a*/ImpAsg_InsertedFor_Out1_at_inport_0", "%<SLibCG_DumpSSCode("/*@[148dca6*/",(SLibCG_BOCSCAddr(278, 22, "", -1, "", 0)),"/*@]*/")>", "/*@>148dcb9*/Model_Target_B./*@>148dcb8*/yLpf", "&/*@>148dcc6*/Model_Target_B./*@>148dcc5*/sf_fade_l"], 520, 0, 6, 2, 6, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[520]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B64)
+/* {S!d3434}M-S-Function: '<S1382>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[148b16e*/",tlcOutputsFcnOfS578B64,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B65)
+/* {S!d3436}M-S-Function: '<S1389>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[148b16f*/",tlcOutputsFcnOfS578B65,"/*@]*/")>\
+%endif
+/* {S!d3438}Selector: '<S1346>/Selector' */
+/*@>1487213*/memcpy(&/*@>148944d*/Model_Target_B./*@>148d50e*/PreAmp2NonHrDr/*@>148568d*/[/*@>148567c*/0], &/*@>1489458*/Model_Target_B./*@>148d514*/sf_fade./*@>148d511*/audioOut/*@>1485695*/[/*@>1485689*/0], /*@>148568b*/144U/*@>1485698*/ * /*@>1485697*/sizeof(real32_T));
+/* {S!d3440}Selector: '<S1346>/Selector1' */
+/*@>1487215*/memcpy(&/*@>148946a*/Model_Target_B./*@>148d51a*/PreAmp2HeadrestDr/*@>1485631*/[/*@>1485620*/0], &/*@>1489475*/Model_Target_B./*@>148d520*/sf_fade./*@>148d51d*/audioOut/*@>148563b*/[/*@>148562d*/144], /*@>148562f*/96U/*@>148563e*/ * /*@>148563d*/sizeof(real32_T));
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B66)
+/* {S!d3442}S-Function (AudioStats_MEX): '<S1432>/Audio Stats' */
+%<SLibCG_DumpSSCode("/*@[148b174*/",tlcOutputsFcnOfS578B66,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B67)
+/* {S!d3444}S-Function (TOP_MEX): '<S1438>/TOP' */
+%<SLibCG_DumpSSCode("/*@[148b176*/",tlcOutputsFcnOfS578B67,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B68)
+/* {S!d3446}S-Function (TOP_MEX): '<S1440>/TOP' */
+%<SLibCG_DumpSSCode("/*@[148b178*/",tlcOutputsFcnOfS578B68,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B69)
+/* {S!d3448}S-Function (TOP_MEX): '<S1440>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[148b17a*/",tlcOutputsFcnOfS578B69,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B70)
+/* {S!d3450}S-Function (TOP_MEX): '<S1437>/TOP' */
+%<SLibCG_DumpSSCode("/*@[148b17c*/",tlcOutputsFcnOfS578B70,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B71)
+/* {S!d3452}S-Function (TOP_MEX): '<S1439>/TOP' */
+%<SLibCG_DumpSSCode("/*@[148b17e*/",tlcOutputsFcnOfS578B71,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B72)
+/* {S!d3319}S-Function (RTC_REQ_RSP): '<S1433>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[148b180*/",tlcOutputsFcnOfS578B72,"/*@]*/")>\
+%endif
+/* {E!d3319}End of Outputs for S-Function (RTC_REQ_RSP): '<S1433>/RTC Request Response Trigger' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B81)
+
+/* {S!d3321}S-Function (RTC_NTF): '<S1433>/NTF Trigger' */
+%<SLibCG_DumpSSCode("/*@[148b185*/",tlcOutputsFcnOfS578B81,"/*@]*/")>\
+%endif
+/* {E!d3321}End of Outputs for S-Function (RTC_NTF): '<S1433>/NTF Trigger' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B87)
+
+/* {S!d3454}M-S-Function: '<S1432>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[148b186*/",tlcOutputsFcnOfS578B87,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B88)
+/* {S!d3456}S-Function (AudioStats_MEX): '<S1452>/Audio Stats' */
+%<SLibCG_DumpSSCode("/*@[148b18b*/",tlcOutputsFcnOfS578B88,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B89)
+/* {S!d3458}S-Function (TOP_MEX): '<S1458>/TOP' */
+%<SLibCG_DumpSSCode("/*@[148b18d*/",tlcOutputsFcnOfS578B89,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B90)
+/* {S!d3460}S-Function (TOP_MEX): '<S1460>/TOP' */
+%<SLibCG_DumpSSCode("/*@[148b18f*/",tlcOutputsFcnOfS578B90,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B91)
+/* {S!d3462}S-Function (TOP_MEX): '<S1460>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[148b191*/",tlcOutputsFcnOfS578B91,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B92)
+/* {S!d3464}S-Function (TOP_MEX): '<S1457>/TOP' */
+%<SLibCG_DumpSSCode("/*@[148b193*/",tlcOutputsFcnOfS578B92,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B93)
+/* {S!d3466}S-Function (TOP_MEX): '<S1459>/TOP' */
+%<SLibCG_DumpSSCode("/*@[148b195*/",tlcOutputsFcnOfS578B93,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B94)
+/* {S!d3323}S-Function (RTC_REQ_RSP): '<S1453>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[148b197*/",tlcOutputsFcnOfS578B94,"/*@]*/")>\
+%endif
+/* {E!d3323}End of Outputs for S-Function (RTC_REQ_RSP): '<S1453>/RTC Request Response Trigger' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B103)
+
+/* {S!d3325}S-Function (RTC_NTF): '<S1453>/NTF Trigger' */
+%<SLibCG_DumpSSCode("/*@[148b19c*/",tlcOutputsFcnOfS578B103,"/*@]*/")>\
+%endif
+/* {E!d3325}End of Outputs for S-Function (RTC_NTF): '<S1453>/NTF Trigger' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B109)
+
+/* {S!d3468}M-S-Function: '<S1452>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[148b19d*/",tlcOutputsFcnOfS578B109,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B110)
+/* {S!d3327}S-Function (RTC_REQ_RSP): '<S1354>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[148b19f*/",tlcOutputsFcnOfS578B110,"/*@]*/")>\
+%endif
+/* {E!d3327}End of Outputs for S-Function (RTC_REQ_RSP): '<S1354>/RTC Request Response Trigger' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS578B115)
+
+/* {S!d3329}S-Function (RTC_NTF): '<S1354>/NTF Trigger' */
+%<SLibCG_DumpSSCode("/*@[148b1a1*/",tlcOutputsFcnOfS578B115,"/*@]*/")>\
+/* {E!d3329}End of Outputs for S-Function (RTC_NTF): '<S1354>/NTF Trigger' */
+%endif
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_Enabled(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(409, 3, fcnProtoType)>
+%endfunction

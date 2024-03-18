@@ -1,0 +1,74 @@
+%implements "chartSource" "C"
+%function ChartConfig(block, system) void
+  %createrecord chartConfiguration { ...
+          executeAtInitialization  0 ...
+  }
+  %return chartConfiguration
+%endfunction
+%function ChartDataMap(block, system) void
+  %createrecord ChartDataElements {\
+    NumChartData   8 \
+    ChartDataDefaults {\
+      RecordType   "ChartData"\
+      Dimensions   []\
+      IsTestPoint  0\
+    }\
+    ChartData {\
+      Name         "lastTGain"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "Model_Target:851:117-126"\
+    }\
+    ChartData {\
+      Name         "lastTGain_not_empty"\
+      Description  "EmlPersistentSentinel"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "Model_Target:851:117-126"\
+    }\
+    ChartData {\
+      Name         "lastG"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "Model_Target:851:211-216"\
+    }\
+    ChartData {\
+      Name         "upCoeff"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "Model_Target:851:305-312"\
+    }\
+    ChartData {\
+      Name         "upCoeffN"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "Model_Target:851:385-393"\
+    }\
+    ChartData {\
+      Name         "downCoeff"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "Model_Target:851:468-477"\
+    }\
+    ChartData {\
+      Name         "downCoeffN"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "Model_Target:851:554-564"\
+    }\
+    ChartData {\
+      Name         "lpfCoeff"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "Model_Target:851:745-753"\
+    }\
+  }
+  %return ChartDataElements
+%endfunction

@@ -1,0 +1,21 @@
+%implements s1068_b0_g3vnd_99_SystemInitialize "C"
+
+%function SystemInitialize(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%<SLibCGIRDumpSystemUserCode(314, "Initialize", "Header")>\
+%<SLibCGIRDumpSystemUserCode(314, "Initialize", "Body")>\
+%<SLibCGIRDumpSystemUserCode(314, "Initialize", "Trailer")>\
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedSystemInitializeLocalVars", localVarDecl)>
+%endfunction
+%function SystemInitializeFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_ExpandTailComponents_Init(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(99, 0, fcnProtoType)>
+%endfunction

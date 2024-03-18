@@ -1,0 +1,31 @@
+%implements s1068_b0_g3vnd_122_ConstCode "C"
+
+%function ConstCode(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[314], "ConstCode",2)
+/* {S!d973}ConstCode for IfAction SubSystem: '<S587>/On' */
+/* {S!d974}ConstCode for Atomic SubSystem: '<S887>/Expand Tail Components' */
+%<SLibCG_DumpSSCode("/*@[12ab4a6*/",SLibCGIRGenReusableSysCall("Model_Target_ExpandTailComponents_Const", [], 314, 0, 27, 2, 27, 423),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[314]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d974}End of ConstCode for SubSystem: '<S887>/Expand Tail Components' */
+/* {E!d973}End of ConstCode for SubSystem: '<S587>/On' */
+%endif
+%closefile cfgTxt
+%<cfgTxt>
+%endfunction
+%function ConstCodeFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_Medusa5H1Part3_Const(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(122, 4, fcnProtoType)>
+%endfunction

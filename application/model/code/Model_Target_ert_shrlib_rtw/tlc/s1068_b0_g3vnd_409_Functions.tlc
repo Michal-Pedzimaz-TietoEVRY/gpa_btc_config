@@ -1,0 +1,98 @@
+%implements s1068_b0_g3vnd_409_Functions "C"
+
+%function Model_Target_eml_find_i_Fcn0(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+%assign cfgTxt = ""
+%openfile cfgTxt
+int32_T idx;
+int32_T ii;
+boolean_T exitg1;
+/*@>147bdca*/idx/*@>c35035*/ = /*@>148cbc7*/0;
+i_size/*@>1476ed8*/[/*@>147bdf1*/0]/*@>1476ed9*/ = /*@>148cbca*/1;
+/*@>147bdcf*/ii/*@>c3504b*/ = /*@>148cbcd*/0;
+exitg1 = false;
+while/*@<c35053*/ ((!exitg1) && (/*@>147bdd2*/ii/*@>c35052*/ < /*@>147bdd4*/30)) {
+    /*@>c3503c*/if (/*@>14889ec*/x/*@>14889ee*/[/*@>14889ea*/ii]) {
+        /*@>147bdd8*/idx/*@>148cbff*/++;
+        /*@>1486998*/i_data[/*@>147bdfc*/idx/*@>1476f66*/ - /*@>147bdfe*/1]/*@>c3502c*/ = /*@>147bde2*/ii/*@>14783f3*/ + /*@>147bdff*/1;
+        /*@>c3503f*/if (/*@>147bddf*/idx/*@>c35020*/ >= /*@>147bde1*/30) {
+            exitg1 = true;
+        } else {
+            /*@>148cbf2*/ii/*@>148cc00*/++;
+        }
+    } else {
+        /*@>147bddd*/ii/*@>148cc01*/++;
+    }
+}
+/*@>147f7ad*/if (/*@>147bde4*/idx/*@>146f64c*/ < /*@>147bde6*/1) {
+    i_size/*@>147f7b1*/[/*@>147f7b4*/1]/*@>147f7b0*/ = /*@>148cbd0*/0;
+} else {
+    i_size/*@>147a041*/[/*@>147be02*/1]/*@>147a040*/ = /*@>147bde8*/idx;
+}
+%closefile cfgTxt
+%<cfgTxt>
+%closefile fcnBuff
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_eml_find_i(\
+%assign comma = ""
+%<comma>const boolean_T x[30]\
+%assign comma = ", "
+%<comma>int32_T i_data[]\
+%assign comma = ", "
+%<comma>int32_T i_size[2]\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(409, 0, fcnProtoType)>
+%return fcnBuff
+%endfunction
+
+%function Model_Target_eml_find_e_Fcn1(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+%assign cfgTxt = ""
+%openfile cfgTxt
+int32_T idx;
+int32_T ii;
+boolean_T exitg1;
+/*@>147be16*/idx/*@>c6ef35*/ = /*@>148cc56*/0;
+i_size/*@>1476fa6*/[/*@>147be3d*/0]/*@>1476fa7*/ = /*@>148cc59*/1;
+/*@>147be1b*/ii/*@>c6ef4b*/ = /*@>148cc5c*/0;
+exitg1 = false;
+while/*@<c6ef53*/ ((!exitg1) && (/*@>147be1e*/ii/*@>c6ef52*/ < /*@>147be20*/22)) {
+    /*@>c6ef3c*/if (/*@>14889f3*/x/*@>14889f5*/[/*@>14889f1*/ii]) {
+        /*@>147be24*/idx/*@>148cc8e*/++;
+        /*@>14869af*/i_data[/*@>147be48*/idx/*@>1477034*/ - /*@>147be4a*/1]/*@>c6ef2c*/ = /*@>147be2e*/ii/*@>1478405*/ + /*@>147be4b*/1;
+        /*@>c6ef3f*/if (/*@>147be2b*/idx/*@>c6ef20*/ >= /*@>147be2d*/22) {
+            exitg1 = true;
+        } else {
+            /*@>148cc81*/ii/*@>148cc8f*/++;
+        }
+    } else {
+        /*@>147be29*/ii/*@>148cc90*/++;
+    }
+}
+/*@>147f7b7*/if (/*@>147be30*/idx/*@>146f6a9*/ < /*@>147be32*/1) {
+    i_size/*@>147f7bb*/[/*@>147f7be*/1]/*@>147f7ba*/ = /*@>148cc5f*/0;
+} else {
+    i_size/*@>147a04b*/[/*@>147be4e*/1]/*@>147a04a*/ = /*@>147be34*/idx;
+}
+%closefile cfgTxt
+%<cfgTxt>
+%closefile fcnBuff
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_eml_find_e(\
+%assign comma = ""
+%<comma>const boolean_T x[22]\
+%assign comma = ", "
+%<comma>int32_T i_data[]\
+%assign comma = ", "
+%<comma>int32_T i_size[2]\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(409, 1, fcnProtoType)>
+%return fcnBuff
+%endfunction
+

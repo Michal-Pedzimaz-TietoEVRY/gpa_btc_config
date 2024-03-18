@@ -1,0 +1,124 @@
+%implements s1068_b0_g3vnd_78_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+uint32_T idx;
+uint8_T j;
+boolean_T exitg1;
+%closefile localVarDecl
+/*@>12322f9*/idx/*@>10cc53e*/ = /*@>123230d*/rtu_idx;
+/*  Calculate a gain_value from VolumeTable, table index, and index table */
+/*  */
+/* MATLAB Function 'NEAR/Near1p1/VolumeMute/VolMuteCh1/Volume/calculate_vol_gain': '<S1913>:1' */
+/* '<S1913>:1:5' iter=size(idx,2); */
+/* gain_value = single(0.0); */
+/* '<S1913>:1:7' gain_value=single(zeros(1,iter)); */
+/*@>1233d68*/localB->/*@>1234257*/gain_value/*@>10cc540*/ = /*@>1232301*/0.0F;
+/* '<S1913>:1:8' percent =zeros(1,iter); */
+/* '<S1913>:1:9' lastIdx =zeros(1,iter); */
+/* '<S1913>:1:11' for chind=1:iter */
+/* '<S1913>:1:12' j = uint8(1); */
+/*@>12322e2*/j/*@>10cc541*/ = /*@>1234182*/1U;
+/*  workaround to type problem */
+/* '<S1913>:1:14' idx(chind) = cast(idx(chind), class(volTableIdx(end))); */
+/*   bounds checking for vol - clip to max idx */
+/* '<S1913>:1:17' if (idx(chind) > volTableIdx(end)) */
+/*@>10cc560*/if (/*@>123230f*/rtu_idx/*@>10cc550*/ > /*@>1233c90*/rtu_volTableIdx/*@>1233c92*/[/*@>1233c8e*/15]) {
+    /* '<S1913>:1:18' idx(chind) = volTableIdx(end); */
+    /*@>12322e4*/idx/*@>10cc544*/ = /*@>1233c96*/rtu_volTableIdx/*@>1233c98*/[/*@>1233c94*/15];
+}
+/*  search through volume table to find index closest to vol */
+/* '<S1913>:1:22' while (j <= numel(volTableIdx)) */
+exitg1 = false;
+while/*@<10cc565*/ ((!exitg1) && (/*@>12322e6*/j/*@>10cc552*/ <= /*@>1232302*/16)) {
+    uint32_T tmp_0;
+    /* '<S1913>:1:23' if (idx(chind) <= volTableIdx(j)) */
+    /*@>1232cd6*/tmp_0/*@>1232cd8*/ = /*@>1233ca0*/rtu_volTableIdx/*@>1233ca2*/[/*@>1233c9d*/j/*@>1233c9a*/ - /*@>1233c9e*/1];
+    /*@>10cc566*/if (/*@>12322e8*/idx/*@>10cc555*/ <= /*@>1232cda*/tmp_0) {
+        /* '<S1913>:1:24' if (j <= 1) */
+        /*@>10cc567*/if (/*@>12322ea*/j/*@>10cc556*/ <= /*@>12322ec*/1) {
+            real_T a;
+            /*  first indexed value is linearly interpolated to zero */
+            /* '<S1913>:1:25' if (volTableIdx(j)) */
+            /*@>10cc569*/if (/*@>1233ca6*/rtu_volTableIdx/*@>1233ca8*/[/*@>1233ca4*/0]/*@>10cc558*/ != /*@>12322f2*/0U) {
+                /* '<S1913>:1:26' percent(chind) = single(idx(chind)) / single(volTableIdx(j)); */
+                /*@>12322fb*/a/*@>10cc54b*/ = /*@>1233892*/qhmath_div_f(/*@>10cc5b5*/(real32_T)/*@>12322ff*/idx, /*@>10cc5b8*/(real32_T)/*@>1233cac*/rtu_volTableIdx/*@>1233cae*/[/*@>1233caa*/0]);
+            } else {
+                /* '<S1913>:1:27' else */
+                /* '<S1913>:1:28' percent(chind) = single(1); */
+                /*@>12322fd*/a/*@>10cc54c*/ = /*@>1232303*/1.0;
+            }
+            /* '<S1913>:1:30' gain_value(chind) = percent(chind) * 10 ^ (volTabledB(j) / 20); */
+            /*@>1233d6f*/localB->/*@>123425a*/gain_value/*@>10cc59b*/ = /*@>10cc59d*/(real32_T)/*@>12322f3*/a/*@>12323df*/ * /*@>1233896*/qhmath_pow_f(/*@>1232305*/10.0F, /*@>1233894*/qhmath_div_f(/*@>1233cbc*/rtu_volTabledB/*@>1233cbe*/[/*@>1233cba*/0], /*@>1232304*/20.0F));
+        } else {
+            real_T a;
+            real_T tmp;
+            real32_T gain_value_tmp;
+            /* '<S1913>:1:31' else */
+            /*  other values are interpolated in db space */
+            /* '<S1913>:1:32' lastIdx(chind) = volTableIdx(j-1); */
+            /* '<S1913>:1:33' percent(chind) = single(idx(chind) - lastIdx(chind)) / single(volTableIdx(j) - lastIdx(chind)); */
+            /* '<S1913>:1:34' gain_value(chind) = 10 ^ (((percent(chind) * (volTabledB(j) - volTabledB(j-1))) + volTabledB(j-1)) / 20); */
+            /*@>1232cf6*/a/*@>1232cf8*/ = /*@>1233cb6*/rtu_volTableIdx/*@>1233cb8*/[/*@>1233cb3*/j/*@>1233cb0*/ - /*@>1233cb4*/2];
+            /*@>1232368*/tmp/*@>123236a*/ = /*@>12326f2*/(real_T)/*@>1232308*/idx/*@>10cc5d0*/ - /*@>1232cfa*/a;
+            /*@>1232398*/a/*@>123239a*/ = /*@>1232704*/(real_T)tmp_0/*@>10cc5d5*/ - a;
+            /*@>1232b54*/if (/*@>12328cb*/tmp/*@>12328c9*/ >= /*@>12328cc*/0.0) {
+                /*@>1232b58*/tmp_0/*@>1232b57*/ = /*@>12328cd*/(uint32_T)/*@>12328cf*/tmp;
+            } else {
+                /*@>1232b45*/tmp_0/*@>1232b47*/ = /*@>12328d0*/0U;
+            }
+            /*@>1232b59*/if (/*@>12328d4*/a/*@>12328d2*/ >= /*@>12328d5*/0.0) {
+                /*@>1232b5d*/idx/*@>1232b5c*/ = /*@>12328d6*/(uint32_T)/*@>12328d8*/a;
+            } else {
+                /*@>1232b4d*/idx/*@>1232b4f*/ = /*@>12328d9*/0U;
+            }
+            /*@>1232d1e*/gain_value_tmp/*@>1232d20*/ = /*@>1233cc6*/rtu_volTabledB/*@>1233cc8*/[/*@>1233cc3*/j/*@>1233cc0*/ - /*@>1233cc4*/2];
+            /*@>1233d76*/localB->/*@>123425d*/gain_value/*@>10cc5a3*/ = /*@>1233890*/qhmath_pow_f(/*@>1232307*/10.0F, /*@>123388e*/qhmath_div_f((/*@>1233cd0*/rtu_volTabledB/*@>1233cd2*/[/*@>1233ccd*/j/*@>1233cca*/ - /*@>1233cce*/1]/*@>10cc5e7*/ - /*@>1232d22*/gain_value_tmp)/*@>123235a*/ * /*@>123388c*/qhmath_div_f(/*@>10cc5ce*/(real32_T)/*@>1232b49*/tmp_0, /*@>10cc5d3*/(real32_T)/*@>1232b51*/idx)/*@>10cc5cb*/ + gain_value_tmp, /*@>1232306*/20.0F));
+        }
+        exitg1 = true;
+    } else {
+        /* '<S1913>:1:37' else */
+        /* '<S1913>:1:38' j = j + 1; */
+        /*@>12322f0*/j/*@>12341a9*/++;
+    }
+}
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[78].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(78, 0, 0)>
+%endif
+%if SLibCG_ArgAccessed(78, 0, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(78, 0, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_calculate_vol_gain(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(78, 0, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_Target_calculate_vol_gain", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>uint32_T rtu_idx\
+%assign comma = ", "
+%<comma>const uint32_T rtu_volTableIdx[16]\
+%assign comma = ", "
+%<comma>const real32_T rtu_volTabledB[16]\
+%assign comma = ", "
+%<comma>B_calculate_vol_gain_Model_Target_T *localB\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(78, 0, fcnProtoType)>
+%endfunction

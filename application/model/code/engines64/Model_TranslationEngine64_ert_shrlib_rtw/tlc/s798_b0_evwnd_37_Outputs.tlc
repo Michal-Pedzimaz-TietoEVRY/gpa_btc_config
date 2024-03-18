@@ -1,0 +1,92 @@
+%implements s798_b0_evwnd_37_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+real_T Wc;
+real32_T T;
+real32_T a1;
+%closefile localVarDecl
+/* MATLAB Function 'NEAR/Near1p1/VolumeMute/VolMuteCh1/Ann1NonEntVncApplied/nonentVNCApplied_subsystem/TuneTOP/Translation': '<S1575>:1' */
+/* '<S1575>:1:3' f0 = 1/tau.Value; */
+/*  Approximation of cutoff freq from lpf filter time constant */
+/* '<S1575>:1:5' fs_lpf = Fs/L; */
+/*  lpf filtter sample rate */
+/*  [Num, Den]= butter(1,2*f0/fs_lpf);  %<"\% butter() doesn\'t work with dynamic parameters"> */
+/* '<S1575>:1:8' [Num, Den] = firstOrderButter(fs_lpf,f0); */
+/*  */
+/*   Equations derived from RESEARCH PAPERS FACULTY OF MATERIALS SCIENCE */
+/*   AND TECHNOLOGY IN TRNAVA SLOVAK UNIVERSITY OF TECHNOLOGY IN BRATISLAVA */
+/*   2019, Volume 27, Number 45 DOI 10.2478/rput-2019-0030 */
+/*   DIGITAL IMPLEMENTATION OF BUTTERWORTH FIRST–ORDER FILTER TYPE IIR */
+/*  */
+/*    FsLpf is samplerate of filter */
+/*    Fc is cutoff freq of filter */
+/*  */
+/* 'firstOrderButter:11' Wc = 2*pi*Fc; */
+/*@>cfa9f9*/Wc/*@>c6dbef*/ = /*@>cfa9ff*/1.0/*@>c6dc22*/ / rtu_tau->Value/*@>cfaa58*/ * /*@>cfaa04*/6.2831853071795862;
+/*  Cutoff freq in radians */
+/* 'firstOrderButter:12' T = 1/FsLpf; */
+/*@>cfa9fb*/T/*@>c6dc10*/ = /*@>cfaa05*/1.0F/*@>c6dc0f*/ / (/*@>cfaa0e*/rtu_Fs/*@>c6dc28*/ / /*@>cfaa10*/rtu_L);
+/*  Sample time of filter */
+/*  */
+/*  Calculate denominator coeffs */
+/*  */
+/* 'firstOrderButter:16' b1 = 1; */
+/* 'firstOrderButter:17' b2 = (2 * tan (Wc*T/2) - 2) / (2 + 2*tan (Wc*T/2)); */
+/*  */
+/*  Calculate numerator coeffs  */
+/*  */
+/* 'firstOrderButter:21' a1  = 2*tan(Wc*T/2) / (2 + 2*tan(Wc*T/2)); */
+/*@>cfaa12*/a1/*@>cfa556*/ = /*@>cfb04b*/tanf(/*@>c6dc37*/(real32_T)/*@>cfaa00*/Wc/*@>cfaa54*/ * /*@>cfaa02*/T/*@>c6dc30*/ / /*@>cfaa06*/2.0F);
+/*@>cfa9fd*/a1/*@>c6dc14*/ = /*@>cfaa07*/2.0F/*@>cfaa4c*/ * /*@>cfaa14*/a1/*@>c6dc13*/ / (/*@>cfaa08*/2.0F/*@>cfaa50*/ * a1/*@>c6dc2e*/ + /*@>cfaa09*/2.0F);
+/* 'firstOrderButter:22' a2 = a1; */
+/*  */
+/*  Return coeffs */
+/*  */
+/* 'firstOrderButter:26' num = [a1 a2]; */
+/*@>cfb1cf*/localB->/*@>cfb3e1*/Num/*@>cfa786*/[/*@>cfaa18*/0]/*@>cfa785*/ = /*@>cfaa19*/a1;
+/*@>cfb1d6*/localB->/*@>cfb3e4*/Num/*@>cfa78f*/[/*@>cfaa1b*/1]/*@>cfa78e*/ = /*@>cfaa1c*/a1;
+/* 'firstOrderButter:27' den = [b1 b2]; */
+/*@>cfb1dd*/localB->/*@>cfb3e7*/Den/*@>cfa799*/[/*@>cfaa1e*/0]/*@>cfa798*/ = /*@>cfaa1f*/1.0F;
+/*@>cfb1e4*/localB->/*@>cfb3ea*/Den/*@>cfa7a1*/[/*@>cfaa20*/1]/*@>cfa7a0*/ = (/*@>cfb04d*/tanf(/*@>cfa7ae*/(real32_T)/*@>cfaa23*/Wc/*@>cfaa40*/ * /*@>cfaa25*/T/*@>cfa7ac*/ / /*@>cfaa27*/2.0F)/*@>cfaa3c*/ * /*@>cfaa21*/2.0F/*@>cfa7a7*/ - /*@>cfaa28*/2.0F)/*@>cfa7a6*/ / (/*@>cfb04f*/tanf(/*@>cfa7bc*/(real32_T)/*@>cfaa2b*/Wc/*@>cfaa48*/ * /*@>cfaa2d*/T/*@>cfa7ba*/ / /*@>cfaa2f*/2.0F)/*@>cfaa44*/ * /*@>cfaa29*/2.0F/*@>cfa7b5*/ + /*@>cfaa30*/2.0F);
+/*  Calculation of lpf filter coefficients */
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[37].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(37, 0, 0)>
+%endif
+%if SLibCG_ArgAccessed(37, 0, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(37, 0, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_TranslationEngine64_Translation_lp(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(37, 0, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_TranslationEngine64_Translation_lp", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>const bus_double_1_1 *rtu_tau\
+%assign comma = ", "
+%<comma>real32_T rtu_Fs\
+%assign comma = ", "
+%<comma>real32_T rtu_L\
+%assign comma = ", "
+%<comma>B_Translation_Model_TranslationEngine64_l_T *localB\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(37, 0, fcnProtoType)>
+%endfunction

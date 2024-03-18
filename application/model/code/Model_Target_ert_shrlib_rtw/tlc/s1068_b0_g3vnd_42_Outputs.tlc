@@ -1,0 +1,88 @@
+%implements s1068_b0_g3vnd_42_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+int32_T i;
+%closefile localVarDecl
+/*  #codegen */
+/* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 3/On/VLS Gains Computation/VLS Gains Drv/Fade Inputs/Fade_Trigger_Generation': '<S1136>:1' */
+/* '<S1136>:1:3' fadeOn = false; */
+/*@>11d0d30*/localB->/*@>11d1013*/fadeOn/*@>10c0fa0*/ = /*@>11d04ac*/false;
+/*  Generates function call triggers when incoming fade gain values change */
+/* '<S1136>:1:6' if(gainDifference > 0) */
+/*@>10c0fa5*/if (/*@>11d04bb*/rtu_gainDifference/*@>10c0fa2*/ > /*@>11d04ad*/0.0F) {
+    /* {S!d9}Outputs for Function Call SubSystem: '<S1133>/Fader Downmix' */
+    /* {S!d12}MATLAB Function: '<S1142>/MATLAB Function' */
+    /* '<S1136>:1:7' fadeTrigger(); */
+    /* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 3/On/VLS Gains Computation/VLS Gains Drv/Gain Computation/Fader Downmix/MATLAB Function': '<S1145>:1' */
+    /* '<S1145>:1:4' if (forwardGain >= backwardGain) */
+    /*@>10c0ffa*/if (/*@>11d04bd*/rtu_2/*@>10c0ff5*/ >= /*@>11d04bf*/rtu_5) {
+        /* '<S1145>:1:5' downmix = (1 - min(backwardGain, forwardDownmixThreshold) / max(forwardDownmixThreshold, single(eps)))... */
+        /* '<S1145>:1:6'         * forwardDownmixMax; */
+        /*@>11d0d37*/localB->/*@>11d1016*/downmix/*@>10c0ff3*/ = (/*@>11d04b5*/1.0F/*@>10c0ff6*/ - /*@>11d0b36*/qhmath_div_f(/*@>11d0b32*/fminf(/*@>11d04c1*/rtu_5, /*@>11d04c3*/rtu_3), /*@>11d0b34*/fmaxf(/*@>11d04c5*/rtu_3, /*@>11d04b4*/2.22044605E-16F)))/*@>11d04f4*/ * /*@>11d04c7*/rtu_4;
+    } else {
+        /* '<S1145>:1:7' else */
+        /* '<S1145>:1:8' downmix = (1 - min(forwardGain, backwardDownmixThreshold) / max(backwardDownmixThreshold, single(eps)))... */
+        /* '<S1145>:1:9'         * backwardDownmixMax; */
+        /*@>11d0d3e*/localB->/*@>11d1019*/downmix/*@>10c0ff4*/ = (/*@>11d04b6*/1.0F/*@>10c0ff8*/ - /*@>11d0b30*/qhmath_div_f(/*@>11d0b2c*/fminf(/*@>11d04c9*/rtu_2, /*@>11d04cb*/rtu_6), /*@>11d0b2e*/fmaxf(/*@>11d04cd*/rtu_6, /*@>11d04b3*/2.22044605E-16F)))/*@>11d04e7*/ * /*@>11d04cf*/rtu_7;
+    }
+    /* {E!d12}End of MATLAB Function: '<S1142>/MATLAB Function' */
+/*@>11d01ef*/    for (/*@>11d0fb4*/i = /*@>11d0fb3*/0; /*@>11d0fbe*/i < /*@>11d0fbc*/12; /*@>11d0fba*/i/*@>11d0fc2*/++) {
+        /* {S!d14}Product: '<S1142>/Matrix Multiply' */
+        /*@>11d0d45*/localB->/*@>11d101c*/MatrixMultiply/*@>11d02c6*/[/*@>11d04e2*/i]/*@>11d01dd*/ = /*@>11d0d4c*/localB->/*@>11d101f*/downmix/*@>11d0501*/ * /*@>11d0cd4*/rtu_1/*@>11d0cd6*/[/*@>11d0cd2*/i];
+    }
+    /* {E!d9}End of Outputs for SubSystem: '<S1133>/Fader Downmix' */
+    /* '<S1136>:1:8' fadeOn = true; */
+    /*@>11d0d53*/localB->/*@>11d1022*/fadeOn/*@>10c0fa1*/ = /*@>11d04ae*/true;
+    /*  Indicates that fade is triggered */
+}
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[42].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(42, 0, 0)>
+%endif
+%if SLibCG_ArgAccessed(42, 0, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(42, 0, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_Fade_Trigger_Generation(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(42, 0, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_Target_Fade_Trigger_Generation", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>real32_T rtu_gainDifference\
+%assign comma = ", "
+%<comma>const real32_T rtu_1[12]\
+%assign comma = ", "
+%<comma>real32_T rtu_2\
+%assign comma = ", "
+%<comma>real32_T rtu_3\
+%assign comma = ", "
+%<comma>real32_T rtu_4\
+%assign comma = ", "
+%<comma>real32_T rtu_5\
+%assign comma = ", "
+%<comma>real32_T rtu_6\
+%assign comma = ", "
+%<comma>real32_T rtu_7\
+%assign comma = ", "
+%<comma>B_Fade_Trigger_Generation_Model_Target_T *localB\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(42, 0, fcnProtoType)>
+%endfunction

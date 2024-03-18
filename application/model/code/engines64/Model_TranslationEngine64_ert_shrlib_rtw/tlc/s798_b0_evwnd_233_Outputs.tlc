@@ -1,0 +1,65 @@
+%implements s798_b0_evwnd_233_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+int32_T i;
+int32_T k;
+%closefile localVarDecl
+/* {S!d1611}MATLAB Function: '<S376>/Trivial Translation' */
+/* {S!d1614}MATLAB Function: '<S376>/Trivial Translation' incorporates:
+ *  S-Function (TuneVarMEX): '<S376>/Tune Variable'
+ */
+/*  Invoke the function trigger output */
+/* MATLAB Function 'TranslateTrigger/tfunc': '<S388>:1' */
+/* '<S388>:1:3' f(); */
+/* MATLAB Function 'ModelPreAmp/DecRate/AudioPilot35/Audiopilot_3_5/NoiseEstimationVariant/RegularNoiseEstimation/LFNoiseEstimatorCoh/SpeedBoundsAndNoiseSlew/SpeedBounds/min/Trivial Translation': '<S387>:1' */
+/* '<S387>:1:4' TOP = Tune1.Value; */
+/*@>eb487f*/memcpy(&/*@>eb4d92*/Model_TranslationEngine64_B./*@>eb5071*/TOP/*@>eb46e4*/[/*@>eb46d3*/0], &/*@>eb4d98*/Model_TranslationEngine64_B./*@>eb5074*/MindBSPL./*@>eb505f*/Value[0], /*@>eb46f4*/sizeof(real32_T)/*@>eb4f64*/ << /*@>eb4f63*/7U);
+/* '<S387>:1:5' minBoundsLowestVal = min(Tune1.Value); */
+/*@>c7335d*/if (!/*@<c7339c*//*@>eb480b*/rtIsNaNF(/*@>eb4d9e*/Model_TranslationEngine64_B./*@>eb5077*/MindBSPL./*@>eb5062*/Value/*@>eb49ec*/[/*@>eb49e5*/0])) {
+    /*@>eb3de1*/i/*@>c7335a*/ = /*@>eb4f95*/1;
+} else {
+    boolean_T exitg1;
+    /*@>eb3dde*/i/*@>c7335b*/ = /*@>eb4f92*/0;
+    /*@>eb3de4*/k/*@>c73363*/ = /*@>eb4f98*/2;
+    exitg1 = false;
+    while/*@<c7336b*/ ((!exitg1) && (/*@>eb3de7*/k/*@>c7336a*/ < /*@>eb3de9*/129)) {
+        /*@>c73360*/if (!/*@<c7339d*//*@>eb480d*/rtIsNaNF(/*@>eb4db6*/Model_TranslationEngine64_B./*@>eb5083*/MindBSPL./*@>eb506b*/Value/*@>eb4a0d*/[/*@>eb4a05*/k/*@>eb4a03*/ - /*@>eb4a06*/1])) {
+            /*@>eb3df1*/i/*@>c7335c*/ = /*@>eb3def*/k;
+            exitg1 = true;
+        } else {
+            /*@>eb3ded*/k/*@>eb4fd4*/++;
+        }
+    }
+}
+/*@>c73350*/if (/*@>eb3dd5*/i/*@>c7334a*/ == /*@>eb3dd7*/0) {
+    /*@>eb4daa*/Model_TranslationEngine64_B./*@>eb507d*/minBoundsLowestVal/*@>c7334d*/ = /*@>eb4db0*/Model_TranslationEngine64_B./*@>eb5080*/MindBSPL./*@>eb5068*/Value/*@>eb4a01*/[/*@>eb49fa*/0];
+} else {
+    real32_T ex;
+    /*@>eb3df3*/ex/*@>c7337b*/ = /*@>eb4da4*/Model_TranslationEngine64_B./*@>eb507a*/MindBSPL./*@>eb5065*/Value/*@>eb49f8*/[/*@>eb49f0*/i/*@>eb49ee*/ - /*@>eb49f1*/1];
+/*@>c73386*/    for (/*@>eb4fc4*/k = /*@>eb4fc2*/i/*@>eb4fc0*/ + /*@>eb4fc3*/1; /*@>eb4fce*/k < /*@>eb4fcc*/129; /*@>eb4fca*/k/*@>eb4fd2*/++) {
+        real32_T tmp;
+        /*@>eb435a*/tmp/*@>eb435c*/ = /*@>eb4dc2*/Model_TranslationEngine64_B./*@>eb5089*/MindBSPL./*@>eb506e*/Value/*@>eb4a19*/[/*@>eb4a11*/k/*@>eb4a0f*/ - /*@>eb4a12*/1];
+        /*@>c73388*/if (/*@>eb3df9*/ex/*@>c73383*/ > /*@>eb435e*/tmp) {
+            /*@>eb3dfb*/ex/*@>c73380*/ = tmp;
+        }
+    }
+    /*@>eb4dbc*/Model_TranslationEngine64_B./*@>eb5086*/minBoundsLowestVal/*@>c7334b*/ = /*@>eb3dda*/ex;
+}
+/* {E!d1614}End of MATLAB Function: '<S376>/Trivial Translation' */
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void FuncTranslation_Model_117_517_577(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(233, 0, fcnProtoType)>
+%endfunction

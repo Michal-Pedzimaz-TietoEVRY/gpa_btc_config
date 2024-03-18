@@ -1,0 +1,140 @@
+%implements s798_b0_evwnd_283_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+int32_T i;
+char_T b_data[58];
+char_T c_data[26];
+static const char_T d[58] = %<(TLC_STR_CTX(126))>;
+static const char_T e[58] = %<(TLC_STR_CTX(127))>;
+static const char_T f[26] = %<(TLC_STR_CTX(128))>;
+%closefile localVarDecl
+/* {S!d1857}MATLAB Function: '<S646>/Trivial Translation' */
+/* {S!d1860}MATLAB Function: '<S646>/Trivial Translation' incorporates:
+ *  S-Function (TuneVarMEX): '<S639>/Tune Variable7'
+ *  S-Function (TuneVarMEX): '<S646>/Tune Variable3'
+ *
+ * Block description for '<S639>/Tune Variable7':
+ *  Minimum stretch factor - must be in range [0,1)
+ *
+ * Block description for '<S646>/Tune Variable3':
+ *  Minimum stretch factor - must be in range [0,1).
+ */
+/*  Invoke the function trigger output */
+/* MATLAB Function 'TranslateTrigger/tfunc': '<S651>:1' */
+/* '<S651>:1:3' f(); */
+/* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 2/Decimated-Rate FDP/Fdp/FreqDomainProcessing/CalculateAndApplyCoefficients/DeciRate/Calculate coefficients/StretchParamsTuning/Trivial Translation': '<S649>:1' */
+/* '<S649>:1:3' XpMax = XpMaxIn.Value; */
+/* '<S649>:1:4' XpMin = XpMinIn.Value; */
+/* '<S649>:1:5' if (XpMin < 0) || (XpMin >= 1) */
+/*@>c6bbd7*/if ((/*@>f01f50*/Model_TranslationEngine64_B./*@>f02382*/XpMin.Value/*@>c6bbcc*/ < /*@>f005da*/0.0)/*@>c6bc75*/ || (/*@>f01f56*/Model_TranslationEngine64_B./*@>f02385*/XpMin.Value/*@>c6bbcd*/ >= /*@>f005db*/1.0)) {
+    /* '<S649>:1:6' TranslateError('XpMin must be no less than 0.0, and must be less than 1.0'); */
+    /* TRANSLATEERROR (For use in Functions triggered by TranslationTrigger blocks.) */
+    /* Print error message during tune data translation. */
+    /*   Do not include a final newline as this behavior is already built in. */
+    /*   Note that escape sequences such as '\n' will not work here. To emit */
+    /*   special characters, pass them in as arguments to %<"\%c or \%s format"> */
+    /*   specifiers. */
+    /*    Copyright 2018-2019 Bose Corporation */
+    /* 'TranslateError:10' coder.extrinsic('gcb') */
+    /* 'TranslateError:11' coder.extrinsic('warning') */
+    /* 'TranslateError:12' coder.allowpcode('plain'); */
+    /*  enable code generation from p-file */
+    /* 'TranslateError:14' if (coder.target('MATLAB')) */
+    /* 'TranslateError:18' if (coder.target('Sfun')) */
+    /* 'TranslateError:21' else */
+    /* 'TranslateError:22' count = numel(varargin); */
+    /* 'TranslateError:23' fixedArgs = varargin; */
+    /* 'TranslateError:24' for i=1:count */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:26' fixedArgs{i} = [varargin{i} char(0)]; */
+    /* 'TranslateError:29' coder.ceval('TranslateError',fixedArgs{:}); */
+/*@>f00062*/    for (/*@>f022b1*/i = /*@>f022b0*/0; /*@>f022bb*/i < /*@>f022b9*/58; /*@>f022b7*/i/*@>f022bf*/++) {
+        /*@>f01213*/b_data[/*@>f00645*/i]/*@>f00055*/ = /*@>f01b95*/d/*@>f01b97*/[/*@>f01b94*/i];
+    }
+    /*@>f016ef*/TranslateError(&/*@>f011fc*/b_data/*@>f0120f*/[/*@>f005e5*/0]);
+}
+/* '<S649>:1:9' if (XpMax < 0) || (XpMax >= 1) */
+/*@>c6bbd9*/if ((/*@>f01f5c*/Model_TranslationEngine64_B./*@>f02388*/XpMax.Value/*@>c6bbce*/ < /*@>f005dc*/0.0)/*@>c6bc76*/ || (/*@>f01f62*/Model_TranslationEngine64_B./*@>f0238b*/XpMax.Value/*@>c6bbcf*/ >= /*@>f005dd*/1.0)) {
+    /* '<S649>:1:10' TranslateError('XpMax must be no less than 0.0, and must be less than 1.0'); */
+    /* TRANSLATEERROR (For use in Functions triggered by TranslationTrigger blocks.) */
+    /* Print error message during tune data translation. */
+    /*   Do not include a final newline as this behavior is already built in. */
+    /*   Note that escape sequences such as '\n' will not work here. To emit */
+    /*   special characters, pass them in as arguments to %<"\%c or \%s format"> */
+    /*   specifiers. */
+    /*    Copyright 2018-2019 Bose Corporation */
+    /* 'TranslateError:10' coder.extrinsic('gcb') */
+    /* 'TranslateError:11' coder.extrinsic('warning') */
+    /* 'TranslateError:12' coder.allowpcode('plain'); */
+    /*  enable code generation from p-file */
+    /* 'TranslateError:14' if (coder.target('MATLAB')) */
+    /* 'TranslateError:18' if (coder.target('Sfun')) */
+    /* 'TranslateError:21' else */
+    /* 'TranslateError:22' count = numel(varargin); */
+    /* 'TranslateError:23' fixedArgs = varargin; */
+    /* 'TranslateError:24' for i=1:count */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:26' fixedArgs{i} = [varargin{i} char(0)]; */
+    /* 'TranslateError:29' coder.ceval('TranslateError',fixedArgs{:}); */
+/*@>f00131*/    for (/*@>f022a0*/i = /*@>f0229f*/0; /*@>f022aa*/i < /*@>f022a8*/58; /*@>f022a6*/i/*@>f022c0*/++) {
+        /*@>f01271*/b_data[/*@>f0065f*/i]/*@>f00124*/ = /*@>f01b9b*/e/*@>f01b9d*/[/*@>f01b9a*/i];
+    }
+    /*@>f016f1*/TranslateError(&/*@>f0125a*/b_data/*@>f0126d*/[/*@>f005e9*/0]);
+}
+/* '<S649>:1:13' if (XpMax < XpMin) */
+/*@>c6bbdb*/if (/*@>f01f68*/Model_TranslationEngine64_B./*@>f0238e*/XpMax.Value/*@>c6bbd0*/ < /*@>f01f6e*/Model_TranslationEngine64_B./*@>f02391*/XpMin.Value) {
+    /* '<S649>:1:14' TranslateError('XpMin cannot exceed XpMax'); */
+    /* TRANSLATEERROR (For use in Functions triggered by TranslationTrigger blocks.) */
+    /* Print error message during tune data translation. */
+    /*   Do not include a final newline as this behavior is already built in. */
+    /*   Note that escape sequences such as '\n' will not work here. To emit */
+    /*   special characters, pass them in as arguments to %<"\%c or \%s format"> */
+    /*   specifiers. */
+    /*    Copyright 2018-2019 Bose Corporation */
+    /* 'TranslateError:10' coder.extrinsic('gcb') */
+    /* 'TranslateError:11' coder.extrinsic('warning') */
+    /* 'TranslateError:12' coder.allowpcode('plain'); */
+    /*  enable code generation from p-file */
+    /* 'TranslateError:14' if (coder.target('MATLAB')) */
+    /* 'TranslateError:18' if (coder.target('Sfun')) */
+    /* 'TranslateError:21' else */
+    /* 'TranslateError:22' count = numel(varargin); */
+    /* 'TranslateError:23' fixedArgs = varargin; */
+    /* 'TranslateError:24' for i=1:count */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:26' fixedArgs{i} = [varargin{i} char(0)]; */
+    /* 'TranslateError:29' coder.ceval('TranslateError',fixedArgs{:}); */
+/*@>f001c2*/    for (/*@>f0228f*/i = /*@>f0228e*/0; /*@>f02299*/i < /*@>f02297*/26; /*@>f02295*/i/*@>f022c1*/++) {
+        /*@>f012a2*/c_data[/*@>f00673*/i]/*@>f001b5*/ = /*@>f01ba1*/f/*@>f01ba3*/[/*@>f01ba0*/i];
+    }
+    /*@>f016f3*/TranslateError(&/*@>f0128b*/c_data/*@>f0129e*/[/*@>f005ed*/0]);
+}
+/* '<S649>:1:17' if (XpMax == 1) */
+/*@>c6bbdd*/if (/*@>f01f74*/Model_TranslationEngine64_B./*@>f02394*/XpMax.Value/*@>c6bbd1*/ == /*@>f005de*/1.0) {
+    /* '<S649>:1:18' LokRokMaxScaleFactor = 0; */
+    /*@>f01f7a*/Model_TranslationEngine64_B./*@>f02397*/LokRokMaxScaleFactor_a/*@>c6bbc8*/ = /*@>f005df*/0.0;
+} else {
+    /* '<S649>:1:19' else */
+    /* '<S649>:1:20' LokRokMaxScaleFactor = 0.5 * XpMax / (1 - XpMax); */
+    /*@>f01f80*/Model_TranslationEngine64_B./*@>f0239a*/LokRokMaxScaleFactor_a/*@>c6bbcb*/ = /*@>f005e0*/0.5/*@>f006ab*/ * /*@>f01f86*/Model_TranslationEngine64_B./*@>f0239d*/XpMax.Value/*@>c6bbd4*/ / (/*@>f005e1*/1.0/*@>c6bbd3*/ - /*@>f01f8c*/Model_TranslationEngine64_B./*@>f023a0*/XpMax.Value);
+}
+/*@>f01f92*/Model_TranslationEngine64_B./*@>f023a3*/XpMax_g/*@>c6bbb9*/ = /*@>f01f98*/Model_TranslationEngine64_B./*@>f023a6*/XpMax.Value;
+/*@>f01f9e*/Model_TranslationEngine64_B./*@>f023a9*/XpMin_d/*@>c6bbbd*/ = /*@>f01fa4*/Model_TranslationEngine64_B./*@>f023ac*/XpMin.Value;
+/* {E!d1860}End of MATLAB Function: '<S646>/Trivial Translation' */
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void FuncTranslation_Model_141_1560(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(283, 0, fcnProtoType)>
+%endfunction

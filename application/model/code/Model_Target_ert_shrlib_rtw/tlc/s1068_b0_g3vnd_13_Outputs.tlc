@@ -1,0 +1,51 @@
+%implements s1068_b0_g3vnd_13_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+/* Product: '<S966>/Multiply' incorporates:
+ *  Constant: '<S966>/Constant'
+ *  Constant: '<S966>/EPS'
+ *  MinMax: '<S966>/Max'
+ *  MinMax: '<S966>/Min'
+ *  Product: '<S966>/Divide'
+ *  Sum: '<S966>/Subtract'
+ */
+*rty_downmix/*@>10bec26*/ = (/*@>116cb7e*/1.0F/*@>116ca38*/ - /*@>116cd11*/qhmath_div_f(/*@>116cd0d*/fminf(/*@>116cb77*/rtu_frontFadeGain, /*@>116cb79*/rtu_backwardDownmixThreshold), /*@>116cd0f*/fmaxf(/*@>116cb7c*/rtu_backwardDownmixThreshold, /*@>116cb7f*/1.1920929E-7F)))/*@>116cb82*/ * /*@>116cb74*/rtu_backwardDownmixMax;
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[13].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(13, 0, 0)>
+%endif
+%if SLibCG_ArgAccessed(13, 0, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(13, 0, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_FadingBackward(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(13, 0, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_Target_FadingBackward", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>real32_T rtu_frontFadeGain\
+%assign comma = ", "
+%<comma>real32_T rtu_backwardDownmixThreshold\
+%assign comma = ", "
+%<comma>real32_T rtu_backwardDownmixMax\
+%assign comma = ", "
+%<comma>real32_T *rty_downmix\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(13, 0, fcnProtoType)>
+%endfunction

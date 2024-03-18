@@ -1,0 +1,1549 @@
+%implements s1068_b0_g3vnd_ModelInitialize "C"
+
+%function ModelInitialize(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+int32_T i;
+%closefile localVarDecl
+%assign _modelSS = ""
+
+%assign tlcEnableFcnOfS956B0 = OpaqueTLCBlockFcn("Enable", 956, 0, 577, 16, 0)
+%assign tlcEnableFcnOfS956B6 = OpaqueTLCBlockFcn("Enable", 956, 6, 577, 16, 1)
+%assign tlcEnableFcnOfS956B11 = OpaqueTLCBlockFcn("Enable", 956, 11, 577, 16, 2)
+%assign tlcEnableFcnOfS956B15 = OpaqueTLCBlockFcn("Enable", 956, 15, 577, 16, 3)
+%assign tlcEnableFcnOfS956B22 = OpaqueTLCBlockFcn("Enable", 956, 22, 577, 16, 4)
+%assign tlcEnableFcnOfS864B12 = OpaqueTLCBlockFcn("Enable", 864, 12, 577, 16, 5)
+%assign tlcEnableFcnOfS864B44 = OpaqueTLCBlockFcn("Enable", 864, 44, 577, 16, 6)
+%assign tlcEnableFcnOfS864B76 = OpaqueTLCBlockFcn("Enable", 864, 76, 577, 16, 7)
+%assign tlcEnableFcnOfS864B108 = OpaqueTLCBlockFcn("Enable", 864, 108, 577, 16, 8)
+%assign tlcEnableFcnOfS864B182 = OpaqueTLCBlockFcn("Enable", 864, 182, 577, 16, 9)
+%assign tlcEnableFcnOfS864B194 = OpaqueTLCBlockFcn("Enable", 864, 194, 577, 16, 10)
+%assign tlcEnableFcnOfS864B222 = OpaqueTLCBlockFcn("Enable", 864, 222, 577, 16, 11)
+%assign tlcEnableFcnOfS864B234 = OpaqueTLCBlockFcn("Enable", 864, 234, 577, 16, 12)
+%assign tlcEnableFcnOfS864B262 = OpaqueTLCBlockFcn("Enable", 864, 262, 577, 16, 13)
+%assign tlcEnableFcnOfS864B274 = OpaqueTLCBlockFcn("Enable", 864, 274, 577, 16, 14)
+%assign tlcEnableFcnOfS864B302 = OpaqueTLCBlockFcn("Enable", 864, 302, 577, 16, 15)
+%assign tlcEnableFcnOfS864B314 = OpaqueTLCBlockFcn("Enable", 864, 314, 577, 16, 16)
+%assign tlcEnableFcnOfS864B333 = OpaqueTLCBlockFcn("Enable", 864, 333, 577, 16, 17)
+%assign tlcEnableFcnOfS864B336 = OpaqueTLCBlockFcn("Enable", 864, 336, 577, 16, 18)
+%assign tlcEnableFcnOfS864B371 = OpaqueTLCBlockFcn("Enable", 864, 371, 577, 16, 19)
+%assign tlcEnableFcnOfS864B385 = OpaqueTLCBlockFcn("Enable", 864, 385, 577, 16, 20)
+%assign tlcEnableFcnOfS864B389 = OpaqueTLCBlockFcn("Enable", 864, 389, 577, 16, 21)
+%assign tlcEnableFcnOfS864B393 = OpaqueTLCBlockFcn("Enable", 864, 393, 577, 16, 22)
+%assign tlcEnableFcnOfS864B397 = OpaqueTLCBlockFcn("Enable", 864, 397, 577, 16, 23)
+%assign tlcEnableFcnOfS864B417 = OpaqueTLCBlockFcn("Enable", 864, 417, 577, 16, 24)
+%assign tlcEnableFcnOfS864B420 = OpaqueTLCBlockFcn("Enable", 864, 420, 577, 16, 25)
+%assign tlcEnableFcnOfS864B425 = OpaqueTLCBlockFcn("Enable", 864, 425, 577, 16, 26)
+%assign tlcEnableFcnOfS864B428 = OpaqueTLCBlockFcn("Enable", 864, 428, 577, 16, 27)
+%assign tlcEnableFcnOfS864B432 = OpaqueTLCBlockFcn("Enable", 864, 432, 577, 16, 28)
+%assign tlcEnableFcnOfS864B437 = OpaqueTLCBlockFcn("Enable", 864, 437, 577, 16, 29)
+%assign tlcEnableFcnOfS864B443 = OpaqueTLCBlockFcn("Enable", 864, 443, 577, 16, 30)
+%assign tlcEnableFcnOfS864B446 = OpaqueTLCBlockFcn("Enable", 864, 446, 577, 16, 31)
+%assign tlcEnableFcnOfS214B0 = OpaqueTLCBlockFcn("Enable", 214, 0, 577, 16, 32)
+%assign tlcEnableFcnOfS214B12 = OpaqueTLCBlockFcn("Enable", 214, 12, 577, 16, 33)
+%assign tlcEnableFcnOfS214B18 = OpaqueTLCBlockFcn("Enable", 214, 18, 577, 16, 34)
+%assign tlcEnableFcnOfS214B21 = OpaqueTLCBlockFcn("Enable", 214, 21, 577, 16, 35)
+%assign tlcEnableFcnOfS214B26 = OpaqueTLCBlockFcn("Enable", 214, 26, 577, 16, 36)
+%assign tlcEnableFcnOfS214B29 = OpaqueTLCBlockFcn("Enable", 214, 29, 577, 16, 37)
+%assign tlcEnableFcnOfS214B34 = OpaqueTLCBlockFcn("Enable", 214, 34, 577, 16, 38)
+%assign tlcEnableFcnOfS214B42 = OpaqueTLCBlockFcn("Enable", 214, 42, 577, 16, 39)
+%assign tlcEnableFcnOfS214B45 = OpaqueTLCBlockFcn("Enable", 214, 45, 577, 16, 40)
+%assign tlcEnableFcnOfS214B53 = OpaqueTLCBlockFcn("Enable", 214, 53, 577, 16, 41)
+%assign tlcEnableFcnOfS214B56 = OpaqueTLCBlockFcn("Enable", 214, 56, 577, 16, 42)
+%assign tlcEnableFcnOfS214B60 = OpaqueTLCBlockFcn("Enable", 214, 60, 577, 16, 43)
+%assign tlcEnableFcnOfS214B65 = OpaqueTLCBlockFcn("Enable", 214, 65, 577, 16, 44)
+%assign tlcEnableFcnOfS214B94 = OpaqueTLCBlockFcn("Enable", 214, 94, 577, 16, 45)
+%assign tlcEnableFcnOfS214B98 = OpaqueTLCBlockFcn("Enable", 214, 98, 577, 16, 46)
+%assign tlcEnableFcnOfS214B122 = OpaqueTLCBlockFcn("Enable", 214, 122, 577, 16, 47)
+%assign tlcEnableFcnOfS214B133 = OpaqueTLCBlockFcn("Enable", 214, 133, 577, 16, 48)
+%assign tlcEnableFcnOfS214B139 = OpaqueTLCBlockFcn("Enable", 214, 139, 577, 16, 49)
+%assign tlcEnableFcnOfS214B143 = OpaqueTLCBlockFcn("Enable", 214, 143, 577, 16, 50)
+%assign tlcEnableFcnOfS214B147 = OpaqueTLCBlockFcn("Enable", 214, 147, 577, 16, 51)
+%assign tlcEnableFcnOfS214B151 = OpaqueTLCBlockFcn("Enable", 214, 151, 577, 16, 52)
+%assign tlcEnableFcnOfS214B177 = OpaqueTLCBlockFcn("Enable", 214, 177, 577, 16, 53)
+%assign tlcEnableFcnOfS214B181 = OpaqueTLCBlockFcn("Enable", 214, 181, 577, 16, 54)
+%assign tlcEnableFcnOfS214B190 = OpaqueTLCBlockFcn("Enable", 214, 190, 577, 16, 55)
+%assign tlcEnableFcnOfS214B199 = OpaqueTLCBlockFcn("Enable", 214, 199, 577, 16, 56)
+%assign tlcEnableFcnOfS214B207 = OpaqueTLCBlockFcn("Enable", 214, 207, 577, 16, 57)
+%assign tlcEnableFcnOfS214B215 = OpaqueTLCBlockFcn("Enable", 214, 215, 577, 16, 58)
+%assign tlcEnableFcnOfS214B223 = OpaqueTLCBlockFcn("Enable", 214, 223, 577, 16, 59)
+%assign tlcEnableFcnOfS214B253 = OpaqueTLCBlockFcn("Enable", 214, 253, 577, 16, 60)
+%assign tlcEnableFcnOfS214B322 = OpaqueTLCBlockFcn("Enable", 214, 322, 577, 16, 61)
+%assign tlcEnableFcnOfS214B325 = OpaqueTLCBlockFcn("Enable", 214, 325, 577, 16, 62)
+%assign tlcEnableFcnOfS214B335 = OpaqueTLCBlockFcn("Enable", 214, 335, 577, 16, 63)
+%assign tlcEnableFcnOfS228B8 = OpaqueTLCBlockFcn("Enable", 228, 8, 577, 16, 64)
+%assign tlcEnableFcnOfS501B6 = OpaqueTLCBlockFcn("Enable", 501, 6, 577, 16, 65)
+%assign tlcEnableFcnOfS501B9 = OpaqueTLCBlockFcn("Enable", 501, 9, 577, 16, 66)
+%assign tlcOutputsFcnOfS214B458 = OpaqueTLCBlockFcn("Outputs", 214, 458, 577, 16, 67)
+%assign tlcOutputsFcnOfS214B459 = OpaqueTLCBlockFcn("Outputs", 214, 459, 577, 16, 68)
+%assign tlcOutputsFcnOfS214B462 = OpaqueTLCBlockFcn("Outputs", 214, 462, 577, 16, 69)
+%assign tlcOutputsFcnOfS214B468 = OpaqueTLCBlockFcn("Outputs", 214, 468, 577, 16, 70)
+%assign tlcOutputsFcnOfS214B469 = OpaqueTLCBlockFcn("Outputs", 214, 469, 577, 16, 71)
+%assign tlcOutputsFcnOfS214B471 = OpaqueTLCBlockFcn("Outputs", 214, 471, 577, 16, 72)
+%assign tlcOutputsFcnOfS214B486 = OpaqueTLCBlockFcn("Outputs", 214, 486, 577, 16, 73)
+%assign tlcOutputsFcnOfS214B498 = OpaqueTLCBlockFcn("Outputs", 214, 498, 577, 16, 74)
+%assign tlcOutputsFcnOfS214B500 = OpaqueTLCBlockFcn("Outputs", 214, 500, 577, 16, 75)
+%assign tlcOutputsFcnOfS228B27 = OpaqueTLCBlockFcn("Outputs", 228, 27, 577, 16, 76)
+%assign tlcOutputsFcnOfS864B456 = OpaqueTLCBlockFcn("Outputs", 864, 456, 577, 16, 77)
+%assign tlcOutputsFcnOfS864B457 = OpaqueTLCBlockFcn("Outputs", 864, 457, 577, 16, 78)
+%assign tlcOutputsFcnOfS864B464 = OpaqueTLCBlockFcn("Outputs", 864, 464, 577, 16, 79)
+%assign tlcOutputsFcnOfS864B465 = OpaqueTLCBlockFcn("Outputs", 864, 465, 577, 16, 80)
+%assign tlcOutputsFcnOfS864B472 = OpaqueTLCBlockFcn("Outputs", 864, 472, 577, 16, 81)
+%assign tlcOutputsFcnOfS864B473 = OpaqueTLCBlockFcn("Outputs", 864, 473, 577, 16, 82)
+%assign tlcOutputsFcnOfS864B480 = OpaqueTLCBlockFcn("Outputs", 864, 480, 577, 16, 83)
+%assign tlcOutputsFcnOfS864B481 = OpaqueTLCBlockFcn("Outputs", 864, 481, 577, 16, 84)
+%assign tlcOutputsFcnOfS864B487 = OpaqueTLCBlockFcn("Outputs", 864, 487, 577, 16, 85)
+%assign tlcOutputsFcnOfS864B490 = OpaqueTLCBlockFcn("Outputs", 864, 490, 577, 16, 86)
+%assign tlcOutputsFcnOfS864B491 = OpaqueTLCBlockFcn("Outputs", 864, 491, 577, 16, 87)
+%assign tlcOutputsFcnOfS683B41 = OpaqueTLCBlockFcn("Outputs", 683, 41, 577, 16, 88)
+%assign tlcOutputsFcnOfS683B42 = OpaqueTLCBlockFcn("Outputs", 683, 42, 577, 16, 89)
+%assign tlcOutputsFcnOfS864B502 = OpaqueTLCBlockFcn("Outputs", 864, 502, 577, 16, 90)
+%assign tlcOutputsFcnOfS864B504 = OpaqueTLCBlockFcn("Outputs", 864, 504, 577, 16, 91)
+%<SLibInsertAsyncTaskInitializeCode(system)>
+%<SLibWriteMachineInitialize()>
+%<SLibCGIRDumpSystemUserCode(957, "Start", "Header")>\
+%<SLibCGIRDumpSystemUserCode(957, "Start", "Body")>\
+%<SLibCGIRDumpSystemUserCode(957, "Start", "Trailer")>\
+%<SLibCGIRDumpSystemUserCode(957, "Initialize", "Header")>\
+%<SLibCGIRDumpSystemUserCode(957, "Initialize", "Body")>\
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[8], "SystemInitialize",0)
+/* {S!d5995}SystemInitialize for Atomic SubSystem: '<Root>/InputSelect' */
+%<SLibCG_DumpSSCode("/*@[164246a*/",SLibCGIRGenReusableSysCall("Model_Target_InputSelect_Init", [], 8, 0, 4, 0, 19, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[8]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d5995}End of SystemInitialize for SubSystem: '<Root>/InputSelect' */
+
+%endif
+/* {S!d5997}SystemInitialize for Atomic SubSystem: '<S25>/AudioPilot35' */
+%<SLibCG_DumpSSCode("/*@[1642396*/",SLibCGIRDumpSystemUserCode(214, "Initialize", "Header"),"/*@]*/")>\
+%<SLibCG_DumpSSCode("/*@[1642397*/",SLibCGIRDumpSystemUserCode(214, "Initialize", "Body"),"/*@]*/")>\
+/* {S!d6262}InitializeConditions for Buffer: '<S271>/Buffer' */
+/* Full-cycle Table lookup */
+/* This code only executes when block is re-enabled in an
+enabled subsystem when the enabled subsystem states on
+re-enabling are set to 'Reset' */
+/* Reset to time zero on re-enable */
+/* Full-cycle Table lookup */
+/*@>162d4d1*/Model_Target_DW./*@>1663ad6*/Buffer_inBufPtrIdx_e/*@>10e7649*/ = /*@>16638b5*/256;
+/*@>162d4d7*/Model_Target_DW./*@>1663ad9*/Buffer_outBufPtrIdx_d/*@>10e764b*/ = /*@>16638b8*/128;
+/* {S!d6264}InitializeConditions for Buffer: '<S356>/BufferMic' */
+/*@>162d4dd*/Model_Target_DW./*@>1663adc*/BufferMic_inBufPtrIdx/*@>10e765b*/ = /*@>16638bb*/64;
+/* {S!d6266}InitializeConditions for Buffer: '<S356>/BufferRef' */
+/*@>162d4e3*/Model_Target_DW./*@>1663adf*/BufferRef_inBufPtrIdx/*@>10e766d*/ = /*@>16638be*/64;
+/* {S!d6268}InitializeConditions for Buffer: '<S369>/Buffer' */
+/*@>162d4e9*/Model_Target_DW./*@>1663ae2*/Buffer_inBufPtrIdx_g/*@>10e76a2*/ = /*@>16638c1*/256;
+/*@>162d4ef*/Model_Target_DW./*@>1663ae5*/Buffer_outBufPtrIdx_i/*@>10e76a4*/ = /*@>16638c4*/128;
+/* {S!d6270}InitializeConditions for Delay: '<S281>/Delay1' */
+/*@>1548677*/for (/*@>16638fd*/i = /*@>16638fc*/0; /*@>1663907*/i < /*@>1663905*/65; /*@>1663903*/i/*@>166390b*/++) {
+    /*@>162d501*/Model_Target_DW./*@>1663aeb*/Delay1_DSTATE_n/*@>154866e*/[/*@>15940fd*/i]/*@>154866d*/ = /*@>1594161*/1.0F;
+}
+/* {E!d6270}End of InitializeConditions for Delay: '<S281>/Delay1' */
+
+/* {S!d6272}InitializeConditions for Delay: '<S293>/Delay' */
+/*@>162d4fb*/Model_Target_DW./*@>1663ae8*/Delay_DSTATE_n0/*@>10e76ba*/ = /*@>1594160*/0.5F;
+/* {S!d6274}SystemInitialize for MATLAB Function: '<S291>/ComputePmin' */
+/* Initialize phase index */
+/* Initialize input buffer values */
+/* Initialize phase index */
+/* Initialize input buffer values */
+/* Initialize phase index */
+/* Initialize input buffer values */
+/* '<S260>:1:9' init_noise_floor = false; */
+/* '<S258>:1:12' GXY=complex(single(zeros(L,M,M))); */
+/* '<S258>:1:15' frame_counter=int16(0); */
+/* '<S300>:1:19' ; */
+/* '<S300>:1:19' IRMinCount	= single(-1); */
+/*@>162d507*/Model_Target_DW./*@>1663aee*/IRMinCount/*@>10e7756*/ = /*@>1593c08*/-1.0F;
+/* '<S300>:1:20' ; */
+/* '<S300>:1:20' IRSubMin	= single(ones(numSubWin, numFreqBins))*1e-8; */
+/*@>15486bf*/for (/*@>16638ec*/i = /*@>16638eb*/0; /*@>16638f6*/i < /*@>16638f4*/195; /*@>16638f2*/i/*@>166390c*/++) {
+    /*@>162d513*/Model_Target_DW./*@>1663af1*/IRSubMin/*@>15486b7*/[/*@>1594113*/i]/*@>15486b6*/ = /*@>1594115*/1.0E-8F;
+}
+/* '<S300>:1:21' ; */
+/* '<S300>:1:21' IRPowMS		= single(ones(1, numFreqBins))*1e-8; */
+/*@>15486d6*/for (/*@>16638db*/i = /*@>16638da*/0; /*@>16638e5*/i < /*@>16638e3*/65; /*@>16638e1*/i/*@>166390d*/++) {
+    /*@>162d51f*/Model_Target_DW./*@>1663af4*/IRPowMS/*@>15486ce*/[/*@>159411b*/i]/*@>15486cd*/ = /*@>159411d*/1.0E-8F;
+}
+/* {E!d6274}End of SystemInitialize for MATLAB Function: '<S291>/ComputePmin' */
+
+/* {S!d6276}SystemInitialize for MATLAB Function: '<S491>/InnerLink' */
+/* '<S309>:1:5' ; */
+/* '<S309>:1:5' PrevChange = single(0); */
+/* '<S309>:1:6' ; */
+/* '<S309>:1:6' PrevDelta = single(0); */
+/* '<S350>:1:17' delayIndex = int32(0); */
+/* '<S370>:1:12' counter = 0; */
+/* '<S370>:1:13' Psd = complex(single(zeros(size(u)))); */
+/* '<S370>:1:14' prevout = complex(single(zeros(size(u)))); */
+/* '<S371>:1:12' counter = 0; */
+/* '<S371>:1:13' Psd = single(zeros(size(u))); */
+/* '<S371>:1:14' prevout = single(zeros(size(u))); */
+/* '<S372>:1:12' counter = 0; */
+/* '<S372>:1:13' Psd = single(zeros(size(u))); */
+/* '<S372>:1:14' prevout = single(zeros(size(u))); */
+/* '<S354>:1:12' MusicLPState = single(0); */
+/* '<S354>:1:15' NoiseLPState = single(0); */
+/* '<S354>:1:18' MicLPState = single(0); */
+/* '<S390>:1:20' ImpFiltState = single([0 0]); */
+/* '<S432>:1:17' delayIndex = int32(0); */
+/* '<S437>:1:5' ; */
+/* '<S437>:1:5' PrevChange = single(0); */
+/* '<S437>:1:6' ; */
+/* '<S437>:1:6' PrevDelta = single(0); */
+/* '<S457>:1:14' ; */
+/* '<S457>:1:14' prev = single(0); */
+/* '<S457>:1:15' ; */
+/* '<S457>:1:15' counter = single(0); */
+/* '<S457>:1:16' ; */
+/* '<S457>:1:16' counter2 = single(0); */
+/* '<S457>:1:17' ; */
+/* '<S457>:1:17' LFUP = single(0); */
+/* '<S464>:1:5' ; */
+/* '<S464>:1:5' PrevChange = single(0); */
+/* '<S464>:1:6' ; */
+/* '<S464>:1:6' PrevDelta = single(0); */
+/* '<S473>:1:11' ; */
+/* '<S473>:1:11' PreRatioLinLP = single(0); */
+/* '<S473>:1:12' ; */
+/* '<S473>:1:12' ImpFiltState = single([0 0]); */
+/* '<S85>:1:17' delayIndex = int32(0); */
+/* '<S234>:1:11' dyneq_boost_gain_prev = single(0); */
+/* '<S234>:1:15' audiopilot_boost_gain_prev = single(0); */
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[191], "SystemInitialize",0)
+%if SLibCG_SystemFcnArgAccessed("Model_Target_InnerLink_Init",191,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[164246b*/",SLibCGIRGenReusableSysCall("Model_Target_InnerLink_Init", ["%<_modelSS>", "&/*@>166419a*/Model_Target_DW./*@>1664199*/sf_InnerLink"], 191, 0, 4, 0, 19, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[191]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[191], "SystemInitialize",0)
+
+/* {S!d6278}SystemInitialize for MATLAB Function: '<S504>/InnerLink' */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_InnerLink_Init",191,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[164246c*/",SLibCGIRGenReusableSysCall("Model_Target_InnerLink_Init", ["%<_modelSS>", "&/*@>16641cc*/Model_Target_DW./*@>16641cb*/sf_InnerLink_a"], 191, 1, 4, 0, 19, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[191]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+/* '<S513>:1:17' delayIndex = int32(0); */
+%<SLibCG_DumpSSCode("/*@[1642398*/",SLibCGIRDumpSystemUserCode(214, "Initialize", "Trailer"),"/*@]*/")>\
+/* {E!d5997}End of SystemInitialize for SubSystem: '<S25>/AudioPilot35' */
+
+/* {S!d5999}SystemInitialize for Atomic SubSystem: '<S33>/Balance' */
+%<SLibCG_DumpSSCode("/*@[1642399*/",SLibCGIRDumpSystemUserCode(228, "Initialize", "Header"),"/*@]*/")>\
+%<SLibCG_DumpSSCode("/*@[164239a*/",SLibCGIRDumpSystemUserCode(228, "Initialize", "Body"),"/*@]*/")>\
+%<SLibCG_DumpSSCode("/*@[164239b*/",SLibCGIRDumpSystemUserCode(228, "Initialize", "Trailer"),"/*@]*/")>\
+/* {E!d5999}End of SystemInitialize for SubSystem: '<S33>/Balance' */
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[247], "SystemInitialize",0)
+
+/* {S!d6001}SystemInitialize for Atomic SubSystem: '<S558>/Medusa5H1 Part 1' */
+%<SLibCG_DumpSSCode("/*@[164246d*/",SLibCGIRGenReusableSysCall("Model_Target_Medusa5H1Part1_Init", [], 247, 0, 4, 0, 19, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[247]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d6001}End of SystemInitialize for SubSystem: '<S558>/Medusa5H1 Part 1' */
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[300], "SystemInitialize",0)
+
+/* {S!d6003}SystemInitialize for Atomic SubSystem: '<S558>/Medusa5H1 Part 2' */
+%<SLibCG_DumpSSCode("/*@[164246e*/",SLibCGIRGenReusableSysCall("Model_Target_Medusa5H1Part2_Init", [], 300, 0, 4, 0, 19, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[300]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d6003}End of SystemInitialize for SubSystem: '<S558>/Medusa5H1 Part 2' */
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[423], "SystemInitialize",0)
+
+/* {S!d6005}SystemInitialize for Atomic SubSystem: '<S558>/Medusa5H1 Part 3' */
+%<SLibCG_DumpSSCode("/*@[164246f*/",SLibCGIRGenReusableSysCall("Model_Target_Medusa5H1Part3_Init", [], 423, 0, 4, 0, 19, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[423]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d6005}End of SystemInitialize for SubSystem: '<S558>/Medusa5H1 Part 3' */
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[461], "SystemInitialize",0)
+
+/* {S!d6007}SystemInitialize for Atomic SubSystem: '<S558>/Medusa5H1 Part 4' */
+%<SLibCG_DumpSSCode("/*@[1642470*/",SLibCGIRGenReusableSysCall("Model_Target_Medusa5H1Part4_Init", [], 461, 0, 4, 0, 19, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[461]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d6007}End of SystemInitialize for SubSystem: '<S558>/Medusa5H1 Part 4' */
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[471], "SystemInitialize",0)
+
+/* {S!d6009}SystemInitialize for Atomic SubSystem: '<S558>/Medusa5H1 Part 5' */
+%<SLibCG_DumpSSCode("/*@[1642471*/",SLibCGIRGenReusableSysCall("Model_Target_Medusa5H1Part5_Init", [], 471, 0, 4, 0, 19, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[471]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d6009}End of SystemInitialize for SubSystem: '<S558>/Medusa5H1 Part 5' */
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[474], "SystemInitialize",0)
+
+/* {S!d6011}SystemInitialize for Atomic SubSystem: '<S558>/Medusa5H1 Part 6' */
+%<SLibCG_DumpSSCode("/*@[1642472*/",SLibCGIRGenReusableSysCall("Model_Target_Medusa5H1Part6_Init", [], 474, 0, 4, 0, 19, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[474]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d6011}End of SystemInitialize for SubSystem: '<S558>/Medusa5H1 Part 6' */
+
+%endif
+/* {S!d6013}SystemInitialize for Atomic SubSystem: '<S33>/MedusaPostHoligram' */
+%<SLibCG_DumpSSCode("/*@[164239c*/",SLibCGIRDumpSystemUserCode(494, "Initialize", "Header"),"/*@]*/")>\
+%<SLibCG_DumpSSCode("/*@[164239d*/",SLibCGIRDumpSystemUserCode(494, "Initialize", "Body"),"/*@]*/")>\
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[493], "SystemInitialize",0)
+/* {S!d6014}SystemInitialize for Atomic SubSystem: '<S559>/MedusaPostHoligram' */
+%<SLibCG_DumpSSCode("/*@[1642473*/",SLibCGIRGenReusableSysCall("Model_Target_MedusaPostHoligram_Init", [], 493, 0, 4, 0, 19, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[493]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d6014}End of SystemInitialize for SubSystem: '<S559>/MedusaPostHoligram' */
+%endif
+%<SLibCG_DumpSSCode("/*@[164239e*/",SLibCGIRDumpSystemUserCode(494, "Initialize", "Trailer"),"/*@]*/")>\
+/* {E!d6013}End of SystemInitialize for SubSystem: '<S33>/MedusaPostHoligram' */
+
+/* {S!d6017}SystemInitialize for Atomic SubSystem: '<S33>/NearWiggleFilters' */
+%<SLibCG_DumpSSCode("/*@[164239f*/",SLibCGIRDumpSystemUserCode(501, "Initialize", "Header"),"/*@]*/")>\
+%<SLibCG_DumpSSCode("/*@[16423a0*/",SLibCGIRDumpSystemUserCode(501, "Initialize", "Body"),"/*@]*/")>\
+/* '<S1335>:1:10' currentFadeInd = 0; */
+/* '<S1335>:1:11' currentSig = uint32(0); */
+%<SLibCG_DumpSSCode("/*@[16423a1*/",SLibCGIRDumpSystemUserCode(501, "Initialize", "Trailer"),"/*@]*/")>\
+/* {E!d6017}End of SystemInitialize for SubSystem: '<S33>/NearWiggleFilters' */
+
+/* {S!d6019}SystemInitialize for Atomic SubSystem: '<S33>/SleepingBeauty' */
+%<SLibCG_DumpSSCode("/*@[16423a2*/",SLibCGIRDumpSystemUserCode(579, "Initialize", "Header"),"/*@]*/")>\
+%<SLibCG_DumpSSCode("/*@[16423a3*/",SLibCGIRDumpSystemUserCode(579, "Initialize", "Body"),"/*@]*/")>\
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[578], "SystemInitialize",0)
+/* {S!d6020}SystemInitialize for Atomic SubSystem: '<S1345>/Enabled' */
+%<SLibCG_DumpSSCode("/*@[1642474*/",SLibCGIRGenReusableSysCall("Model_Target_Enabled_Init", [], 578, 0, 4, 0, 19, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[578]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d6020}End of SystemInitialize for SubSystem: '<S1345>/Enabled' */
+%endif
+%<SLibCG_DumpSSCode("/*@[16423a4*/",SLibCGIRDumpSystemUserCode(579, "Initialize", "Trailer"),"/*@]*/")>\
+/* {E!d6019}End of SystemInitialize for SubSystem: '<S33>/SleepingBeauty' */
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[597], "SystemInitialize",0)
+
+/* {S!d6023}SystemInitialize for Atomic SubSystem: '<S33>/VLS' */
+%<SLibCG_DumpSSCode("/*@[1642475*/",SLibCGIRGenReusableSysCall("Model_Target_VLS_Init", [], 597, 0, 4, 0, 19, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[597]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d6023}End of SystemInitialize for SubSystem: '<S33>/VLS' */
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[639], "SystemInitialize",0)
+
+/* {S!d6025}SystemInitialize for Atomic SubSystem: '<S4>/PreAmpPart1' */
+%<SLibCG_DumpSSCode("/*@[1642476*/",SLibCGIRGenReusableSysCall("Model_Target_PreAmpPart1_Init", [], 639, 0, 4, 0, 19, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[639]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d6025}End of SystemInitialize for SubSystem: '<S4>/PreAmpPart1' */
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[640], "SystemInitialize",0)
+
+/* {S!d6027}SystemInitialize for Atomic SubSystem: '<S4>/SrcDownEnt' */
+%<SLibCG_DumpSSCode("/*@[1642477*/",SLibCGIRGenReusableSysCall("Model_Target_SrcDownEnt_Init", [], 640, 0, 4, 0, 19, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[640]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d6027}End of SystemInitialize for SubSystem: '<S4>/SrcDownEnt' */
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[641], "SystemInitialize",0)
+
+/* {S!d6029}SystemInitialize for Atomic SubSystem: '<S4>/SrcDownMic' */
+%<SLibCG_DumpSSCode("/*@[1642478*/",SLibCGIRGenReusableSysCall("Model_Target_SrcDownMic_Init", [], 641, 0, 4, 0, 19, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[641]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d6029}End of SystemInitialize for SubSystem: '<S4>/SrcDownMic' */
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[642], "SystemInitialize",0)
+
+/* {S!d6031}SystemInitialize for Atomic SubSystem: '<S4>/SrcUp' */
+%<SLibCG_DumpSSCode("/*@[1642479*/",SLibCGIRGenReusableSysCall("Model_Target_SrcUp_Init", [], 642, 0, 4, 0, 19, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[642]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d6031}End of SystemInitialize for SubSystem: '<S4>/SrcUp' */
+
+%endif
+/* {S!d6033}SystemInitialize for Atomic SubSystem: '<Root>/NEAR' */
+%<SLibCG_DumpSSCode("/*@[16423a5*/",SLibCGIRDumpSystemUserCode(864, "Initialize", "Header"),"/*@]*/")>\
+%<SLibCG_DumpSSCode("/*@[16423a6*/",SLibCGIRDumpSystemUserCode(864, "Initialize", "Body"),"/*@]*/")>\
+/* {S!d6280}Start for If: '<S1607>/If' */
+/*@>162d531*/Model_Target_DW./*@>1663afd*/If_ActiveSubsystem/*@>10e757d*/ = /*@>16638c7*/-1;
+/* {S!d6034}SystemInitialize for Atomic SubSystem: '<S1885>/Ramping_Subsystem' */
+/* {S!d6035}SystemInitialize for IfAction SubSystem: '<S1899>/ifActionSubsystem' */
+/* {S!d6282}InitializeConditions for DiscreteFilter: '<S1902>/ramping_filter' */
+/*@>162d537*/Model_Target_DW./*@>1663b00*/ramping_filter_icLoad_k/*@>10e7845*/ = /*@>16638ca*/1U;
+/* {E!d6035}End of SystemInitialize for SubSystem: '<S1899>/ifActionSubsystem' */
+/* {E!d6034}End of SystemInitialize for SubSystem: '<S1885>/Ramping_Subsystem' */
+
+/* {S!d6038}SystemInitialize for Atomic SubSystem: '<S1965>/Ramping_Subsystem' */
+/* {S!d6039}SystemInitialize for IfAction SubSystem: '<S1979>/ifActionSubsystem' */
+/* {S!d6284}InitializeConditions for DiscreteFilter: '<S1982>/ramping_filter' */
+/*@>162d53d*/Model_Target_DW./*@>1663b03*/ramping_filter_icLoad_m/*@>10e784a*/ = /*@>16638cd*/1U;
+/* {E!d6039}End of SystemInitialize for SubSystem: '<S1979>/ifActionSubsystem' */
+/* {E!d6038}End of SystemInitialize for SubSystem: '<S1965>/Ramping_Subsystem' */
+
+/* {S!d6042}SystemInitialize for Atomic SubSystem: '<S2045>/Ramping_Subsystem' */
+/* {S!d6043}SystemInitialize for IfAction SubSystem: '<S2059>/ifActionSubsystem' */
+/* {S!d6286}InitializeConditions for DiscreteFilter: '<S2062>/ramping_filter' */
+/*@>162d543*/Model_Target_DW./*@>1663b06*/ramping_filter_icLoad_e/*@>10e784f*/ = /*@>16638d0*/1U;
+/* {E!d6043}End of SystemInitialize for SubSystem: '<S2059>/ifActionSubsystem' */
+/* {E!d6042}End of SystemInitialize for SubSystem: '<S2045>/Ramping_Subsystem' */
+
+/* {S!d6046}SystemInitialize for Atomic SubSystem: '<S2125>/Ramping_Subsystem' */
+/* {S!d6047}SystemInitialize for IfAction SubSystem: '<S2139>/ifActionSubsystem' */
+/* {S!d6288}InitializeConditions for DiscreteFilter: '<S2142>/ramping_filter' */
+/*@>162d549*/Model_Target_DW./*@>1663b09*/ramping_filter_icLoad/*@>10e7854*/ = /*@>16638d3*/1U;
+/* {E!d6047}End of SystemInitialize for SubSystem: '<S2139>/ifActionSubsystem' */
+/* {E!d6046}End of SystemInitialize for SubSystem: '<S2125>/Ramping_Subsystem' */
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[725], "SystemInitialize",0)
+
+/* {S!d6290}SystemInitialize for MATLAB Function: '<S1814>/InnerLink' */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_InnerLink_g_Init",725,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[164247a*/",SLibCGIRGenReusableSysCall("Model_Target_InnerLink_g_Init", ["%<_modelSS>", "&/*@>16643ab*/Model_Target_DW./*@>16643aa*/sf_InnerLink_n"], 725, 0, 4, 0, 19, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[725]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[725], "SystemInitialize",0)
+
+/* {S!d6292}SystemInitialize for MATLAB Function: '<S1822>/InnerLink' */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_InnerLink_g_Init",725,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[164247b*/",SLibCGIRGenReusableSysCall("Model_Target_InnerLink_g_Init", ["%<_modelSS>", "&/*@>16643dd*/Model_Target_DW./*@>16643dc*/sf_InnerLink_m"], 725, 1, 4, 0, 19, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[725]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[725], "SystemInitialize",0)
+
+/* {S!d6294}SystemInitialize for MATLAB Function: '<S1830>/InnerLink' */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_InnerLink_g_Init",725,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[164247c*/",SLibCGIRGenReusableSysCall("Model_Target_InnerLink_g_Init", ["%<_modelSS>", "&/*@>166440f*/Model_Target_DW./*@>166440e*/sf_InnerLink_ny"], 725, 2, 4, 0, 19, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[725]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[725], "SystemInitialize",0)
+
+/* {S!d6296}SystemInitialize for MATLAB Function: '<S1838>/InnerLink' */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_InnerLink_g_Init",725,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[164247d*/",SLibCGIRGenReusableSysCall("Model_Target_InnerLink_g_Init", ["%<_modelSS>", "&/*@>1664441*/Model_Target_DW./*@>1664440*/sf_InnerLink_k"], 725, 3, 4, 0, 19, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[725]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+%endif
+/* {S!d6050}SystemInitialize for IfAction SubSystem: '<S1607>/Subsystem' */
+/* '<S1619>:1:17' delayIndex = int32(0); */
+/* '<S1638>:1:17' delayIndex = int32(0); */
+%<SLibCG_DumpSSCode("/*@[16423a7*/",SLibCGIRDumpSystemUserCode(683, "Initialize", "Header"),"/*@]*/")>\
+%<SLibCG_DumpSSCode("/*@[16423a8*/",SLibCGIRDumpSystemUserCode(683, "Initialize", "Body"),"/*@]*/")>\
+/* '<S1677>:1:17' delayIndex = int32(0); */
+/* '<S1696>:1:17' delayIndex = int32(0); */
+%<SLibCG_DumpSSCode("/*@[16423a9*/",SLibCGIRDumpSystemUserCode(683, "Initialize", "Trailer"),"/*@]*/")>\
+/* {E!d6050}End of SystemInitialize for SubSystem: '<S1607>/Subsystem' */
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[685], "SystemInitialize",0)
+
+/* {S!d6298}SystemInitialize for MATLAB Function: '<S1608>/MATLAB Function' */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_MATLABFunction_m_Init",685,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[164247e*/",SLibCGIRGenReusableSysCall("Model_Target_MATLABFunction_m_Init", ["%<_modelSS>", "&/*@>166449a*/Model_Target_DW./*@>1664499*/sf_MATLABFunction_j4"], 685, 0, 4, 0, 19, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[685]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[685], "SystemInitialize",0)
+
+/* {S!d6300}SystemInitialize for MATLAB Function: '<S1608>/MATLAB Function1' */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_MATLABFunction_m_Init",685,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[164247f*/",SLibCGIRGenReusableSysCall("Model_Target_MATLABFunction_m_Init", ["%<_modelSS>", "&/*@>16644cc*/Model_Target_DW./*@>16644cb*/sf_MATLABFunction1_io"], 685, 1, 4, 0, 19, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[685]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[685], "SystemInitialize",0)
+
+/* {S!d6302}SystemInitialize for MATLAB Function: '<S1608>/MATLAB Function2' */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_MATLABFunction_m_Init",685,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[1642480*/",SLibCGIRGenReusableSysCall("Model_Target_MATLABFunction_m_Init", ["%<_modelSS>", "&/*@>16644fe*/Model_Target_DW./*@>16644fd*/sf_MATLABFunction2"], 685, 2, 4, 0, 19, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[685]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[685], "SystemInitialize",0)
+
+/* {S!d6304}SystemInitialize for MATLAB Function: '<S1608>/MATLAB Function3' */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_MATLABFunction_m_Init",685,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[1642481*/",SLibCGIRGenReusableSysCall("Model_Target_MATLABFunction_m_Init", ["%<_modelSS>", "&/*@>1664530*/Model_Target_DW./*@>166452f*/sf_MATLABFunction3"], 685, 3, 4, 0, 19, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[685]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[685], "SystemInitialize",0)
+
+/* {S!d6306}SystemInitialize for MATLAB Function: '<S1608>/MATLAB Function4' */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_MATLABFunction_m_Init",685,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[1642482*/",SLibCGIRGenReusableSysCall("Model_Target_MATLABFunction_m_Init", ["%<_modelSS>", "&/*@>1664562*/Model_Target_DW./*@>1664561*/sf_MATLABFunction4"], 685, 4, 4, 0, 19, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[685]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[685], "SystemInitialize",0)
+
+/* {S!d6308}SystemInitialize for MATLAB Function: '<S1608>/MATLAB Function5' */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_MATLABFunction_m_Init",685,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[1642483*/",SLibCGIRGenReusableSysCall("Model_Target_MATLABFunction_m_Init", ["%<_modelSS>", "&/*@>1664594*/Model_Target_DW./*@>1664593*/sf_MATLABFunction5"], 685, 5, 4, 0, 19, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[685]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[685], "SystemInitialize",0)
+
+/* {S!d6310}SystemInitialize for MATLAB Function: '<S1608>/MATLAB Function6' */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_MATLABFunction_m_Init",685,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[1642484*/",SLibCGIRGenReusableSysCall("Model_Target_MATLABFunction_m_Init", ["%<_modelSS>", "&/*@>16645c6*/Model_Target_DW./*@>16645c5*/sf_MATLABFunction6"], 685, 6, 4, 0, 19, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[685]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[685], "SystemInitialize",0)
+
+/* {S!d6312}SystemInitialize for MATLAB Function: '<S1608>/MATLAB Function7' */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_MATLABFunction_m_Init",685,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[1642485*/",SLibCGIRGenReusableSysCall("Model_Target_MATLABFunction_m_Init", ["%<_modelSS>", "&/*@>16645f8*/Model_Target_DW./*@>16645f7*/sf_MATLABFunction7"], 685, 7, 4, 0, 19, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[685]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[863], "SystemInitialize",0)
+
+/* {S!d6052}SystemInitialize for Atomic SubSystem: '<S5>/SrcDownAnn' */
+%<SLibCG_DumpSSCode("/*@[1642486*/",SLibCGIRGenReusableSysCall("Model_Target_SrcDownAnn_Init", [], 863, 0, 4, 0, 19, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[863]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d6052}End of SystemInitialize for SubSystem: '<S5>/SrcDownAnn' */
+%endif
+%<SLibCG_DumpSSCode("/*@[16423aa*/",SLibCGIRDumpSystemUserCode(864, "Initialize", "Trailer"),"/*@]*/")>\
+/* {E!d6033}End of SystemInitialize for SubSystem: '<Root>/NEAR' */
+
+/* {S!d6055}SystemInitialize for Atomic SubSystem: '<Root>/PostProcess' */
+%<SLibCG_DumpSSCode("/*@[16423ab*/",SLibCGIRDumpSystemUserCode(917, "Initialize", "Header"),"/*@]*/")>\
+%<SLibCG_DumpSSCode("/*@[16423ac*/",SLibCGIRDumpSystemUserCode(917, "Initialize", "Body"),"/*@]*/")>\
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[916], "SystemInitialize",0)
+/* {S!d6056}SystemInitialize for Atomic SubSystem: '<S7>/PostProcess' */
+%<SLibCG_DumpSSCode("/*@[1642487*/",SLibCGIRGenReusableSysCall("Model_Target_PostProcess_Init", [], 916, 0, 4, 0, 19, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[916]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d6056}End of SystemInitialize for SubSystem: '<S7>/PostProcess' */
+%endif
+%<SLibCG_DumpSSCode("/*@[16423ad*/",SLibCGIRDumpSystemUserCode(917, "Initialize", "Trailer"),"/*@]*/")>\
+/* {E!d6055}End of SystemInitialize for SubSystem: '<Root>/PostProcess' */
+
+/* {S!d6059}SystemInitialize for Atomic SubSystem: '<Root>/TestRouter' */
+%<SLibCG_DumpSSCode("/*@[16423ae*/",SLibCGIRDumpSystemUserCode(956, "Initialize", "Header"),"/*@]*/")>\
+%<SLibCG_DumpSSCode("/*@[16423af*/",SLibCGIRDumpSystemUserCode(956, "Initialize", "Body"),"/*@]*/")>\
+%<SLibCG_DumpSSCode("/*@[16423b0*/",SLibCGIRDumpSystemUserCode(956, "Initialize", "Trailer"),"/*@]*/")>\
+/* {E!d6059}End of SystemInitialize for SubSystem: '<Root>/TestRouter' */
+%<SLibCGIRDumpSystemUserCode(957, "Initialize", "Trailer")>\
+%if !WHITE_SPACE(tlcEnableFcnOfS956B0)
+/* {S!d6061}Enable for Atomic SubSystem: '<Root>/TestRouter' */
+/* {S!d6062}Enable for S-Function (RTC_REQ_RSP): '<S2279>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[16423b3*/",tlcEnableFcnOfS956B0,"/*@]*/")>\
+/* {E!d6062}End of Enable for S-Function (RTC_REQ_RSP): '<S2279>/RTC Request Response Trigger' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS956B6)
+
+/* {S!d6064}Enable for S-Function (RTC_REQ_RSP): '<S2278>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[16423b5*/",tlcEnableFcnOfS956B6,"/*@]*/")>\
+/* {E!d6064}End of Enable for S-Function (RTC_REQ_RSP): '<S2278>/RTC Request Response Trigger' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS956B11)
+
+/* {S!d6066}Enable for S-Function (RTC_REQ_RSP): '<S2274>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[16423b7*/",tlcEnableFcnOfS956B11,"/*@]*/")>\
+/* {E!d6066}End of Enable for S-Function (RTC_REQ_RSP): '<S2274>/RTC Request Response Trigger' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS956B15)
+
+/* {S!d6068}Enable for S-Function (RTC_REQ_RSP): '<S2276>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[16423b9*/",tlcEnableFcnOfS956B15,"/*@]*/")>\
+/* {E!d6068}End of Enable for S-Function (RTC_REQ_RSP): '<S2276>/RTC Request Response Trigger' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS956B22)
+
+/* {S!d6070}Enable for S-Function (RTC_REQ_RSP): '<S2275>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[16423bb*/",tlcEnableFcnOfS956B22,"/*@]*/")>\
+/* {E!d6070}End of Enable for S-Function (RTC_REQ_RSP): '<S2275>/RTC Request Response Trigger' */
+/* {E!d6061}End of Enable for SubSystem: '<Root>/TestRouter' */
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[916], "Enable",0)
+
+/* {S!d6073}Enable for Atomic SubSystem: '<Root>/PostProcess' */
+/* {S!d6074}Enable for Atomic SubSystem: '<S7>/PostProcess' */
+%<SLibCG_DumpSSCode("/*@[1642488*/",SLibCGIRGenReusableSysCall("Model_Target_PostProcess_Enable", [], 916, 0, 13, 0, 19, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[916]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d6074}End of Enable for SubSystem: '<S7>/PostProcess' */
+/* {E!d6073}End of Enable for SubSystem: '<Root>/PostProcess' */
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[8], "Enable",0)
+
+/* {S!d6077}Enable for Atomic SubSystem: '<Root>/InputSelect' */
+%<SLibCG_DumpSSCode("/*@[1642489*/",SLibCGIRGenReusableSysCall("Model_Target_InputSelect_Enable", [], 8, 0, 13, 0, 19, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[8]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d6077}End of Enable for SubSystem: '<Root>/InputSelect' */
+
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS864B12)
+/* {S!d6079}Enable for Atomic SubSystem: '<Root>/NEAR' */
+/* {S!d6080}Enable for S-Function (RTC_REQ_RSP): '<S1908>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[16423bd*/",tlcEnableFcnOfS864B12,"/*@]*/")>\
+/* {E!d6080}End of Enable for S-Function (RTC_REQ_RSP): '<S1908>/RTC Request Response Trigger' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS864B44)
+
+/* {S!d6082}Enable for S-Function (RTC_REQ_RSP): '<S1988>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[16423bf*/",tlcEnableFcnOfS864B44,"/*@]*/")>\
+/* {E!d6082}End of Enable for S-Function (RTC_REQ_RSP): '<S1988>/RTC Request Response Trigger' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS864B76)
+
+/* {S!d6084}Enable for S-Function (RTC_REQ_RSP): '<S2068>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[16423c1*/",tlcEnableFcnOfS864B76,"/*@]*/")>\
+/* {E!d6084}End of Enable for S-Function (RTC_REQ_RSP): '<S2068>/RTC Request Response Trigger' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS864B108)
+
+/* {S!d6086}Enable for S-Function (RTC_REQ_RSP): '<S2148>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[16423c3*/",tlcEnableFcnOfS864B108,"/*@]*/")>\
+/* {E!d6086}End of Enable for S-Function (RTC_REQ_RSP): '<S2148>/RTC Request Response Trigger' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS864B182)
+
+/* {S!d6088}Enable for S-Function (RTC_REQ_RSP): '<S1857>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[16423c5*/",tlcEnableFcnOfS864B182,"/*@]*/")>\
+/* {E!d6088}End of Enable for S-Function (RTC_REQ_RSP): '<S1857>/RTC Request Response Trigger' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS864B194)
+
+/* {S!d6090}Enable for S-Function (RTC_REQ_RSP): '<S1886>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[16423c7*/",tlcEnableFcnOfS864B194,"/*@]*/")>\
+/* {E!d6090}End of Enable for S-Function (RTC_REQ_RSP): '<S1886>/RTC Request Response Trigger' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS864B222)
+
+/* {S!d6092}Enable for S-Function (RTC_REQ_RSP): '<S1937>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[16423c9*/",tlcEnableFcnOfS864B222,"/*@]*/")>\
+/* {E!d6092}End of Enable for S-Function (RTC_REQ_RSP): '<S1937>/RTC Request Response Trigger' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS864B234)
+
+/* {S!d6094}Enable for S-Function (RTC_REQ_RSP): '<S1966>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[16423cb*/",tlcEnableFcnOfS864B234,"/*@]*/")>\
+/* {E!d6094}End of Enable for S-Function (RTC_REQ_RSP): '<S1966>/RTC Request Response Trigger' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS864B262)
+
+/* {S!d6096}Enable for S-Function (RTC_REQ_RSP): '<S2017>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[16423cd*/",tlcEnableFcnOfS864B262,"/*@]*/")>\
+/* {E!d6096}End of Enable for S-Function (RTC_REQ_RSP): '<S2017>/RTC Request Response Trigger' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS864B274)
+
+/* {S!d6098}Enable for S-Function (RTC_REQ_RSP): '<S2046>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[16423cf*/",tlcEnableFcnOfS864B274,"/*@]*/")>\
+/* {E!d6098}End of Enable for S-Function (RTC_REQ_RSP): '<S2046>/RTC Request Response Trigger' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS864B302)
+
+/* {S!d6100}Enable for S-Function (RTC_REQ_RSP): '<S2097>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[16423d1*/",tlcEnableFcnOfS864B302,"/*@]*/")>\
+/* {E!d6100}End of Enable for S-Function (RTC_REQ_RSP): '<S2097>/RTC Request Response Trigger' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS864B314)
+
+/* {S!d6102}Enable for S-Function (RTC_REQ_RSP): '<S2126>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[16423d3*/",tlcEnableFcnOfS864B314,"/*@]*/")>\
+/* {E!d6102}End of Enable for S-Function (RTC_REQ_RSP): '<S2126>/RTC Request Response Trigger' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS864B333)
+
+/* {S!d6104}Enable for S-Function (InitTriggerControl): '<S1811>/ITC1' */
+%<SLibCG_DumpSSCode("/*@[16423d5*/",tlcEnableFcnOfS864B333,"/*@]*/")>\
+/* {E!d6104}End of Enable for S-Function (InitTriggerControl): '<S1811>/ITC1' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS864B336)
+
+/* {S!d6106}Enable for S-Function (InitTriggerControl): '<S1803>/ITC1' */
+%<SLibCG_DumpSSCode("/*@[16423d7*/",tlcEnableFcnOfS864B336,"/*@]*/")>\
+/* {E!d6106}End of Enable for S-Function (InitTriggerControl): '<S1803>/ITC1' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS864B371)
+
+/* {S!d6108}Enable for S-Function (RTC_REQ_RSP): '<S1784>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[16423d9*/",tlcEnableFcnOfS864B371,"/*@]*/")>\
+/* {E!d6108}End of Enable for S-Function (RTC_REQ_RSP): '<S1784>/RTC Request Response Trigger' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS864B385)
+
+/* {S!d6110}Enable for S-Function (RTC_REQ_RSP): '<S1736>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[16423db*/",tlcEnableFcnOfS864B385,"/*@]*/")>\
+/* {E!d6110}End of Enable for S-Function (RTC_REQ_RSP): '<S1736>/RTC Request Response Trigger' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS864B389)
+
+/* {S!d6112}Enable for S-Function (RTC_REQ_RSP): '<S1735>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[16423dd*/",tlcEnableFcnOfS864B389,"/*@]*/")>\
+/* {E!d6112}End of Enable for S-Function (RTC_REQ_RSP): '<S1735>/RTC Request Response Trigger' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS864B393)
+
+/* {S!d6114}Enable for S-Function (RTC_REQ_RSP): '<S1738>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[16423df*/",tlcEnableFcnOfS864B393,"/*@]*/")>\
+/* {E!d6114}End of Enable for S-Function (RTC_REQ_RSP): '<S1738>/RTC Request Response Trigger' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS864B397)
+
+/* {S!d6116}Enable for S-Function (RTC_REQ_RSP): '<S1737>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[16423e1*/",tlcEnableFcnOfS864B397,"/*@]*/")>\
+/* {E!d6116}End of Enable for S-Function (RTC_REQ_RSP): '<S1737>/RTC Request Response Trigger' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS864B417)
+
+/* {S!d6118}Enable for S-Function (InitTriggerControl): '<S1632>/ITC1' */
+%<SLibCG_DumpSSCode("/*@[16423e3*/",tlcEnableFcnOfS864B417,"/*@]*/")>\
+/* {E!d6118}End of Enable for S-Function (InitTriggerControl): '<S1632>/ITC1' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS864B420)
+
+/* {S!d6120}Enable for S-Function (InitTriggerControl): '<S1624>/ITC1' */
+%<SLibCG_DumpSSCode("/*@[16423e5*/",tlcEnableFcnOfS864B420,"/*@]*/")>\
+/* {E!d6120}End of Enable for S-Function (InitTriggerControl): '<S1624>/ITC1' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS864B425)
+
+/* {S!d6122}Enable for S-Function (InitTriggerControl): '<S1651>/ITC1' */
+%<SLibCG_DumpSSCode("/*@[16423e7*/",tlcEnableFcnOfS864B425,"/*@]*/")>\
+/* {E!d6122}End of Enable for S-Function (InitTriggerControl): '<S1651>/ITC1' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS864B428)
+
+/* {S!d6124}Enable for S-Function (InitTriggerControl): '<S1643>/ITC1' */
+%<SLibCG_DumpSSCode("/*@[16423e9*/",tlcEnableFcnOfS864B428,"/*@]*/")>\
+/* {E!d6124}End of Enable for S-Function (InitTriggerControl): '<S1643>/ITC1' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS864B432)
+
+/* {S!d6126}Enable for S-Function (RTC_REQ_RSP): '<S1656>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[16423eb*/",tlcEnableFcnOfS864B432,"/*@]*/")>\
+/* {E!d6126}End of Enable for S-Function (RTC_REQ_RSP): '<S1656>/RTC Request Response Trigger' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS864B437)
+
+/* {S!d6128}Enable for S-Function (RTC_REQ_RSP): '<S1604>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[16423ed*/",tlcEnableFcnOfS864B437,"/*@]*/")>\
+/* {E!d6128}End of Enable for S-Function (RTC_REQ_RSP): '<S1604>/RTC Request Response Trigger' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS864B443)
+
+/* {S!d6130}Enable for S-Function (InitTriggerControl): '<S1772>/ITC1' */
+%<SLibCG_DumpSSCode("/*@[16423ef*/",tlcEnableFcnOfS864B443,"/*@]*/")>\
+/* {E!d6130}End of Enable for S-Function (InitTriggerControl): '<S1772>/ITC1' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS864B446)
+
+/* {S!d6132}Enable for S-Function (InitTriggerControl): '<S1771>/ITC1' */
+%<SLibCG_DumpSSCode("/*@[16423f1*/",tlcEnableFcnOfS864B446,"/*@]*/")>\
+/* {E!d6132}End of Enable for S-Function (InitTriggerControl): '<S1771>/ITC1' */
+/* {E!d6079}End of Enable for SubSystem: '<Root>/NEAR' */
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[639], "Enable",0)
+
+/* {S!d6135}Enable for Atomic SubSystem: '<S4>/PreAmpPart1' */
+%<SLibCG_DumpSSCode("/*@[164248a*/",SLibCGIRGenReusableSysCall("Model_Target_PreAmpPart1_Enable", [], 639, 0, 13, 0, 19, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[639]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d6135}End of Enable for SubSystem: '<S4>/PreAmpPart1' */
+
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS214B0)
+/* {S!d6137}Enable for Atomic SubSystem: '<S25>/AudioPilot35' */
+/* {S!d6138}Enable for S-Function (RTC_REQ_RSP): '<S44>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[16423f3*/",tlcEnableFcnOfS214B0,"/*@]*/")>\
+/* {E!d6138}End of Enable for S-Function (RTC_REQ_RSP): '<S44>/RTC Request Response Trigger' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS214B12)
+
+/* {S!d6140}Enable for S-Function (InitTriggerControl): '<S277>/ITC1' */
+%<SLibCG_DumpSSCode("/*@[16423f5*/",tlcEnableFcnOfS214B12,"/*@]*/")>\
+/* {E!d6140}End of Enable for S-Function (InitTriggerControl): '<S277>/ITC1' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS214B18)
+
+/* {S!d6142}Enable for S-Function (InitTriggerControl): '<S328>/ITC1' */
+%<SLibCG_DumpSSCode("/*@[16423f7*/",tlcEnableFcnOfS214B18,"/*@]*/")>\
+/* {E!d6142}End of Enable for S-Function (InitTriggerControl): '<S328>/ITC1' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS214B21)
+
+/* {S!d6144}Enable for S-Function (InitTriggerControl): '<S320>/ITC1' */
+%<SLibCG_DumpSSCode("/*@[16423f9*/",tlcEnableFcnOfS214B21,"/*@]*/")>\
+/* {E!d6144}End of Enable for S-Function (InitTriggerControl): '<S320>/ITC1' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS214B26)
+
+/* {S!d6146}Enable for S-Function (InitTriggerControl): '<S344>/ITC1' */
+%<SLibCG_DumpSSCode("/*@[16423fb*/",tlcEnableFcnOfS214B26,"/*@]*/")>\
+/* {E!d6146}End of Enable for S-Function (InitTriggerControl): '<S344>/ITC1' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS214B29)
+
+/* {S!d6148}Enable for S-Function (InitTriggerControl): '<S336>/ITC1' */
+%<SLibCG_DumpSSCode("/*@[16423fd*/",tlcEnableFcnOfS214B29,"/*@]*/")>\
+/* {E!d6148}End of Enable for S-Function (InitTriggerControl): '<S336>/ITC1' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS214B34)
+
+/* {S!d6150}Enable for S-Function (InitTriggerControl): '<S378>/ITC1' */
+%<SLibCG_DumpSSCode("/*@[16423ff*/",tlcEnableFcnOfS214B34,"/*@]*/")>\
+/* {E!d6150}End of Enable for S-Function (InitTriggerControl): '<S378>/ITC1' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS214B42)
+
+/* {S!d6152}Enable for S-Function (InitTriggerControl): '<S410>/ITC1' */
+%<SLibCG_DumpSSCode("/*@[1642401*/",tlcEnableFcnOfS214B42,"/*@]*/")>\
+/* {E!d6152}End of Enable for S-Function (InitTriggerControl): '<S410>/ITC1' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS214B45)
+
+/* {S!d6154}Enable for S-Function (InitTriggerControl): '<S402>/ITC1' */
+%<SLibCG_DumpSSCode("/*@[1642403*/",tlcEnableFcnOfS214B45,"/*@]*/")>\
+/* {E!d6154}End of Enable for S-Function (InitTriggerControl): '<S402>/ITC1' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS214B53)
+
+/* {S!d6156}Enable for S-Function (InitTriggerControl): '<S426>/ITC1' */
+%<SLibCG_DumpSSCode("/*@[1642405*/",tlcEnableFcnOfS214B53,"/*@]*/")>\
+/* {E!d6156}End of Enable for S-Function (InitTriggerControl): '<S426>/ITC1' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS214B56)
+
+/* {S!d6158}Enable for S-Function (InitTriggerControl): '<S418>/ITC1' */
+%<SLibCG_DumpSSCode("/*@[1642407*/",tlcEnableFcnOfS214B56,"/*@]*/")>\
+/* {E!d6158}End of Enable for S-Function (InitTriggerControl): '<S418>/ITC1' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS214B60)
+
+/* {S!d6160}Enable for S-Function (RTC_REQ_RSP): '<S45>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[1642409*/",tlcEnableFcnOfS214B60,"/*@]*/")>\
+/* {E!d6160}End of Enable for S-Function (RTC_REQ_RSP): '<S45>/RTC Request Response Trigger' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS214B65)
+
+/* {S!d6162}Enable for S-Function (RTC_REQ_RSP): '<S48>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[164240b*/",tlcEnableFcnOfS214B65,"/*@]*/")>\
+/* {E!d6162}End of Enable for S-Function (RTC_REQ_RSP): '<S48>/RTC Request Response Trigger' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS214B94)
+
+/* {S!d6164}Enable for S-Function (RTC_REQ_RSP): '<S142>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[164240d*/",tlcEnableFcnOfS214B94,"/*@]*/")>\
+/* {E!d6164}End of Enable for S-Function (RTC_REQ_RSP): '<S142>/RTC Request Response Trigger' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS214B98)
+
+/* {S!d6166}Enable for S-Function (RTC_REQ_RSP): '<S145>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[164240f*/",tlcEnableFcnOfS214B98,"/*@]*/")>\
+/* {E!d6166}End of Enable for S-Function (RTC_REQ_RSP): '<S145>/RTC Request Response Trigger' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS214B122)
+
+/* {S!d6168}Enable for S-Function (RTC_REQ_RSP): '<S171>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[1642411*/",tlcEnableFcnOfS214B122,"/*@]*/")>\
+/* {E!d6168}End of Enable for S-Function (RTC_REQ_RSP): '<S171>/RTC Request Response Trigger' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS214B133)
+
+/* {S!d6170}Enable for S-Function (RTC_REQ_RSP): '<S173>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[1642413*/",tlcEnableFcnOfS214B133,"/*@]*/")>\
+/* {E!d6170}End of Enable for S-Function (RTC_REQ_RSP): '<S173>/RTC Request Response Trigger' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS214B139)
+
+/* {S!d6172}Enable for S-Function (RTC_REQ_RSP): '<S193>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[1642415*/",tlcEnableFcnOfS214B139,"/*@]*/")>\
+/* {E!d6172}End of Enable for S-Function (RTC_REQ_RSP): '<S193>/RTC Request Response Trigger' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS214B143)
+
+/* {S!d6174}Enable for S-Function (RTC_REQ_RSP): '<S196>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[1642417*/",tlcEnableFcnOfS214B143,"/*@]*/")>\
+/* {E!d6174}End of Enable for S-Function (RTC_REQ_RSP): '<S196>/RTC Request Response Trigger' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS214B147)
+
+/* {S!d6176}Enable for S-Function (RTC_REQ_RSP): '<S192>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[1642419*/",tlcEnableFcnOfS214B147,"/*@]*/")>\
+/* {E!d6176}End of Enable for S-Function (RTC_REQ_RSP): '<S192>/RTC Request Response Trigger' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS214B151)
+
+/* {S!d6178}Enable for S-Function (RTC_REQ_RSP): '<S195>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[164241b*/",tlcEnableFcnOfS214B151,"/*@]*/")>\
+/* {E!d6178}End of Enable for S-Function (RTC_REQ_RSP): '<S195>/RTC Request Response Trigger' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS214B177)
+
+/* {S!d6180}Enable for S-Function (RTC_REQ_RSP): '<S232>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[164241d*/",tlcEnableFcnOfS214B177,"/*@]*/")>\
+/* {E!d6180}End of Enable for S-Function (RTC_REQ_RSP): '<S232>/RTC Request Response Trigger' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS214B181)
+
+/* {S!d6182}Enable for S-Function (RTC_REQ_RSP): '<S233>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[164241f*/",tlcEnableFcnOfS214B181,"/*@]*/")>\
+/* {E!d6182}End of Enable for S-Function (RTC_REQ_RSP): '<S233>/RTC Request Response Trigger' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS214B190)
+
+/* {S!d6184}Enable for S-Function (RTC_REQ_RSP): '<S143>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[1642421*/",tlcEnableFcnOfS214B190,"/*@]*/")>\
+/* {E!d6184}End of Enable for S-Function (RTC_REQ_RSP): '<S143>/RTC Request Response Trigger' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS214B199)
+
+/* {S!d6186}Enable for S-Function (RTC_REQ_RSP): '<S69>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[1642423*/",tlcEnableFcnOfS214B199,"/*@]*/")>\
+/* {E!d6186}End of Enable for S-Function (RTC_REQ_RSP): '<S69>/RTC Request Response Trigger' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS214B207)
+
+/* {S!d6188}Enable for S-Function (RTC_REQ_RSP): '<S144>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[1642425*/",tlcEnableFcnOfS214B207,"/*@]*/")>\
+/* {E!d6188}End of Enable for S-Function (RTC_REQ_RSP): '<S144>/RTC Request Response Trigger' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS214B215)
+
+/* {S!d6190}Enable for S-Function (RTC_REQ_RSP): '<S70>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[1642427*/",tlcEnableFcnOfS214B215,"/*@]*/")>\
+/* {E!d6190}End of Enable for S-Function (RTC_REQ_RSP): '<S70>/RTC Request Response Trigger' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS214B223)
+
+/* {S!d6192}Enable for S-Function (RTC_REQ_RSP): '<S71>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[1642429*/",tlcEnableFcnOfS214B223,"/*@]*/")>\
+/* {E!d6192}End of Enable for S-Function (RTC_REQ_RSP): '<S71>/RTC Request Response Trigger' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS214B253)
+
+/* {S!d6194}Enable for S-Function (RTC_REQ_RSP): '<S107>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[164242b*/",tlcEnableFcnOfS214B253,"/*@]*/")>\
+/* {E!d6194}End of Enable for S-Function (RTC_REQ_RSP): '<S107>/RTC Request Response Trigger' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS214B322)
+
+/* {S!d6196}Enable for S-Function (InitTriggerControl): '<S531>/ITC1' */
+%<SLibCG_DumpSSCode("/*@[164242d*/",tlcEnableFcnOfS214B322,"/*@]*/")>\
+/* {E!d6196}End of Enable for S-Function (InitTriggerControl): '<S531>/ITC1' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS214B325)
+
+/* {S!d6198}Enable for S-Function (InitTriggerControl): '<S523>/ITC1' */
+%<SLibCG_DumpSSCode("/*@[164242f*/",tlcEnableFcnOfS214B325,"/*@]*/")>\
+/* {E!d6198}End of Enable for S-Function (InitTriggerControl): '<S523>/ITC1' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS214B335)
+
+/* {S!d6200}Enable for S-Function (RTC_REQ_RSP): '<S535>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[1642431*/",tlcEnableFcnOfS214B335,"/*@]*/")>\
+/* {E!d6200}End of Enable for S-Function (RTC_REQ_RSP): '<S535>/RTC Request Response Trigger' */
+/* {E!d6137}End of Enable for SubSystem: '<S25>/AudioPilot35' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS228B8)
+
+/* {S!d6203}Enable for Atomic SubSystem: '<S33>/Balance' */
+/* {S!d6204}Enable for S-Function (RTC_REQ_RSP): '<S564>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[1642433*/",tlcEnableFcnOfS228B8,"/*@]*/")>\
+/* {E!d6204}End of Enable for S-Function (RTC_REQ_RSP): '<S564>/RTC Request Response Trigger' */
+/* {E!d6203}End of Enable for SubSystem: '<S33>/Balance' */
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[247], "Enable",0)
+
+/* {S!d6207}Enable for Atomic SubSystem: '<S558>/Medusa5H1 Part 1' */
+%<SLibCG_DumpSSCode("/*@[164248b*/",SLibCGIRGenReusableSysCall("Model_Target_Medusa5H1Part1_Enable", [], 247, 0, 13, 0, 19, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[247]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d6207}End of Enable for SubSystem: '<S558>/Medusa5H1 Part 1' */
+
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS501B6)
+/* {S!d6209}Enable for Atomic SubSystem: '<S33>/NearWiggleFilters' */
+/* {S!d6210}Enable for S-Function (InitTriggerControl): '<S1341>/ITC1' */
+%<SLibCG_DumpSSCode("/*@[1642435*/",tlcEnableFcnOfS501B6,"/*@]*/")>\
+/* {E!d6210}End of Enable for S-Function (InitTriggerControl): '<S1341>/ITC1' */
+%endif
+%if !WHITE_SPACE(tlcEnableFcnOfS501B9)
+
+/* {S!d6212}Enable for S-Function (InitTriggerControl): '<S1340>/ITC1' */
+%<SLibCG_DumpSSCode("/*@[1642437*/",tlcEnableFcnOfS501B9,"/*@]*/")>\
+/* {E!d6212}End of Enable for S-Function (InitTriggerControl): '<S1340>/ITC1' */
+/* {E!d6209}End of Enable for SubSystem: '<S33>/NearWiggleFilters' */
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[300], "Enable",0)
+
+/* {S!d6215}Enable for Atomic SubSystem: '<S558>/Medusa5H1 Part 2' */
+%<SLibCG_DumpSSCode("/*@[164248c*/",SLibCGIRGenReusableSysCall("Model_Target_Medusa5H1Part2_Enable", [], 300, 0, 13, 0, 19, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[300]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d6215}End of Enable for SubSystem: '<S558>/Medusa5H1 Part 2' */
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[423], "Enable",0)
+
+/* {S!d6217}Enable for Atomic SubSystem: '<S558>/Medusa5H1 Part 3' */
+%<SLibCG_DumpSSCode("/*@[164248d*/",SLibCGIRGenReusableSysCall("Model_Target_Medusa5H1Part3_Enable", [], 423, 0, 13, 0, 19, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[423]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d6217}End of Enable for SubSystem: '<S558>/Medusa5H1 Part 3' */
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[461], "Enable",0)
+
+/* {S!d6219}Enable for Atomic SubSystem: '<S558>/Medusa5H1 Part 4' */
+%<SLibCG_DumpSSCode("/*@[164248e*/",SLibCGIRGenReusableSysCall("Model_Target_Medusa5H1Part4_Enable", [], 461, 0, 13, 0, 19, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[461]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d6219}End of Enable for SubSystem: '<S558>/Medusa5H1 Part 4' */
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[471], "Enable",0)
+
+/* {S!d6221}Enable for Atomic SubSystem: '<S558>/Medusa5H1 Part 5' */
+%<SLibCG_DumpSSCode("/*@[164248f*/",SLibCGIRGenReusableSysCall("Model_Target_Medusa5H1Part5_Enable", [], 471, 0, 13, 0, 19, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[471]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d6221}End of Enable for SubSystem: '<S558>/Medusa5H1 Part 5' */
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[578], "Enable",0)
+
+/* {S!d6223}Enable for Atomic SubSystem: '<S33>/SleepingBeauty' */
+/* {S!d6224}Enable for Atomic SubSystem: '<S1345>/Enabled' */
+%<SLibCG_DumpSSCode("/*@[1642490*/",SLibCGIRGenReusableSysCall("Model_Target_Enabled_Enable", [], 578, 0, 13, 0, 19, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[578]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d6224}End of Enable for SubSystem: '<S1345>/Enabled' */
+/* {E!d6223}End of Enable for SubSystem: '<S33>/SleepingBeauty' */
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[597], "Enable",0)
+
+/* {S!d6227}Enable for Atomic SubSystem: '<S33>/VLS' */
+%<SLibCG_DumpSSCode("/*@[1642491*/",SLibCGIRGenReusableSysCall("Model_Target_VLS_Enable", [], 597, 0, 13, 0, 19, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[597]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d6227}End of Enable for SubSystem: '<S33>/VLS' */
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[493], "Enable",0)
+
+/* {S!d6229}Enable for Atomic SubSystem: '<S33>/MedusaPostHoligram' */
+/* {S!d6230}Enable for Atomic SubSystem: '<S559>/MedusaPostHoligram' */
+%<SLibCG_DumpSSCode("/*@[1642492*/",SLibCGIRGenReusableSysCall("Model_Target_MedusaPostHoligram_Enable", [], 493, 0, 13, 0, 19, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[493]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d6230}End of Enable for SubSystem: '<S559>/MedusaPostHoligram' */
+/* {E!d6229}End of Enable for SubSystem: '<S33>/MedusaPostHoligram' */
+
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS214B458)
+/* {S!d6233}ConstCode for Atomic SubSystem: '<S25>/AudioPilot35' */
+/* {S!d6314}ConstCode for S-Function (CapturedConst): '<S316>/CapturedTuneConst' incorporates:
+ *  S-Function (AudioStats_MEX): '<S316>/AudioStats'
+ */
+%<SLibCG_DumpSSCode("/*@[1642439*/",tlcOutputsFcnOfS214B458,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS214B459)
+/* {S!d6316}ConstCode for S-Function (CapturedConst): '<S332>/CapturedTuneConst' incorporates:
+ *  S-Function (AudioStats_MEX): '<S332>/AudioStats'
+ */
+%<SLibCG_DumpSSCode("/*@[164243b*/",tlcOutputsFcnOfS214B459,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS214B462)
+/* {S!d6318}ConstCode for S-Function (CapturedConst): '<S348>/Captured Tune Const' incorporates:
+ *  Constant: '<S348>/Constant'
+ */
+%<SLibCG_DumpSSCode("/*@[164243d*/",tlcOutputsFcnOfS214B462,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS214B468)
+/* {S!d6320}ConstCode for S-Function (CapturedConst): '<S398>/CapturedTuneConst' incorporates:
+ *  S-Function (AudioStats_MEX): '<S398>/AudioStats'
+ */
+%<SLibCG_DumpSSCode("/*@[164243f*/",tlcOutputsFcnOfS214B468,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS214B469)
+/* {S!d6322}ConstCode for S-Function (CapturedConst): '<S414>/CapturedTuneConst' incorporates:
+ *  S-Function (AudioStats_MEX): '<S414>/AudioStats'
+ */
+%<SLibCG_DumpSSCode("/*@[1642441*/",tlcOutputsFcnOfS214B469,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS214B471)
+/* {S!d6324}ConstCode for S-Function (CapturedConst): '<S430>/Captured Tune Const' incorporates:
+ *  Constant: '<S430>/Constant'
+ */
+%<SLibCG_DumpSSCode("/*@[1642443*/",tlcOutputsFcnOfS214B471,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS214B486)
+/* {S!d6326}ConstCode for S-Function (CapturedConst): '<S82>/Captured Tune Const' incorporates:
+ *  Constant: '<S82>/MaxAlignDelaySamples'
+ */
+%<SLibCG_DumpSSCode("/*@[1642445*/",tlcOutputsFcnOfS214B486,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS214B498)
+/* {S!d6328}ConstCode for S-Function (CapturedConst): '<S519>/CapturedTuneConst' incorporates:
+ *  S-Function (AudioStats_MEX): '<S519>/AudioStats'
+ */
+%<SLibCG_DumpSSCode("/*@[1642447*/",tlcOutputsFcnOfS214B498,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS214B500)
+/* {S!d6330}ConstCode for S-Function (CapturedConst): '<S514>/Captured Tune Const' incorporates:
+ *  Constant: '<S514>/MaxMusicDelayPerChannel'
+ */
+%<SLibCG_DumpSSCode("/*@[1642449*/",tlcOutputsFcnOfS214B500,"/*@]*/")>\
+/* {E!d6233}End of ConstCode for SubSystem: '<S25>/AudioPilot35' */
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS228B27)
+
+/* {S!d6235}ConstCode for Atomic SubSystem: '<S33>/Balance' */
+/* {S!d6332}ConstCode for S-Function (CapturedConst): '<S563>/Captured Tune Const' incorporates:
+ *  S-Function (AudioStats_MEX): '<S563>/Audio Stats1'
+ */
+%<SLibCG_DumpSSCode("/*@[164244b*/",tlcOutputsFcnOfS228B27,"/*@]*/")>\
+/* {E!d6235}End of ConstCode for SubSystem: '<S33>/Balance' */
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[247], "ConstCode",0)
+
+/* {S!d6237}ConstCode for Atomic SubSystem: '<S558>/Medusa5H1 Part 1' */
+%<SLibCG_DumpSSCode("/*@[1642493*/",SLibCGIRGenReusableSysCall("Model_Target_Medusa5H1Part1_Const", [], 247, 0, 27, 0, 19, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[247]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d6237}End of ConstCode for SubSystem: '<S558>/Medusa5H1 Part 1' */
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[300], "ConstCode",0)
+
+/* {S!d6239}ConstCode for Atomic SubSystem: '<S558>/Medusa5H1 Part 2' */
+%<SLibCG_DumpSSCode("/*@[1642494*/",SLibCGIRGenReusableSysCall("Model_Target_Medusa5H1Part2_Const", [], 300, 0, 27, 0, 19, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[300]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d6239}End of ConstCode for SubSystem: '<S558>/Medusa5H1 Part 2' */
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[423], "ConstCode",0)
+
+/* {S!d6241}ConstCode for Atomic SubSystem: '<S558>/Medusa5H1 Part 3' */
+%<SLibCG_DumpSSCode("/*@[1642495*/",SLibCGIRGenReusableSysCall("Model_Target_Medusa5H1Part3_Const", [], 423, 0, 27, 0, 19, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[423]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d6241}End of ConstCode for SubSystem: '<S558>/Medusa5H1 Part 3' */
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[461], "ConstCode",0)
+
+/* {S!d6243}ConstCode for Atomic SubSystem: '<S558>/Medusa5H1 Part 4' */
+%<SLibCG_DumpSSCode("/*@[1642496*/",SLibCGIRGenReusableSysCall("Model_Target_Medusa5H1Part4_Const", [], 461, 0, 27, 0, 19, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[461]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d6243}End of ConstCode for SubSystem: '<S558>/Medusa5H1 Part 4' */
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[578], "ConstCode",0)
+
+/* {S!d6245}ConstCode for Atomic SubSystem: '<S33>/SleepingBeauty' */
+/* {S!d6246}ConstCode for Atomic SubSystem: '<S1345>/Enabled' */
+%<SLibCG_DumpSSCode("/*@[1642497*/",SLibCGIRGenReusableSysCall("Model_Target_Enabled_Const", [], 578, 0, 27, 0, 19, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[578]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d6246}End of ConstCode for SubSystem: '<S1345>/Enabled' */
+/* {E!d6245}End of ConstCode for SubSystem: '<S33>/SleepingBeauty' */
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[597], "ConstCode",0)
+
+/* {S!d6249}ConstCode for Atomic SubSystem: '<S33>/VLS' */
+%<SLibCG_DumpSSCode("/*@[1642498*/",SLibCGIRGenReusableSysCall("Model_Target_VLS_Const", [], 597, 0, 27, 0, 19, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[597]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d6249}End of ConstCode for SubSystem: '<S33>/VLS' */
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[639], "ConstCode",0)
+
+/* {S!d6251}ConstCode for Atomic SubSystem: '<S4>/PreAmpPart1' */
+%<SLibCG_DumpSSCode("/*@[1642499*/",SLibCGIRGenReusableSysCall("Model_Target_PreAmpPart1_Const", [], 639, 0, 27, 0, 19, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[639]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d6251}End of ConstCode for SubSystem: '<S4>/PreAmpPart1' */
+
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS864B456)
+/* {S!d6253}ConstCode for Atomic SubSystem: '<Root>/NEAR' */
+/* {S!d6334}ConstCode for S-Function (CapturedConst): '<S1883>/Captured Tune Const' incorporates:
+ *  S-Function (AudioStats_MEX): '<S1883>/Audio Stats'
+ */
+%<SLibCG_DumpSSCode("/*@[164244d*/",tlcOutputsFcnOfS864B456,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS864B457)
+/* {S!d6336}ConstCode for S-Function (CapturedConst): '<S1883>/Captured Tune Const1' incorporates:
+ *  S-Function (AudioStats_MEX): '<S1883>/Audio Stats'
+ */
+%<SLibCG_DumpSSCode("/*@[164244f*/",tlcOutputsFcnOfS864B457,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS864B464)
+/* {S!d6338}ConstCode for S-Function (CapturedConst): '<S1963>/Captured Tune Const' incorporates:
+ *  S-Function (AudioStats_MEX): '<S1963>/Audio Stats'
+ */
+%<SLibCG_DumpSSCode("/*@[1642451*/",tlcOutputsFcnOfS864B464,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS864B465)
+/* {S!d6340}ConstCode for S-Function (CapturedConst): '<S1963>/Captured Tune Const1' incorporates:
+ *  S-Function (AudioStats_MEX): '<S1963>/Audio Stats'
+ */
+%<SLibCG_DumpSSCode("/*@[1642453*/",tlcOutputsFcnOfS864B465,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS864B472)
+/* {S!d6342}ConstCode for S-Function (CapturedConst): '<S2043>/Captured Tune Const' incorporates:
+ *  S-Function (AudioStats_MEX): '<S2043>/Audio Stats'
+ */
+%<SLibCG_DumpSSCode("/*@[1642455*/",tlcOutputsFcnOfS864B472,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS864B473)
+/* {S!d6344}ConstCode for S-Function (CapturedConst): '<S2043>/Captured Tune Const1' incorporates:
+ *  S-Function (AudioStats_MEX): '<S2043>/Audio Stats'
+ */
+%<SLibCG_DumpSSCode("/*@[1642457*/",tlcOutputsFcnOfS864B473,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS864B480)
+/* {S!d6346}ConstCode for S-Function (CapturedConst): '<S2123>/Captured Tune Const' incorporates:
+ *  S-Function (AudioStats_MEX): '<S2123>/Audio Stats'
+ */
+%<SLibCG_DumpSSCode("/*@[1642459*/",tlcOutputsFcnOfS864B480,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS864B481)
+/* {S!d6348}ConstCode for S-Function (CapturedConst): '<S2123>/Captured Tune Const1' incorporates:
+ *  S-Function (AudioStats_MEX): '<S2123>/Audio Stats'
+ */
+%<SLibCG_DumpSSCode("/*@[164245b*/",tlcOutputsFcnOfS864B481,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS864B487)
+/* {S!d6350}ConstCode for S-Function (CapturedConst): '<S1799>/CapturedTuneConst' incorporates:
+ *  S-Function (AudioStats_MEX): '<S1799>/AudioStats'
+ */
+%<SLibCG_DumpSSCode("/*@[164245d*/",tlcOutputsFcnOfS864B487,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS864B490)
+/* {S!d6352}ConstCode for S-Function (CapturedConst): '<S1620>/CapturedTuneConst' incorporates:
+ *  S-Function (AudioStats_MEX): '<S1620>/AudioStats'
+ */
+%<SLibCG_DumpSSCode("/*@[164245f*/",tlcOutputsFcnOfS864B490,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS864B491)
+/* {S!d6354}ConstCode for S-Function (CapturedConst): '<S1639>/CapturedTuneConst' incorporates:
+ *  S-Function (AudioStats_MEX): '<S1639>/AudioStats'
+ */
+%<SLibCG_DumpSSCode("/*@[1642461*/",tlcOutputsFcnOfS864B491,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS683B41)
+/* {S!d6254}ConstCode for IfAction SubSystem: '<S1607>/Subsystem' */
+/* {S!d6356}ConstCode for S-Function (CapturedConst): '<S1678>/CapturedTuneConst' incorporates:
+ *  S-Function (AudioStats_MEX): '<S1678>/AudioStats'
+ */
+%<SLibCG_DumpSSCode("/*@[1642463*/",tlcOutputsFcnOfS683B41,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS683B42)
+/* {S!d6358}ConstCode for S-Function (CapturedConst): '<S1697>/CapturedTuneConst' incorporates:
+ *  S-Function (AudioStats_MEX): '<S1697>/AudioStats'
+ */
+%<SLibCG_DumpSSCode("/*@[1642465*/",tlcOutputsFcnOfS683B42,"/*@]*/")>\
+/* {E!d6254}End of ConstCode for SubSystem: '<S1607>/Subsystem' */
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS864B502)
+
+/* {S!d6360}ConstCode for S-Function (CapturedConst): '<S1764>/NumChannelsCapConst' incorporates:
+ *  Constant: '<S1764>/NumChannels'
+ */
+%<SLibCG_DumpSSCode("/*@[1642467*/",tlcOutputsFcnOfS864B502,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS864B504)
+/* {S!d6362}ConstCode for S-Function (CapturedConst): '<S1764>/SampleRateCapConst' incorporates:
+ *  Constant: '<S1764>/SampleRate'
+ */
+%<SLibCG_DumpSSCode("/*@[1642469*/",tlcOutputsFcnOfS864B504,"/*@]*/")>\
+/* {E!d6253}End of ConstCode for SubSystem: '<Root>/NEAR' */
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[916], "ConstCode",0)
+
+/* {S!d6257}ConstCode for Atomic SubSystem: '<Root>/PostProcess' */
+/* {S!d6258}ConstCode for Atomic SubSystem: '<S7>/PostProcess' */
+%<SLibCG_DumpSSCode("/*@[164249a*/",SLibCGIRGenReusableSysCall("Model_Target_PostProcess_Const", [], 916, 0, 27, 0, 19, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[916]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d6258}End of ConstCode for SubSystem: '<S7>/PostProcess' */
+/* {E!d6257}End of ConstCode for SubSystem: '<Root>/PostProcess' */
+%endif
+%<SLibInsertInitPeriodicCStatesFcn(system)>
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedModelInitializeLocalVars", localVarDecl)>
+%endfunction
+%function ModelInitializeFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void ModelInitialize(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(577, 16, fcnProtoType)>
+%endfunction

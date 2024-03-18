@@ -1,0 +1,53 @@
+%implements s1068_b0_g3vnd_344_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+/* MATLAB Function: '<S417>/PoolIirInit' */
+/* MATLAB Function: '<S417>/PoolIirInit' incorporates:
+ *  Product: '<S249>/MuteLF'
+ */
+/*  Invoke the function trigger output */
+/* MATLAB Function 'ITC/init': '<S423>:1' */
+/* '<S423>:1:3' init(); */
+/*  Process function for Pooliir */
+/*  */
+/*  Parameters: */
+/*    x:                  input channels [frame size x number of inputs] */
+/*    NumStages:          array of filter lengths [NumChannels x 1] */
+/*    CoeffsTarget:       coefficient sets [total filter lengths x 1] */
+/*  */
+/*  Global parameters: */
+/*    states:             working memory set up during roommode reset/init CRL */
+/*                        function call [StatesSize x 1] */
+/* -------------------------------------------------------------------------- */
+/* MATLAB Function 'PoolIirWithReset/PoolIir/TargetSpecific/PoolIirInit': '<S420>:1' */
+/*  Extract configuration information from inputs */
+/* '<S420>:1:15' [FrameSize, NumChannels] = size(x); */
+/*  Initialize variables */
+/*  Get the work memory size */
+/* '<S420>:1:21' StatesSize = numel(states); */
+/*  Output */
+/* '<S420>:1:24' VariantStr = char(VariantUint8); */
+/* '<S420>:1:26' if(coder.target('MATLAB') || coder.target('Sfun')) */
+/* '<S420>:1:28' else */
+/* '<S420>:1:29' switch(VariantStr) */
+/* '<S420>:1:30' case{"Hexagon"} */
+/* '<S420>:1:31' NumCoeffPerSosStage = 4; */
+/* '<S420>:1:32' y = pooliir_hexagon_init(single(x), uint32(FrameSize), uint32(NumChannels), uint32(NumStages), single(CoeffsTarget), ... */
+/* '<S420>:1:33'                                      single(states), uint32(StatesSize),uint32(MaxNumOfThreads), uint32(MaxNumSosStages*NumCoeffPerSosStage)); */
+/*@>1391f19*/pooliir_init(%<SLibCG_DumpSSCode("/*@[1392555*/",(SLibCG_CSCDWAddr(252, 41, "", -1, "", 0)),"/*@]*/")>, %<SLibCG_DumpSSCode("/*@[1392538*/",(SLibCG_BOCSCAddr(373, 32, "", -1, "", 0)),"/*@]*/")>, /*@>139197d*/32U, /*@>139197e*/1U, %<SLibCG_DumpSSCode("/*@[139251b*/",(SLibCG_BOCSCAddr(104, 1, "", -1, "", 0)),"/*@]*/")>, %<SLibCG_DumpSSCode("/*@[13924ff*/",(SLibCG_BOCSCAddr(483, 13, "", -1, "", 0)),"/*@]*/")>, %<SLibCG_DumpSSCode("/*@[13924e2*/",(SLibCG_CSCDWAddr(252, 41, "", -1, "", 0)),"/*@]*/")>, /*@>139197f*/41U, /*@>1391995*/1U, /*@>1391996*/12U);
+/* '<S420>:1:34' states(1) = y; */
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void InitTrigger_Model_117_517_516_50_172_156(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(344, 0, fcnProtoType)>
+%endfunction

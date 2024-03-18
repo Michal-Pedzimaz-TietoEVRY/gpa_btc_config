@@ -1,0 +1,107 @@
+%implements s1068_b0_g3vnd_93_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+int32_T b_tmp;
+int32_T n;
+real32_T gain;
+real32_T k;
+%closefile localVarDecl
+/* MATLAB Function 'Rgainy/AudioRateSubsystem/rgainy process': '<S2167>:1' */
+/*  set the size of the output buffer */
+/* '<S2167>:1:8' audioOut = coder.nullcopy(audioIn); */
+/* '<S2167>:1:10' [frame_size,channel_count] = size(audioIn); */
+/* '<S2167>:1:11' gainOut = single(ones(1,channel_count)); */
+/*@>1248f2d*/localB->/*@>1249430*/gainOut/*@>10d663b*/ = /*@>1247d20*/1.0F;
+/*  Channel indexes start in the map just after the ramper channel counts. */
+/*  Create an iterator to walk the channel indexes in rampToChanMap */
+/*  (set its value to "point" just *before* the first channel index, since */
+/*  we'll add a channel count to it during use below) */
+/* '<S2167>:1:17' chanIterator = cast(MaskNumRampers,'like',rampToChanMap); */
+/*  Loop through rampers and apply their gain coefficients */
+/* '<S2167>:1:20' for ramper = 1:MaskNumRampers */
+/* '<S2167>:1:21' k = single(1); */
+/*@>1247ccf*/k/*@>10d663c*/ = /*@>1247d21*/1.0F;
+/* '<S2167>:1:22' gain = Rampers(ramper).currentGain; */
+/*@>1247cd4*/gain/*@>10d663f*/ = %<SLibCG_DumpSSCode("/*@[124929b*/",(SLibCG_SE(SLibCG_CSCDW(3, 1, ".currentGain", -1, "", 0))),"/*@]*/")>;
+/* '<S2167>:1:23' if (Freeze(1) == false) */
+/*@>10d6680*/if (%<SLibCG_DumpSSCode("/*@[1249261*/",(SLibCG_SE(SLibCG_CSCDW(317, 1, "", -1, "", 0))),"/*@]*/")>/*@>10d6665*/ == /*@>1247d22*/0U) {
+    /* '<S2167>:1:24' if (Rampers(ramper).frameCount == 0) */
+    /*@>10d6681*/if (%<SLibCG_DumpSSCode("/*@[124927e*/",(SLibCG_SE(SLibCG_CSCDW(3, 1, ".frameCount", -1, "", 0))),"/*@]*/")>/*@>10d6666*/ == /*@>1247cdb*/0) {
+        /*  The ramp is finished. Stop ramping and SNAP to the target */
+        /* '<S2167>:1:26' gain = Rampers(ramper).targetGain; */
+        /*@>1247ce4*/gain/*@>10d6645*/ = %<SLibCG_DumpSSCode("/*@[12492b8*/",(SLibCG_SE(SLibCG_CSCDW(3, 1, ".targetGain", -1, "", 0))),"/*@]*/")>;
+    } else {
+        /* '<S2167>:1:27' else */
+        /*  The ramp is *NOT* frozen or done: gain is moving */
+        /* '<S2167>:1:29' k = Rampers(ramper).rampCoeff; */
+        /*@>1247ce9*/k/*@>10d6648*/ = %<SLibCG_DumpSSCode("/*@[12492d5*/",(SLibCG_SE(SLibCG_CSCDW(3, 1, ".rampCoeff", -1, "", 0))),"/*@]*/")>;
+        /* '<S2167>:1:30' Rampers(ramper).frameCount = Rampers(ramper).frameCount - 1; */
+%<SLibCG_DumpSSCode("/*@[1249311*/",SLibCG_SetCSCDW(3, 1, ".frameCount", -1, "", 0, "%<SLibCG_DumpSSCode("/*@[124945f*/",(SLibCG_SE(SLibCG_CSCDW(3, 1, ".frameCount", -1, "", 0))),"/*@]*/")>/*@>124945e*/ - /*@>124946a*/1"),"/*@]*/")>\
+    }
+}
+/*  Loop through samples, adjusting gain and applying to channels */
+/* '<S2167>:1:34' for n=1:frame_size */
+/*@>124843c*/b_tmp/*@>124843e*/ = /*@>1248e83*/rtu_rampToChanMap/*@>1248e85*/[/*@>1248e81*/0];
+/*@>10d6687*/for (/*@>12493ab*/n = /*@>12493aa*/0; /*@>12493b5*/n < /*@>12493b3*/32; /*@>12493b1*/n/*@>12493b9*/++) {
+    /* '<S2167>:1:35' gain = gain * k; */
+    /*@>1247cf1*/gain/*@>12493ba*/ *= /*@>1247cef*/k;
+    /*  Loop through channels associated with this ramper */
+    /* '<S2167>:1:37' for chanCount = 1:rampToChanMap(ramper) */
+    /*@>12482de*/if (/*@>12484a4*/b_tmp/*@>12482d8*/ - /*@>12482db*/1/*@>1248402*/ >= /*@>12482dc*/0) {
+        /*@>1248f3b*/localB->/*@>1249436*/audioOut/*@>12477f8*/[/*@>1247d34*/n]/*@>10d6655*/ = /*@>1248e8a*/rtu_audioIn/*@>1248e8c*/[/*@>1248e88*/n]/*@>1247d75*/ * /*@>1247d17*/gain;
+    }
+}
+/* '<S2167>:1:42' for chanCount = 1:rampToChanMap(ramper) */
+/*@>10d6690*/for (/*@>1249398*/n = /*@>1249397*/0; /*@>12493a5*/n < b_tmp; /*@>124939e*/n/*@>12493bb*/++) {
+    /* '<S2167>:1:43' chanIdx = rampToChanMap(chanIterator + chanCount); */
+    /* '<S2167>:1:44' gainOut(chanIdx) = gain; */
+    /*@>1248f34*/localB->/*@>1249433*/gainOut/*@>10d6658*/ = /*@>1247d0d*/gain;
+}
+/* '<S2167>:1:46' Rampers(ramper).currentGain = gain; */
+%<SLibCG_DumpSSCode("/*@[124932e*/",SLibCG_SetCSCDW(3, 1, ".currentGain", -1, "", 0, "/*@>124947c*/gain"),"/*@]*/")>\
+/* '<S2167>:1:47' chanIterator = chanIterator + rampToChanMap(ramper); */
+/*  handle any channels that are not assigned to a ramper (i.e. no gain) */
+/* '<S2167>:1:50' for noRampChannel=(chanIterator+1):(channel_count+MaskNumRampers) */
+/*@>124827f*/if (/*@>12484ca*/(uint8_T)(/*@>1248e90*/rtu_rampToChanMap/*@>1248e92*/[/*@>1248e8e*/0]/*@>12484cb*/ + /*@>12484d2*/2U)/*@>124827e*/ <= /*@>124938e*/2) {
+    /* '<S2167>:1:53' audioOut(n,chanIdx) = audioIn(n,chanIdx); */
+    /*@>1248c8f*/memcpy(&/*@>1248f42*/localB->/*@>1249439*/audioOut/*@>12489c6*/[/*@>12489b5*/0], &/*@>12489cf*/rtu_audioIn/*@>12489d0*/[/*@>12489c2*/0], /*@>12489d2*/sizeof(real32_T)/*@>1249331*/ << /*@>1249330*/5U);
+}
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[93].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(93, 0, 0)>
+%endif
+%if SLibCG_ArgAccessed(93, 0, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(93, 0, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_rgainyprocess_h(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(93, 0, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_Target_rgainyprocess_h", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>const uint8_T rtu_rampToChanMap[2]\
+%assign comma = ", "
+%<comma>const real32_T rtu_audioIn[32]\
+%assign comma = ", "
+%<comma>B_rgainyprocess_Model_Target_m_T *localB\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(93, 0, fcnProtoType)>
+%endfunction

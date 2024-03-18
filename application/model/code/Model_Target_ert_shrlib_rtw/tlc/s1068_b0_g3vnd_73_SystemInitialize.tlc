@@ -1,0 +1,49 @@
+%implements s1068_b0_g3vnd_73_SystemInitialize "C"
+
+%function SystemInitialize(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+/* '<S1726>:1:7' , */
+/* '<S1726>:1:7' lastG = cast(0, class(tgain)); */
+/* '<S1726>:1:10' , */
+/* '<S1726>:1:10' upCoeff = cast(0, class(tgain)); */
+/* '<S1726>:1:12' , */
+/* '<S1726>:1:12' upCoeffN = cast(0, class(tgain)); */
+/* '<S1726>:1:14' , */
+/* '<S1726>:1:14' downCoeff = cast(0, class(tgain)); */
+/* '<S1726>:1:16' , */
+/* '<S1726>:1:16' downCoeffN = cast(0, class(tgain)); */
+/* '<S1726>:1:22' , */
+/* '<S1726>:1:22' lpfCoeff = cast(exp(-1 / FRAME_SIZE), class(tgain)); */
+/*@>122d1cd*/localDW->/*@>122d6e6*/lpfCoeff/*@>10cd7e0*/ = /*@>122b567*/0.969233215F;
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[73].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("SystemInitialize", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "SystemInitialize"))
+%<SLibCG_AccessArg(73, 0, 0)>
+%endif
+%if SLibCG_ArgAccessed(73, 0, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "SystemInitialize", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "SystemInitialize"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(73, 0, 0)>
+%endif
+%<LibSetSystemField(system, "CachedSystemInitializeLocalVars", localVarDecl)>
+%endfunction
+%function SystemInitializeFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_MATLABFunction_m_Init(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(73, 0, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_Target_MATLABFunction_m_Init", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>DW_MATLABFunction_Model_Target_i_T *localDW\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(73, 0, fcnProtoType)>
+%endfunction

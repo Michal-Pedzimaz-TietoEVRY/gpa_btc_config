@@ -1,0 +1,91 @@
+%implements s1068_b0_g3vnd_94_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+int32_T bufferIndex;
+int32_T channel;
+int32_T sample;
+int32_T writeIndex;
+%closefile localVarDecl
+%assign tlcOutputsFcnOfS249B0 = OpaqueTLCBlockFcn("Outputs", 249, 0, 94, 0, 0)
+%if !WHITE_SPACE(tlcOutputsFcnOfS249B0)
+/* {S!d48}S-Function (TOP_MEX): '<S651>/Treble Delay' */
+%<SLibCG_DumpSSCode("/*@[124baac*/",tlcOutputsFcnOfS249B0,"/*@]*/")>\
+%endif
+/* {S!d50}MATLAB Function: '<S652>/MATLAB Function' incorporates:
+ *  Sum: '<S593>/Sum'
+ */
+/* [Param:maxDelay] */
+/* MATLAB Function 'MedusaAlignmentDelay/MATLAB Function': '<S653>:1' */
+/*  Our delayline lives in global variable. We treat as a circular buffer.  */
+/*  figure out the frame size and channel count */
+/* '<S653>:1:9' [frameSize, numChannels] = size(audioIn); */
+/* '<S653>:1:10' frameSize = int32(frameSize); */
+/* '<S653>:1:11' stateLen = int32(maxDelay)+frameSize; */
+/* '<S653>:1:12' totalLen = int32(stateLen * numChannels); */
+/* '<S653>:1:13' audioOut = coder.nullcopy(audioIn); */
+/*  writeIndex points to our current write location in buffer */
+/* '<S653>:1:17' if isempty(delayIndex) */
+/*  delayBuffer is a circular buffer that holds previous samples */
+/*  Write data to delay buffer */
+/* '<S653>:1:24' bufferIndex = delayIndex; */
+/*@>124a317*/bufferIndex/*@>10c8bcb*/ = /*@>124b853*/Model_Target_AlignmentDelay_DW./*@>124bc78*/delayIndex;
+/* '<S653>:1:26' for channel = 1:numChannels */
+/*@>10c8bf3*/for (/*@>124bbd0*/channel = /*@>124bbcf*/0; /*@>124bbda*/channel < /*@>124bbd8*/2; /*@>124bbd6*/channel/*@>124bbef*/++) {
+    /*  Save writeIndex for next channel */
+    /* '<S653>:1:29' writeIndex = circindex(bufferIndex, int32(0), totalLen); */
+    /*@>124a328*/writeIndex/*@>10c8bce*/ = /*@>124ba68*/circindex(/*@>124a324*/bufferIndex, /*@>124bb88*/0, /*@>124bb8b*/8552);
+    /* '<S653>:1:31' for sample = 1:frameSize */
+/*@>10c8bf7*/    for (/*@>124bbe1*/sample = /*@>124bbe0*/0; /*@>124bbeb*/sample < /*@>124bbe9*/32; /*@>124bbe7*/sample/*@>124bbf0*/++) {
+        /*  overwrite oldest sample with the current input sample */
+        /* '<S653>:1:34' delayBuffer(writeIndex + 1) = audioIn(sample, channel); */
+%<SLibCG_DumpSSCode("/*@[124bac8*/",SLibCG_SetCSCDW(644, 8552, "", -1, "/*@>124bcb6*/writeIndex", 0, "/*@>124bcbb*/Model_Target_B./*@>124bcba*/Sum_a/*@>124bcb9*/[(/*@>124bcbf*/channel/*@>124bcbe*/ << /*@>124bcc0*/5)/*@>124bcbd*/ + /*@>124bcc1*/sample]"),"/*@]*/")>\
+        /*  increment write pointer */
+        /* '<S653>:1:37' writeIndex = circindex(writeIndex, int32(1), totalLen); */
+        /*@>124a347*/writeIndex/*@>10c8bd5*/ = /*@>124ba6b*/circindex(/*@>124a343*/writeIndex, /*@>124bb97*/1, /*@>124bb9a*/8552);
+    }
+    /*  Advance buffer index for next channel */
+    /* '<S653>:1:41' bufferIndex = circindex(bufferIndex, stateLen, totalLen); */
+    /*@>124a33c*/bufferIndex/*@>10c8bd7*/ = /*@>124ba6e*/circindex(/*@>124a338*/bufferIndex, /*@>124bb8e*/4276, /*@>124bb91*/8552);
+}
+/*  Reset */
+/* '<S653>:1:45' bufferIndex = circindex(delayIndex, frameSize, totalLen); */
+/*@>124a322*/bufferIndex/*@>10c8bd9*/ = /*@>124ba71*/circindex(/*@>124b859*/Model_Target_AlignmentDelay_DW./*@>124bc7b*/delayIndex, /*@>124bb82*/32, /*@>124bb85*/8552);
+/* '<S653>:1:46' delayIndex = bufferIndex; */
+/*@>124b85f*/Model_Target_AlignmentDelay_DW./*@>124bc7e*/delayIndex/*@>10c8bdb*/ = /*@>124a32a*/bufferIndex;
+/*  Read samples from delay line */
+/* '<S653>:1:49' for channel = 1:numChannels */
+/*@>10c8c04*/for (/*@>124bbae*/channel = /*@>124bbad*/0; /*@>124bbb8*/channel < /*@>124bbb6*/2; /*@>124bbb4*/channel/*@>124bbf1*/++) {
+    /*  Setup read pointer */
+    /* '<S653>:1:52' readIndex = circindex(bufferIndex, -(delayTime+frameSize), totalLen); */
+    /*@>124a341*/writeIndex/*@>10c8bde*/ = /*@>124ba74*/circindex(/*@>124a33e*/bufferIndex, -/*@<124a394*/(%<SLibCG_DumpSSCode("/*@[124bae2*/",(SLibCG_SE(SLibCG_BOCSC(747, 1, "", -1, "", 0))),"/*@]*/")>/*@>10c8be9*/ + /*@>124a35c*/32), /*@>124bb94*/8552);
+    /* '<S653>:1:54' for sample = 1:frameSize */
+/*@>10c8c08*/    for (/*@>124bbbf*/sample = /*@>124bbbe*/0; /*@>124bbc9*/sample < /*@>124bbc7*/32; /*@>124bbc5*/sample/*@>124bbf2*/++) {
+        /*  overwrite oldest sample with the current input sample */
+        /* '<S653>:1:57' audioOut(sample, channel) = delayBuffer(readIndex + 1); */
+        /*@>124b72d*/Model_Target_AlignmentDelay_B./*@>124bc75*/audioOut/*@>124a0e7*/[/*@>124a372*/sample/*@>124a0e3*/ + (/*@>124a374*/channel/*@>124a39c*/ << /*@>124a39b*/5)]/*@>10c8be4*/ = %<SLibCG_DumpSSCode("/*@[124bafd*/",(SLibCG_SE(SLibCG_CSCDW(644, 8552, "", -1, "/*@>124b528*/writeIndex", 0))),"/*@]*/")>;
+        /*  increment write pointer */
+        /* '<S653>:1:60' readIndex = circindex(readIndex, int32(1), totalLen); */
+        /*@>124a358*/writeIndex/*@>10c8be6*/ = /*@>124ba77*/circindex(/*@>124a354*/writeIndex, /*@>124bba3*/1, /*@>124bba6*/8552);
+    }
+    /*  Advance buffer index for next channel */
+    /* '<S653>:1:65' bufferIndex = circindex(bufferIndex, stateLen, totalLen); */
+    /*@>124a352*/bufferIndex/*@>10c8be8*/ = /*@>124ba7a*/circindex(/*@>124a34e*/bufferIndex, /*@>124bb9d*/4276, /*@>124bba0*/8552);
+}
+/* {E!d50}End of MATLAB Function: '<S652>/MATLAB Function' */
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_AlignmentDelay(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(94, 0, fcnProtoType)>
+%endfunction

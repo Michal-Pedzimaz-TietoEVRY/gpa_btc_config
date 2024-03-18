@@ -1,0 +1,92 @@
+%function CGIRBlockRegisterFixPointFunctions() void
+%if !ISFIELD(FixPtUtils,"div_nde_s32_floor")
+%assign tmpRet = SETFIELD(FixPtUtils,"div_nde_s32_floor",1)
+%assign fcnProBuf =""
+%openfile fcnProBuf
+extern int32_T div_nde_s32_floor(int32_T numerator, int32_T denominator);
+%closefile fcnProBuf
+%assign fcnDefBuf =""
+%openfile fcnDefBuf
+%assign fcnRec = SLibFcnPrototypeToRec(fcnProBuf)
+%addtorecord fcnRec Abstract "" Category "utility" ...
+             GeneratedBy "" Type "Utility"
+%<SLibDumpFunctionBanner(fcnRec)>
+%undef fcnRec
+int32_T div_nde_s32_floor(int32_T numerator, int32_T denominator)
+{
+    return (((numerator < 0) != (denominator < 0)) && (numerator % denominator != 0) ? -1 : 0) + numerator / denominator;
+}
+%closefile fcnDefBuf
+%<LibPushEmptyStackSharedUtils()>
+%<SLibDumpUtilsSourceCode("div_nde_s32_floor",fcnProBuf,fcnDefBuf)>
+%if !EXISTS(::CompiledModel.GenUtilsSrcInSharedLocation) || (::CompiledModel.GenUtilsSrcInSharedLocation == 0)
+%assign fcnProPragmaBuf =""
+%openfile fcnProPragmaBuf
+  %<SLibGetFcnMemSecPragmaOnDecl("div_nde_s32_floor", "MemSecFuncSharedUtil", "Pre")>\
+  %<fcnProBuf>
+  %<SLibGetFcnMemSecPragmaOnDecl("div_nde_s32_floor", "MemSecFuncSharedUtil", "Post")>\
+%closefile fcnProPragmaBuf
+  %<LibCacheFunctionPrototype(fcnProPragmaBuf)>
+%endif
+%assign incStackBuf = LibPopStackSharedUtilsIncludes()
+%undef incStackBuf
+%undef fcnProPragmaBuf
+%undef fcnProBuf
+%undef fcnDefBuf
+%endif %% !ISFIELD(FixPtUtils,"div_nde_s32_floor")
+
+
+%if !ISFIELD(FixPtUtils,"div_nzp_s32_floor")
+%assign tmpRet = SETFIELD(FixPtUtils,"div_nzp_s32_floor",1)
+%assign fcnProBuf =""
+%openfile fcnProBuf
+extern int32_T div_nzp_s32_floor(int32_T numerator, int32_T denominator);
+%closefile fcnProBuf
+%assign fcnDefBuf =""
+%openfile fcnDefBuf
+%assign fcnRec = SLibFcnPrototypeToRec(fcnProBuf)
+%addtorecord fcnRec Abstract "" Category "utility" ...
+             GeneratedBy "" Type "Utility"
+%<SLibDumpFunctionBanner(fcnRec)>
+%undef fcnRec
+int32_T div_nzp_s32_floor(int32_T numerator, int32_T denominator)
+{
+    uint32_T absDenominator;
+    uint32_T absNumerator;
+    uint32_T tempAbsQuotient;
+    boolean_T quotientNeedsNegation;
+    absNumerator = numerator < 0 ? ~(uint32_T)numerator + 1U : (uint32_T)numerator;
+    absDenominator = denominator < 0 ? ~(uint32_T)denominator + 1U : (uint32_T)denominator;
+    quotientNeedsNegation = ((numerator < 0) != (denominator < 0));
+    tempAbsQuotient = absNumerator / absDenominator;
+    if (quotientNeedsNegation) {
+        absNumerator %= absDenominator;
+        if (absNumerator > 0U) {
+            tempAbsQuotient++;
+        }
+    }
+    return quotientNeedsNegation ? -(int32_T)tempAbsQuotient : (int32_T)tempAbsQuotient;
+}
+%closefile fcnDefBuf
+%<LibPushEmptyStackSharedUtils()>
+%<SLibDumpUtilsSourceCode("div_nzp_s32_floor",fcnProBuf,fcnDefBuf)>
+%if !EXISTS(::CompiledModel.GenUtilsSrcInSharedLocation) || (::CompiledModel.GenUtilsSrcInSharedLocation == 0)
+%assign fcnProPragmaBuf =""
+%openfile fcnProPragmaBuf
+  %<SLibGetFcnMemSecPragmaOnDecl("div_nzp_s32_floor", "MemSecFuncSharedUtil", "Pre")>\
+  %<fcnProBuf>
+  %<SLibGetFcnMemSecPragmaOnDecl("div_nzp_s32_floor", "MemSecFuncSharedUtil", "Post")>\
+%closefile fcnProPragmaBuf
+  %<LibCacheFunctionPrototype(fcnProPragmaBuf)>
+%endif
+%assign incStackBuf = LibPopStackSharedUtilsIncludes()
+%undef incStackBuf
+%undef fcnProPragmaBuf
+%undef fcnProBuf
+%undef fcnDefBuf
+%endif %% !ISFIELD(FixPtUtils,"div_nzp_s32_floor")
+
+
+%endfunction
+
+

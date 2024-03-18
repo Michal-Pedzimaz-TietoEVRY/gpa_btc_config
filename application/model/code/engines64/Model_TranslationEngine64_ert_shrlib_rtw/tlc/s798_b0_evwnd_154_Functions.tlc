@@ -1,0 +1,43 @@
+%implements s798_b0_evwnd_154_Functions "C"
+
+%function Model_TranslationEngine64_eml_integer_colon_dispatcher_j_Fcn0(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+%assign cfgTxt = ""
+%openfile cfgTxt
+int32_T k;
+int32_T n;
+/*@>e2257c*/if (/*@>e1fbfe*/b/*@>c2ed67*/ < /*@>e1fbfa*/1) {
+    /*@>e22580*/n/*@>e2257f*/ = /*@>e299f5*/0;
+} else {
+    /*@>e1fc17*/n/*@>e1ed5a*/ = /*@>e1fc02*/b;
+}
+y_size/*@>e1d0ef*/[/*@>e1fc09*/0]/*@>e1d0f7*/ = /*@>e299f8*/1;
+y_size/*@>e1d102*/[/*@>e1fc0c*/1]/*@>e1d10a*/ = /*@>e1fc05*/n;
+/*@>c2ed32*/if (/*@>e1fbe8*/n/*@>c2ed20*/ > /*@>e1fbea*/0) {
+    int32_T yk;
+    /*@>e272c0*/y_data/*@>e25c18*/[/*@>e1fc10*/0]/*@>c2ed18*/ = /*@>e299fb*/1;
+    /*@>e1fbec*/yk/*@>c2ed19*/ = /*@>e299fe*/1;
+/*@>c2ed35*/    for (/*@>e29a06*/k = /*@>e29a05*/2; /*@>e29a11*/k <= /*@>e29a0f*/n; /*@>e29a0c*/k/*@>e29a13*/++) {
+        /*@>e1fbf8*/yk/*@>e29a14*/++;
+        /*@>e272c3*/y_data[/*@>e1fc14*/k/*@>e1d1c9*/ - /*@>e1fc16*/1]/*@>c2ed1e*/ = /*@>e1fbf5*/yk;
+    }
+}
+%closefile cfgTxt
+%<cfgTxt>
+%closefile fcnBuff
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_TranslationEngine64_eml_integer_colon_dispatcher_j(\
+%assign comma = ""
+%<comma>int32_T b\
+%assign comma = ", "
+%<comma>int32_T y_data[]\
+%assign comma = ", "
+%<comma>int32_T y_size[2]\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(154, 0, fcnProtoType)>
+%return fcnBuff
+%endfunction
+

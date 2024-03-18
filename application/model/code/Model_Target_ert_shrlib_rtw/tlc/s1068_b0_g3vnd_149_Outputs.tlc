@@ -1,0 +1,28 @@
+%implements s1068_b0_g3vnd_149_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+/* MATLAB Function: '<S1317>/SignalBreakFcn' */
+/* MATLAB Function: '<S1317>/SignalBreakFcn' incorporates:
+ *  Constant: '<S1299>/Constant'
+ */
+/*  Invoke the function trigger output */
+/* MATLAB Function 'ITC/init': '<S1320>:1' */
+/* '<S1320>:1:3' init(); */
+/* MATLAB Function 'Fir/Fir/TargetSpecific/SignalBreak/SignalBreak/SignalBreakFcn': '<S1319>:1' */
+/* '<S1319>:1:3' y = u; */
+/*@>12dbb61*/memcpy(%<SLibCG_DumpSSCode("/*@[12dbd3b*/",(SLibCG_BOCSCAddr(614, 144, "", -1, "", 0)),"/*@]*/")>, &/*@>12dbcd6*/Model_Target_ConstP./*@>12dbd61*/Constant_Value_l/*@>12dbabe*/[/*@>12dbab2*/0], /*@>12dbab4*/144U/*@>12dbac1*/ * /*@>12dbac0*/sizeof(real32_T));
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void InitTrigger_Model_150_610_443_224(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(149, 0, fcnProtoType)>
+%endfunction

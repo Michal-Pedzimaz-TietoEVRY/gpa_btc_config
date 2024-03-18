@@ -1,0 +1,171 @@
+%implements s798_b0_evwnd_39_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+real_T attackDB_Value[24];
+real_T threshold_Value[24];
+int32_T c_size_idx_1;
+int32_T i;
+int32_T trueCount;
+int8_T c_data[24];
+int8_T d_data[24];
+int8_T e_data[24];
+boolean_T b[24];
+boolean_T b_0;
+boolean_T exitg1;
+%closefile localVarDecl
+/*  This function translates threshold and attackDB into a k1 value */
+/*  k1 is used later in the main Limiter function to apply gain redux */
+/* MATLAB Function 'PostProcess/PostProcess/Limiter/Limiter/MATLAB Function3': '<S1853>:1' */
+/*  If we find that any channel has a threshold value of zero, */
+/*  reset it to 100, for we essentially do not want to limit  */
+/*  that specific channel. */
+/* '<S1853>:1:9' minThreshold = 0.001; */
+/*  check against small number, set to zero if so.  */
+/* '<S1853>:1:10' threshold.Value(threshold.Value < minThreshold) = 0; */
+/*@>d0bfae*/trueCount/*@>c6a4eb*/ = /*@>d0eca9*/0;
+/*@>d0a77b*/for (/*@>d0ed98*/i = /*@>d0ed97*/0; /*@>d0eda2*/i < /*@>d0eda0*/24; /*@>d0ed9e*/i/*@>d0eda6*/++) {
+    /*@>d0c036*/attackDB_Value/*@>d0ba2c*/[/*@>d0c034*/i]/*@>d0a76e*/ = /*@>d0e61c*/rtu_attackDB->/*@>d0ef64*/Value/*@>d0e622*/[/*@>d0e61a*/i];
+    /*@>d0c046*/threshold_Value/*@>d0ba4e*/[/*@>d0c044*/i]/*@>d0a7ba*/ = /*@>d0e627*/rtu_threshold->/*@>d0ef67*/Value/*@>d0e62d*/[/*@>d0e625*/i];
+    b_0/*@>d0a807*/ = (/*@>d0e632*/rtu_threshold->/*@>d0ef6a*/Value/*@>d0e638*/[/*@>d0e630*/i]/*@>d0a7ee*/ < /*@>d0c025*/0.001);
+    /*@>c6a4f1*/if (b_0) {
+        /*@>d0bfb7*/trueCount/*@>d0eda7*/++;
+    }
+    /*@>d0c107*/b/*@>d0ba6a*/[/*@>d0c109*/i] = b_0;
+}
+c_size_idx_1/*@>d0a882*/ = /*@>d0c050*/trueCount;
+/*@>d0bfb1*/trueCount/*@>c6a4ff*/ = /*@>d0ecac*/0;
+/*@>c6a501*/for (/*@>d0ed87*/i = /*@>d0ed86*/0; /*@>d0ed91*/i < /*@>d0ed8f*/24; /*@>d0ed8d*/i/*@>d0eda8*/++) {
+    /*@>c6a504*/if (/*@>d0e63c*/b/*@>d0e63e*/[/*@>d0e63b*/i]) {
+        /*@>d0da1e*/c_data[/*@>d0c076*/trueCount]/*@>c6a4fe*/ = /*@>d0c771*/(int8_T)(/*@>d0bfbd*/i/*@>c6a510*/ + /*@>d0bfbf*/1);
+        /*@>d0bfc3*/trueCount/*@>d0eda9*/++;
+    }
+}
+/*@>d0aa06*/for (/*@>d0ed74*/i = /*@>d0ed73*/0; /*@>d0ed81*/i < c_size_idx_1; /*@>d0ed7a*/i/*@>d0edaa*/++) {
+    /*@>d0c059*/threshold_Value/*@>d0ba8e*/[/*@>d0e642*/c_data[/*@>d0e641*/i]/*@>d0a9e5*/ - /*@>d0c060*/1]/*@>d0a9ee*/ = /*@>d0c058*/0.0;
+}
+/* '<S1853>:1:11' if ~(all(threshold.Value)) */
+/*@>d0bff5*/b_0/*@>c6a60f*/ = /*@>d0bff7*/true;
+/*@>d0bff8*/i/*@>c6a618*/ = /*@>d0ecaf*/0;
+exitg1 = false;
+while/*@<c6a620*/ ((!exitg1) && (/*@>d0bffb*/i/*@>c6a61f*/ < /*@>d0bffd*/24)) {
+    /*@>c6a615*/if (/*@>d0e648*/threshold_Value/*@>d0e64a*/[/*@>d0e647*/i]/*@>c6a613*/ == /*@>d0bffe*/0.0) {
+        /*@>d0c004*/b_0/*@>c6a611*/ = /*@>d0c006*/false;
+        exitg1 = true;
+    } else {
+        /*@>d0c002*/i/*@>d0edac*/++;
+    }
+}
+/*@>c6a4cb*/if (!/*@<c6a4ba*//*@>d0bff3*/b_0) {
+    /* '<S1853>:1:12' threshold.Value(find(threshold.Value == 0)) = 100; */
+    /*@>d0bfc5*/trueCount/*@>c6a511*/ = /*@>d0ecb2*/0;
+/*@>d0ab20*/    for (/*@>d0ed63*/i = /*@>d0ed62*/0; /*@>d0ed6d*/i < /*@>d0ed6b*/24; /*@>d0ed69*/i/*@>d0edad*/++) {
+        b_0/*@>d0ab13*/ = (/*@>d0e64e*/threshold_Value/*@>d0e650*/[/*@>d0e64d*/i]/*@>d0aaf7*/ == /*@>d0c026*/0.0);
+        /*@>c6a517*/if (b_0) {
+            /*@>d0bfd1*/trueCount/*@>d0edae*/++;
+        }
+        /*@>d0c111*/b/*@>d0bab3*/[/*@>d0c113*/i] = b_0;
+    }
+    c_size_idx_1/*@>d0ab90*/ = /*@>d0c088*/trueCount;
+    /*@>d0bfcb*/trueCount/*@>c6a525*/ = /*@>d0ecb8*/0;
+/*@>c6a527*/    for (/*@>d0ed52*/i = /*@>d0ed51*/0; /*@>d0ed5c*/i < /*@>d0ed5a*/24; /*@>d0ed58*/i/*@>d0edaf*/++) {
+        /*@>c6a52a*/if (/*@>d0e65f*/b/*@>d0e661*/[/*@>d0e65e*/i]) {
+            /*@>d0dad2*/d_data[/*@>d0c0bf*/trueCount]/*@>c6a524*/ = /*@>d0c7ba*/(int8_T)(/*@>d0bfdf*/i/*@>c6a536*/ + /*@>d0bfe1*/1);
+            /*@>d0bfe9*/trueCount/*@>d0edb0*/++;
+        }
+    }
+/*@>d0ad3f*/    for (/*@>d0ed3f*/i = /*@>d0ed3e*/0; /*@>d0ed4c*/i < c_size_idx_1; /*@>d0ed45*/i/*@>d0edb1*/++) {
+        /*@>d0c096*/threshold_Value/*@>d0bad2*/[/*@>d0e665*/d_data[/*@>d0e664*/i]/*@>d0ad1e*/ - /*@>d0c09d*/1]/*@>d0ad27*/ = /*@>d0c095*/100.0;
+    }
+}
+/*  If we find attack value is 0, set to 10000 */
+/* '<S1853>:1:16' if ~(all(attackDB.Value)) */
+/*@>d0c009*/b_0/*@>c6a630*/ = /*@>d0c00b*/true;
+/*@>d0c00c*/i/*@>c6a639*/ = /*@>d0ecb5*/0;
+exitg1 = false;
+while/*@<c6a641*/ ((!exitg1) && (/*@>d0c00f*/i/*@>c6a640*/ < /*@>d0c011*/24)) {
+    /*@>c6a636*/if (/*@>d0e655*/rtu_attackDB->/*@>d0ef6d*/Value/*@>d0e65b*/[/*@>d0e653*/i]/*@>c6a634*/ == /*@>d0c012*/0.0) {
+        /*@>d0c018*/b_0/*@>c6a632*/ = /*@>d0c01a*/false;
+        exitg1 = true;
+    } else {
+        /*@>d0c016*/i/*@>d0edb3*/++;
+    }
+}
+/*@>c6a4cf*/if (!/*@<c6a4bf*//*@>d0c007*/b_0) {
+    /* '<S1853>:1:17' attackDB.Value(find(attackDB.Value == 0)) = 10000; */
+    /*@>d0bfc8*/trueCount/*@>c6a537*/ = /*@>d0ecbb*/0;
+/*@>d0add2*/    for (/*@>d0ed2e*/i = /*@>d0ed2d*/0; /*@>d0ed38*/i < /*@>d0ed36*/24; /*@>d0ed34*/i/*@>d0edb4*/++) {
+        b_0/*@>d0adc5*/ = (/*@>d0e66c*/rtu_attackDB->/*@>d0ef70*/Value/*@>d0e672*/[/*@>d0e66a*/i]/*@>d0ada1*/ == /*@>d0c027*/0.0);
+        /*@>c6a53d*/if (b_0) {
+            /*@>d0bfdd*/trueCount/*@>d0edb5*/++;
+        }
+        /*@>d0c11b*/b/*@>d0baf7*/[/*@>d0c11d*/i] = b_0;
+    }
+    c_size_idx_1/*@>d0aea1*/ = /*@>d0c0c2*/trueCount;
+    /*@>d0bfd7*/trueCount/*@>c6a54b*/ = /*@>d0ecbe*/0;
+/*@>c6a54d*/    for (/*@>d0ed1d*/i = /*@>d0ed1c*/0; /*@>d0ed27*/i < /*@>d0ed25*/24; /*@>d0ed23*/i/*@>d0edb6*/++) {
+        /*@>c6a550*/if (/*@>d0e676*/b/*@>d0e678*/[/*@>d0e675*/i]) {
+            /*@>d0db65*/e_data[/*@>d0c0ec*/trueCount]/*@>c6a54a*/ = /*@>d0c7e1*/(int8_T)(/*@>d0bfeb*/i/*@>c6a55c*/ + /*@>d0bfed*/1);
+            /*@>d0bff1*/trueCount/*@>d0edb7*/++;
+        }
+    }
+/*@>d0b06d*/    for (/*@>d0ed0a*/i = /*@>d0ed09*/0; /*@>d0ed17*/i < c_size_idx_1; /*@>d0ed10*/i/*@>d0edb8*/++) {
+        /*@>d0c0cf*/attackDB_Value/*@>d0bb16*/[/*@>d0e67c*/e_data[/*@>d0e67b*/i]/*@>d0b04c*/ - /*@>d0c0d6*/1]/*@>d0b055*/ = /*@>d0c0ce*/10000.0;
+    }
+}
+/*  Set output values */
+/* '<S1853>:1:21' attack = single(1 - undb20(-abs(attackDB.Value) / Fs)); */
+/* UNDB20  Decibels to linear quantity */
+/*    Converts x from DB to absolute magnitude assuming that x is in volts. */
+/*    y = 10^(x/20) */
+/*  */
+/*  See also: DB20, UNDB10 */
+/*    Copyright 2018-2019 Bose Corporation */
+/*  Created : 9/7/1994 Bill Berardi */
+/* $Id: undb20.m 11244 2011-10-31 18:51:23Z rg20270 $ */
+/* 'undb20:12' y = exp(x * log(10)/20); */
+/* '<S1853>:1:22' k1 = attack ./ single(threshold.Value); */
+/*@>c6a652*/for (/*@>d0ecf9*/i = /*@>d0ecf8*/0; /*@>d0ed03*/i < /*@>d0ed01*/24; /*@>d0ecff*/i/*@>d0edb9*/++) {
+    /*@>d0e798*/localB->/*@>d0ef73*/attack/*@>d0b192*/[/*@>d0c0f0*/i]/*@>d0b193*/ = /*@>d0b186*/(real32_T)(/*@>d0c02c*/1.0/*@>d0b17b*/ - /*@>d0e102*/exp(-/*@<d0cb1c*//*@>d0e100*/fabs(/*@>d0e682*/attackDB_Value/*@>d0e684*/[/*@>d0e681*/i])/*@>d0cb1b*/ / /*@>d0cb25*/rtu_Fs/*@>d0cb1a*/ * /*@>d0cb26*/2.3025850929940459/*@>d0cb19*/ / /*@>d0cb27*/20.0));
+    /*@>d0e79f*/localB->/*@>d0ef76*/k1/*@>d0b238*/[/*@>d0c0fe*/i]/*@>d0b239*/ = /*@>d0e7a6*/localB->/*@>d0ef79*/attack/*@>d0e68a*/[/*@>d0e687*/i]/*@>d0b21d*/ / /*@>d0b22e*/(real32_T)/*@>d0e68e*/threshold_Value/*@>d0e690*/[/*@>d0e68d*/i];
+}
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[39].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(39, 0, 0)>
+%endif
+%if SLibCG_ArgAccessed(39, 0, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(39, 0, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_TranslationEngine64_MATLABFunction3(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(39, 0, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_TranslationEngine64_MATLABFunction3", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>const bus_double_1_24 *rtu_attackDB\
+%assign comma = ", "
+%<comma>const bus_double_1_24 *rtu_threshold\
+%assign comma = ", "
+%<comma>real_T rtu_Fs\
+%assign comma = ", "
+%<comma>B_MATLABFunction3_Model_TranslationEngine64_T *localB\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(39, 0, fcnProtoType)>
+%endfunction

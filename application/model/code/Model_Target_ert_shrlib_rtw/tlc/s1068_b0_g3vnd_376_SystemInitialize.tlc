@@ -1,0 +1,96 @@
+%implements s1068_b0_g3vnd_376_SystemInitialize "C"
+
+%function SystemInitialize(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%<SLibCGIRDumpSystemUserCode(300, "Initialize", "Header")>\
+%<SLibCGIRDumpSystemUserCode(300, "Initialize", "Body")>\
+/* Start for SwitchCase: '<S649>/Switch Case' */
+/*@>1438345*/Model_Target_DW./*@>1441126*/SwitchCase_ActiveSubsystem/*@>10cd1d7*/ = /*@>14410e4*/-1;
+/* InitializeConditions for Buffer: '<S647>/BufferIn' */
+/*@>143834b*/Model_Target_DW./*@>1441129*/BufferIn_inBufPtrIdx/*@>10cd32a*/ = /*@>14410e7*/128;
+/* InitializeConditions for Buffer: '<S647>/BufferOut' */
+/*@>1438351*/Model_Target_DW./*@>144112c*/BufferOut_inBufPtrIdx/*@>10cd343*/ = /*@>14410ea*/128;
+/* InitializeConditions for Buffer: '<S648>/BufferIn' */
+/*@>1438357*/Model_Target_DW./*@>144112f*/BufferIn_inBufPtrIdx_e/*@>10cd35c*/ = /*@>14410ed*/128;
+/* InitializeConditions for Buffer: '<S648>/BufferOut' */
+/*@>143835d*/Model_Target_DW./*@>1441132*/BufferOut_inBufPtrIdx_a/*@>10cd375*/ = /*@>14410f0*/128;
+/* InitializeConditions for Buffer: '<S650>/Buffer' */
+/*@>1438363*/Model_Target_DW./*@>1441135*/Buffer_inBufPtrIdx/*@>10cd38e*/ = /*@>14410f3*/128;
+/* SystemInitialize for IfAction SubSystem: '<S649>/Mono Detector' */
+/* '<S718>:1:5' ; */
+/* '<S718>:1:5' counter = 0; */
+/* '<S718>:1:6' ; */
+/* '<S718>:1:6' state = 0; */
+/* '<S729>:1:5' ; */
+/* '<S729>:1:5' counter = 0; */
+/* '<S729>:1:6' ; */
+/* '<S729>:1:6' state = 0; */
+/* '<S739>:1:13' outputOverlap = single(zeros(numOverlap, numChannels)); */
+/* '<S743>:1:9' InputOverlap = single(zeros(Overlap, NumChannels)); */
+/* '<S802>:1:5' ; */
+/* '<S802>:1:5' counter = 0; */
+/* '<S802>:1:6' ; */
+/* '<S802>:1:6' state = 0; */
+/* '<S813>:1:5' ; */
+/* '<S813>:1:5' counter = 0; */
+/* '<S813>:1:6' ; */
+/* '<S813>:1:6' state = 0; */
+/* '<S823>:1:13' outputOverlap = single(zeros(numOverlap, numChannels)); */
+/* '<S827>:1:9' InputOverlap = single(zeros(Overlap, NumChannels)); */
+%<SLibCG_DumpSSCode("/*@[143daf0*/",SLibCGIRDumpSystemUserCode(290, "Initialize", "Header"),"/*@]*/")>\
+%<SLibCG_DumpSSCode("/*@[143daf1*/",SLibCGIRDumpSystemUserCode(290, "Initialize", "Body"),"/*@]*/")>\
+/* SystemInitialize for MATLAB Function: '<S835>/Mono Detector' */
+/* '<S839>:1:13' ; */
+/* '<S839>:1:13' zeroLevelCount = 0; */
+/* '<S839>:1:14' ; */
+/* '<S839>:1:14' Llevel = single(0); */
+/* '<S839>:1:15' ; */
+/* '<S839>:1:15' Rlevel = single(0); */
+/* '<S839>:1:16' ; */
+/* '<S839>:1:16' smoothedSumOfEnergies = single(0); */
+/* '<S839>:1:17' ; */
+/* '<S839>:1:17' smoothedEnergyOfSum = single(0); */
+/* '<S839>:1:18' ; */
+/* '<S839>:1:18' levelCenter = single(0); */
+/* '<S839>:1:19' ; */
+/* '<S839>:1:19' lastSpumOn = true; */
+/*@>1438369*/Model_Target_DW./*@>1441138*/lastSpumOn/*@>10cd313*/ = /*@>1400b43*/true;
+%<SLibCG_DumpSSCode("/*@[143daf2*/",SLibCGIRDumpSystemUserCode(290, "Initialize", "Trailer"),"/*@]*/")>\
+/* End of SystemInitialize for SubSystem: '<S649>/Mono Detector' */
+
+/* SystemInitialize for MATLAB Function: '<S856>/Estimate Decay' */
+/* '<S859>:1:14' ; */
+/* '<S859>:1:14' onsetOn = 0; */
+/* '<S859>:1:15' ; */
+/* '<S859>:1:15' onsetOff = 0; */
+/* '<S859>:1:16' ; */
+/* '<S859>:1:16' onsetCounter = 0; */
+/* '<S859>:1:17' ; */
+/* '<S859>:1:17' noOnsetOnOffCounter = 0; */
+/* '<S859>:1:18' ; */
+/* '<S859>:1:18' prevDecay = decayConst.decayDefaultSlope; */
+/*@>143836f*/Model_Target_DW./*@>144113b*/prevDecay/*@>10cd2cc*/ = /*@>1400b24*/-0.173333332F;
+/* '<S859>:1:19' ; */
+/* '<S859>:1:19' smoothedDecay = decayConst.decayDefaultSlope; */
+/*@>1438375*/Model_Target_DW./*@>144113e*/smoothedDecay/*@>10cd2d0*/ = /*@>1400b25*/-0.173333332F;
+/* '<S859>:1:21' thresholdForFrameEnergy = decayConst.minGateFrameEnergydB; */
+/*@>143837b*/Model_Target_DW./*@>1441141*/thresholdForFrameEnergy/*@>10cd2d3*/ = /*@>1400b26*/-25.0F;
+/* '<S860>:1:8' ; */
+/* '<S860>:1:8' prevDelta = single(0); */
+/* '<S860>:1:9' ; */
+/* '<S860>:1:9' prevStepSize = single(0); */
+%<SLibCGIRDumpSystemUserCode(300, "Initialize", "Trailer")>\
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedSystemInitializeLocalVars", localVarDecl)>
+%endfunction
+%function SystemInitializeFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_Medusa5H1Part2_Init(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(376, 0, fcnProtoType)>
+%endfunction

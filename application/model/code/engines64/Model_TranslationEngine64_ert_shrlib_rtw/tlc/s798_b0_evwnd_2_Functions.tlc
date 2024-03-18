@@ -1,0 +1,59 @@
+%implements s798_b0_evwnd_2_Functions "C"
+
+%function Model_TranslationEngine64_eml_integer_colon_dispatcher_Fcn0(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+%assign cfgTxt = ""
+%openfile cfgTxt
+int32_T k;
+int32_T n;
+/*@>ca37e1*/if (/*@>ca1df4*/b/*@>a5081*/ < /*@>ca1df0*/1) {
+    /*@>ca37e5*/n/*@>ca37e4*/ = /*@>ca8ddb*/0;
+} else {
+    /*@>ca1e0d*/n/*@>ca13ae*/ = /*@>ca1df8*/b;
+}
+y_size/*@>ca03af*/[/*@>ca1dff*/0]/*@>ca03b7*/ = /*@>ca8dde*/1;
+y_size/*@>ca03c2*/[/*@>ca1e02*/1]/*@>ca03ca*/ = /*@>ca1dfb*/n;
+/*@>a504c*/if (/*@>ca1dde*/n/*@>a503a*/ > /*@>ca1de0*/0) {
+    int32_T yk;
+    /*@>ca70b5*/y_data/*@>ca5f26*/[/*@>ca1e06*/0]/*@>a5032*/ = /*@>ca8de1*/1;
+    /*@>ca1de2*/yk/*@>a5033*/ = /*@>ca8de4*/1;
+/*@>a504f*/    for (/*@>ca8dec*/k = /*@>ca8deb*/2; /*@>ca8df7*/k <= /*@>ca8df5*/n; /*@>ca8df2*/k/*@>ca8df9*/++) {
+        /*@>ca1dee*/yk/*@>ca8dfa*/++;
+        /*@>ca70b8*/y_data[/*@>ca1e0a*/k/*@>ca0489*/ - /*@>ca1e0c*/1]/*@>a5038*/ = /*@>ca1deb*/yk;
+    }
+}
+%closefile cfgTxt
+%<cfgTxt>
+%closefile fcnBuff
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[2].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Model_TranslationEngine64_eml_integer_colon_dispatcher", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Model_TranslationEngine64_eml_integer_colon_dispatcher"))
+%<SLibCG_AccessArg(2, 0, 3)>
+%endif
+%if SLibCG_ArgAccessed(2, 0, 3)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Model_TranslationEngine64_eml_integer_colon_dispatcher", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Model_TranslationEngine64_eml_integer_colon_dispatcher"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(2, 0, 3)>
+%endif
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_TranslationEngine64_eml_integer_colon_dispatcher(\
+%assign comma = ""
+%<comma>int32_T b\
+%assign comma = ", "
+%<comma>int32_T y_data[]\
+%assign comma = ", "
+%<comma>int32_T y_size[2]\
+%assign comma = ", "
+%if SLibCG_ArgAccessed(2, 0, 3)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_TranslationEngine64_eml_integer_colon_dispatcher", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(2, 0, fcnProtoType)>
+%return fcnBuff
+%endfunction
+

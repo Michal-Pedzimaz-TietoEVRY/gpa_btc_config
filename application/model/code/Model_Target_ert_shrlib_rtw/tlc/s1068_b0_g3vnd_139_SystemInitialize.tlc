@@ -1,0 +1,46 @@
+%implements s1068_b0_g3vnd_139_SystemInitialize "C"
+
+%function SystemInitialize(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%<SLibCGIRDumpSystemUserCode(461, "Initialize", "Header")>\
+%<SLibCGIRDumpSystemUserCode(461, "Initialize", "Body")>\
+/* Start for If: '<S588>/If' */
+/*@>12ce649*/Model_Target_Medusa5H1Part4_DW./*@>12d0c5d*/If_ActiveSubsystem/*@>10cd519*/ = /*@>12d0c4a*/-1;
+/* Start for DataStoreMemory: '<S588>/Data Store Memory' */
+/*@>12ce64f*/Model_Target_Medusa5H1Part4_DW./*@>12d0c60*/MedusaHoligramEnable/*@>10cd51b*/ = /*@>12c3b17*/1U;
+%assign   SystemInitialize_open_On_461_2 = ""
+%openfile SystemInitialize_open_On_461_2
+
+/* SystemInitialize for IfAction SubSystem: '<S588>/On' */
+%closefile SystemInitialize_open_On_461_2
+
+%assign    SystemInitialize_body_On_461_2 = ""
+%openfile  SystemInitialize_body_On_461_2
+
+%<SLibCG_DumpSSCode("/*@[12cf6c7*/",SLibCGIRDumpSystemUserCode(452, "Initialize", "Header"),"/*@]*/")>\
+%<SLibCG_DumpSSCode("/*@[12cf6c8*/",SLibCGIRDumpSystemUserCode(452, "Initialize", "Body"),"/*@]*/")>\
+%<SLibCG_DumpSSCode("/*@[12cf6c9*/",SLibCGIRDumpSystemUserCode(452, "Initialize", "Trailer"),"/*@]*/")>\
+%closefile SystemInitialize_body_On_461_2
+
+%assign    SystemInitialize_close_On_461_2 = ""
+%openfile  SystemInitialize_close_On_461_2
+
+/* End of SystemInitialize for SubSystem: '<S588>/On' */
+%closefile SystemInitialize_close_On_461_2
+%<SLibCG_DumpSSCode(SystemInitialize_open_On_461_2, SystemInitialize_body_On_461_2, SystemInitialize_close_On_461_2)>
+
+%<SLibCGIRDumpSystemUserCode(461, "Initialize", "Trailer")>\
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedSystemInitializeLocalVars", localVarDecl)>
+%endfunction
+%function SystemInitializeFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_Medusa5H1Part4_Init(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(139, 1, fcnProtoType)>
+%endfunction

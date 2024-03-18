@@ -1,0 +1,22 @@
+%implements s1068_b0_g3vnd_99_Disable "C"
+
+%function Disable(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%assign tlcDisableFcnOfS314B13 = OpaqueTLCBlockFcn("Disable", 314, 13, 99, 3, 0)
+%if !WHITE_SPACE(tlcDisableFcnOfS314B13)
+/* Disable for M-S-Function: '<S907>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[12530db*/",tlcDisableFcnOfS314B13,"/*@]*/")>\
+%endif
+%closefile cfgTxt
+%<cfgTxt>
+%endfunction
+%function DisableFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_ExpandTailComponents_Disable(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(99, 3, fcnProtoType)>
+%endfunction

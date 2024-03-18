@@ -1,0 +1,72 @@
+%implements s798_b0_evwnd_44_TLCInterface "C"
+
+%function getOutputAddr_291_0_44_1_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<d28050*//*@>d28044*/Model_TranslationEngine64_ExpandTailComponents_B./*@>d28056*/sosCoefficients"
+%endfunction
+
+%function getOutput_291_0_44_1_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>d28064*/Model_TranslationEngine64_ExpandTailComponents_B./*@>d28077*/sosCoefficients"
+%endfunction
+
+%function getOutputAddr_291_1_44_1_1_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<d280a4*//*@>d28098*/Model_TranslationEngine64_ExpandTailComponents_B./*@>d280aa*/numStages"
+%endfunction
+
+%function getOutput_291_1_44_1_1_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>d280b8*/Model_TranslationEngine64_ExpandTailComponents_B./*@>d280cb*/numStages"
+%endfunction
+
+%function getInputAddr_291_5_44_1_3_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<d2810f*//*@>d28103*/Model_TranslationEngine64_ExpandTailComponents_B./*@>d28115*/PoolNumStages" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInput_291_5_44_1_3_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>d28123*/Model_TranslationEngine64_ExpandTailComponents_B./*@>d28136*/PoolNumStages" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInputAddr_291_6_44_1_4_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<d28163*//*@>d28157*/Model_TranslationEngine64_ExpandTailComponents_B./*@>d28169*/PoolCoeffs" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInput_291_6_44_1_4_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>d28177*/Model_TranslationEngine64_ExpandTailComponents_B./*@>d2818a*/PoolCoeffs" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getOutputAddr_291_8_44_1_6_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<d281cc*//*@>d281c0*/Model_TranslationEngine64_ExpandTailComponents_B./*@>d281d2*/WiggleFilter"
+%endfunction
+
+%function getOutput_291_8_44_1_6_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>d281e0*/Model_TranslationEngine64_ExpandTailComponents_B./*@>d281f3*/WiggleFilter"
+%endfunction
+
+%function getInputAddr_291_12_44_1_8_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<d28237*//*@>d2822b*/Model_TranslationEngine64_ExpandTailComponents_B./*@>d2823d*/Value" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInput_291_12_44_1_8_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>d2824b*/Model_TranslationEngine64_ExpandTailComponents_B./*@>d2825e*/Value" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getSystemOutputFcnCallInfo_291_2_44_1_288_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>d2801e*/FuncTranslation_Model_141_345_50_36"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_291_9_44_1_290_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>d28022*/FuncTranslation_Model_141_346_67_18"; Args [] }
+%return fcnInfo
+%endfunction

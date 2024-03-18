@@ -1,0 +1,117 @@
+%implements s798_b0_evwnd_18_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+int32_T i;
+int32_T nz;
+char_T c_data[65];
+char_T b_data[57];
+boolean_T x[12];
+static const char_T d[57] = %<(TLC_STR_CTX(10))>;
+static const char_T e[65] = %<(TLC_STR_CTX(11))>;
+%closefile localVarDecl
+/*  Checks if the parameter satisfies dimensionality requirements */
+/* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 3/On/VLS Gains Computation/VLS Gains Drv/Fade Tuning/Downmix Weights/Trivial Translation': '<S936>:1' */
+/* '<S936>:1:5' if(downmix_wts.Size(1) ~= configStruct.numGains) */
+/*@>c65c88*/if (/*@>cc68a3*/rtu_downmix_wts->/*@>cc6c25*/Size/*@>cc68a9*/[/*@>cc68a1*/0]/*@>c65c82*/ != /*@>cc5651*/12.0) {
+    /* '<S936>:1:6' TranslateError('The parameter ''VLS_downmix'' must be a %<"\%d element vector.\', configStruct.numGains);"> */
+    /* TRANSLATEERROR (For use in Functions triggered by TranslationTrigger blocks.) */
+    /* Print error message during tune data translation. */
+    /*   Do not include a final newline as this behavior is already built in. */
+    /*   Note that escape sequences such as '\n' will not work here. To emit */
+    /*   special characters, pass them in as arguments to %<"\%c or \%s format"> */
+    /*   specifiers. */
+    /*    Copyright 2018-2019 Bose Corporation */
+    /* 'TranslateError:10' coder.extrinsic('gcb') */
+    /* 'TranslateError:11' coder.extrinsic('warning') */
+    /* 'TranslateError:12' coder.allowpcode('plain'); */
+    /*  enable code generation from p-file */
+    /* 'TranslateError:14' if (coder.target('MATLAB')) */
+    /* 'TranslateError:18' if (coder.target('Sfun')) */
+    /* 'TranslateError:21' else */
+    /* 'TranslateError:22' count = numel(varargin); */
+    /* 'TranslateError:23' fixedArgs = varargin; */
+    /* 'TranslateError:24' for i=1:count */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:26' fixedArgs{i} = [varargin{i} char(0)]; */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:29' coder.ceval('TranslateError',fixedArgs{:}); */
+/*@>cc5063*/    for (/*@>cc6b8c*/i = /*@>cc6b8b*/0; /*@>cc6b96*/i < /*@>cc6b94*/57; /*@>cc6b92*/i/*@>cc6b9a*/++) {
+        /*@>cc60f2*/b_data[/*@>cc56b5*/i]/*@>cc5056*/ = /*@>cc68c5*/d/*@>cc68c7*/[/*@>cc68c4*/i];
+    }
+    /*@>cc652d*/TranslateError(&/*@>cc60db*/b_data/*@>cc60ee*/[/*@>cc5656*/0], /*@>cc5657*/12U);
+}
+/*  Checks if the parameter values follow bound requirements */
+/* '<S936>:1:10' checkValues = (downmix_wts.Value < 0); */
+/*@>cc4c72*/for (/*@>cc6b7b*/i = /*@>cc6b7a*/0; /*@>cc6b85*/i < /*@>cc6b83*/12; /*@>cc6b81*/i/*@>cc6b9b*/++) {
+    /*@>cc568f*/x/*@>cc4f1d*/[/*@>cc5691*/i]/*@>cc4c5f*/ = (/*@>cc68ae*/rtu_downmix_wts->/*@>cc6c28*/Value/*@>cc68b4*/[/*@>cc68ac*/i]/*@>cc4c66*/ < /*@>cc5673*/0.0);
+}
+/* '<S936>:1:11' if(sum(sum(checkValues))) */
+/*@>cc565c*/nz/*@>c65ce0*/ = /*@>cc68b7*/x/*@>cc68b9*/[/*@>cc68b6*/0];
+/*@>c65ce3*/for (/*@>cc6b6a*/i = /*@>cc6b69*/0; /*@>cc6b74*/i < /*@>cc6b72*/11; /*@>cc6b70*/i/*@>cc6b9c*/++) {
+    /*@>cc5665*/nz/*@>cc6b9d*/ += /*@>cc68bf*/x/*@>cc68c1*/[/*@>cc68bd*/i/*@>cc68bb*/ + /*@>cc68be*/1];
+}
+/*@>c65c8c*/if (/*@>cc5667*/nz/*@>c65c85*/ != /*@>cc5652*/0) {
+    /*  Results in 0 if all values in the matrix respect the bound requirements */
+    /* '<S936>:1:12' TranslateError('The weights in ''VLS_downmix'' must be greater than or equal to 0.'); */
+    /* TRANSLATEERROR (For use in Functions triggered by TranslationTrigger blocks.) */
+    /* Print error message during tune data translation. */
+    /*   Do not include a final newline as this behavior is already built in. */
+    /*   Note that escape sequences such as '\n' will not work here. To emit */
+    /*   special characters, pass them in as arguments to %<"\%c or \%s format"> */
+    /*   specifiers. */
+    /*    Copyright 2018-2019 Bose Corporation */
+    /* 'TranslateError:10' coder.extrinsic('gcb') */
+    /* 'TranslateError:11' coder.extrinsic('warning') */
+    /* 'TranslateError:12' coder.allowpcode('plain'); */
+    /*  enable code generation from p-file */
+    /* 'TranslateError:14' if (coder.target('MATLAB')) */
+    /* 'TranslateError:18' if (coder.target('Sfun')) */
+    /* 'TranslateError:21' else */
+    /* 'TranslateError:22' count = numel(varargin); */
+    /* 'TranslateError:23' fixedArgs = varargin; */
+    /* 'TranslateError:24' for i=1:count */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:26' fixedArgs{i} = [varargin{i} char(0)]; */
+    /* 'TranslateError:29' coder.ceval('TranslateError',fixedArgs{:}); */
+    /*@>cc6604*/memcpy(&/*@>cc633e*/c_data[/*@>cc632e*/0], &/*@>cc6346*/e/*@>cc6347*/[/*@>cc633b*/0], /*@>cc633d*/65U/*@>cc634a*/ * /*@>cc6349*/sizeof(char_T));
+    /*@>cc6531*/TranslateError(&/*@>cc6139*/c_data/*@>cc614c*/[/*@>cc565b*/0]);
+}
+/* '<S936>:1:15' TOP = downmix_wts.Value; */
+/*@>cc6606*/memcpy(&/*@>cc6947*/localB->/*@>cc6c2b*/TOP/*@>cc62dd*/[/*@>cc62cc*/0], &/*@>cc62eb*/rtu_downmix_wts->/*@>cc6c22*/Value[0], /*@>cc62db*/12U/*@>cc62f0*/ * /*@>cc62ef*/sizeof(real_T));
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[18].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(18, 0, 0)>
+%endif
+%if SLibCG_ArgAccessed(18, 0, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(18, 0, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_TranslationEngine64_TrivialTranslation_n(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(18, 0, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_TranslationEngine64_TrivialTranslation_n", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>const bus_double_12__1 *rtu_downmix_wts\
+%assign comma = ", "
+%<comma>B_TrivialTranslation_Model_TranslationEngine64_e_T *localB\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(18, 0, fcnProtoType)>
+%endfunction

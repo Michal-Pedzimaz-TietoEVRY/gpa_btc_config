@@ -1,0 +1,37 @@
+%implements s798_b0_evwnd_188_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%assign _modelSS = ""
+
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[15], "Output",0)
+/* MATLAB Function: '<S126>/TrebleEnable' */
+/*  Invoke the function trigger output */
+/* MATLAB Function 'TranslateTrigger/tfunc': '<S158>:1' */
+/* '<S158>:1:3' f(); */
+%if SLibCG_SystemFcnArgAccessed("Model_TranslationEngine64_Bass0Enable",15,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[e7d280*/",SLibCGIRGenReusableSysCall("Model_TranslationEngine64_Bass0Enable", ["%<_modelSS>", "&/*@>e7d300*/Model_TranslationEngine64_B./*@>e7d2ff*/DownwardExpansionOn", "&/*@>e7d30d*/Model_TranslationEngine64_B./*@>e7d30c*/TrebleDownwardSlopeDbPerDb", "&/*@>e7d31a*/Model_TranslationEngine64_B./*@>e7d319*/sf_TrebleEnable_f"], 15, 8, 6, 0, 6, 715),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[15]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void FuncTranslation_Model_117_44_672(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(188, 0, fcnProtoType)>
+%endfunction

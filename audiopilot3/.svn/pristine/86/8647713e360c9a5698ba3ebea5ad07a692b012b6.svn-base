@@ -1,0 +1,1033 @@
+# AUDIOPILOT.SYMFUN
+#
+# Provides translations for tune data
+# pertaining to AudioPilot and Dynamic EQ.
+#
+#   BOSE CORPORATION
+#   COPYRIGHT (c) BOSE CORPORATION ALL RIGHTS RESERVED
+#   This program may not be reproduced, in whole or in part in an
+#   form or any means whatsoever without the written permission of:
+#
+#       BOSE CORPORATION
+#       The Mountain
+#       Framingham, MA 01701-9168
+
+SYMFUN_VERSION 2.0;
+
+FEATURE 'audiopilot:[level_detector/boost_map/speed/hvac/
+                calibration/antialias/
+                lf_noise/lf_imp_rej/lf_slew/
+                hf_noise/hf_imp_rej/hf_slew/
+                ratio_update/ratio_imp_rej/ratio_slew/
+                hf_level/lf_level/
+                dyneq/enable/level/boost/compensation]', $MODE_HIERARCHY;
+
+#######################
+# Feature Description #
+#######################
+
+DESCRIBE_FEATURE CarSpeed = "Enabled";
+DESCRIBE_FEATURE SpeedOrIndex = "Speed";
+
+################################################################################
+#                                Configuration                                 #
+################################################################################
+
+### PreConfiguration ###
+
+# The Spetter approach requires the code to take parametric values from a higher
+# level. There is currently no mechanism in the Talaria framework to do so, but
+# the Spetter code, commented out, is retained here for archival purposes.
+
+   # _{{nVNCMic}} = get_exported_param_attribute("AUDIO_PILOT_3",
+   #                            "BDSP_number_of_input_vnc_microphones");
+   # _{{audiopilot_speed_max_table_size}} = get_exported_param_attribute(
+   #                            "AUDIO_PILOT_3",
+   #                            "audiopilot_speed_max_table_size");
+   # _{{audiopilot_speed_max_speed}} = get_exported_param_attribute(
+   #                            "AUDIO_PILOT_3",
+   #                            "audiopilot_speed_max_speed");
+
+# AudioPilot Dependencies
+# This is really an addendum to dependencies.symfun,
+# which might merit its own file.
+# We have, however, run into a HCI problem as these dependency files are not
+# available in a non-HCI context during a normal build.
+
+my $AudioPilotDir = _{{CARDIR}}."/../../audio/simulink/audiopilot3/";
+
+my %AUDIOPILOTDEPENDENCIES =
+(
+    'ModelInit.m' => "$AudioPilotDir/../ModelInit.m",
+    'SpeedBoundsConfig.m' =>
+            "$AudioPilotDir/component/SpeedBoundsConfig.m",
+    'LowFrequencyNoiseEstimatorCohConfig.m' =>
+            "$AudioPilotDir/component/LowFrequencyNoiseEstimatorCohConfig.m",
+);
+
+# The number of VNC microphones should ideally come from a higher level
+# than AudioPilot Initialization but, between auto_gen_sys_def()
+# and ModelInit(), the Talaria infrastructure has not made up its mind yet.
+# The following should be revised once the picture becomes clearer.
+
+# _{{nVNCMic}}=1;
+PRECONFIGURATION $AUDIOPILOTDEPENDENCIES{'ModelInit.m'}, 'GENERIC',
+     '(nVNCMic:^\s*AUDIOPILOT_NUM_MIC_IN\s*=\s*(\d+))';
+
+# See SAMPLERATE-958 for the reason to hard code parameters below.
+# @TODO-SSC
+
+_{{audiopilot_speed_max_table_size}}=128;
+_{{audiopilot_speed_max_speed}}=508;
+#PRECONFIGURATION $AUDIOPILOTDEPENDENCIES{'SpeedBoundsConfig.m'},
+#    'GENERIC',
+#    '(audiopilot_speed_max_table_size:^\s*TableSize\s*=\s*(\d+)) ' .
+#    '(audiopilot_speed_max_speed:^\s*MaxSpeed\s*=\s*(\d+))';
+
+### Prefixes ###
+
+# This is the Feature Path above AudioPilot in the model.
+my $ModelPrefix = "PreAmp";
+my $APBlockPrefix = $ModelPrefix."Audiopilot";
+
+# Prefix for Tune Parameters
+my $APPrefix = "audiopilot_";
+my $DynEqPrefix = "dyneq_";
+my $LDPrefix = "level_detect_";
+my $LFNoisePrefix = "lf_noise_";
+my $HFNoisePrefix = "hf_noise_";
+my $RatioPrefix = "ratio_";
+my $APDynEqPrefix = $APPrefix.$DynEqPrefix;
+
+# Build Flags
+# These control whether large chunks of symfun translation will be called.
+
+# If there is no microphone input, the DSP build for AudioPilot will reduce to
+# a speed-only configuration.
+
+my $LFNoiseEnable;
+my $HFNoiseEnable;
+my $CollapseSpeedTables;
+
+if (_{{nVNCMic}} > 1)
+{
+    die " More than one VNC Mic is not supported in AudioPilot \n"
+}
+
+if (_{{nVNCMic}} < 1)
+{
+    $LFNoiseEnable = 0;
+    $HFNoiseEnable = 0;
+    $CollapseSpeedTables = 1;
+}
+else
+{
+    $LFNoiseEnable = 1;
+    $HFNoiseEnable = 1;
+    $CollapseSpeedTables = 0;
+}
+
+#################
+# Global Param  #
+#################
+
+my $ParamName;
+my $TalariaName;
+my @ParamList = ();
+
+################################################################################
+#                         Downgrade to AudioPilot 2.0                          #
+################################################################################
+
+HIERARCHY $CARVARIANT_HIERARCHY
+{
+    $ParamName = 'two_downgrade';
+    PARAMETER(NO_WARN) audiopilot:[enable]:$APPrefix$ParamName = 0;
+    $TalariaName = snake2pascal($ParamName,$APBlockPrefix);
+    MAP $TalariaName, _{$APPrefix$ParamName};
+
+    if (_{audiopilot_two_downgrade})
+    {
+        $HFNoiseEnable = 0;
+    }
+}
+
+################################################################################
+#                             Mode Specific Parameters                         #
+################################################################################
+
+HIERARCHY $MODE_HIERARCHY
+{
+    if ($mode_type eq "ENT")
+    {
+
+        ################
+        # Enable Flags #
+        ################
+
+        PARAMETER audiopilot:[enable]:audiopilot_enable;
+        ASSERT ((_{audiopilot_enable} == 0) || (_{audiopilot_enable} == 1),
+           "AUDIOPILOT_ENABLE must be 0 or 1");
+        MAP ${APBlockPrefix}AudiopilotOn, _{audiopilot_enable};
+
+        PARAMETER audiopilot:[enable]:dyneq_enable;
+        ASSERT ((_{dyneq_enable} == 0) || (_{dyneq_enable} == 1),
+           "DYNEQ_ENABLE must be 0 or 1");
+        MAP ${APBlockPrefix}DyneqOn, _{dyneq_enable};
+
+        PARAMETER audiopilot:[enable]:audiopilot_downward_expansion_enable;
+        ASSERT ((_{audiopilot_downward_expansion_enable} == 0)
+                || (_{audiopilot_downward_expansion_enable} == 1),
+           "AUDIOPILOT_DOWNWARD_EXPANSION_ENABLE must be 0 or 1");
+        MAP ${APBlockPrefix}DownwardExpansionOn,
+            _{audiopilot_downward_expansion_enable};
+
+        PARAMETER(NO_WARN) audiopilot:[enable]:audiopilot_speed_bounds_enable = 1;
+        ASSERT ((_{audiopilot_speed_bounds_enable} == 0)
+                || (_{audiopilot_speed_bounds_enable} == 1),
+           "AUDIOPILOT_SPEED_BOUNDS_ENABLE must be 0 or 1");
+		$TalariaName = ${APBlockPrefix}.snake2pascal($LFNoisePrefix,'').'SpeedBoundsOn';
+        MAP $TalariaName,_{audiopilot_speed_bounds_enable};
+
+        # states
+
+        $ParamName = 'ignore_mic_flag';
+        read_param($APPrefix.$ParamName,
+                    snake2pascal($ParamName,$APBlockPrefix),'enable');
+
+        ###############
+        # Calibration #
+        ###############
+
+        # MELVILLE-2656:
+        # The value of parameter 'sys_max_dbspl' is being used inside both
+        # Entertainment Level Detector and AudioPilot.
+        # Hence, it is being mapped to two different TOPs.
+        $ParamName = 'sys_max_dbspl';
+        PARAMETER audiopilot:[calibration]:$ParamName;
+        $TalariaName = snake2pascal($LDPrefix.$ParamName,$ModelPrefix);
+        MAP $TalariaName, _{$ParamName};
+        $TalariaName = snake2pascal($LFNoisePrefix.$ParamName,$APBlockPrefix);
+        MAP $TalariaName, _{$ParamName};
+
+        if ($LFNoiseEnable)
+        {
+            map_param($LFNoisePrefix.'offset_db','calibration',
+                $APBlockPrefix,$APPrefix);
+        }
+
+       if ($HFNoiseEnable)
+        {
+            map_param($HFNoisePrefix.'offset_db','calibration',
+                $APBlockPrefix,$APPrefix);
+        }
+
+        ##############
+        # Boost Maps #
+        ##############
+
+        # Noise Compensation
+
+        my @boost_map_bands = ('bass','midrange','treble');
+        my @boost_map_suffix = ('0','1');
+        @ParamList = ();
+
+        for my $band (@boost_map_bands)
+        {
+            for my $suffix (@boost_map_suffix)
+            {
+                push @ParamList, $band.'_thresh_'.$suffix.'_db';
+                push @ParamList, $band.'_slope_'.$suffix.'_db_per_db';
+            }
+            push @ParamList, $band.'_downward_thresh_dbspl';
+            push @ParamList, $band.'_downward_slope_db_per_db';
+        }
+
+        map_param_list(\@ParamList,'boost_map',$APBlockPrefix,$APPrefix,'');
+
+        # Boost Maximums
+
+        @ParamList = ();
+
+        for my $band (@boost_map_bands)
+        {
+            push @ParamList, $band.'_max_total_boost_db';
+            if ($band eq "bass")
+            {
+                push @ParamList, $band.'_max_audiopilot_boost_db';
+                push @ParamList, $band.'_max_dyneq_boost_db';
+            }
+        }
+
+        map_param_list(\@ParamList,'boost_map',
+                    $APBlockPrefix,$APDynEqPrefix,'');
+
+        # Noise & Signal Bounds
+
+        @NoiseBounds = ('low','high');
+        @ParamList = ();
+
+        for $bound (@NoiseBounds)
+        {
+            push @ParamList, $LFNoisePrefix.$bound.'_bound_dbspl';
+            push @ParamList, $HFNoisePrefix.$bound.'_bound_dbspl';
+        }
+
+        push @ParamList, 'min_signal_level_dbspl';
+
+        map_param_list(\@ParamList,'boost_map',$APBlockPrefix,$APPrefix,'');
+
+        # Dynamic Equalization
+
+        map_param($DynEqPrefix.'bass_thresh_dbspl','dyneq',$APBlockPrefix,'');
+        map_param($DynEqPrefix.'bass_slope_db_per_db',
+                    'dyneq',$APBlockPrefix,'');
+
+        # States
+
+        @ParamList = (
+            'audiopilot_bass_boost',
+            'audiopilot_midrange_boost',
+            'audiopilot_treble_boost',
+            'dyneq_bass_boost',
+            'total_bass_boost');
+
+        for my $param (@ParamList)
+        {
+            read_param($param,snake2pascal($param.'_db',$APBlockPrefix),'boost');
+        }
+
+        ################
+        # Speed Bounds #
+        ################
+
+        # RESET_SYMFUN_LOGS;
+
+        my $SpeedPrefix = 'speed_bounds_';
+		my $TalariaSpeedPrefix = snake2pascal($LFNoisePrefix.$SpeedPrefix,'');
+
+        _[SpeedTableStep] = _{{audiopilot_speed_max_speed}} /
+                                (_{{audiopilot_speed_max_table_size}}-1);
+        my $minTable;
+        my $maxTable;
+
+        if ($CollapseSpeedTables)
+        {
+            $minTable = $APPrefix.$SpeedPrefix.'dbspl';
+            $maxTable = $APPrefix.$SpeedPrefix.'dbspl';
+            PARAMETER(NO_WARN) audiopilot:[speed]:${minTable};
+        }
+        else
+        {
+            $minTable = $APPrefix.$SpeedPrefix.'min_dbspl';
+            $maxTable = $APPrefix.$SpeedPrefix.'max_dbspl';
+            PARAMETER(NO_WARN) audiopilot:[speed]:${minTable};
+            PARAMETER(NO_WARN) audiopilot:[speed]:${maxTable};
+        }
+
+        _[speedTableSize] = $#{_{$minTable}}+1;
+
+        if (!$CollapseSpeedTables)
+        {
+            ASSERT
+                ($#{_{audiopilot_speed_bounds_max_dbspl}}+1 == _[speedTableSize]),
+                 "speed bounds tables must be the same length";
+        }
+
+        ASSERT (_[speedTableSize] <= _{{audiopilot_speed_max_table_size}}),
+             "speed bounds tables must not exceed "
+                . _{{audiopilot_speed_max_table_size}} . " long";
+
+        # Although symfun allows tables in the tune files that are shorter than
+        # the maximum length, the speed increment for each index is fixed based
+        # on the maximum speed represented by the maximum index.
+
+        _[speedAxis] = do
+        {
+            my @axis;
+            my $ind;
+            for ($ind=0; $ind<_[speedTableSize]; $ind++)
+            {
+                $axis[$ind] = $ind*_[speedTableStep];
+            }
+            for (; $ind<_{{audiopilot_speed_max_table_size}}; $ind++)
+            {
+                $axis[$ind] = _[speedTableStep] * (_[speedTableSize]-1);
+            }
+            \@axis;
+        };
+
+        MAP ${APBlockPrefix}${TalariaSpeedPrefix}Axis, _[speedAxis];
+
+        # This creates the needed filler, using the last entry in the specified
+        # table, when the specified table in the tune file is shorter than the
+        # maximum table size.
+
+        _[filledTable($minmax)] = do
+        {
+            my @table = @{_{$minmax}};
+            my $fillSize = _{{audiopilot_speed_max_table_size}}
+                             - _[speedTableSize];
+            my $fill = _{$minmax}->[_[speedTableSize]-1];
+            for (my $ind=0; $ind<$fillSize; $ind++)
+                {
+                    push @table, $fill;
+                }
+            \@table;
+        };
+
+        MAP  ${APBlockPrefix}${TalariaSpeedPrefix}MinDbspl, _[filledTable($minTable)];
+        MAP  ${APBlockPrefix}${TalariaSpeedPrefix}MaxDbspl, _[filledTable($maxTable)];
+
+        # Special Feature Description Reads
+
+        PARAMETER audiopilot:[speed]:audiopilot_speed_bounds_max_speed;
+        PARAMETER audiopilot:[speed]:audiopilot_speed_bounds_max_table_size;
+
+        READ audiopilot_speed_bounds_max_speed,
+                _{{audiopilot_speed_max_speed}};
+        READ audiopilot_speed_bounds_max_table_size,
+                _{{audiopilot_speed_max_table_size}};
+
+        # States
+
+        $ParamName = 'vehicle_speed';
+        read_param($APPrefix.$ParamName,
+                snake2pascal($ParamName,$APBlockPrefix),'speed');
+
+        read_param($APPrefix.'min_speed_bound',
+                snake2pascal($LFNoisePrefix.$SpeedPrefix.'curr_min',$APBlockPrefix),
+                'speed');
+
+        read_param($APPrefix.'max_speed_bound',
+                snake2pascal($LFNoisePrefix.$SpeedPrefix.'curr_max',$APBlockPrefix),
+                'speed');
+
+        $ParamName = $SpeedPrefix.'flag';
+        read_param($APPrefix.$ParamName,
+                snake2pascal($LFNoisePrefix.$ParamName,$APBlockPrefix),
+                'speed');
+
+        $ParamName = $LFNoisePrefix.'pre_speed_bound';
+        read_param($APPrefix.$ParamName,
+                snake2pascal($ParamName,$APBlockPrefix),'speed');
+    }
+}
+
+################################################################################
+#                            Mode Independent Parameters                       #
+################################################################################
+
+HIERARCHY $CARVARIANT_HIERARCHY
+{
+
+    ########################
+    # Compensation Filters #
+    ########################
+
+    # Bass Band Pass Filter
+    # Midrange Low Pass Filter
+    # AntiZipper Noise Filter
+
+    @ParamList = (
+       'bass_bpf_center_freq_hz',
+       'bass_bpf_q',
+       'midrange_lpf_cutoff_freq_hz',
+       'midrange_lpf_align_delay_samples',
+       'antizipper_ramp_freq_hz');
+
+    map_param_list(\@ParamList,'compensation',
+                    $APBlockPrefix,$APDynEqPrefix,'');
+
+    # Enable Switch Ramper
+
+    map_param('enable_ramp_tau_s','enable',$APBlockPrefix,$APDynEqPrefix);
+
+    # States
+
+    @ParamList = (
+        'audiopilot_boost_gain',
+        'dyneq_boost_gain');
+
+    for my $param (@ParamList)
+    {
+        read_param($param,snake2pascal($param,$APBlockPrefix),'enable');
+    }
+
+    # Enable User Control for Speed Only
+
+    if ($HFNoiseEnable == 0)
+    {
+        $ParamName = 'user_control_enable';
+        PARAMETER audiopilot:[enable]:$APPrefix$ParamName;
+        ASSERT ((_{$APPrefix$ParamName} == 0) || (_{$APPrefix$ParamName} == 1),
+                    $APPrefix.$ParamName." must be 0 or 1");
+        $TalariaName = snake2pascal($ParamName,$APBlockPrefix);
+        MAP $TalariaName, _{$APPrefix$ParamName};
+    }
+
+    ###################
+    # Level Detection #
+    ###################
+
+    # General
+
+    map_param($LDPrefix.'latency_ms','level_detector',$ModelPrefix,'');
+
+    # Specific to each instance of level detector
+
+    my @level_detectors = ('dyneq','audiopilot');
+
+    @ParamList = (
+        'fast_decay_db_per_s',
+        'slow_decay_db_per_s',
+        'hold_margin_db',
+        'hold_time_s',
+        'min_volume_db',
+        'max_volume_db');
+
+    for my $levDetName (@level_detectors)
+    {
+        my $levDetPrefix = $levDetName.'_'.$LDPrefix;
+        my @InnerParamList = ();
+
+        for my $param (@ParamList)
+        {
+            push @InnerParamList, $levDetPrefix.$param;
+        }
+        map_param_list(\@InnerParamList,'level_detector',$ModelPrefix,'','');
+    }
+
+    # states
+
+    my $levWatchPrefix = 'level_watch_';
+
+    @ParamList = (
+        'audiopilot_env_db',
+        'dyneq_env_db',
+        'audiopilot_level_dbspl',
+        'dyneq_level_dbspl');
+
+    for my $param (@ParamList)
+    {
+        read_param($param,snake2pascal($levWatchPrefix.$param,$ModelPrefix),
+                    'level_detector');
+    }
+}
+
+ ####################################
+######################################
+##  LOW FREQUENCY NOISE ESTIMATION  ##
+######################################
+ ####################################
+
+HIERARCHY $CARVARIANT_HIERARCHY
+{
+    if ($LFNoiseEnable)
+    {
+        ##################
+        # Monitor Levels #
+        ##################
+
+        $ParamName = $LFNoisePrefix.'mic_level';
+        read_param($APPrefix.$ParamName,
+                snake2pascal($ParamName,$APBlockPrefix),'lf_level');
+
+        $ParamName = $LFNoisePrefix.'mic_out';
+        read_param($APPrefix.$ParamName,
+                snake2pascal($ParamName,$APBlockPrefix),'lf_level');
+
+        $ParamName = $LFNoisePrefix.'music_out';
+        read_param($APPrefix.$ParamName,
+                snake2pascal($ParamName,$APBlockPrefix),'lf_level');
+
+        $ParamName = $LFNoisePrefix.'noise_out';
+        read_param($APPrefix.$ParamName,
+                snake2pascal($ParamName,$APBlockPrefix),'lf_level');
+
+        #############################
+        # Reference Channel Latency #
+        #############################
+
+        map_param($LFNoisePrefix.'ref_latency_ms','lf_noise',
+                        $APBlockPrefix,$APPrefix);
+
+        ######################
+        # Noise Conditioning #
+        ######################
+
+        map_param($LFNoisePrefix.'energy_lpf_tau_s','lf_noise',
+                        $APBlockPrefix,$APPrefix);
+
+        # impulse rejection
+
+        my $impRejPrefix = $LFNoisePrefix.'impulse_rejection_';
+
+        @ParamList = (
+            'impulse_variance_scale',
+            'music_variance_scale',
+            'noise_variance_scale',
+            'impulse_variance_filt_tau_s',
+            'gamma_0_tau_s',
+            'output_min' );
+
+        map_param_list(\@ParamList,'lf_imp_rej',
+                            $APBlockPrefix,$APPrefix,$impRejPrefix);
+
+        # states
+
+        $ParamName = $impRejPrefix.'gamma_tau';
+        read_param($APPrefix.$ParamName,
+                snake2pascal($ParamName.'_s',$APBlockPrefix),'lf_imp_rej');
+
+        $ParamName = $impRejPrefix.'impulse_var';
+        read_param($APPrefix.$ParamName,
+                snake2pascal($ParamName.'iance_db',$APBlockPrefix),
+                'lf_imp_rej');
+
+        $ParamName = $impRejPrefix.'music_var';
+        read_param($APPrefix.$ParamName,
+                snake2pascal($ParamName.'iance_db',$APBlockPrefix),
+                'lf_imp_rej');
+
+        $ParamName = $impRejPrefix.'noise_var';
+        read_param($APPrefix.$ParamName,
+                snake2pascal($ParamName.'iance_db',$APBlockPrefix),
+                'lf_imp_rej');
+
+        $ParamName = $impRejPrefix.'total_var';
+        read_param($APPrefix.$ParamName,
+                snake2pascal($ParamName.'iance_db',$APBlockPrefix),
+                'lf_imp_rej');
+
+        $ParamName = $impRejPrefix.'filter_out';
+        read_param($APPrefix.$ParamName,
+                snake2pascal($ParamName,$APBlockPrefix),'lf_imp_rej');
+    }
+
+    ########
+    # Slew #
+    ########
+
+    # These parameters exist whether or not it is speed only
+
+    my $SlewPrefix = $LFNoisePrefix.'slew_';
+
+    @ParamList = (
+        'attack_db_per_s',
+        'decay_db_per_s',
+        'threshold_db');
+
+    map_param_list(\@ParamList,'lf_slew',
+                    $APBlockPrefix,$APPrefix,$SlewPrefix);
+
+    $ParamName = $APPrefix.$LFNoisePrefix.'slow_slew_db_per_s';
+    PARAMETER audiopilot:[lf_slew]:$ParamName;
+    MAP ${APBlockPrefix}LfNoiseSlewSlowDbPerS, _{$ParamName};
+
+    # states
+
+    $ParamName = $LFNoisePrefix.'pre_slew';
+    read_param($APPrefix.$ParamName,
+                snake2pascal($ParamName,$APBlockPrefix),'lf_slew');
+
+    $ParamName = $LFNoisePrefix.'post_slew';
+    read_param($APPrefix.$ParamName,
+                snake2pascal($ParamName,$APBlockPrefix),'lf_slew');
+
+    ##################
+    # Noise Estimates#
+    ##################
+
+    $ParamName = 'wb_noise_dbspl';
+    read_param($APPrefix.$ParamName,
+                snake2pascal($ParamName,$APBlockPrefix),'level');
+
+    $ParamName = 'lf_noise_dbspl';
+    read_param($APPrefix.$ParamName,
+                snake2pascal($ParamName,$APBlockPrefix),'level');
+
+    $ParamName = 'hf_noise_dbspl';
+    read_param($APPrefix.$ParamName,
+                snake2pascal($ParamName,$APBlockPrefix),'level');
+}
+
+ #####################################
+#######################################
+##  HIGH FREQUENCY NOISE ESTIMATION  ##
+#######################################
+ #####################################
+
+HIERARCHY $CARVARIANT_HIERARCHY
+{
+    if ($HFNoiseEnable)
+    {
+        @ParamList = (
+            'ref_latency_ms',
+            'ref_power_min_db');
+
+        map_param_list(\@ParamList,'hf_noise',
+                        $APBlockPrefix,$APPrefix,$HFNoisePrefix);
+
+        # states
+
+        $ParamName = $HFNoisePrefix.'mic_psd_level';
+        read_param($APPrefix.$ParamName,
+                        snake2pascal($ParamName,$APBlockPrefix),'hf_level');
+
+        $ParamName = $HFNoisePrefix.'noise_psd_level';
+        read_param($APPrefix.$ParamName,
+                        snake2pascal($ParamName,$APBlockPrefix),'hf_level');
+
+        ######################
+        # Noise Conditioning #
+        ######################
+
+        my $impRejPrefix = $HFNoisePrefix.'impulse_rejection_';
+
+        @ParamList = (
+            'minstat_min',
+            'minstat_beta',
+            'minstat_alpha_factor',
+            'minstat_alpha_min',
+            'flatness_thresh',
+            'min_search_coef',
+            'min_search_min_gain',
+            'flatness_low_index',
+            'flatness_high_index',
+            'sub_win_time_s',
+            'level_update_coef');
+
+        map_param_list(\@ParamList,'hf_imp_rej',
+                            $APBlockPrefix,$APPrefix,$impRejPrefix);
+
+        # states
+
+        $ParamName = 'flatness';
+        read_param($APPrefix.$HFNoisePrefix.$ParamName,
+            snake2pascal($impRejPrefix.$ParamName,$APBlockPrefix),'hf_imp_rej');
+
+        read_param($APPrefix.$HFNoisePrefix.'minsearch_psd',
+            snake2pascal($impRejPrefix.'pmin',$APBlockPrefix),'hf_imp_rej');
+
+        ########
+        # Slew #
+        ########
+
+        $SlewPrefix = $HFNoisePrefix.'slew_';
+
+        @ParamList = (
+            'attack_db_per_s',
+            'decay_db_per_s',
+            'threshold_db');
+
+        map_param_list(\@ParamList,'hf_slew',
+                            $APBlockPrefix,$APPrefix,$SlewPrefix);
+
+        # states
+
+        @ParamList = (
+            'pre_slew',
+            'post_slew');
+
+        for my $param (@ParamList)
+        {
+            $ParamName = $HFNoisePrefix.$param;
+            read_param($APPrefix.$ParamName,
+                        snake2pascal($ParamName,$APBlockPrefix),'hf_slew');
+        }
+
+        ########################
+        ##########################
+        ##  NOISE RATIO UPDATE  ##
+        ##########################
+         ########################
+
+        $ParamName = 'noise_ratio';
+        read_param($APPrefix.$ParamName,snake2pascal($ParamName,$APBlockPrefix),
+                        'ratio_update');
+
+        ####################
+        # Update Mechanism #
+        ####################
+
+        my $updatePrefix = $RatioPrefix.'update_';
+
+        @ParamList = (
+            'lf_noise_update_thresh_db',
+            'speed_update_thresh_mph',
+            'flag_hold_time_s',
+            'lf_noise_update_period_s',
+            'lf_noise_thresh_dbspl',
+            'hf_noise_thresh_dbspl'  );
+
+        map_param_list(\@ParamList,'ratio_update',
+                            $APBlockPrefix,$APPrefix,$updatePrefix);
+
+        # states
+
+        $ParamName = $updatePrefix.'flag';
+        read_param($APPrefix.$ParamName,
+                        snake2pascal($ParamName,$APBlockPrefix),'ratio_update');
+
+        ################
+        # Conditioning #
+        ################
+
+        @ParamList = (
+            'energy_lpf_tau_s',
+            'low_bound_db',
+            'high_bound_db');
+
+        map_param_list(\@ParamList,'ratio_update',
+                            $APBlockPrefix,$APPrefix,$RatioPrefix);
+
+        $ParamName = $APPrefix.$RatioPrefix.'low_bound_db';
+        ASSERT _{$ParamName} >= 40.0,
+            "$ParamName must be greater than or equal to 40 dB";
+
+        $impRejPrefix = $RatioPrefix.'impulse_rejection_';
+
+        @ParamList = (
+            'impulse_variance_lpf_tau_s',
+            'gamma_0_tau_s',
+            'noise_variance_scale',
+            'impulse_variance_scale' );
+
+        map_param_list(\@ParamList,'ratio_imp_rej',
+                            $APBlockPrefix,$APPrefix,$impRejPrefix);
+
+        ########
+        # Slew #
+        ########
+
+        my $SlewPrefix = $RatioPrefix.'slew_';
+
+        @ParamList = (
+            'attack_db_per_s',
+            'decay_db_per_s',
+            'threshold_db');
+
+        map_param_list(\@ParamList,'ratio_slew',
+                            $APBlockPrefix,$APPrefix,$SlewPrefix);
+
+        # states
+
+        @ParamList = (
+            'pre_slew',
+            'post_slew');
+
+        for my $param (@ParamList)
+        {
+            $ParamName = $RatioPrefix.$param;
+            read_param($APPrefix.$ParamName,
+                        snake2pascal($ParamName,$APBlockPrefix),'ratio_update');
+        }
+    }
+}
+
+HIERARCHY $CARVARIANT_HIERARCHY
+{
+
+    ########
+    # HVAC #
+    ########
+
+    # The HVAC table can be specified in variable length.
+
+    _[hvac_dbspl_fillZero] = do
+    {
+        my @zeroed_list = ( 0 , 0 , 0 , 0);
+        \@zeroed_list;
+    };
+
+    PARAMETER(READ_ONLY, NO_WARN) audiopilot:[hvac]:audiopilot_hvac_noise_dbspl
+                                = _[hvac_dbspl_fillZero];     #default value
+
+    ASSERT ($#{_{audiopilot_hvac_noise_dbspl}}+1 >= 4),
+            "Fan speed noise table needs to have atleast 2 rows.";
+
+    RESET_SYMFUN_LOGS;
+    MAP ${APBlockPrefix}HvacTable, _{audiopilot_hvac_noise_dbspl};
+
+    # states
+
+    $ParamName = 'hvac_dbspl';
+    read_param('curr_'.$ParamName,snake2pascal($ParamName,$APBlockPrefix),'level');
+}
+
+######################################
+# Level Detector Pre-Emphasis Filter #
+######################################
+
+PRECONFIGURATION $AUDIOPILOTDEPENDENCIES{'ModelInit.m'}, 'GENERIC',
+     '(numChannels:^\s*AUDIOPILOT_NUM_MUSIC_IN\s*=\s*(\d+))';
+# _{{numChannels}}=6;
+
+HIERARCHY $CARVARIANT_HIERARCHY
+{
+    PARAMETER audiopilot:[level_detector]:levdet_preem_sos;
+    PARAMETER audiopilot:[level_detector]:levdet_preem_topology;
+    PARAMETER audiopilot:[level_detector]:levdet_preem_fs;
+
+    my $levdetPrefix = $ModelPrefix.'LevelDetectPreemphasis';
+
+    _[preem_sos] = _{levdet_preem_sos};
+
+    _[repeatedCoeffs] = do
+    {
+        my @Coeffs;
+        my @C = @{_[eq_math:sosCascadeCoeffs('audiopilot:preem_sos')]};
+        for (my $idx = 0; $idx < _{{numChannels}}; $idx++)
+        {
+            push @Coeffs,@C;
+        }
+        \@Coeffs;
+    };
+
+    _[repeatedStages] = do
+    {
+        my @Stages =();
+        for (my $idx = 0; $idx < _{{numChannels}}; $idx++)
+        {
+            push @Stages,_[eq_math:sosCascadeNumStages("audiopilot:preem_sos")];
+        }
+        \@Stages;
+    };
+
+    MAP ${levdetPrefix}sosCoefficients,_[repeatedCoeffs];
+    MAP ${levdetPrefix}numStages,_[repeatedStages];
+}
+
+#############################################
+# Low-Frequency Noise Anti-Aliasing Filters #
+#############################################
+
+FEATURE 'audiopilot_lf_noise_aa:sos', $CARVARIANT_HIERARCHY;
+
+# SAMPLERATE-958  Should move onto Talaria Canvas
+# PRECONFIGURATION
+# $AUDIOPILOTDEPENDENCIES{'LowFrequencyNoiseEstimatorCohConfig.m'},
+#   'GENERIC', '(lf_noise_aa_max_order:^\s*AntiAliasFilterOrder\s*=\s*(\d+))';
+_{{lf_noise_aa_max_order}}=6;
+
+if ($LFNoiseEnable)
+{
+    my @lpSOSNames = ('mic','ref');
+    my $numSOS = $#lpSOSNames+1;
+
+    HIERARCHY $CARVARIANT_HIERARCHY
+    {
+        for my $name (@lpSOSNames)
+        {
+            PARAMETER(READ_ONLY)
+                audiopilot:[antialias]:
+                ${APPrefix}${LFNoisePrefix}aa_${name}_sos;
+            PARAMETER(READ_ONLY)
+                audiopilot:[antialias]:
+                ${APPrefix}${LFNoisePrefix}aa_${name}_topology;
+            PARAMETER(READ_ONLY)
+                audiopilot:[antialias]:
+                ${APPrefix}${LFNoisePrefix}aa_${name}_fs;
+        }
+        _[a] = \@lpSOSNames;
+        $maxStages = ceil(_{{lf_noise_aa_max_order}}/2)*$numSOS;
+    }
+
+    EQ_TEMPLATE
+    (
+        'audiopilot_lf_noise_aa',       # Feature name
+        $CARVARIANT_HIERARCHY,          # Level of hierarchy for the feature
+        _{{Fs}},                        # Sample rates
+        'cascade',                      # Topologys
+        0,                              # Delay enable
+        'a',                            # Channel prefix list array variable
+        undef,                          # Delay adjustment array variable
+        $maxStages,                     # Maximum number of stages
+        undef,                          # Maximum number of delay samples
+        0                               # Use accelerator (sharc iir)
+    );
+
+    HIERARCHY $CARVARIANT_HIERARCHY
+    {
+        my $aaPrefix = $APBlockPrefix.snake2pascal($LFNoisePrefix,'');
+
+        for my $filtName (@lpSOSNames)
+        {
+            $TalariaFiltName = ucfirst($filtName);
+            MAP ${aaPrefix}${TalariaFiltName}sosCoefficients,
+                    _[sosCoeffs(${filtName})];
+            MAP ${aaPrefix}${TalariaFiltName}numStages,
+                    _[numStages(${filtName})];
+        }
+    }
+}
+
+################################################################################
+#                              Helper sub-routines                             #
+################################################################################
+
+# read_param($param,$tuneVar,$subfeature)
+# reads the tune-parameter state ($param) from the Talaria tuneVar ($tuneVar).
+#
+# No return values.
+#
+sub read_param
+{
+    my ($param,$tuneVar,$subFeature) = @_;
+    PARAMETER audiopilot:[$subFeature]:$param;
+    READ $param, $tuneVar;
+}
+
+# map_param($param,$subfeature,$talariaPrfx,$tunePrfx)
+# Maps the parameters ($param) with specified subfeature ($subfeature)
+# the Talaria tuneVar name will take on prefix ($talariaPrfx)
+# and the tune parameter will take on prefix ($tunePrfx)
+#
+# No return values.
+#
+sub map_param
+{
+    my ($param,$subFeature,$talariaPrfx,$tunePrfx) = @_;
+
+    PARAMETER audiopilot:[$subFeature]:$tunePrfx$param;
+    my $talariaName = snake2pascal($param,$talariaPrfx);
+    MAP $talariaName, _{$tunePrfx$param};
+}
+
+# map_param_list(/@param_list,$subfeature,$talariaPrfx,$tunePrfx1,$tunePrfx2)
+# Maps the parameters stored in param_list (reference @param_list).
+# The prefix ($tunePrfx2) is added to every member of the list.
+# The prefix ($tunePrfx1) is added only to the tune parameter.
+# The prefix ($talariaPrfx) is added only to the Talaria tuneVar name.
+#
+# No return values.
+#
+sub map_param_list
+{
+    my ($paramList,$subFeature,$talariaPrfx,
+                                $tunePrfx1,$tunePrfx2) = @_;
+    my @ParamList = @{$paramList};
+
+    for my $param (@ParamList)
+    {
+        map_param($tunePrfx2.$param,$subFeature,$talariaPrfx,$tunePrfx1);
+    }
+}
+
+# snake2pascal($SnakeCasedName,$Prefix)
+# Translates a snake-cased variable name to Pascal-case.
+#
+# Returns Pascal-cased name
+
+sub snake2pascal
+{
+    my ($in, $out) = @_;
+    $in = lc($in);
+    my @words = split(/_/,$in);
+    foreach my $word (@words)
+    {
+        $out = $out.ucfirst($word);
+    }
+    $out;
+}

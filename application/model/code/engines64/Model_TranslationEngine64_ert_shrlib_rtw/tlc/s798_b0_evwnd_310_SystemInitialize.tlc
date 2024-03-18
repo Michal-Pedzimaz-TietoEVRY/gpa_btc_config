@@ -1,0 +1,49 @@
+%implements s798_b0_evwnd_310_SystemInitialize "C"
+
+%function SystemInitialize(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%<SLibCGIRDumpSystemUserCode(284, "Initialize", "Header")>\
+%<SLibCGIRDumpSystemUserCode(284, "Initialize", "Body")>\
+%assign   SystemInitialize_open_AlignmentDelay_b_284_0 = ""
+%openfile SystemInitialize_open_AlignmentDelay_b_284_0
+
+/* SystemInitialize for Atomic SubSystem: '<S599>/Alignment Delay' */
+%closefile SystemInitialize_open_AlignmentDelay_b_284_0
+
+%assign    SystemInitialize_body_AlignmentDelay_b_284_0 = ""
+%openfile  SystemInitialize_body_AlignmentDelay_b_284_0
+
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[233], "SystemInitialize",0)
+%<SLibCG_DumpSSCode("/*@[f3dc93*/",SLibCGIRGenReusableSysCall("Model_TranslationEngine64_AlignmentDelay_Init", [], 233, 0, 4, 0, 4, 715),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[233]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+%endif
+%closefile SystemInitialize_body_AlignmentDelay_b_284_0
+
+%assign    SystemInitialize_close_AlignmentDelay_b_284_0 = ""
+%openfile  SystemInitialize_close_AlignmentDelay_b_284_0
+
+/* End of SystemInitialize for SubSystem: '<S599>/Alignment Delay' */
+%closefile SystemInitialize_close_AlignmentDelay_b_284_0
+%<SLibCG_DumpSSCode(SystemInitialize_open_AlignmentDelay_b_284_0, SystemInitialize_body_AlignmentDelay_b_284_0, SystemInitialize_close_AlignmentDelay_b_284_0)>
+
+%<SLibCGIRDumpSystemUserCode(284, "Initialize", "Trailer")>\
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedSystemInitializeLocalVars", localVarDecl)>
+%endfunction
+%function SystemInitializeFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_TranslationEngine64_Medusa5H1Part2_Init(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(310, 0, fcnProtoType)>
+%endfunction

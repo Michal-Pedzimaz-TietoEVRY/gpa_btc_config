@@ -1,0 +1,8 @@
+%implements s1068_b0_g3vnd_74_ModuleConstants "C"
+
+%function ModuleConstants(block) Output
+
+
+/* Named constants for MATLAB Function: '<S1814>/InnerLink' */
+#define Model_Target_SuperFastDecayMultiplier_m (30.0F)
+%endfunction

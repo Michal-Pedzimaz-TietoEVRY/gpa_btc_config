@@ -1,0 +1,276 @@
+%implements s1068_b0_g3vnd_48_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+real_T currentGainLinear_idx_0;
+real_T currentGainLinear_idx_1;
+real_T currentGainLinear_idx_2;
+real_T currentGainLinear_idx_3;
+real32_T db_diff_idx_0;
+real32_T db_diff_idx_1;
+real32_T numFrames;
+real32_T quantumMs;
+real32_T targetGainLinear;
+real32_T targetGainLinear_0;
+real32_T targetGainLinear_1;
+real32_T targetGainLinear_2;
+%closefile localVarDecl
+/* inputs  */
+/* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/SleepingBeauty/SleepingBeauty/Enabled/FadeRamperDR/InnerLink/fade control': '<S1380>:1' */
+/*  High level control summary: */
+/*  The fade effect is achieved by boosting the gain of one group of */
+/*  speakers and cutting the gain of the opposite side. The corresponding */
+/*  gain (Rampers 1,2) is applied to the non-bass content of the audio, and  */
+/*  the bass content is simply added to it. For example, this means that even */
+/*  if the audio is faded forward, the bass content of the rear group is  */
+/*  retained. However, when the 'silent extreme' option is enabled, the bass  */
+/*  content of the rear group (or vice versa) needs to be muted. Hence, two  */
+/*  more rampers are setup for this purpose (Rampers 3,4). These two rampers  */
+/*  are used only when the fade effect is at either extreme *and* 'silent  */
+/*  extreme' is enabled. */
+/*  Inputs: */
+/*    targetGainLinear: Indicates the gain (in linear scale) which needs to */
+/*        be applied to the audio. Gain values can be mapped to the ramper */
+/*        configuration. */
+/*    rampTimeMs: Indicates the time in milliseconds in which the gain of the */
+/*        rampers must change from their current to target values. */
+/*    dbPerSecond: Indicates the rate in dB/second at which the gain of the */
+/*        rampers must change from their current to target values. If this */
+/*        value is non-zero, it is used to compute the ramp time and */
+/*        'rampTimeMs' is discarded (if specified). */
+/*    rgain_SILENT_GAIN: Parameter defined in the initFcn callback. */
+/*  Control Data: */
+/*    Freeze(1) freezes the processing during this control operation */
+/*    Rampers(1) is the non-bass ramper for the 'Front' group. Boost vs. cut  */
+/*         is determined by the value of the fade index */
+/*    Rampers(2) is the second phase ramper. Boost vs. cut is determined by */
+/*         the sign of the linear current gain. */
+/*    Rampers(3) is the bass ramper for the 'Front' group. Used for ramping */
+/*        from 1 to 0 (or vice versa), determined by whether the fade index */
+/*        is at the extreme and the status of 'silent extreme'. */
+/*    Rampers(4) is the bass ramper for the 'Rear' group. Used for ramping */
+/*        from 1 to 0 (or vice versa), determined by whether the fade index */
+/*        is at the extreme and the status of 'silent extreme'. */
+/* '<S1380>:1:43' numRampers = numel(Rampers); */
+/* '<S1380>:1:45' rgain_SILENT_GAIN = RgainBusUtil.GetSilentGainLinear(); */
+/*  Step 1: FREEZE the gain ramper so that we can perform calculations based */
+/*  on the current gain value. (This step is done outside on canvas now) */
+/*  Step 2: Get the current and target gains for all rampers */
+/*  If the linear gain is 0, nudge it to a value very close to zero to avoid  */
+/*  an infinite dB value. */
+/* '<S1380>:1:53' currentGainLinear = zeros(1,numRampers); */
+/* '<S1380>:1:54' for i = 1:numRampers */
+/* '<S1380>:1:55' currentGainLinear(i) = max(Rampers(i).currentGain, rgain_SILENT_GAIN); */
+/*@>11dde1d*/currentGainLinear_idx_0/*@>11dd586*/ = /*@>11e01cf*/fmaxf(%<SLibCG_DumpSSCode("/*@[11e141b*/",(SLibCG_CSCDW(4, 1, "[/*@>11e13f4*/0].currentGain", -1, "", 0)),"/*@]*/")>, /*@>11ddd8e*/5.0118723E-7F);
+/* '<S1380>:1:56' targetGainLinear(i) = max(targetGainLinear(i), rgain_SILENT_GAIN); */
+targetGainLinear/*@>11dd598*/ = /*@>11e01d1*/fmaxf(/*@>11e096c*/rtu_targetGainLinear/*@>11e096e*/[/*@>11e096a*/0], /*@>11ddd94*/5.0118723E-7F);
+/* '<S1380>:1:55' currentGainLinear(i) = max(Rampers(i).currentGain, rgain_SILENT_GAIN); */
+/*@>11dde21*/currentGainLinear_idx_1/*@>11dd5b7*/ = /*@>11e01d3*/fmaxf(%<SLibCG_DumpSSCode("/*@[11e144e*/",(SLibCG_CSCDW(4, 1, "[/*@>11e1427*/1].currentGain", -1, "", 0)),"/*@]*/")>, /*@>11ddda1*/5.0118723E-7F);
+/* '<S1380>:1:56' targetGainLinear(i) = max(targetGainLinear(i), rgain_SILENT_GAIN); */
+targetGainLinear_0/*@>11dd5c9*/ = /*@>11e01d5*/fmaxf(/*@>11e0977*/rtu_targetGainLinear/*@>11e0979*/[/*@>11e0975*/1], /*@>11ddda7*/5.0118723E-7F);
+/* '<S1380>:1:55' currentGainLinear(i) = max(Rampers(i).currentGain, rgain_SILENT_GAIN); */
+/*@>11dde25*/currentGainLinear_idx_2/*@>11dd5e8*/ = /*@>11e01d7*/fmaxf(%<SLibCG_DumpSSCode("/*@[11e1481*/",(SLibCG_CSCDW(4, 1, "[/*@>11e145a*/2].currentGain", -1, "", 0)),"/*@]*/")>, /*@>11dddb4*/5.0118723E-7F);
+/* '<S1380>:1:56' targetGainLinear(i) = max(targetGainLinear(i), rgain_SILENT_GAIN); */
+targetGainLinear_1/*@>11dd5fa*/ = /*@>11e01d9*/fmaxf(/*@>11e0982*/rtu_targetGainLinear/*@>11e0984*/[/*@>11e0980*/2], /*@>11dddba*/5.0118723E-7F);
+/* '<S1380>:1:55' currentGainLinear(i) = max(Rampers(i).currentGain, rgain_SILENT_GAIN); */
+/*@>11dde29*/currentGainLinear_idx_3/*@>11dd619*/ = /*@>11e01db*/fmaxf(%<SLibCG_DumpSSCode("/*@[11e14b4*/",(SLibCG_CSCDW(4, 1, "[/*@>11e148d*/3].currentGain", -1, "", 0)),"/*@]*/")>, /*@>11dddc7*/5.0118723E-7F);
+/* '<S1380>:1:56' targetGainLinear(i) = max(targetGainLinear(i), rgain_SILENT_GAIN); */
+targetGainLinear_2/*@>11dd62b*/ = /*@>11e01dd*/fmaxf(/*@>11e098d*/rtu_targetGainLinear/*@>11e098f*/[/*@>11e098b*/3], /*@>11dddcd*/5.0118723E-7F);
+/*  Step 3a: TIME- If a slope in dB/second is provided, ignore the ramp time */
+/*  (if also provided) and instead calculate a new ramp time that matches */
+/*  the slope. */
+/* '<S1380>:1:63' rampMs = zeros(1,numRampers,'single'); */
+/* '<S1380>:1:64' if (dbPerSec) */
+/*@>10ca289*/if (/*@>11ddbe7*/rtu_dbPerSec/*@>10ca24d*/ != /*@>11ddbe1*/0.0F) {
+    /*  Now that we have both current and target impacts, find the difference */
+    /* '<S1380>:1:66' currentGaindB = db20(currentGainLinear); */
+    /* DB20  Linear quantity to decibels */
+    /*    Converts x to dB assuming that x represents volts. */
+    /*    y=20*log10(abs(x)); */
+    /*  */
+    /*  See Also: DB10, UNDB20 */
+    /*    Copyright 2018-2019 Bose Corporation */
+    /*  Bill Berardi */
+    /*  $Id: db20.m 11813 2012-07-11 17:31:25Z rs7109 $ */
+    /* 'db20:12' y = 20/log(10)*log(abs(x)); */
+    /* '<S1380>:1:67' targetGaindB = db20(targetGainLinear); */
+    /* DB20  Linear quantity to decibels */
+    /*    Converts x to dB assuming that x represents volts. */
+    /*    y=20*log10(abs(x)); */
+    /*  */
+    /*  See Also: DB10, UNDB20 */
+    /*    Copyright 2018-2019 Bose Corporation */
+    /*  Bill Berardi */
+    /*  $Id: db20.m 11813 2012-07-11 17:31:25Z rs7109 $ */
+    /* 'db20:12' y = 20/log(10)*log(abs(x)); */
+    /* '<S1380>:1:68' db_diff = abs(currentGaindB - targetGaindB); */
+    /* '<S1380>:1:69' rampMs = db_diff / single(dbPerSec) * 1000; */
+    db_diff_idx_0/*@>11dd456*/ = /*@>11e01e5*/qhmath_div_f(/*@>11e01e3*/qhmath_abs_f(/*@>11de98f*/(real32_T)(/*@>11de991*/8.685889638065035/*@>11de990*/ * /*@>11e01df*/log(/*@>11de995*/currentGainLinear_idx_0))/*@>11de98e*/ - /*@>11de997*/8.68588924F/*@>11de996*/ * /*@>11e01e1*/qhmath_log_f(targetGainLinear)), /*@>11ddd04*/rtu_dbPerSec)/*@>11ddf59*/ * /*@>11ddd06*/1000.0F;
+    db_diff_idx_1/*@>11dd4a0*/ = /*@>11e01ed*/qhmath_div_f(/*@>11e01eb*/qhmath_abs_f(/*@>11de9a3*/(real32_T)(/*@>11de9a5*/8.685889638065035/*@>11de9a4*/ * /*@>11e01e7*/log(/*@>11de9a9*/currentGainLinear_idx_1))/*@>11de9a2*/ - /*@>11de9ab*/8.68588924F/*@>11de9aa*/ * /*@>11e01e9*/qhmath_log_f(targetGainLinear_0)), /*@>11ddd29*/rtu_dbPerSec)/*@>11ddf44*/ * /*@>11ddd2b*/1000.0F;
+    /* '<S1380>:1:70' rampMs(3) = rampMs(1); */
+    /*  Front group */
+    /* '<S1380>:1:71' rampMs(4) = rampMs(2); */
+    /*  Rear group */
+} else {
+    /* '<S1380>:1:72' else */
+    /* '<S1380>:1:73' rampMs(:) = single(rampTimeMs); */
+    /*@>11dde15*/db_diff_idx_0/*@>11dd54f*/ = /*@>11ddd7b*/rtu_rampTimeMs;
+    /*@>11dde17*/db_diff_idx_1/*@>11dd559*/ = /*@>11ddd7d*/rtu_rampTimeMs;
+}
+/*  Step 3b: TIME- QUANTIZE the desired ramp time to our FrameSize. Retrieve  */
+/*  the whole number of frames required to best match requested ramp time. */
+/*  Ensure that at least one frame is used. The frame size will therefore */
+/*  determine the steepest ramp (i.e. one frame could go *almost* anywhere). */
+/* '<S1380>:1:80' quantumMs = 1000 * frameSize / sampleRateHz; */
+/*@>11ddbe2*/quantumMs/*@>10ca2f4*/ = /*@>11e01ef*/qhmath_div_f(/*@>11ddbe6*/1000.0F/*@>11ddf16*/ * /*@>11ddbe9*/rtu_frameSize, /*@>11ddbeb*/rtu_sampleRateHz);
+/* '<S1380>:1:81' numFrames = rampMs / quantumMs; */
+/*  Do a ceil rather than a round to insure that we create enough */
+/*  frames. i.e. a fraction of a frame is promoted to an addition frame */
+/*  numFrames = max (1, round(numFrames)); */
+/* '<S1380>:1:85' numFrames = max (1, ceil(numFrames)); */
+/*  Step 4: For each ramper, store the corresponding gains, ramp coefficient */
+/*  and the number of frames over which the ramping occurs. */
+/* '<S1380>:1:89' for currentRamper = 1:numRampers */
+numFrames/*@>11dd200*/ = /*@>11e01f5*/fmaxf(/*@>11ddc05*/1.0F, /*@>11e01f3*/qhmath_ceil_f(/*@>11e01f1*/qhmath_div_f(/*@>11de9ba*/db_diff_idx_0, /*@>11de9bc*/quantumMs)));
+/*  In order to have the desired ramp time, the slope must vary dependent */
+/*  on the gain difference between target and current value. */
+/*  Ramper's coefficient is therefore calculated as follows: */
+/*  */
+/*    TargetGain = CurrentGain *( RampCoef ^ (Fs*RampTime_ms/1000) ) */
+/*  */
+/*  therefore... */
+/*  */
+/*                      log(TargetGain/CurrentGain) */
+/*    log(RampCoef) = ------------------------------ */
+/*                         Fs*(RampTime_ms/1000) */
+/*  */
+/* '<S1380>:1:103' currentRampTimeMs = quantumMs * numFrames(currentRamper); */
+/* '<S1380>:1:104' factor = log(targetGainLinear(currentRamper) / currentGainLinear(currentRamper)); */
+/* '<S1380>:1:105' rampCoef = exp(factor / (sampleRateHz * currentRampTimeMs / 1000)); */
+%<SLibCG_DumpSSCode("/*@[11e10ed*/",SLibCG_SetCSCDW(4, 1, "[/*@>11e10c4*/0].rampCoeff", -1, "", 0, "/*@>11e16ad*/qhmath_exp_f(/*@>11e16af*/qhmath_div_f(/*@>11e16b1*/qhmath_log_f(/*@>11e16b3*/qhmath_div_f(targetGainLinear, /*@>11e16b5*/(real32_T)/*@>11e16b6*/currentGainLinear_idx_0)), /*@>11e16b8*/qhmath_div_f(/*@>11e16bb*/quantumMs/*@>11e16ba*/ * numFrames/*@>11e16b9*/ * /*@>11e16bd*/rtu_sampleRateHz, /*@>11e16be*/1000.0F)))"),"/*@]*/")>\
+/*  Output control signals */
+/* '<S1380>:1:108' Rampers(currentRamper).rampCoeff   = single(rampCoef); */
+/* '<S1380>:1:109' Rampers(currentRamper).targetGain  = single(targetGainLinear(currentRamper)); */
+%<SLibCG_DumpSSCode("/*@[11e1120*/",SLibCG_SetCSCDW(4, 1, "[/*@>11e10f7*/0].targetGain", -1, "", 0, "targetGainLinear"),"/*@]*/")>\
+/* '<S1380>:1:110' Rampers(currentRamper).currentGain = single(currentGainLinear(currentRamper)); */
+%<SLibCG_DumpSSCode("/*@[11e1153*/",SLibCG_SetCSCDW(4, 1, "[/*@>11e112a*/0].currentGain", -1, "", 0, "/*@>11e16e2*/(real32_T)/*@>11e16e3*/currentGainLinear_idx_0"),"/*@]*/")>\
+/* '<S1380>:1:111' Rampers(currentRamper).frameCount = int32(numFrames(currentRamper)); */
+%<SLibCG_DumpSSCode("/*@[11e1186*/",SLibCG_SetCSCDW(4, 1, "[/*@>11e115d*/0].frameCount", -1, "", 0, "/*@>11e16f5*/(int32_T)numFrames"),"/*@]*/")>\
+numFrames/*@>11dd291*/ = /*@>11e0205*/fmaxf(/*@>11ddc41*/1.0F, /*@>11e0203*/qhmath_ceil_f(/*@>11e0201*/qhmath_div_f(/*@>11de9ce*/db_diff_idx_1, /*@>11de9d0*/quantumMs)));
+/*  In order to have the desired ramp time, the slope must vary dependent */
+/*  on the gain difference between target and current value. */
+/*  Ramper's coefficient is therefore calculated as follows: */
+/*  */
+/*    TargetGain = CurrentGain *( RampCoef ^ (Fs*RampTime_ms/1000) ) */
+/*  */
+/*  therefore... */
+/*  */
+/*                      log(TargetGain/CurrentGain) */
+/*    log(RampCoef) = ------------------------------ */
+/*                         Fs*(RampTime_ms/1000) */
+/*  */
+/* '<S1380>:1:103' currentRampTimeMs = quantumMs * numFrames(currentRamper); */
+/* '<S1380>:1:104' factor = log(targetGainLinear(currentRamper) / currentGainLinear(currentRamper)); */
+/* '<S1380>:1:105' rampCoef = exp(factor / (sampleRateHz * currentRampTimeMs / 1000)); */
+%<SLibCG_DumpSSCode("/*@[11e11b9*/",SLibCG_SetCSCDW(4, 1, "[/*@>11e1190*/1].rampCoeff", -1, "", 0, "/*@>11e1709*/qhmath_exp_f(/*@>11e170b*/qhmath_div_f(/*@>11e170d*/qhmath_log_f(/*@>11e170f*/qhmath_div_f(targetGainLinear_0, /*@>11e1711*/(real32_T)/*@>11e1712*/currentGainLinear_idx_1)), /*@>11e1714*/qhmath_div_f(/*@>11e1717*/quantumMs/*@>11e1716*/ * numFrames/*@>11e1715*/ * /*@>11e1719*/rtu_sampleRateHz, /*@>11e171a*/1000.0F)))"),"/*@]*/")>\
+/*  Output control signals */
+/* '<S1380>:1:108' Rampers(currentRamper).rampCoeff   = single(rampCoef); */
+/* '<S1380>:1:109' Rampers(currentRamper).targetGain  = single(targetGainLinear(currentRamper)); */
+%<SLibCG_DumpSSCode("/*@[11e11ec*/",SLibCG_SetCSCDW(4, 1, "[/*@>11e11c3*/1].targetGain", -1, "", 0, "targetGainLinear_0"),"/*@]*/")>\
+/* '<S1380>:1:110' Rampers(currentRamper).currentGain = single(currentGainLinear(currentRamper)); */
+%<SLibCG_DumpSSCode("/*@[11e121f*/",SLibCG_SetCSCDW(4, 1, "[/*@>11e11f6*/1].currentGain", -1, "", 0, "/*@>11e173e*/(real32_T)/*@>11e173f*/currentGainLinear_idx_1"),"/*@]*/")>\
+/* '<S1380>:1:111' Rampers(currentRamper).frameCount = int32(numFrames(currentRamper)); */
+%<SLibCG_DumpSSCode("/*@[11e1252*/",SLibCG_SetCSCDW(4, 1, "[/*@>11e1229*/1].frameCount", -1, "", 0, "/*@>11e1751*/(int32_T)numFrames"),"/*@]*/")>\
+numFrames/*@>11dd322*/ = /*@>11e0215*/fmaxf(/*@>11ddc7d*/1.0F, /*@>11e0213*/qhmath_ceil_f(/*@>11e0211*/qhmath_div_f(/*@>11de9e2*/db_diff_idx_0, /*@>11de9e4*/quantumMs)));
+/*  In order to have the desired ramp time, the slope must vary dependent */
+/*  on the gain difference between target and current value. */
+/*  Ramper's coefficient is therefore calculated as follows: */
+/*  */
+/*    TargetGain = CurrentGain *( RampCoef ^ (Fs*RampTime_ms/1000) ) */
+/*  */
+/*  therefore... */
+/*  */
+/*                      log(TargetGain/CurrentGain) */
+/*    log(RampCoef) = ------------------------------ */
+/*                         Fs*(RampTime_ms/1000) */
+/*  */
+/* '<S1380>:1:103' currentRampTimeMs = quantumMs * numFrames(currentRamper); */
+/* '<S1380>:1:104' factor = log(targetGainLinear(currentRamper) / currentGainLinear(currentRamper)); */
+/* '<S1380>:1:105' rampCoef = exp(factor / (sampleRateHz * currentRampTimeMs / 1000)); */
+%<SLibCG_DumpSSCode("/*@[11e1285*/",SLibCG_SetCSCDW(4, 1, "[/*@>11e125c*/2].rampCoeff", -1, "", 0, "/*@>11e1765*/qhmath_exp_f(/*@>11e1767*/qhmath_div_f(/*@>11e1769*/qhmath_log_f(/*@>11e176b*/qhmath_div_f(targetGainLinear_1, /*@>11e176d*/(real32_T)/*@>11e176e*/currentGainLinear_idx_2)), /*@>11e1770*/qhmath_div_f(/*@>11e1773*/quantumMs/*@>11e1772*/ * numFrames/*@>11e1771*/ * /*@>11e1775*/rtu_sampleRateHz, /*@>11e1776*/1000.0F)))"),"/*@]*/")>\
+/*  Output control signals */
+/* '<S1380>:1:108' Rampers(currentRamper).rampCoeff   = single(rampCoef); */
+/* '<S1380>:1:109' Rampers(currentRamper).targetGain  = single(targetGainLinear(currentRamper)); */
+%<SLibCG_DumpSSCode("/*@[11e12b8*/",SLibCG_SetCSCDW(4, 1, "[/*@>11e128f*/2].targetGain", -1, "", 0, "targetGainLinear_1"),"/*@]*/")>\
+/* '<S1380>:1:110' Rampers(currentRamper).currentGain = single(currentGainLinear(currentRamper)); */
+%<SLibCG_DumpSSCode("/*@[11e12eb*/",SLibCG_SetCSCDW(4, 1, "[/*@>11e12c2*/2].currentGain", -1, "", 0, "/*@>11e179a*/(real32_T)/*@>11e179b*/currentGainLinear_idx_2"),"/*@]*/")>\
+/* '<S1380>:1:111' Rampers(currentRamper).frameCount = int32(numFrames(currentRamper)); */
+%<SLibCG_DumpSSCode("/*@[11e131e*/",SLibCG_SetCSCDW(4, 1, "[/*@>11e12f5*/2].frameCount", -1, "", 0, "/*@>11e17ad*/(int32_T)numFrames"),"/*@]*/")>\
+numFrames/*@>11dd3b3*/ = /*@>11e0225*/fmaxf(/*@>11ddcb9*/1.0F, /*@>11e0223*/qhmath_ceil_f(/*@>11e0221*/qhmath_div_f(/*@>11de9f6*/db_diff_idx_1, /*@>11de9f8*/quantumMs)));
+/*  In order to have the desired ramp time, the slope must vary dependent */
+/*  on the gain difference between target and current value. */
+/*  Ramper's coefficient is therefore calculated as follows: */
+/*  */
+/*    TargetGain = CurrentGain *( RampCoef ^ (Fs*RampTime_ms/1000) ) */
+/*  */
+/*  therefore... */
+/*  */
+/*                      log(TargetGain/CurrentGain) */
+/*    log(RampCoef) = ------------------------------ */
+/*                         Fs*(RampTime_ms/1000) */
+/*  */
+/* '<S1380>:1:103' currentRampTimeMs = quantumMs * numFrames(currentRamper); */
+/* '<S1380>:1:104' factor = log(targetGainLinear(currentRamper) / currentGainLinear(currentRamper)); */
+/* '<S1380>:1:105' rampCoef = exp(factor / (sampleRateHz * currentRampTimeMs / 1000)); */
+%<SLibCG_DumpSSCode("/*@[11e1351*/",SLibCG_SetCSCDW(4, 1, "[/*@>11e1328*/3].rampCoeff", -1, "", 0, "/*@>11e17c1*/qhmath_exp_f(/*@>11e17c3*/qhmath_div_f(/*@>11e17c5*/qhmath_log_f(/*@>11e17c7*/qhmath_div_f(targetGainLinear_2, /*@>11e17c9*/(real32_T)/*@>11e17ca*/currentGainLinear_idx_3)), /*@>11e17cc*/qhmath_div_f(/*@>11e17cf*/quantumMs/*@>11e17ce*/ * numFrames/*@>11e17cd*/ * /*@>11e17d1*/rtu_sampleRateHz, /*@>11e17d2*/1000.0F)))"),"/*@]*/")>\
+/*  Output control signals */
+/* '<S1380>:1:108' Rampers(currentRamper).rampCoeff   = single(rampCoef); */
+/* '<S1380>:1:109' Rampers(currentRamper).targetGain  = single(targetGainLinear(currentRamper)); */
+%<SLibCG_DumpSSCode("/*@[11e1384*/",SLibCG_SetCSCDW(4, 1, "[/*@>11e135b*/3].targetGain", -1, "", 0, "targetGainLinear_2"),"/*@]*/")>\
+/* '<S1380>:1:110' Rampers(currentRamper).currentGain = single(currentGainLinear(currentRamper)); */
+%<SLibCG_DumpSSCode("/*@[11e13b7*/",SLibCG_SetCSCDW(4, 1, "[/*@>11e138e*/3].currentGain", -1, "", 0, "/*@>11e17f6*/(real32_T)/*@>11e17f7*/currentGainLinear_idx_3"),"/*@]*/")>\
+/* '<S1380>:1:111' Rampers(currentRamper).frameCount = int32(numFrames(currentRamper)); */
+%<SLibCG_DumpSSCode("/*@[11e13ea*/",SLibCG_SetCSCDW(4, 1, "[/*@>11e13c1*/3].frameCount", -1, "", 0, "/*@>11e1809*/(int32_T)numFrames"),"/*@]*/")>\
+/*  Step 4: UNFREEZE the gain ramper (performed outside on canvas now) */
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[48].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(48, 0, 0)>
+%endif
+%if SLibCG_ArgAccessed(48, 0, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(48, 0, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_fadecontrol(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(48, 0, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_Target_fadecontrol", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>const real32_T rtu_targetGainLinear[4]\
+%assign comma = ", "
+%<comma>real32_T rtu_dbPerSec\
+%assign comma = ", "
+%<comma>real32_T rtu_rampTimeMs\
+%assign comma = ", "
+%<comma>real32_T rtu_sampleRateHz\
+%assign comma = ", "
+%<comma>real32_T rtu_frameSize\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(48, 0, fcnProtoType)>
+%endfunction

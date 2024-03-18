@@ -1,0 +1,213 @@
+%implements s798_b0_evwnd_ModelInitialize "C"
+
+%function ModelInitialize(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%<SLibInsertAsyncTaskInitializeCode(system)>
+%<SLibWriteMachineInitialize()>
+%<SLibCGIRDumpSystemUserCode(715, "Start", "Header")>\
+%<SLibCGIRDumpSystemUserCode(715, "Start", "Body")>\
+%<SLibCGIRDumpSystemUserCode(715, "Start", "Trailer")>\
+%<SLibCGIRDumpSystemUserCode(715, "Initialize", "Header")>\
+%<SLibCGIRDumpSystemUserCode(715, "Initialize", "Body")>\
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[2], "SystemInitialize",0)
+/* {S!d4677}SystemInitialize for Atomic SubSystem: '<Root>/InputSelect' */
+%<SLibCG_DumpSSCode("/*@[1080f70*/",SLibCGIRGenReusableSysCall("Model_TranslationEngine64_InputSelect_Init", [], 2, 0, 4, 0, 19, 715),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[2]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d4677}End of SystemInitialize for SubSystem: '<Root>/InputSelect' */
+
+%endif
+/* {S!d4679}SystemInitialize for Atomic SubSystem: '<S11>/AudioPilot35' */
+%<SLibCG_DumpSSCode("/*@[1080f57*/",SLibCGIRDumpSystemUserCode(205, "Initialize", "Header"),"/*@]*/")>\
+%<SLibCG_DumpSSCode("/*@[1080f58*/",SLibCGIRDumpSystemUserCode(205, "Initialize", "Body"),"/*@]*/")>\
+%<SLibCG_DumpSSCode("/*@[1080f59*/",SLibCGIRDumpSystemUserCode(205, "Initialize", "Trailer"),"/*@]*/")>\
+/* {E!d4679}End of SystemInitialize for SubSystem: '<S11>/AudioPilot35' */
+
+/* {S!d4681}SystemInitialize for Atomic SubSystem: '<S14>/Balance' */
+%<SLibCG_DumpSSCode("/*@[1080f5a*/",SLibCGIRDumpSystemUserCode(220, "Initialize", "Header"),"/*@]*/")>\
+%<SLibCG_DumpSSCode("/*@[1080f5b*/",SLibCGIRDumpSystemUserCode(220, "Initialize", "Body"),"/*@]*/")>\
+%<SLibCG_DumpSSCode("/*@[1080f5c*/",SLibCGIRDumpSystemUserCode(220, "Initialize", "Trailer"),"/*@]*/")>\
+/* {E!d4681}End of SystemInitialize for SubSystem: '<S14>/Balance' */
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[230], "SystemInitialize",0)
+
+/* {S!d4683}SystemInitialize for Atomic SubSystem: '<S560>/Medusa5H1 Part 1' */
+%<SLibCG_DumpSSCode("/*@[1080f71*/",SLibCGIRGenReusableSysCall("Model_TranslationEngine64_Medusa5H1Part1_Init", [], 230, 0, 4, 0, 19, 715),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[230]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d4683}End of SystemInitialize for SubSystem: '<S560>/Medusa5H1 Part 1' */
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[284], "SystemInitialize",0)
+
+/* {S!d4685}SystemInitialize for Atomic SubSystem: '<S560>/Medusa5H1 Part 2' */
+%<SLibCG_DumpSSCode("/*@[1080f72*/",SLibCGIRGenReusableSysCall("Model_TranslationEngine64_Medusa5H1Part2_Init", [], 284, 0, 4, 0, 19, 715),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[284]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d4685}End of SystemInitialize for SubSystem: '<S560>/Medusa5H1 Part 2' */
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[379], "SystemInitialize",0)
+
+/* {S!d4687}SystemInitialize for Atomic SubSystem: '<S560>/Medusa5H1 Part 3' */
+%<SLibCG_DumpSSCode("/*@[1080f73*/",SLibCGIRGenReusableSysCall("Model_TranslationEngine64_Medusa5H1Part3_Init", [], 379, 0, 4, 0, 19, 715),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[379]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d4687}End of SystemInitialize for SubSystem: '<S560>/Medusa5H1 Part 3' */
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[394], "SystemInitialize",0)
+
+/* {S!d4689}SystemInitialize for Atomic SubSystem: '<S560>/Medusa5H1 Part 4' */
+%<SLibCG_DumpSSCode("/*@[1080f74*/",SLibCGIRGenReusableSysCall("Model_TranslationEngine64_Medusa5H1Part4_Init", [], 394, 0, 4, 0, 19, 715),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[394]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d4689}End of SystemInitialize for SubSystem: '<S560>/Medusa5H1 Part 4' */
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[397], "SystemInitialize",0)
+
+/* {S!d4691}SystemInitialize for Atomic SubSystem: '<S560>/Medusa5H1 Part 6' */
+%<SLibCG_DumpSSCode("/*@[1080f75*/",SLibCGIRGenReusableSysCall("Model_TranslationEngine64_Medusa5H1Part6_Init", [], 397, 0, 4, 0, 19, 715),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[397]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d4691}End of SystemInitialize for SubSystem: '<S560>/Medusa5H1 Part 6' */
+
+%endif
+/* {S!d4693}SystemInitialize for Atomic SubSystem: '<S14>/MedusaPostHoligram' */
+%<SLibCG_DumpSSCode("/*@[1080f5d*/",SLibCGIRDumpSystemUserCode(401, "Initialize", "Header"),"/*@]*/")>\
+%<SLibCG_DumpSSCode("/*@[1080f5e*/",SLibCGIRDumpSystemUserCode(401, "Initialize", "Body"),"/*@]*/")>\
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[400], "SystemInitialize",0)
+/* {S!d4694}SystemInitialize for Atomic SubSystem: '<S561>/MedusaPostHoligram' */
+%<SLibCG_DumpSSCode("/*@[1080f76*/",SLibCGIRGenReusableSysCall("Model_TranslationEngine64_MedusaPostHoligram_Init", [], 400, 0, 4, 0, 19, 715),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[400]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d4694}End of SystemInitialize for SubSystem: '<S561>/MedusaPostHoligram' */
+%endif
+%<SLibCG_DumpSSCode("/*@[1080f5f*/",SLibCGIRDumpSystemUserCode(401, "Initialize", "Trailer"),"/*@]*/")>\
+/* {E!d4693}End of SystemInitialize for SubSystem: '<S14>/MedusaPostHoligram' */
+
+/* {S!d4697}SystemInitialize for Atomic SubSystem: '<S14>/NearWiggleFilters' */
+%<SLibCG_DumpSSCode("/*@[1080f60*/",SLibCGIRDumpSystemUserCode(406, "Initialize", "Header"),"/*@]*/")>\
+%<SLibCG_DumpSSCode("/*@[1080f61*/",SLibCGIRDumpSystemUserCode(406, "Initialize", "Body"),"/*@]*/")>\
+%<SLibCG_DumpSSCode("/*@[1080f62*/",SLibCGIRDumpSystemUserCode(406, "Initialize", "Trailer"),"/*@]*/")>\
+/* {E!d4697}End of SystemInitialize for SubSystem: '<S14>/NearWiggleFilters' */
+
+/* {S!d4699}SystemInitialize for Atomic SubSystem: '<S14>/SleepingBeauty' */
+%<SLibCG_DumpSSCode("/*@[1080f63*/",SLibCGIRDumpSystemUserCode(446, "Initialize", "Header"),"/*@]*/")>\
+%<SLibCG_DumpSSCode("/*@[1080f64*/",SLibCGIRDumpSystemUserCode(446, "Initialize", "Body"),"/*@]*/")>\
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[445], "SystemInitialize",0)
+/* {S!d4700}SystemInitialize for Atomic SubSystem: '<S1059>/Enabled' */
+%<SLibCG_DumpSSCode("/*@[1080f77*/",SLibCGIRGenReusableSysCall("Model_TranslationEngine64_Enabled_Init", [], 445, 0, 4, 0, 19, 715),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[445]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d4700}End of SystemInitialize for SubSystem: '<S1059>/Enabled' */
+%endif
+%<SLibCG_DumpSSCode("/*@[1080f65*/",SLibCGIRDumpSystemUserCode(446, "Initialize", "Trailer"),"/*@]*/")>\
+/* {E!d4699}End of SystemInitialize for SubSystem: '<S14>/SleepingBeauty' */
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[454], "SystemInitialize",0)
+
+/* {S!d4703}SystemInitialize for Atomic SubSystem: '<S14>/VLS' */
+%<SLibCG_DumpSSCode("/*@[1080f78*/",SLibCGIRGenReusableSysCall("Model_TranslationEngine64_VLS_Init", [], 454, 0, 4, 0, 19, 715),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[454]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d4703}End of SystemInitialize for SubSystem: '<S14>/VLS' */
+%endif
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[504], "SystemInitialize",0)
+
+/* {S!d4705}SystemInitialize for Atomic SubSystem: '<S3>/PreAmpPart1' */
+%<SLibCG_DumpSSCode("/*@[1080f79*/",SLibCGIRGenReusableSysCall("Model_TranslationEngine64_PreAmpPart1_Init", [], 504, 0, 4, 0, 19, 715),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[504]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d4705}End of SystemInitialize for SubSystem: '<S3>/PreAmpPart1' */
+
+%endif
+/* {S!d4707}SystemInitialize for Atomic SubSystem: '<Root>/NEAR' */
+%<SLibCG_DumpSSCode("/*@[1080f66*/",SLibCGIRDumpSystemUserCode(686, "Initialize", "Header"),"/*@]*/")>\
+%<SLibCG_DumpSSCode("/*@[1080f67*/",SLibCGIRDumpSystemUserCode(686, "Initialize", "Body"),"/*@]*/")>\
+%<SLibCG_DumpSSCode("/*@[1080f68*/",SLibCGIRDumpSystemUserCode(686, "Initialize", "Trailer"),"/*@]*/")>\
+/* {E!d4707}End of SystemInitialize for SubSystem: '<Root>/NEAR' */
+
+/* {S!d4709}SystemInitialize for Atomic SubSystem: '<Root>/PostProcess' */
+%<SLibCG_DumpSSCode("/*@[1080f69*/",SLibCGIRDumpSystemUserCode(707, "Initialize", "Header"),"/*@]*/")>\
+%<SLibCG_DumpSSCode("/*@[1080f6a*/",SLibCGIRDumpSystemUserCode(707, "Initialize", "Body"),"/*@]*/")>\
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[706], "SystemInitialize",0)
+/* {S!d4710}SystemInitialize for Atomic SubSystem: '<S5>/PostProcess' */
+%<SLibCG_DumpSSCode("/*@[1080f7a*/",SLibCGIRGenReusableSysCall("Model_TranslationEngine64_PostProcess_Init", [], 706, 0, 4, 0, 19, 715),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[706]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d4710}End of SystemInitialize for SubSystem: '<S5>/PostProcess' */
+%endif
+%<SLibCG_DumpSSCode("/*@[1080f6b*/",SLibCGIRDumpSystemUserCode(707, "Initialize", "Trailer"),"/*@]*/")>\
+/* {E!d4709}End of SystemInitialize for SubSystem: '<Root>/PostProcess' */
+
+/* {S!d4713}SystemInitialize for Atomic SubSystem: '<Root>/TestRouter' */
+%<SLibCG_DumpSSCode("/*@[1080f6c*/",SLibCGIRDumpSystemUserCode(714, "Initialize", "Header"),"/*@]*/")>\
+%<SLibCG_DumpSSCode("/*@[1080f6d*/",SLibCGIRDumpSystemUserCode(714, "Initialize", "Body"),"/*@]*/")>\
+%<SLibCG_DumpSSCode("/*@[1080f6e*/",SLibCGIRDumpSystemUserCode(714, "Initialize", "Trailer"),"/*@]*/")>\
+/* {E!d4713}End of SystemInitialize for SubSystem: '<Root>/TestRouter' */
+%<SLibCGIRDumpSystemUserCode(715, "Initialize", "Trailer")>\
+%<SLibInsertInitPeriodicCStatesFcn(system)>
+%closefile cfgTxt
+%<cfgTxt>
+%endfunction
+%function ModelInitializeFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void ModelInitialize(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(441, 2, fcnProtoType)>
+%endfunction

@@ -1,0 +1,137 @@
+%implements s1068_b0_g3vnd_92_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+int32_T ramper;
+real32_T quantum_ms;
+real32_T targetGain;
+%closefile localVarDecl
+/*  Dimensions of target_gains_linear must match the number of rampers.  */
+/*  */
+/*  db_per_sec takes precidence: */
+/*  If db_per_sec has a non-zero value then any ramp_times_ms values are */
+/*  ignored and the db_per_sec is used to determine ramper timing. */
+/*  */
+/*  The dimension of ramp_times_ms is flexible and does not need to match the */
+/*  ramper count. Its values are assigned to rampers in rotating order. If */
+/*  there are 5 rampers and only two times provided, then rampers 1,3, and 5 */
+/*  get the first ramp time and rampers 2 and 4 receive the second ramp time. */
+/*  Any extra ramp times (beyond the number of rampers) are silently ignored. */
+/* MATLAB Function 'Rgainy/ControlSubsystem/rgainy ramper control': '<S2170>:1' */
+/* '<S2170>:1:20' rgain_SILENT_GAIN = RgainBusUtil.GetSilentGainLinear(); */
+/*  Get the sizes of the provided target and time specifications */
+/* '<S2170>:1:23' numGains = numel(target_gains_linear); */
+/* '<S2170>:1:24' numTimes = numel(ramp_times_ms); */
+/* '<S2170>:1:25' numdbpersecs=numel(db_per_sec); */
+/*  Step 1: FREEZE the gain ramper so that we can perform calculations based */
+/*  on the current gain value. (This step is done outside on canvas now) */
+/* '<S2170>:1:30' for ramper=1:MaskNumRampers */
+/*@>124569b*/targetGain/*@>10cca54*/ = /*@>124665f*/fmaxf(/*@>12456cc*/rtu_target_gains_linear, /*@>12456aa*/5.0118723E-7F);
+/*@>1245697*/quantum_ms/*@>10cca43*/ = /*@>1246661*/qhmath_div_f(/*@>12456be*/1000.0F/*@>1245720*/ * /*@>12456d2*/rtu_frame_size, /*@>12456d4*/rtu_sample_rate_in_hertz);
+%<SLibCG_DumpSSCode("/*@[1246db3*/",SLibCG_SetCSCDW(3, 1, ".targetGain", -1, "", 0, "/*@>1246efa*/rtu_target_gains_linear"),"/*@]*/")>\
+/*@>10cc9f2*/for (/*@>1246e75*/ramper = /*@>1246e74*/0; /*@>1246e7f*/ramper < /*@>1246e7d*/1; /*@>1246e7b*/ramper/*@>1246e83*/++) {
+    real32_T currentGain;
+    real32_T numFrames;
+    /*  assign gains and ramp times */
+    /* '<S2170>:1:33' targetGain = single(target_gains_linear(mod(ramper-1,numGains)+1)); */
+    /* '<S2170>:1:34' ramp_ms    = single(ramp_times_ms      (mod(ramper-1,numTimes)+1)); */
+    /*@>12456a4*/numFrames/*@>10cc9df*/ = /*@>10cc9eb*/(real32_T)/*@>12456ca*/rtu_ramp_times_ms;
+    /* '<S2170>:1:35' ramp_dbPerSec= single(db_per_sec      (mod(ramper-1,numdbpersecs)+1)); */
+    /*  Step 2: Nudge the gain values a bit if they are sitting at zero. */
+    /*  When this control set goes live, ensure that the current gain will move. */
+    /*  If current gain is zero, replace with a value very close to zero. What we */
+    /*  really want is a value which is on the edge of perception - not too small */
+    /*  or large. If the value is too small, we'll waste some of our ramp time */
+    /*  in perceived silence. If the value is too large, the audio will lurch */
+    /*  into perceptability at the start of the ramp. */
+    /* '<S2170>:1:44' currentGain = max(Rampers(ramper).currentGain, rgain_SILENT_GAIN); */
+    /*@>1245699*/currentGain/*@>10cca51*/ = /*@>1246663*/fmaxf(%<SLibCG_DumpSSCode("/*@[1246deb*/",(SLibCG_CSCDW(3, 1, ".currentGain", -1, "", 0)),"/*@]*/")>, /*@>12456a9*/5.0118723E-7F);
+    /* '<S2170>:1:45' targetGain  = max(targetGain, rgain_SILENT_GAIN); */
+    /*  Step 3a: If a slope in dB/second is provided, ignore the ramp time */
+    /*  and instead calculate a new ramp time that matches the slope. */
+    /* '<S2170>:1:49' if (ramp_dbPerSec) */
+    /*@>10cc9fe*/if (/*@>10cca69*/(real32_T)/*@>12456ce*/rtu_db_per_sec/*@>10cc9ec*/ != /*@>1245689*/0.0F) {
+        /* '<S2170>:1:50' currentGain_db = 20*log10(currentGain); */
+        /* '<S2170>:1:51' targetGain_db = 20*log10(targetGain); */
+        /* '<S2170>:1:52' diff = abs(currentGain_db - targetGain_db); */
+        /* '<S2170>:1:53' ramp_ms = diff / single(ramp_dbPerSec) * 1000; */
+        /*@>12456a2*/numFrames/*@>10cca3f*/ = /*@>124666b*/qhmath_div_f(/*@>1246669*/qhmath_abs_f(/*@>12456bb*/20.0F/*@>1245731*/ * /*@>1246665*/qhmath_log10_f(/*@>12456b3*/currentGain)/*@>10cca6d*/ - /*@>12456bc*/20.0F/*@>1245735*/ * /*@>1246667*/qhmath_log10_f(/*@>12456b5*/targetGain)), /*@>10cca6e*/(real32_T)/*@>12456d0*/rtu_db_per_sec)/*@>1245724*/ * /*@>12456bd*/1000.0F;
+    }
+    /*  Step 3b: QUANTIZE the desired ramp time to our FrameSize. Also retrieve  */
+    /*  the whole number of frames required to best match requested ramp time. */
+    /*  Ensure that at least one frame is used. The frame size will therefore */
+    /*  determine the steepest ramp (i.e. within one frame you can go anywhere). */
+    /* '<S2170>:1:60' quantum_ms = 1000 * frame_size / sample_rate_in_hertz; */
+    /* '<S2170>:1:61' numFrames = ramp_ms / quantum_ms; */
+    /*  Do a ceil rather than a round to insure that we create enough */
+    /*  frames. i.e. a fraction of a frame is promoted to an addition frame */
+    /*  numFrames = max (1, round(numFrames)); */
+    /* '<S2170>:1:65' numFrames = max (1, ceil(numFrames)); */
+    /*@>124569d*/numFrames/*@>10cca57*/ = /*@>1246671*/fmaxf(/*@>12456bf*/1.0F, /*@>124666f*/qhmath_ceil_f(/*@>124666d*/qhmath_div_f(/*@>12456ab*/numFrames, /*@>12456ad*/quantum_ms)));
+    /* '<S2170>:1:66' quantized_rampTime_ms = numFrames * quantum_ms; */
+    /*  In order to have the desired ramp time, the slope must vary dependent */
+    /*  on the gain differencebetween target and current value. */
+    /*  Ramper's coefficient is therefore calculated as follows: */
+    /*  */
+    /*    TargetGain = CurrentGain *( RampCoef ^ (Fs*RampTime_ms/1000) ) */
+    /*  */
+    /*  therefore... */
+    /*  */
+    /*                      log(TargetGain/CurrentGain) */
+    /*    log(RampCoef) = ------------------------------ */
+    /*                         Fs*(RampTime_ms/1000) */
+    /*  */
+    /* '<S2170>:1:80' factor = log( targetGain / currentGain ); */
+    /* '<S2170>:1:81' RampCoef = exp(factor / (sample_rate_in_hertz * quantized_rampTime_ms / 1000)); */
+%<SLibCG_DumpSSCode("/*@[1246e0a*/",SLibCG_SetCSCDW(3, 1, ".rampCoeff", -1, "", 0, "/*@>1246f0d*/qhmath_exp_f(/*@>1246f0f*/qhmath_div_f(/*@>1246f11*/qhmath_log_f(/*@>1246f13*/qhmath_div_f(/*@>1246f14*/targetGain, /*@>1246f15*/currentGain)), /*@>1246f17*/qhmath_div_f(/*@>1246f1a*/numFrames/*@>1246f19*/ * /*@>1246f1b*/quantum_ms/*@>1246f18*/ * /*@>1246f1c*/rtu_sample_rate_in_hertz, /*@>1246f1d*/1000.0F)))"),"/*@]*/")>\
+    /*  Output control signals */
+    /* '<S2170>:1:84' Rampers(ramper).frameCount  = int32(numFrames); */
+%<SLibCG_DumpSSCode("/*@[1246d96*/",SLibCG_SetCSCDW(3, 1, ".frameCount", -1, "", 0, "/*@>1246f2f*/(int32_T)/*@>1246f30*/numFrames"),"/*@]*/")>\
+    /* '<S2170>:1:85' Rampers(ramper).rampCoeff   = single(RampCoef); */
+    /* '<S2170>:1:86' Rampers(ramper).targetGain  = target_gains_linear(ramper); */
+    /* '<S2170>:1:87' Rampers(ramper).currentGain = currentGain; */
+%<SLibCG_DumpSSCode("/*@[1246dd0*/",SLibCG_SetCSCDW(3, 1, ".currentGain", -1, "", 0, "/*@>1246f42*/currentGain"),"/*@]*/")>\
+}
+/*  Step 4: UNFREEZE the gain ramper (performed outside on canvas now) */
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[92].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(92, 0, 0)>
+%endif
+%if SLibCG_ArgAccessed(92, 0, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(92, 0, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_rgainyrampercontrol_a(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(92, 0, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_Target_rgainyrampercontrol_a", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>real32_T rtu_target_gains_linear\
+%assign comma = ", "
+%<comma>real_T rtu_db_per_sec\
+%assign comma = ", "
+%<comma>real_T rtu_ramp_times_ms\
+%assign comma = ", "
+%<comma>real32_T rtu_sample_rate_in_hertz\
+%assign comma = ", "
+%<comma>real32_T rtu_frame_size\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(92, 0, fcnProtoType)>
+%endfunction

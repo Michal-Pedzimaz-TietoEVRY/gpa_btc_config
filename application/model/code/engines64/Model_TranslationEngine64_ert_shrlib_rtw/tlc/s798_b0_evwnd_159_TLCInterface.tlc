@@ -1,0 +1,27 @@
+%implements s798_b0_evwnd_159_TLCInterface "C"
+
+%function getOutputAddr_2_0_159_1_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<e32e88*//*@>e32e7c*/Model_TranslationEngine64_B./*@>e32e8e*/Map_b"
+%endfunction
+
+%function getOutput_2_0_159_1_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>e32e9c*/Model_TranslationEngine64_B./*@>e32eaf*/Map_b"
+%endfunction
+
+%function getInputAddr_2_4_159_1_2_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<e32ef3*//*@>e32ee7*/Model_TranslationEngine64_B./*@>e32ef9*/OutMap" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInput_2_4_159_1_2_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>e32f07*/Model_TranslationEngine64_B./*@>e32f1a*/OutMap" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getSystemOutputFcnCallInfo_2_1_159_1_1_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>e32e5a*/FuncTranslation_Model_397"; Args [] }
+%return fcnInfo
+%endfunction

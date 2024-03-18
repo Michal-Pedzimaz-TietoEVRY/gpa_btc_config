@@ -1,0 +1,47 @@
+%implements s798_b0_evwnd_41_TLCInterface "C"
+
+%function getOutputAddr_233_0_41_1_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<d1553f*//*@>d15533*/Model_TranslationEngine64_AlignmentDelay_B./*@>d15545*/DeciRateWiggleFilterDelaySamples"
+%endfunction
+
+%function getOutput_233_0_41_1_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>d15553*/Model_TranslationEngine64_AlignmentDelay_B./*@>d15566*/DeciRateWiggleFilterDelaySamples"
+%endfunction
+
+%function getOutputAddr_233_1_41_1_1_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<d15593*//*@>d15587*/Model_TranslationEngine64_AlignmentDelay_B./*@>d15599*/DeciRateNearWiggleFilterDelaySamples"
+%endfunction
+
+%function getOutput_233_1_41_1_1_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>d155a7*/Model_TranslationEngine64_AlignmentDelay_B./*@>d155ba*/DeciRateNearWiggleFilterDelaySamples"
+%endfunction
+
+%function getOutputAddr_233_2_41_1_2_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<d155e7*//*@>d155db*/Model_TranslationEngine64_AlignmentDelay_B./*@>d155ed*/HoligramFilterAlignmentDelaySamples"
+%endfunction
+
+%function getOutput_233_2_41_1_2_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>d155fb*/Model_TranslationEngine64_AlignmentDelay_B./*@>d1560e*/HoligramFilterAlignmentDelaySamples"
+%endfunction
+
+%function getInputAddr_233_6_41_1_4_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<d15652*//*@>d15646*/Model_TranslationEngine64_AlignmentDelay_B./*@>d15658*/trebleDelay"
+%endfunction
+
+%function getInput_233_6_41_1_4_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>d15666*/Model_TranslationEngine64_AlignmentDelay_B./*@>d15679*/trebleDelay"
+%endfunction
+
+%function getSystemOutputFcnCallInfo_233_3_41_1_232_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>d15511*/FuncTranslation_Model_141_1371"; Args [] }
+%return fcnInfo
+%endfunction

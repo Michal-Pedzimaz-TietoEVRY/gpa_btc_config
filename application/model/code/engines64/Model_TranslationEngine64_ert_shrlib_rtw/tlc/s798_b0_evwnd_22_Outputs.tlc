@@ -1,0 +1,62 @@
+%implements s798_b0_evwnd_22_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+real32_T B0;
+real32_T omega;
+%closefile localVarDecl
+/*  Generate the low pass filter coefficients which will then be applied to */
+/*  the audio input */
+/*  Inputs: */
+/*   cutoffFreqHz: Cut off frequency in Hz for LPF */
+/*   FsHz: Sampling frequency in Hz */
+/* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/SleepingBeauty/SleepingBeauty/Enabled/FadeRamperDR/InnerLink/Filter_Coeffs_Translation': '<S1094>:1' */
+/* '<S1094>:1:9' omega = 2 * pi * cutoffFreqHz.Value / FsHz; */
+/*@>ccdf7f*/omega/*@>c6cd0c*/ = /*@>c6cd0a*/(real32_T)(/*@>ccdf8a*/6.2831853071795862/*@>ccdfa6*/ * rtu_cutoffFreqHz->Value)/*@>c6cd0b*/ / /*@>ccdf92*/rtu_FsHz;
+/* '<S1094>:1:11' A = 1 - sin(omega) / cos(omega); */
+/*@>ccdf7d*/omega/*@>c6ccf7*/ = /*@>ccdf8b*/1.0F/*@>c6ccfb*/ - /*@>cce324*/sinf(/*@>ccdf86*/omega)/*@>c6cd1f*/ / /*@>cce326*/cosf(/*@>ccdf88*/omega);
+/* '<S1094>:1:12' B0 = (1 - A) / 2; */
+/*@>ccdf81*/B0/*@>c6cd10*/ = (/*@>ccdf83*/1.0F/*@>c6cd20*/ - /*@>ccdf84*/omega)/*@>c6cd0f*/ / /*@>ccdf8c*/2.0F;
+/* '<S1094>:1:13' B1 = B0; */
+/* '<S1094>:1:15' FilterCoeffs = single([B0 B1 A]); */
+/*@>cce406*/localB->/*@>cce563*/FilterCoeffs/*@>ccddcf*/[/*@>ccdf94*/0]/*@>ccddce*/ = /*@>ccdf95*/B0;
+/*@>cce40d*/localB->/*@>cce566*/FilterCoeffs/*@>ccddd8*/[/*@>ccdf97*/1]/*@>ccddd7*/ = /*@>ccdf98*/B0;
+/*@>cce414*/localB->/*@>cce569*/FilterCoeffs/*@>ccdde1*/[/*@>ccdf9a*/2]/*@>ccdde0*/ = /*@>ccdf9b*/omega;
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[22].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(22, 0, 0)>
+%endif
+%if SLibCG_ArgAccessed(22, 0, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(22, 0, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_TranslationEngine64_Filter_Coeffs_Translation(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(22, 0, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_TranslationEngine64_Filter_Coeffs_Translation", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>const bus_double_1_1 *rtu_cutoffFreqHz\
+%assign comma = ", "
+%<comma>real32_T rtu_FsHz\
+%assign comma = ", "
+%<comma>B_Filter_Coeffs_Translation_Model_TranslationEngine64_T *localB\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(22, 0, fcnProtoType)>
+%endfunction

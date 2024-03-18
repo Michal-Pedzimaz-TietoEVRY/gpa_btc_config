@@ -1,0 +1,37 @@
+%implements s798_b0_evwnd_292_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%assign _modelSS = ""
+
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[240], "Output",0)
+/* MATLAB Function: '<S670>/Trivial Translation3' */
+/*  Invoke the function trigger output */
+/* MATLAB Function 'TranslateTrigger/tfunc': '<S687>:1' */
+/* '<S687>:1:3' f(); */
+%if SLibCG_SystemFcnArgAccessed("Model_TranslationEngine64_TrivialTranslation3_l",240,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[f0965a*/",SLibCGIRGenReusableSysCall("Model_TranslationEngine64_TrivialTranslation3_l", ["%<_modelSS>", "&/*@>f096e6*/Model_TranslationEngine64_B./*@>f096e5*/DirectPathSec_p", "/*@>f096f2*/Model_TranslationEngine64_ConstB./*@>f096f1*/CapturedTuneConst_f", "/*@>f096fe*/Model_TranslationEngine64_ConstB./*@>f096fd*/CapturedTuneConst1_h", "&/*@>f0970b*/Model_TranslationEngine64_B./*@>f0970a*/sf_TrivialTranslation3_ll1"], 240, 1, 6, 0, 6, 715),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[240]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+%endif
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void FuncTranslation_Model_141_2655(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(292, 0, fcnProtoType)>
+%endfunction

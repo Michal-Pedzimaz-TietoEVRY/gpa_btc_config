@@ -1,0 +1,94 @@
+%implements s798_b0_evwnd_9_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+int32_T i;
+char_T b_data[62];
+static const char_T c[62] = %<(TLC_STR_CTX(2))>;
+%closefile localVarDecl
+/* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 2/Decimated-Rate FDP/Fdp/FreqDomainProcessing/CalculateAndApplyCoefficients/DeciRate/Calculate coefficients/StretchParamsTuning/Trivial Translation3': '<S650>:1' */
+/* '<S650>:1:4' if (ESDUpperbounddBIn.Value >= ESDLowerbounddBIn.Value) */
+/*@>c6b9c5*/if (rtu_ESDUpperbounddBIn->Value/*@>c6b9c2*/ >= rtu_ESDLowerbounddBIn->Value) {
+    /* '<S650>:1:5' ESDUpperbounddB = ESDUpperbounddBIn.Value; */
+    /*@>cbc529*/localB->/*@>cbc77a*/ESDUpperbounddB/*@>c6b9b7*/ = rtu_ESDUpperbounddBIn->Value;
+    /* '<S650>:1:6' ESDLowerbounddB = ESDLowerbounddBIn.Value; */
+    /*@>cbc530*/localB->/*@>cbc77d*/ESDLowerbounddB/*@>c6b9b9*/ = rtu_ESDLowerbounddBIn->Value;
+} else {
+    /* '<S650>:1:7' else */
+    /* '<S650>:1:8' TranslateError('Lower threshold for ESD cannot exceed upper threshold for ESD'); */
+    /* TRANSLATEERROR (For use in Functions triggered by TranslationTrigger blocks.) */
+    /* Print error message during tune data translation. */
+    /*   Do not include a final newline as this behavior is already built in. */
+    /*   Note that escape sequences such as '\n' will not work here. To emit */
+    /*   special characters, pass them in as arguments to %<"\%c or \%s format"> */
+    /*   specifiers. */
+    /*    Copyright 2018-2019 Bose Corporation */
+    /* 'TranslateError:10' coder.extrinsic('gcb') */
+    /* 'TranslateError:11' coder.extrinsic('warning') */
+    /* 'TranslateError:12' coder.allowpcode('plain'); */
+    /*  enable code generation from p-file */
+    /* 'TranslateError:14' if (coder.target('MATLAB')) */
+    /* 'TranslateError:18' if (coder.target('Sfun')) */
+    /* 'TranslateError:21' else */
+    /* 'TranslateError:22' count = numel(varargin); */
+    /* 'TranslateError:23' fixedArgs = varargin; */
+    /* 'TranslateError:24' for i=1:count */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:26' fixedArgs{i} = [varargin{i} char(0)]; */
+    /* 'TranslateError:29' coder.ceval('TranslateError',fixedArgs{:}); */
+/*@>cbb747*/    for (/*@>cbc6f4*/i = /*@>cbc6f3*/0; /*@>cbc6fe*/i < /*@>cbc6fc*/62; /*@>cbc6fa*/i/*@>cbc702*/++) {
+        /*@>cbc031*/b_data[/*@>cbb9f4*/i]/*@>cbb73a*/ = /*@>cbc4bb*/c/*@>cbc4bd*/[/*@>cbc4ba*/i];
+    }
+    /*@>cbc26d*/TranslateError(&/*@>cbc01a*/b_data/*@>cbc02d*/[/*@>cbb9b4*/0]);
+    /* '<S650>:1:9' ESDUpperbounddB = 0; */
+    /*@>cbc545*/localB->/*@>cbc786*/ESDUpperbounddB/*@>c6b9ba*/ = /*@>cbb9ad*/0.0;
+    /* '<S650>:1:10' ESDLowerbounddB = 0; */
+    /*@>cbc54c*/localB->/*@>cbc789*/ESDLowerbounddB/*@>c6b9bb*/ = /*@>cbb9ae*/0.0;
+}
+/* '<S650>:1:13' if (ESDUpperbounddBIn.Value == ESDLowerbounddBIn.Value) */
+/*@>c6b9cb*/if (rtu_ESDUpperbounddBIn->Value/*@>c6b9c3*/ == rtu_ESDLowerbounddBIn->Value) {
+    /* '<S650>:1:14' ESDStepSize = 0; */
+    /*@>cbc537*/localB->/*@>cbc780*/ESDStepSize/*@>c6b9c0*/ = /*@>cbb9af*/0.0;
+} else {
+    /* '<S650>:1:15' else */
+    /* '<S650>:1:16' ESDStepSize = 1/abs(ESDUpperbounddBIn.Value - ESDLowerbounddBIn.Value); */
+    /*@>cbc53e*/localB->/*@>cbc783*/ESDStepSize/*@>c6b9c1*/ = /*@>cbb9b0*/1.0/*@>c6b9c4*/ / /*@>cbc26f*/fabs(rtu_ESDUpperbounddBIn->Value/*@>c6ba13*/ - rtu_ESDLowerbounddBIn->Value);
+}
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[9].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(9, 0, 0)>
+%endif
+%if SLibCG_ArgAccessed(9, 0, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(9, 0, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_TranslationEngine64_TrivialTranslation3(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(9, 0, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_TranslationEngine64_TrivialTranslation3", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>const bus_double_1_1 *rtu_ESDUpperbounddBIn\
+%assign comma = ", "
+%<comma>const bus_double_1_1 *rtu_ESDLowerbounddBIn\
+%assign comma = ", "
+%<comma>B_TrivialTranslation3_Model_TranslationEngine64_T *localB\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(9, 0, fcnProtoType)>
+%endfunction

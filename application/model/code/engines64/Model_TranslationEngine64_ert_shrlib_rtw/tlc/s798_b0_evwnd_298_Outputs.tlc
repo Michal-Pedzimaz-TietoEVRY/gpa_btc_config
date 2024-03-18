@@ -1,0 +1,111 @@
+%implements s798_b0_evwnd_298_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+int32_T i;
+char_T c_data[61];
+char_T b_data[57];
+static const char_T d[57] = %<(TLC_STR_CTX(135))>;
+static const char_T e[61] = %<(TLC_STR_CTX(136))>;
+%closefile localVarDecl
+/* {S!d1917}MATLAB Function: '<S695>/translation3' */
+/* {S!d1920}MATLAB Function: '<S695>/translation3' incorporates:
+ *  S-Function (TuneVarMEX): '<S695>/Tune Variable5'
+ *  S-Function (TuneVarMEX): '<S695>/Tune Variable6'
+ */
+/*  Invoke the function trigger output */
+/* MATLAB Function 'TranslateTrigger/tfunc': '<S709>:1' */
+/* '<S709>:1:3' f(); */
+/*  The exponent 1/64 is carried over from AR and old bdsp implementation. */
+/*  This is designed by Chris Cheng to make the gap between two thresholds */
+/*  as small as possible, because in theory they should be almost identical. */
+/*  Removing this would still work in theory with a slight change in the  */
+/*  output. However as we verify the block against PREQ Simulink model, this */
+/*  translation is retained to get a complete match in performance. */
+/* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 2/Mono Detector/Mono Detector/Tune Translations/translation3': '<S704>:1' */
+/* '<S704>:1:9' if ThresholdMonoInput.Value <= ThresholdStereoInput.Value */
+/*@>c6c52e*/if (/*@>f15bc3*/Model_TranslationEngine64_B./*@>f16183*/ThresholdMonoInput.Value/*@>c6c52b*/ <= /*@>f15bc9*/Model_TranslationEngine64_B./*@>f16186*/ThresholdStereoInput.Value) {
+    /* '<S704>:1:10' TranslateError('Threshold for mono should be higher than that for stereo'); */
+    /* TRANSLATEERROR (For use in Functions triggered by TranslationTrigger blocks.) */
+    /* Print error message during tune data translation. */
+    /*   Do not include a final newline as this behavior is already built in. */
+    /*   Note that escape sequences such as '\n' will not work here. To emit */
+    /*   special characters, pass them in as arguments to %<"\%c or \%s format"> */
+    /*   specifiers. */
+    /*    Copyright 2018-2019 Bose Corporation */
+    /* 'TranslateError:10' coder.extrinsic('gcb') */
+    /* 'TranslateError:11' coder.extrinsic('warning') */
+    /* 'TranslateError:12' coder.allowpcode('plain'); */
+    /*  enable code generation from p-file */
+    /* 'TranslateError:14' if (coder.target('MATLAB')) */
+    /* 'TranslateError:18' if (coder.target('Sfun')) */
+    /* 'TranslateError:21' else */
+    /* 'TranslateError:22' count = numel(varargin); */
+    /* 'TranslateError:23' fixedArgs = varargin; */
+    /* 'TranslateError:24' for i=1:count */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:26' fixedArgs{i} = [varargin{i} char(0)]; */
+    /* 'TranslateError:29' coder.ceval('TranslateError',fixedArgs{:}); */
+/*@>f1329b*/    for (/*@>f160e5*/i = /*@>f160e4*/0; /*@>f160ef*/i < /*@>f160ed*/57; /*@>f160eb*/i/*@>f160f3*/++) {
+        /*@>f14bc6*/b_data[/*@>f138c9*/i]/*@>f1328e*/ = /*@>f157ca*/d/*@>f157cc*/[/*@>f157c9*/i];
+    }
+    /*@>f15103*/TranslateError(&/*@>f14baf*/b_data/*@>f14bc2*/[/*@>f13878*/0]);
+    /* '<S704>:1:11' ThresholdMono = 0; */
+    /*@>f15bf3*/Model_TranslationEngine64_B./*@>f1619b*/ThresholdMono/*@>c6c525*/ = /*@>f1386f*/0.0;
+    /* '<S704>:1:12' ThresholdStereo = 0; */
+    /*@>f15bff*/Model_TranslationEngine64_B./*@>f161a1*/ThresholdStereo/*@>c6c526*/ = /*@>f13870*/0.0;
+} else /*@>c6c531*/if ((/*@>f15bcf*/Model_TranslationEngine64_B./*@>f16189*/ThresholdMonoInput.Value/*@>c6c52c*/ >= /*@>f1386d*/1.0)/*@>c6c5b4*/ || (/*@>f15bd5*/Model_TranslationEngine64_B./*@>f1618c*/ThresholdStereoInput.Value/*@>c6c52d*/ >= /*@>f1386e*/1.0)) {
+    /* '<S704>:1:13' elseif (ThresholdMonoInput.Value >= 1) || (ThresholdStereoInput.Value >= 1) */
+    /* '<S704>:1:14' TranslateError('Threshold values for mono and stereo should be less than 1.0'); */
+    /* TRANSLATEERROR (For use in Functions triggered by TranslationTrigger blocks.) */
+    /* Print error message during tune data translation. */
+    /*   Do not include a final newline as this behavior is already built in. */
+    /*   Note that escape sequences such as '\n' will not work here. To emit */
+    /*   special characters, pass them in as arguments to %<"\%c or \%s format"> */
+    /*   specifiers. */
+    /*    Copyright 2018-2019 Bose Corporation */
+    /* 'TranslateError:10' coder.extrinsic('gcb') */
+    /* 'TranslateError:11' coder.extrinsic('warning') */
+    /* 'TranslateError:12' coder.allowpcode('plain'); */
+    /*  enable code generation from p-file */
+    /* 'TranslateError:14' if (coder.target('MATLAB')) */
+    /* 'TranslateError:18' if (coder.target('Sfun')) */
+    /* 'TranslateError:21' else */
+    /* 'TranslateError:22' count = numel(varargin); */
+    /* 'TranslateError:23' fixedArgs = varargin; */
+    /* 'TranslateError:24' for i=1:count */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:26' fixedArgs{i} = [varargin{i} char(0)]; */
+    /* 'TranslateError:29' coder.ceval('TranslateError',fixedArgs{:}); */
+/*@>f1330b*/    for (/*@>f160d4*/i = /*@>f160d3*/0; /*@>f160de*/i < /*@>f160dc*/61; /*@>f160da*/i/*@>f160f4*/++) {
+        /*@>f14bf6*/c_data[/*@>f138da*/i]/*@>f132fe*/ = /*@>f157d0*/e/*@>f157d2*/[/*@>f157cf*/i];
+    }
+    /*@>f15101*/TranslateError(&/*@>f14bdf*/c_data/*@>f14bf2*/[/*@>f1387c*/0]);
+    /* '<S704>:1:15' ThresholdMono = 0; */
+    /*@>f15bf9*/Model_TranslationEngine64_B./*@>f1619e*/ThresholdMono/*@>c6c529*/ = /*@>f13871*/0.0;
+    /* '<S704>:1:16' ThresholdStereo = 0; */
+    /*@>f15c05*/Model_TranslationEngine64_B./*@>f161a4*/ThresholdStereo/*@>c6c52a*/ = /*@>f13872*/0.0;
+} else {
+    /* '<S704>:1:17' else */
+    /* '<S704>:1:18' ThresholdMono = ThresholdMonoInput.Value ^ (1/64); */
+    /*@>f15bdb*/Model_TranslationEngine64_B./*@>f1618f*/ThresholdMono/*@>c6c548*/ = %<SLibCG_DumpSSCode("/*@[f16023*/",(SLibCGCallSubFcn("rt_powd_snf", ["/*@>f1620b*/Model_TranslationEngine64_B./*@>f1620a*/ThresholdMonoInput.Value", "/*@>f16217*/0.015625"], 298, 1, 0)),"/*@]*/")>;
+    /* '<S704>:1:19' ThresholdStereo = ThresholdStereoInput.Value ^ (1/64); */
+    /*@>f15be7*/Model_TranslationEngine64_B./*@>f16195*/ThresholdStereo/*@>c6c54b*/ = %<SLibCG_DumpSSCode("/*@[f1603b*/",(SLibCGCallSubFcn("rt_powd_snf", ["/*@>f16223*/Model_TranslationEngine64_B./*@>f16222*/ThresholdStereoInput.Value", "/*@>f1622f*/0.015625"], 298, 1, 1)),"/*@]*/")>;
+}
+/* {E!d1920}End of MATLAB Function: '<S695>/translation3' */
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void FuncTranslation_Model_141_2786(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(298, 1, fcnProtoType)>
+%endfunction

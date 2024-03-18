@@ -1,0 +1,55 @@
+%implements s1068_b0_g3vnd_76_Outputs "C"
+
+%function Outputs(block, system) Output
+%<SLibCGIRAccessLocalDWork(660, 2)> %% ForEach_itr
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+/* {S!d35}Outputs for Iterator SubSystem: '<S1900>/For Each Subsystem' incorporates:
+ *  ForEach: '<S1907>/For Each'
+ */
+/*@>1231130*/for (/*@>123112c*/ForEach_itr/*@>123112b*/ = /*@>123112d*/0; /*@>1231122*/ForEach_itr/*@>1231120*/ < /*@>1231124*/NumIters; /*@>1231126*/ForEach_itr/*@>1231144*/++) {
+    /* {S!d38}ForEachSliceAssignment generated from: '<S1907>/Out1' incorporates:
+ *  ForEachSliceSelector generated from: '<S1907>/In1'
+ *  ForEachSliceSelector generated from: '<S1907>/In2'
+ *  Product: '<S1907>/Multiply'
+ */
+    /*@>1230bf6*/rty_Out1/*@>1230ab5*/[/*@>1230bf8*/ForEach_itr]/*@>10d5f13*/ = /*@>1230f53*/rtu_In1/*@>1230f55*/[/*@>1230f51*/ForEach_itr]/*@>1230bfe*/ * /*@>1230f5a*/rtu_In2/*@>1230f5c*/[/*@>1230f58*/ForEach_itr];
+}
+/* {E!d35}End of Outputs for SubSystem: '<S1900>/For Each Subsystem' */
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[76].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(76, 0, 1)>
+%endif
+%if SLibCG_ArgAccessed(76, 0, 1)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(76, 0, 1)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_ForEachSubsystem(\
+%assign comma = ""
+%<comma>int32_T NumIters\
+%assign comma = ", "
+%if SLibCG_ArgAccessed(76, 0, 1)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_Target_ForEachSubsystem", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>const real32_T rtu_In1[32]\
+%assign comma = ", "
+%<comma>const real32_T rtu_In2[32]\
+%assign comma = ", "
+%<comma>real32_T rty_Out1[32]\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(76, 0, fcnProtoType)>
+%endfunction

@@ -1,0 +1,12 @@
+-IC:/volvo_gpa_ip4/ModelConfigHERA2144/application/model/code
+-IC:/volvo_gpa_ip4/ModelConfigHERA2144/blocklib/arch/hexagon/inc
+-IC:/volvo_gpa_ip4/ModelConfigHERA2144/application/model/code/Model_Target_ert_shrlib_rtw
+-IC:/Program\ Files/MATLAB/R2022b/extern/include
+-IC:/Program\ Files/MATLAB/R2022b/simulink/include
+-IC:/Program\ Files/MATLAB/R2022b/rtw/c/src
+-IC:/Program\ Files/MATLAB/R2022b/rtw/c/src/ext_mode/common
+-IC:/Program\ Files/MATLAB/R2022b/rtw/c/ert
+-IC:/Program\ Files/MATLAB/R2022b/toolbox/dsp/include
+-IC:/Program\ Files/MATLAB/R2022b/toolbox/dsp/extern/src/export/include/src
+-IC:/Program\ Files/MATLAB/R2022b/toolbox/dsp/extern/src/export/include
+-IC:/Program\ Files/MATLAB/R2022b/toolbox/shared/dsp/vision/matlab/include

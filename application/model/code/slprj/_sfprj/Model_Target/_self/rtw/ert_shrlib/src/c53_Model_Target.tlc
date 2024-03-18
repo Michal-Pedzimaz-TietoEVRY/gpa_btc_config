@@ -1,0 +1,41 @@
+%implements "chartSource" "C"
+%function ChartConfig(block, system) void
+  %createrecord chartConfiguration { ...
+          executeAtInitialization  0 ...
+  }
+  %return chartConfiguration
+%endfunction
+%function ChartDataMap(block, system) void
+  %createrecord ChartDataElements {\
+    NumChartData   3 \
+    ChartDataDefaults {\
+      RecordType   "ChartData"\
+      Dimensions   []\
+      IsTestPoint  0\
+    }\
+    ChartData {\
+      Name         "counter"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "Model_Target:117:517:15:160-167"\
+    }\
+    ChartData {\
+      Name         "Psd"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "Model_Target:117:517:15:180-183"\
+      Dimensions   [31]\
+    }\
+    ChartData {\
+      Name         "prevout"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "Model_Target:117:517:15:237-244"\
+      Dimensions   [31]\
+    }\
+  }
+  %return ChartDataElements
+%endfunction

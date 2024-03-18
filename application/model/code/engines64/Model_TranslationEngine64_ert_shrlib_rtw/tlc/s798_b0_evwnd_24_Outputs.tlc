@@ -1,0 +1,45 @@
+%implements s798_b0_evwnd_24_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+/* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/VLS/VLS Generation - D/translation': '<S1173>:1' */
+/* '<S1173>:1:3' FIRCoeffs = FIRCoeffsIn.Value; */
+/*@>cdfa23*/memcpy(&/*@>cdfa97*/localB->/*@>cdfb5e*/FIRCoeffs/*@>cdf92f*/[/*@>cdf902*/0], &/*@>cdf93d*/rtu_FIRCoeffsIn->/*@>cdfb58*/Value[0], /*@>cdf92d*/5760U/*@>cdf942*/ * /*@>cdf941*/sizeof(real_T));
+/* '<S1173>:1:4' PaddedFIRLengths = PaddedFIRLengthsIn.Value; */
+/*@>cdfa25*/memcpy(&/*@>cdfa9e*/localB->/*@>cdfb61*/PaddedFIRLengths/*@>cdf956*/[/*@>cdf91e*/0], &/*@>cdf964*/rtu_PaddedFIRLengthsIn->/*@>cdfb5b*/Value[0], /*@>cdf954*/20U/*@>cdf969*/ * /*@>cdf968*/sizeof(real_T));
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[24].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(24, 0, 0)>
+%endif
+%if SLibCG_ArgAccessed(24, 0, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(24, 0, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_TranslationEngine64_translation_o(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(24, 0, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_TranslationEngine64_translation_o", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>const bus_double_5760____1 *rtu_FIRCoeffsIn\
+%assign comma = ", "
+%<comma>const bus_double_20__1 *rtu_PaddedFIRLengthsIn\
+%assign comma = ", "
+%<comma>B_translation_Model_TranslationEngine64_p_T *localB\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(24, 0, fcnProtoType)>
+%endfunction

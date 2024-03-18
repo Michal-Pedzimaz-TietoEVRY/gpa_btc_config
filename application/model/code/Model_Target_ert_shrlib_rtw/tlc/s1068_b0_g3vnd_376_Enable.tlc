@@ -1,0 +1,142 @@
+%implements s1068_b0_g3vnd_376_Enable "C"
+
+%function Enable(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%assign tlcEnableFcnOfS300B13 = OpaqueTLCBlockFcn("Enable", 300, 13, 376, 4, 0)
+%assign tlcEnableFcnOfS300B16 = OpaqueTLCBlockFcn("Enable", 300, 16, 376, 4, 1)
+%assign tlcEnableFcnOfS300B28 = OpaqueTLCBlockFcn("Enable", 300, 28, 376, 4, 2)
+%assign tlcEnableFcnOfS300B31 = OpaqueTLCBlockFcn("Enable", 300, 31, 376, 4, 3)
+%assign tlcEnableFcnOfS300B56 = OpaqueTLCBlockFcn("Enable", 300, 56, 376, 4, 4)
+%assign tlcEnableFcnOfS300B59 = OpaqueTLCBlockFcn("Enable", 300, 59, 376, 4, 5)
+%assign   Enable_open_ITC1_e_300_15 = ""
+%openfile Enable_open_ITC1_e_300_15
+
+/* Enable for S-Function (InitTriggerControl): '<S738>/ITC1' */
+%closefile Enable_open_ITC1_e_300_15
+
+%assign    Enable_body_ITC1_e_300_15 = ""
+%openfile  Enable_body_ITC1_e_300_15
+
+%<SLibCG_DumpSSCode("/*@[143f2bf*/",tlcEnableFcnOfS300B13,"/*@]*/")>\
+%closefile Enable_body_ITC1_e_300_15
+
+%assign    Enable_close_ITC1_e_300_15 = ""
+%openfile  Enable_close_ITC1_e_300_15
+
+/* End of Enable for S-Function (InitTriggerControl): '<S738>/ITC1' */
+%closefile Enable_close_ITC1_e_300_15
+%<SLibCG_DumpSSCode(Enable_open_ITC1_e_300_15, Enable_body_ITC1_e_300_15, Enable_close_ITC1_e_300_15)>
+
+
+%assign   Enable_open_ITC1_h2_300_20 = ""
+%openfile Enable_open_ITC1_h2_300_20
+
+/* Enable for S-Function (InitTriggerControl): '<S746>/ITC1' */
+%closefile Enable_open_ITC1_h2_300_20
+
+%assign    Enable_body_ITC1_h2_300_20 = ""
+%openfile  Enable_body_ITC1_h2_300_20
+
+%<SLibCG_DumpSSCode("/*@[143f2c1*/",tlcEnableFcnOfS300B16,"/*@]*/")>\
+%closefile Enable_body_ITC1_h2_300_20
+
+%assign    Enable_close_ITC1_h2_300_20 = ""
+%openfile  Enable_close_ITC1_h2_300_20
+
+/* End of Enable for S-Function (InitTriggerControl): '<S746>/ITC1' */
+%closefile Enable_close_ITC1_h2_300_20
+%<SLibCG_DumpSSCode(Enable_open_ITC1_h2_300_20, Enable_body_ITC1_h2_300_20, Enable_close_ITC1_h2_300_20)>
+
+
+%assign   Enable_open_ITC1_eg_300_36 = ""
+%openfile Enable_open_ITC1_eg_300_36
+
+/* Enable for S-Function (InitTriggerControl): '<S822>/ITC1' */
+%closefile Enable_open_ITC1_eg_300_36
+
+%assign    Enable_body_ITC1_eg_300_36 = ""
+%openfile  Enable_body_ITC1_eg_300_36
+
+%<SLibCG_DumpSSCode("/*@[143f2c3*/",tlcEnableFcnOfS300B28,"/*@]*/")>\
+%closefile Enable_body_ITC1_eg_300_36
+
+%assign    Enable_close_ITC1_eg_300_36 = ""
+%openfile  Enable_close_ITC1_eg_300_36
+
+/* End of Enable for S-Function (InitTriggerControl): '<S822>/ITC1' */
+%closefile Enable_close_ITC1_eg_300_36
+%<SLibCG_DumpSSCode(Enable_open_ITC1_eg_300_36, Enable_body_ITC1_eg_300_36, Enable_close_ITC1_eg_300_36)>
+
+
+%assign   Enable_open_ITC1_m_300_41 = ""
+%openfile Enable_open_ITC1_m_300_41
+
+/* Enable for S-Function (InitTriggerControl): '<S830>/ITC1' */
+%closefile Enable_open_ITC1_m_300_41
+
+%assign    Enable_body_ITC1_m_300_41 = ""
+%openfile  Enable_body_ITC1_m_300_41
+
+%<SLibCG_DumpSSCode("/*@[143f2c5*/",tlcEnableFcnOfS300B31,"/*@]*/")>\
+%closefile Enable_body_ITC1_m_300_41
+
+%assign    Enable_close_ITC1_m_300_41 = ""
+%openfile  Enable_close_ITC1_m_300_41
+
+/* End of Enable for S-Function (InitTriggerControl): '<S830>/ITC1' */
+%closefile Enable_close_ITC1_m_300_41
+%<SLibCG_DumpSSCode(Enable_open_ITC1_m_300_41, Enable_body_ITC1_m_300_41, Enable_close_ITC1_m_300_41)>
+
+
+%assign   Enable_open_ITC1_cl_300_74 = ""
+%openfile Enable_open_ITC1_cl_300_74
+
+/* Enable for S-Function (InitTriggerControl): '<S882>/ITC1' */
+%closefile Enable_open_ITC1_cl_300_74
+
+%assign    Enable_body_ITC1_cl_300_74 = ""
+%openfile  Enable_body_ITC1_cl_300_74
+
+%<SLibCG_DumpSSCode("/*@[143f2c7*/",tlcEnableFcnOfS300B56,"/*@]*/")>\
+%closefile Enable_body_ITC1_cl_300_74
+
+%assign    Enable_close_ITC1_cl_300_74 = ""
+%openfile  Enable_close_ITC1_cl_300_74
+
+/* End of Enable for S-Function (InitTriggerControl): '<S882>/ITC1' */
+%closefile Enable_close_ITC1_cl_300_74
+%<SLibCG_DumpSSCode(Enable_open_ITC1_cl_300_74, Enable_body_ITC1_cl_300_74, Enable_close_ITC1_cl_300_74)>
+
+
+%assign   Enable_open_ITC1_hr_300_77 = ""
+%openfile Enable_open_ITC1_hr_300_77
+
+/* Enable for S-Function (InitTriggerControl): '<S874>/ITC1' */
+%closefile Enable_open_ITC1_hr_300_77
+
+%assign    Enable_body_ITC1_hr_300_77 = ""
+%openfile  Enable_body_ITC1_hr_300_77
+
+%<SLibCG_DumpSSCode("/*@[143f2c9*/",tlcEnableFcnOfS300B59,"/*@]*/")>\
+%closefile Enable_body_ITC1_hr_300_77
+
+%assign    Enable_close_ITC1_hr_300_77 = ""
+%openfile  Enable_close_ITC1_hr_300_77
+
+/* End of Enable for S-Function (InitTriggerControl): '<S874>/ITC1' */
+%closefile Enable_close_ITC1_hr_300_77
+%<SLibCG_DumpSSCode(Enable_open_ITC1_hr_300_77, Enable_body_ITC1_hr_300_77, Enable_close_ITC1_hr_300_77)>
+
+%closefile cfgTxt
+%<cfgTxt>
+%endfunction
+%function EnableFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_Medusa5H1Part2_Enable(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(376, 4, fcnProtoType)>
+%endfunction

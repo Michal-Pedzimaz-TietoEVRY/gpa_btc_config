@@ -1,0 +1,71 @@
+%implements s1068_b0_g3vnd_53_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+real32_T y;
+%closefile localVarDecl
+/*@>11f8560*/y/*@>10c5bb1*/ = /*@>11f856d*/rtu_rampTimeTune;
+/*  %<"\% Inputs"> */
+/*  parameters */
+/* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/SleepingBeauty/SleepingBeauty/Enabled/MuteControl/MuteControl/calculate_ramp_rate': '<S1393>:1' */
+/*  Ramp time and rate are provided to the block through RTC messages. However  */
+/*  in case neither of them are provided, the block will use the default ramp  */
+/*  time given in the tune variable. */
+/* '<S1393>:1:8' ramptime = single(rampTimeTune); */
+/* '<S1393>:1:9' rampRate = single(0); */
+/*@>11f8ad7*/localB->/*@>11f8d1e*/rampRate/*@>10c5bb3*/ = /*@>11f8564*/0.0F;
+/* '<S1393>:1:11' if (rampRateRTC) */
+/*@>10c5bbc*/if (/*@>11f856f*/rtu_rampRateRTC/*@>10c5bb5*/ != /*@>11f8556*/0U) {
+    /* '<S1393>:1:12' rampRate = single(rampRateRTC); */
+    /* '<S1393>:1:13' rampRate = max(rampRateBounds(1), rampRate); */
+    /* '<S1393>:1:14' rampRate = min(rampRateBounds(2), rampRate); */
+    /*@>11f8ade*/localB->/*@>11f8d21*/rampRate/*@>10c5bd0*/ = /*@>11f8990*/fminf(/*@>11f8566*/50000.0F, /*@>11f898e*/fmaxf(/*@>11f8565*/5.0F, /*@>10c5be1*/(real32_T)/*@>11f8573*/rtu_rampRateRTC));
+}
+/* '<S1393>:1:16' if (rampTimeRTC) */
+/*@>10c5bbe*/if (/*@>11f8571*/rtu_rampTimeRTC/*@>10c5bb6*/ != /*@>11f8557*/0U) {
+    /* '<S1393>:1:17' ramptime = single(rampTimeRTC); */
+    /*@>11f855e*/y/*@>10c5bb4*/ = /*@>10c5bb7*/(real32_T)/*@>11f8575*/rtu_rampTimeRTC;
+}
+/* '<S1393>:1:19' ramptime = max(rampTimeBounds(1), ramptime); */
+/* '<S1393>:1:20' ramptime = min(rampTimeBounds(2), ramptime); */
+/*@>11f8ae5*/localB->/*@>11f8d24*/ramptime/*@>10c5bd2*/ = /*@>11f8994*/fminf(/*@>11f8568*/3000.0F, /*@>11f8992*/fmaxf(/*@>11f8567*/1.0F, /*@>11f8562*/y));
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[53].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(53, 0, 0)>
+%endif
+%if SLibCG_ArgAccessed(53, 0, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(53, 0, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_calculate_ramp_rate(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(53, 0, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_Target_calculate_ramp_rate", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>uint32_T rtu_rampRateRTC\
+%assign comma = ", "
+%<comma>uint32_T rtu_rampTimeRTC\
+%assign comma = ", "
+%<comma>real32_T rtu_rampTimeTune\
+%assign comma = ", "
+%<comma>B_calculate_ramp_rate_Model_Target_T *localB\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(53, 0, fcnProtoType)>
+%endfunction

@@ -1,0 +1,429 @@
+%implements s798_b0_evwnd_164_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+creal_T c[5];
+creal_T P[4];
+real_T pj[5];
+real_T re;
+real_T x_idx_0_im;
+real_T x_idx_0_re;
+real_T x_idx_1_im;
+real_T x_idx_1_re;
+real_T x_idx_2_im;
+real_T x_idx_2_re;
+real_T x_idx_3_im;
+real_T x_idx_3_re;
+int32_T b_k;
+int32_T n;
+real32_T bim;
+real32_T brm;
+real32_T frequency;
+real32_T g_im;
+real32_T g_im_0;
+real32_T g_re;
+real32_T g_re_0;
+real32_T sp_im;
+real32_T sp_im_0;
+real32_T sp_im_tmp;
+real32_T sp_re;
+real32_T sp_re_tmp;
+real32_T sp_re_tmp_tmp;
+%closefile localVarDecl
+/* {S!d1327}MATLAB Function: '<S35>/LinkwitzRiley' */
+/* {S!d1334}MATLAB Function: '<S35>/LinkwitzRiley' incorporates:
+ *  S-Function (TuneVarMEX): '<S35>/Tune Variable'
+ */
+/*  Invoke the function trigger output */
+/* MATLAB Function 'TranslateTrigger/tfunc': '<S45>:1' */
+/* '<S45>:1:3' f(); */
+/*  Forms the numerator and denominator coefficients */
+/*  for a 4th order Linkwitz-Riley low-pass filter with  */
+/*  the specified cutoff frequency  */
+/* MATLAB Function 'ModelPreAmp/DecRate/AudioPilot35/Audiopilot_3_5/GainApplication/Compensation/MidrangeLpf/LinkwitzRiley': '<S43>:1' */
+/* '<S43>:1:7' Fc = freq.Value; */
+/* '<S43>:1:8' FiltOrder = 4; */
+/*  This is hard-coded */
+/* '<S43>:1:10' [Z,P,K] = LinkwitzRileyFiltDesign(FiltOrder,Fc/(SampleRate/2),'low'); */
+/*@>e65245*/frequency/*@>c719d7*/ = /*@>e6f870*/Model_TranslationEngine64_B./*@>e71311*/MidrangeLpfCutoffFreqHz.Value/*@>c719d6*/ / /*@>e651a8*/22153.8457F;
+/* LinkwitzRileyFiltDesign: Our own function designing a Linkwitz Riley Filter */
+/*    [z,p,k] = LinkRitzRileyFiltDesign(order,frequency,type) */
+/*    This function returns the zeros-pole-gain (ZPK) form of the filter */
+/*    Arguments: */
+/*        order - order of filter, must be even */
+/*        frequency - cutoff frequency */
+/*        type - "high" for high-pass, "low" for low-pass */
+/* 'LinkwitzRileyFiltDesign:10' if (mod(order,2) ~= 0) */
+/*  Zeros first */
+/* 'LinkwitzRileyFiltDesign:15' z = zeros(order,1); */
+/* 'LinkwitzRileyFiltDesign:16' if strcmp(type,'high') */
+/* 'LinkwitzRileyFiltDesign:18' elseif strcmp(type,'low') */
+/* 'LinkwitzRileyFiltDesign:19' z(1:order) = -1*ones(order,1); */
+/*  Next the poles */
+/* 'LinkwitzRileyFiltDesign:25' p = complex(zeros(order,1)); */
+/* 'LinkwitzRileyFiltDesign:26' halfOrder = order/2; */
+/*  The poles are the same as those of Butterworth filters, */
+/*  but each pole is duplicated (or doubled) */
+/* 'LinkwitzRileyFiltDesign:30' for n = 1:halfOrder */
+/* 'LinkwitzRileyFiltDesign:31' if n == (halfOrder+1)/2 */
+/* 'LinkwitzRileyFiltDesign:33' else */
+/* 'LinkwitzRileyFiltDesign:34' sp_real = pi*frequency*cos(((2*n+halfOrder-1)*pi)/(2*halfOrder)); */
+/* 'LinkwitzRileyFiltDesign:35' sp_imag = pi*frequency*sin(((2*n+halfOrder-1)*pi)/(2*halfOrder)); */
+/* 'LinkwitzRileyFiltDesign:36' sp = sp_real + 1i*sp_imag; */
+/*@>e6b61c*/sp_re_tmp/*@>e6b61e*/ = /*@>e65f0c*/3.14159274F/*@>e667c1*/ * /*@>e65f0d*/frequency/*@>e667bd*/ * /*@>e65f0f*/-0.707106769F;
+/*@>e661b3*/sp_im_0/*@>e5f457*/ = /*@>e651cc*/3.14159274F/*@>e667b9*/ * /*@>e651ca*/frequency/*@>e667b5*/ * /*@>e651a7*/0.707106769F;
+/* 'LinkwitzRileyFiltDesign:38' p(2*n-1) = (1+sp/2)/(1-sp/2); */
+/*@>e5ff55*/if (/*@>e69aaf*/sp_im_0/*@>e5ff54*/ == /*@>e6559b*/0.0F) {
+    /*@>e6b5fc*/sp_re_tmp_tmp/*@>e6b5fe*/ = /*@>e6b906*/sp_re_tmp/*@>e5ff5d*/ / /*@>e67c57*/2.0F;
+    /*@>e65fef*/sp_im_tmp/*@>e5ff67*/ = /*@>e655a2*/0.0F;
+    /*@>e66011*/sp_re/*@>e6014c*/ = sp_re_tmp_tmp;
+    /*@>e66013*/sp_im/*@>e60152*/ = /*@>e65668*/0.0F;
+} else /*@>e5ff6e*/if (/*@>e6b8fe*/sp_re_tmp/*@>e5ff6d*/ == /*@>e655a3*/0.0F) {
+    /*@>e65ff1*/sp_re_tmp_tmp/*@>e5ff74*/ = /*@>e655a6*/0.0F;
+    /*@>e6cf18*/sp_im_tmp/*@>e6cf1a*/ = /*@>e69ab7*/sp_im_0/*@>e5ff7c*/ / /*@>e67c55*/2.0F;
+    /*@>e66015*/sp_re/*@>e6015f*/ = /*@>e6566c*/0.0F;
+    /*@>e66017*/sp_im/*@>e6016b*/ = sp_im_tmp;
+} else {
+    /*@>e6cef8*/sp_re_tmp_tmp/*@>e6cefa*/ = /*@>e6b900*/sp_re_tmp/*@>e5ff88*/ / /*@>e67c51*/2.0F;
+    /*@>e6cf08*/sp_im_tmp/*@>e6cf0a*/ = /*@>e69ab5*/sp_im_0/*@>e5ff94*/ / /*@>e67c53*/2.0F;
+    /*@>e66019*/sp_re/*@>e60177*/ = sp_re_tmp_tmp;
+    /*@>e6601b*/sp_im/*@>e60183*/ = sp_im_tmp;
+}
+/*@>e60330*/if (/*@>e69bb0*/0.0F/*@>e69baf*/ - /*@>e69bb2*/sp_im/*@>e6032f*/ == /*@>e65724*/0.0F) {
+    /*@>e60337*/if (/*@>e69ad9*/sp_im_tmp/*@>e60336*/ == /*@>e65727*/0.0F) {
+        /*@>e66035*/frequency/*@>e60343*/ = (/*@>e69cbc*/sp_re_tmp_tmp/*@>e69cba*/ + /*@>e69cbd*/1.0F)/*@>e6033f*/ / (/*@>e69cc0*/1.0F/*@>e69cbf*/ - /*@>e69cc2*/sp_re);
+        /*@>e66037*/sp_im/*@>e60349*/ = /*@>e6572e*/0.0F;
+    } else /*@>e60350*/if (/*@>e69c9f*/sp_re_tmp_tmp/*@>e69c9d*/ + /*@>e69ca0*/1.0F/*@>e6034f*/ == /*@>e6572f*/0.0F) {
+        /*@>e66039*/frequency/*@>e60356*/ = /*@>e65732*/0.0F;
+        /*@>e6603b*/sp_im/*@>e60362*/ = /*@>e69add*/sp_im_tmp/*@>e6035e*/ / (/*@>e69cb5*/1.0F/*@>e69cb4*/ - /*@>e69cb7*/sp_re);
+    } else {
+        /*@>e6603d*/frequency/*@>e6036e*/ = (/*@>e69ca5*/sp_re_tmp_tmp/*@>e69ca3*/ + /*@>e69ca6*/1.0F)/*@>e6036a*/ / (/*@>e69ca9*/1.0F/*@>e69ca8*/ - /*@>e69cab*/sp_re);
+        /*@>e6603f*/sp_im/*@>e6037a*/ = /*@>e69adb*/sp_im_tmp/*@>e60376*/ / (/*@>e69caf*/1.0F/*@>e69cae*/ - /*@>e69cb1*/sp_re);
+    }
+} else /*@>e60381*/if (/*@>e69bb6*/1.0F/*@>e69bb5*/ - /*@>e69bb8*/sp_re/*@>e60380*/ == /*@>e6573f*/0.0F) {
+    /*@>e60388*/if (/*@>e69c77*/sp_re_tmp_tmp/*@>e69c75*/ + /*@>e69c78*/1.0F/*@>e60387*/ == /*@>e65742*/0.0F) {
+        /*@>e66041*/frequency/*@>e60394*/ = /*@>e69ad7*/sp_im_tmp/*@>e60390*/ / (/*@>e69c98*/0.0F/*@>e69c97*/ - /*@>e69c9a*/sp_im);
+        /*@>e66043*/sp_im/*@>e6039a*/ = /*@>e65749*/0.0F;
+    } else /*@>e603a1*/if (/*@>e69ad3*/sp_im_tmp/*@>e603a0*/ == /*@>e6574a*/0.0F) {
+        /*@>e66045*/frequency/*@>e603a7*/ = /*@>e6574d*/0.0F;
+        /*@>e66047*/sp_im/*@>e603b4*/ = -/*@<e66746*/((/*@>e69c8e*/sp_re_tmp_tmp/*@>e69c8c*/ + /*@>e69c8f*/1.0F)/*@>e603af*/ / (/*@>e69c92*/0.0F/*@>e69c91*/ - /*@>e69c94*/sp_im));
+    } else {
+        /*@>e66049*/frequency/*@>e603c0*/ = /*@>e69ad5*/sp_im_tmp/*@>e603bc*/ / (/*@>e69c7c*/0.0F/*@>e69c7b*/ - /*@>e69c7e*/sp_im);
+        /*@>e6604b*/sp_im/*@>e603cd*/ = -/*@<e66745*/((/*@>e69c83*/sp_re_tmp_tmp/*@>e69c81*/ + /*@>e69c84*/1.0F)/*@>e603c8*/ / (/*@>e69c87*/0.0F/*@>e69c86*/ - /*@>e69c89*/sp_im));
+    }
+} else {
+    /*@>e6575d*/brm/*@>e603d6*/ = /*@>e6e069*/fabsf(/*@>e69bbc*/1.0F/*@>e69bbb*/ - /*@>e69bbe*/sp_re);
+    /*@>e65762*/bim/*@>e603df*/ = /*@>e6e06b*/fabsf(/*@>e69bc2*/0.0F/*@>e69bc1*/ - /*@>e69bc4*/sp_im);
+    /*@>e603e8*/if (/*@>e65766*/brm/*@>e603e7*/ > /*@>e65764*/bim) {
+        /*@>e6576c*/brm/*@>e603f3*/ = (/*@>e69c3d*/0.0F/*@>e69c3c*/ - /*@>e69c3f*/sp_im)/*@>e603f0*/ / (/*@>e69c42*/1.0F/*@>e69c41*/ - /*@>e69c44*/sp_re);
+        /*@>e65774*/sp_re/*@>e60402*/ = (/*@>e69c4e*/0.0F/*@>e69c4d*/ - /*@>e69c50*/sp_im)/*@>e66743*/ * /*@>e65770*/brm/*@>e603ff*/ + (/*@>e69c48*/1.0F/*@>e69c47*/ - /*@>e69c4a*/sp_re);
+        /*@>e6604d*/frequency/*@>e6042c*/ = ((/*@>e6a3a3*/sp_re_tmp_tmp/*@>e6a3a1*/ + /*@>e6a3a4*/1.0F)/*@>e69c60*/ + /*@>e69c65*/brm/*@>e69c63*/ * /*@>e69c67*/sp_im_tmp)/*@>e60428*/ / /*@>e65786*/sp_re;
+        /*@>e6604f*/sp_im/*@>e60438*/ = (/*@>e69c6c*/sp_im_tmp/*@>e69c6a*/ - (/*@>e6a3ac*/sp_re_tmp_tmp/*@>e6a3aa*/ + /*@>e6a3ad*/1.0F)/*@>e69c6d*/ * /*@>e69c6f*/brm)/*@>e60434*/ / /*@>e6578a*/sp_re;
+    } else /*@>e60441*/if (/*@>e65790*/bim/*@>e60440*/ == /*@>e6578e*/brm) {
+        /*@>e65797*/sp_re/*@>e6044d*/ = /*@>e69c07*/1.0F/*@>e69c06*/ - /*@>e69c09*/sp_re/*@>e60447*/ > /*@>e65792*/0.0F/*@>e60447*/ ? /*@>e65795*/0.5F : /*@>e65796*/-0.5F;
+        /*@>e6579e*/bim/*@>e60459*/ = /*@>e69c0d*/0.0F/*@>e69c0c*/ - /*@>e69c0f*/sp_im/*@>e60453*/ > /*@>e65799*/0.0F/*@>e60453*/ ? /*@>e6579c*/0.5F : /*@>e6579d*/-0.5F;
+        /*@>e66051*/frequency/*@>e6048b*/ = ((/*@>e6a38f*/sp_re_tmp_tmp/*@>e6a38d*/ + /*@>e6a390*/1.0F)/*@>e69c22*/ * /*@>e69c26*/sp_re/*@>e69c21*/ + /*@>e69c29*/sp_im_tmp/*@>e69c27*/ * /*@>e69c2b*/bim)/*@>e60487*/ / /*@>e657b4*/brm;
+        /*@>e66053*/sp_im/*@>e60497*/ = (/*@>e69c31*/sp_im_tmp/*@>e69c2f*/ * /*@>e69c33*/sp_re/*@>e69c2e*/ - (/*@>e6a399*/sp_re_tmp_tmp/*@>e6a397*/ + /*@>e6a39a*/1.0F)/*@>e69c34*/ * /*@>e69c38*/bim)/*@>e60493*/ / /*@>e657b8*/brm;
+    } else {
+        /*@>e657c0*/brm/*@>e604a2*/ = (/*@>e69bce*/1.0F/*@>e69bcd*/ - /*@>e69bd0*/sp_re)/*@>e6049f*/ / (/*@>e69bd3*/0.0F/*@>e69bd2*/ - /*@>e69bd5*/sp_im);
+        /*@>e657c8*/sp_re/*@>e604b1*/ = (/*@>e69bdf*/1.0F/*@>e69bde*/ - /*@>e69be1*/sp_re)/*@>e66727*/ * /*@>e657c4*/brm/*@>e604ae*/ + (/*@>e69bd9*/0.0F/*@>e69bd8*/ - /*@>e69bdb*/sp_im);
+        /*@>e66055*/frequency/*@>e604db*/ = ((/*@>e6a380*/sp_re_tmp_tmp/*@>e6a37e*/ + /*@>e6a381*/1.0F)/*@>e69bf2*/ * /*@>e69bf4*/brm/*@>e69bf1*/ + /*@>e69bf8*/sp_im_tmp)/*@>e604d7*/ / /*@>e657da*/sp_re;
+        /*@>e66057*/sp_im/*@>e604e7*/ = (/*@>e69bfe*/brm/*@>e69bfc*/ * /*@>e69c00*/sp_im_tmp/*@>e69bfb*/ - (/*@>e6a388*/sp_re_tmp_tmp/*@>e6a386*/ + /*@>e6a389*/1.0F))/*@>e604e3*/ / /*@>e657de*/sp_re;
+    }
+}
+/*@>e65f10*/P/*@>e61759*/[/*@>e65f12*/0]./*@>e7130e*/re/*@>e61758*/ = /*@>e69cc6*/frequency;
+/*@>e651c8*/P/*@>e5f48a*/[/*@>e651a6*/0]./*@>e7130b*/im/*@>e5f489*/ = /*@>e69cca*/sp_im;
+/* 'LinkwitzRileyFiltDesign:39' p(2*n) = (1+sp/2)/(1-sp/2); */
+/*@>e60522*/if (/*@>e69adf*/sp_im_0/*@>e60521*/ == /*@>e657ed*/0.0F) {
+    /*@>e6b60c*/sp_re_tmp_tmp/*@>e6b60e*/ = /*@>e6b912*/sp_re_tmp/*@>e6052a*/ / /*@>e67c8f*/2.0F;
+    /*@>e6605b*/sp_im_tmp/*@>e60534*/ = /*@>e657f4*/0.0F;
+    /*@>e6607d*/sp_re/*@>e60719*/ = sp_re_tmp_tmp;
+    /*@>e6607f*/sp_im_0/*@>e6071f*/ = /*@>e658ba*/0.0F;
+} else /*@>e6053b*/if (/*@>e6b90a*/sp_re_tmp/*@>e6053a*/ == /*@>e657f5*/0.0F) {
+    /*@>e6605d*/sp_re_tmp_tmp/*@>e60541*/ = /*@>e657f8*/0.0F;
+    /*@>e6605f*/sp_im_tmp/*@>e6054d*/ = /*@>e69ae7*/sp_im_0/*@>e60549*/ / /*@>e67c8d*/2.0F;
+    /*@>e66081*/sp_re/*@>e6072c*/ = /*@>e658be*/0.0F;
+    /*@>e66083*/sp_im_0/*@>e70cdc*/ /= /*@>e67ca5*/2.0F;
+} else {
+    /*@>e6cf28*/sp_re_tmp_tmp/*@>e6cf2a*/ = /*@>e6b90c*/sp_re_tmp/*@>e60555*/ / /*@>e67c89*/2.0F;
+    /*@>e66063*/sp_im_tmp/*@>e60565*/ = /*@>e69ae5*/sp_im_0/*@>e60561*/ / /*@>e67c8b*/2.0F;
+    /*@>e66085*/sp_re/*@>e60744*/ = sp_re_tmp_tmp;
+    /*@>e66087*/sp_im_0/*@>e70cdd*/ /= /*@>e67ca3*/2.0F;
+}
+/*@>e608fd*/if (/*@>e69cee*/0.0F/*@>e69ced*/ - /*@>e69cf0*/sp_im_0/*@>e608fc*/ == /*@>e65976*/0.0F) {
+    /*@>e60904*/if (/*@>e69b09*/sp_im_tmp/*@>e60903*/ == /*@>e65979*/0.0F) {
+        /*@>e660a1*/g_re/*@>e60910*/ = (/*@>e69dfa*/sp_re_tmp_tmp/*@>e69df8*/ + /*@>e69dfb*/1.0F)/*@>e6090c*/ / (/*@>e69dfe*/1.0F/*@>e69dfd*/ - /*@>e69e00*/sp_re);
+        /*@>e660a3*/g_im/*@>e60916*/ = /*@>e65980*/0.0F;
+    } else /*@>e6091d*/if (/*@>e69ddd*/sp_re_tmp_tmp/*@>e69ddb*/ + /*@>e69dde*/1.0F/*@>e6091c*/ == /*@>e65981*/0.0F) {
+        /*@>e660a5*/g_re/*@>e60923*/ = /*@>e65984*/0.0F;
+        /*@>e660a7*/g_im/*@>e6092f*/ = /*@>e69b0d*/sp_im_tmp/*@>e6092b*/ / (/*@>e69df3*/1.0F/*@>e69df2*/ - /*@>e69df5*/sp_re);
+    } else {
+        /*@>e660a9*/g_re/*@>e6093b*/ = (/*@>e69de3*/sp_re_tmp_tmp/*@>e69de1*/ + /*@>e69de4*/1.0F)/*@>e60937*/ / (/*@>e69de7*/1.0F/*@>e69de6*/ - /*@>e69de9*/sp_re);
+        /*@>e660ab*/g_im/*@>e60947*/ = /*@>e69b0b*/sp_im_tmp/*@>e60943*/ / (/*@>e69ded*/1.0F/*@>e69dec*/ - /*@>e69def*/sp_re);
+    }
+} else /*@>e6094e*/if (/*@>e69cf4*/1.0F/*@>e69cf3*/ - /*@>e69cf6*/sp_re/*@>e6094d*/ == /*@>e65991*/0.0F) {
+    /*@>e60955*/if (/*@>e69db5*/sp_re_tmp_tmp/*@>e69db3*/ + /*@>e69db6*/1.0F/*@>e60954*/ == /*@>e65994*/0.0F) {
+        /*@>e660ad*/g_re/*@>e60961*/ = /*@>e69b07*/sp_im_tmp/*@>e6095d*/ / (/*@>e69dd6*/0.0F/*@>e69dd5*/ - /*@>e69dd8*/sp_im_0);
+        /*@>e660af*/g_im/*@>e60967*/ = /*@>e6599b*/0.0F;
+    } else /*@>e6096e*/if (/*@>e69b03*/sp_im_tmp/*@>e6096d*/ == /*@>e6599c*/0.0F) {
+        /*@>e660b1*/g_re/*@>e60974*/ = /*@>e6599f*/0.0F;
+        /*@>e660b3*/g_im/*@>e60981*/ = -/*@<e666b0*/((/*@>e69dcc*/sp_re_tmp_tmp/*@>e69dca*/ + /*@>e69dcd*/1.0F)/*@>e6097c*/ / (/*@>e69dd0*/0.0F/*@>e69dcf*/ - /*@>e69dd2*/sp_im_0));
+    } else {
+        /*@>e660b5*/g_re/*@>e6098d*/ = /*@>e69b05*/sp_im_tmp/*@>e60989*/ / (/*@>e69dba*/0.0F/*@>e69db9*/ - /*@>e69dbc*/sp_im_0);
+        /*@>e660b7*/g_im/*@>e6099a*/ = -/*@<e666af*/((/*@>e69dc1*/sp_re_tmp_tmp/*@>e69dbf*/ + /*@>e69dc2*/1.0F)/*@>e60995*/ / (/*@>e69dc5*/0.0F/*@>e69dc4*/ - /*@>e69dc7*/sp_im_0));
+    }
+} else {
+    /*@>e659af*/brm/*@>e609a3*/ = /*@>e6e06d*/fabsf(/*@>e69cfa*/1.0F/*@>e69cf9*/ - /*@>e69cfc*/sp_re);
+    /*@>e659b4*/bim/*@>e609ac*/ = /*@>e6e06f*/fabsf(/*@>e69d00*/0.0F/*@>e69cff*/ - /*@>e69d02*/sp_im_0);
+    /*@>e609b5*/if (/*@>e659b8*/brm/*@>e609b4*/ > /*@>e659b6*/bim) {
+        /*@>e659be*/brm/*@>e609c0*/ = (/*@>e69d7b*/0.0F/*@>e69d7a*/ - /*@>e69d7d*/sp_im_0)/*@>e609bd*/ / (/*@>e69d80*/1.0F/*@>e69d7f*/ - /*@>e69d82*/sp_re);
+        /*@>e659c6*/sp_re/*@>e609cf*/ = (/*@>e69d8c*/0.0F/*@>e69d8b*/ - /*@>e69d8e*/sp_im_0)/*@>e666ad*/ * /*@>e659c2*/brm/*@>e609cc*/ + (/*@>e69d86*/1.0F/*@>e69d85*/ - /*@>e69d88*/sp_re);
+        /*@>e660b9*/g_re/*@>e609f9*/ = ((/*@>e6a3f7*/sp_re_tmp_tmp/*@>e6a3f5*/ + /*@>e6a3f8*/1.0F)/*@>e69d9e*/ + /*@>e69da3*/brm/*@>e69da1*/ * /*@>e69da5*/sp_im_tmp)/*@>e609f5*/ / /*@>e659d8*/sp_re;
+        /*@>e660bb*/g_im/*@>e60a05*/ = (/*@>e69daa*/sp_im_tmp/*@>e69da8*/ - (/*@>e6a400*/sp_re_tmp_tmp/*@>e6a3fe*/ + /*@>e6a401*/1.0F)/*@>e69dab*/ * /*@>e69dad*/brm)/*@>e60a01*/ / /*@>e659dc*/sp_re;
+    } else /*@>e60a0e*/if (/*@>e659e2*/bim/*@>e60a0d*/ == /*@>e659e0*/brm) {
+        /*@>e659e9*/sp_re/*@>e60a1a*/ = /*@>e69d45*/1.0F/*@>e69d44*/ - /*@>e69d47*/sp_re/*@>e60a14*/ > /*@>e659e4*/0.0F/*@>e60a14*/ ? /*@>e659e7*/0.5F : /*@>e659e8*/-0.5F;
+        /*@>e659f0*/bim/*@>e60a26*/ = /*@>e69d4b*/0.0F/*@>e69d4a*/ - /*@>e69d4d*/sp_im_0/*@>e60a20*/ > /*@>e659eb*/0.0F/*@>e60a20*/ ? /*@>e659ee*/0.5F : /*@>e659ef*/-0.5F;
+        /*@>e660bd*/g_re/*@>e60a58*/ = ((/*@>e6a3e3*/sp_re_tmp_tmp/*@>e6a3e1*/ + /*@>e6a3e4*/1.0F)/*@>e69d60*/ * /*@>e69d64*/sp_re/*@>e69d5f*/ + /*@>e69d67*/sp_im_tmp/*@>e69d65*/ * /*@>e69d69*/bim)/*@>e60a54*/ / /*@>e65a06*/brm;
+        /*@>e660bf*/g_im/*@>e60a64*/ = (/*@>e69d6f*/sp_im_tmp/*@>e69d6d*/ * /*@>e69d71*/sp_re/*@>e69d6c*/ - (/*@>e6a3ed*/sp_re_tmp_tmp/*@>e6a3eb*/ + /*@>e6a3ee*/1.0F)/*@>e69d72*/ * /*@>e69d76*/bim)/*@>e60a60*/ / /*@>e65a0a*/brm;
+    } else {
+        /*@>e65a12*/brm/*@>e60a6f*/ = (/*@>e69d0c*/1.0F/*@>e69d0b*/ - /*@>e69d0e*/sp_re)/*@>e60a6c*/ / (/*@>e69d11*/0.0F/*@>e69d10*/ - /*@>e69d13*/sp_im_0);
+        /*@>e65a1a*/sp_re/*@>e60a7e*/ = (/*@>e69d1d*/1.0F/*@>e69d1c*/ - /*@>e69d1f*/sp_re)/*@>e66691*/ * /*@>e65a16*/brm/*@>e60a7b*/ + (/*@>e69d17*/0.0F/*@>e69d16*/ - /*@>e69d19*/sp_im_0);
+        /*@>e660c1*/g_re/*@>e60aa8*/ = ((/*@>e6a3d4*/sp_re_tmp_tmp/*@>e6a3d2*/ + /*@>e6a3d5*/1.0F)/*@>e69d30*/ * /*@>e69d32*/brm/*@>e69d2f*/ + /*@>e69d36*/sp_im_tmp)/*@>e60aa4*/ / /*@>e65a2c*/sp_re;
+        /*@>e660c3*/g_im/*@>e60ab4*/ = (/*@>e69d3c*/brm/*@>e69d3a*/ * /*@>e69d3e*/sp_im_tmp/*@>e69d39*/ - (/*@>e6a3dc*/sp_re_tmp_tmp/*@>e6a3da*/ + /*@>e6a3dd*/1.0F))/*@>e60ab0*/ / /*@>e65a30*/sp_re;
+    }
+}
+/*@>e65f13*/P/*@>e61765*/[/*@>e65f15*/1]./*@>e71308*/re/*@>e61764*/ = /*@>e69e04*/g_re;
+/*@>e651c6*/P/*@>e5f4ad*/[/*@>e651a5*/1]./*@>e71305*/im/*@>e5f4ac*/ = /*@>e69e08*/g_im;
+/* 'LinkwitzRileyFiltDesign:31' if n == (halfOrder+1)/2 */
+/* 'LinkwitzRileyFiltDesign:33' else */
+/* 'LinkwitzRileyFiltDesign:34' sp_real = pi*frequency*cos(((2*n+halfOrder-1)*pi)/(2*halfOrder)); */
+/* 'LinkwitzRileyFiltDesign:35' sp_imag = pi*frequency*sin(((2*n+halfOrder-1)*pi)/(2*halfOrder)); */
+/* 'LinkwitzRileyFiltDesign:36' sp = sp_real + 1i*sp_imag; */
+/* 'LinkwitzRileyFiltDesign:38' p(2*n-1) = (1+sp/2)/(1-sp/2); */
+/*@>e60aef*/if (sp_re_tmp/*@>e60aee*/ == /*@>e65a3f*/0.0F) {
+    /*@>e6b634*/sp_re_tmp_tmp/*@>e6b636*/ = sp_re_tmp/*@>e60af7*/ / /*@>e67cc7*/2.0F;
+    /*@>e660c7*/sp_im_0/*@>e60b01*/ = /*@>e65a46*/0.0F;
+    /*@>e660e9*/sp_re/*@>e60ce6*/ = sp_re_tmp_tmp;
+    /*@>e660eb*/sp_im_tmp/*@>e60cec*/ = /*@>e65b0c*/0.0F;
+} else /*@>e60b08*/if (sp_re_tmp/*@>e60b07*/ == /*@>e65a47*/0.0F) {
+    /*@>e660c9*/sp_re_tmp_tmp/*@>e60b0e*/ = /*@>e65a4a*/0.0F;
+    /*@>e6cf58*/sp_im_0/*@>e6cf5a*/ = sp_re_tmp/*@>e60b16*/ / /*@>e67cc5*/2.0F;
+    /*@>e660ed*/sp_re/*@>e60cf9*/ = /*@>e65b10*/0.0F;
+    /*@>e660ef*/sp_im_tmp/*@>e60d05*/ = sp_im_0;
+} else {
+    /*@>e6cf38*/sp_re_tmp_tmp/*@>e6cf3a*/ = sp_re_tmp/*@>e60b22*/ / /*@>e67cc1*/2.0F;
+    /*@>e660cf*/sp_im_0/*@>e60b32*/ = sp_re_tmp_tmp;
+    /*@>e660f1*/sp_re/*@>e60d11*/ = sp_re_tmp_tmp;
+    /*@>e660f3*/sp_im_tmp/*@>e60d1d*/ = sp_re_tmp_tmp;
+}
+/*@>e60eca*/if (/*@>e69e30*/0.0F/*@>e69e2f*/ - /*@>e69e32*/sp_im_tmp/*@>e60ec9*/ == /*@>e65bc8*/0.0F) {
+    /*@>e60ed1*/if (/*@>e69b39*/sp_im_0/*@>e60ed0*/ == /*@>e65bcb*/0.0F) {
+        /*@>e6610d*/g_re_0/*@>e60edd*/ = (/*@>e69f3c*/sp_re_tmp_tmp/*@>e69f3a*/ + /*@>e69f3d*/1.0F)/*@>e60ed9*/ / (/*@>e69f40*/1.0F/*@>e69f3f*/ - /*@>e69f42*/sp_re);
+        /*@>e6610f*/g_im_0/*@>e60ee3*/ = /*@>e65bd2*/0.0F;
+    } else /*@>e60eea*/if (/*@>e69f1f*/sp_re_tmp_tmp/*@>e69f1d*/ + /*@>e69f20*/1.0F/*@>e60ee9*/ == /*@>e65bd3*/0.0F) {
+        /*@>e66111*/g_re_0/*@>e60ef0*/ = /*@>e65bd6*/0.0F;
+        /*@>e66113*/g_im_0/*@>e60efc*/ = /*@>e69b3d*/sp_im_0/*@>e60ef8*/ / (/*@>e69f35*/1.0F/*@>e69f34*/ - /*@>e69f37*/sp_re);
+    } else {
+        /*@>e66115*/g_re_0/*@>e60f08*/ = (/*@>e69f25*/sp_re_tmp_tmp/*@>e69f23*/ + /*@>e69f26*/1.0F)/*@>e60f04*/ / (/*@>e69f29*/1.0F/*@>e69f28*/ - /*@>e69f2b*/sp_re);
+        /*@>e66117*/g_im_0/*@>e60f14*/ = /*@>e69b3b*/sp_im_0/*@>e60f10*/ / (/*@>e69f2f*/1.0F/*@>e69f2e*/ - /*@>e69f31*/sp_re);
+    }
+} else /*@>e60f1b*/if (/*@>e69e36*/1.0F/*@>e69e35*/ - /*@>e69e38*/sp_re/*@>e60f1a*/ == /*@>e65be3*/0.0F) {
+    /*@>e60f22*/if (/*@>e69ef7*/sp_re_tmp_tmp/*@>e69ef5*/ + /*@>e69ef8*/1.0F/*@>e60f21*/ == /*@>e65be6*/0.0F) {
+        /*@>e66119*/g_re_0/*@>e60f2e*/ = /*@>e69b37*/sp_im_0/*@>e60f2a*/ / (/*@>e69f18*/0.0F/*@>e69f17*/ - /*@>e69f1a*/sp_im_tmp);
+        /*@>e6611b*/g_im_0/*@>e60f34*/ = /*@>e65bed*/0.0F;
+    } else /*@>e60f3b*/if (/*@>e69b33*/sp_im_0/*@>e60f3a*/ == /*@>e65bee*/0.0F) {
+        /*@>e6611d*/g_re_0/*@>e60f41*/ = /*@>e65bf1*/0.0F;
+        /*@>e6611f*/g_im_0/*@>e60f4e*/ = -/*@<e6660a*/((/*@>e69f0e*/sp_re_tmp_tmp/*@>e69f0c*/ + /*@>e69f0f*/1.0F)/*@>e60f49*/ / (/*@>e69f12*/0.0F/*@>e69f11*/ - /*@>e69f14*/sp_im_tmp));
+    } else {
+        /*@>e66121*/g_re_0/*@>e60f5a*/ = /*@>e69b35*/sp_im_0/*@>e60f56*/ / (/*@>e69efc*/0.0F/*@>e69efb*/ - /*@>e69efe*/sp_im_tmp);
+        /*@>e66123*/g_im_0/*@>e60f67*/ = -/*@<e66609*/((/*@>e69f03*/sp_re_tmp_tmp/*@>e69f01*/ + /*@>e69f04*/1.0F)/*@>e60f62*/ / (/*@>e69f07*/0.0F/*@>e69f06*/ - /*@>e69f09*/sp_im_tmp));
+    }
+} else {
+    /*@>e65c01*/brm/*@>e60f70*/ = /*@>e6e071*/fabsf(/*@>e69e3c*/1.0F/*@>e69e3b*/ - /*@>e69e3e*/sp_re);
+    /*@>e65c06*/bim/*@>e60f79*/ = /*@>e6e073*/fabsf(/*@>e69e42*/0.0F/*@>e69e41*/ - /*@>e69e44*/sp_im_tmp);
+    /*@>e60f82*/if (/*@>e65c0a*/brm/*@>e60f81*/ > /*@>e65c08*/bim) {
+        /*@>e65c10*/brm/*@>e60f8d*/ = (/*@>e69ebd*/0.0F/*@>e69ebc*/ - /*@>e69ebf*/sp_im_tmp)/*@>e60f8a*/ / (/*@>e69ec2*/1.0F/*@>e69ec1*/ - /*@>e69ec4*/sp_re);
+        /*@>e65c18*/sp_re/*@>e60f9c*/ = (/*@>e69ece*/0.0F/*@>e69ecd*/ - /*@>e69ed0*/sp_im_tmp)/*@>e66607*/ * /*@>e65c14*/brm/*@>e60f99*/ + (/*@>e69ec8*/1.0F/*@>e69ec7*/ - /*@>e69eca*/sp_re);
+        /*@>e66125*/g_re_0/*@>e60fc6*/ = ((/*@>e6a44f*/sp_re_tmp_tmp/*@>e6a44d*/ + /*@>e6a450*/1.0F)/*@>e69ee0*/ + /*@>e69ee5*/brm/*@>e69ee3*/ * /*@>e69ee7*/sp_im_0)/*@>e60fc2*/ / /*@>e65c2a*/sp_re;
+        /*@>e66127*/g_im_0/*@>e60fd2*/ = (/*@>e69eec*/sp_im_0/*@>e69eea*/ - (/*@>e6a458*/sp_re_tmp_tmp/*@>e6a456*/ + /*@>e6a459*/1.0F)/*@>e69eed*/ * /*@>e69eef*/brm)/*@>e60fce*/ / /*@>e65c2e*/sp_re;
+    } else /*@>e60fdb*/if (/*@>e65c34*/bim/*@>e60fda*/ == /*@>e65c32*/brm) {
+        /*@>e65c3b*/sp_re/*@>e60fe7*/ = /*@>e69e87*/1.0F/*@>e69e86*/ - /*@>e69e89*/sp_re/*@>e60fe1*/ > /*@>e65c36*/0.0F/*@>e60fe1*/ ? /*@>e65c39*/0.5F : /*@>e65c3a*/-0.5F;
+        /*@>e65c42*/bim/*@>e60ff3*/ = /*@>e69e8d*/0.0F/*@>e69e8c*/ - /*@>e69e8f*/sp_im_tmp/*@>e60fed*/ > /*@>e65c3d*/0.0F/*@>e60fed*/ ? /*@>e65c40*/0.5F : /*@>e65c41*/-0.5F;
+        /*@>e66129*/g_re_0/*@>e61025*/ = ((/*@>e6a43b*/sp_re_tmp_tmp/*@>e6a439*/ + /*@>e6a43c*/1.0F)/*@>e69ea2*/ * /*@>e69ea6*/sp_re/*@>e69ea1*/ + /*@>e69ea9*/sp_im_0/*@>e69ea7*/ * /*@>e69eab*/bim)/*@>e61021*/ / /*@>e65c58*/brm;
+        /*@>e6612b*/g_im_0/*@>e61031*/ = (/*@>e69eb1*/sp_im_0/*@>e69eaf*/ * /*@>e69eb3*/sp_re/*@>e69eae*/ - (/*@>e6a445*/sp_re_tmp_tmp/*@>e6a443*/ + /*@>e6a446*/1.0F)/*@>e69eb4*/ * /*@>e69eb8*/bim)/*@>e6102d*/ / /*@>e65c5c*/brm;
+    } else {
+        /*@>e65c64*/brm/*@>e6103c*/ = (/*@>e69e4e*/1.0F/*@>e69e4d*/ - /*@>e69e50*/sp_re)/*@>e61039*/ / (/*@>e69e53*/0.0F/*@>e69e52*/ - /*@>e69e55*/sp_im_tmp);
+        /*@>e65c6c*/sp_re/*@>e6104b*/ = (/*@>e69e5f*/1.0F/*@>e69e5e*/ - /*@>e69e61*/sp_re)/*@>e665eb*/ * /*@>e65c68*/brm/*@>e61048*/ + (/*@>e69e59*/0.0F/*@>e69e58*/ - /*@>e69e5b*/sp_im_tmp);
+        /*@>e6612d*/g_re_0/*@>e61075*/ = ((/*@>e6a42c*/sp_re_tmp_tmp/*@>e6a42a*/ + /*@>e6a42d*/1.0F)/*@>e69e72*/ * /*@>e69e74*/brm/*@>e69e71*/ + /*@>e69e78*/sp_im_0)/*@>e61071*/ / /*@>e65c7e*/sp_re;
+        /*@>e6612f*/g_im_0/*@>e61081*/ = (/*@>e69e7e*/brm/*@>e69e7c*/ * /*@>e69e80*/sp_im_0/*@>e69e7b*/ - (/*@>e6a434*/sp_re_tmp_tmp/*@>e6a432*/ + /*@>e6a435*/1.0F))/*@>e6107d*/ / /*@>e65c82*/sp_re;
+    }
+}
+/*@>e65f1a*/P/*@>e61782*/[/*@>e65f1c*/2]./*@>e71302*/re/*@>e61781*/ = /*@>e69f46*/g_re_0;
+/*@>e651c1*/P/*@>e5f520*/[/*@>e651a3*/2]./*@>e712ff*/im/*@>e5f51f*/ = /*@>e69f4a*/g_im_0;
+/* 'LinkwitzRileyFiltDesign:39' p(2*n) = (1+sp/2)/(1-sp/2); */
+/*@>e610bc*/if (sp_re_tmp/*@>e610bb*/ == /*@>e65c91*/0.0F) {
+    /*@>e6b644*/sp_re_tmp_tmp/*@>e6b646*/ = sp_re_tmp/*@>e610c4*/ / /*@>e67cff*/2.0F;
+    /*@>e66133*/sp_im_0/*@>e610ce*/ = /*@>e65c98*/0.0F;
+    /*@>e66155*/sp_re/*@>e612b3*/ = sp_re_tmp_tmp;
+    /*@>e66157*/sp_im_tmp/*@>e612b9*/ = /*@>e65d5e*/0.0F;
+} else /*@>e610d5*/if (sp_re_tmp/*@>e610d4*/ == /*@>e65c99*/0.0F) {
+    /*@>e66135*/sp_re_tmp_tmp/*@>e610db*/ = /*@>e65c9c*/0.0F;
+    /*@>e6cf88*/sp_im_0/*@>e6cf8a*/ = sp_re_tmp/*@>e610e3*/ / /*@>e67cfd*/2.0F;
+    /*@>e66159*/sp_re/*@>e612c6*/ = /*@>e65d62*/0.0F;
+    /*@>e6615b*/sp_im_tmp/*@>e612d2*/ = sp_im_0;
+} else {
+    /*@>e6cf68*/sp_re_tmp_tmp/*@>e6cf6a*/ = sp_re_tmp/*@>e610ef*/ / /*@>e67cf9*/2.0F;
+    /*@>e6613b*/sp_im_0/*@>e610ff*/ = sp_re_tmp_tmp;
+    /*@>e6615d*/sp_re/*@>e612de*/ = sp_re_tmp_tmp;
+    /*@>e6615f*/sp_im_tmp/*@>e612ea*/ = sp_re_tmp_tmp;
+}
+/*@>e61497*/if (/*@>e69f6e*/0.0F/*@>e69f6d*/ - /*@>e69f70*/sp_im_tmp/*@>e61496*/ == /*@>e65e1a*/0.0F) {
+    /*@>e6149e*/if (/*@>e69b69*/sp_im_0/*@>e6149d*/ == /*@>e65e1d*/0.0F) {
+        /*@>e66179*/sp_re_tmp/*@>e614aa*/ = (/*@>e6a07a*/sp_re_tmp_tmp/*@>e6a078*/ + /*@>e6a07b*/1.0F)/*@>e614a6*/ / (/*@>e6a07e*/1.0F/*@>e6a07d*/ - /*@>e6a080*/sp_re);
+        /*@>e6617b*/sp_im_0/*@>e614b0*/ = /*@>e65e24*/0.0F;
+    } else /*@>e614b7*/if (/*@>e6a05d*/sp_re_tmp_tmp/*@>e6a05b*/ + /*@>e6a05e*/1.0F/*@>e614b6*/ == /*@>e65e25*/0.0F) {
+        /*@>e6617d*/sp_re_tmp/*@>e614bd*/ = /*@>e65e28*/0.0F;
+        /*@>e6617f*/sp_im_0/*@>e70cda*/ /= /*@>e6a073*/1.0F/*@>e6a072*/ - /*@>e6a075*/sp_re;
+    } else {
+        /*@>e66181*/sp_re_tmp/*@>e614d5*/ = (/*@>e6a063*/sp_re_tmp_tmp/*@>e6a061*/ + /*@>e6a064*/1.0F)/*@>e614d1*/ / (/*@>e6a067*/1.0F/*@>e6a066*/ - /*@>e6a069*/sp_re);
+        /*@>e66183*/sp_im_0/*@>e70cdb*/ /= /*@>e6a06d*/1.0F/*@>e6a06c*/ - /*@>e6a06f*/sp_re;
+    }
+} else /*@>e614e8*/if (/*@>e69f74*/1.0F/*@>e69f73*/ - /*@>e69f76*/sp_re/*@>e614e7*/ == /*@>e65e35*/0.0F) {
+    /*@>e614ef*/if (/*@>e6a035*/sp_re_tmp_tmp/*@>e6a033*/ + /*@>e6a036*/1.0F/*@>e614ee*/ == /*@>e65e38*/0.0F) {
+        /*@>e66185*/sp_re_tmp/*@>e614fb*/ = /*@>e69b67*/sp_im_0/*@>e614f7*/ / (/*@>e6a056*/0.0F/*@>e6a055*/ - /*@>e6a058*/sp_im_tmp);
+        /*@>e66187*/sp_im_0/*@>e61501*/ = /*@>e65e3f*/0.0F;
+    } else /*@>e61508*/if (/*@>e69b63*/sp_im_0/*@>e61507*/ == /*@>e65e40*/0.0F) {
+        /*@>e66189*/sp_re_tmp/*@>e6150e*/ = /*@>e65e43*/0.0F;
+        /*@>e6618b*/sp_im_0/*@>e6151b*/ = -/*@<e66574*/((/*@>e6a04c*/sp_re_tmp_tmp/*@>e6a04a*/ + /*@>e6a04d*/1.0F)/*@>e61516*/ / (/*@>e6a050*/0.0F/*@>e6a04f*/ - /*@>e6a052*/sp_im_tmp));
+    } else {
+        /*@>e6618d*/sp_re_tmp/*@>e61527*/ = /*@>e69b65*/sp_im_0/*@>e61523*/ / (/*@>e6a03a*/0.0F/*@>e6a039*/ - /*@>e6a03c*/sp_im_tmp);
+        /*@>e6618f*/sp_im_0/*@>e61534*/ = -/*@<e66573*/((/*@>e6a041*/sp_re_tmp_tmp/*@>e6a03f*/ + /*@>e6a042*/1.0F)/*@>e6152f*/ / (/*@>e6a045*/0.0F/*@>e6a044*/ - /*@>e6a047*/sp_im_tmp));
+    }
+} else {
+    /*@>e65e53*/brm/*@>e6153d*/ = /*@>e6e075*/fabsf(/*@>e69f7a*/1.0F/*@>e69f79*/ - /*@>e69f7c*/sp_re);
+    /*@>e65e58*/bim/*@>e61546*/ = /*@>e6e077*/fabsf(/*@>e69f80*/0.0F/*@>e69f7f*/ - /*@>e69f82*/sp_im_tmp);
+    /*@>e6154f*/if (/*@>e65e5c*/brm/*@>e6154e*/ > /*@>e65e5a*/bim) {
+        /*@>e65e62*/brm/*@>e6155a*/ = (/*@>e69ffb*/0.0F/*@>e69ffa*/ - /*@>e69ffd*/sp_im_tmp)/*@>e61557*/ / (/*@>e6a000*/1.0F/*@>e69fff*/ - /*@>e6a002*/sp_re);
+        /*@>e65e6a*/sp_re/*@>e61569*/ = (/*@>e6a00c*/0.0F/*@>e6a00b*/ - /*@>e6a00e*/sp_im_tmp)/*@>e66571*/ * /*@>e65e66*/brm/*@>e61566*/ + (/*@>e6a006*/1.0F/*@>e6a005*/ - /*@>e6a008*/sp_re);
+        /*@>e66191*/sp_re_tmp/*@>e61593*/ = ((/*@>e6a4a3*/sp_re_tmp_tmp/*@>e6a4a1*/ + /*@>e6a4a4*/1.0F)/*@>e6a01e*/ + /*@>e6a023*/brm/*@>e6a021*/ * /*@>e6a025*/sp_im_0)/*@>e6158f*/ / /*@>e65e7c*/sp_re;
+        /*@>e66193*/sp_im_0/*@>e6159f*/ = (/*@>e6a02a*/sp_im_0/*@>e6a028*/ - (/*@>e6a4ac*/sp_re_tmp_tmp/*@>e6a4aa*/ + /*@>e6a4ad*/1.0F)/*@>e6a02b*/ * /*@>e6a02d*/brm)/*@>e6159b*/ / /*@>e65e80*/sp_re;
+    } else /*@>e615a8*/if (/*@>e65e86*/bim/*@>e615a7*/ == /*@>e65e84*/brm) {
+        /*@>e65e8d*/sp_re/*@>e615b4*/ = /*@>e69fc5*/1.0F/*@>e69fc4*/ - /*@>e69fc7*/sp_re/*@>e615ae*/ > /*@>e65e88*/0.0F/*@>e615ae*/ ? /*@>e65e8b*/0.5F : /*@>e65e8c*/-0.5F;
+        /*@>e65e94*/bim/*@>e615c0*/ = /*@>e69fcb*/0.0F/*@>e69fca*/ - /*@>e69fcd*/sp_im_tmp/*@>e615ba*/ > /*@>e65e8f*/0.0F/*@>e615ba*/ ? /*@>e65e92*/0.5F : /*@>e65e93*/-0.5F;
+        /*@>e66195*/sp_re_tmp/*@>e615f2*/ = ((/*@>e6a48f*/sp_re_tmp_tmp/*@>e6a48d*/ + /*@>e6a490*/1.0F)/*@>e69fe0*/ * /*@>e69fe4*/sp_re/*@>e69fdf*/ + /*@>e69fe7*/sp_im_0/*@>e69fe5*/ * /*@>e69fe9*/bim)/*@>e615ee*/ / /*@>e65eaa*/brm;
+        /*@>e66197*/sp_im_0/*@>e615fe*/ = (/*@>e69fef*/sp_im_0/*@>e69fed*/ * /*@>e69ff1*/sp_re/*@>e69fec*/ - (/*@>e6a499*/sp_re_tmp_tmp/*@>e6a497*/ + /*@>e6a49a*/1.0F)/*@>e69ff2*/ * /*@>e69ff6*/bim)/*@>e615fa*/ / /*@>e65eae*/brm;
+    } else {
+        /*@>e65eb6*/brm/*@>e61609*/ = (/*@>e69f8c*/1.0F/*@>e69f8b*/ - /*@>e69f8e*/sp_re)/*@>e61606*/ / (/*@>e69f91*/0.0F/*@>e69f90*/ - /*@>e69f93*/sp_im_tmp);
+        /*@>e65ebe*/sp_re/*@>e61618*/ = (/*@>e69f9d*/1.0F/*@>e69f9c*/ - /*@>e69f9f*/sp_re)/*@>e66555*/ * /*@>e65eba*/brm/*@>e61615*/ + (/*@>e69f97*/0.0F/*@>e69f96*/ - /*@>e69f99*/sp_im_tmp);
+        /*@>e66199*/sp_re_tmp/*@>e61642*/ = ((/*@>e6a480*/sp_re_tmp_tmp/*@>e6a47e*/ + /*@>e6a481*/1.0F)/*@>e69fb0*/ * /*@>e69fb2*/brm/*@>e69faf*/ + /*@>e69fb6*/sp_im_0)/*@>e6163e*/ / /*@>e65ed0*/sp_re;
+        /*@>e6619b*/sp_im_0/*@>e6164e*/ = (/*@>e69fbc*/brm/*@>e69fba*/ * /*@>e69fbe*/sp_im_0/*@>e69fb9*/ - (/*@>e6a488*/sp_re_tmp_tmp/*@>e6a486*/ + /*@>e6a489*/1.0F))/*@>e6164a*/ / /*@>e65ed4*/sp_re;
+    }
+}
+/*@>e65f1d*/P/*@>e6178d*/[/*@>e65f1f*/3]./*@>e712fc*/re/*@>e6178c*/ = /*@>e6a084*/sp_re_tmp;
+/*@>e651bf*/P/*@>e5f543*/[/*@>e651a2*/3]./*@>e712f9*/im/*@>e5f542*/ = /*@>e6a088*/sp_im_0;
+/*  Normalization Factor */
+/* 'LinkwitzRileyFiltDesign:43' if strcmp(type,'high') */
+/* 'LinkwitzRileyFiltDesign:45' else */
+/* 'LinkwitzRileyFiltDesign:46' k = real(prod((1-p(1:order))/2)); */
+/*@>e5f78b*/if (/*@>e6a094*/0.0/*@>e6a093*/ - /*@>e6a4b3*/sp_im/*@>e5f78a*/ == /*@>e65271*/0.0) {
+    /*@>e65f5d*/x_idx_0_re/*@>e5f797*/ = (/*@>e6a0c6*/1.0/*@>e6a0c5*/ - /*@>e6a4cc*/frequency)/*@>e5f793*/ / /*@>e67d3b*/2.0;
+    /*@>e65f5f*/x_idx_0_im/*@>e5f79d*/ = /*@>e65278*/0.0;
+} else /*@>e5f7a4*/if (/*@>e6a09e*/1.0/*@>e6a09d*/ - /*@>e6a4b8*/frequency/*@>e5f7a3*/ == /*@>e65279*/0.0) {
+    /*@>e65f61*/x_idx_0_re/*@>e5f7aa*/ = /*@>e6527c*/0.0;
+    /*@>e65f63*/x_idx_0_im/*@>e5f7b6*/ = (/*@>e6a0bc*/0.0/*@>e6a0bb*/ - /*@>e6a4c7*/sp_im)/*@>e5f7b2*/ / /*@>e67d39*/2.0;
+} else {
+    /*@>e65f65*/x_idx_0_re/*@>e5f7c2*/ = (/*@>e6a0a8*/1.0/*@>e6a0a7*/ - /*@>e6a4bd*/frequency)/*@>e5f7be*/ / /*@>e67d35*/2.0;
+    /*@>e65f67*/x_idx_0_im/*@>e5f7ce*/ = (/*@>e6a0b2*/0.0/*@>e6a0b1*/ - /*@>e6a4c2*/sp_im)/*@>e5f7ca*/ / /*@>e67d37*/2.0;
+}
+/*@>e5f980*/if (/*@>e6a0d8*/0.0/*@>e6a0d7*/ - /*@>e6a4d1*/g_im/*@>e5f97f*/ == /*@>e6533d*/0.0) {
+    /*@>e65f81*/x_idx_1_re/*@>e5f98c*/ = (/*@>e6a10a*/1.0/*@>e6a109*/ - /*@>e6a4ea*/g_re)/*@>e5f988*/ / /*@>e67d57*/2.0;
+    /*@>e65f83*/x_idx_1_im/*@>e5f992*/ = /*@>e65344*/0.0;
+} else /*@>e5f999*/if (/*@>e6a0e2*/1.0/*@>e6a0e1*/ - /*@>e6a4d6*/g_re/*@>e5f998*/ == /*@>e65345*/0.0) {
+    /*@>e65f85*/x_idx_1_re/*@>e5f99f*/ = /*@>e65348*/0.0;
+    /*@>e65f87*/x_idx_1_im/*@>e5f9ab*/ = (/*@>e6a100*/0.0/*@>e6a0ff*/ - /*@>e6a4e5*/g_im)/*@>e5f9a7*/ / /*@>e67d55*/2.0;
+} else {
+    /*@>e65f89*/x_idx_1_re/*@>e5f9b7*/ = (/*@>e6a0ec*/1.0/*@>e6a0eb*/ - /*@>e6a4db*/g_re)/*@>e5f9b3*/ / /*@>e67d51*/2.0;
+    /*@>e65f8b*/x_idx_1_im/*@>e5f9c3*/ = (/*@>e6a0f6*/0.0/*@>e6a0f5*/ - /*@>e6a4e0*/g_im)/*@>e5f9bf*/ / /*@>e67d53*/2.0;
+}
+/*@>e5fb75*/if (/*@>e6a11c*/0.0/*@>e6a11b*/ - /*@>e6a4ef*/g_im_0/*@>e5fb74*/ == /*@>e65409*/0.0) {
+    /*@>e65fa5*/x_idx_2_re/*@>e5fb81*/ = (/*@>e6a14e*/1.0/*@>e6a14d*/ - /*@>e6a508*/g_re_0)/*@>e5fb7d*/ / /*@>e67d73*/2.0;
+    /*@>e65fa7*/x_idx_2_im/*@>e5fb87*/ = /*@>e65410*/0.0;
+} else /*@>e5fb8e*/if (/*@>e6a126*/1.0/*@>e6a125*/ - /*@>e6a4f4*/g_re_0/*@>e5fb8d*/ == /*@>e65411*/0.0) {
+    /*@>e65fa9*/x_idx_2_re/*@>e5fb94*/ = /*@>e65414*/0.0;
+    /*@>e65fab*/x_idx_2_im/*@>e5fba0*/ = (/*@>e6a144*/0.0/*@>e6a143*/ - /*@>e6a503*/g_im_0)/*@>e5fb9c*/ / /*@>e67d71*/2.0;
+} else {
+    /*@>e65fad*/x_idx_2_re/*@>e5fbac*/ = (/*@>e6a130*/1.0/*@>e6a12f*/ - /*@>e6a4f9*/g_re_0)/*@>e5fba8*/ / /*@>e67d6d*/2.0;
+    /*@>e65faf*/x_idx_2_im/*@>e5fbb8*/ = (/*@>e6a13a*/0.0/*@>e6a139*/ - /*@>e6a4fe*/g_im_0)/*@>e5fbb4*/ / /*@>e67d6f*/2.0;
+}
+/*@>e5fd6a*/if (/*@>e6a160*/0.0/*@>e6a15f*/ - /*@>e6a50d*/sp_im_0/*@>e5fd69*/ == /*@>e654d5*/0.0) {
+    /*@>e65fc9*/x_idx_3_re/*@>e5fd76*/ = (/*@>e6a192*/1.0/*@>e6a191*/ - /*@>e6a526*/sp_re_tmp)/*@>e5fd72*/ / /*@>e67d8f*/2.0;
+    /*@>e65fcb*/x_idx_3_im/*@>e5fd7c*/ = /*@>e654dc*/0.0;
+} else /*@>e5fd83*/if (/*@>e6a16a*/1.0/*@>e6a169*/ - /*@>e6a512*/sp_re_tmp/*@>e5fd82*/ == /*@>e654dd*/0.0) {
+    /*@>e65fcd*/x_idx_3_re/*@>e5fd89*/ = /*@>e654e0*/0.0;
+    /*@>e65fcf*/x_idx_3_im/*@>e5fd95*/ = (/*@>e6a188*/0.0/*@>e6a187*/ - /*@>e6a521*/sp_im_0)/*@>e5fd91*/ / /*@>e67d8d*/2.0;
+} else {
+    /*@>e65fd1*/x_idx_3_re/*@>e5fda1*/ = (/*@>e6a174*/1.0/*@>e6a173*/ - /*@>e6a517*/sp_re_tmp)/*@>e5fd9d*/ / /*@>e67d89*/2.0;
+    /*@>e65fd3*/x_idx_3_im/*@>e5fdad*/ = (/*@>e6a17e*/0.0/*@>e6a17d*/ - /*@>e6a51c*/sp_im_0)/*@>e5fda9*/ / /*@>e67d8b*/2.0;
+}
+/*@>e661a1*/re/*@>e616a9*/ = /*@>e69b6f*/x_idx_0_re/*@>e66461*/ * /*@>e66385*/x_idx_1_re/*@>e616a8*/ - /*@>e69b71*/x_idx_0_im/*@>e66465*/ * /*@>e66389*/x_idx_1_im;
+/*@>e661a3*/x_idx_0_re/*@>e616bd*/ = /*@>e69b73*/x_idx_0_re/*@>e66459*/ * /*@>e6638d*/x_idx_1_im/*@>e616bc*/ + /*@>e69b75*/x_idx_0_im/*@>e6645d*/ * /*@>e66391*/x_idx_1_re;
+/*@>e661a9*/re/*@>e616f9*/ = (/*@>e6a531*/re/*@>e6a52f*/ * /*@>e6a533*/x_idx_2_re/*@>e6a52e*/ - /*@>e6a536*/x_idx_0_re/*@>e6a534*/ * /*@>e6a538*/x_idx_2_im)/*@>e66441*/ * /*@>e663a5*/x_idx_3_re/*@>e616f8*/ - (/*@>e6a53c*/re/*@>e6a53a*/ * /*@>e6a53e*/x_idx_2_im/*@>e6a539*/ + /*@>e6a541*/x_idx_0_re/*@>e6a53f*/ * /*@>e6a543*/x_idx_2_re)/*@>e66445*/ * /*@>e663a9*/x_idx_3_im;
+/* '<S43>:1:11' [num, denom] = zp2tf(Z,P,K); */
+/*@>e65f20*/c/*@>e617bd*/[/*@>e65f22*/0]./*@>e712f6*/re/*@>e617bc*/ = /*@>e67d95*/1.0;
+/*@>e65234*/c/*@>e5f288*/[/*@>e651d4*/0]./*@>e712f3*/im/*@>c71a63*/ = /*@>e67d97*/0.0;
+/*@>c71a81*/for (/*@>e70cae*/n = /*@>e70cad*/0; /*@>e70cb8*/n < /*@>e70cb6*/4; /*@>e70cb4*/n/*@>e70cd0*/++) {
+    /*@>e6b674*/x_idx_2_re/*@>e6b676*/ = /*@>e6f251*/P/*@>e6f253*/[/*@>e6f250*/n].re;
+    /*@>e6b684*/x_idx_2_im/*@>e6b686*/ = /*@>e6f257*/P/*@>e6f259*/[/*@>e6f256*/n].im;
+    /*@>e6b654*/x_idx_3_re/*@>e6b656*/ = /*@>e6f25d*/c/*@>e6f25f*/[/*@>e6f25c*/n].re;
+    /*@>e6b664*/x_idx_3_im/*@>e6b666*/ = /*@>e6f269*/c/*@>e6f26b*/[/*@>e6f268*/n].im;
+    /*@>e65f23*/c/*@>e617c8*/[/*@>e65f25*/n/*@>e617ca*/ + /*@>e65f27*/1]./*@>e712f0*/re/*@>e617c7*/ = -/*@<e6ba62*//*@>e6ba64*/x_idx_2_re/*@>e6a1b6*/ * x_idx_3_re/*@>e6a1b5*/ - -/*@<e6ba67*//*@>e6ba69*/x_idx_2_im/*@>e6a1c0*/ * x_idx_3_im;
+    /*@>e6521f*/c/*@>e5f291*/[/*@>e6521d*/n/*@>e5e9e0*/ + /*@>e6521c*/1]./*@>e712ed*/im/*@>c71a69*/ = -/*@<e6bcc2*//*@>e6bcc4*/x_idx_2_re/*@>e6ba6d*/ * /*@>e6ba71*/x_idx_3_im/*@>e6ba6c*/ + -/*@<e6bcc6*//*@>e6bcc8*/x_idx_2_im/*@>e6ba72*/ * /*@>e6ba76*/x_idx_3_re;
+/*@>c71a84*/    for (/*@>e70cc2*/b_k = /*@>e70cc0*/n/*@>e70cbe*/ + /*@>e70cc1*/1; /*@>e70cce*/b_k >= /*@>e70ccc*/2; /*@>e70cca*/b_k--) {
+        /*@>e6b694*/x_idx_3_re/*@>e6b696*/ = /*@>e6f277*/c/*@>e6f279*/[/*@>e6f275*/b_k/*@>e6f273*/ - /*@>e6f276*/2].re;
+        /*@>e6b6ac*/x_idx_3_im/*@>e6b6ae*/ = /*@>e6f27f*/c/*@>e6f281*/[/*@>e6f27d*/b_k/*@>e6f27b*/ - /*@>e6f27e*/2].im;
+        /*@>e65f28*/c/*@>e617d6*/[/*@>e65f2a*/b_k/*@>e617d8*/ - /*@>e65f2c*/1]./*@>e712ea*/re/*@>e70cd2*/ -= x_idx_3_re/*@>e6a1cc*/ * x_idx_2_re/*@>e6a1cb*/ - x_idx_3_im/*@>e6a1dd*/ * x_idx_2_im;
+        /*@>e65213*/c/*@>e5f2a5*/[/*@>e65211*/b_k/*@>e5ea95*/ - /*@>e65210*/1]./*@>e712e7*/im/*@>e70cd3*/ -= /*@>e6ba91*/x_idx_3_im/*@>e6ba8f*/ * x_idx_2_re/*@>e6ba8e*/ + /*@>e6ba96*/x_idx_3_re/*@>e6ba94*/ * x_idx_2_im;
+    }
+}
+/*@>e5e978*/for (/*@>e70c9d*/n = /*@>e70c9c*/0; /*@>e70ca7*/n < /*@>e70ca5*/5; /*@>e70ca3*/n/*@>e70cd4*/++) {
+    /*@>e6f882*/Model_TranslationEngine64_B./*@>e71314*/denom/*@>e5e96a*/[/*@>e6522c*/n]/*@>e5e96b*/ = /*@>e6f263*/c/*@>e6f265*/[/*@>e6f262*/n].re;
+}
+/*@>e6521a*/pj/*@>e5f2cd*/[/*@>e651d3*/0]/*@>c71aa7*/ = /*@>e65250*/1.0;
+/*@>c71ac7*/for (/*@>e70c78*/n = /*@>e70c77*/0; /*@>e70c82*/n < /*@>e70c80*/4; /*@>e70c7e*/n/*@>e70cd5*/++) {
+    /*@>e65201*/pj/*@>e5f2d5*/[/*@>e651ff*/n/*@>e5eb4a*/ + /*@>e651fe*/1]/*@>c71aae*/ = /*@>e6f26f*/pj/*@>e6f271*/[/*@>e6f26e*/n];
+/*@>c71aca*/    for (/*@>e70c8c*/b_k = /*@>e70c8a*/n/*@>e70c88*/ + /*@>e70c8b*/1; /*@>e70c98*/b_k >= /*@>e70c96*/2; /*@>e70c94*/b_k--) {
+        /*@>e651ea*/pj/*@>e5f2e8*/[/*@>e651e8*/b_k/*@>e5ec2a*/ - /*@>e651e7*/1]/*@>e70cd7*/ -= -/*@<e687b5*//*@>e6f297*/pj/*@>e6f299*/[/*@>e6f295*/b_k/*@>e6f293*/ - /*@>e6f296*/2];
+    }
+}
+for (n = 0; n <= 2; n += 2) {
+    __m128d tmp;
+    /* {S!d1329}MATLAB Function: '<S35>/LinkwitzRiley' */
+    /* {S!d1336}MATLAB Function: '<S35>/LinkwitzRiley' */
+    tmp = _mm_loadu_pd(&/*@>e6b3f9*/pj[/*@>e6b3f8*/n]);
+    tmp = _mm_mul_pd(tmp, _mm_set1_pd(/*@>e6b413*/re));
+    _mm_storeu_pd(&/*@>e6f88e*/Model_TranslationEngine64_B./*@>e71317*/num/*@>e6b439*/[/*@>e6b43c*/n], tmp);
+    _mm_storeu_pd(&/*@>e6b454*/pj/*@>e6b453*/[/*@>e6b456*/n], tmp);
+}
+/* {S!d1331}MATLAB Function: '<S35>/LinkwitzRiley' */
+/* {S!d1338}MATLAB Function: '<S35>/LinkwitzRiley' */
+/*@>e5eae2*/for (/*@>e70c58*/n = 4; /*@>e70c62*/n < 5; /*@>e70c5e*/n/*@>e70cd9*/++) {
+    x_idx_2_re/*@>e5ead5*/ = /*@>e6f2a5*/pj/*@>e6f2a7*/[/*@>e6f2a4*/n]/*@>e66805*/ * /*@>e69b85*/re;
+    /*@>e6f894*/Model_TranslationEngine64_B./*@>e7131a*/num/*@>e5eb97*/[/*@>e651fa*/n]/*@>c71a44*/ = x_idx_2_re;
+    /*@>e6b2b7*/pj/*@>e6b2b6*/[/*@>e6b2b9*/n] = x_idx_2_re;
+}
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void FuncTranslation_Model_117_43_340(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(164, 0, fcnProtoType)>
+%endfunction

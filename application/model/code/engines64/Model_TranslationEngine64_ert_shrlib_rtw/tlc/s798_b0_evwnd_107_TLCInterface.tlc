@@ -1,0 +1,317 @@
+%implements s798_b0_evwnd_107_TLCInterface "C"
+
+%function getOutputAddr_394_0_107_1_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<dd5dc3*//*@>dd5db7*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd5dc9*/sosCoefficients"
+%endfunction
+
+%function getOutput_394_0_107_1_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>dd5dd7*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd5dea*/sosCoefficients"
+%endfunction
+
+%function getOutputAddr_394_1_107_1_1_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<dd5e17*//*@>dd5e0b*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd5e1d*/numStages"
+%endfunction
+
+%function getOutput_394_1_107_1_1_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>dd5e2b*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd5e3e*/numStages"
+%endfunction
+
+%function getInputAddr_394_5_107_1_3_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<dd5e82*//*@>dd5e76*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd5e88*/PoolNumStages_f" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInput_394_5_107_1_3_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>dd5e96*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd5ea9*/PoolNumStages_f" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInputAddr_394_6_107_1_4_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<dd5ed6*//*@>dd5eca*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd5edc*/PoolCoeffs_n" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInput_394_6_107_1_4_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>dd5eea*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd5efd*/PoolCoeffs_n" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getOutputAddr_394_8_107_1_6_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<dd5f3f*//*@>dd5f33*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd5f45*/FIRCoeffs"
+%endfunction
+
+%function getOutput_394_8_107_1_6_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>dd5f53*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd5f66*/FIRCoeffs"
+%endfunction
+
+%function getOutputAddr_394_9_107_1_7_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<dd5f93*//*@>dd5f87*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd5f99*/FIRLengths"
+%endfunction
+
+%function getOutput_394_9_107_1_7_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>dd5fa7*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd5fba*/FIRLengths"
+%endfunction
+
+%function getOutputAddr_394_10_107_1_8_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<dd5fe7*//*@>dd5fdb*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd5fed*/PaddedFIRLengths"
+%endfunction
+
+%function getOutput_394_10_107_1_8_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>dd5ffb*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd600e*/PaddedFIRLengths"
+%endfunction
+
+%function getInputAddr_394_14_107_1_10_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<dd6052*//*@>dd6046*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd6058*/FIRCoeffs_o" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInput_394_14_107_1_10_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>dd6066*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd6079*/FIRCoeffs_o" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInputAddr_394_15_107_1_11_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<dd60a6*//*@>dd609a*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd60ac*/FIRLengths_c" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInput_394_15_107_1_11_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>dd60ba*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd60cd*/FIRLengths_c" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInputAddr_394_16_107_1_12_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<dd60fa*//*@>dd60ee*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd6100*/PaddedFIRLengths_i" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInput_394_16_107_1_12_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>dd610e*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd6121*/PaddedFIRLengths_i" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getOutputAddr_394_17_107_1_13_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<dd614e*//*@>dd6142*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd6154*/InputMapping"
+%endfunction
+
+%function getOutput_394_17_107_1_13_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>dd6162*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd6175*/InputMapping"
+%endfunction
+
+%function getInputAddr_394_21_107_1_15_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<dd61b9*//*@>dd61ad*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd61bf*/Value_n" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInput_394_21_107_1_15_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>dd61cd*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd61e0*/Value_n" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getOutputAddr_394_22_107_1_16_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<dd620d*//*@>dd6201*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd6213*/OutputMapping"
+%endfunction
+
+%function getOutput_394_22_107_1_16_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>dd6221*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd6234*/OutputMapping"
+%endfunction
+
+%function getInputAddr_394_26_107_1_18_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<dd6278*//*@>dd626c*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd627e*/Value" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInput_394_26_107_1_18_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>dd628c*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd629f*/Value" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getOutputAddr_394_28_107_1_20_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<dd62e1*//*@>dd62d5*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd62e7*/sosCoefficients_a"
+%endfunction
+
+%function getOutput_394_28_107_1_20_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>dd62f5*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd6308*/sosCoefficients_a"
+%endfunction
+
+%function getOutputAddr_394_29_107_1_21_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<dd6335*//*@>dd6329*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd633b*/numStages_j"
+%endfunction
+
+%function getOutput_394_29_107_1_21_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>dd6349*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd635c*/numStages_j"
+%endfunction
+
+%function getInputAddr_394_33_107_1_23_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<dd63a0*//*@>dd6394*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd63a6*/PoolNumStages_k" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInput_394_33_107_1_23_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>dd63b4*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd63c7*/PoolNumStages_k" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInputAddr_394_34_107_1_24_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<dd63f4*//*@>dd63e8*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd63fa*/PoolCoeffs_l" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInput_394_34_107_1_24_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>dd6408*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd641b*/PoolCoeffs_l" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getOutputAddr_394_37_107_1_27_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<dd6472*//*@>dd6466*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd6478*/FIRCoeffs_e"
+%endfunction
+
+%function getOutput_394_37_107_1_27_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>dd6486*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd6499*/FIRCoeffs_e"
+%endfunction
+
+%function getOutputAddr_394_38_107_1_28_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<dd64c6*//*@>dd64ba*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd64cc*/FIRLengths_j"
+%endfunction
+
+%function getOutput_394_38_107_1_28_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>dd64da*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd64ed*/FIRLengths_j"
+%endfunction
+
+%function getOutputAddr_394_39_107_1_29_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<dd651a*//*@>dd650e*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd6520*/PaddedFIRLengths_f"
+%endfunction
+
+%function getOutput_394_39_107_1_29_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>dd652e*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd6541*/PaddedFIRLengths_f"
+%endfunction
+
+%function getInputAddr_394_43_107_1_31_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<dd6585*//*@>dd6579*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd658b*/FIRCoeffs_p" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInput_394_43_107_1_31_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>dd6599*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd65ac*/FIRCoeffs_p" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInputAddr_394_44_107_1_32_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<dd65d9*//*@>dd65cd*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd65df*/FIRLengths_e" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInput_394_44_107_1_32_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>dd65ed*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd6600*/FIRLengths_e" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInputAddr_394_45_107_1_33_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<dd662d*//*@>dd6621*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd6633*/PaddedFIRLengths_k" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInput_394_45_107_1_33_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>dd6641*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd6654*/PaddedFIRLengths_k" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getOutputAddr_394_46_107_1_34_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<dd6681*//*@>dd6675*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd6687*/sosCoefficients_d"
+%endfunction
+
+%function getOutput_394_46_107_1_34_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>dd6695*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd66a8*/sosCoefficients_d"
+%endfunction
+
+%function getOutputAddr_394_47_107_1_35_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<dd66d5*//*@>dd66c9*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd66db*/numStages_m"
+%endfunction
+
+%function getOutput_394_47_107_1_35_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>dd66e9*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd66fc*/numStages_m"
+%endfunction
+
+%function getInputAddr_394_51_107_1_37_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<dd6740*//*@>dd6734*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd6746*/PoolNumStages" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInput_394_51_107_1_37_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>dd6754*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd6767*/PoolNumStages" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInputAddr_394_52_107_1_38_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<dd6794*//*@>dd6788*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd679a*/PoolCoeffs" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInput_394_52_107_1_38_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>dd67a8*/Model_TranslationEngine64_Medusa5H1Part4_B./*@>dd67bb*/PoolCoeffs" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getSystemOutputFcnCallInfo_394_2_107_1_381_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>dd5d7d*/FuncTranslation_Model_141_472_255_36"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_394_11_107_1_383_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>dd5d81*/FuncTranslation_Model_141_472_235"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_394_18_107_1_385_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>dd5d85*/FuncTranslation_Model_141_472_239_67_18"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_394_23_107_1_387_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>dd5d89*/FuncTranslation_Model_141_472_240_67_18"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_394_30_107_1_389_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>dd5d8d*/FuncTranslation_Model_141_473_12_36"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_394_40_107_1_393_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>dd5d91*/FuncTranslation_Model_141_595_191"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_394_48_107_1_391_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>dd5d95*/FuncTranslation_Model_141_595_238_36"; Args [] }
+%return fcnInfo
+%endfunction

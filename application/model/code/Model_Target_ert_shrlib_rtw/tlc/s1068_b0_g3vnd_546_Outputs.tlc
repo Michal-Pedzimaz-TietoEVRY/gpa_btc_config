@@ -1,0 +1,76 @@
+%implements s1068_b0_g3vnd_546_Outputs "C"
+
+%function OutputsForTID(block, system, tid) Output
+%if tid == 1
+%assign ::GlobalCurrentTID = 1
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%assign tlcOutputsFcnOfS863B0Tid1 = OpaqueTLCBlockFcnForTID("Outputs", 863, 0, 1, 546, 1, 0)
+%assign tlcUpdateFcnOfS863B0Tid1 = OpaqueTLCBlockFcnForTID("Update", 863, 0, 1, 546, 1, 1)
+%if !WHITE_SPACE(tlcOutputsFcnOfS863B0Tid1)
+/* S-Function (SampleRateConverter_sfunc): '<S2178>/S-Function' */
+%<SLibCG_DumpSSCode("/*@[14ec79b*/",tlcOutputsFcnOfS863B0Tid1,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcUpdateFcnOfS863B0Tid1)
+/* Update for S-Function (SampleRateConverter_sfunc): '<S2178>/S-Function' */
+%<SLibCG_DumpSSCode("/*@[14ec7a8*/",tlcUpdateFcnOfS863B0Tid1,"/*@]*/")>\
+%endif
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutput1LocalVars", localVarDecl)>
+%assign ::GlobalCurrentTID = []
+%endif
+%if tid == 2
+%assign ::GlobalCurrentTID = 2
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+int32_T i;
+%closefile localVarDecl
+%assign tlcOutputsFcnOfS863B0Tid2 = OpaqueTLCBlockFcnForTID("Outputs", 863, 0, 2, 546, 2, 0)
+%assign tlcUpdateFcnOfS863B0Tid2 = OpaqueTLCBlockFcnForTID("Update", 863, 0, 2, 546, 2, 1)
+/* {S!d3948}Constant: '<S2178>/coeffs' */
+/*@>14ebbe9*/memcpy(&/*@>14ec0f5*/Model_Target_B./*@>14edbb7*/coeffs/*@>14eb92f*/[/*@>14eb91e*/0], &/*@>14ec284*/Model_Target_ConstP./*@>14edbbd*/pooled94/*@>14eb937*/[/*@>14eb92b*/0], /*@>14eb92d*/240U/*@>14eb93a*/ * /*@>14eb939*/sizeof(real32_T));
+/*@>14e9fcb*/for (/*@>14edb76*/i = /*@>14edb75*/0; /*@>14edb80*/i < /*@>14edb7e*/12; /*@>14edb7c*/i/*@>14edb84*/++) {
+    /* {S!d3950}Constant: '<S2178>/advance' */
+    /*@>14ec119*/Model_Target_B./*@>14edbba*/advance/*@>14ea24f*/[/*@>14eaae8*/i]/*@>14e9fbd*/ = /*@>14ec28a*/Model_Target_ConstP./*@>14edbc0*/pooled41/*@>14ebde5*/[/*@>14ebde2*/i];
+}
+%if !WHITE_SPACE(tlcOutputsFcnOfS863B0Tid2)
+/* {S!d3952}S-Function (SampleRateConverter_sfunc): '<S2178>/S-Function' */
+%<SLibCG_DumpSSCode("/*@[14ec7bc*/",tlcOutputsFcnOfS863B0Tid2,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcUpdateFcnOfS863B0Tid2)
+/* {S!d3954}Update for S-Function (SampleRateConverter_sfunc): '<S2178>/S-Function' */
+%<SLibCG_DumpSSCode("/*@[14ec7c9*/",tlcUpdateFcnOfS863B0Tid2,"/*@]*/")>\
+%endif
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutput2LocalVars", localVarDecl)>
+%assign ::GlobalCurrentTID = []
+%endif
+%endfunction
+%function OutputsFcnProtoTypeForTID(block, system, tid) Output
+%if tid == 1
+%assign ::GlobalCurrentTID = 1
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_SrcDownAnnTID1(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(546, 1, fcnProtoType)>
+%assign ::GlobalCurrentTID = []
+%endif
+%if tid == 2
+%assign ::GlobalCurrentTID = 2
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_SrcDownAnnTID2(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(546, 2, fcnProtoType)>
+%assign ::GlobalCurrentTID = []
+%endif
+%endfunction

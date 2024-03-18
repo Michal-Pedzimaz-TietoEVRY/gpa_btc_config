@@ -1,0 +1,171 @@
+%implements s1068_b0_g3vnd_51_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+int32_T d_data[30];
+int32_T d_size[2];
+int32_T b;
+int32_T ch;
+int32_T q0;
+int32_T ramper;
+real32_T yHpf[240];
+real32_T rampCoeffMultipliersBass[8];
+real32_T rampCoeffMultipliersNonBass[8];
+boolean_T rtu_channelToRamperMap_0[30];
+%closefile localVarDecl
+%assign _modelSS = ""
+
+%if SLibCG_FcnCallArgAccessed(51,1,1,3)
+%<SLibCG_AccessArg(51 ,1, 0)>
+%endif
+
+%if SLibCG_FcnCallArgAccessed(51,1,0,3)
+%<SLibCG_AccessArg(51 ,1, 0)>
+%endif
+
+/*  inputs */
+/* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/SleepingBeauty/SleepingBeauty/Enabled/FadeRamperDR/InnerLink/fade': '<S1379>:1' */
+/*  Applies the 'Front' and 'Rear' gains to the respective channels */
+/*  Inputs: */
+/*   audioIn: Input audio */
+/*   channelToRamperMap: Input channels mapped to their corresponding group. */
+/*     'Front' channels are mapped to rampers 1 and 3, and 'Rear' to rampers 2 */
+/*     and 4. */
+/*   yLpf: Low frequency content of the input audio */
+/*  Data Store objects (registered in "Edit Data" dialog) */
+/* '<S1379>:1:14' tgtGains = ones(1,2,'single'); */
+/*  Figure out the frame size, channel count and number of rampers */
+/* '<S1379>:1:17' [frameSize, ~] = size(audioIn); */
+/*  set the size and datatype of the output buffer */
+/* '<S1379>:1:20' audioOut = coder.nullcopy(audioIn); */
+/* '<S1379>:1:22' for ramper = 1:2 */
+/*@>11ea326*/for (/*@>11f013e*/q0 = /*@>11f013d*/0; /*@>11f0148*/q0 < /*@>11f0146*/240; /*@>11f0144*/q0/*@>11f014c*/++) {
+    /*@>11eba7e*/yHpf/*@>11ea318*/[/*@>11eba7c*/q0]/*@>11ea319*/ = /*@>11ef424*/rtu_audioIn/*@>11ef426*/[/*@>11ef422*/q0]/*@>11ea302*/ - /*@>11ef42b*/rtu_yLpf/*@>11ef42d*/[/*@>11ef429*/q0];
+}
+/*@>10cbba3*/for (/*@>11f00d6*/ramper = /*@>11f00d5*/0; /*@>11f00e0*/ramper < /*@>11f00de*/2; /*@>11f00dc*/ramper/*@>11f014d*/++) {
+    real32_T gainHighFreq;
+    real32_T gainLowFreq;
+    /* '<S1379>:1:23' rampCoeffMultipliersBass = ones(1, frameSize, 'single'); */
+    /* '<S1379>:1:24' rampCoeffMultipliersNonBass = ones(1, frameSize, 'single'); */
+/*@>11e9feb*/    for (/*@>11f012d*/q0 = /*@>11f012c*/0; /*@>11f0137*/q0 < /*@>11f0135*/8; /*@>11f0133*/q0/*@>11f014e*/++) {
+        /*@>11eba17*/rampCoeffMultipliersBass/*@>11eb3cf*/[/*@>11eba15*/q0]/*@>11e9fde*/ = /*@>11eba14*/1.0F;
+        /*@>11eba32*/rampCoeffMultipliersNonBass/*@>11eb3d7*/[/*@>11eba30*/q0]/*@>11ea069*/ = /*@>11eba2f*/1.0F;
+    }
+    /*  Get the gains for the corresponding channel group (non-bass/bass) */
+    /* '<S1379>:1:27' gainHighFreq = Rampers(ramper).currentGain; */
+    /*@>11eb9d3*/gainHighFreq/*@>10cbb3d*/ = %<SLibCG_DumpSSCode("/*@[11efca0*/",(SLibCG_SE(SLibCG_CSCDW(4, 1, "[/*@>11efc77*/ramper].currentGain", -1, "", 0))),"/*@]*/")>;
+    /* '<S1379>:1:28' gainLowFreq = Rampers(ramper + 2).currentGain; */
+    /*@>11eb9d6*/gainLowFreq/*@>10cbb41*/ = %<SLibCG_DumpSSCode("/*@[11efcd8*/",(SLibCG_SE(SLibCG_CSCDW(4, 1, "[/*@>11efcae*/ramper/*@>11efcac*/ + /*@>11efcaf*/2].currentGain", -1, "", 0))),"/*@]*/")>;
+    /* '<S1379>:1:30' if (Freeze(1) == false) */
+    /*@>10cbbaa*/if (%<SLibCG_DumpSSCode("/*@[11efcf4*/",(SLibCG_SE(SLibCG_CSCDW(319, 1, "", -1, "", 0))),"/*@]*/")>/*@>10cbb73*/ == /*@>11eb9da*/0U) {
+        /* '<S1379>:1:31' if (Rampers(ramper).frameCount == 0) */
+        /*@>10cbbab*/if (%<SLibCG_DumpSSCode("/*@[11efd2a*/",(SLibCG_SE(SLibCG_CSCDW(4, 1, "[/*@>11efd01*/ramper].frameCount", -1, "", 0))),"/*@]*/")>/*@>10cbb74*/ == /*@>11eb9dc*/0) {
+            /*  The ramp is finished. Stop ramping and SNAP to the target */
+            /* '<S1379>:1:33' gainHighFreq = Rampers(ramper).targetGain; */
+            /*@>11eb9de*/gainHighFreq/*@>10cbb49*/ = %<SLibCG_DumpSSCode("/*@[11efd60*/",(SLibCG_SE(SLibCG_CSCDW(4, 1, "[/*@>11efd37*/ramper].targetGain", -1, "", 0))),"/*@]*/")>;
+            /* '<S1379>:1:34' gainLowFreq = Rampers(ramper + 2).targetGain; */
+            /*@>11eb9e1*/gainLowFreq/*@>10cbb4d*/ = %<SLibCG_DumpSSCode("/*@[11efd98*/",(SLibCG_SE(SLibCG_CSCDW(4, 1, "[/*@>11efd6e*/ramper/*@>11efd6c*/ + /*@>11efd6f*/2].targetGain", -1, "", 0))),"/*@]*/")>;
+        } else {
+            /* '<S1379>:1:35' else */
+            /*  The ramp is *NOT* frozen or done: gain is moving */
+            /* '<S1379>:1:37' kHighFreq = Rampers(ramper).rampCoeff; */
+            /* '<S1379>:1:38' kLowFreq = Rampers(ramper + 2).rampCoeff; */
+            /*  Create ramp coefficient arrays to vectorize their  */
+            /*  multiplication with the input audio */
+            /* '<S1379>:1:42' rampCoeffMultipliersBass = (kLowFreq * rampCoeffMultipliersBass) .^ (1:frameSize); */
+            /* '<S1379>:1:43' rampCoeffMultipliersNonBass = (kHighFreq * rampCoeffMultipliersNonBass) .^ (1:frameSize); */
+/*@>11ea3ce*/            for (/*@>11f011c*/q0 = /*@>11f011b*/0; /*@>11f0126*/q0 < /*@>11f0124*/8; /*@>11f0122*/q0/*@>11f0152*/++) {
+                /*@>11eba98*/rampCoeffMultipliersBass/*@>11eb3ec*/[/*@>11eba96*/q0]/*@>11ea3c1*/ = /*@>11eec29*/qhmath_pow_f(%<SLibCG_DumpSSCode("/*@[11efdd0*/",(SLibCG_CSCDW(4, 1, "[/*@>11efda6*/ramper/*@>11efda4*/ + /*@>11efda7*/2].rampCoeff", -1, "", 0)),"/*@]*/")>, /*@>11ec786*/(real32_T)(/*@>11ec855*/(real_T)/*@>11ec857*/q0/*@>11ec854*/ + /*@>11ec858*/1.0));
+                /*@>11ebaae*/rampCoeffMultipliersNonBass/*@>11eb3f8*/[/*@>11ebaac*/q0]/*@>11ea43b*/ = /*@>11eec2b*/qhmath_pow_f(%<SLibCG_DumpSSCode("/*@[11efe06*/",(SLibCG_CSCDW(4, 1, "[/*@>11efddd*/ramper].rampCoeff", -1, "", 0)),"/*@]*/")>, /*@>11ec79b*/(real32_T)(/*@>11ec862*/(real_T)/*@>11ec864*/q0/*@>11ec861*/ + /*@>11ec865*/1.0));
+            }
+            /* '<S1379>:1:44' Rampers(ramper).frameCount = Rampers(ramper).frameCount - 1; */
+            /*@>11ebba7*/q0/*@>11ebba9*/ = %<SLibCG_DumpSSCode("/*@[11efe3c*/",(SLibCG_SE(SLibCG_CSCDW(4, 1, "[/*@>11efe13*/ramper].frameCount", -1, "", 0))),"/*@]*/")>;
+            /*@>11ecb69*/if (/*@>11ec7a5*/q0/*@>11ec7a3*/ < /*@>11ec7a6*/-2147483647) {
+%<SLibCG_DumpSSCode("/*@[11eff19*/",SLibCG_SetCSCDW(4, 1, "[/*@>11efeed*/ramper].frameCount", -1, "", 0, "MIN_int32_T"),"/*@]*/")>\
+            } else {
+%<SLibCG_DumpSSCode("/*@[11efe74*/",SLibCG_SetCSCDW(4, 1, "[/*@>11efe49*/ramper].frameCount", -1, "", 0, "/*@>11f0330*/q0/*@>11f032f*/ - /*@>11f0331*/1"),"/*@]*/")>\
+            }
+        }
+    }
+    /*  Loop through samples, adjusting gain and applying to channels */
+    /* '<S1379>:1:49' currentChannelGroup = find(channelToRamperMap == ramper); */
+/*@>11ea26e*/    for (/*@>11f010b*/q0 = /*@>11f010a*/0; /*@>11f0115*/q0 < /*@>11f0113*/30; /*@>11f0111*/q0/*@>11f014f*/++) {
+        /*@>11eba62*/rtu_channelToRamperMap_0/*@>11eb413*/[/*@>11eba60*/q0]/*@>11ea261*/ = (/*@>11ec1a3*/(real_T)(/*@>11ec7af*/ramper/*@>11ec7ad*/ + /*@>11ec7b0*/1)/*@>11ea24b*/ == /*@>11ef45e*/rtu_channelToRamperMap/*@>11ef460*/[/*@>11ef45c*/q0]);
+    }
+    %<SLibCG_DumpSSCode("/*@[11effbc*/",(SLibCGCallSubFcn("Model_Target_eml_find", ["/*@>11f033b*/rtu_channelToRamperMap_0", "/*@>11f0345*/d_data", "d_size", "/*@>11f0359*/%<::tSimStruct>"], 51, 1, 0)),"/*@]*/")>;
+    /* '<S1379>:1:50' yHpf = audioIn - yLpf; */
+    /* '<S1379>:1:51' for ch = 1:numel(currentChannelGroup) */
+    /*@>11eb9e3*/b/*@>10cbb77*/ = d_size/*@>11ef46d*/[/*@>11ef46a*/1];
+/*@>10cbbb6*/    for (/*@>11f00e7*/ch = /*@>11f00e6*/0; /*@>11f00f4*/ch < /*@>11f00f1*/b; /*@>11f00ed*/ch/*@>11f0150*/++) {
+        int32_T d_tmp;
+        /* '<S1379>:1:52' audioOut(:,currentChannelGroup(ch)) = (gainLowFreq * rampCoeffMultipliersBass)' .* yLpf(:,currentChannelGroup(ch)) + ... */
+        /* '<S1379>:1:53'             (gainHighFreq * rampCoeffMultipliersNonBass)' .* yHpf(:,currentChannelGroup(ch)); */
+        d_tmp = /*@>11ef479*/d_data[/*@>11ef478*/ch];
+/*@>11ea7f6*/        for (/*@>11f00fa*/q0 = /*@>11f00f9*/0; /*@>11f0104*/q0 < /*@>11f0102*/8; /*@>11f0100*/q0/*@>11f0151*/++) {
+            /*@>11ef675*/localB->/*@>11f02c1*/audioOut/*@>11eb13e*/[/*@>11ebaf7*/q0/*@>11eb13a*/ + ((d_tmp/*@>11ea995*/ - /*@>11ebb07*/1)/*@>11ebc0c*/ << /*@>11ec6e1*/3)]/*@>11ea7e9*/ = /*@>11ef498*/rtu_yLpf/*@>11ef49a*/[((d_tmp/*@>11ef490*/ - /*@>11ef493*/1)/*@>11ef48f*/ << /*@>11ef494*/3)/*@>11ef48e*/ + /*@>11ef496*/q0]/*@>11ebc0f*/ * (/*@>11eb9f4*/gainLowFreq/*@>11ebc13*/ * /*@>11ef49e*/rampCoeffMultipliersBass/*@>11ef4a0*/[/*@>11ef49d*/q0])/*@>11ea770*/ + /*@>11ef4ab*/yHpf/*@>11ef4ad*/[((d_tmp/*@>11ef4a4*/ - /*@>11ef4a7*/1)/*@>11ef4a3*/ << /*@>11ef4a8*/3)/*@>11ef4a2*/ + /*@>11ef4aa*/q0]/*@>11ebc1f*/ * (/*@>11eb9f6*/gainHighFreq/*@>11ebc23*/ * /*@>11ef4b1*/rampCoeffMultipliersNonBass/*@>11ef4b3*/[/*@>11ef4b0*/q0]);
+        }
+    }
+    /*  Send out target gains */
+    /* '<S1379>:1:57' tgtGains(ramper) = Rampers(ramper).targetGain; */
+    /*  Update the gain of the rampers for the next frame */
+    /* '<S1379>:1:60' Rampers(ramper).currentGain = gainHighFreq * rampCoeffMultipliersNonBass(end); */
+%<SLibCG_DumpSSCode("/*@[11efeaa*/",SLibCG_SetCSCDW(4, 1, "[/*@>11efe7f*/ramper].currentGain", -1, "", 0, "/*@>11f036c*/gainHighFreq/*@>11f036b*/ * /*@>11f036e*/rampCoeffMultipliersNonBass/*@>11f036d*/[/*@>11f036f*/7]"),"/*@]*/")>\
+    /* '<S1379>:1:61' Rampers(ramper + 2).currentGain = gainLowFreq * rampCoeffMultipliersBass(end); */
+%<SLibCG_DumpSSCode("/*@[11efee2*/",SLibCG_SetCSCDW(4, 1, "[/*@>11efeb6*/ramper/*@>11efeb4*/ + /*@>11efeb7*/2].currentGain", -1, "", 0, "/*@>11f0382*/gainLowFreq/*@>11f0381*/ * /*@>11f0384*/rampCoeffMultipliersBass/*@>11f0383*/[/*@>11f0385*/7]"),"/*@]*/")>\
+}
+/*  If ramper value of -1 is encountered, this indicates an unused channel. */
+/*  Assign values of zero to all samples of these channels. */
+/* '<S1379>:1:66' unusedChannelGroup = find(channelToRamperMap == -1); */
+/*@>11ea03a*/for (/*@>11f00c5*/q0 = /*@>11f00c4*/0; /*@>11f00cf*/q0 < /*@>11f00cd*/30; /*@>11f00cb*/q0/*@>11f0153*/++) {
+    /*@>11eba26*/rtu_channelToRamperMap_0/*@>11eb483*/[/*@>11eba24*/q0]/*@>11ea02d*/ = (/*@>11ef432*/rtu_channelToRamperMap/*@>11ef434*/[/*@>11ef430*/q0]/*@>11ea017*/ == /*@>11eba0f*/-1.0F);
+}
+%<SLibCG_DumpSSCode("/*@[11effd6*/",(SLibCGCallSubFcn("Model_Target_eml_find", ["/*@>11f038f*/rtu_channelToRamperMap_0", "/*@>11f0399*/d_data", "d_size", "/*@>11f03ad*/%<::tSimStruct>"], 51, 1, 1)),"/*@]*/")>;
+/* '<S1379>:1:67' for unusedCh = 1:numel(unusedChannelGroup) */
+/*@>11eb9ca*/ch/*@>10cbb88*/ = d_size/*@>11ef43f*/[/*@>11ef43c*/1];
+/*@>10cbbc1*/for (/*@>11f00a1*/ramper = /*@>11f00a0*/0; /*@>11f00ae*/ramper < /*@>11f00ab*/ch; /*@>11f00a7*/ramper/*@>11f0154*/++) {
+    /* '<S1379>:1:68' audioOut(:,unusedChannelGroup(unusedCh)) = 0; */
+    /*@>11eba03*/b/*@>11e9af0*/ = /*@>11ef44b*/d_data[/*@>11ef44a*/ramper];
+/*@>11ea200*/    for (/*@>11f00b4*/q0 = /*@>11f00b3*/0; /*@>11f00be*/q0 < /*@>11f00bc*/8; /*@>11f00ba*/q0/*@>11f0155*/++) {
+        /*@>11ef66e*/localB->/*@>11f02be*/audioOut/*@>11eb165*/[/*@>11eba4d*/q0/*@>11eb161*/ + ((/*@>11eba4f*/b/*@>11ea989*/ - /*@>11ebb03*/1)/*@>11ebc34*/ << /*@>11ec6df*/3)]/*@>11ea1f3*/ = /*@>11eba4a*/0.0F;
+    }
+}
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[51].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(51, 1, 0)>
+%endif
+%if SLibCG_ArgAccessed(51, 1, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(51, 1, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_fade(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(51, 1, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_Target_fade", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>const real32_T rtu_audioIn[240]\
+%assign comma = ", "
+%<comma>const real32_T rtu_channelToRamperMap[30]\
+%assign comma = ", "
+%<comma>const real32_T rtu_yLpf[240]\
+%assign comma = ", "
+%<comma>B_fade_Model_Target_T *localB\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(51, 1, fcnProtoType)>
+%endfunction

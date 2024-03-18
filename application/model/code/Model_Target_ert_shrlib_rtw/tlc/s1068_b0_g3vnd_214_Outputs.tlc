@@ -1,0 +1,1242 @@
+%implements s1068_b0_g3vnd_214_Outputs "C"
+
+%function Outputs(block, system) Output
+%<SLibCGIRAccessLocalDWork(656, 1)> %% ForEach_itr
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+real_T rtb_Add1_db[24];
+real_T rtb_DataTypeConversion[24];
+real_T coeffIdx;
+real_T rtb_SumofElements;
+int32_T i;
+int32_T rtb_DataStoreRead1_fv_tmp;
+int32_T s;
+real32_T rtb_Merge_in[32];
+real32_T downCoeff;
+real32_T gdiff;
+real32_T gp;
+real32_T lpfCoeff;
+real32_T rtb_DataStoreRead1_fv_tmp_tmp;
+real32_T rtb_DataStoreRead1_h;
+real32_T rtb_Delay_ed;
+real32_T rtb_Magsq_f;
+real32_T rtb_Max_bj;
+real32_T upCoeff;
+real32_T *attack_param;
+real32_T *decay_param;
+real32_T *k1_param;
+real32_T *maxAttack_param;
+uint32_T st;
+boolean_T rtb_LogicalOperator1_f;
+boolean_T rtb_Merge_ps;
+%closefile localVarDecl
+%assign _modelSS = ""
+
+%assign tlcOutputsFcnOfS916B0 = OpaqueTLCBlockFcn("Outputs", 916, 0, 214, 1, 0)
+%assign tlcOutputsFcnOfS916B1 = OpaqueTLCBlockFcn("Outputs", 916, 1, 214, 1, 1)
+%assign tlcOutputsFcnOfS916B2 = OpaqueTLCBlockFcn("Outputs", 916, 2, 214, 1, 2)
+%assign tlcOutputsFcnOfS916B9 = OpaqueTLCBlockFcn("Outputs", 916, 9, 214, 1, 3)
+%assign tlcOutputsFcnOfS916B15 = OpaqueTLCBlockFcn("Outputs", 916, 15, 214, 1, 4)
+%assign tlcOutputsFcnOfS916B16 = OpaqueTLCBlockFcn("Outputs", 916, 16, 214, 1, 5)
+%assign tlcOutputsFcnOfS916B17 = OpaqueTLCBlockFcn("Outputs", 916, 17, 214, 1, 6)
+%assign tlcOutputsFcnOfS916B18 = OpaqueTLCBlockFcn("Outputs", 916, 18, 214, 1, 7)
+%assign tlcOutputsFcnOfS916B22 = OpaqueTLCBlockFcn("Outputs", 916, 22, 214, 1, 8)
+%assign tlcOutputsFcnOfS916B26 = OpaqueTLCBlockFcn("Outputs", 916, 26, 214, 1, 9)
+%assign tlcOutputsFcnOfS916B27 = OpaqueTLCBlockFcn("Outputs", 916, 27, 214, 1, 10)
+%assign tlcOutputsFcnOfS916B28 = OpaqueTLCBlockFcn("Outputs", 916, 28, 214, 1, 11)
+%assign tlcOutputsFcnOfS916B29 = OpaqueTLCBlockFcn("Outputs", 916, 29, 214, 1, 12)
+%assign tlcOutputsFcnOfS916B30 = OpaqueTLCBlockFcn("Outputs", 916, 30, 214, 1, 13)
+%assign tlcOutputsFcnOfS916B31 = OpaqueTLCBlockFcn("Outputs", 916, 31, 214, 1, 14)
+%assign tlcOutputsFcnOfS916B32 = OpaqueTLCBlockFcn("Outputs", 916, 32, 214, 1, 15)
+%assign tlcOutputsFcnOfS916B33 = OpaqueTLCBlockFcn("Outputs", 916, 33, 214, 1, 16)
+%assign tlcOutputsFcnOfS916B35 = OpaqueTLCBlockFcn("Outputs", 916, 35, 214, 1, 17)
+%assign tlcOutputsFcnOfS916B36 = OpaqueTLCBlockFcn("Outputs", 916, 36, 214, 1, 18)
+%assign tlcOutputsFcnOfS916B37 = OpaqueTLCBlockFcn("Outputs", 916, 37, 214, 1, 19)
+%assign tlcOutputsFcnOfS916B39 = OpaqueTLCBlockFcn("Outputs", 916, 39, 214, 1, 20)
+%assign tlcOutputsFcnOfS916B44 = OpaqueTLCBlockFcn("Outputs", 916, 44, 214, 1, 21)
+%assign tlcOutputsFcnOfS916B45 = OpaqueTLCBlockFcn("Outputs", 916, 45, 214, 1, 22)
+%assign tlcOutputsFcnOfS916B49 = OpaqueTLCBlockFcn("Outputs", 916, 49, 214, 1, 23)
+%assign tlcOutputsFcnOfS916B56 = OpaqueTLCBlockFcn("Outputs", 916, 56, 214, 1, 24)
+%assign tlcOutputsFcnOfS916B57 = OpaqueTLCBlockFcn("Outputs", 916, 57, 214, 1, 25)
+%assign tlcOutputsFcnOfS916B58 = OpaqueTLCBlockFcn("Outputs", 916, 58, 214, 1, 26)
+%assign tlcOutputsFcnOfS916B59 = OpaqueTLCBlockFcn("Outputs", 916, 59, 214, 1, 27)
+%assign tlcOutputsFcnOfS916B60 = OpaqueTLCBlockFcn("Outputs", 916, 60, 214, 1, 28)
+%assign tlcOutputsFcnOfS916B61 = OpaqueTLCBlockFcn("Outputs", 916, 61, 214, 1, 29)
+%assign tlcOutputsFcnOfS916B62 = OpaqueTLCBlockFcn("Outputs", 916, 62, 214, 1, 30)
+%assign tlcOutputsFcnOfS916B63 = OpaqueTLCBlockFcn("Outputs", 916, 63, 214, 1, 31)
+%assign tlcOutputsFcnOfS916B64 = OpaqueTLCBlockFcn("Outputs", 916, 64, 214, 1, 32)
+%assign tlcOutputsFcnOfS916B65 = OpaqueTLCBlockFcn("Outputs", 916, 65, 214, 1, 33)
+%assign tlcOutputsFcnOfS916B67 = OpaqueTLCBlockFcn("Outputs", 916, 67, 214, 1, 34)
+%assign tlcOutputsFcnOfS916B68 = OpaqueTLCBlockFcn("Outputs", 916, 68, 214, 1, 35)
+%assign tlcOutputsFcnOfS916B70 = OpaqueTLCBlockFcn("Outputs", 916, 70, 214, 1, 36)
+%assign tlcOutputsFcnOfS916B75 = OpaqueTLCBlockFcn("Outputs", 916, 75, 214, 1, 37)
+%assign tlcOutputsFcnOfS916B76 = OpaqueTLCBlockFcn("Outputs", 916, 76, 214, 1, 38)
+%assign tlcOutputsFcnOfS916B80 = OpaqueTLCBlockFcn("Outputs", 916, 80, 214, 1, 39)
+%assign tlcOutputsFcnOfS916B81 = OpaqueTLCBlockFcn("Outputs", 916, 81, 214, 1, 40)
+%assign tlcOutputsFcnOfS916B85 = OpaqueTLCBlockFcn("Outputs", 916, 85, 214, 1, 41)
+%assign tlcUpdateFcnOfS916B35 = OpaqueTLCBlockFcn("Update", 916, 35, 214, 1, 42)
+%assign tlcUpdateFcnOfS916B36 = OpaqueTLCBlockFcn("Update", 916, 36, 214, 1, 43)
+%assign tlcUpdateFcnOfS916B37 = OpaqueTLCBlockFcn("Update", 916, 37, 214, 1, 44)
+%assign tlcUpdateFcnOfS916B44 = OpaqueTLCBlockFcn("Update", 916, 44, 214, 1, 45)
+%assign tlcUpdateFcnOfS916B45 = OpaqueTLCBlockFcn("Update", 916, 45, 214, 1, 46)
+/* {S!d1790}DataStoreRead: '<S2220>/Data Store Read' */
+/*@>1347080*/Model_Target_PostProcess_B./*@>134beec*/DataStoreRead/*@>10ce3ee*/ = %<SLibCG_DumpSSCode("/*@[1349bd5*/",(SLibCG_SE(SLibCG_CSCDW(385, 1, "", -1, "", 0))),"/*@]*/")>;
+/* {S!d1792}DataStoreRead: '<S2220>/Data Store Read1' */
+/*@>1333eb9*/rtb_DataStoreRead1_h/*@>10ce3f0*/ = %<SLibCG_DumpSSCode("/*@[1349bf1*/",(SLibCG_SE(SLibCG_CSCDW(387, 1, "", -1, "", 0))),"/*@]*/")>;
+%if !WHITE_SPACE(tlcOutputsFcnOfS916B0)
+/* {S!d1794}S-Function (AudioStats_MEX): '<S2220>/Audio Stats' */
+%<SLibCG_DumpSSCode("/*@[1349b31*/",tlcOutputsFcnOfS916B0,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS916B1)
+/* {S!d1796}S-Function (TOP_MEX): '<S2223>/TOP' */
+%<SLibCG_DumpSSCode("/*@[1349b33*/",tlcOutputsFcnOfS916B1,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS916B2)
+/* {S!d1757}S-Function (RTC_REQ_RSP): '<S2221>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[1349b35*/",tlcOutputsFcnOfS916B2,"/*@]*/")>\
+%endif
+/* {E!d1757}End of Outputs for S-Function (RTC_REQ_RSP): '<S2221>/RTC Request Response Trigger' */
+
+/* {S!d1759}Outputs for Atomic SubSystem: '<S2220>/Ramping_Subsystem' */
+/* {S!d1798}MinMax: '<S2234>/Max' incorporates:
+ *  Constant: '<S2234>/minGain'
+ */
+/*@>1333c45*/rtb_Max_bj/*@>10ce878*/ = /*@>1343183*/fmaxf(/*@>13471d0*/Model_Target_PostProcess_B./*@>134beef*/DataStoreRead, /*@>13336c1*/4.7315126E-7F);
+/* {S!d1810}If: '<S2234>/If' incorporates:
+ *  Abs: '<S2234>/Abs3'
+ *  Constant: '<S2220>/snapThresh'
+ *  DataStoreRead: '<S2234>/frames'
+ *  Sum: '<S2234>/Add'
+ */
+/*@>10ce833*/if ((/*@>1343185*/qhmath_abs_f(/*@>1333920*/rtb_DataStoreRead1_h/*@>13275bd*/ - /*@>133391e*/rtb_Max_bj)/*@>10ce82f*/ > /*@>13336c0*/1.0E-9F)/*@>10ce832*/ && (%<SLibCG_DumpSSCode("/*@[1349c0d*/",(SLibCG_SE(SLibCG_CSCDW(386, 1, "", -1, "", 0))),"/*@]*/")>/*@>10ce831*/ > /*@>1333c54*/0.0F)) {
+    /* {S!d1760}Outputs for IfAction SubSystem: '<S2234>/ifActionSubsystem' incorporates:
+ *  ActionPort: '<S2237>/Action Port'
+ */
+    /* {S!d1800}DataStoreWrite: '<S2237>/Data Store Write' incorporates:
+ *  Constant: '<S2237>/Constant1'
+ *  Sum: '<S2237>/Add'
+ */
+%<SLibCG_DumpSSCode("/*@[1349c47*/",SLibCG_SetCSCDW(386, 1, "", -1, "", 0, "%<SLibCG_DumpSSCode("/*@[134c378*/",(SLibCG_SE(SLibCG_CSCDW(386, 1, "", -1, "", 0))),"/*@]*/")>/*@>134c377*/ - /*@>134c383*/1.0F"),"/*@]*/")>\
+    /* {S!d1802}If: '<S2239>/If' incorporates:
+ *  Delay: '<S2239>/Delay'
+ *  Sum: '<S2239>/Add2'
+ */
+    /*@>10ce899*/if (/*@>133394c*/rtb_DataStoreRead1_h/*@>13270e2*/ - /*@>1347519*/Model_Target_PostProcess_DW./*@>134bfa3*/Delay_DSTATE_l/*@>10ce898*/ == /*@>1333c3e*/0.0F) {
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[535], "Output",1)
+        /* {S!d1761}Outputs for IfAction SubSystem: '<S2239>/If Action Subsystem' incorporates:
+ *  ActionPort: '<S2240>/Action Port'
+ */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_IfActionSubsystem",535,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[1349baa*/",SLibCGIRGenReusableSysCall("Model_Target_IfActionSubsystem", ["%<_modelSS>", "&/*@>134c3b1*/rtb_Merge_ps"], 535, 6, 6, 1, 6, 916),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[535]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+        /* {E!d1761}End of Outputs for SubSystem: '<S2239>/If Action Subsystem' */
+%endif
+    } else {
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[536], "Output",1)
+        /* {S!d1763}Outputs for IfAction SubSystem: '<S2239>/If Action Subsystem1' incorporates:
+ *  ActionPort: '<S2241>/Action Port'
+ */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_IfActionSubsystem1",536,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[1349ba9*/",SLibCGIRGenReusableSysCall("Model_Target_IfActionSubsystem1", ["%<_modelSS>", "&/*@>134c3df*/rtb_Merge_ps"], 536, 6, 6, 1, 6, 916),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[536]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+        /* {E!d1763}End of Outputs for SubSystem: '<S2239>/If Action Subsystem1' */
+%endif
+    }
+    /* {E!d1802}End of If: '<S2239>/If' */
+
+    /* {S!d1804}DiscreteFilter: '<S2237>/ramping_filter' incorporates:
+ *  Merge: '<S2234>/Merge'
+ *  Product: '<S2237>/Matrix Multiply'
+ *  Product: '<S2238>/Multiply'
+ */
+    /*@>10ce8a0*/if (/*@>1333c38*/rtb_Merge_ps) {
+        /*@>134751f*/Model_Target_PostProcess_DW./*@>134bfa6*/ramping_filter_icLoad/*@>10ce8c9*/ = /*@>134b669*/1U;
+    }
+    /*@>10ce8d0*/if (/*@>1347525*/Model_Target_PostProcess_DW./*@>134bfa9*/ramping_filter_icLoad/*@>10ce8cf*/ != /*@>1333c32*/0) {
+        /*@>134752b*/Model_Target_PostProcess_DW./*@>134bfac*/ramping_filter_states/*@>10ce8d5*/ = /*@>13471dc*/Model_Target_PostProcess_B./*@>134bef2*/ramping_coeff/*@>1334090*/ * /*@>1333946*/rtb_Max_bj;
+    }
+    /*@>1333c2e*/s/*@>10ce8da*/ = /*@>134b66c*/0;
+/*@>132ea90*/    for (/*@>134b7da*/i = /*@>134b7d9*/0; /*@>134b7e4*/i < /*@>134b7e2*/32; /*@>134b7e0*/i/*@>134b7e8*/++) {
+        /*@>13338b7*/rtb_Merge_in/*@>132d3f5*/[/*@>13338b5*/s]/*@>10ce8fd*/ = /*@>1347537*/Model_Target_PostProcess_DW./*@>134bfb2*/ramping_filter_states;
+        /*@>1347543*/Model_Target_PostProcess_DW./*@>134bfb8*/ramping_filter_states/*@>10ce92c*/ = /*@>1333952*/0.0F/*@>1323d82*/ - -/*@<1337095*//*@>13471ef*/Model_Target_PostProcess_B./*@>134befb*/ramping_coeff/*@>1334095*/ * /*@>1346612*/rtb_Merge_in/*@>1346614*/[/*@>1346611*/s];
+        /*@>1333c23*/s/*@>134b7e9*/++;
+    }
+    /* {E!d1804}End of DiscreteFilter: '<S2237>/ramping_filter' */
+
+    /* {S!d1806}Update for Delay: '<S2239>/Delay' */
+    /*@>1347531*/Model_Target_PostProcess_DW./*@>134bfaf*/Delay_DSTATE_l/*@>10cea44*/ = /*@>1333c1a*/rtb_DataStoreRead1_h;
+    /* {S!d1808}Update for DiscreteFilter: '<S2237>/ramping_filter' */
+    /*@>134753d*/Model_Target_PostProcess_DW./*@>134bfb5*/ramping_filter_icLoad/*@>10cea47*/ = /*@>134b66f*/0U;
+    /* {E!d1760}End of Outputs for SubSystem: '<S2234>/ifActionSubsystem' */
+} else {
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[543], "Output",1)
+    /* {S!d1766}Outputs for IfAction SubSystem: '<S2234>/elseActionSubsystem' incorporates:
+ *  ActionPort: '<S2236>/Action Port'
+ */
+%if SLibCG_SystemFcnArgAccessed("Model_Target_elseActionSubsystem",543,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCG_DumpSSCode("/*@[1349ba8*/",SLibCGIRGenReusableSysCall("Model_Target_elseActionSubsystem", ["%<_modelSS>", "/*@>134c40d*/rtb_DataStoreRead1_h", "/*@>134c417*/rtb_Merge_in"], 543, 5, 6, 1, 6, 916),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[543]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+    /* {E!d1766}End of Outputs for SubSystem: '<S2234>/elseActionSubsystem' */
+%endif
+}
+/* {E!d1810}End of If: '<S2234>/If' */
+
+/* {S!d1812}S-Function (sdspperm2): '<S2231>/Variable Selector' incorporates:
+ *  DataStoreWrite: '<S2220>/Data Store Write'
+ *  Merge: '<S2234>/Merge'
+ */
+%<SLibCG_DumpSSCode("/*@[1349c63*/",SLibCG_SetCSCDW(385, 1, "", -1, "", 0, "/*@>134c42a*/rtb_Merge_in/*@>134c429*/[/*@>134c42b*/31]"),"/*@]*/")>\
+/* {S!d1768}Outputs for Iterator SubSystem: '<S2235>/For Each Subsystem' incorporates:
+ *  ForEach: '<S2242>/For Each'
+ */
+/*@>134b7b3*/for (/*@>134b7af*/ForEach_itr/*@>134b7ae*/ = /*@>134b7b0*/0; /*@>134b7a6*/ForEach_itr/*@>134b7a4*/ < /*@>134b7a7*/32; /*@>134b7a9*/ForEach_itr/*@>134b7ea*/++) {
+    /* {S!d1814}ForEachSliceSelector generated from: '<S2242>/In1' incorporates:
+ *  Merge: '<S2234>/Merge'
+ */
+    /*@>13338de*/rtb_DataStoreRead1_h/*@>132c96d*/ = /*@>1346606*/rtb_Merge_in/*@>1346608*/[/*@>1346605*/ForEach_itr];
+    /* {S!d1818}ForEachSliceAssignment generated from: '<S2242>/Out1' incorporates:
+ *  ForEachSliceSelector generated from: '<S2242>/In2'
+ *  Product: '<S2242>/Multiply'
+ */
+/*@>132d386*/    for (/*@>134b7c9*/s = /*@>134b7c8*/0; /*@>134b7d3*/s < /*@>134b7d1*/24; /*@>134b7cf*/s/*@>134b7eb*/++) {
+        /* {S!d1816}ForEachSliceSelector generated from: '<S2242>/In2' */
+        /*@>133b659*/i/*@>133b65b*/ = (/*@>13338c6*/s/*@>13340aa*/ << /*@>13340a9*/5)/*@>133175e*/ + /*@>13338c8*/ForEach_itr;
+        /*@>13471e2*/Model_Target_PostProcess_B./*@>134bef5*/ImpAsg_InsertedFor_Out1_at_inport_0/*@>1331758*/[i]/*@>132d379*/ = /*@>13471e9*/Model_Target_B./*@>134bef8*/out/*@>134660e*/[/*@>134660b*/i]/*@>13340a1*/ * /*@>13338dc*/rtb_DataStoreRead1_h;
+    }
+    /* {E!d1818}End of ForEachSliceAssignment generated from: '<S2242>/Out1' */
+}
+/* {E!d1768}End of Outputs for SubSystem: '<S2235>/For Each Subsystem' */
+/* {E!d1759}End of Outputs for SubSystem: '<S2220>/Ramping_Subsystem' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS916B9)
+
+/* {S!d1771}S-Function (RTC_NTF): '<S2221>/NTF Trigger' */
+%<SLibCG_DumpSSCode("/*@[1349b3a*/",tlcOutputsFcnOfS916B9,"/*@]*/")>\
+%endif
+/* {E!d1771}End of Outputs for S-Function (RTC_NTF): '<S2221>/NTF Trigger' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS916B15)
+
+/* {S!d1820}M-S-Function: '<S2220>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[1349b3b*/",tlcOutputsFcnOfS916B15,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS916B16)
+/* {S!d1822}M-S-Function: '<S2219>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[1349b3c*/",tlcOutputsFcnOfS916B16,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS916B17)
+/* {S!d1824}S-Function (AudioStats_MEX): '<S2188>/Audio Stats' */
+%<SLibCG_DumpSSCode("/*@[1349b3f*/",tlcOutputsFcnOfS916B17,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS916B18)
+/* {S!d1773}S-Function (RTC_REQ_RSP): '<S2185>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[1349b41*/",tlcOutputsFcnOfS916B18,"/*@]*/")>\
+%endif
+/* {E!d1773}End of Outputs for S-Function (RTC_REQ_RSP): '<S2185>/RTC Request Response Trigger' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS916B22)
+
+/* {S!d1775}S-Function (RTC_REQ_RSP): '<S2186>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[1349b43*/",tlcOutputsFcnOfS916B22,"/*@]*/")>\
+%endif
+/* {E!d1775}End of Outputs for S-Function (RTC_REQ_RSP): '<S2186>/RTC Request Response Trigger' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS916B26)
+
+/* {S!d1826}S-Function (TOP_MEX): '<S2216>/attack' */
+%<SLibCG_DumpSSCode("/*@[1349b45*/",tlcOutputsFcnOfS916B26,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS916B27)
+/* {S!d1828}S-Function (TOP_MEX): '<S2216>/k1' */
+%<SLibCG_DumpSSCode("/*@[1349b47*/",tlcOutputsFcnOfS916B27,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS916B28)
+/* {S!d1830}S-Function (TOP_MEX): '<S2216>/decay' */
+%<SLibCG_DumpSSCode("/*@[1349b49*/",tlcOutputsFcnOfS916B28,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS916B29)
+/* {S!d1832}S-Function (TOP_MEX): '<S2216>/maxAttack' */
+%<SLibCG_DumpSSCode("/*@[1349b4b*/",tlcOutputsFcnOfS916B29,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS916B30)
+/* {S!d1834}S-Function (TOP_MEX): '<S2216>/attack1' */
+%<SLibCG_DumpSSCode("/*@[1349b4d*/",tlcOutputsFcnOfS916B30,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS916B31)
+/* {S!d1836}S-Function (TOP_MEX): '<S2216>/k2' */
+%<SLibCG_DumpSSCode("/*@[1349b4f*/",tlcOutputsFcnOfS916B31,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS916B32)
+/* {S!d1838}S-Function (TOP_MEX): '<S2216>/decay1' */
+%<SLibCG_DumpSSCode("/*@[1349b51*/",tlcOutputsFcnOfS916B32,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS916B33)
+/* {S!d1840}S-Function (TOP_MEX): '<S2216>/maxAttack1' */
+%<SLibCG_DumpSSCode("/*@[1349b53*/",tlcOutputsFcnOfS916B33,"/*@]*/")>\
+%endif
+/* {S!d1842}MATLAB Function: '<S2216>/MATLAB Function' incorporates:
+ *  ForEachSliceAssignment generated from: '<S2242>/Out1'
+ *  S-Function (TOP_MEX): '<S2216>/attack'
+ *  S-Function (TOP_MEX): '<S2216>/attack1'
+ *  S-Function (TOP_MEX): '<S2216>/decay'
+ *  S-Function (TOP_MEX): '<S2216>/decay1'
+ *  S-Function (TOP_MEX): '<S2216>/k1'
+ *  S-Function (TOP_MEX): '<S2216>/k2'
+ *  S-Function (TOP_MEX): '<S2216>/maxAttack'
+ *  S-Function (TOP_MEX): '<S2216>/maxAttack1'
+ */
+/*  This is the main function for the Limiter. */
+/*  It takes an audio input, as well as 8 tunable variables (2 sets of 4), */
+/*  which are attack, maxAttack, k1, and decay. It will limit, or apply */
+/*  a gain reduction, to any samples that are essentially above a  */
+/*  pre-set threshold.  */
+/* MATLAB Function 'PostProcess/PostProcess/Limiter/Limiter/MATLAB Function': '<S2217>:1' */
+/*  Grab data from input */
+/* '<S2217>:1:10' y = coder.nullcopy(u); */
+/* '<S2217>:1:11' [frame_size, channel_count] = size(u); */
+/*  Initialize memory */
+/*  attack = single(2.5768580901e-002 * ones(1,channel_count)); */
+/*  decay = single(1.0002610981e+000 * ones(1,channel_count)); */
+/* '<S2217>:1:16' maxGain = single(1); */
+/*  maxAttack = single(3.1622776602e-001 * ones(1,channel_count)); */
+/*  k1 = single(2.8631756556e-002 * ones(1,channel_count)); */
+/* '<S2217>:1:21' if isempty(state) */
+/* '<S2217>:1:25' if (param_set == 1) */
+/*@>10ceadb*/if (%<SLibCG_DumpSSCode("/*@[1349c7d*/",(SLibCG_SE(SLibCG_BOCSC(529, 1, "", -1, "", 0))),"/*@]*/")>/*@>10ceacb*/ == /*@>1333be2*/1U) {
+    /* '<S2217>:1:26' attack_param = attack; */
+    /* '<S2217>:1:27' k1_param = k1; */
+    /* '<S2217>:1:28' decay_param = decay; */
+    /* '<S2217>:1:29' maxAttack_param = maxAttack; */
+    /*@>13444e8*/attack_param/*@>13444ed*/ = %<SLibCG_DumpSSCode("/*@[134a00a*/",(SLibCG_SE(SLibCG_BOCSCAddr(540, 24, "", -1, "", 0))),"/*@]*/")>;
+    /*@>13444f8*/k1_param/*@>13444fd*/ = %<SLibCG_DumpSSCode("/*@[134a044*/",(SLibCG_SE(SLibCG_BOCSCAddr(541, 24, "", -1, "", 0))),"/*@]*/")>;
+    /*@>1344508*/decay_param/*@>134450d*/ = %<SLibCG_DumpSSCode("/*@[134a07e*/",(SLibCG_SE(SLibCG_BOCSCAddr(542, 24, "", -1, "", 0))),"/*@]*/")>;
+    /*@>1344518*/maxAttack_param/*@>134451d*/ = %<SLibCG_DumpSSCode("/*@[134a0b8*/",(SLibCG_SE(SLibCG_BOCSCAddr(543, 24, "", -1, "", 0))),"/*@]*/")>;
+} else {
+    /* '<S2217>:1:30' else */
+    /* '<S2217>:1:31' attack_param = attack_low; */
+    /* '<S2217>:1:32' k1_param = k1_low; */
+    /* '<S2217>:1:33' decay_param = decay_low; */
+    /* '<S2217>:1:34' maxAttack_param = maxAttack_low; */
+    /*@>13444ef*/attack_param/*@>13444f4*/ = %<SLibCG_DumpSSCode("/*@[134a027*/",(SLibCG_SE(SLibCG_BOCSCAddr(544, 24, "", -1, "", 0))),"/*@]*/")>;
+    /*@>13444ff*/k1_param/*@>1344504*/ = %<SLibCG_DumpSSCode("/*@[134a061*/",(SLibCG_SE(SLibCG_BOCSCAddr(545, 24, "", -1, "", 0))),"/*@]*/")>;
+    /*@>134450f*/decay_param/*@>1344514*/ = %<SLibCG_DumpSSCode("/*@[134a09b*/",(SLibCG_SE(SLibCG_BOCSCAddr(546, 24, "", -1, "", 0))),"/*@]*/")>;
+    /*@>134451f*/maxAttack_param/*@>1344524*/ = %<SLibCG_DumpSSCode("/*@[134a0d5*/",(SLibCG_SE(SLibCG_BOCSCAddr(547, 24, "", -1, "", 0))),"/*@]*/")>;
+}
+/* '<S2217>:1:38' Limiter_Active = uint32(0); */
+/*  Check for a disable RTC message, pass audio through unaffected if so */
+/* '<S2217>:1:40' if (disableMsg) */
+/*@>10ceae7*/if (%<SLibCG_DumpSSCode("/*@[1349c99*/",(SLibCG_SE(SLibCG_BOCSC(527, 1, "", -1, "", 0))),"/*@]*/")>/*@>10ceacc*/ != /*@>1333bfc*/0U) {
+    /* '<S2217>:1:41' y(:) = u(:); */
+    /*@>1343d89*/memcpy(&/*@>1347201*/Model_Target_PostProcess_B./*@>134befe*/y_b/*@>1341527*/[/*@>1341516*/0], &/*@>1347207*/Model_Target_PostProcess_B./*@>134bf01*/ImpAsg_InsertedFor_Out1_at_inport_0/*@>134152f*/[/*@>1341523*/0], /*@>1341525*/768U/*@>1341532*/ * /*@>1341531*/sizeof(real32_T));
+} else {
+    /* '<S2217>:1:42' else */
+    /*  Process the audio */
+    /* '<S2217>:1:44' for i = 1:channel_count */
+/*@>10ceaeb*/    for (/*@>134b785*/i = /*@>134b784*/0; /*@>134b78f*/i < /*@>134b78d*/24; /*@>134b78b*/i/*@>134b800*/++) {
+        /* '<S2217>:1:45' k0 = 1 + attack_param(i); */
+        /* '<S2217>:1:46' g1 = state(i); */
+        /*@>1333bf5*/rtb_DataStoreRead1_h/*@>10ceaaf*/ = /*@>1347549*/Model_Target_PostProcess_DW./*@>134bfbb*/state/*@>134661a*/[/*@>1346617*/i];
+        /* '<S2217>:1:47' temp = single(0); */
+        /* '<S2217>:1:48' temp1 = temp; */
+        /* '<S2217>:1:49' for s = 1:frame_size */
+/*@>10ceaf0*/        for (/*@>134b796*/s = /*@>134b795*/0; /*@>134b7a0*/s < /*@>134b79e*/32; /*@>134b79c*/s/*@>134b801*/++) {
+            rtb_Max_bj = /*@>134455f*/attack_param/*@>134bee1*/[/*@>134455d*/i];
+            /*  Compute the gain for this sample. Implementation copied from BDSP */
+            /* '<S2217>:1:51' p1 = k1_param(i) * g1; */
+            /* '<S2217>:1:52' p2 = u(s, i); */
+            /* '<S2217>:1:53' p2 = abs(p2); */
+            /* '<S2217>:1:54' temp = temp + p2; */
+            /* '<S2217>:1:55' g1 = g1 * decay_param(i); */
+            /* '<S2217>:1:56' p2 = p2 * p1; */
+            /* '<S2217>:1:57' p2 = max(p2, attack_param(i)); */
+            /* '<S2217>:1:58' p2 = k0 - p2; */
+            /* '<S2217>:1:59' p2 = max(p2, maxAttack_param(i)); */
+            /* '<S2217>:1:60' g1 = g1 * p2; */
+            /* '<S2217>:1:61' g1 = min(g1, maxGain); */
+            /*@>133b669*/rtb_DataStoreRead1_fv_tmp/*@>133b66b*/ = (/*@>1333819*/i/*@>1334089*/ << /*@>1334088*/5)/*@>13315bd*/ + /*@>133381b*/s;
+            /*@>133b679*/rtb_Delay_ed/*@>133b67b*/ = /*@>134723d*/Model_Target_PostProcess_B./*@>134bf13*/ImpAsg_InsertedFor_Out1_at_inport_0/*@>134663b*/[/*@>1346638*/rtb_DataStoreRead1_fv_tmp];
+            /*@>1333bea*/rtb_DataStoreRead1_h/*@>10ceb5b*/ = /*@>13431cb*/fminf(/*@>13431c9*/fmaxf((rtb_Max_bj/*@>1323c25*/ + /*@>1333982*/1.0F)/*@>1323c24*/ - /*@>13431c7*/fmaxf(/*@>1344566*/k1_param/*@>134bee3*/[/*@>1344564*/i]/*@>133408c*/ * /*@>1333955*/rtb_DataStoreRead1_h/*@>1334080*/ * /*@>13431c5*/qhmath_abs_f(/*@>133b67d*/rtb_Delay_ed), rtb_Max_bj), /*@>134456d*/maxAttack_param/*@>134bee5*/[/*@>134456b*/i])/*@>1334078*/ * (/*@>1333984*/rtb_DataStoreRead1_h/*@>133407c*/ * /*@>1344574*/decay_param/*@>134bee7*/[/*@>1344572*/i]), /*@>1333be5*/1.0F);
+            /*  Apply the gain */
+            /* '<S2217>:1:63' y(s, i) = u(s, i) * g1; */
+            /*@>1347249*/Model_Target_PostProcess_B./*@>134bf19*/y_b/*@>13315cc*/[rtb_DataStoreRead1_fv_tmp]/*@>10ceac1*/ = rtb_Delay_ed/*@>133406c*/ * /*@>1333bec*/rtb_DataStoreRead1_h;
+            /* '<S2217>:1:64' p3 = abs(y(s,i)); */
+            /* '<S2217>:1:65' temp1 = temp1 + p3; */
+        }
+        /* '<S2217>:1:68' state(i) = g1; */
+        /*@>1347561*/Model_Target_PostProcess_DW./*@>134bfc7*/state/*@>10ceac4*/[/*@>1333be3*/i]/*@>10ceac6*/ = /*@>1333bee*/rtb_DataStoreRead1_h;
+        /* '<S2217>:1:69' if temp1 < temp */
+    }
+}
+/* {E!d1842}End of MATLAB Function: '<S2216>/MATLAB Function' */
+
+/* {S!d1844}Math: '<S2190>/Magsq'
+ *
+ * About '<S2190>/Magsq':
+ *  Operator: magnitude^2
+ */
+/*@>132bc48*/for (/*@>134b774*/i = /*@>134b773*/0; /*@>134b77e*/i < /*@>134b77c*/768; /*@>134b77a*/i/*@>134b7ec*/++) {
+    /*@>1334323*/rtb_DataStoreRead1_h/*@>1334325*/ = /*@>1347213*/Model_Target_PostProcess_B./*@>134bf04*/y_b/*@>1346620*/[/*@>134661d*/i];
+    /*@>1347219*/Model_Target_PostProcess_B./*@>134bf07*/Magsq/*@>132d738*/[/*@>1333840*/i]/*@>132bc38*/ = /*@>133709e*/rtb_DataStoreRead1_h/*@>133709c*/ * /*@>13370a0*/rtb_DataStoreRead1_h;
+}
+/* {E!d1844}End of Math: '<S2190>/Magsq' */
+/*@>132ea0c*/for (/*@>134b752*/i = /*@>134b751*/0; /*@>134b75c*/i < /*@>134b75a*/24; /*@>134b758*/i/*@>134b7ed*/++) {
+    /* {S!d1846}Sum: '<S2190>/Add' incorporates:
+ *  Math: '<S2190>/Magsq'
+ *
+ * About '<S2190>/Magsq':
+ *  Operator: magnitude^2
+ */
+    /*@>1333e34*/s/*@>10ce40b*/ = /*@>1333e37*/i/*@>13340b2*/ << /*@>13340b1*/5;
+    /*@>1333e2b*/rtb_DataStoreRead1_h/*@>10ce41c*/ = /*@>1333e2a*/-0.0F;
+/*@>132ea34*/    for (/*@>134b763*/rtb_DataStoreRead1_fv_tmp = /*@>134b762*/0; /*@>134b76d*/rtb_DataStoreRead1_fv_tmp < /*@>134b76b*/32; /*@>134b769*/rtb_DataStoreRead1_fv_tmp/*@>134b7ee*/++) {
+        /*@>1333e26*/rtb_DataStoreRead1_h/*@>134b7ef*/ += /*@>1347231*/Model_Target_PostProcess_B./*@>134bf0d*/Magsq/*@>134662f*/[/*@>134662a*/s/*@>1346628*/ + /*@>134662c*/rtb_DataStoreRead1_fv_tmp];
+    }
+    /* {S!d1848}Sum: '<S2196>/Add1' incorporates:
+ *  Delay: '<S2196>/Delay2'
+ *  Product: '<S2196>/Product3'
+ *  Product: '<S2196>/Product4'
+ *  Sum: '<S2190>/Add'
+ */
+    rtb_SumofElements/*@>132bcfe*/ = /*@>133bd1b*/rtb_DataStoreRead1_h/*@>13340bd*/ * /*@>134737e*/Model_Target_PostProcess_ConstB./*@>134bf85*/Subtract1/*@>132bd05*/ + /*@>1347384*/Model_Target_PostProcess_ConstB./*@>134bf88*/MathFunction/*@>13340c1*/ * /*@>134756d*/Model_Target_PostProcess_DW./*@>134bfcd*/Delay2_DSTATE/*@>1346626*/[/*@>1346623*/i];
+    /* {S!d1850}Gain: '<S2189>/Multiply' incorporates:
+ *  Gain: '<S2189>/Multiply1'
+ *  Math: '<S2189>/Log10'
+ *
+ * About '<S2189>/Log10':
+ *  Operator: log10
+ */
+    coeffIdx/*@>132bc56*/ = /*@>13431cf*/log10(/*@>13336bb*/0.0625/*@>13340b9*/ * rtb_SumofElements)/*@>13340b5*/ * /*@>13336bc*/10.0;
+    /* {S!d1852}DataTypeConversion: '<S2189>/Data Type Conversion1' */
+    /*@>1347237*/Model_Target_PostProcess_B./*@>134bf10*/DataTypeConversion1/*@>132d824*/[/*@>1333830*/i]/*@>132bc7a*/ = /*@>132bc81*/(real32_T)coeffIdx;
+    /* {S!d1854}Sum: '<S2196>/Add1' */
+    /*@>133369c*/rtb_Add1_db/*@>1330cd0*/[/*@>133369a*/i] = rtb_SumofElements;
+    /* {S!d1856}Gain: '<S2189>/Multiply' incorporates:
+ *  DataTypeConversion: '<S2209>/Data Type Conversion'
+ */
+    /*@>1333692*/rtb_DataTypeConversion/*@>1330ce8*/[/*@>1333690*/i] = coeffIdx;
+}
+%if !WHITE_SPACE(tlcOutputsFcnOfS916B35)
+/* {S!d1858}M-S-Function: '<S2203>/TSP' */
+%<SLibCG_DumpSSCode("/*@[1349b57*/",tlcOutputsFcnOfS916B35,"/*@]*/")>\
+%endif
+/* {S!d1860}Delay: '<S2189>/Delay1' incorporates:
+ *  DataStoreRead: '<S2188>/Data Store Read'
+ */
+/*@>10cea5e*/if (/*@>134754f*/Model_Target_PostProcess_DW./*@>134bfbe*/icLoad) {
+    /*@>1347555*/Model_Target_PostProcess_DW./*@>134bfc1*/Delay1_DSTATE/*@>10cea5c*/ = /*@>134755b*/Model_Target_PostProcess_DW./*@>134bfc4*/CurrentGainValue;
+}
+/* {S!d1862}Delay: '<S2189>/Delay1' */
+/*@>1347225*/Model_Target_PostProcess_B./*@>134bf0a*/CurrentGain/*@>10cea63*/ = /*@>1347567*/Model_Target_PostProcess_DW./*@>134bfca*/Delay1_DSTATE;
+%if !WHITE_SPACE(tlcOutputsFcnOfS916B36)
+/* {S!d1864}M-S-Function: '<S2204>/TSP' */
+%<SLibCG_DumpSSCode("/*@[1349b5b*/",tlcOutputsFcnOfS916B36,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS916B37)
+/* {S!d1866}M-S-Function: '<S2205>/TSP' */
+%<SLibCG_DumpSSCode("/*@[1349b5f*/",tlcOutputsFcnOfS916B37,"/*@]*/")>\
+%endif
+/* {S!d1868}Sum: '<S2209>/Sum of Elements' */
+/*@>1333de5*/rtb_SumofElements/*@>10ce482*/ = /*@>1333de4*/-0.0;
+/*@>132d890*/for (/*@>134b741*/rtb_DataStoreRead1_fv_tmp = /*@>134b740*/0; /*@>134b74b*/rtb_DataStoreRead1_fv_tmp < /*@>134b749*/24; /*@>134b747*/rtb_DataStoreRead1_fv_tmp/*@>134b7f0*/++) {
+    /* {S!d1870}DataTypeConversion: '<S2209>/Data Type Conversion' incorporates:
+ *  RelationalOperator: '<S2209>/Relational Operator'
+ */
+    coeffIdx = (/*@>1346633*/rtb_DataTypeConversion/*@>1346635*/[/*@>1346632*/rtb_DataStoreRead1_fv_tmp]/*@>13370b5*/ > /*@>1347390*/Model_Target_PostProcess_ConstB./*@>134bf8b*/DEBUG_EBL_THRESHOLD_DBSPL);
+    /* {S!d1872}Sum: '<S2209>/Sum of Elements' */
+    /*@>1333de0*/rtb_SumofElements/*@>134b7f1*/ += coeffIdx;
+    /* {S!d1874}DataTypeConversion: '<S2209>/Data Type Conversion' incorporates:
+ *  RelationalOperator: '<S2209>/Relational Operator'
+ */
+    /*@>133adee*/rtb_DataTypeConversion/*@>133aded*/[/*@>133adf0*/rtb_DataStoreRead1_fv_tmp] = coeffIdx;
+}
+/* {S!d1876}Delay: '<S2189>/Delay2' */
+/*@>1333c07*/rtb_Max_bj/*@>10cea68*/ = /*@>1347573*/Model_Target_PostProcess_DW./*@>134bfd0*/Delay2_DSTATE_i;
+/* {S!d1878}Logic: '<S2189>/Logical Operator' incorporates:
+ *  Delay: '<S2189>/Delay2'
+ *  RelationalOperator: '<S2189>/Relational Operator2'
+ *  RelationalOperator: '<S2189>/Relational Operator4'
+ */
+/*@>1333dde*/rtb_Merge_ps/*@>10ce4ae*/ = ((/*@>1333944*/rtb_SumofElements/*@>1327129*/ > /*@>1347396*/Model_Target_PostProcess_ConstB./*@>134bf8e*/RoundingFunction_b)/*@>10ce4ad*/ && (/*@>1347579*/Model_Target_PostProcess_DW./*@>134bfd3*/Delay2_DSTATE_i/*@>1334061*/ >= /*@>134739c*/Model_Target_PostProcess_ConstB./*@>134bf91*/RoundingFunction1));
+/* {S!d1880}Logic: '<S2189>/Logical Operator1' incorporates:
+ *  Delay: '<S2189>/Delay2'
+ *  RelationalOperator: '<S2189>/Relational Operator1'
+ *  RelationalOperator: '<S2189>/Relational Operator3'
+ */
+/*@>1333ddc*/rtb_LogicalOperator1_f/*@>10ce4bc*/ = ((/*@>133393c*/rtb_SumofElements/*@>1327134*/ <= /*@>13473a2*/Model_Target_PostProcess_ConstB./*@>134bf94*/RoundingFunction_b)/*@>10ce4bb*/ && (/*@>134757f*/Model_Target_PostProcess_DW./*@>134bfd6*/Delay2_DSTATE_i/*@>133405d*/ >= /*@>13473a8*/Model_Target_PostProcess_ConstB./*@>134bf97*/RoundingFunction));
+/* {S!d1882}MATLAB Function: '<S2189>/EBL State' incorporates:
+ *  Constant: '<S2208>/Constant1'
+ */
+/*  */
+/*  Return gain notifications based on current gain and thresholds */
+/*  */
+/* MATLAB Function 'PostProcess/PostProcess/EnergyLimiter/EnergyLimiter1/EnergyRunningAvg /EBL State': '<S2197>:1' */
+/* '<S2197>:1:6' ELNotification = single(0); */
+/*@>1333bd7*/rtb_DataStoreRead1_h/*@>10cebe3*/ = /*@>1333bce*/0.0F;
+/* '<S2197>:1:7' if((currgain<maxgain)) */
+/*@>10cebeb*/if (/*@>1347243*/Model_Target_PostProcess_B./*@>134bf16*/CurrentGain/*@>10cebe8*/ < /*@>13336ba*/1.0F) {
+    /* '<S2197>:1:8' if(aboveth) */
+    /*@>10cebec*/if (/*@>1333bd1*/rtb_Merge_ps) {
+        /*     %<"\%\% Gain reduction when energy limiter active"> */
+        /* '<S2197>:1:10' ELNotification = single(1.0); */
+        /*@>1333bdd*/rtb_DataStoreRead1_h/*@>10cebe4*/ = /*@>1333bcb*/1.0F;
+    }
+    /* if((currgain==mingain)) */
+    /* '<S2197>:1:13' if(belowth) */
+    /*@>10cebf1*/if (/*@>1333bcf*/rtb_LogicalOperator1_f) {
+        /*         %<"\%\% Increased gain notification when energy limiter active"> */
+        /* '<S2197>:1:15' ELNotification= single(2.0); */
+        /*@>1333bdf*/rtb_DataStoreRead1_h/*@>10cebe5*/ = /*@>1333bca*/2.0F;
+    }
+} else /*@>10cebf4*/if (/*@>134724f*/Model_Target_PostProcess_B./*@>134bf1c*/CurrentGain/*@>10cebe9*/ == /*@>13336b9*/1.0F) {
+    /* '<S2197>:1:17' elseif(currgain== maxgain) */
+    /*     %<"\%\% No Gain reduction when energy limiter active"> */
+    /* '<S2197>:1:19' ELNotification= single(3.0); */
+    /*@>1333bdb*/rtb_DataStoreRead1_h/*@>10cebe6*/ = /*@>1333bcc*/3.0F;
+} else {
+    /* '<S2197>:1:20' else */
+    /* '<S2197>:1:21' ELNotification= single(4.0); */
+    /*@>1333bd9*/rtb_DataStoreRead1_h/*@>10cebe7*/ = /*@>1333bcd*/4.0F;
+}
+/* {E!d1882}End of MATLAB Function: '<S2189>/EBL State' */
+
+/* {S!d1884}Delay: '<S2189>/Delay' */
+/* '<S2197>:1:24' y = single(ELNotification); */
+/*@>1333c03*/rtb_Delay_ed/*@>10cea6d*/ = /*@>1347585*/Model_Target_PostProcess_DW./*@>134bfd9*/Delay_DSTATE;
+%if !WHITE_SPACE(tlcOutputsFcnOfS916B39)
+/* {S!d1777}S-Function (RTC_REQ_RSP): '<S2191>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[1349b61*/",tlcOutputsFcnOfS916B39,"/*@]*/")>\
+%endif
+/* {E!d1777}End of Outputs for S-Function (RTC_REQ_RSP): '<S2191>/RTC Request Response Trigger' */
+
+/* {S!d1886}DataTypeConversion: '<S2189>/Data Type Conversion4' */
+/*@>133fc6b*/rtb_DataStoreRead1_fv_tmp_tmp/*@>133fc6d*/ = /*@>10ce4be*/(real32_T)%<SLibCG_DumpSSCode("/*@[1349f9a*/",(SLibCG_SE(SLibCG_BOCSC(537, 1, "", -1, "", 0))),"/*@]*/")>;
+/* {S!d1888}MATLAB Function: '<S2189>/EBL Transition' incorporates:
+ *  DataTypeConversion: '<S2189>/Data Type Conversion4'
+ *  Delay: '<S2189>/Delay3'
+ */
+/*  */
+/*  Calculate EBL states */
+/*  */
+/*  Calculate next state and transition from previous state, current state, previous enable */
+/*  flag, and current enable flag */
+/*  */
+/* MATLAB Function 'PostProcess/PostProcess/EnergyLimiter/EnergyLimiter1/EnergyRunningAvg /EBL Transition': '<S2198>:1' */
+/* '<S2198>:1:10' if isempty(EBL_EnableCounter) */
+/*  List of all EBL states and transitions */
+/* '<S2198>:1:13' EBL_EnableFlag_False         = single(0.0); */
+/* '<S2198>:1:14' EBL_EnableFlag_True          = single(1.0); */
+/* '<S2198>:1:15' EBL_StateNoUpdate            = single(0.0); */
+/* '<S2198>:1:16' EBL_StateAttackInProgress    = single(1.0); */
+/* '<S2198>:1:17' EBL_StateRecoveryInProgress  = single(2.0); */
+/* '<S2198>:1:18' EBL_StateDisengaged          = single(3.0); */
+/* '<S2198>:1:19' EBL_TransitionNoChange       = single(0.0); */
+/* '<S2198>:1:20' EBL_TransitionAttackStart    = single(1.0); */
+/* '<S2198>:1:21' EBL_TransitionRecoverDone    = single(2.0); */
+/*  First, check if the enable flag is updated */
+/* '<S2198>:1:24' if(preState==EBL_StateAttackInProgress     && ... */
+/* '<S2198>:1:25'         curEnableFlag==EBL_EnableFlag_True && ... */
+/* '<S2198>:1:26'         preEnableFlag==EBL_EnableFlag_False) */
+/*@>10cec35*/if ((/*@>1333bb6*/rtb_Delay_ed/*@>10cec2b*/ == /*@>1333ba5*/1.0F)/*@>10ceca6*/ && (%<SLibCG_DumpSSCode("/*@[1349cb5*/",(SLibCG_SE(SLibCG_BOCSC(537, 1, "", -1, "", 0))),"/*@]*/")>/*@>10cec2c*/ == /*@>1333ba4*/1.0F)/*@>10ceca7*/ && (/*@>134758b*/Model_Target_PostProcess_DW./*@>134bfdc*/Delay3_DSTATE/*@>10cec2d*/ == /*@>1333ba3*/0.0F)) {
+    /* '<S2198>:1:27' EBL_EnableCounter = EBL_EnableCounter+1; */
+    /*@>1334032*/s/*@>1334034*/ = /*@>1347591*/Model_Target_PostProcess_DW./*@>134bfdf*/EBL_EnableCounter_d/*@>134016e*/ + /*@>1340172*/1;
+    /*@>1334054*/if (/*@>1347597*/Model_Target_PostProcess_DW./*@>134bfe2*/EBL_EnableCounter_d/*@>134017c*/ + /*@>1340180*/1/*@>133403d*/ > /*@>1334039*/32767) {
+        /*@>1334049*/s/*@>133404b*/ = /*@>134b672*/32767;
+    }
+    /*@>134759d*/Model_Target_PostProcess_DW./*@>134bfe5*/EBL_EnableCounter_d/*@>10cec21*/ = /*@>1335916*/(int16_T)/*@>1334056*/s;
+    /*  EBL enabled while attack in progress */
+    /* '<S2198>:1:29' transition=EBL_TransitionAttackStart; */
+    /*@>134725b*/Model_Target_PostProcess_B./*@>134bf22*/transition/*@>10cec22*/ = /*@>1333ba0*/1.0F;
+    /* '<S2198>:1:30' if(curState == EBL_StateNoUpdate) */
+    /*@>10cec39*/if (/*@>1333ba8*/rtb_DataStoreRead1_h/*@>10cec2f*/ == /*@>1333b9f*/0.0F) {
+        /* '<S2198>:1:31' nextState=preState; */
+        /*@>1333bbe*/rtb_DataStoreRead1_h/*@>10cec23*/ = /*@>1334a87*/1.0F;
+    } else {
+        /* '<S2198>:1:32' else */
+        /* '<S2198>:1:33' nextState=curState; */
+    }
+
+    /*  Check if the EBL state is updated */
+    /* '<S2198>:1:39' if(curState == EBL_StateNoUpdate) */
+} else /*@>10cec3d*/if (/*@>1333bb4*/rtb_DataStoreRead1_h/*@>10cec30*/ == /*@>1333ba2*/0.0F) {
+    /* '<S2198>:1:40' transition=EBL_TransitionNoChange; */
+    /*@>1347255*/Model_Target_PostProcess_B./*@>134bf1f*/transition/*@>10cec25*/ = /*@>1333ba1*/0.0F;
+    /* '<S2198>:1:41' nextState=preState; */
+    /*@>1333bc0*/rtb_DataStoreRead1_h/*@>10cec26*/ = /*@>1333baa*/rtb_Delay_ed;
+
+    /* '<S2198>:1:43' else */
+    /* '<S2198>:1:44' nextState=curState; */
+    /*  Determine the transition based on EBL state */
+    /* '<S2198>:1:48' if(preState==EBL_StateDisengaged && ... */
+    /* '<S2198>:1:49'    curState==EBL_StateAttackInProgress) */
+} else /*@>10cec42*/if ((/*@>1333bb2*/rtb_Delay_ed/*@>10cec31*/ == /*@>1333b9e*/3.0F)/*@>10ceca8*/ && (/*@>1333bb0*/rtb_DataStoreRead1_h/*@>10cec32*/ == /*@>1333b9d*/1.0F)) {
+    /*  attack begins */
+    /* '<S2198>:1:51' transition=EBL_TransitionAttackStart; */
+    /*@>1347267*/Model_Target_PostProcess_B./*@>134bf28*/transition/*@>10cec28*/ = /*@>1333b9a*/1.0F;
+} else /*@>10cec45*/if ((/*@>1333bae*/rtb_Delay_ed/*@>10cec33*/ == /*@>1333b9c*/2.0F)/*@>10ceca9*/ && (/*@>1333bac*/rtb_DataStoreRead1_h/*@>10cec34*/ == /*@>1333b9b*/3.0F)) {
+    /* '<S2198>:1:52' elseif(preState==EBL_StateRecoveryInProgress && ... */
+    /* '<S2198>:1:53'        curState==EBL_StateDisengaged) */
+    /*  recovery done */
+    /* '<S2198>:1:55' transition=EBL_TransitionRecoverDone; */
+    /*@>1347285*/Model_Target_PostProcess_B./*@>134bf31*/transition/*@>10cec29*/ = /*@>1333b98*/2.0F;
+} else {
+    /* '<S2198>:1:56' else */
+    /* '<S2198>:1:57' transition=EBL_TransitionNoChange; */
+    /*@>1347273*/Model_Target_PostProcess_B./*@>134bf2b*/transition/*@>10cec2a*/ = /*@>1333b99*/0.0F;
+}
+/* {E!d1888}End of MATLAB Function: '<S2189>/EBL Transition' */
+
+/* {S!d1890}DataTypeConversion: '<S2189>/Data Type Conversion5' */
+/*@>1333ffb*/rtb_Delay_ed/*@>1333ffd*/ = /*@>13431df*/fmodf(/*@>13431dd*/qhmath_floor_f(/*@>1333dd6*/rtb_DataStoreRead1_h), /*@>1333ff8*/65536.0F);
+/* {S!d1892}DataTypeConversion: '<S2189>/Data Type Conversion5' */
+/*@>1347261*/Model_Target_PostProcess_B./*@>134bf25*/DataTypeConversion5/*@>10ce4c2*/ = /*@>1335927*/(int16_T)(/*@>1334004*/rtb_Delay_ed/*@>1334007*/ < /*@>1334003*/0.0F/*@>1334007*/ ? (int32_T)/*@>1334019*/(int16_T)-/*@<1334018*//*@>133400d*/(int16_T)/*@>133401b*/(uint16_T)-/*@<133400b*//*@>1334008*/rtb_Delay_ed : (int32_T)/*@>1334013*/(int16_T)/*@>133401e*/(uint16_T)/*@>133400f*/rtb_Delay_ed);
+%if !WHITE_SPACE(tlcOutputsFcnOfS916B44)
+/* {S!d1894}M-S-Function: '<S2206>/TSP' */
+%<SLibCG_DumpSSCode("/*@[1349b65*/",tlcOutputsFcnOfS916B44,"/*@]*/")>\
+%endif
+/* {S!d1896}DataTypeConversion: '<S2189>/Data Type Conversion6' */
+/*@>1347279*/Model_Target_PostProcess_B./*@>134bf2e*/DataTypeConversion6/*@>10ce4c6*/ = /*@>1333ff2*/(int16_T)%<SLibCG_DumpSSCode("/*@[1349cd1*/",(SLibCG_SE(SLibCG_BOCSC(537, 1, "", -1, "", 0))),"/*@]*/")>;
+%if !WHITE_SPACE(tlcOutputsFcnOfS916B45)
+/* {S!d1898}M-S-Function: '<S2207>/TSP' */
+%<SLibCG_DumpSSCode("/*@[1349b69*/",tlcOutputsFcnOfS916B45,"/*@]*/")>\
+%endif
+/* {S!d1908}Switch: '<S2189>/Switch' incorporates:
+ *  Constant: '<S2189>/Constant'
+ *  MinMax: '<S2189>/MinMax'
+ *  Product: '<S2189>/Product2'
+ *  Switch: '<S2189>/Switch1'
+ *  Switch: '<S2189>/Switch2'
+ *  Switch: '<S2189>/Switch3'
+ */
+/*@>10cea80*/if (/*@>1333c01*/rtb_Merge_ps) {
+    /*@>1333bff*/rtb_Delay_ed/*@>10cea7b*/ = /*@>132715b*/(real32_T)/*@>13431e7*/fmax(/*@>134728b*/Model_Target_PostProcess_B./*@>134bf34*/CurrentGain/*@>1333fef*/ * /*@>13473ae*/Model_Target_PostProcess_ConstB./*@>134bf9a*/MathFunction2, /*@>13473b4*/Model_Target_PostProcess_ConstB./*@>134bf9d*/MathFunction4);
+    /*@>1333bfd*/rtb_Max_bj/*@>10cea89*/ = /*@>13336b7*/0.0F;
+} else /*@>10cf293*/if (/*@>1333a21*/rtb_LogicalOperator1_f) {
+    /* {S!d1900}Switch: '<S2189>/Switch1' incorporates:
+ *  Constant: '<S2208>/Constant1'
+ *  MinMax: '<S2189>/MinMax1'
+ *  Product: '<S2189>/Product1'
+ */
+    /*@>1333913*/rtb_Delay_ed/*@>10cf28e*/ = /*@>13431e5*/fminf(/*@>1333fec*/(real32_T)(/*@>13473ba*/Model_Target_PostProcess_ConstB./*@>134bfa0*/MathFunction1/*@>1333feb*/ * /*@>1347297*/Model_Target_PostProcess_B./*@>134bf3a*/CurrentGain), /*@>13336b8*/1.0F);
+    /* {S!d1902}Switch: '<S2189>/Switch3' incorporates:
+ *  Constant: '<S2189>/Constant1'
+ */
+    /*@>133390f*/rtb_Max_bj/*@>10cf2b0*/ = /*@>13336b5*/0.0F;
+} else {
+    /* {S!d1904}Switch: '<S2189>/Switch1' */
+    /*@>1333911*/rtb_Delay_ed/*@>10cf291*/ = /*@>1347291*/Model_Target_PostProcess_B./*@>134bf37*/CurrentGain;
+    /* {S!d1906}Switch: '<S2189>/Switch3' incorporates:
+ *  Constant: '<S2189>/Constant2'
+ *  Sum: '<S2189>/Add'
+ */
+    /*@>133390d*/rtb_Max_bj/*@>134b7ff*/++;
+}
+/* {E!d1908}End of Switch: '<S2189>/Switch' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS916B49)
+
+/* {S!d1779}S-Function (RTC_NTF): '<S2191>/NTF Trigger' */
+%<SLibCG_DumpSSCode("/*@[1349b6e*/",tlcOutputsFcnOfS916B49,"/*@]*/")>\
+%endif
+/* {E!d1779}End of Outputs for S-Function (RTC_NTF): '<S2191>/NTF Trigger' */
+
+/* {S!d1910}MATLAB Function: '<S2188>/RamperProcess' incorporates:
+ *  Constant: '<S2188>/Constant2'
+ *  Constant: '<S2188>/Constant6'
+ *  Constant: '<S2188>/Constant7'
+ *  DataStoreRead: '<S2188>/Data Store Read'
+ *  S-Function (AudioStats_MEX): '<S2188>/Audio Stats'
+ */
+/* MATLAB Function 'PostProcess/PostProcess/EnergyLimiter/EnergyLimiter1/RamperProcess': '<S2192>:1' */
+/* '<S2192>:1:2' M = 1; */
+/*  for matlab 1 based indexing */
+/* '<S2192>:1:3' nf = single(size(x,1)); */
+/*  get the frame size. DO NOT USE length() since it may */
+/* '<S2192>:1:4' y = single(zeros(size(x))); */
+/*  more channels than samples per frame. */
+/* Defines for status */
+/* '<S2192>:1:7' RAMP_IDLE        = 0; */
+/* '<S2192>:1:7' RAMPING_UP       = 1; */
+/* '<S2192>:1:7' RAMPING_DOWN     = -1; */
+/* '<S2192>:1:9' numChs = single(size(x,2)); */
+/* '<S2192>:1:9' numRampers = 1; */
+/*  Configure the rgain block to have an attack (or decay) rate that */
+/*  is twice as fast as the ratio of GainChangeStepIndB to */
+/*  GainIncreaseDurationInSeconds (or */
+/*  GainDecreaseDurationInSeconds). That way, the rgain block will */
+/*  have settled to the target value before a new gain change occurs. */
+/* '<S2192>:1:15' rampUpRates_dBPerSec= (2*GainChangedB/GainInc); */
+/* '<S2192>:1:15' rampDownRates_dBPerSec=(-2*GainChangedB/GainDec); */
+/* '<S2192>:1:16' frameSize=nf; */
+/* '<S2192>:1:16' Fs=SampleRate; */
+/* '<S2192>:1:16' lpfTau=frameSize/Fs; */
+/* '<S2192>:1:16' snapThresh=single(1e-5); */
+/* '<S2192>:1:16' mindB=single(-100.0); */
+/* '<S2192>:1:19' upCoeff       = undb20(rampUpRates_dBPerSec/Fs); */
+/* UNDB20  Decibels to linear quantity */
+/*    Converts x from DB to absolute magnitude assuming that x is in volts. */
+/*    y = 10^(x/20) */
+/*  */
+/*  See also: DB20, UNDB10 */
+/*    Copyright 2018-2019 Bose Corporation */
+/*  Created : 9/7/1994 Bill Berardi */
+/* $Id: undb20.m 11244 2011-10-31 18:51:23Z rg20270 $ */
+/* 'undb20:12' y = exp(x * log(10)/20); */
+/*@>1333b4d*/upCoeff/*@>10cedcf*/ = /*@>13431f3*/qhmath_exp_f(/*@>13431f1*/qhmath_div_f(/*@>13431ef*/qhmath_div_f(/*@>1333637*/2.0F, %<SLibCG_DumpSSCode("/*@[1349cf3*/",(SLibCG_Expr(916, 17, 0, 1, "", -1, "", 0)),"/*@]*/")>)/*@>1333fde*/ * /*@>1333b22*/2.30258512F, /*@>1333b35*/20.0F));
+/* '<S2192>:1:19' upCoeffN  = upCoeff .^ frameSize; */
+/* '<S2192>:1:20' downCoeff     = undb20(-abs(rampDownRates_dBPerSec)/Fs); */
+/* UNDB20  Decibels to linear quantity */
+/*    Converts x from DB to absolute magnitude assuming that x is in volts. */
+/*    y = 10^(x/20) */
+/*  */
+/*  See also: DB20, UNDB10 */
+/*    Copyright 2018-2019 Bose Corporation */
+/*  Created : 9/7/1994 Bill Berardi */
+/* $Id: undb20.m 11244 2011-10-31 18:51:23Z rg20270 $ */
+/* 'undb20:12' y = exp(x * log(10)/20); */
+/*@>1333b4b*/downCoeff/*@>10cedd2*/ = /*@>13431f9*/qhmath_exp_f(/*@>13431f7*/qhmath_div_f(/*@>13431f5*/qhmath_div_f(/*@>1333636*/-2.0F, %<SLibCG_DumpSSCode("/*@[1349d15*/",(SLibCG_Expr(916, 17, 0, 1, "", -1, "", 0)),"/*@]*/")>)/*@>1333fc8*/ * /*@>1333b21*/2.30258512F, /*@>1333b34*/20.0F));
+/* '<S2192>:1:20' downCoeffN  = downCoeff .^ frameSize; */
+/* '<S2192>:1:21' lpfCoeff      = single(exp(-1./(lpfTau.*Fs))); */
+/*@>1333b44*/lpfCoeff/*@>10cedd5*/ = /*@>13431ff*/qhmath_exp_f(/*@>13431fd*/qhmath_div_f(/*@>1333b20*/-1.0F, /*@>13431fb*/qhmath_div_f(/*@>1333b27*/32.0F, %<SLibCG_DumpSSCode("/*@[1349d59*/",(SLibCG_Expr(916, 17, 0, 1, "", -1, "", 0)),"/*@]*/")>)/*@>1333fb2*/ * %<SLibCG_DumpSSCode("/*@[1349d37*/",(SLibCG_SE(SLibCG_Expr(916, 17, 0, 1, "", -1, "", 0))),"/*@]*/")>));
+/* '<S2192>:1:21' minGain = undb20(mindB); */
+/* '<S2192>:1:22' targetCoeffSet =single(zeros(numRampers,1)); */
+/* '<S2192>:1:22' activeCoeffSet =single(zeros(numRampers,1)); */
+/* '<S2192>:1:23' status = RAMP_IDLE; */
+/* '<S2192>:1:23' freeze=single(0.0); */
+/* '<S2192>:1:24' targetRamper =single(zeros(numChs,1)); */
+/* '<S2192>:1:24' activeRamper=single(zeros(numChs,1)); */
+/* '<S2192>:1:26' if(isempty(prevGain)) */
+/*@>10cecf5*/if (!/*@<10cecc2*//*@>13475a3*/Model_Target_PostProcess_DW./*@>134bfe8*/prevGain_not_empty) {
+    /* '<S2192>:1:27' prevGain=single((PreviousGain*ones(numRampers,1))); */
+    /*@>13475a9*/Model_Target_PostProcess_DW./*@>134bfeb*/prevGain/*@>10cedbb*/ = /*@>13475af*/Model_Target_PostProcess_DW./*@>134bfee*/CurrentGainValue;
+    /*@>13475b5*/Model_Target_PostProcess_DW./*@>134bff1*/prevGain_not_empty/*@>10cecea*/ = /*@>1333b92*/true;
+}
+/* '<S2192>:1:29' targetGain=targetgainlinear; */
+/* '<S2192>:1:30' if(targetgainlinear<1) */
+/* '<S2192>:1:33' rGain=single(zeros(numRampers,1)); */
+/*  simulate use of scratch buffers for ramped envelopes */
+/* '<S2192>:1:37' scratchBufs = single(zeros(nf,numRampers)); */
+/*  loop over rampers first */
+/* '<S2192>:1:39' for r = 1:numRampers */
+/*  update active set with target */
+/* '<S2192>:1:41' activeCoeffSet(r) = targetCoeffSet(r); */
+/* '<S2192>:1:42' setIdx = activeCoeffSet(r) + M; */
+/*  get all coeffs from active set */
+/* '<S2192>:1:44' lpfCoeff = lpfCoeff(setIdx); */
+/* '<S2192>:1:46' gp = prevGain(r); */
+/*@>1333b8e*/gp/*@>10cece6*/ = /*@>13475bb*/Model_Target_PostProcess_DW./*@>134bff4*/prevGain;
+/* '<S2192>:1:47' if freeze */
+/* '<S2192>:1:49' else */
+/* '<S2192>:1:50' gt = targetGain(r); */
+/* '<S2192>:1:52' gdiff = gt-gp; */
+/*@>1333b8a*/gdiff/*@>10cece5*/ = /*@>13472a3*/Model_Target_PostProcess_B./*@>134bf3d*/CurrentGain/*@>10cecc1*/ - /*@>13475c1*/Model_Target_PostProcess_DW./*@>134bff7*/prevGain;
+/*  Snap to target gain if it's close enough */
+/* '<S2192>:1:55' if( abs(gdiff) <= snapThresh ) */
+/*@>10cecff*/if (/*@>1343201*/qhmath_abs_f(/*@>1333b32*/gdiff)/*@>10cecc0*/ <= /*@>1333b1f*/1.0E-5F) {
+    /* '<S2192>:1:56' prevGain(r) = gt; */
+    /*@>13475c7*/Model_Target_PostProcess_DW./*@>134bffa*/prevGain/*@>10cece4*/ = /*@>13472a9*/Model_Target_PostProcess_B./*@>134bf40*/CurrentGain;
+    /* '<S2192>:1:57' status(r) = RAMP_IDLE; */
+    /* '<S2192>:1:58' scratchBufs(:,r) = gt; */
+/*@>132bcd4*/    for (/*@>134b730*/i = /*@>134b72f*/0; /*@>134b73a*/i < /*@>134b738*/32; /*@>134b736*/i/*@>134b7f2*/++) {
+        /*@>13338d0*/rtb_Merge_in/*@>132bccb*/[/*@>13338f7*/i]/*@>132bcca*/ = /*@>13472b5*/Model_Target_PostProcess_B./*@>134bf46*/CurrentGain;
+    }
+} else {
+    /*  Ramp up or down? */
+    /* '<S2192>:1:63' if( gdiff>0 ) */
+    /*@>10ced03*/if (/*@>1333b86*/gdiff/*@>10cecbf*/ > /*@>1333b85*/0.0F) {
+        /* '<S2192>:1:64' status(r) = RAMPING_UP; */
+        /*  Check for ramp done */
+        /* '<S2192>:1:67' temp = max(gp,minGain); */
+        /*@>1333b48*/downCoeff/*@>10cedd7*/ = /*@>1343205*/fmaxf(/*@>13475cd*/Model_Target_PostProcess_DW./*@>134bffd*/prevGain, /*@>1333b4a*/9.99999338E-6F);
+        /*  previous gain cannot be zero for exponential ramp */
+        /* '<S2192>:1:68' if( temp*upCoeffN(setIdx) < gt ) */
+        /*@>10ced06*/if (/*@>1333b7c*/downCoeff/*@>1333fa5*/ * /*@>1343207*/qhmath_pow_f(/*@>1333b2d*/upCoeff, /*@>1333b2c*/32.0F)/*@>10cecbd*/ < /*@>13472bb*/Model_Target_PostProcess_B./*@>134bf49*/CurrentGain) {
+            /*  Ramp not done, so do zero-input exponential ramp */
+            /* '<S2192>:1:70' a = upCoeff(setIdx); */
+            /*@>1333b71*/lpfCoeff/*@>10cece0*/ = /*@>1333b73*/upCoeff;
+            /* '<S2192>:1:70' b0 = single(0.0); */
+            /*@>1333b6a*/upCoeff/*@>10cecdf*/ = /*@>1333b69*/0.0F;
+            /* '<S2192>:1:70' gp = temp; */
+            /*@>1333b60*/gp/*@>10cecdd*/ = /*@>1333b62*/downCoeff;
+        } else {
+            /* '<S2192>:1:71' else */
+            /*  LPF with target gain as input */
+            /* '<S2192>:1:73' a = lpfCoeff; */
+            /* '<S2192>:1:73' b0 = 1-a; */
+            /*@>1333b64*/upCoeff/*@>10cecda*/ = /*@>1333b66*/1.0F/*@>10cecbc*/ - /*@>1333b67*/lpfCoeff;
+        }
+
+        /* '<S2192>:1:75' else */
+        /* '<S2192>:1:76' status(r) = RAMPING_DOWN; */
+        /*  Check for ramp done */
+        /* '<S2192>:1:78' if( gp*downCoeffN(setIdx) > gt ) */
+    } else /*@>10ced0e*/if (/*@>13475d3*/Model_Target_PostProcess_DW./*@>134c000*/prevGain/*@>1333fa1*/ * /*@>1343203*/qhmath_pow_f(/*@>1333b30*/downCoeff, /*@>1333b2f*/32.0F)/*@>10cecba*/ > /*@>13472af*/Model_Target_PostProcess_B./*@>134bf43*/CurrentGain) {
+        /*  Ramp not done, so do zero-input exponential ramp */
+        /* '<S2192>:1:80' a = downCoeff(setIdx); */
+        /*@>1333b78*/lpfCoeff/*@>10cecd8*/ = /*@>1333b7a*/downCoeff;
+        /* '<S2192>:1:80' b0 = single(0.0); */
+        /*@>1333b76*/upCoeff/*@>10cecd7*/ = /*@>1333b75*/0.0F;
+    } else {
+        /* '<S2192>:1:81' else */
+        /*  LPF with target gain as input */
+        /* '<S2192>:1:83' a = lpfCoeff; */
+        /* '<S2192>:1:83' b0 = 1-a; */
+        /*@>1333b6c*/upCoeff/*@>10cecd4*/ = /*@>1333b6e*/1.0F/*@>10cecb9*/ - /*@>1333b6f*/lpfCoeff;
+    }
+    /*  Calculate gain envelope for current ramper */
+    /*      zi = a*gp;    %<"\% initial condition for filter"> */
+    /*      scratchBufs(:,r) = filter(b0,[1 -a],gt*ones(nf,1),zi); */
+    /*  use single() to force MATLAB to compute gain envelope in 32-bit */
+    /*  precision to match the performance of current 32-bit DSP processors */
+    /* '<S2192>:1:91' for k = 1:nf */
+/*@>10ced1b*/    for (/*@>134b71f*/i = /*@>134b71e*/0; /*@>134b729*/i < /*@>134b727*/32; /*@>134b725*/i/*@>134b7fe*/++) {
+        /* scratchBufs(k,r) = double(single(b0)*single(gt) + (single(a)*single(gp)));  */
+        /* '<S2192>:1:93' scratchBufs(k,r) = b0*gt + a*gp; */
+        gp/*@>10cecce*/ = /*@>1333b55*/upCoeff/*@>13340c5*/ * /*@>13472f1*/Model_Target_PostProcess_B./*@>134bf5b*/CurrentGain/*@>10cecb6*/ + /*@>1333b53*/lpfCoeff/*@>13340c9*/ * /*@>1333b51*/gp;
+        /* '<S2192>:1:93' gp = scratchBufs(k,r); */
+        /*@>1333668*/rtb_Merge_in/*@>1330d30*/[/*@>1333666*/i] = gp;
+    }
+    /*  save state */
+    /* '<S2192>:1:96' prevGain(r) = scratchBufs(end,r); */
+    /*@>13475d9*/Model_Target_PostProcess_DW./*@>134c003*/prevGain/*@>10cecc8*/ = /*@>1346656*/rtb_Merge_in/*@>1346658*/[/*@>1346655*/31];
+}
+/*  then apply ramped gains to channels */
+/* '<S2192>:1:100' for ch = 1:numChs */
+/*@>10ced23*/for (/*@>134b6fd*/i = /*@>134b6fc*/0; /*@>134b707*/i < /*@>134b705*/24; /*@>134b703*/i/*@>134b7f3*/++) {
+    /* '<S2192>:1:101' activeRamper(ch) = targetRamper(ch); */
+    /*  update active ramper with target */
+    /* '<S2192>:1:102' if  activeRamper(ch) ~= -1 */
+    /* '<S2192>:1:103' rGain = scratchBufs(:,activeRamper(ch) + M); */
+    /*  get ramped envelope assigned to ch */
+    /* '<S2192>:1:104' y(:,ch) = rGain.*x(:,ch); */
+/*@>132db6f*/    for (/*@>134b70e*/s = /*@>134b70d*/0; /*@>134b718*/s < /*@>134b716*/32; /*@>134b714*/s/*@>134b7f4*/++) {
+        /*@>133b6b1*/rtb_DataStoreRead1_fv_tmp/*@>133b6b3*/ = (/*@>13337ee*/i/*@>13340de*/ << /*@>13340dd*/5)/*@>1331661*/ + /*@>13337f0*/s;
+        /*@>13472e5*/Model_Target_PostProcess_B./*@>134bf55*/Magsq/*@>133165b*/[rtb_DataStoreRead1_fv_tmp]/*@>132db62*/ = /*@>13472eb*/Model_Target_PostProcess_B./*@>134bf58*/y_b/*@>134664d*/[/*@>134664a*/rtb_DataStoreRead1_fv_tmp]/*@>13340d5*/ * /*@>1346651*/rtb_Merge_in/*@>1346653*/[/*@>1346650*/s];
+    }
+}
+/* {E!d1910}End of MATLAB Function: '<S2188>/RamperProcess' */
+
+/* {S!d1912}Switch: '<S2188>/Switch' */
+/*@>13338da*/rtb_Merge_ps/*@>132ca54*/ = (%<SLibCG_DumpSSCode("/*@[1349d75*/",(SLibCG_SE(SLibCG_BOCSC(537, 1, "", -1, "", 0))),"/*@]*/")>/*@>132c371*/ > /*@>13336b4*/0U);
+/*@>132daab*/for (/*@>134b6ec*/s = /*@>134b6eb*/0; /*@>134b6f6*/s < /*@>134b6f4*/768; /*@>134b6f2*/s/*@>134b7f5*/++) {
+    rtb_Magsq_f = /*@>13472c7*/Model_Target_PostProcess_B./*@>134bf4c*/Magsq/*@>1346641*/[/*@>134663e*/s];
+    /*@>1331f72*/if (!/*@<133ee85*//*@>13338ce*/rtb_Merge_ps) {
+        rtb_Magsq_f/*@>132da9e*/ = /*@>13472d3*/Model_Target_PostProcess_B./*@>134bf4f*/y_b/*@>1346647*/[/*@>1346644*/s];
+    }
+    /*@>13472df*/Model_Target_PostProcess_B./*@>134bf52*/Magsq/*@>133ae08*/[/*@>133ae0b*/s] = rtb_Magsq_f;
+}
+/* {E!d1912}End of Switch: '<S2188>/Switch' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS916B56)
+
+/* {S!d1914}M-S-Function: '<S2188>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[1349b6f*/",tlcOutputsFcnOfS916B56,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS916B57)
+/* {S!d1916}S-Function (AudioStats_MEX): '<S2216>/Audio Stats' */
+%<SLibCG_DumpSSCode("/*@[1349b72*/",tlcOutputsFcnOfS916B57,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS916B58)
+/* {S!d1918}M-S-Function: '<S2216>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[1349b73*/",tlcOutputsFcnOfS916B58,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS916B59)
+/* {S!d1920}S-Function (AudioStats_MEX): '<S2243>/AudioStats' */
+%<SLibCG_DumpSSCode("/*@[1349b76*/",tlcOutputsFcnOfS916B59,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS916B60)
+/* {S!d1922}S-Function (TOP_MEX): '<S2268>/xmin TOP' */
+%<SLibCG_DumpSSCode("/*@[1349b78*/",tlcOutputsFcnOfS916B60,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS916B61)
+/* {S!d1924}S-Function (TOP_MEX): '<S2268>/xmax TOP' */
+%<SLibCG_DumpSSCode("/*@[1349b7a*/",tlcOutputsFcnOfS916B61,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS916B62)
+/* {S!d1926}S-Function (TOP_MEX): '<S2268>/p2 TOP' */
+%<SLibCG_DumpSSCode("/*@[1349b7c*/",tlcOutputsFcnOfS916B62,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS916B63)
+/* {S!d1928}S-Function (TOP_MEX): '<S2268>/xmin TOP1' */
+%<SLibCG_DumpSSCode("/*@[1349b7e*/",tlcOutputsFcnOfS916B63,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS916B64)
+/* {S!d1930}S-Function (TOP_MEX): '<S2268>/xmax TOP1' */
+%<SLibCG_DumpSSCode("/*@[1349b80*/",tlcOutputsFcnOfS916B64,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS916B65)
+/* {S!d1932}S-Function (TOP_MEX): '<S2268>/p2 TOP1' */
+%<SLibCG_DumpSSCode("/*@[1349b82*/",tlcOutputsFcnOfS916B65,"/*@]*/")>\
+%endif
+/* {S!d1934}MATLAB Function: '<S2268>/MATLAB Function' incorporates:
+ *  Switch: '<S2188>/Switch'
+ */
+/*  This is the main function for the Soft-Clipper */
+/*  It takes in audio, typically from the Limiter, and applies a gain */
+/*  reduction when appropriate.  */
+/*  It takes in two sets of tunable parameters. */
+/*  Each set represents values corresponding to a car that either stays on, */
+/*  or shuts off, when idling.  */
+/* MATLAB Function 'PostProcess/PostProcess/Soft Clipper/SoftClipper/MATLAB Function': '<S2269>:1' */
+/* '<S2269>:1:9' y = coder.nullcopy(u); */
+/* '<S2269>:1:10' [frame_size, channel_count] = size(u); */
+/*  Choose whether we are using the set of coefficients for a car that shuts */
+/*  off while idling, or not. */
+/* '<S2269>:1:14' if (param_set == 1) */
+/*@>10cee6a*/if (%<SLibCG_DumpSSCode("/*@[1349d91*/",(SLibCG_SE(SLibCG_BOCSC(529, 1, "", -1, "", 0))),"/*@]*/")>/*@>10cee60*/ == /*@>1333ae5*/1U) {
+    /* '<S2269>:1:15' xmin_param = xmin; */
+    /*@>1333b16*/lpfCoeff/*@>10cee46*/ = %<SLibCG_DumpSSCode("/*@[1349dad*/",(SLibCG_SE(SLibCG_BOCSC(548, 1, "", -1, "", 0))),"/*@]*/")>;
+    /* '<S2269>:1:16' xmax_param = xmax; */
+    /*@>1333b12*/gp/*@>10cee47*/ = %<SLibCG_DumpSSCode("/*@[1349dc9*/",(SLibCG_SE(SLibCG_BOCSC(549, 1, "", -1, "", 0))),"/*@]*/")>;
+    /* '<S2269>:1:17' p2_param = p2; */
+    /*@>1333b0e*/upCoeff/*@>10cee48*/ = %<SLibCG_DumpSSCode("/*@[1349de5*/",(SLibCG_SE(SLibCG_BOCSC(550, 1, "", -1, "", 0))),"/*@]*/")>;
+} else {
+    /* '<S2269>:1:18' else */
+    /* '<S2269>:1:19' xmin_param = xmin_low; */
+    /*@>1333b14*/lpfCoeff/*@>10cee49*/ = %<SLibCG_DumpSSCode("/*@[1349e01*/",(SLibCG_SE(SLibCG_BOCSC(551, 1, "", -1, "", 0))),"/*@]*/")>;
+    /* '<S2269>:1:20' xmax_param = xmax_low; */
+    /*@>1333b10*/gp/*@>10cee4a*/ = %<SLibCG_DumpSSCode("/*@[1349e1d*/",(SLibCG_SE(SLibCG_BOCSC(552, 1, "", -1, "", 0))),"/*@]*/")>;
+    /* '<S2269>:1:21' p2_param = p2_low; */
+    /*@>1333b0c*/upCoeff/*@>10cee4b*/ = %<SLibCG_DumpSSCode("/*@[1349e39*/",(SLibCG_SE(SLibCG_BOCSC(553, 1, "", -1, "", 0))),"/*@]*/")>;
+}
+/* '<S2269>:1:25' Sclip_Active = uint32(0); */
+/*  If RTC Disable message is 1, do not perform soft-clipping */
+/* '<S2269>:1:27' if (disableMsg) */
+/*@>10cee74*/if (%<SLibCG_DumpSSCode("/*@[1349e55*/",(SLibCG_SE(SLibCG_BOCSC(527, 1, "", -1, "", 0))),"/*@]*/")>/*@>10cee61*/ != /*@>1333b0b*/0U) {
+    /* '<S2269>:1:28' y(:) = u(:); */
+    /*@>1343d94*/memcpy(&/*@>13472fd*/Model_Target_PostProcess_B./*@>134bf5e*/y/*@>1341460*/[/*@>134144f*/0], &/*@>1347303*/Model_Target_PostProcess_B./*@>134bf61*/Magsq/*@>1341468*/[/*@>134145c*/0], /*@>134145e*/768U/*@>134146b*/ * /*@>134146a*/sizeof(real32_T));
+} else {
+    /* '<S2269>:1:29' else */
+    /*      Loop over all channels */
+    /* '<S2269>:1:31' for i = 1:channel_count */
+/*@>10cee78*/    for (/*@>134b6ca*/i = /*@>134b6c9*/0; /*@>134b6d4*/i < /*@>134b6d2*/24; /*@>134b6d0*/i/*@>134b7fc*/++) {
+        /*          Loop over each sample of each channel */
+        /* '<S2269>:1:33' for j = 1:frame_size */
+/*@>10cee7a*/        for (/*@>134b6db*/s = /*@>134b6da*/0; /*@>134b6e5*/s < /*@>134b6e3*/32; /*@>134b6e1*/s/*@>134b7fd*/++) {
+            /*@>133b6c1*/rtb_DataStoreRead1_fv_tmp/*@>133b6c3*/ = (/*@>133365c*/i/*@>1333f9e*/ << /*@>1333f9d*/5)/*@>1331678*/ + /*@>133365e*/s;
+            rtb_Magsq_f = /*@>1347309*/Model_Target_PostProcess_B./*@>134bf64*/Magsq/*@>134665e*/[/*@>134665b*/rtb_DataStoreRead1_fv_tmp];
+            /* '<S2269>:1:34' x1 = abs( u(j,i) ); */
+            /* '<S2269>:1:35' x1 = min(x1, xmax_param); */
+            /*@>1333aff*/downCoeff/*@>10ceede*/ = /*@>134321f*/fminf(/*@>134321d*/qhmath_abs_f(rtb_Magsq_f), /*@>1333aea*/gp);
+            /* '<S2269>:1:36' x2 = x1 - xmin_param; */
+            /* '<S2269>:1:37' x2 = max(x2, single(0)); */
+            /*@>1333afc*/gdiff/*@>10ceee1*/ = /*@>1343221*/fmaxf(/*@>1333ae8*/downCoeff/*@>10ceeff*/ - /*@>1333ae6*/lpfCoeff, /*@>1333afe*/0.0F);
+            /* '<S2269>:1:38' x2 = x2 * x2; */
+            /* '<S2269>:1:39' x2 = x2 * p2_param; */
+            /* '<S2269>:1:40' x1 = x1 - x2; */
+            /* '<S2269>:1:41' y(j,i) = copysignf(x1, u(j,i)); */
+            /*@>134730f*/Model_Target_PostProcess_B./*@>134bf67*/y/*@>1331687*/[rtb_DataStoreRead1_fv_tmp]/*@>10cee5c*/ = /*@>1349642*/copysignf(/*@>1333980*/downCoeff/*@>1323c6b*/ - /*@>133392c*/gdiff/*@>1333f95*/ * /*@>133392a*/gdiff/*@>1333f91*/ * /*@>1333928*/upCoeff, rtb_Magsq_f);
+        }
+        /* '<S2269>:1:43' if (max(abs(u(:,i)))> xmin_param) */
+    }
+}
+/* {E!d1934}End of MATLAB Function: '<S2268>/MATLAB Function' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS916B67)
+
+/* {S!d1936}S-Function (TOP_MEX): '<S2243>/TOP' */
+%<SLibCG_DumpSSCode("/*@[1349b84*/",tlcOutputsFcnOfS916B67,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS916B68)
+/* {S!d1938}S-Function (TOP_MEX): '<S2243>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[1349b86*/",tlcOutputsFcnOfS916B68,"/*@]*/")>\
+%endif
+/* {S!d1946}MATLAB Function: '<S2247>/PoolIirProcess' incorporates:
+ *  S-Function (TOP_MEX): '<S2243>/TOP'
+ *  S-Function (TOP_MEX): '<S2243>/TOP1'
+ */
+/*  Extract configuration information from inputs */
+/* MATLAB Function 'PoolIirWithReset/PoolIir/Generic/PoolIirProcess': '<S2248>:1' */
+/* '<S2248>:1:5' [frame_size, num_channels] = size(x); */
+/*  Initialize variables */
+/*  Typecast the variables */
+/* '<S2248>:1:11' frame_size = uint32(frame_size); */
+/* '<S2248>:1:12' num_channels = uint32(num_channels); */
+/* Compute the filter coefficients */
+/* '<S2248>:1:15' y = pooliir(x, frame_size, num_channels, numStages, coeffs, states); */
+/*  We have to use a different state buffer than the one passed in.  Matlab */
+/*  value objects are passed by value, not by reference, so the saving of */
+/*  states here does not work.  The state buffer is still necessary to pass */
+/*  allocate in the calling function and pass here in order to trigger CRL. */
+/*  This double buffering is annoying, however only happens during */
+/*  simulation, not code generation. */
+/*  num_states = (length(coeffs) - numChannels) / 2; */
+/*  persistent states; */
+/*  if isempty(states) */
+/*      states = single(zeros(1, num_states)); */
+/*  end */
+/* 'pooliir:15' stateIdx = 1; */
+/*@>1333adf*/rtb_SumofElements/*@>10cef64*/ = /*@>1333ade*/1.0;
+/* 'pooliir:16' coeffIdx = 1; */
+/*@>1333adc*/coeffIdx/*@>10cef65*/ = /*@>1333adb*/1.0;
+/* 'pooliir:18' frameMinus1  = frameSize-1; */
+/*  number of samples minus one */
+/* 'pooliir:19' y     = coder.nullcopy(x); */
+/*  output matrix */
+/*  OUTER LOOP over all channels                  */
+/* 'pooliir:22' for cha = 1:numChannels */
+/*@>10cf059*/for (/*@>134b687*/s = /*@>134b686*/0; /*@>134b691*/s < /*@>134b68f*/24; /*@>134b68d*/s/*@>134b7f6*/++) {
+    real_T stateIdx;
+    int32_T downCoeff_tmp;
+    real32_T lpfCoeff_tmp;
+    real32_T q;
+    uint32_T b;
+    /*  FIRST STAGE */
+    /*  prologue: get coefficients, states and input vector  */
+    /*  and perform some computations */
+    /* 'pooliir:28' w1 = states(stateIdx); */
+    /*@>1333ad3*/lpfCoeff/*@>10cef6a*/ = /*@>13475df*/Model_Target_PostProcess_DW./*@>134c006*/states/*@>1346667*/[/*@>1346661*/(int32_T)/*@>1346663*/rtb_SumofElements/*@>1346660*/ - /*@>1346664*/1];
+    /* 'pooliir:28' stateIdx = stateIdx+1; */
+    /*@>1333ace*/stateIdx/*@>10cef6c*/ = /*@>1333ad1*/rtb_SumofElements/*@>10cf00d*/ + /*@>1333ad0*/1.0;
+    /* {S!d1940}S-Function (TOP_MEX): '<S2243>/TOP1' */
+    /* 'pooliir:29' gain = coeffs(coeffIdx); */
+    /*@>133b6e1*/rtb_Magsq_f/*@>133b6e3*/ = %<SLibCG_DumpSSCode("/*@[1349f48*/",(SLibCG_SE(SLibCG_BOCSC(554, 536, "", -1, "/*@>134666a*/(int32_T)/*@>134666c*/coeffIdx/*@>1346669*/ - /*@>134666d*/1", 0))),"/*@]*/")>;
+    /* 'pooliir:29' coeffIdx = coeffIdx+1; */
+    /* 'pooliir:30' w2 = states(stateIdx); */
+    /*@>1333ac5*/gp/*@>10cef75*/ = /*@>13475e5*/Model_Target_PostProcess_DW./*@>134c009*/states/*@>134667b*/[/*@>1346673*/(int32_T)(/*@>1346676*/rtb_SumofElements/*@>1346674*/ + /*@>1346677*/1.0)/*@>1346672*/ - /*@>1346678*/1];
+    /* 'pooliir:30' stateIdx = stateIdx-1; */
+    /*@>1333ac2*/rtb_SumofElements/*@>10cef77*/ = (/*@>133397e*/rtb_SumofElements/*@>1323c78*/ + /*@>133397d*/1.0)/*@>10cf013*/ - /*@>1333ac4*/1.0;
+    /* {S!d1942}S-Function (TOP_MEX): '<S2243>/TOP1' */
+    /* 'pooliir:31' a2   = coeffs(coeffIdx); */
+    /*@>133fc9b*/upCoeff/*@>133fc9d*/ = %<SLibCG_DumpSSCode("/*@[1349fb5*/",(SLibCG_SE(SLibCG_BOCSC(554, 536, "", -1, "/*@>134667e*/(int32_T)(/*@>1346681*/coeffIdx/*@>134667f*/ + /*@>1346682*/1.0)/*@>134667d*/ - /*@>1346683*/1", 0))),"/*@]*/")>;
+    /* 'pooliir:31' coeffIdx = coeffIdx+1; */
+    /* 'pooliir:32' xx  = x(1,cha); */
+    /* 'pooliir:32' a1   = coeffs(coeffIdx); */
+    /* 'pooliir:32' coeffIdx = coeffIdx+1; */
+    /* 'pooliir:33' xx  = xx*gain; */
+    /*@>133b701*/downCoeff_tmp/*@>133b703*/ = /*@>13337a3*/s/*@>1334131*/ << /*@>1334130*/5;
+    /*@>1333abb*/downCoeff/*@>10cef83*/ = /*@>1347327*/Model_Target_PostProcess_B./*@>134bf6d*/y/*@>134668c*/[/*@>1346689*/downCoeff_tmp]/*@>1334128*/ * rtb_Magsq_f;
+    /* 'pooliir:33' b2   = coeffs(coeffIdx); */
+    /* 'pooliir:33' coeffIdx = coeffIdx+1; */
+    /* 'pooliir:34' yy  = w1+xx; */
+    /*@>1333ab5*/gdiff/*@>10cef8b*/ = /*@>1333ab9*/lpfCoeff/*@>10cf01e*/ + /*@>1333ab7*/downCoeff;
+    /* {S!d1944}S-Function (TOP_MEX): '<S2243>/TOP1' */
+    /* 'pooliir:34' b1   = coeffs(coeffIdx); */
+    /* 'pooliir:34' coeffIdx = coeffIdx+1; */
+    /* 'pooliir:35' w1  = b1*xx; */
+    /*@>133b759*/lpfCoeff_tmp/*@>133b75b*/ = %<SLibCG_DumpSSCode("/*@[1349f63*/",(SLibCG_SE(SLibCG_BOCSC(554, 536, "", -1, "/*@>134668f*/(int32_T)((((/*@>1346695*/coeffIdx/*@>1346693*/ + /*@>1346696*/1.0)/*@>1346692*/ + /*@>1346697*/1.0)/*@>1346691*/ + /*@>1346698*/1.0)/*@>1346690*/ + /*@>1346699*/1.0)/*@>134668e*/ - /*@>134669a*/1", 0))),"/*@]*/")>;
+    /*@>1333aae*/lpfCoeff/*@>10cef93*/ = /*@>133b75d*/lpfCoeff_tmp/*@>1334121*/ * /*@>1333ab0*/downCoeff;
+    /*  main loop: 5 ops/sample */
+    /* 'pooliir:38' i = 1; */
+    /* 'pooliir:39' while i <= frameMinus1 */
+/*@>10cf256*/    for (/*@>134b6b9*/i = /*@>134b6b8*/0; /*@>134b6c3*/i < /*@>134b6c1*/31; /*@>134b6bf*/i/*@>134b7f7*/++) {
+        /* 'pooliir:40' r  = a1*yy; */
+        /* 'pooliir:40' w1 = w1+w2; */
+        /*@>1333aa8*/lpfCoeff/*@>134b7f8*/ += /*@>1333aaa*/gp;
+        /* 'pooliir:40' y(i,cha) = yy; */
+        /*@>133b719*/rtb_DataStoreRead1_fv_tmp/*@>133b71b*/ = /*@>133378e*/i/*@>1331697*/ + downCoeff_tmp;
+        /*@>1347345*/Model_Target_PostProcess_B./*@>134bf73*/Magsq/*@>133169b*/[/*@>133b71d*/rtb_DataStoreRead1_fv_tmp]/*@>10cef9a*/ = /*@>1333aa6*/gdiff;
+        /* 'pooliir:41' q  = b2*xx; */
+        /*@>1333aa0*/q/*@>10cef9d*/ = %<SLibCG_DumpSSCode("/*@[1349e70*/",(SLibCG_SE(SLibCG_BOCSC(554, 536, "", -1, "/*@>13466ad*/(int32_T)(((/*@>13466b2*/coeffIdx/*@>13466b0*/ + /*@>13466b3*/1.0)/*@>13466af*/ + /*@>13466b4*/1.0)/*@>13466ae*/ + /*@>13466b5*/1.0)/*@>13466ac*/ - /*@>13466b6*/1", 0))),"/*@]*/")>/*@>1334161*/ * /*@>1333aa2*/downCoeff;
+        /* 'pooliir:41' w1 = w1-r; */
+        /* 'pooliir:41' xx = x(i+1,cha); */
+        /* 'pooliir:42' xx = xx*gain; */
+        /*@>1333a9c*/downCoeff/*@>10cefa1*/ = /*@>134734b*/Model_Target_PostProcess_B./*@>134bf76*/y/*@>13466c1*/[rtb_DataStoreRead1_fv_tmp/*@>13466bb*/ + /*@>13466be*/1]/*@>1334155*/ * /*@>133bd2f*/rtb_Magsq_f;
+        /* 'pooliir:43' w2 = a2*yy; */
+        /*@>1333a96*/gp/*@>10cefa4*/ = /*@>1340132*/upCoeff/*@>1334151*/ * /*@>1333a98*/gdiff;
+        /* 'pooliir:43' yy = w1+xx; */
+        /*@>1333a92*/gdiff/*@>10cefa7*/ = (/*@>1333977*/lpfCoeff/*@>1323cbb*/ - %<SLibCG_DumpSSCode("/*@[1349e8b*/",(SLibCG_SE(SLibCG_BOCSC(554, 536, "", -1, "/*@>13466d3*/(int32_T)((/*@>13466d7*/coeffIdx/*@>13466d5*/ + /*@>13466d8*/1.0)/*@>13466d4*/ + /*@>13466d9*/1.0)/*@>13466d2*/ - /*@>13466da*/1", 0))),"/*@]*/")>/*@>133414a*/ * /*@>1333975*/gdiff)/*@>10cf028*/ + /*@>1333a94*/downCoeff;
+        /* 'pooliir:44' w1 = b1*xx; */
+        /*@>1333a8e*/lpfCoeff/*@>10cefaa*/ = lpfCoeff_tmp/*@>1334143*/ * /*@>1333a90*/downCoeff;
+        /* 'pooliir:44' w2 = q-w2; */
+        /*@>1333a88*/gp/*@>10cefad*/ = /*@>1333a8c*/q/*@>10cf02a*/ - /*@>1333a8a*/gp;
+        /* 'pooliir:44' i = i + 1; */
+    }
+    /*  epilogue: drain pipe and write states */
+    /* 'pooliir:48' r  = a1*yy; */
+    /* 'pooliir:48' w1 = w1+w2; */
+    /* 'pooliir:48' y(frameMinus1+1,cha) = yy; */
+    /*@>134733f*/Model_Target_PostProcess_B./*@>134bf70*/Magsq/*@>13316b0*/[downCoeff_tmp/*@>133be45*/ + /*@>133be48*/31]/*@>10cefb3*/ = /*@>1333aa4*/gdiff;
+    /* 'pooliir:49' q  = b2*xx; */
+    /* 'pooliir:49' w1 = w1-r; */
+    /*@>1347615*/Model_Target_PostProcess_DW./*@>134c01e*/states/*@>132df26*/[/*@>133410e*/(int32_T)(/*@>133377c*/stateIdx/*@>132df2d*/ - /*@>133377b*/1.0)/*@>132df2b*/ - /*@>133377a*/1]/*@>10cefb5*/ = (/*@>1333973*/lpfCoeff/*@>1323ccc*/ + /*@>1333971*/gp)/*@>10cf02c*/ - %<SLibCG_DumpSSCode("/*@[1349ea6*/",(SLibCG_SE(SLibCG_BOCSC(554, 536, "", -1, "/*@>13466a0*/(int32_T)((/*@>13466a4*/coeffIdx/*@>13466a2*/ + /*@>13466a5*/1.0)/*@>13466a1*/ + /*@>13466a6*/1.0)/*@>134669f*/ - /*@>13466a7*/1", 0))),"/*@]*/")>/*@>1334112*/ * /*@>1333a3b*/gdiff;
+    /* 'pooliir:50' w2 = a2*yy; */
+    /* 'pooliir:50' states(stateIdx) = w1; */
+    /* 'pooliir:50' stateIdx = stateIdx+1; */
+    /* 'pooliir:51' w2 = q-w2; */
+    /*@>134761b*/Model_Target_PostProcess_DW./*@>134c021*/states/*@>132dfbd*/[/*@>13340fd*/(int32_T)(/*@>1333765*/rtb_SumofElements/*@>132dfc4*/ + /*@>1333764*/1.0)/*@>132dfc2*/ - /*@>1333763*/1]/*@>10cefb8*/ = %<SLibCG_DumpSSCode("/*@[1349ec1*/",(SLibCG_SE(SLibCG_BOCSC(554, 536, "", -1, "/*@>13466c4*/(int32_T)(((/*@>13466c9*/coeffIdx/*@>13466c7*/ + /*@>13466ca*/1.0)/*@>13466c6*/ + /*@>13466cb*/1.0)/*@>13466c5*/ + /*@>13466cc*/1.0)/*@>13466c3*/ - /*@>13466cd*/1", 0))),"/*@]*/")>/*@>1334101*/ * /*@>1333a39*/downCoeff/*@>10cf02e*/ - upCoeff/*@>1334108*/ * /*@>1333a37*/gdiff;
+    /* 'pooliir:51' states(stateIdx) = w2; */
+    /* 'pooliir:51' stateIdx = stateIdx+1; */
+    /*@>1333a85*/rtb_SumofElements/*@>10cefba*/ = (/*@>133396f*/rtb_SumofElements/*@>1323cf1*/ + /*@>133396e*/1.0)/*@>10cf02f*/ + /*@>1333a87*/1.0;
+    /*  NOTE: asm implementation needs to exit here if it's only */
+    /*  one stage, NOTE: all subsequent stages work in-place */
+    /* 'pooliir:55' for st = 2:numStages(cha) */
+    /*@>1333a83*/b/*@>10cf031*/ = %<SLibCG_DumpSSCode("/*@[1349edc*/",(SLibCG_SE(SLibCG_BOCSC(525, 24, "", -1, "/*@>13466e0*/s", 0))),"/*@]*/")>;
+/*@>10cf083*/    for (/*@>134b698*/st = /*@>134b697*/2U; /*@>134b6a3*/st <= /*@>134b6a1*/b; /*@>134b69e*/st/*@>134b7f9*/++) {
+        real_T upCoeff_tmp;
+        /*  prologue: get coefficients, states and input vector,  */
+        /*  and perform some computations */
+        /* 'pooliir:58' w1 = states(stateIdx); */
+        /*@>1333a7c*/lpfCoeff/*@>10cefc0*/ = /*@>1347621*/Model_Target_PostProcess_DW./*@>134c024*/states/*@>13466ec*/[/*@>13466e6*/(int32_T)/*@>13466e8*/rtb_SumofElements/*@>13466e5*/ - /*@>13466e9*/1];
+        /* 'pooliir:58' stateIdx = stateIdx+1; */
+        /*@>1333a77*/stateIdx/*@>10cefc2*/ = /*@>1333a7a*/rtb_SumofElements/*@>10cf034*/ + /*@>1333a79*/1.0;
+        /* 'pooliir:59' a2 = coeffs(coeffIdx); */
+        upCoeff_tmp = (((((/*@>133c307*/coeffIdx/*@>133c305*/ + /*@>133c308*/1.0)/*@>133c304*/ + /*@>133c309*/1.0)/*@>133be5a*/ + /*@>133be5d*/1.0)/*@>133be59*/ + /*@>133be5e*/1.0)/*@>133be58*/ + /*@>133be5f*/1.0) + ((real_T)/*@>13336cd*/st - /*@>13342ea*/2.0) * /*@>1333649*/4.0;
+        /*@>1333a75*/upCoeff/*@>10cefc5*/ = %<SLibCG_DumpSSCode("/*@[1349ef7*/",(SLibCG_SE(SLibCG_BOCSC(554, 536, "", -1, "/*@>13466ef*/(int32_T)upCoeff_tmp/*@>13466ee*/ - /*@>13466f2*/1", 0))),"/*@]*/")>;
+        /* 'pooliir:59' coeffIdx = coeffIdx+1; */
+        /* 'pooliir:60' w2 = states(stateIdx); */
+        /*@>1333a70*/gp/*@>10cefcb*/ = /*@>1347627*/Model_Target_PostProcess_DW./*@>134c027*/states/*@>1346700*/[/*@>13466f8*/(int32_T)(/*@>13466fb*/rtb_SumofElements/*@>13466f9*/ + /*@>13466fc*/1.0)/*@>13466f7*/ - /*@>13466fd*/1];
+        /* 'pooliir:60' stateIdx = stateIdx-1; */
+        /*@>1333a6d*/rtb_SumofElements/*@>10cefcd*/ = (/*@>133396c*/rtb_SumofElements/*@>1323cfe*/ + /*@>133396b*/1.0)/*@>10cf03a*/ - /*@>1333a6f*/1.0;
+        /* 'pooliir:61' a1 = coeffs(coeffIdx); */
+        /*@>133b7e1*/rtb_Magsq_f/*@>133b7e3*/ = %<SLibCG_DumpSSCode("/*@[1349f7e*/",(SLibCG_SE(SLibCG_BOCSC(554, 536, "", -1, "/*@>1346703*/(int32_T)(upCoeff_tmp/*@>1346704*/ + /*@>1346707*/1.0)/*@>1346702*/ - /*@>1346708*/1", 0))),"/*@]*/")>;
+        /* 'pooliir:61' coeffIdx = coeffIdx+1; */
+        /* 'pooliir:62' xx = y(1,cha); */
+        /*@>133b7a1*/downCoeff/*@>133b7a3*/ = /*@>1347351*/Model_Target_PostProcess_B./*@>134bf79*/Magsq/*@>1346711*/[downCoeff_tmp];
+        /* 'pooliir:62' b2 = coeffs(coeffIdx); */
+        /* 'pooliir:62' coeffIdx = coeffIdx+1; */
+        /* 'pooliir:63' yy = w1+xx; */
+        /*@>1333a62*/gdiff/*@>10cefdc*/ = downCoeff/*@>10cf042*/ + /*@>1333a64*/lpfCoeff;
+        /* 'pooliir:63' b1 = coeffs(coeffIdx); */
+        /* 'pooliir:63' coeffIdx = coeffIdx+1; */
+        /* 'pooliir:64' w1 = b1*xx; */
+        /*@>133fcbb*/lpfCoeff_tmp/*@>133fcbd*/ = %<SLibCG_DumpSSCode("/*@[1349fd0*/",(SLibCG_SE(SLibCG_BOCSC(554, 536, "", -1, "/*@>1346714*/(int32_T)(((upCoeff_tmp/*@>1346717*/ + /*@>134671a*/1.0)/*@>1346716*/ + /*@>134671b*/1.0)/*@>1346715*/ + /*@>134671c*/1.0)/*@>1346713*/ - /*@>134671d*/1", 0))),"/*@]*/")>;
+        /*@>1333a60*/lpfCoeff/*@>10cefe3*/ = /*@>133fcbf*/lpfCoeff_tmp/*@>1334190*/ * downCoeff;
+        /*  main loop: 4 ops/sample */
+        /* 'pooliir:67' i = 1; */
+        /* 'pooliir:68' while i <= frameMinus1 */
+/*@>10cf24f*/        for (/*@>134b6a8*/i = /*@>134b6a7*/0; /*@>134b6b2*/i < /*@>134b6b0*/31; /*@>134b6ae*/i/*@>134b7fa*/++) {
+            /* 'pooliir:69' r  = a1*yy; */
+            /* 'pooliir:69' w1 = w1+w2; */
+            /*@>1333a5a*/lpfCoeff/*@>134b7fb*/ += /*@>1333a5c*/gp;
+            /* 'pooliir:69' y(i,cha) = yy; */
+            /*@>134735d*/Model_Target_PostProcess_B./*@>134bf7f*/Magsq/*@>1331714*/[/*@>133372a*/i/*@>1331710*/ + (/*@>1333728*/s/*@>1334236*/ << /*@>1334235*/5)]/*@>10cefea*/ = /*@>1333a58*/gdiff;
+            /* 'pooliir:70' q  = b2*xx; */
+            /*@>1333a52*/q/*@>10cefed*/ = %<SLibCG_DumpSSCode("/*@[1349f12*/",(SLibCG_SE(SLibCG_BOCSC(554, 536, "", -1, "/*@>1346723*/(int32_T)((upCoeff_tmp/*@>1346725*/ + /*@>1346728*/1.0)/*@>1346724*/ + /*@>1346729*/1.0)/*@>1346722*/ - /*@>134672a*/1", 0))),"/*@]*/")>/*@>133422a*/ * /*@>1333a54*/downCoeff;
+            /* 'pooliir:70' w1 = w1-r ; */
+            /* 'pooliir:70' xx = y(i+1,cha); */
+            /*@>133b801*/downCoeff/*@>133b803*/ = /*@>1347363*/Model_Target_PostProcess_B./*@>134bf82*/Magsq/*@>134673a*/[((/*@>1346733*/s/*@>1346731*/ << /*@>1346734*/5)/*@>1346730*/ + /*@>1346736*/i)/*@>134672f*/ + /*@>1346737*/1];
+            /* 'pooliir:71' w2 = a2*yy; */
+            /*@>1333a4a*/gp/*@>10ceff6*/ = /*@>1333a4e*/upCoeff/*@>133421e*/ * /*@>1333a4c*/gdiff;
+            /* 'pooliir:71' yy = w1+xx; */
+            /*@>1333a48*/gdiff/*@>10ceff8*/ = (/*@>1333968*/lpfCoeff/*@>1323d38*/ - /*@>133bd49*/rtb_Magsq_f/*@>1334212*/ * /*@>1333964*/gdiff)/*@>10cf04b*/ + downCoeff;
+            /* 'pooliir:72' w1 = b1*xx; */
+            /*@>1333a46*/lpfCoeff/*@>10ceffa*/ = downCoeff/*@>1334203*/ * lpfCoeff_tmp;
+            /* 'pooliir:72' w2 = q-w2; */
+            /*@>1333a40*/gp/*@>10ceffd*/ = /*@>1333a44*/q/*@>10cf04d*/ - /*@>1333a42*/gp;
+            /* 'pooliir:72' i = i + 1; */
+        }
+        /*  epilogue: drain pipe and write states */
+        /* 'pooliir:76' r  = a1*yy; */
+        /* 'pooliir:76' w1 = w1+w2; */
+        /* 'pooliir:76' y(frameMinus1+1,cha) = yy; */
+        /*@>1347357*/Model_Target_PostProcess_B./*@>134bf7c*/Magsq/*@>133173f*/[downCoeff_tmp/*@>133bec9*/ + /*@>133becc*/31]/*@>10cf003*/ = /*@>1333a56*/gdiff;
+        /* 'pooliir:77' q  = b2*xx; */
+        /* 'pooliir:77' w1 = w1-r; */
+        /*@>134762d*/Model_Target_PostProcess_DW./*@>134c02a*/states/*@>132e23e*/[/*@>133417d*/(int32_T)(/*@>1333719*/stateIdx/*@>132e245*/ - /*@>1333718*/1.0)/*@>132e243*/ - /*@>1333717*/1]/*@>10cf005*/ = (/*@>1333962*/lpfCoeff/*@>1323d48*/ + /*@>1333960*/gp)/*@>10cf04f*/ - rtb_Magsq_f/*@>1334181*/ * /*@>1333a35*/gdiff;
+        /* 'pooliir:78' w2 = a2*yy; */
+        /* 'pooliir:78' states(stateIdx) = w1; */
+        /* 'pooliir:78' stateIdx = stateIdx+1; */
+        /* 'pooliir:79' w2 = q-w2; */
+        /*@>1347633*/Model_Target_PostProcess_DW./*@>134c02d*/states/*@>132e2b4*/[/*@>133416f*/(int32_T)(/*@>1333708*/rtb_SumofElements/*@>132e2bb*/ + /*@>1333707*/1.0)/*@>132e2b9*/ - /*@>1333706*/1]/*@>10cf008*/ = %<SLibCG_DumpSSCode("/*@[1349f2d*/",(SLibCG_SE(SLibCG_BOCSC(554, 536, "", -1, "/*@>134673d*/(int32_T)((upCoeff_tmp/*@>134673f*/ + /*@>1346742*/1.0)/*@>134673e*/ + /*@>1346743*/1.0)/*@>134673c*/ - /*@>1346744*/1", 0))),"/*@]*/")>/*@>1334173*/ * /*@>1333a33*/downCoeff/*@>10cf051*/ - /*@>1333a31*/upCoeff/*@>133417a*/ * /*@>1333a2f*/gdiff;
+        /* 'pooliir:79' states(stateIdx) = w2; */
+        /* 'pooliir:79' stateIdx = stateIdx+1; */
+        /*@>1333a3d*/rtb_SumofElements/*@>10cf00a*/ = (/*@>133395e*/rtb_SumofElements/*@>1323d64*/ + /*@>133395d*/1.0)/*@>10cf052*/ + /*@>1333a3f*/1.0;
+    }
+    coeffIdx = (((((/*@>133c344*/coeffIdx/*@>133c342*/ + /*@>133c345*/1.0)/*@>133c341*/ + /*@>133c346*/1.0)/*@>133bee4*/ + /*@>133bee7*/1.0)/*@>133bee3*/ + /*@>133bee8*/1.0)/*@>133bee2*/ + /*@>133bee9*/1.0) + (((real_T)/*@>13336c8*/b - /*@>13342fa*/2.0) + /*@>13342fe*/1.0) * /*@>133363c*/4.0;
+}
+/* {E!d1946}End of MATLAB Function: '<S2247>/PoolIirProcess' */
+
+/* {S!d1948}Reshape: '<S2247>/Reshape' */
+/*@>1343d96*/memcpy(%<SLibCG_DumpSSCode("/*@[1349fed*/",(SLibCG_BOCSCAddr(555, 768, "", -1, "", 0)),"/*@]*/")>, &/*@>134731b*/Model_Target_PostProcess_B./*@>134bf6a*/Magsq/*@>13413d8*/[/*@>13413cc*/0], /*@>13413ce*/768U/*@>13413db*/ * /*@>13413da*/sizeof(real32_T));
+%if !WHITE_SPACE(tlcOutputsFcnOfS916B70)
+/* {S!d1781}S-Function (RTC_REQ_RSP): '<S2244>/RTC Request Response Trigger' */
+%<SLibCG_DumpSSCode("/*@[1349b88*/",tlcOutputsFcnOfS916B70,"/*@]*/")>\
+%endif
+/* {E!d1781}End of Outputs for S-Function (RTC_REQ_RSP): '<S2244>/RTC Request Response Trigger' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS916B75)
+
+/* {S!d1950}M-S-Function: '<S2243>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[1349b89*/",tlcOutputsFcnOfS916B75,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS916B76)
+/* {S!d1783}S-Function (RTC_NTF): '<S2244>/NTF Trigger' */
+%<SLibCG_DumpSSCode("/*@[1349b8b*/",tlcOutputsFcnOfS916B76,"/*@]*/")>\
+%endif
+/* {E!d1783}End of Outputs for S-Function (RTC_NTF): '<S2244>/NTF Trigger' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS916B80)
+
+/* {S!d1952}M-S-Function: '<S2268>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[1349b8c*/",tlcOutputsFcnOfS916B80,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS916B81)
+/* {S!d1785}S-Function (RTC_NTF): '<S2185>/NTF Trigger' */
+%<SLibCG_DumpSSCode("/*@[1349b8e*/",tlcOutputsFcnOfS916B81,"/*@]*/")>\
+%endif
+/* {E!d1785}End of Outputs for S-Function (RTC_NTF): '<S2185>/NTF Trigger' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS916B85)
+
+/* {S!d1787}S-Function (RTC_NTF): '<S2186>/NTF Trigger' */
+%<SLibCG_DumpSSCode("/*@[1349b90*/",tlcOutputsFcnOfS916B85,"/*@]*/")>\
+%endif
+/* {E!d1787}End of Outputs for S-Function (RTC_NTF): '<S2186>/NTF Trigger' */
+
+/* {S!d1954}Update for Delay: '<S2196>/Delay2' incorporates:
+ *  Sum: '<S2196>/Add1'
+ */
+/*@>1343d98*/memcpy(&/*@>13475f1*/Model_Target_PostProcess_DW./*@>134c00c*/Delay2_DSTATE/*@>134136a*/[/*@>1341359*/0], &/*@>1341371*/rtb_Add1_db/*@>1341372*/[/*@>1341366*/0], /*@>1341368*/24U/*@>1341375*/ * /*@>1341374*/sizeof(real_T));
+%if !WHITE_SPACE(tlcUpdateFcnOfS916B35)
+/* {S!d1956}Update for M-S-Function: '<S2203>/TSP' */
+%<SLibCG_DumpSSCode("/*@[1349b94*/",tlcUpdateFcnOfS916B35,"/*@]*/")>\
+%endif
+/* {S!d1958}Update for Delay: '<S2189>/Delay1' */
+/*@>13475f7*/Model_Target_PostProcess_DW./*@>134c00f*/icLoad/*@>10cf360*/ = /*@>13339c9*/false;
+/*@>13475fd*/Model_Target_PostProcess_DW./*@>134c012*/Delay1_DSTATE/*@>10cf365*/ = /*@>13339c5*/rtb_Delay_ed;
+%if !WHITE_SPACE(tlcUpdateFcnOfS916B36)
+/* {S!d1960}Update for M-S-Function: '<S2204>/TSP' */
+%<SLibCG_DumpSSCode("/*@[1349b98*/",tlcUpdateFcnOfS916B36,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcUpdateFcnOfS916B37)
+/* {S!d1962}Update for M-S-Function: '<S2205>/TSP' */
+%<SLibCG_DumpSSCode("/*@[1349b9c*/",tlcUpdateFcnOfS916B37,"/*@]*/")>\
+%endif
+/* {S!d1964}Update for Delay: '<S2189>/Delay2' */
+/*@>1347603*/Model_Target_PostProcess_DW./*@>134c015*/Delay2_DSTATE_i/*@>10cf371*/ = /*@>13339c1*/rtb_Max_bj;
+/* {S!d1966}Update for Delay: '<S2189>/Delay' */
+/*@>1347609*/Model_Target_PostProcess_DW./*@>134c018*/Delay_DSTATE/*@>10cf37d*/ = /*@>13339bd*/rtb_DataStoreRead1_h;
+/* {S!d1968}Update for Delay: '<S2189>/Delay3' incorporates:
+ *  DataTypeConversion: '<S2189>/Data Type Conversion4'
+ */
+/*@>134760f*/Model_Target_PostProcess_DW./*@>134c01b*/Delay3_DSTATE/*@>10cf389*/ = /*@>1340138*/rtb_DataStoreRead1_fv_tmp_tmp;
+%if !WHITE_SPACE(tlcUpdateFcnOfS916B44)
+/* {S!d1970}Update for M-S-Function: '<S2206>/TSP' */
+%<SLibCG_DumpSSCode("/*@[1349ba0*/",tlcUpdateFcnOfS916B44,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcUpdateFcnOfS916B45)
+/* {S!d1972}Update for M-S-Function: '<S2207>/TSP' */
+%<SLibCG_DumpSSCode("/*@[1349ba4*/",tlcUpdateFcnOfS916B45,"/*@]*/")>\
+%endif
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_PostProcess(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(214, 1, fcnProtoType)>
+%endfunction

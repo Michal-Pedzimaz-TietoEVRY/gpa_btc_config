@@ -1,0 +1,67 @@
+%implements s1068_b0_g3vnd_385_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+boolean_T done_f;
+boolean_T done_ig;
+%closefile localVarDecl
+/* {S!d3175}MATLAB Function: '<S1400>/TriggeredFunction' */
+/* {S!d3184}MATLAB Function: '<S1400>/TriggeredFunction' */
+/*  Invoke the function trigger output */
+/* MATLAB Function 'RTC/NtfCheck': '<S1395>:1' */
+/* '<S1395>:1:3' go(); */
+/*  Function to check whether the ramp has completed.  */
+/*  If so, send out TRUE */
+/* MATLAB Function 'MuteRamper/TriggeredFunction': '<S1402>:1' */
+/*  Assume the work is complete until proven otherwise */
+/* '<S1402>:1:9' done = true; */
+/*@>1450372*/done_f/*@>10cb76d*/ = /*@>1450374*/true;
+/* '<S1402>:1:10' if (targetLinearGain ~= currentGain) */
+/*@>10cb774*/if (%<SLibCG_DumpSSCode("/*@[1450dbf*/",(SLibCG_SE(SLibCG_CSCDW(214, 1, "", -1, "", 0))),"/*@]*/")>/*@>10cb771*/ != %<SLibCG_DumpSSCode("/*@[1450da3*/",(SLibCG_SE(SLibCG_CSCDW(212, 1, "", -1, "", 0))),"/*@]*/")>) {
+    /* '<S1402>:1:11' done = false; */
+    /*@>1450379*/done_f/*@>10cb770*/ = /*@>145037b*/false;
+    /*  just proved otherwise */
+}
+/* {E!d3184}End of MATLAB Function: '<S1400>/TriggeredFunction' */
+
+/* {S!d3177}MATLAB Function: '<S1413>/TriggeredFunction' */
+/* {S!d3186}MATLAB Function: '<S1413>/TriggeredFunction' */
+/*  Function to check whether the ramp has completed.  */
+/*  If so, send out TRUE */
+/* MATLAB Function 'MuteRamper/TriggeredFunction': '<S1415>:1' */
+/*  Assume the work is complete until proven otherwise */
+/* '<S1415>:1:9' done = true; */
+/*@>145037c*/done_ig/*@>10cb78b*/ = /*@>145037e*/true;
+/* '<S1415>:1:10' if (targetLinearGain ~= currentGain) */
+/*@>10cb792*/if (%<SLibCG_DumpSSCode("/*@[1450df7*/",(SLibCG_SE(SLibCG_CSCDW(217, 1, "", -1, "", 0))),"/*@]*/")>/*@>10cb78f*/ != %<SLibCG_DumpSSCode("/*@[1450ddb*/",(SLibCG_SE(SLibCG_CSCDW(215, 1, "", -1, "", 0))),"/*@]*/")>) {
+    /* '<S1415>:1:11' done = false; */
+    /*@>1450383*/done_ig/*@>10cb78e*/ = /*@>1450385*/false;
+    /*  just proved otherwise */
+}
+/* {E!d3186}End of MATLAB Function: '<S1413>/TriggeredFunction' */
+
+/* {S!d3179}Outputs for Function Call SubSystem: '<S1346>/Subsystem' */
+/* {S!d3188}Logic: '<S1357>/AND' */
+/*@>1450a19*/Model_Target_B./*@>1450e8d*/AND/*@>10cb755*/ = (/*@>1450368*/done_f/*@>10cb754*/ && /*@>145036a*/done_ig);
+/* {E!d3179}End of Outputs for SubSystem: '<S1346>/Subsystem' */
+
+/* {S!d3181}Outputs for Function Call SubSystem: '<S1389>/Triggered Subsystem' */
+/* {S!d3190}SignalConversion generated from: '<S1391>/In1' */
+/*@>1450a1f*/Model_Target_B./*@>1450e90*/In1_g20a/*@>10cb762*/ = %<SLibCG_DumpSSCode("/*@[1450e13*/",(SLibCG_SE(SLibCG_BOCSC(83, 1, "", -1, "", 0))),"/*@]*/")>;
+/* {E!d3181}End of Outputs for SubSystem: '<S1389>/Triggered Subsystem' */
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Outputs(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(385, 0, fcnProtoType)>
+%endfunction

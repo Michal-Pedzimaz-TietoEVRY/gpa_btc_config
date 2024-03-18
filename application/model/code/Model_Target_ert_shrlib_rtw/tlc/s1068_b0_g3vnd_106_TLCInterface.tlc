@@ -1,0 +1,22 @@
+%implements s1068_b0_g3vnd_106_TLCInterface "C"
+
+%function getInputAddr_378_0_106_0_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_BOCSCAddr(block, 646, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getInput_378_0_106_0_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_BOCSC(block, 646, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getInputAddr_378_0_106_0_0_2_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<125bdad*//*@>125bda1*/Model_Target_Medusa5H1Part3_B./*@>125bdb3*/In1"
+%endfunction
+
+%function getInput_378_0_106_0_0_2_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>125bdc1*/Model_Target_Medusa5H1Part3_B./*@>125bdd4*/In1"
+%endfunction
+

@@ -1,0 +1,35 @@
+%implements s1068_b0_g3vnd_97_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+/* MATLAB Function: '<S923>/FirEvenInit' */
+/*  Invoke the function trigger output */
+/* MATLAB Function 'ITC/init': '<S929>:1' */
+/* '<S929>:1:3' init(); */
+/*  Extract configuration information from inputs */
+/* MATLAB Function 'FirEven/FirEven/Hexagon/FirEvenInit': '<S924>:1' */
+/* '<S924>:1:4' [FilterLength, NumFilters] = size(FlippedCoefficients); */
+/* '<S924>:1:5' [FrameSize, NumChannels] = size(u); */
+/*  Simulation  */
+/* '<S924>:1:10' if(coder.target('MATLAB') || coder.target('Sfun')) */
+/* '<S924>:1:12' else */
+/* '<S924>:1:13' y = fireven_hexagon_init(uint32(FrameSize), uint32(NumChannels), uint32(NumFilters), uint32(FilterLength), single(FlippedCoefficients), uint32(CodeWorkMemory), uint32(MaxNumOfThreds)); */
+/*@>124e4b5*/fireven_init(%<SLibCG_DumpSSCode("/*@[124e939*/",(SLibCG_CSCDWAddr(603, 34, "", -1, "", 0)),"/*@]*/")>, /*@>124d9cb*/8U, /*@>124d9cc*/4U, /*@>124d9cd*/4U, /*@>124d9ce*/444U, %<SLibCG_DumpSSCode("/*@[124e91c*/",(SLibCG_BOCSCAddr(744, 1776, "", -1, "", 0)),"/*@]*/")>, %<SLibCG_DumpSSCode("/*@[124e8ff*/",(SLibCG_CSCDWAddr(603, 34, "", -1, "", 0)),"/*@]*/")>, /*@>124d9df*/1U);
+/*  NOTE: The CRL mechanism requires an output for the function call, */
+/*  and appears to be optimized out if that return value isn't used.  */
+/*  This is a dummy operation to make sure CRL ends up in generated code */
+/* '<S924>:1:17' CodeWorkMemory(1) = y; */
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void InitTrigger_Model_141_347_65(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(97, 0, fcnProtoType)>
+%endfunction

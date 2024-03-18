@@ -1,0 +1,347 @@
+%implements s1068_b0_g3vnd_367_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+int32_T i;
+int32_T m;
+int32_T outidx;
+int_T frameIdx;
+real32_T rtb_BandSeparationDelay[64];
+real32_T rtb_ReconstructionFilter[64];
+real32_T y_a[64];
+%closefile localVarDecl
+%assign tlcOutputsFcnOfS247B0 = OpaqueTLCBlockFcn("Outputs", 247, 0, 367, 1, 0)
+%assign tlcOutputsFcnOfS247B1 = OpaqueTLCBlockFcn("Outputs", 247, 1, 367, 1, 1)
+%assign tlcOutputsFcnOfS247B2 = OpaqueTLCBlockFcn("Outputs", 247, 2, 367, 1, 2)
+%assign tlcOutputsFcnOfS247B3 = OpaqueTLCBlockFcn("Outputs", 247, 3, 367, 1, 3)
+%assign tlcOutputsFcnOfS247B4 = OpaqueTLCBlockFcn("Outputs", 247, 4, 367, 1, 4)
+%assign tlcOutputsFcnOfS247B5 = OpaqueTLCBlockFcn("Outputs", 247, 5, 367, 1, 5)
+%assign tlcOutputsFcnOfS247B8 = OpaqueTLCBlockFcn("Outputs", 247, 8, 367, 1, 6)
+%assign tlcOutputsFcnOfS247B12 = OpaqueTLCBlockFcn("Outputs", 247, 12, 367, 1, 7)
+%assign tlcOutputsFcnOfS247B14 = OpaqueTLCBlockFcn("Outputs", 247, 14, 367, 1, 8)
+%assign tlcOutputsFcnOfS247B15 = OpaqueTLCBlockFcn("Outputs", 247, 15, 367, 1, 9)
+%assign tlcOutputsFcnOfS247B16 = OpaqueTLCBlockFcn("Outputs", 247, 16, 367, 1, 10)
+%assign tlcOutputsFcnOfS247B17 = OpaqueTLCBlockFcn("Outputs", 247, 17, 367, 1, 11)
+%assign tlcOutputsFcnOfS247B20 = OpaqueTLCBlockFcn("Outputs", 247, 20, 367, 1, 12)
+%assign tlcOutputsFcnOfS247B24 = OpaqueTLCBlockFcn("Outputs", 247, 24, 367, 1, 13)
+%assign tlcOutputsFcnOfS247B25 = OpaqueTLCBlockFcn("Outputs", 247, 25, 367, 1, 14)
+%assign tlcOutputsFcnOfS247B26 = OpaqueTLCBlockFcn("Outputs", 247, 26, 367, 1, 15)
+%assign tlcOutputsFcnOfS247B28 = OpaqueTLCBlockFcn("Outputs", 247, 28, 367, 1, 16)
+%assign tlcOutputsFcnOfS247B29 = OpaqueTLCBlockFcn("Outputs", 247, 29, 367, 1, 17)
+%assign tlcOutputsFcnOfS247B32 = OpaqueTLCBlockFcn("Outputs", 247, 32, 367, 1, 18)
+%assign tlcOutputsFcnOfS247B35 = OpaqueTLCBlockFcn("Outputs", 247, 35, 367, 1, 19)
+%assign tlcOutputsFcnOfS247B38 = OpaqueTLCBlockFcn("Outputs", 247, 38, 367, 1, 20)
+%assign tlcUpdateFcnOfS247B28 = OpaqueTLCBlockFcn("Update", 247, 28, 367, 1, 21)
+%if !WHITE_SPACE(tlcOutputsFcnOfS247B0)
+/* {S!d2296}S-Function (TOP_MEX): '<S594>/LeftMixWeight' */
+%<SLibCG_DumpSSCode("/*@[13b69d2*/",tlcOutputsFcnOfS247B0,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS247B1)
+/* {S!d2298}S-Function (TOP_MEX): '<S594>/RightMixWeight' */
+%<SLibCG_DumpSSCode("/*@[13b69d4*/",tlcOutputsFcnOfS247B1,"/*@]*/")>\
+%endif
+/* {S!d2300}Gain: '<S595>/Gain' */
+/*@>13b4ee9*/memcpy(%<SLibCG_DumpSSCode("/*@[13b6bcc*/",(SLibCG_BOCSCAddr(347, 64, "", -1, "", 0)),"/*@]*/")>, &/*@>13b5c97*/Model_Target_B./*@>13b7743*/audioOut_n4/*@>13b42e7*/[/*@>13b42db*/0], /*@>13b42e9*/sizeof(real32_T)/*@>13b6c03*/ << /*@>13b6c02*/6U);
+%if !WHITE_SPACE(tlcOutputsFcnOfS247B2)
+/* {S!d2302}S-Function (AudioStats_MEX): '<S600>/AudioStats' */
+%<SLibCG_DumpSSCode("/*@[13b69d7*/",tlcOutputsFcnOfS247B2,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS247B3)
+/* {S!d2304}S-Function (TOP_MEX): '<S600>/TOP' */
+%<SLibCG_DumpSSCode("/*@[13b69d9*/",tlcOutputsFcnOfS247B3,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS247B4)
+/* {S!d2306}S-Function (TOP_MEX): '<S600>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[13b69db*/",tlcOutputsFcnOfS247B4,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS247B5)
+/* {S!d2281}S-Function (InitTriggerControl): '<S612>/ITC1' */
+%<SLibCG_DumpSSCode("/*@[13b69dd*/",tlcOutputsFcnOfS247B5,"/*@]*/")>\
+%endif
+/* {E!d2281}End of Outputs for S-Function (InitTriggerControl): '<S612>/ITC1' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS247B8)
+
+/* {S!d2283}S-Function (InitTriggerControl): '<S604>/ITC1' */
+%<SLibCG_DumpSSCode("/*@[13b69df*/",tlcOutputsFcnOfS247B8,"/*@]*/")>\
+%endif
+/* {E!d2283}End of Outputs for S-Function (InitTriggerControl): '<S604>/ITC1' */
+
+/* {S!d2308}MATLAB Function: '<S603>/PoolIirProcess' incorporates:
+ *  Gain: '<S595>/Gain'
+ */
+/*  Process function for Pooliir */
+/*  */
+/*  Parameters: */
+/*    x:              input channels [frame size x number of inputs] */
+/*    NumStages:      array of filter lengths per channel [NumChannels x 1] */
+/*    CoeffsTarget:   coefficient set used for the specific target [total sim filter lengths x 1] */
+/*   */
+/*  Global parameters: */
+/*    states: working memory set up during roommode reset/init CRL */
+/*                    function call [StatesSize x 1] */
+/* -------------------------------------------------------------------------- */
+/* MATLAB Function 'PoolIirWithReset/PoolIir/TargetSpecific/PoolIirProcess': '<S607>:1' */
+/*  Extract configuration information from inputs */
+/* '<S607>:1:15' [~, NumChannels] = size(x); */
+/*  Initialize variables */
+/* '<S607>:1:20' VariantStr = char(VariantUint8); */
+/* '<S607>:1:22' if(coder.target('MATLAB') || coder.target('Sfun')) */
+/* '<S607>:1:29' else */
+/* '<S607>:1:30' switch(VariantStr) */
+/* '<S607>:1:31' case{"Hexagon"} */
+/* '<S607>:1:32' y = pooliir_hexagon_process(single(x), single(states)); */
+/*@>13b4bb3*/pooliir_process(%<SLibCG_DumpSSCode("/*@[13b6b09*/",(SLibCG_BOCSCAddr(358, 64, "", -1, "", 0)),"/*@]*/")>, %<SLibCG_DumpSSCode("/*@[13b6aec*/",(SLibCG_BOCSCAddr(347, 64, "", -1, "", 0)),"/*@]*/")>, %<SLibCG_DumpSSCode("/*@[13b6acf*/",(SLibCG_CSCDWAddr(240, 41, "", -1, "", 0)),"/*@]*/")>);
+%if !WHITE_SPACE(tlcOutputsFcnOfS247B12)
+/* {S!d2310}M-S-Function: '<S600>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[13b69e0*/",tlcOutputsFcnOfS247B12,"/*@]*/")>\
+%endif
+/* {S!d2312}Gain: '<S596>/Gain' incorporates:
+ *  MATLAB Function: '<S591>/WeightedSum'
+ */
+/* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 1/Bass Manager Stereo/WeightedSum': '<S599>:1' */
+/* '<S599>:1:2' LeftIn = AudioIn(:, LeftIndices); */
+/* '<S599>:1:3' LeftOut = LeftIn*LeftMixWeights'; */
+/* '<S599>:1:5' RightIn = AudioIn(:, RightIndices); */
+/* '<S599>:1:6' RightOut = RightIn*RightMixWeights'; */
+/* '<S599>:1:8' WeightedOut = [LeftOut RightOut]; */
+/* '<S599>:1:9' Mono = mean(WeightedOut, 2); */
+/*@>13ae852*/for (/*@>13b74e8*/i = /*@>13b74e7*/0; /*@>13b74f2*/i < /*@>13b74f0*/32; /*@>13b74ee*/i/*@>13b74f6*/++) {
+%<SLibCG_DumpSSCode("/*@[13b6b42*/",SLibCG_SetBOCSC(349, 64, "", -1, "/*@>13b7973*/i", 0, "/*@>13b7979*/Model_Target_B./*@>13b7978*/audioOut_n4/*@>13b7977*/[/*@>13b797b*/i]/*@>13b7976*/ * %<SLibCG_DumpSSCode("/*@[13b797c*/",(SLibCG_SE(SLibCG_BOCSC(345, 1, "", -1, "", 0))),"/*@]*/")>"),"/*@]*/")>\
+%<SLibCG_DumpSSCode("/*@[13b6b79*/",SLibCG_SetBOCSC(349, 64, "", -1, "/*@>13b7997*/i/*@>13b7996*/ + /*@>13b7998*/32", 0, "/*@>13b799e*/Model_Target_B./*@>13b799d*/audioOut_n4/*@>13b799c*/[/*@>13b79a1*/i/*@>13b79a0*/ + /*@>13b79a2*/32]/*@>13b799b*/ * %<SLibCG_DumpSSCode("/*@[13b79a3*/",(SLibCG_SE(SLibCG_BOCSC(346, 1, "", -1, "", 0))),"/*@]*/")>"),"/*@]*/")>\
+}
+/* {E!d2312}End of Gain: '<S596>/Gain' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS247B14)
+
+/* {S!d2314}S-Function (AudioStats_MEX): '<S615>/AudioStats' */
+%<SLibCG_DumpSSCode("/*@[13b69e3*/",tlcOutputsFcnOfS247B14,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS247B15)
+/* {S!d2316}S-Function (TOP_MEX): '<S615>/TOP' */
+%<SLibCG_DumpSSCode("/*@[13b69e5*/",tlcOutputsFcnOfS247B15,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS247B16)
+/* {S!d2318}S-Function (TOP_MEX): '<S615>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[13b69e7*/",tlcOutputsFcnOfS247B16,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS247B17)
+/* {S!d2285}S-Function (InitTriggerControl): '<S627>/ITC1' */
+%<SLibCG_DumpSSCode("/*@[13b69e9*/",tlcOutputsFcnOfS247B17,"/*@]*/")>\
+%endif
+/* {E!d2285}End of Outputs for S-Function (InitTriggerControl): '<S627>/ITC1' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS247B20)
+
+/* {S!d2287}S-Function (InitTriggerControl): '<S619>/ITC1' */
+%<SLibCG_DumpSSCode("/*@[13b69eb*/",tlcOutputsFcnOfS247B20,"/*@]*/")>\
+%endif
+/* {E!d2287}End of Outputs for S-Function (InitTriggerControl): '<S619>/ITC1' */
+
+/* {S!d2320}MATLAB Function: '<S618>/PoolIirProcess' incorporates:
+ *  Gain: '<S596>/Gain'
+ */
+/*  Process function for Pooliir */
+/*  */
+/*  Parameters: */
+/*    x:              input channels [frame size x number of inputs] */
+/*    NumStages:      array of filter lengths per channel [NumChannels x 1] */
+/*    CoeffsTarget:   coefficient set used for the specific target [total sim filter lengths x 1] */
+/*   */
+/*  Global parameters: */
+/*    states: working memory set up during roommode reset/init CRL */
+/*                    function call [StatesSize x 1] */
+/* -------------------------------------------------------------------------- */
+/* MATLAB Function 'PoolIirWithReset/PoolIir/TargetSpecific/PoolIirProcess': '<S622>:1' */
+/*  Extract configuration information from inputs */
+/* '<S622>:1:15' [~, NumChannels] = size(x); */
+/*  Initialize variables */
+/* '<S622>:1:20' VariantStr = char(VariantUint8); */
+/* '<S622>:1:22' if(coder.target('MATLAB') || coder.target('Sfun')) */
+/* '<S622>:1:29' else */
+/* '<S622>:1:30' switch(VariantStr) */
+/* '<S622>:1:31' case{"Hexagon"} */
+/* '<S622>:1:32' y = pooliir_hexagon_process(single(x), single(states)); */
+/*@>13b4bc5*/pooliir_process(%<SLibCG_DumpSSCode("/*@[13b6ab2*/",(SLibCG_BOCSCAddr(356, 64, "", -1, "", 0)),"/*@]*/")>, %<SLibCG_DumpSSCode("/*@[13b6a95*/",(SLibCG_BOCSCAddr(349, 64, "", -1, "", 0)),"/*@]*/")>, %<SLibCG_DumpSSCode("/*@[13b6a78*/",(SLibCG_CSCDWAddr(241, 41, "", -1, "", 0)),"/*@]*/")>);
+%if !WHITE_SPACE(tlcOutputsFcnOfS247B24)
+/* {S!d2322}M-S-Function: '<S615>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[13b69ec*/",tlcOutputsFcnOfS247B24,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS247B25)
+/* {S!d2324}S-Function (TOP_MEX): '<S597>/TOP' */
+%<SLibCG_DumpSSCode("/*@[13b69ee*/",tlcOutputsFcnOfS247B25,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS247B26)
+/* {S!d2326}M-S-Function: '<S591>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[13b69ef*/",tlcOutputsFcnOfS247B26,"/*@]*/")>\
+%endif
+/* {S!d2328}Constant: '<S631>/Constant3' */
+/*@>13b5ca9*/Model_Target_B./*@>13b774c*/Constant3/*@>10d8f60*/ = /*@>13b738e*/0;
+%if !WHITE_SPACE(tlcOutputsFcnOfS247B28)
+/* {S!d2330}M-S-Function: '<S632>/TSP' incorporates:
+ *  Constant: '<S631>/Constant'
+ */
+%<SLibCG_DumpSSCode("/*@[13b69f3*/",tlcOutputsFcnOfS247B28,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS247B29)
+/* {S!d2332}S-Function (TOP_MEX): '<S633>/TOP' */
+%<SLibCG_DumpSSCode("/*@[13b69f5*/",tlcOutputsFcnOfS247B29,"/*@]*/")>\
+%endif
+/* {S!d2334}S-Function (sdspstatfcns): '<S585>/Mean' */
+/*@>13b0dc3*/outidx/*@>10d90b4*/ = /*@>13b7391*/0;
+/*@>13b74d2*/for (/*@>13b74ce*/frameIdx/*@>13b74cd*/ = /*@>13b74cf*/0; /*@>13b74c5*/frameIdx/*@>13b74c3*/ < /*@>13b74c6*/32; /*@>13b74c8*/frameIdx/*@>13b74f7*/++) {
+    /*@>13b5f88*/Model_Target_DW./*@>13b7770*/Mean_AccVal/*@>13aea0d*/[/*@>13b0f29*/outidx]/*@>10d90d0*/ = /*@>13b5caf*/Model_Target_B./*@>13b774f*/audioOut_n4/*@>13b57bb*/[/*@>13b57b8*/frameIdx];
+    /*@>13b5f8e*/Model_Target_DW./*@>13b7773*/Mean_AccVal/*@>13aeacc*/[/*@>13b0f45*/outidx]/*@>13b74f8*/ += /*@>13b5cb5*/Model_Target_B./*@>13b7752*/audioOut_n4/*@>13b57c3*/[/*@>13b57bf*/frameIdx/*@>13b57bd*/ + /*@>13b57c0*/32];
+    /*@>13b5cbb*/Model_Target_B./*@>13b7755*/Mean/*@>13aea78*/[/*@>13b0f39*/outidx]/*@>10d90fb*/ = /*@>13b4be7*/qhmath_div_f(/*@>13b5f9a*/Model_Target_DW./*@>13b7776*/Mean_AccVal/*@>13b57cf*/[/*@>13b57cc*/outidx], /*@>13b0ecb*/2.0F);
+    /*@>13b0db4*/outidx/*@>13b74f9*/++;
+}
+/* {E!d2334}End of S-Function (sdspstatfcns): '<S585>/Mean' */
+
+/* {S!d2336}Delay: '<S593>/Band Separation Delay' */
+/*@>13ae9d5*/for (/*@>13b74b5*/i = /*@>13b74b4*/0; /*@>13b74bf*/i < /*@>13b74bd*/2; /*@>13b74bb*/i/*@>13b74fa*/++) {
+    /*@>13b4eeb*/memcpy(&/*@>13b4264*/rtb_BandSeparationDelay/*@>13b4265*/[/*@>13b4248*/i/*@>13b6c06*/ << /*@>13b6c05*/5], &/*@>13b5fa0*/Model_Target_DW./*@>13b7779*/BandSeparationDelay_DSTATE_a/*@>13b4272*/[/*@>13b425f*/i/*@>13b425c*/ * /*@>13b4260*/136], /*@>13b4274*/sizeof(real32_T)/*@>13b6c09*/ << /*@>13b6c08*/5U);
+}
+/* {E!d2336}End of Delay: '<S593>/Band Separation Delay' */
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[241], "Output",2)
+
+/* {S!d2289}Outputs for Atomic SubSystem: '<S593>/Ifir' */
+%<SLibCG_DumpSSCode("/*@[13b6a03*/",SLibCGIRGenReusableSysCall("Model_Target_Ifir", [], 241, 0, 6, 2, 6, 957),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[241]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+/* {E!d2289}End of Outputs for SubSystem: '<S593>/Ifir' */
+
+%endif
+/* {S!d2338}Gain: '<S635>/Gain' incorporates:
+ *  Sum: '<S593>/Sum'
+ */
+/*@>13b4eed*/memcpy(%<SLibCG_DumpSSCode("/*@[13b6baf*/",(SLibCG_BOCSCAddr(353, 64, "", -1, "", 0)),"/*@]*/")>, &/*@>13b5cc1*/Model_Target_B./*@>13b7758*/Sum_a/*@>13b4218*/[/*@>13b420c*/0], /*@>13b421a*/sizeof(real32_T)/*@>13b6c0c*/ << /*@>13b6c0b*/6U);
+/* {S!d2340}MATLAB Function: '<S638>/FirEvenProcess' incorporates:
+ *  Constant: '<S593>/Constant'
+ *  Gain: '<S635>/Gain'
+ */
+/*  Extract configuration information from inputs */
+/* MATLAB Function 'FirEven/FirEven/Hexagon/FirEvenProcess': '<S640>:1' */
+/* '<S640>:1:4' [FilterLength, ~] = size(FlippedCoeffs); */
+/* '<S640>:1:5' [FrameSize, NumChannels] = size(u); */
+/*  Initialize variables */
+/*  persistent States; */
+/*  if isempty(States) */
+/*      States = single(zeros(FilterLength + FrameSize*2 + 2, NumChannels)); */
+/*  end */
+/*  Set correct data types */
+/* '<S640>:1:17' FilterLength = uint32(FilterLength); */
+/* '<S640>:1:18' FrameSize = uint32(FrameSize); */
+/* '<S640>:1:19' ActiveCoeffSet = uint32(ActiveCoeffSet); */
+/* '<S640>:1:22' if(coder.target('MATLAB') || coder.target('Sfun')) */
+/* '<S640>:1:25' else */
+/*  FIR EVEN HEXAGON */
+/* '<S640>:1:27' if (FilterLength > FrameSize) */
+/* '<S640>:1:29' else */
+/* '<S640>:1:30' y = fireven_hexagon_process_lt(single(u), uint32(ActiveCoeffSet), single(States), uint32(CodeWorkMemory)); */
+/*@>13b4bd7*/fireven_process_lt(&/*@>13b4932*/y_a/*@>13b4933*/[/*@>13b4930*/0], %<SLibCG_DumpSSCode("/*@[13b6a5b*/",(SLibCG_BOCSCAddr(353, 64, "", -1, "", 0)),"/*@]*/")>, &/*@>13b5e0e*/Model_Target_ConstP./*@>13b7767*/pooled101/*@>13aeb11*/[/*@>13b0f4f*/0], %<SLibCG_DumpSSCode("/*@[13b6a3e*/",(SLibCG_CSCDWAddr(243, 7584, "", -1, "", 0)),"/*@]*/")>, %<SLibCG_DumpSSCode("/*@[13b6a21*/",(SLibCG_CSCDWAddr(325, 34, "", -1, "", 0)),"/*@]*/")>);
+/* {S!d2342}DownSample: '<S593>/Downsample' incorporates:
+ *  Selector: '<S586>/Selector1'
+ */
+/*@>13af17b*/for (/*@>13b74a4*/i = /*@>13b74a3*/0; /*@>13b74ae*/i < /*@>13b74ac*/16; /*@>13b74aa*/i/*@>13b74fb*/++) {
+    /*@>13b5cc7*/Model_Target_B./*@>13b775b*/LoRoLimpRimp/*@>13aeb7b*/[/*@>13b0f5d*/i]/*@>10d9192*/ = /*@>13b57d5*/y_a/*@>13b57d7*/[/*@>13b57d3*/i/*@>13b57d1*/ << /*@>13b57d4*/2];
+}
+/* {E!d2342}End of DownSample: '<S593>/Downsample' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS247B32)
+
+/* {S!d2291}S-Function (InitTriggerControl): '<S642>/ITC1' */
+%<SLibCG_DumpSSCode("/*@[13b69f7*/",tlcOutputsFcnOfS247B32,"/*@]*/")>\
+%endif
+/* {E!d2291}End of Outputs for S-Function (InitTriggerControl): '<S642>/ITC1' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS247B35)
+
+/* {S!d2293}S-Function (InitTriggerControl): '<S641>/ITC1' */
+%<SLibCG_DumpSSCode("/*@[13b69f9*/",tlcOutputsFcnOfS247B35,"/*@]*/")>\
+%endif
+/* {E!d2293}End of Outputs for S-Function (InitTriggerControl): '<S641>/ITC1' */
+
+/* {S!d2344}S-Function (sdspupfir2): '<S593>/Reconstruction Filter' */
+/* Loop over each input channel */
+/*@>13af0f4*/for (/*@>13b73e6*/outidx = /*@>13b73e5*/0; /*@>13b73f0*/outidx < /*@>13b73ee*/2; /*@>13b73ec*/outidx/*@>13b74fc*/++) {
+    int32_T dataInArrayIdx;
+    int32_T dataOutArrayIdx;
+    int32_T delayBuffIdx;
+    /*@>13b0db0*/delayBuffIdx/*@>10d91c6*/ = /*@>13b0db2*/outidx/*@>13b10cd*/ * /*@>13b0d3d*/34;
+    /*@>13b0dac*/dataInArrayIdx/*@>10d91ca*/ = /*@>13b0dae*/outidx/*@>13b10cc*/ << /*@>13b10cb*/3;
+    /*@>13b0da7*/dataOutArrayIdx/*@>10d91cf*/ = /*@>13b0daa*/dataInArrayIdx/*@>13b10c4*/ << /*@>13b10c3*/2;
+/*@>13af139*/    for (/*@>13b7432*/m = /*@>13b7431*/0; /*@>13b743c*/m < /*@>13b743a*/4; /*@>13b7438*/m/*@>13b74fd*/++) {
+        int32_T coefArrayIdx;
+        int32_T oIdx;
+        /*@>13b0da1*/oIdx/*@>10d91db*/ = /*@>13b0da3*/dataOutArrayIdx/*@>10d91da*/ + /*@>13b0da5*/m;
+        /*@>13b0d9c*/coefArrayIdx/*@>10d91de*/ = /*@>13b0d9f*/m/*@>13b10d0*/ * /*@>13b0d9e*/35;
+        /* Consume delay line and beginning of input samples */
+/*@>13af15c*/        for (/*@>13b7443*/i = /*@>13b7442*/0; /*@>13b744d*/i < /*@>13b744b*/8; /*@>13b7449*/i/*@>13b74fe*/++) {
+            real32_T accumulator;
+            /*@>13b0d9a*/accumulator/*@>10d91e9*/ = /*@>13b0d99*/0.0F;
+/*@>13b748b*/            for (/*@>13b7487*/frameIdx/*@>13b7486*/ = /*@>13b7488*/0; /*@>13b747b*/frameIdx/*@>13b7479*/ < /*@>13b747e*/i/*@>13b747c*/ + /*@>13b747f*/1; /*@>13b7481*/frameIdx/*@>13b74ff*/++) {
+                /*@>13b0d88*/accumulator/*@>13b7500*/ += /*@>13b5cdf*/Model_Target_B./*@>13b7764*/LoRoLimpRimp/*@>13b5806*/[(/*@>13b57ff*/dataInArrayIdx/*@>13b57fd*/ + /*@>13b5801*/i)/*@>13b57fc*/ - /*@>13b5803*/frameIdx]/*@>13b10d5*/ * /*@>13b5e14*/Model_Target_ConstP./*@>13b776a*/ReconstructionFilter_FILTER_COEFF/*@>13b580f*/[/*@>13b580a*/coefArrayIdx/*@>13b5808*/ + /*@>13b580c*/frameIdx];
+            }
+/*@>13b7463*/            for (/*@>13b745f*/frameIdx/*@>13b745e*/ = /*@>13b7460*/0; /*@>13b7453*/frameIdx/*@>13b7451*/ < /*@>13b7455*/34/*@>13b7454*/ - /*@>13b7457*/i; /*@>13b7459*/frameIdx/*@>13b7501*/++) {
+                /*@>13b0d78*/accumulator/*@>13b7502*/ += /*@>13b5e1a*/Model_Target_ConstP./*@>13b776d*/ReconstructionFilter_FILTER_COEFF/*@>13b581d*/[((/*@>13b5815*/coefArrayIdx/*@>13b5813*/ + /*@>13b5817*/i)/*@>13b5812*/ + /*@>13b5819*/frameIdx)/*@>13b5811*/ + /*@>13b581a*/1]/*@>13b10d9*/ * /*@>13b5fca*/Model_Target_DW./*@>13b778e*/ReconstructionFilter_TapDelayBuff_d/*@>13b5826*/[/*@>13b5821*/delayBuffIdx/*@>13b581f*/ + /*@>13b5823*/frameIdx];
+            }
+            /*@>13b0ede*/rtb_ReconstructionFilter/*@>10d9229*/[/*@>13b0d76*/oIdx]/*@>10d922b*/ = /*@>13b0d74*/accumulator;
+            /*@>13b0d6f*/oIdx/*@>13b7503*/ += /*@>13b0d71*/4;
+        }
+    }
+    /* Update delay line for next frame */
+/*@>13b7418*/    for (/*@>13b7411*/i/*@>13b7410*/ = /*@>13b7414*/delayBuffIdx/*@>13b7412*/ + /*@>13b7415*/25; /*@>13b7407*/i/*@>13b7405*/ >= /*@>13b7409*/delayBuffIdx; /*@>13b740b*/i/*@>13b7504*/--) {
+        /*@>13b5fac*/Model_Target_DW./*@>13b777f*/ReconstructionFilter_TapDelayBuff_d/*@>13aed54*/[/*@>13b0f96*/i/*@>13aed59*/ + /*@>13b0f95*/8]/*@>10d9283*/ = /*@>13b5fb2*/Model_Target_DW./*@>13b7782*/ReconstructionFilter_TapDelayBuff_d/*@>13b57e9*/[/*@>13b57e6*/i];
+    }
+/*@>13af10b*/    for (/*@>13b73f7*/i = /*@>13b73f6*/0; /*@>13b7401*/i < /*@>13b73ff*/8; /*@>13b73fd*/i/*@>13b7505*/++) {
+        /*@>13b5fc4*/Model_Target_DW./*@>13b778b*/ReconstructionFilter_TapDelayBuff_d/*@>13aed94*/[(/*@>13b0fa0*/delayBuffIdx/*@>13aed9a*/ - /*@>13b0fa2*/i)/*@>13aed99*/ + /*@>13b0fa4*/7]/*@>10d9298*/ = /*@>13b5cd9*/Model_Target_B./*@>13b7761*/LoRoLimpRimp/*@>13b57fa*/[/*@>13b57f5*/dataInArrayIdx/*@>13b57f3*/ + /*@>13b57f7*/i];
+    }
+}
+/* {E!d2344}End of S-Function (sdspupfir2): '<S593>/Reconstruction Filter' */
+
+/* {S!d2346}Sum: '<S593>/Sum' incorporates:
+ *  Delay: '<S593>/Band Separation Delay'
+ *  S-Function (sdspupfir2): '<S593>/Reconstruction Filter'
+ */
+/*@>13ade83*/for (/*@>13b73d5*/i = /*@>13b73d4*/0; /*@>13b73df*/i < /*@>13b73dd*/64; /*@>13b73db*/i/*@>13b7506*/++) {
+    /*@>13b5cd3*/Model_Target_B./*@>13b775e*/Sum_a/*@>13aebda*/[/*@>13b0f69*/i]/*@>13ade6e*/ = /*@>13b57db*/rtb_BandSeparationDelay/*@>13b57dd*/[/*@>13b57da*/i]/*@>13ade75*/ - /*@>13b57e1*/rtb_ReconstructionFilter/*@>13b57e3*/[/*@>13b57e0*/i];
+}
+/* {E!d2346}End of Sum: '<S593>/Sum' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS247B38)
+
+/* {S!d2348}M-S-Function: '<S585>/Partition' */
+%<SLibCG_DumpSSCode("/*@[13b69fa*/",tlcOutputsFcnOfS247B38,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcUpdateFcnOfS247B28)
+/* {S!d2350}Update for M-S-Function: '<S632>/TSP' incorporates:
+ *  Constant: '<S631>/Constant'
+ */
+%<SLibCG_DumpSSCode("/*@[13b69fe*/",tlcUpdateFcnOfS247B28,"/*@]*/")>\
+%endif
+/* {S!d2352}Update for Delay: '<S593>/Band Separation Delay' */
+/*@>13af0a1*/for (/*@>13b73b3*/i = /*@>13b73b2*/0; /*@>13b73bd*/i < /*@>13b73bb*/2; /*@>13b73b9*/i/*@>13b7507*/++) {
+/*@>13af0b8*/    for (/*@>13b73c4*/frameIdx = /*@>13b73c3*/0; /*@>13b73ce*/frameIdx < /*@>13b73cc*/104; /*@>13b73ca*/frameIdx/*@>13b7508*/++) {
+        /*@>13b2d95*/outidx/*@>13b2d97*/ = /*@>13b0f82*/i/*@>13b10de*/ * /*@>13b0f84*/136/*@>13aed03*/ + /*@>13b0f85*/frameIdx;
+        /*@>13b5fb8*/Model_Target_DW./*@>13b7785*/BandSeparationDelay_DSTATE_a/*@>13aed1a*/[outidx]/*@>10d94c5*/ = /*@>13b5fbe*/Model_Target_DW./*@>13b7788*/BandSeparationDelay_DSTATE_a/*@>13b57f1*/[/*@>13b57ed*/outidx/*@>13b57eb*/ + /*@>13b57ee*/32];
+    }
+}
+/*@>13aecdd*/for (/*@>13b73a2*/i = /*@>13b73a1*/0; /*@>13b73ac*/i < /*@>13b73aa*/2; /*@>13b73a8*/i/*@>13b7509*/++) {
+    /*@>13b4eef*/memcpy(&/*@>13b5fa6*/Model_Target_DW./*@>13b777c*/BandSeparationDelay_DSTATE_a/*@>13b416d*/[/*@>13b4147*/i/*@>13b4144*/ * /*@>13b4148*/136/*@>13b4143*/ + /*@>13b4149*/104], %<SLibCG_DumpSSCode("/*@[13b6b92*/",(SLibCG_BOCSCAddr(358, 64, "", -1, "/*@>13b415f*/i/*@>13b6c0f*/ << /*@>13b6c0e*/5", 0)),"/*@]*/")>, /*@>13b417c*/sizeof(real32_T)/*@>13b6c12*/ << /*@>13b6c11*/5U);
+}
+/* {E!d2352}End of Update for Delay: '<S593>/Band Separation Delay' */
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_Medusa5H1Part1(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(367, 1, fcnProtoType)>
+%endfunction

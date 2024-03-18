@@ -1,0 +1,30 @@
+%implements s1068_b0_g3vnd_376_Update "C"
+
+%function UpdateForTID(block, system, tid) Output
+%if tid == 2
+%assign ::GlobalCurrentTID = 2
+%assign ::GlobalCurrentTID = []
+%endif
+%if tid == 4
+%assign ::GlobalCurrentTID = 4
+%assign ::GlobalCurrentTID = []
+%endif
+%if tid == 5
+%assign ::GlobalCurrentTID = 5
+%assign ::GlobalCurrentTID = []
+%endif
+%endfunction
+%function UpdateFcnProtoTypeForTID(block, system, tid) Output
+%if tid == 2
+%assign ::GlobalCurrentTID = 2
+%assign ::GlobalCurrentTID = []
+%endif
+%if tid == 4
+%assign ::GlobalCurrentTID = 4
+%assign ::GlobalCurrentTID = []
+%endif
+%if tid == 5
+%assign ::GlobalCurrentTID = 5
+%assign ::GlobalCurrentTID = []
+%endif
+%endfunction

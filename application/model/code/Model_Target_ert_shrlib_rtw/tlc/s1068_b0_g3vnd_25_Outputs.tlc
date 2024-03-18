@@ -1,0 +1,136 @@
+%implements s1068_b0_g3vnd_25_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+int32_T k;
+real32_T currentgain[77];
+real32_T diff[77];
+%closefile localVarDecl
+/* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 3/On/Premix/Premix with Mono-Surround & CAE with Fade Ramper/Full Mixing Matrix_Right/Ramper/control': '<S1091>:1' */
+/* '<S1091>:1:10' dim_rgain = size(Premix_currentGain_Right); */
+/* '<S1091>:1:11' rgain_SILENT_GAIN_mat = (MedusaPremixConfig.rgain_SILENT_GAIN)*ones(dim_rgain); */
+/*  Step 1: FREEZE the gain ramper so that we can perform calculations based */
+/*  on the current gain value. */
+/* '<S1091>:1:15' Premix_Freeze_Right(1) = true; */
+/*  freeze the gain */
+/*  Step 2: Nudge the gain values a bit if they are sitting at zero. */
+/*  When this control set goes live, ensure that the current gain will move. */
+/*  If current gain is zero, replace with a value very close to zero. What we */
+/*  really want is a value which is on the edge of perception - not too small */
+/*  or large. If the value is too small, we'll waste some of our ramp time */
+/*  in perceived silence. If the value is too large, the audio will lurch */
+/*  into perceptability at the start of the ramp. */
+/* '<S1091>:1:24' currentgain = max(Premix_currentGain_Right, rgain_SILENT_GAIN_mat); */
+/* '<S1091>:1:25' targetGain  = max(target_gains_linear, rgain_SILENT_GAIN_mat); */
+/*  Step 3a: If a ramp time in milliseconds is provided, ignore the ramp */
+/*  rate in dB/sec (if also provided), otherwise calculate a new ramp time */
+/*  that matches the slope. */
+/* '<S1091>:1:30' rampTime_ms = single(rampTime)*ones(dim_rgain); */
+/*@>10bf777*/for (/*@>118b842*/k = /*@>118b841*/0; /*@>118b84c*/k < /*@>118b84a*/77; /*@>118b848*/k/*@>118b850*/++) {
+    /*@>1189d04*/currentgain/*@>1188cf7*/[/*@>1189d06*/k]/*@>10bf77e*/ = /*@>118aff2*/fmaxf(/*@>118b346*/rtd_Premix_currentGain_Right/*@>118b348*/[/*@>118b344*/k], /*@>1189ceb*/1.1920929E-7F);
+    /*@>1189d0c*/rtd_Premix_rampCoeff_Right/*@>1188d35*/[/*@>1189d0e*/k]/*@>10bf78a*/ = /*@>118aff4*/fmaxf(/*@>118b34d*/rtu_target_gains_linear/*@>118b34f*/[/*@>118b34b*/k], /*@>1189cec*/1.1920929E-7F);
+    /*@>1189d16*/diff/*@>1188d66*/[/*@>1189d14*/k]/*@>1188d67*/ = /*@>1188d5c*/(real32_T)/*@>1189d12*/rtu_rampTime;
+}
+/* '<S1091>:1:32' if(~rampTime) */
+/*@>10bf729*/if (/*@>1189cf6*/rtu_rampTime/*@>10bf756*/ == /*@>1189cdf*/0U) {
+    /* '<S1091>:1:33' currentGain_db = 20*log10(currentgain); */
+    /* '<S1091>:1:34' targetGain_db = 20*log10(targetGain); */
+    /* '<S1091>:1:35' diff = abs(currentGain_db - targetGain_db); */
+    /* '<S1091>:1:36' rampTime_ms = diff / single(rampRate) * 1000; */
+/*@>1188dbf*/    for (/*@>118b831*/k = /*@>118b830*/0; /*@>118b83b*/k < /*@>118b839*/77; /*@>118b837*/k/*@>118b851*/++) {
+        /*@>1189d84*/diff/*@>118968c*/[/*@>1189d86*/k] = /*@>118affc*/qhmath_div_f(/*@>118affa*/qhmath_abs_f(/*@>118a20d*/20.0F/*@>118a20c*/ * /*@>118aff6*/qhmath_log10_f(/*@>118b353*/currentgain/*@>118b355*/[/*@>118b352*/k])/*@>118a20b*/ - /*@>118a211*/20.0F/*@>118a210*/ * /*@>118aff8*/qhmath_log10_f(/*@>118b35a*/rtd_Premix_rampCoeff_Right/*@>118b35c*/[/*@>118b358*/k])), /*@>118a197*/(real32_T)/*@>118a199*/rtu_rampRate)/*@>118a192*/ * /*@>118a19a*/1000.0F;
+    }
+}
+/*  Step 3b: QUANTIZE the desired ramp time to our FrameSize. Also retrieve  */
+/*  the whole number of frames required to best match requested ramp time. */
+/*  Ensure that at least one frame is used. The frame size will therefore */
+/*  determine the steepest ramp (i.e. within one frame you can go anywhere). */
+/* '<S1091>:1:43' quantum_ms = 1000 * (MedusaPremixConfig.frame_size) / (MedusaPremixConfig.sample_rate_in_hertz); */
+/* '<S1091>:1:44' numFrames = rampTime_ms / quantum_ms; */
+/* '<S1091>:1:45' numFrames = max (1, round(numFrames)); */
+/*  In order to have the desired ramp time, the slope must vary dependent */
+/*  on the gain differencebetween target and current value. */
+/*  Ramper's coefficient is therefore calculated as follows: */
+/*  */
+/*    TargetGain = CurrentGain *( RampCoef ^ (Fs*RampTime_ms/1000) ) */
+/*  */
+/*  therefore... */
+/*  */
+/*                      log(TargetGain/CurrentGain) */
+/*    log(RampCoef) = ------------------------------ */
+/*                         Fs*(RampTime_ms/1000) */
+/*  */
+/* '<S1091>:1:59' factor = log( targetGain ./ currentgain ); */
+/* '<S1091>:1:60' RampCoef = exp(factor ./ numFrames); */
+/*  Output control signals */
+/* '<S1091>:1:63' Premix_frameCount_Right  = int32(numFrames); */
+/* '<S1091>:1:64' Premix_rampCoeff_Right   = single(RampCoef); */
+/* '<S1091>:1:65' Premix_targetGain_Right  = target_gains_linear; */
+/* '<S1091>:1:66' Premix_currentGain_Right = currentgain; */
+/*@>1188e9a*/for (/*@>118b820*/k = /*@>118b81f*/0; /*@>118b82a*/k < /*@>118b828*/77; /*@>118b826*/k/*@>118b852*/++) {
+    real32_T currentgain_0;
+    real32_T diff_0;
+    real32_T numFrames;
+    currentgain_0 = /*@>118b360*/currentgain/*@>118b362*/[/*@>118b35f*/k];
+    diff_0/*@>10bf7b7*/ = /*@>118b000*/roundf(/*@>118affe*/qhmath_div_f(/*@>118b366*/diff/*@>118b368*/[/*@>118b365*/k], /*@>118a804*/0.722222209F));
+    numFrames/*@>10bf7c3*/ = /*@>118b002*/fmaxf(/*@>1189cea*/1.0F, diff_0);
+    /*@>1189d3c*/rtd_Premix_rampCoeff_Right/*@>11890af*/[/*@>1189d3a*/k]/*@>11890b0*/ = /*@>118b004*/qhmath_div_f(/*@>118b36d*/rtd_Premix_rampCoeff_Right/*@>118b36f*/[/*@>118b36b*/k], currentgain_0);
+    /*@>1189d42*/rtd_Premix_rampCoeff_Right/*@>11890f7*/[/*@>1189d44*/k]/*@>10bf7cc*/ = /*@>118b006*/qhmath_log_f(/*@>118b374*/rtd_Premix_rampCoeff_Right/*@>118b376*/[/*@>118b372*/k]);
+    /*@>1189d4c*/rtd_Premix_rampCoeff_Right/*@>1189143*/[/*@>1189d4a*/k]/*@>1189144*/ = /*@>118b008*/qhmath_div_f(/*@>118b37b*/rtd_Premix_rampCoeff_Right/*@>118b37d*/[/*@>118b379*/k], numFrames);
+    /*@>1189d52*/rtd_Premix_rampCoeff_Right/*@>118918b*/[/*@>1189d54*/k]/*@>10bf7d5*/ = /*@>118b00a*/qhmath_exp_f(/*@>118b382*/rtd_Premix_rampCoeff_Right/*@>118b384*/[/*@>118b380*/k]);
+    /*@>1189d58*/rtd_Premix_frameCount_Right/*@>11891c3*/[/*@>1189d56*/k]/*@>11891c4*/ = /*@>1189dc3*/(int32_T)/*@>118b00c*/roundf(numFrames);
+    /*@>1189d5e*/rtd_Premix_targetGain_Right/*@>118920b*/[/*@>1189d60*/k]/*@>1188556*/ = /*@>118b389*/rtu_target_gains_linear/*@>118b38b*/[/*@>118b387*/k];
+    /*@>1189d64*/rtd_Premix_currentGain_Right/*@>118923e*/[/*@>1189d62*/k]/*@>118923f*/ = currentgain_0;
+    /*@>118a73a*/diff/*@>118a739*/[/*@>118a73c*/k] = diff_0;
+}
+/*  unfreeze the gain */
+/* '<S1091>:1:69' Premix_Freeze_Right(1) = false; */
+*rtd_Premix_Freeze_Right/*@>10bf718*/ = /*@>1189ce0*/false;
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[25].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(25, 0, 0)>
+%endif
+%if SLibCG_ArgAccessed(25, 0, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(25, 0, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_control_c(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(25, 0, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_Target_control_c", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>const real32_T rtu_target_gains_linear[77]\
+%assign comma = ", "
+%<comma>uint32_T rtu_rampRate\
+%assign comma = ", "
+%<comma>uint32_T rtu_rampTime\
+%assign comma = ", "
+%<comma>boolean_T *rtd_Premix_Freeze_Right\
+%assign comma = ", "
+%<comma>real32_T rtd_Premix_currentGain_Right[77]\
+%assign comma = ", "
+%<comma>int32_T rtd_Premix_frameCount_Right[77]\
+%assign comma = ", "
+%<comma>real32_T rtd_Premix_rampCoeff_Right[77]\
+%assign comma = ", "
+%<comma>real32_T rtd_Premix_targetGain_Right[77]\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(25, 0, fcnProtoType)>
+%endfunction

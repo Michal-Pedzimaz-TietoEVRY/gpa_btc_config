@@ -1,0 +1,150 @@
+%implements s1068_b0_g3vnd_39_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+int32_T i;
+int32_T tmp;
+%closefile localVarDecl
+/*  #codegen */
+/* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 3/On/Full-rate Mixer/Full-Rate Mixer with CAE & Fade Ramper/Full Mixing Matrix_Right/Surround Level Control/Initialization and RMDL': '<S984>:1' */
+/*  If CAE is supported and enabled, replace the tail weights with their CAE counterparts */
+/* '<S984>:1:9' if(MedusaFRMConfig.includeCAE == 1 && CAE_Enable == 1) */
+/*  Computing the 'surround' part of mixing gains depending on the surround */
+/*  level index; The other part of mixing gain comes from 'fade downmix' */
+/* '<S984>:1:23' gain = MedusaPremixGainComputation(minGain_Right, detentGain_Right, maxGain_Right, interpolation_method, surr_level, MedusaFRMConfig); */
+/*  #codegen */
+/*  Extracting the surround level indices correponding to the anchor */
+/*  points from the specified Config Struct */
+/* 'MedusaPremixGainComputation:5' midIndex = ceil(length(ConfigStruct.granularity)/2); */
+/* 'MedusaPremixGainComputation:7' min_level = ConfigStruct.granularity(1); */
+/* 'MedusaPremixGainComputation:8' detent_level = ConfigStruct.granularity(midIndex); */
+/* 'MedusaPremixGainComputation:9' max_level = ConfigStruct.granularity(end); */
+/*  Performing bound check on Surround Level value */
+/* 'MedusaPremixGainComputation:12' surroundLevel = min(surroundLevel, max_level); */
+/*@>11c5a5c*/if (/*@>11c50c3*/rtu_surr_level/*@>10be883*/ > /*@>11c50bd*/255U) {
+    /*@>11c5a60*/i/*@>11c5a5f*/ = /*@>11c7160*/255;
+} else {
+    /*@>11c5159*/i/*@>11c4eae*/ = /*@>11c54c3*/(int32_T)/*@>11c50c5*/rtu_surr_level;
+}
+/*  Computing the 'surround' part of mixing gains depending on the surround */
+/*  level index; The other part of mixing gain comes from 'fade downmix' */
+/* 'MedusaPremixGainComputation:16' switch surroundLevel */
+/*@>11c5a6a*/if (/*@>11c572e*/(uint32_T)/*@>11c5730*/i/*@>11c572d*/ == /*@>11c5731*/0U) {
+    /*@>11c5a6e*/tmp/*@>11c5a6d*/ = /*@>11c7163*/0;
+} else /*@>11c5a6f*/if (/*@>11c5735*/(uint32_T)/*@>11c5737*/i/*@>11c5734*/ == /*@>11c5738*/128U) {
+    /*@>11c5a73*/tmp/*@>11c5a72*/ = /*@>11c7166*/1;
+} else /*@>11c5a74*/if (/*@>11c573c*/(uint32_T)/*@>11c573e*/i/*@>11c573b*/ == /*@>11c573f*/255U) {
+    /*@>11c5a78*/tmp/*@>11c5a77*/ = /*@>11c716c*/2;
+} else {
+    /*@>11c5a63*/tmp/*@>11c5a65*/ = /*@>11c7169*/-1;
+}
+/*@>10be7ae*/switch (/*@>11c5a67*/tmp) {
+  case /*@>11c50a9*/0:
+    /* 'MedusaPremixGainComputation:17' case min_level */
+    /* 'MedusaPremixGainComputation:18' targetGain = minGain; */
+    /*@>11c6981*/memcpy(&/*@>11c6549*/rtd_FRM_currentGain_Right/*@>11c654a*/[/*@>11c6500*/0], &/*@>11c6553*/rtu_minGain_Right/*@>11c6554*/[/*@>11c650d*/0], /*@>11c6547*/30U/*@>11c6557*/ * /*@>11c6556*/sizeof(real32_T));
+    /*  when surround index corresponds to 'min' anchor point */
+    break;
+  case /*@>11c50aa*/1:
+    /* 'MedusaPremixGainComputation:19' case detent_level */
+    /* 'MedusaPremixGainComputation:20' targetGain = detentGain; */
+    /*@>11c6983*/memcpy(&/*@>11c656a*/rtd_FRM_currentGain_Right/*@>11c656b*/[/*@>11c651c*/0], &/*@>11c6574*/rtu_detentGain_Right/*@>11c6575*/[/*@>11c6529*/0], /*@>11c6568*/30U/*@>11c6578*/ * /*@>11c6577*/sizeof(real32_T));
+    /*  when surround index corresponds to 'detent' anchor point */
+    break;
+  case /*@>11c50ab*/2:
+    /* 'MedusaPremixGainComputation:21' case max_level */
+    /* 'MedusaPremixGainComputation:22' targetGain = maxGain; */
+    /*@>11c6985*/memcpy(&/*@>11c658b*/rtd_FRM_currentGain_Right/*@>11c658c*/[/*@>11c6538*/0], &/*@>11c6595*/rtu_maxGain_Right/*@>11c6596*/[/*@>11c6545*/0], /*@>11c6589*/30U/*@>11c6599*/ * /*@>11c6598*/sizeof(real32_T));
+    /*  when surround index corresponds to 'max' anchor point */
+    break;
+  default: {
+    real32_T position;
+    /* 'MedusaPremixGainComputation:23' otherwise */
+    /* 'MedusaPremixGainComputation:24' position = (single(surroundLevel) - min_level)/(max_level - min_level); */
+    /*@>11c50ae*/position/*@>10be812*/ = /*@>11c6832*/qhmath_div_f(/*@>11c54d2*/(real32_T)/*@>11c50bb*/i, /*@>11c50ad*/255.0F);
+    /*  when surround index lies in between the anchor points */
+    /* 'MedusaPremixGainComputation:25' if (interpolationMethod(1) == 0) */
+    /*@>10be7b6*/if (/*@>11c50c7*/rtu_interpolation_method/*@>10be7ac*/ == /*@>11c50ac*/0.0F) {
+        /* 'MedusaPremixGainComputation:26' targetGain = (maxGain - minGain)*position + minGain; */
+/*@>11c38c8*/        for (/*@>11c719e*/i = /*@>11c719d*/0; /*@>11c71a8*/i < /*@>11c71a6*/30; /*@>11c71a4*/i/*@>11c71ad*/++) {
+            /*@>11c511f*/rtd_FRM_currentGain_Right/*@>11c3ecd*/[/*@>11c5121*/i]/*@>11c38a5*/ = (/*@>11c6c72*/rtu_maxGain_Right/*@>11c6c74*/[/*@>11c6c70*/i]/*@>11c38af*/ - /*@>11c6c79*/rtu_minGain_Right/*@>11c6c7b*/[/*@>11c6c77*/i])/*@>11c518f*/ * /*@>11c50ef*/position/*@>11c38ad*/ + /*@>11c6c80*/rtu_minGain_Right/*@>11c6c82*/[/*@>11c6c7e*/i];
+        }
+        /*  Linear Interpolation */
+    } else {
+        /* 'MedusaPremixGainComputation:27' else */
+        /* 'MedusaPremixGainComputation:28' minGain_dB = 20*log10(max(minGain, eps('single'))); */
+        /* 'MedusaPremixGainComputation:29' maxGain_dB = 20*log10(max(maxGain, eps('single'))); */
+        /* 'MedusaPremixGainComputation:30' targetGain_dB = (maxGain_dB - minGain_dB)*position + minGain_dB; */
+        /* 'MedusaPremixGainComputation:31' targetGain = 10.^(targetGain_dB/20); */
+/*@>10be826*/        for (/*@>11c718d*/i = /*@>11c718c*/0; /*@>11c7197*/i < /*@>11c7195*/30; /*@>11c7193*/i/*@>11c71ae*/++) {
+            real32_T minGain_dB;
+            minGain_dB/*@>11c3f8d*/ = /*@>11c50f6*/20.0F/*@>11c5182*/ * /*@>11c6836*/qhmath_log10_f(/*@>11c6834*/fmaxf(/*@>11c6c87*/rtu_minGain_Right/*@>11c6c89*/[/*@>11c6c85*/i], /*@>11c580e*/1.1920929E-7F));
+            /*@>11c513b*/rtd_FRM_currentGain_Right/*@>11c416c*/[/*@>11c513d*/i]/*@>10be859*/ = /*@>11c683e*/qhmath_pow_f(/*@>11c50ba*/10.0F, /*@>11c683c*/qhmath_div_f((/*@>11c576c*/20.0F/*@>11c576b*/ * /*@>11c683a*/qhmath_log10_f(/*@>11c6838*/fmaxf(/*@>11c6c8e*/rtu_maxGain_Right/*@>11c6c90*/[/*@>11c6c8c*/i], /*@>11c581a*/1.1920929E-7F))/*@>11c576a*/ - minGain_dB)/*@>11c5769*/ * /*@>11c5772*/position/*@>11c5768*/ + minGain_dB, /*@>11c5775*/20.0F));
+        }
+        /*  dB-Linear Interpolation */
+    }
+}
+    break;
+}
+/*  Ramping doesn't take place during RMDL and cold start. Hence, gains */
+/*  are directly pushed to mixing matrix */
+/* '<S984>:1:27' FRM_currentGain_Right = gain; */
+/* '<S984>:1:28' FRM_targetGain_Right = gain; */
+/* '<S984>:1:29' FRM_SLCGain_Right = gain; */
+/*  Resetting the frame count to zero to avoid unintentional ramping */
+/* '<S984>:1:32' FRM_frameCount_Right = zeros(size(FRM_currentGain_Right), 'int32'); */
+/*@>11c3807*/for (/*@>11c717c*/i = /*@>11c717b*/0; /*@>11c7186*/i < /*@>11c7184*/30; /*@>11c7182*/i/*@>11c71ac*/++) {
+    /*@>11c512b*/rtd_FRM_targetGain_Right/*@>11c3f50*/[/*@>11c512d*/i]/*@>11c37f7*/ = /*@>11c6c95*/rtd_FRM_currentGain_Right/*@>11c6c97*/[/*@>11c6c93*/i];
+    /*@>11c5133*/rtd_FRM_SLCGain_Right/*@>11c401a*/[/*@>11c5135*/i]/*@>11c3815*/ = /*@>11c6c9c*/rtd_FRM_currentGain_Right/*@>11c6c9e*/[/*@>11c6c9a*/i];
+    /*@>11c50db*/rtd_FRM_frameCount_Right/*@>11c3834*/[/*@>11c50dd*/i]/*@>11c3833*/ = /*@>11c716f*/0;
+}
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[39].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(39, 0, 0)>
+%endif
+%if SLibCG_ArgAccessed(39, 0, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(39, 0, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_InitializationandRMDL_ou(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(39, 0, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_Target_InitializationandRMDL_ou", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>const real32_T rtu_minGain_Right[30]\
+%assign comma = ", "
+%<comma>const real32_T rtu_detentGain_Right[30]\
+%assign comma = ", "
+%<comma>const real32_T rtu_maxGain_Right[30]\
+%assign comma = ", "
+%<comma>real32_T rtu_interpolation_method\
+%assign comma = ", "
+%<comma>uint32_T rtu_surr_level\
+%assign comma = ", "
+%<comma>real32_T rtd_FRM_SLCGain_Right[30]\
+%assign comma = ", "
+%<comma>real32_T rtd_FRM_currentGain_Right[30]\
+%assign comma = ", "
+%<comma>int32_T rtd_FRM_frameCount_Right[30]\
+%assign comma = ", "
+%<comma>real32_T rtd_FRM_targetGain_Right[30]\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(39, 0, fcnProtoType)>
+%endfunction

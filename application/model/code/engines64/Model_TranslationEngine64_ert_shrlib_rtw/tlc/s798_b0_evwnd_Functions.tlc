@@ -1,0 +1,19 @@
+%implements s798_b0_evwnd_Functions "C"
+
+%function Model_TranslationEngine64_TestInterfaceFcn_Fcn0(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+%assign cfgTxt = ""
+%openfile cfgTxt
+%closefile cfgTxt
+%<cfgTxt>
+%closefile fcnBuff
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_TranslationEngine64_TestInterfaceFcn(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(441, 0, fcnProtoType)>
+%return fcnBuff
+%endfunction
+

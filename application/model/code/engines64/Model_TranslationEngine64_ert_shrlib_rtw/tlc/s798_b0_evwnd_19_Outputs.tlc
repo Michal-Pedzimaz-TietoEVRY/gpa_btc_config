@@ -1,0 +1,117 @@
+%implements s798_b0_evwnd_19_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+int32_T i;
+int32_T nz;
+char_T c_data[70];
+char_T b_data[62];
+boolean_T x[12];
+static const char_T d[62] = %<(TLC_STR_CTX(12))>;
+static const char_T e[70] = %<(TLC_STR_CTX(13))>;
+%closefile localVarDecl
+/*  Checks if the parameter satisfies dimensionality requirements */
+/* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 3/On/VLS Gains Computation/VLS Gains Drv/SLC Tuning/Detent Level/Trivial Translation': '<S949>:1' */
+/* '<S949>:1:5' if(detentGain.Size(1) ~= configStruct.numGains) */
+/*@>c65d38*/if (/*@>cc8dc4*/rtu_detentGain->/*@>cc9146*/Size/*@>cc8dca*/[/*@>cc8dc2*/0]/*@>c65d32*/ != /*@>cc7b72*/12.0) {
+    /* '<S949>:1:6' TranslateError('The parameter ''VLS_gains_detent'' must be a %<"\%d element vector.\', configStruct.numGains);"> */
+    /* TRANSLATEERROR (For use in Functions triggered by TranslationTrigger blocks.) */
+    /* Print error message during tune data translation. */
+    /*   Do not include a final newline as this behavior is already built in. */
+    /*   Note that escape sequences such as '\n' will not work here. To emit */
+    /*   special characters, pass them in as arguments to %<"\%c or \%s format"> */
+    /*   specifiers. */
+    /*    Copyright 2018-2019 Bose Corporation */
+    /* 'TranslateError:10' coder.extrinsic('gcb') */
+    /* 'TranslateError:11' coder.extrinsic('warning') */
+    /* 'TranslateError:12' coder.allowpcode('plain'); */
+    /*  enable code generation from p-file */
+    /* 'TranslateError:14' if (coder.target('MATLAB')) */
+    /* 'TranslateError:18' if (coder.target('Sfun')) */
+    /* 'TranslateError:21' else */
+    /* 'TranslateError:22' count = numel(varargin); */
+    /* 'TranslateError:23' fixedArgs = varargin; */
+    /* 'TranslateError:24' for i=1:count */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:26' fixedArgs{i} = [varargin{i} char(0)]; */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:29' coder.ceval('TranslateError',fixedArgs{:}); */
+/*@>cc7584*/    for (/*@>cc90ad*/i = /*@>cc90ac*/0; /*@>cc90b7*/i < /*@>cc90b5*/62; /*@>cc90b3*/i/*@>cc90bb*/++) {
+        /*@>cc8613*/b_data[/*@>cc7bd6*/i]/*@>cc7577*/ = /*@>cc8de6*/d/*@>cc8de8*/[/*@>cc8de5*/i];
+    }
+    /*@>cc8a4e*/TranslateError(&/*@>cc85fc*/b_data/*@>cc860f*/[/*@>cc7b77*/0], /*@>cc7b78*/12U);
+}
+/*  Checks if the parameter values follow bound requirements */
+/* '<S949>:1:10' checkValues = (detentGain.Value < 0); */
+/*@>cc7193*/for (/*@>cc909c*/i = /*@>cc909b*/0; /*@>cc90a6*/i < /*@>cc90a4*/12; /*@>cc90a2*/i/*@>cc90bc*/++) {
+    /*@>cc7bb0*/x/*@>cc743e*/[/*@>cc7bb2*/i]/*@>cc7180*/ = (/*@>cc8dcf*/rtu_detentGain->/*@>cc9149*/Value/*@>cc8dd5*/[/*@>cc8dcd*/i]/*@>cc7187*/ < /*@>cc7b94*/0.0);
+}
+/* '<S949>:1:11' if(sum(sum(checkValues))) */
+/*@>cc7b7d*/nz/*@>c65d90*/ = /*@>cc8dd8*/x/*@>cc8dda*/[/*@>cc8dd7*/0];
+/*@>c65d93*/for (/*@>cc908b*/i = /*@>cc908a*/0; /*@>cc9095*/i < /*@>cc9093*/11; /*@>cc9091*/i/*@>cc90bd*/++) {
+    /*@>cc7b86*/nz/*@>cc90be*/ += /*@>cc8de0*/x/*@>cc8de2*/[/*@>cc8dde*/i/*@>cc8ddc*/ + /*@>cc8ddf*/1];
+}
+/*@>c65d3c*/if (/*@>cc7b88*/nz/*@>c65d35*/ != /*@>cc7b73*/0) {
+    /*  Results in 0 if all values in the matrix respect the bound requirements */
+    /* '<S949>:1:12' TranslateError('The weights in ''VLS_gains_detent'' must be greater than or equal to 0.'); */
+    /* TRANSLATEERROR (For use in Functions triggered by TranslationTrigger blocks.) */
+    /* Print error message during tune data translation. */
+    /*   Do not include a final newline as this behavior is already built in. */
+    /*   Note that escape sequences such as '\n' will not work here. To emit */
+    /*   special characters, pass them in as arguments to %<"\%c or \%s format"> */
+    /*   specifiers. */
+    /*    Copyright 2018-2019 Bose Corporation */
+    /* 'TranslateError:10' coder.extrinsic('gcb') */
+    /* 'TranslateError:11' coder.extrinsic('warning') */
+    /* 'TranslateError:12' coder.allowpcode('plain'); */
+    /*  enable code generation from p-file */
+    /* 'TranslateError:14' if (coder.target('MATLAB')) */
+    /* 'TranslateError:18' if (coder.target('Sfun')) */
+    /* 'TranslateError:21' else */
+    /* 'TranslateError:22' count = numel(varargin); */
+    /* 'TranslateError:23' fixedArgs = varargin; */
+    /* 'TranslateError:24' for i=1:count */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:26' fixedArgs{i} = [varargin{i} char(0)]; */
+    /* 'TranslateError:29' coder.ceval('TranslateError',fixedArgs{:}); */
+    /*@>cc8b25*/memcpy(&/*@>cc885f*/c_data[/*@>cc884f*/0], &/*@>cc8867*/e/*@>cc8868*/[/*@>cc885c*/0], /*@>cc885e*/70U/*@>cc886b*/ * /*@>cc886a*/sizeof(char_T));
+    /*@>cc8a52*/TranslateError(&/*@>cc865a*/c_data/*@>cc866d*/[/*@>cc7b7c*/0]);
+}
+/* '<S949>:1:15' TOP = detentGain.Value; */
+/*@>cc8b27*/memcpy(&/*@>cc8e68*/localB->/*@>cc914c*/TOP/*@>cc87fe*/[/*@>cc87ed*/0], &/*@>cc880c*/rtu_detentGain->/*@>cc9143*/Value[0], /*@>cc87fc*/12U/*@>cc8811*/ * /*@>cc8810*/sizeof(real_T));
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[19].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(19, 0, 0)>
+%endif
+%if SLibCG_ArgAccessed(19, 0, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(19, 0, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_TranslationEngine64_TrivialTranslation_c(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(19, 0, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_TranslationEngine64_TrivialTranslation_c", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>const bus_double_12__1 *rtu_detentGain\
+%assign comma = ", "
+%<comma>B_TrivialTranslation_Model_TranslationEngine64_o_T *localB\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(19, 0, fcnProtoType)>
+%endfunction

@@ -1,0 +1,126 @@
+%implements s798_b0_evwnd_277_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+int32_T i;
+char_T c_data[62];
+char_T b_data[61];
+static const char_T d[61] = %<(TLC_STR_CTX(124))>;
+static const char_T e[62] = %<(TLC_STR_CTX(125))>;
+%closefile localVarDecl
+/* {S!d1787}MATLAB Function: '<S605>/translation' */
+/* {S!d1790}MATLAB Function: '<S605>/translation' incorporates:
+ *  S-Function (TuneVarMEX): '<S598>/TuneVar'
+ *  S-Function (TuneVarMEX): '<S605>/LeftMixIns'
+ *  S-Function (TuneVarMEX): '<S605>/RightMixIns'
+ *
+ * Block description for '<S598>/TuneVar':
+ *  General surround control parameter
+ *  STEREO_MODE = 0
+ *  SURROUND_PASSTHRU_MODE = 1
+ *  MEDUSA_2_CHANNEL_MODE = 2
+ *  MEDUSA_5_1_MODE = 3
+ */
+/*  Invoke the function trigger output */
+/* MATLAB Function 'TranslateTrigger/tfunc': '<S611>:1' */
+/* '<S611>:1:3' f(); */
+/*  Expected Order of Weights: */
+/*  LeftMixWeightsIn = [L2L, Ls2L, Ltf2L, Ltb2L, C2L, Lfe2L] */
+/*  RightMixWeightsIn = [R2R, Rs2R, Rtf2R, Rtb2R, C2R, Lfe2R] */
+/* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 1/Bass Manager Stereo/Bass Manager Tuning/translation': '<S610>:1' */
+/* '<S610>:1:6' if (SurroundOn.Value == 3 || SurroundOn.Value == 4) */
+/*@>c6b854*/if ((/*@>efa61c*/Model_TranslationEngine64_B./*@>efaa22*/SurroundOn.Value/*@>c6b850*/ == /*@>ef8c99*/3.0)/*@>c6b8d8*/ || (/*@>efa622*/Model_TranslationEngine64_B./*@>efaa25*/SurroundOn.Value/*@>c6b851*/ == /*@>ef8c9a*/4.0)) {
+    /*  Mix weights are only applicable for 5.1 and 5.1.4 inputs */
+    /*  Check if any of the tuned mix weights are negative */
+    /* '<S610>:1:10' if(sum(LeftMixWeightsIn.Value < 0)) */
+    /*@>c6b855*/if (/*@>efa628*/Model_TranslationEngine64_B./*@>efaa28*/LeftMixWeights.Value/*@>c6b8c0*/ < /*@>ef8cad*/0.0) {
+        /* '<S610>:1:11' TranslateError('Medusa Bass Manager: Left mix weights cannot be less than 0.'); */
+        /* TRANSLATEERROR (For use in Functions triggered by TranslationTrigger blocks.) */
+        /* Print error message during tune data translation. */
+        /*   Do not include a final newline as this behavior is already built in. */
+        /*   Note that escape sequences such as '\n' will not work here. To emit */
+        /*   special characters, pass them in as arguments to %<"\%c or \%s format"> */
+        /*   specifiers. */
+        /*    Copyright 2018-2019 Bose Corporation */
+        /* 'TranslateError:10' coder.extrinsic('gcb') */
+        /* 'TranslateError:11' coder.extrinsic('warning') */
+        /* 'TranslateError:12' coder.allowpcode('plain'); */
+        /*  enable code generation from p-file */
+        /* 'TranslateError:14' if (coder.target('MATLAB')) */
+        /* 'TranslateError:18' if (coder.target('Sfun')) */
+        /* 'TranslateError:21' else */
+        /* 'TranslateError:22' count = numel(varargin); */
+        /* 'TranslateError:23' fixedArgs = varargin; */
+        /* 'TranslateError:24' for i=1:count */
+        /* 'TranslateError:25' if (ischar(varargin{i})) */
+        /* 'TranslateError:26' fixedArgs{i} = [varargin{i} char(0)]; */
+        /* 'TranslateError:29' coder.ceval('TranslateError',fixedArgs{:}); */
+/*@>ef8850*/        for (/*@>efa990*/i = /*@>efa98f*/0; /*@>efa99a*/i < /*@>efa998*/61; /*@>efa996*/i/*@>efa99e*/++) {
+            /*@>ef985c*/b_data[/*@>ef8cea*/i]/*@>ef8843*/ = /*@>efa293*/d/*@>efa295*/[/*@>efa292*/i];
+        }
+        /*@>ef9d6f*/TranslateError(&/*@>ef9845*/b_data/*@>ef9858*/[/*@>ef8ca0*/0]);
+    }
+    /* '<S610>:1:14' if(sum(RightMixWeightsIn.Value < 0)) */
+    /*@>c6b857*/if (/*@>efa62e*/Model_TranslationEngine64_B./*@>efaa2b*/RightMixWeights.Value/*@>c6b8c6*/ < /*@>ef8cae*/0.0) {
+        /* '<S610>:1:15' TranslateError('Medusa Bass Manager: Right mix weights cannot be less than 0.'); */
+        /* TRANSLATEERROR (For use in Functions triggered by TranslationTrigger blocks.) */
+        /* Print error message during tune data translation. */
+        /*   Do not include a final newline as this behavior is already built in. */
+        /*   Note that escape sequences such as '\n' will not work here. To emit */
+        /*   special characters, pass them in as arguments to %<"\%c or \%s format"> */
+        /*   specifiers. */
+        /*    Copyright 2018-2019 Bose Corporation */
+        /* 'TranslateError:10' coder.extrinsic('gcb') */
+        /* 'TranslateError:11' coder.extrinsic('warning') */
+        /* 'TranslateError:12' coder.allowpcode('plain'); */
+        /*  enable code generation from p-file */
+        /* 'TranslateError:14' if (coder.target('MATLAB')) */
+        /* 'TranslateError:18' if (coder.target('Sfun')) */
+        /* 'TranslateError:21' else */
+        /* 'TranslateError:22' count = numel(varargin); */
+        /* 'TranslateError:23' fixedArgs = varargin; */
+        /* 'TranslateError:24' for i=1:count */
+        /* 'TranslateError:25' if (ischar(varargin{i})) */
+        /* 'TranslateError:26' fixedArgs{i} = [varargin{i} char(0)]; */
+        /* 'TranslateError:29' coder.ceval('TranslateError',fixedArgs{:}); */
+/*@>ef88e1*/        for (/*@>efa97f*/i = /*@>efa97e*/0; /*@>efa989*/i < /*@>efa987*/62; /*@>efa985*/i/*@>efa99f*/++) {
+            /*@>ef988d*/c_data[/*@>ef8cfe*/i]/*@>ef88d4*/ = /*@>efa299*/e/*@>efa29b*/[/*@>efa298*/i];
+        }
+        /*@>ef9d71*/TranslateError(&/*@>ef9876*/c_data/*@>ef9889*/[/*@>ef8ca4*/0]);
+    }
+    /*  Cast the mix weights to 'single' data type */
+    /* '<S610>:1:19' LeftMixWeights = single(LeftMixWeightsIn.Value); */
+    /*@>efa640*/Model_TranslationEngine64_B./*@>efaa34*/LeftMixWeights_i/*@>c6b84a*/ = /*@>c6b852*/(real32_T)/*@>efa646*/Model_TranslationEngine64_B./*@>efaa37*/LeftMixWeights.Value;
+    /* '<S610>:1:20' RightMixWeights = single(RightMixWeightsIn.Value); */
+    /*@>efa64c*/Model_TranslationEngine64_B./*@>efaa3a*/RightMixWeights_a/*@>c6b84d*/ = /*@>c6b853*/(real32_T)/*@>efa652*/Model_TranslationEngine64_B./*@>efaa3d*/RightMixWeights.Value;
+    /* '<S610>:1:22' if(SurroundOn.Value == 3 && NumInputs == 10) */
+} else {
+    /* '<S610>:1:32' else */
+    /*  For 2-channel input, use pre-defined weights to enable pass-through */
+    /*  L2L = 1.0 */
+    /*  R2R = 1.0 */
+    /*  All other combinations are set to 0 */
+    /*  Extracting the dimension of MixWeights */
+    /* '<S610>:1:39' NumMixWeights = size(LeftMixWeightsIn.Value); */
+    /* '<S610>:1:41' LeftMixWeights = single(eye(NumMixWeights)); */
+    /*@>efa634*/Model_TranslationEngine64_B./*@>efaa2e*/LeftMixWeights_i/*@>c6b84e*/ = /*@>ef8c9b*/1.0F;
+    /* '<S610>:1:42' RightMixWeights = single(eye(NumMixWeights)); */
+    /*@>efa63a*/Model_TranslationEngine64_B./*@>efaa31*/RightMixWeights_a/*@>c6b84f*/ = /*@>ef8c9c*/1.0F;
+}
+/* {E!d1790}End of MATLAB Function: '<S605>/translation' */
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void FuncTranslation_Model_141_246_96(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(277, 0, fcnProtoType)>
+%endfunction

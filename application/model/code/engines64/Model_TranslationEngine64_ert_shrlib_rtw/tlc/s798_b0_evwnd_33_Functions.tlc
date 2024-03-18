@@ -1,0 +1,50 @@
+%implements s798_b0_evwnd_33_Functions "C"
+
+%function rt_roundd_snf_Fcn0(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+%assign cfgTxt = ""
+%openfile cfgTxt
+real_T y;
+if (fabs(u) < 4.503599627370496E+15) {
+    if (u >= 0.5) {
+        y = floor(u + 0.5);
+    } else if (u > -0.5) {
+        y = u * 0.0;
+    } else {
+        y = ceil(u - 0.5);
+    }
+} else {
+    y = u;
+}
+return y;
+%closefile cfgTxt
+%<cfgTxt>
+%closefile fcnBuff
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[33].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("rt_roundd_snf", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "rt_roundd_snf"))
+%<SLibCG_AccessArg(33, 0, 1)>
+%endif
+%if SLibCG_ArgAccessed(33, 0, 1)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "rt_roundd_snf", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "rt_roundd_snf"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(33, 0, 1)>
+%endif
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+extern real_T rt_roundd_snf(\
+%assign comma = ""
+%<comma>real_T u\
+%assign comma = ", "
+%if SLibCG_ArgAccessed(33, 0, 1)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("rt_roundd_snf", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(33, 0, fcnProtoType)>
+%return fcnBuff
+%endfunction
+

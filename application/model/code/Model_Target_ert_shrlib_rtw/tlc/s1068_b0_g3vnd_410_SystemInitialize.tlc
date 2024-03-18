@@ -1,0 +1,33 @@
+%implements s1068_b0_g3vnd_410_SystemInitialize "C"
+
+%function SystemInitialize(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+int32_T i;
+%closefile localVarDecl
+%assign tlcInitializeConditionsFcnOfS640B0 = OpaqueTLCBlockFcn("InitializeConditions", 640, 0, 410, 0, 0)
+/* {S!d3492}Start for Constant: '<S1599>/coeffs' */
+/*@>1490813*/memcpy(&/*@>1490cc1*/Model_Target_B./*@>1492717*/coeffs_m/*@>14903ec*/[/*@>14903db*/0], &/*@>1490ea4*/Model_Target_ConstP./*@>149271d*/pooled94/*@>14903f4*/[/*@>14903e8*/0], /*@>14903ea*/240U/*@>14903f7*/ * /*@>14903f6*/sizeof(real32_T));
+/*@>148ebb9*/for (/*@>14926d9*/i = /*@>14926d8*/0; /*@>14926e3*/i < /*@>14926e1*/12; /*@>14926df*/i/*@>14926e7*/++) {
+    /* {S!d3494}Start for Constant: '<S1599>/advance' */
+    /*@>1490ce5*/Model_Target_B./*@>149271a*/advance_a/*@>148edfa*/[/*@>148f65a*/i]/*@>148ebab*/ = /*@>1490eaa*/Model_Target_ConstP./*@>1492720*/pooled41/*@>1490a0b*/[/*@>1490a08*/i];
+}
+%if !WHITE_SPACE(tlcInitializeConditionsFcnOfS640B0)
+/* {S!d3496}InitializeConditions for S-Function (SampleRateConverter_sfunc): '<S1599>/S-Function' */
+%<SLibCG_DumpSSCode("/*@[14913b7*/",tlcInitializeConditionsFcnOfS640B0,"/*@]*/")>\
+%endif
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedSystemInitializeLocalVars", localVarDecl)>
+%endfunction
+%function SystemInitializeFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_SrcDownEnt_Init(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(410, 0, fcnProtoType)>
+%endfunction

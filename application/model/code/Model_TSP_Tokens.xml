@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root version="1.0">
+  <Core captureToken="0x200d0000" clearToken="0x200c0000" coreIndex="1" />
+  <TSP addToken="0x24280025" blindReadToken="0x242b0025" coreIndex="0" coreTag="" dataType="single" dimensions="1" id="PreAmpAudiopilotVehicleSpeed" retrieveToken="0x242a0025" subToken="0x24290025" width="1" />
+  <TSP addToken="0x2428000d" blindReadToken="0x242b000d" coreIndex="0" coreTag="" dataType="single" dimensions="1" id="PreAmpAudiopilotHvacDbspl" retrieveToken="0x242a000d" subToken="0x2429000d" width="1" />
+  <TSP addToken="0x2428000f" blindReadToken="0x242b000f" coreIndex="0" coreTag="" dataType="single" dimensions="1" id="PreAmpAudiopilotLfNoiseDbspl" retrieveToken="0x242a000f" subToken="0x2429000f" width="1" />
+  <TSP addToken="0x24280026" blindReadToken="0x242b0026" coreIndex="0" coreTag="" dataType="single" dimensions="1" id="PreAmpAudiopilotWbNoiseDbspl" retrieveToken="0x242a0026" subToken="0x24290026" width="1" />
+  <TSP addToken="0x24280006" blindReadToken="0x242b0006" coreIndex="0" coreTag="" dataType="single" dimensions="1" id="PreAmpAudiopilotHfNoiseDbspl" retrieveToken="0x242a0006" subToken="0x24290006" width="1" />
+  <TSP addToken="0x24280020" blindReadToken="0x242b0020" coreIndex="0" coreTag="" dataType="single" dimensions="1" id="PreAmpAudiopilotNoiseRatio" retrieveToken="0x242a0020" subToken="0x24290020" width="1" />
+  <TSP addToken="0x24280024" blindReadToken="0x242b0024" coreIndex="0" coreTag="" dataType="single" dimensions="[1, 1]" id="PreAmpAudiopilotTotalBassBoostDb" retrieveToken="0x242a0024" subToken="0x24290024" width="1" />
+  <TSP addToken="0x24280002" blindReadToken="0x242b0002" coreIndex="0" coreTag="" dataType="single" dimensions="[1, 1]" id="PreAmpAudiopilotAudiopilotMidrangeBoostDb" retrieveToken="0x242a0002" subToken="0x24290002" width="1" />
+  <TSP addToken="0x24280003" blindReadToken="0x242b0003" coreIndex="0" coreTag="" dataType="single" dimensions="[1, 1]" id="PreAmpAudiopilotAudiopilotTrebleBoostDb" retrieveToken="0x242a0003" subToken="0x24290003" width="1" />
+  <TSP addToken="0x24280004" blindReadToken="0x242b0004" coreIndex="0" coreTag="" dataType="single" dimensions="[1, 1]" id="PreAmpAudiopilotDyneqBassBoostDb" retrieveToken="0x242a0004" subToken="0x24290004" width="1" />
+  <TSP addToken="0x24280000" blindReadToken="0x242b0000" coreIndex="0" coreTag="" dataType="single" dimensions="[1, 1]" id="PreAmpAudiopilotAudiopilotBassBoostDb" retrieveToken="0x242a0000" subToken="0x24290000" width="1" />
+  <TSP addToken="0x2428000e" blindReadToken="0x242b000e" coreIndex="0" coreTag="" dataType="boolean" dimensions="1" id="PreAmpAudiopilotIgnoreMicFlag" retrieveToken="0x242a000e" subToken="0x2429000e" width="1" />
+  <TSP addToken="0x24280001" blindReadToken="0x242b0001" coreIndex="0" coreTag="" dataType="single" dimensions="1" id="PreAmpAudiopilotAudiopilotBoostGain" retrieveToken="0x242a0001" subToken="0x24290001" width="1" />
+  <TSP addToken="0x24280005" blindReadToken="0x242b0005" coreIndex="0" coreTag="" dataType="single" dimensions="1" id="PreAmpAudiopilotDyneqBoostGain" retrieveToken="0x242a0005" subToken="0x24290005" width="1" />
+  <TSP addToken="0x24280027" blindReadToken="0x242b0027" coreIndex="0" coreTag="" dataType="single" dimensions="[1, 1]" id="PreAmpLevelWatchAudiopilotEnvDb" retrieveToken="0x242a0027" subToken="0x24290027" width="1" />
+  <TSP addToken="0x24280028" blindReadToken="0x242b0028" coreIndex="0" coreTag="" dataType="single" dimensions="1" id="PreAmpLevelWatchAudiopilotLevelDbspl" retrieveToken="0x242a0028" subToken="0x24290028" width="1" />
+  <TSP addToken="0x24280029" blindReadToken="0x242b0029" coreIndex="0" coreTag="" dataType="single" dimensions="[1, 1]" id="PreAmpLevelWatchDyneqEnvDb" retrieveToken="0x242a0029" subToken="0x24290029" width="1" />
+  <TSP addToken="0x2428002a" blindReadToken="0x242b002a" coreIndex="0" coreTag="" dataType="single" dimensions="1" id="PreAmpLevelWatchDyneqLevelDbspl" retrieveToken="0x242a002a" subToken="0x2429002a" width="1" />
+  <TSP addToken="0x24280009" blindReadToken="0x242b0009" coreIndex="0" coreTag="" dataType="single" dimensions="1" id="PreAmpAudiopilotHfNoiseMicPsdLevel" retrieveToken="0x242a0009" subToken="0x24290009" width="1" />
+  <TSP addToken="0x2428000b" blindReadToken="0x242b000b" coreIndex="0" coreTag="" dataType="single" dimensions="[65, 1]" id="PreAmpAudiopilotHfNoisePowerSpectralDensity" retrieveToken="0x242a000b" subToken="0x2429000b" width="65" />
+  <TSP addToken="0x2428000a" blindReadToken="0x242b000a" coreIndex="0" coreTag="" dataType="single" dimensions="1" id="PreAmpAudiopilotHfNoisePostSlew" retrieveToken="0x242a000a" subToken="0x2429000a" width="1" />
+  <TSP addToken="0x2428000c" blindReadToken="0x242b000c" coreIndex="0" coreTag="" dataType="single" dimensions="1" id="PreAmpAudiopilotHfNoisePreSlew" retrieveToken="0x242a000c" subToken="0x2429000c" width="1" />
+  <TSP addToken="0x24280008" blindReadToken="0x242b0008" coreIndex="0" coreTag="" dataType="single" dimensions="1" id="PreAmpAudiopilotHfNoiseImpulseRejectionPmin" retrieveToken="0x242a0008" subToken="0x24290008" width="1" />
+  <TSP addToken="0x24280007" blindReadToken="0x242b0007" coreIndex="0" coreTag="" dataType="single" dimensions="1" id="PreAmpAudiopilotHfNoiseImpulseRejectionFlatness" retrieveToken="0x242a0007" subToken="0x24290007" width="1" />
+  <TSP addToken="0x24280021" blindReadToken="0x242b0021" coreIndex="0" coreTag="" dataType="single" dimensions="1" id="PreAmpAudiopilotRatioPostSlew" retrieveToken="0x242a0021" subToken="0x24290021" width="1" />
+  <TSP addToken="0x24280022" blindReadToken="0x242b0022" coreIndex="0" coreTag="" dataType="single" dimensions="1" id="PreAmpAudiopilotRatioPreSlew" retrieveToken="0x242a0022" subToken="0x24290022" width="1" />
+  <TSP addToken="0x24280023" blindReadToken="0x242b0023" coreIndex="0" coreTag="" dataType="single" dimensions="1" id="PreAmpAudiopilotRatioUpdateFlag" retrieveToken="0x242a0023" subToken="0x24290023" width="1" />
+  <TSP addToken="0x2428001a" blindReadToken="0x242b001a" coreIndex="0" coreTag="" dataType="single" dimensions="1" id="PreAmpAudiopilotLfNoisePostSlew" retrieveToken="0x242a001a" subToken="0x2429001a" width="1" />
+  <TSP addToken="0x2428001b" blindReadToken="0x242b001b" coreIndex="0" coreTag="" dataType="single" dimensions="1" id="PreAmpAudiopilotLfNoisePreSlew" retrieveToken="0x242a001b" subToken="0x2429001b" width="1" />
+  <TSP addToken="0x2428001c" blindReadToken="0x242b001c" coreIndex="0" coreTag="" dataType="single" dimensions="1" id="PreAmpAudiopilotLfNoisePreSpeedBound" retrieveToken="0x242a001c" subToken="0x2429001c" width="1" />
+  <TSP addToken="0x2428001d" blindReadToken="0x242b001d" coreIndex="0" coreTag="" dataType="single" dimensions="1" id="PreAmpAudiopilotLfNoiseSpeedBoundsCurrMax" retrieveToken="0x242a001d" subToken="0x2429001d" width="1" />
+  <TSP addToken="0x2428001e" blindReadToken="0x242b001e" coreIndex="0" coreTag="" dataType="single" dimensions="1" id="PreAmpAudiopilotLfNoiseSpeedBoundsCurrMin" retrieveToken="0x242a001e" subToken="0x2429001e" width="1" />
+  <TSP addToken="0x2428001f" blindReadToken="0x242b001f" coreIndex="0" coreTag="" dataType="double" dimensions="1" id="PreAmpAudiopilotLfNoiseSpeedBoundsFlag" retrieveToken="0x242a001f" subToken="0x2429001f" width="1" />
+  <TSP addToken="0x24280016" blindReadToken="0x242b0016" coreIndex="0" coreTag="" dataType="single" dimensions="1" id="PreAmpAudiopilotLfNoiseMicLevel" retrieveToken="0x242a0016" subToken="0x24290016" width="1" />
+  <TSP addToken="0x24280017" blindReadToken="0x242b0017" coreIndex="0" coreTag="" dataType="single" dimensions="[1, 1]" id="PreAmpAudiopilotLfNoiseMicOut" retrieveToken="0x242a0017" subToken="0x24290017" width="1" />
+  <TSP addToken="0x24280018" blindReadToken="0x242b0018" coreIndex="0" coreTag="" dataType="single" dimensions="[1, 1]" id="PreAmpAudiopilotLfNoiseMusicOut" retrieveToken="0x242a0018" subToken="0x24290018" width="1" />
+  <TSP addToken="0x24280019" blindReadToken="0x242b0019" coreIndex="0" coreTag="" dataType="single" dimensions="[1, 1]" id="PreAmpAudiopilotLfNoiseNoiseOut" retrieveToken="0x242a0019" subToken="0x24290019" width="1" />
+  <TSP addToken="0x24280011" blindReadToken="0x242b0011" coreIndex="0" coreTag="" dataType="single" dimensions="1" id="PreAmpAudiopilotLfNoiseImpulseRejectionFilterOut" retrieveToken="0x242a0011" subToken="0x24290011" width="1" />
+  <TSP addToken="0x24280010" blindReadToken="0x242b0010" coreIndex="0" coreTag="" dataType="single" dimensions="1" id="PreAmpAudiopilotLfNoiseImpulseRejectionFiltCoef" retrieveToken="0x242a0010" subToken="0x24290010" width="1" />
+  <TSP addToken="0x24280012" blindReadToken="0x242b0012" coreIndex="0" coreTag="" dataType="single" dimensions="1" id="PreAmpAudiopilotLfNoiseImpulseRejectionImpulseVariance" retrieveToken="0x242a0012" subToken="0x24290012" width="1" />
+  <TSP addToken="0x24280013" blindReadToken="0x242b0013" coreIndex="0" coreTag="" dataType="single" dimensions="1" id="PreAmpAudiopilotLfNoiseImpulseRejectionMusicVariance" retrieveToken="0x242a0013" subToken="0x24290013" width="1" />
+  <TSP addToken="0x24280014" blindReadToken="0x242b0014" coreIndex="0" coreTag="" dataType="single" dimensions="1" id="PreAmpAudiopilotLfNoiseImpulseRejectionNoiseVariance" retrieveToken="0x242a0014" subToken="0x24290014" width="1" />
+  <TSP addToken="0x24280015" blindReadToken="0x242b0015" coreIndex="0" coreTag="" dataType="single" dimensions="1" id="PreAmpAudiopilotLfNoiseImpulseRejectionTotalVariance" retrieveToken="0x242a0015" subToken="0x24290015" width="1" />
+  <TSP addToken="0x22280000" blindReadToken="0x222b0000" coreIndex="0" coreTag="" dataType="int32" dimensions="1" id="PreAmpMedusaDummyState" retrieveToken="0x222a0000" subToken="0x22290000" width="1" />
+  <TSP addToken="0x23280002" blindReadToken="0x232b0002" coreIndex="0" coreTag="" dataType="single" dimensions="1" id="PreAmpMedusaMonoDetectorLevelCenter" retrieveToken="0x232a0002" subToken="0x23290002" width="1" />
+  <TSP addToken="0x23280001" blindReadToken="0x232b0001" coreIndex="0" coreTag="" dataType="uint32" dimensions="1" id="PreAmpMedusaMonoDetectorIsStereo" retrieveToken="0x232a0001" subToken="0x23290001" width="1" />
+  <TSP addToken="0x23280000" blindReadToken="0x232b0000" coreIndex="0" coreTag="" dataType="int32" dimensions="[1, 1]" id="PreAmpMedusaMonoDetectorIsActive" retrieveToken="0x232a0000" subToken="0x23290000" width="1" />
+  <TSP addToken="0x20180000" blindReadToken="0x201b0000" coreIndex="0" coreTag="" dataType="single" dimensions="[1, 1]" id="NearAnn1Ann1NonEntGainCalcGetNonEntBoostLeveldB" retrieveToken="0x201a0000" subToken="0x20190000" width="1" />
+  <TSP addToken="0x20180001" blindReadToken="0x201b0001" coreIndex="0" coreTag="" dataType="single" dimensions="[1, 1]" id="NearAnn2Ann2NonEntGainCalcGetNonEntBoostLeveldB" retrieveToken="0x201a0001" subToken="0x20190001" width="1" />
+  <TSP addToken="0x20180002" blindReadToken="0x201b0002" coreIndex="0" coreTag="" dataType="single" dimensions="[1, 1]" id="NearAnn3Ann3NonEntGainCalcGetNonEntBoostLeveldB" retrieveToken="0x201a0002" subToken="0x20190002" width="1" />
+  <TSP addToken="0x20180003" blindReadToken="0x201b0003" coreIndex="0" coreTag="" dataType="single" dimensions="[1, 1]" id="NearAnn4Ann4NonEntGainCalcGetNonEntBoostLeveldB" retrieveToken="0x201a0003" subToken="0x20190003" width="1" />
+  <TSP addToken="0x20380000" blindReadToken="0x203b0000" coreIndex="0" coreTag="" dataType="single" dimensions="[1, 24]" id="PostProcessEnergyLimiterComputedEnergy" retrieveToken="0x203a0000" subToken="0x20390000" width="24" />
+  <TSP addToken="0x20380001" blindReadToken="0x203b0001" coreIndex="0" coreTag="" dataType="single" dimensions="1" id="PostProcessEnergyLimiterCurGain" retrieveToken="0x203a0001" subToken="0x20390001" width="1" />
+  <TSP addToken="0x20380004" blindReadToken="0x203b0004" coreIndex="0" coreTag="" dataType="single" dimensions="1" id="PostProcessEnergyLimiterEnergyThreshold" retrieveToken="0x203a0004" subToken="0x20390004" width="1" />
+  <TSP addToken="0x20380002" blindReadToken="0x203b0002" coreIndex="0" coreTag="" dataType="int16" dimensions="1" id="PostProcessEnergyLimiterCurState" retrieveToken="0x203a0002" subToken="0x20390002" width="1" />
+  <TSP addToken="0x20380003" blindReadToken="0x203b0003" coreIndex="0" coreTag="" dataType="int16" dimensions="1" id="PostProcessEnergyLimiterEnableFlag" retrieveToken="0x203a0003" subToken="0x20390003" width="1" />
+  <COMPAT compat_hash="0xD202EF8D" id="InputSelect" name_hash="0xF8044409" type="OverlayGroup" />
+  <OverlayGroup compat_hash="0xD202EF8D" id="InputSelect" name_hash="0xF8044409" />
+  <COMPAT compat_hash="0xD716E441" id="PreAmp" name_hash="0xC3A89EEB" type="OverlayGroup" />
+  <OverlayGroup compat_hash="0xD716E441" id="PreAmp" name_hash="0xC3A89EEB" />
+  <COMPAT compat_hash="0xBB1AC2DB" id="Near" name_hash="0xD67EB32F" type="OverlayGroup" />
+  <OverlayGroup compat_hash="0xBB1AC2DB" id="Near" name_hash="0xD67EB32F" />
+  <COMPAT compat_hash="0x70247352" id="PostProcess" name_hash="0x062DAD3B" type="OverlayGroup" />
+  <OverlayGroup compat_hash="0x70247352" id="PostProcess" name_hash="0x062DAD3B" />
+  <COMPAT compat_hash="0xD202EF8D" id="TestRouter" name_hash="0x8CC5BE54" type="OverlayGroup" />
+  <OverlayGroup compat_hash="0xD202EF8D" id="TestRouter" name_hash="0x8CC5BE54" />
+</root>

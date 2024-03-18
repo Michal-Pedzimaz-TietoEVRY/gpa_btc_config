@@ -1,0 +1,44 @@
+%implements s798_b0_evwnd_135_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+int32_T k;
+%closefile localVarDecl
+/* {S!d935}MATLAB Function: '<S1253>/MATLAB Function2' */
+/* {S!d938}MATLAB Function: '<S1253>/MATLAB Function2' incorporates:
+ *  S-Function (TuneVarMEX): '<S1253>/decay tune'
+ */
+/*  Invoke the function trigger output */
+/* MATLAB Function 'TranslateTrigger/tfunc': '<S1266>:1' */
+/* '<S1266>:1:3' f(); */
+/* MATLAB Function 'ModelPreAmp/PreAmpPart1/NEARPreAmp/MusicLimiter/limiter/MATLAB Function2': '<S1259>:1' */
+/* '<S1259>:1:3' y = single(undb20(abs(u.Value) / Fs)); */
+/* UNDB20  Decibels to linear quantity */
+/*    Converts x from DB to absolute magnitude assuming that x is in volts. */
+/*    y = 10^(x/20) */
+/*  */
+/*  See also: DB20, UNDB10 */
+/*    Copyright 2018-2019 Bose Corporation */
+/*  Created : 9/7/1994 Bill Berardi */
+/* $Id: undb20.m 11244 2011-10-31 18:51:23Z rg20270 $ */
+/* 'undb20:12' y = exp(x * log(10)/20); */
+/*@>c6a206*/for (/*@>e07183*/k = /*@>e07182*/0; /*@>e0718d*/k < /*@>e0718b*/32; /*@>e07189*/k/*@>e07191*/++) {
+    /*@>e070a5*/Model_TranslationEngine64_PreAmpPart1_B./*@>e071bd*/y_e/*@>e068a5*/[/*@>e06b7f*/k]/*@>e068a6*/ = /*@>e0689b*/(real32_T)/*@>e06f8a*/exp(/*@>e06f88*/fabs(/*@>e070ab*/Model_TranslationEngine64_PreAmpPart1_B./*@>e071c0*/Decay./*@>e071ba*/Value/*@>e0702f*/[/*@>e07028*/k])/*@>e06cd1*/ / /*@>e070b7*/Model_TranslationEngine64_PreAmpPart1_ConstB./*@>e071c3*/CapturedTuneConst/*@>e06cd0*/ * /*@>e06cdd*/2.3025850929940459/*@>e06ccf*/ / /*@>e06cde*/20.0);
+}
+/* {E!d938}End of MATLAB Function: '<S1253>/MATLAB Function2' */
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void FuncTranslation_Model_730(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(135, 0, fcnProtoType)>
+%endfunction

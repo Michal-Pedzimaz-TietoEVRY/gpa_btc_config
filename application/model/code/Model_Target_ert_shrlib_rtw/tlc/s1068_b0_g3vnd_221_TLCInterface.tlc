@@ -1,0 +1,27 @@
+%implements s1068_b0_g3vnd_221_TLCInterface "C"
+
+%function getOutputAddr_8_0_221_1_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_BOCSCAddr(block, 523, 5, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getOutput_8_0_221_1_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_BOCSC(block, 523, 5, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getSystemOutputFcnCallInfo_8_1_221_1_4_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>1354548*/Outputs"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_8_1_221_1_6_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>135454c*/Outputs"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_8_6_221_1_3_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>1354550*/Outputs"; Args [] }
+%return fcnInfo
+%endfunction

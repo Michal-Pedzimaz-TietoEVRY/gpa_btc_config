@@ -1,0 +1,3 @@
+function [Output] = PoolIirArmNeonV7V8SimFcn(Input, NumChannels, NumStages, CoeffsTarget, StatesIn)
+[Output] = PoolIirHexagonSimFcn(Input, NumChannels, NumStages, CoeffsTarget, StatesIn);
+end

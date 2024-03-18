@@ -1,0 +1,75 @@
+%implements s798_b0_evwnd_14_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+char_T b_data[74];
+static const char_T c[74] = %<(TLC_STR_CTX(6))>;
+%closefile localVarDecl
+/*  Checks if the parameter satisfies dimensionality requirements */
+/* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 3/On/Full-rate Mixer/Full-Rate Mixer with CAE & Fade Ramper/Fade Tuning/Backward Downmix Threshold/Trivial Translation': '<S787>:1' */
+/* '<S787>:1:4' if(numel(BackwardDownmixThreshold.Value) ~= 1) */
+/*  Checks if the parameter value follows bound requirements */
+/* '<S787>:1:9' if((BackwardDownmixThreshold.Value < 0) || (BackwardDownmixThreshold.Value > 1)) */
+/*@>c65b24*/if ((rtu_BackwardDownmixThreshold->Value/*@>c65b21*/ < /*@>cc0cfd*/0.0)/*@>c65b5a*/ || (rtu_BackwardDownmixThreshold->Value/*@>c65b22*/ > /*@>cc0cfe*/1.0)) {
+    /* '<S787>:1:10' TranslateError('The value of ''medusa_backward_downmix_threshold'' must be between 0 and 1.'); */
+    /* TRANSLATEERROR (For use in Functions triggered by TranslationTrigger blocks.) */
+    /* Print error message during tune data translation. */
+    /*   Do not include a final newline as this behavior is already built in. */
+    /*   Note that escape sequences such as '\n' will not work here. To emit */
+    /*   special characters, pass them in as arguments to %<"\%c or \%s format"> */
+    /*   specifiers. */
+    /*    Copyright 2018-2019 Bose Corporation */
+    /* 'TranslateError:10' coder.extrinsic('gcb') */
+    /* 'TranslateError:11' coder.extrinsic('warning') */
+    /* 'TranslateError:12' coder.allowpcode('plain'); */
+    /*  enable code generation from p-file */
+    /* 'TranslateError:14' if (coder.target('MATLAB')) */
+    /* 'TranslateError:18' if (coder.target('Sfun')) */
+    /* 'TranslateError:21' else */
+    /* 'TranslateError:22' count = numel(varargin); */
+    /* 'TranslateError:23' fixedArgs = varargin; */
+    /* 'TranslateError:24' for i=1:count */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:26' fixedArgs{i} = [varargin{i} char(0)]; */
+    /* 'TranslateError:29' coder.ceval('TranslateError',fixedArgs{:}); */
+    /*@>cc1437*/memcpy(&/*@>cc12d6*/b_data[/*@>cc12c6*/0], &/*@>cc12de*/c/*@>cc12df*/[/*@>cc12d3*/0], /*@>cc12d5*/74U/*@>cc12e2*/ * /*@>cc12e1*/sizeof(char_T));
+    /*@>cc13c1*/TranslateError(&/*@>cc11bd*/b_data/*@>cc11d0*/[/*@>cc0d02*/0]);
+}
+/* '<S787>:1:13' TOP = BackwardDownmixThreshold.Value; */
+/*@>cc158d*/localB->/*@>cc16d6*/TOP/*@>c65b20*/ = rtu_BackwardDownmixThreshold->Value;
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[14].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(14, 0, 0)>
+%endif
+%if SLibCG_ArgAccessed(14, 0, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(14, 0, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_TranslationEngine64_TrivialTranslation_f(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(14, 0, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_TranslationEngine64_TrivialTranslation_f", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>const bus_double_1_1 *rtu_BackwardDownmixThreshold\
+%assign comma = ", "
+%<comma>B_TrivialTranslation_Model_TranslationEngine64_b_T *localB\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(14, 0, fcnProtoType)>
+%endfunction

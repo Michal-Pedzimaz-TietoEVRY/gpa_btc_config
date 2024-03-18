@@ -1,0 +1,61 @@
+%implements s798_b0_evwnd_26_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+real32_T B0;
+real32_T omega;
+%closefile localVarDecl
+/*  %<"\% inputs"> */
+/*  parameters */
+/* MATLAB Function 'ModelPreAmp/PreAmpPart1/Bass/tone filter tune translate1': '<S1189>:1' */
+/* '<S1189>:1:6' omega = 2 * pi * FilterFrequencyHz.Value / Fs; */
+/*@>ce033b*/omega/*@>c69c82*/ = /*@>c69c80*/(real32_T)(/*@>ce0348*/6.2831853071795862/*@>ce0364*/ * rtu_FilterFrequencyHz->Value)/*@>c69c81*/ / /*@>ce0350*/rtu_Fs;
+/* '<S1189>:1:8' A = (1 - sin(omega)) / cos(omega); */
+/*@>ce033d*/omega/*@>c69c86*/ = (/*@>ce0349*/1.0F/*@>c69c96*/ - /*@>ce06d4*/sinf(/*@>ce0346*/omega))/*@>c69c85*/ / /*@>ce06d6*/cosf(/*@>ce0341*/omega);
+/* '<S1189>:1:10' if (MaskFilterType == ToneMask.TypeLowpass) */
+/*  lowpass coeffs (e.g. bass) */
+/* '<S1189>:1:12' B0 = (1 - A) / 2; */
+/*@>ce033f*/B0/*@>c69c8a*/ = (/*@>ce0343*/1.0F/*@>c69c99*/ - /*@>ce0344*/omega)/*@>c69c89*/ / /*@>ce034a*/2.0F;
+/* '<S1189>:1:13' B1 = B0; */
+/* '<S1189>:1:20' FilterCoeffs = single([B0 B1 A]); */
+/*@>ce07b2*/localB->/*@>ce090b*/FilterCoeffs/*@>ce0183*/[/*@>ce0352*/0]/*@>ce0182*/ = /*@>ce0353*/B0;
+/*@>ce07b9*/localB->/*@>ce090e*/FilterCoeffs/*@>ce018c*/[/*@>ce0355*/1]/*@>ce018b*/ = /*@>ce0356*/B0;
+/*@>ce07c0*/localB->/*@>ce0911*/FilterCoeffs/*@>ce0195*/[/*@>ce0358*/2]/*@>ce0194*/ = /*@>ce0359*/omega;
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[26].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(26, 0, 0)>
+%endif
+%if SLibCG_ArgAccessed(26, 0, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(26, 0, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_TranslationEngine64_tonefiltertunetranslate1(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(26, 0, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_TranslationEngine64_tonefiltertunetranslate1", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>const bus_double_1_1 *rtu_FilterFrequencyHz\
+%assign comma = ", "
+%<comma>real32_T rtu_Fs\
+%assign comma = ", "
+%<comma>B_tonefiltertunetranslate1_Model_TranslationEngine64_T *localB\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(26, 0, fcnProtoType)>
+%endfunction

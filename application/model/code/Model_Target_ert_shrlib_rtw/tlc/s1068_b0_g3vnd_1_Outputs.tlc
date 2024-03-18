@@ -1,0 +1,148 @@
+%implements s1068_b0_g3vnd_1_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+real32_T input1;
+%closefile localVarDecl
+/*@>1153f93*/input1/*@>10d82ef*/ = /*@>1153fa4*/rtu_rmsInput;
+/*  %<"\% inputs"> */
+/*  parameters */
+/* MATLAB Function 'LevelDetector': '<S495>:1' */
+/*  States */
+/* '<S495>:1:11' if (isempty(holdFlag)) */
+/*@>10d831a*/if (!/*@<10d830b*//*@>115542b*/localDW->/*@>11558a3*/holdFlag_not_empty) {
+    /* '<S495>:1:12' holdFlag = 1; */
+    /*@>1155432*/localDW->/*@>11558a6*/holdFlag_not_empty/*@>10d82f1*/ = /*@>1153f54*/true;
+    /* '<S495>:1:13' holdState = 0; */
+    /* '<S495>:1:14' envelope1 = -abs(minVolumeDb); */
+    /*@>1155439*/localDW->/*@>11558a9*/envelope1/*@>10d82f2*/ = -/*@<1153fc6*//*@>1154d18*/qhmath_abs_f(/*@>1153fa6*/rtu_minVolumeDb);
+}
+/*  By default we use the RMS input */
+/* '<S495>:1:18' input1 = rmsInput; */
+/* '<S495>:1:19' level = single(0.0); */
+/*@>11552f7*/localB->/*@>115589d*/level/*@>10d82f3*/ = /*@>1153f9c*/0.0F;
+/* '<S495>:1:21' if mode1 >= 0.0 */
+/*@>10d8320*/if (/*@>1153fa8*/rtu_mode1/*@>10d830d*/ >= /*@>1153f59*/0.0F) {
+    real32_T delta;
+    /*  Choose input1 based on mode1 */
+    /* '<S495>:1:23' if (mode1 > 0.0) */
+    /*@>10d8322*/if (/*@>1153faa*/rtu_mode1/*@>10d830e*/ > /*@>1153f5a*/0.0F) {
+        /* '<S495>:1:24' input1 = peakInput; */
+        /*@>1153f5b*/input1/*@>10d82f4*/ = /*@>1153fac*/rtu_peakInput;
+    }
+    /* '<S495>:1:26' delta = single( envelope1 - input1 ); */
+    /*@>1153f61*/delta/*@>10d82f7*/ = /*@>1155440*/localDW->/*@>11558ac*/envelope1/*@>10d830f*/ - /*@>1153f5f*/input1;
+    /* '<S495>:1:27' if ( delta <= single(0) ) */
+    /*@>10d8326*/if (/*@>1153f63*/delta/*@>10d8310*/ <= /*@>1153f9d*/0.0F) {
+        /*  Attack phase */
+        /* '<S495>:1:29' envelope1 = input1; */
+        /*@>1155447*/localDW->/*@>11558af*/envelope1/*@>10d82fa*/ = /*@>1153f65*/input1;
+        /* '<S495>:1:30' holdState = 0; */
+        /*@>115544e*/localDW->/*@>11558b2*/holdState/*@>10d82fb*/ = /*@>1153f6d*/0.0;
+        /* '<S495>:1:31' holdFlag = 1; */
+        /*@>1155455*/localDW->/*@>11558b5*/holdFlag/*@>10d82fc*/ = /*@>1153f72*/1.0;
+    } else {
+        /* '<S495>:1:32' else */
+        /*  Slow Decay phase */
+        /* '<S495>:1:34' coef = slowDecayDbPerSample; */
+        /*@>1153f69*/input1/*@>10d82fd*/ = /*@>1153fae*/rtu_slowDecayDbPerSample;
+        /*  Hold phase */
+        /* '<S495>:1:37' if ( delta >= holdMarginDb ) */
+        /*@>10d832e*/if (/*@>1153f6e*/delta/*@>10d8311*/ >= /*@>1153fb0*/rtu_holdMarginDb) {
+            /* '<S495>:1:38' holdState = holdState + 1; */
+            /*@>115545c*/localDW->/*@>11558b8*/holdState/*@>11557f5*/++;
+            /* '<S495>:1:39' if ( holdState > holdTimeSamples ) */
+            /*@>10d8330*/if (/*@>1155471*/localDW->/*@>11558be*/holdState/*@>10d8313*/ > /*@>1153fb2*/rtu_holdTimeSamples) {
+                /* '<S495>:1:40' holdFlag = 0; */
+                /*@>1155486*/localDW->/*@>11558c7*/holdFlag/*@>10d8302*/ = /*@>1153f7f*/0.0;
+            }
+        } else {
+            /* '<S495>:1:42' else */
+            /* '<S495>:1:43' holdState = 0; */
+            /*@>115546a*/localDW->/*@>11558bb*/holdState/*@>10d8303*/ = /*@>1153f7a*/0.0;
+        }
+        /*  Fast decay phase */
+        /* '<S495>:1:47' if holdFlag == 0 */
+        /*@>10d8334*/if (/*@>115549b*/localDW->/*@>11558d0*/holdFlag/*@>10d8315*/ == /*@>1153f82*/0.0) {
+            /* '<S495>:1:48' coef = fastDecayDbPerSample; */
+            /*@>1153f83*/input1/*@>10d8305*/ = /*@>1153fb8*/rtu_fastDecayDbPerSample;
+        }
+        /*  Super fast decay phase */
+        /* '<S495>:1:52' if ( AnnTrigger > AnnTriggerThreshold ) */
+        /*@>10d8338*/if (/*@>1153fbe*/rtu_AnnTrigger/*@>10d8316*/ > /*@>1153f9f*/0.5) {
+            /* '<S495>:1:53' coef = SuperFastDecayMultiplier * fastDecayDbPerSample; */
+            /*@>1153f85*/input1/*@>10d8306*/ = /*@>1153f99*/Model_Target_SuperFastDecayMultiplier/*@>1153fc4*/ * /*@>1153fc0*/rtu_fastDecayDbPerSample;
+        }
+        /*  Update the envelope1 */
+        /* '<S495>:1:57' envelope1 = envelope1 + coef; */
+        /*@>11554a9*/localDW->/*@>11558d6*/envelope1/*@>11557f6*/ += /*@>1153f89*/input1;
+    }
+    /*  Boundary Check */
+    /* '<S495>:1:60' envelope1 = max(minVolumeDb, envelope1); */
+    /*@>1155478*/localDW->/*@>11558c1*/envelope1/*@>10d8385*/ = /*@>1154d1a*/fmaxf(/*@>1153fb4*/rtu_minVolumeDb, /*@>115547f*/localDW->/*@>11558c4*/envelope1);
+    /* '<S495>:1:61' envelope1 = min(maxVolumeDb, envelope1); */
+    /*@>115548d*/localDW->/*@>11558ca*/envelope1/*@>10d8388*/ = /*@>1154d1c*/fminf(/*@>1153fb6*/rtu_maxVolumeDb, /*@>1155494*/localDW->/*@>11558cd*/envelope1);
+    /*  dBSPL Conversion */
+    /* '<S495>:1:64' level = max(0, envelope1 + predictionDbspl + volumeDb); */
+    /*@>11552fe*/localB->/*@>11558a0*/level/*@>10d838b*/ = /*@>1154d1e*/fmaxf(/*@>1153f9e*/0.0F, (/*@>11554a2*/localDW->/*@>11558d3*/envelope1/*@>10d83ad*/ + /*@>1153fba*/rtu_predictionDbspl)/*@>10d83ac*/ + /*@>1153fbc*/rtu_volumeDb);
+}
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[1].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(1, 1, 0)>
+%endif
+%if SLibCG_ArgAccessed(1, 1, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(1, 1, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_InnerLink(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(1, 1, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_Target_InnerLink", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>real32_T rtu_rmsInput\
+%assign comma = ", "
+%<comma>real32_T rtu_peakInput\
+%assign comma = ", "
+%<comma>real32_T rtu_predictionDbspl\
+%assign comma = ", "
+%<comma>real32_T rtu_slowDecayDbPerSample\
+%assign comma = ", "
+%<comma>real32_T rtu_holdMarginDb\
+%assign comma = ", "
+%<comma>real32_T rtu_holdTimeSamples\
+%assign comma = ", "
+%<comma>real32_T rtu_fastDecayDbPerSample\
+%assign comma = ", "
+%<comma>real32_T rtu_minVolumeDb\
+%assign comma = ", "
+%<comma>real32_T rtu_maxVolumeDb\
+%assign comma = ", "
+%<comma>real32_T rtu_volumeDb\
+%assign comma = ", "
+%<comma>real_T rtu_AnnTrigger\
+%assign comma = ", "
+%<comma>real32_T rtu_mode1\
+%assign comma = ", "
+%<comma>B_InnerLink_Model_Target_T *localB\
+%assign comma = ", "
+%<comma>DW_InnerLink_Model_Target_T *localDW\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(1, 1, fcnProtoType)>
+%endfunction

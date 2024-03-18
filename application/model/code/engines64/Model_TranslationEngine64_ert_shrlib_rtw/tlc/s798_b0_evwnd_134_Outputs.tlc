@@ -1,0 +1,46 @@
+%implements s798_b0_evwnd_134_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+int32_T k;
+%closefile localVarDecl
+/* {S!d931}MATLAB Function: '<S1253>/MATLAB Function3' */
+/* {S!d934}MATLAB Function: '<S1253>/MATLAB Function3' incorporates:
+ *  S-Function (TuneVarMEX): '<S1253>/attackTune'
+ */
+/*  Invoke the function trigger output */
+/* MATLAB Function 'TranslateTrigger/tfunc': '<S1265>:1' */
+/* '<S1265>:1:3' f(); */
+/* MATLAB Function 'ModelPreAmp/PreAmpPart1/NEARPreAmp/MusicLimiter/limiter/MATLAB Function3': '<S1260>:1' */
+/* function [attack, k1]= fcn(attackDB, threshold, Fs) */
+/* '<S1260>:1:3' attack = single(1 - undb20(-abs(attackDB.Value) / Fs)); */
+/* UNDB20  Decibels to linear quantity */
+/*    Converts x from DB to absolute magnitude assuming that x is in volts. */
+/*    y = 10^(x/20) */
+/*  */
+/*  See also: DB20, UNDB10 */
+/*    Copyright 2018-2019 Bose Corporation */
+/*  Created : 9/7/1994 Bill Berardi */
+/* $Id: undb20.m 11244 2011-10-31 18:51:23Z rg20270 $ */
+/* 'undb20:12' y = exp(x * log(10)/20); */
+/*@>c6a16c*/for (/*@>e06327*/k = /*@>e06326*/0; /*@>e06331*/k < /*@>e0632f*/32; /*@>e0632d*/k/*@>e06335*/++) {
+    /*@>e06241*/Model_TranslationEngine64_PreAmpPart1_B./*@>e06361*/attack/*@>e05a07*/[/*@>e05ce8*/k]/*@>e05a08*/ = /*@>e059fb*/(real32_T)(/*@>e05ce0*/1.0/*@>e059f0*/ - /*@>e0611a*/exp(-/*@<e05e41*//*@>e06118*/fabs(/*@>e06247*/Model_TranslationEngine64_PreAmpPart1_B./*@>e06364*/Attack./*@>e0635e*/Value/*@>e061cb*/[/*@>e061c4*/k])/*@>e05e40*/ / /*@>e06253*/Model_TranslationEngine64_PreAmpPart1_ConstB./*@>e06367*/CapturedTuneConst/*@>e05e3f*/ * /*@>e05e4d*/2.3025850929940459/*@>e05e3e*/ / /*@>e05e4e*/20.0));
+}
+/* {E!d934}End of MATLAB Function: '<S1253>/MATLAB Function3' */
+/* k1 = attack ./ single(threshold.Value); */
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void FuncTranslation_Model_729(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(134, 0, fcnProtoType)>
+%endfunction

@@ -1,0 +1,12 @@
+%implements s1068_b0_g3vnd_136_TLCInterface "C"
+
+%function getOutputAddr_457_0_136_0_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_BOCSCAddr(block, 618, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getOutput_457_0_136_0_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_BOCSC(block, 618, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+

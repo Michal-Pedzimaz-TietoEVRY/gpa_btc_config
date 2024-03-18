@@ -1,0 +1,60 @@
+%implements s798_b0_evwnd_339_Functions "C"
+
+%function Model_TranslationEngine64_cat_Fcn0(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+%assign cfgTxt = ""
+%openfile cfgTxt
+int32_T j;
+/*@>a8ca9f*/for (/*@>f832c7*/j = /*@>f832c6*/0; /*@>f832d1*/j < /*@>f832cf*/25; /*@>f832cd*/j/*@>f832d5*/++) {
+    /*@>f81e37*/y/*@>f7cf78*/[/*@>f7f692*/j]/*@>a8cab6*/ = /*@>f8265b*/varargin_1/*@>f8265d*/[/*@>f82659*/j];
+    /*@>f81e3d*/y/*@>f7cfc4*/[/*@>f7f68d*/j + /*@>f7f68f*/25]/*@>a8caea*/ = /*@>f82662*/varargin_2/*@>f82664*/[/*@>f82660*/j];
+    /*@>f81e43*/y/*@>f7d010*/[/*@>f7f688*/j + /*@>f7f68a*/50]/*@>a8cb1e*/ = /*@>f82669*/varargin_3/*@>f8266b*/[/*@>f82667*/j];
+    /*@>f81e49*/y/*@>f7d05c*/[/*@>f7f683*/j + /*@>f7f685*/75]/*@>a8cb52*/ = /*@>f82670*/varargin_4/*@>f82672*/[/*@>f8266e*/j];
+    /*@>f81e4f*/y/*@>f7d0a8*/[/*@>f7f67e*/j + /*@>f7f680*/100]/*@>a8cb86*/ = /*@>f82677*/varargin_5/*@>f82679*/[/*@>f82675*/j];
+    /*@>f81e55*/y/*@>f7d0f4*/[/*@>f7f679*/j + /*@>f7f67b*/125]/*@>a8cbba*/ = /*@>f8267e*/varargin_6/*@>f82680*/[/*@>f8267c*/j];
+    /*@>f81e5b*/y/*@>f7d140*/[/*@>f7f674*/j + /*@>f7f676*/150]/*@>a8cbee*/ = /*@>f82685*/varargin_7/*@>f82687*/[/*@>f82683*/j];
+    /*@>f81e61*/y/*@>f7d18c*/[/*@>f7f66f*/j + /*@>f7f671*/175]/*@>a8cc22*/ = /*@>f8268c*/varargin_8/*@>f8268e*/[/*@>f8268a*/j];
+    /*@>f81e67*/y/*@>f7d1d8*/[/*@>f7f66a*/j + /*@>f7f66c*/200]/*@>a8cc56*/ = /*@>f82693*/varargin_9/*@>f82695*/[/*@>f82691*/j];
+    /*@>f81e6d*/y/*@>f7d224*/[/*@>f7f665*/j + /*@>f7f667*/225]/*@>a8cc8a*/ = /*@>f8269a*/varargin_10/*@>f8269c*/[/*@>f82698*/j];
+    /*@>f81e73*/y/*@>f7d270*/[/*@>f7f660*/j + /*@>f7f662*/250]/*@>a8ccbe*/ = /*@>f826a1*/varargin_11/*@>f826a3*/[/*@>f8269f*/j];
+    /*@>f81e79*/y/*@>f7d2b9*/[/*@>f7f65b*/j + /*@>f7f65d*/275]/*@>a8ccf2*/ = /*@>f826a8*/varargin_12/*@>f826aa*/[/*@>f826a6*/j];
+}
+%closefile cfgTxt
+%<cfgTxt>
+%closefile fcnBuff
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_TranslationEngine64_cat(\
+%assign comma = ""
+%<comma>const real32_T varargin_1[25]\
+%assign comma = ", "
+%<comma>const real32_T varargin_2[25]\
+%assign comma = ", "
+%<comma>const real32_T varargin_3[25]\
+%assign comma = ", "
+%<comma>const real32_T varargin_4[25]\
+%assign comma = ", "
+%<comma>const real32_T varargin_5[25]\
+%assign comma = ", "
+%<comma>const real32_T varargin_6[25]\
+%assign comma = ", "
+%<comma>const real32_T varargin_7[25]\
+%assign comma = ", "
+%<comma>const real32_T varargin_8[25]\
+%assign comma = ", "
+%<comma>const real32_T varargin_9[25]\
+%assign comma = ", "
+%<comma>const real32_T varargin_10[25]\
+%assign comma = ", "
+%<comma>const real32_T varargin_11[25]\
+%assign comma = ", "
+%<comma>const real32_T varargin_12[25]\
+%assign comma = ", "
+%<comma>real32_T y[300]\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(339, 0, fcnProtoType)>
+%return fcnBuff
+%endfunction
+

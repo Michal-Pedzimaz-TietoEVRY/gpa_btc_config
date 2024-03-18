@@ -1,0 +1,45 @@
+%implements s1068_b0_g3vnd_183_ConstCode "C"
+
+%function ConstCode(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%assign tlcOutputsFcnOfS639B92 = OpaqueTLCBlockFcn("Outputs", 639, 92, 183, 4, 0)
+%assign tlcOutputsFcnOfS639B93 = OpaqueTLCBlockFcn("Outputs", 639, 93, 183, 4, 1)
+%assign tlcOutputsFcnOfS639B101 = OpaqueTLCBlockFcn("Outputs", 639, 101, 183, 4, 2)
+%assign tlcOutputsFcnOfS639B102 = OpaqueTLCBlockFcn("Outputs", 639, 102, 183, 4, 3)
+%if !WHITE_SPACE(tlcOutputsFcnOfS639B92)
+/* ConstCode for S-Function (CapturedConst): '<S1523>/Captured Tune Const' incorporates:
+ *  S-Function (AudioStats_MEX): '<S1523>/Audio Stats'
+ */
+%<SLibCG_DumpSSCode("/*@[1316d04*/",tlcOutputsFcnOfS639B92,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS639B93)
+/* ConstCode for S-Function (CapturedConst): '<S1524>/Captured Tune Const' incorporates:
+ *  S-Function (AudioStats_MEX): '<S1524>/Audio Stats'
+ */
+%<SLibCG_DumpSSCode("/*@[1316d06*/",tlcOutputsFcnOfS639B93,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS639B101)
+/* ConstCode for S-Function (CapturedConst): '<S1576>/Captured Tune Const' incorporates:
+ *  S-Function (AudioStats_MEX): '<S1576>/Audio Stats'
+ */
+%<SLibCG_DumpSSCode("/*@[1316d08*/",tlcOutputsFcnOfS639B101,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS639B102)
+/* ConstCode for S-Function (CapturedConst): '<S1526>/Captured Tune Const' incorporates:
+ *  S-Function (AudioStats_MEX): '<S1526>/Audio Stats'
+ */
+%<SLibCG_DumpSSCode("/*@[1316d0a*/",tlcOutputsFcnOfS639B102,"/*@]*/")>\
+%endif
+%closefile cfgTxt
+%<cfgTxt>
+%endfunction
+%function ConstCodeFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_PreAmpPart1_Const(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(183, 4, fcnProtoType)>
+%endfunction

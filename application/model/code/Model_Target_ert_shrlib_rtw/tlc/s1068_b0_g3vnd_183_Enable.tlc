@@ -1,0 +1,79 @@
+%implements s1068_b0_g3vnd_183_Enable "C"
+
+%function Enable(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%assign tlcEnableFcnOfS639B6 = OpaqueTLCBlockFcn("Enable", 639, 6, 183, 3, 0)
+%assign tlcEnableFcnOfS639B44 = OpaqueTLCBlockFcn("Enable", 639, 44, 183, 3, 1)
+%assign tlcEnableFcnOfS639B75 = OpaqueTLCBlockFcn("Enable", 639, 75, 183, 3, 2)
+%assign   Enable_open_RTCRequestResponseTrigger_639_6 = ""
+%openfile Enable_open_RTCRequestResponseTrigger_639_6
+
+/* Enable for S-Function (RTC_REQ_RSP): '<S1527>/RTC Request Response Trigger' */
+%closefile Enable_open_RTCRequestResponseTrigger_639_6
+
+%assign    Enable_body_RTCRequestResponseTrigger_639_6 = ""
+%openfile  Enable_body_RTCRequestResponseTrigger_639_6
+
+%<SLibCG_DumpSSCode("/*@[1316cf9*/",tlcEnableFcnOfS639B6,"/*@]*/")>\
+%closefile Enable_body_RTCRequestResponseTrigger_639_6
+
+%assign    Enable_close_RTCRequestResponseTrigger_639_6 = ""
+%openfile  Enable_close_RTCRequestResponseTrigger_639_6
+
+/* End of Enable for S-Function (RTC_REQ_RSP): '<S1527>/RTC Request Response Trigger' */
+%closefile Enable_close_RTCRequestResponseTrigger_639_6
+%<SLibCG_DumpSSCode(Enable_open_RTCRequestResponseTrigger_639_6, Enable_body_RTCRequestResponseTrigger_639_6, Enable_close_RTCRequestResponseTrigger_639_6)>
+
+
+%assign   Enable_open_RTCRequestResponseTrigger_g_639_60 = ""
+%openfile Enable_open_RTCRequestResponseTrigger_g_639_60
+
+/* Enable for S-Function (RTC_REQ_RSP): '<S1545>/RTC Request Response Trigger' */
+%closefile Enable_open_RTCRequestResponseTrigger_g_639_60
+
+%assign    Enable_body_RTCRequestResponseTrigger_g_639_60 = ""
+%openfile  Enable_body_RTCRequestResponseTrigger_g_639_60
+
+%<SLibCG_DumpSSCode("/*@[1316cfb*/",tlcEnableFcnOfS639B44,"/*@]*/")>\
+%closefile Enable_body_RTCRequestResponseTrigger_g_639_60
+
+%assign    Enable_close_RTCRequestResponseTrigger_g_639_60 = ""
+%openfile  Enable_close_RTCRequestResponseTrigger_g_639_60
+
+/* End of Enable for S-Function (RTC_REQ_RSP): '<S1545>/RTC Request Response Trigger' */
+%closefile Enable_close_RTCRequestResponseTrigger_g_639_60
+%<SLibCG_DumpSSCode(Enable_open_RTCRequestResponseTrigger_g_639_60, Enable_body_RTCRequestResponseTrigger_g_639_60, Enable_close_RTCRequestResponseTrigger_g_639_60)>
+
+
+%assign   Enable_open_RTCRequestResponseTrigger_g0_639_94 = ""
+%openfile Enable_open_RTCRequestResponseTrigger_g0_639_94
+
+/* Enable for S-Function (RTC_REQ_RSP): '<S1581>/RTC Request Response Trigger' */
+%closefile Enable_open_RTCRequestResponseTrigger_g0_639_94
+
+%assign    Enable_body_RTCRequestResponseTrigger_g0_639_94 = ""
+%openfile  Enable_body_RTCRequestResponseTrigger_g0_639_94
+
+%<SLibCG_DumpSSCode("/*@[1316cfd*/",tlcEnableFcnOfS639B75,"/*@]*/")>\
+%closefile Enable_body_RTCRequestResponseTrigger_g0_639_94
+
+%assign    Enable_close_RTCRequestResponseTrigger_g0_639_94 = ""
+%openfile  Enable_close_RTCRequestResponseTrigger_g0_639_94
+
+/* End of Enable for S-Function (RTC_REQ_RSP): '<S1581>/RTC Request Response Trigger' */
+%closefile Enable_close_RTCRequestResponseTrigger_g0_639_94
+%<SLibCG_DumpSSCode(Enable_open_RTCRequestResponseTrigger_g0_639_94, Enable_body_RTCRequestResponseTrigger_g0_639_94, Enable_close_RTCRequestResponseTrigger_g0_639_94)>
+
+%closefile cfgTxt
+%<cfgTxt>
+%endfunction
+%function EnableFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_PreAmpPart1_Enable(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(183, 3, fcnProtoType)>
+%endfunction

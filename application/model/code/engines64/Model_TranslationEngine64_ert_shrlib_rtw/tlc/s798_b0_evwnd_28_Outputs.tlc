@@ -1,0 +1,74 @@
+%implements s798_b0_evwnd_28_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%assign _modelSS = ""
+
+%if SLibCG_FcnCallArgAccessed(28,1,0,1)
+%<SLibCG_AccessArg(28 ,1, 1)>
+%endif
+%if SLibCG_FcnCallArgAccessed(28,1,0,2)
+%<SLibCG_AccessArg(28 ,1, 0)>
+%endif
+
+/*  ----- To access TuneVar maximum size, current size, and current value: */
+/*    Note: TuneVar signals arrive with exposed variable size information. */
+/*          The expressions below illustrate for the "Tune1" input argument. */
+/*  */
+/*    size(Tune1.Value) : the maximum possible size of the Tune1 variable */
+/*  */
+/*    Tune.Size   : the current size of *valid* data in Tune1.Value */
+/*  */
+/*    Tune1.Size(1) : Number of rows present in Tune1 - this does not vary. */
+/*  */
+/*    Tune1.Size(2) : Number of columns currently valid in Tune1 - this is */
+/*        the variable part of size that can change (if allowed by TuneVar). */
+/*  */
+/*    Tune1.Value : the current value of the tune variable... but end-padded  */
+/*        to the maximum available size with undefined/invalid data. */
+/*  */
+/*    numel(Tune1.Value) : another way of looking at the maximum number of */
+/*        elements that could arrive in Tune1.Value */
+/*  */
+/*  ----- To register an error, use the following method (works like printf): */
+/*    TranslateError( <format string>, <arguments ... ) */
+/*    ... this error will cause the build process to abort. */
+/* MATLAB Function 'ModelPreAmp/PreAmpPart1/NEARPreAmp/MusicLimiter/annPredTuneTOP/Trivial Translation': '<S1257>:1' */
+/*  A trivial pass-through translation looks like this: */
+/* TOP1 = Tune1.Value; */
+/* '<S1257>:1:29' TOP1 = 10 ^ ((Tune1.Value) / 20); */
+/*@>ce34d0*/localB->/*@>ce3805*/TOP1/*@>c69d58*/ = %<SLibCG_DumpSSCode("/*@[ce375a*/",(SLibCGCallSubFcn("rt_powd_snf", ["/*@>ce3819*/10.0", "rtu_Tune1->Value/*@>ce3823*/ / /*@>ce3827*/20.0", "/*@>ce3831*/%<::tSimStruct>"], 28, 1, 0)),"/*@]*/")>;
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[28].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(28, 1, 0)>
+%endif
+%if SLibCG_ArgAccessed(28, 1, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(28, 1, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_TranslationEngine64_TrivialTranslation_h(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(28, 1, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_TranslationEngine64_TrivialTranslation_h", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>const bus_double_1_1 *rtu_Tune1\
+%assign comma = ", "
+%<comma>B_TrivialTranslation_Model_TranslationEngine64_ap_T *localB\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(28, 1, fcnProtoType)>
+%endfunction

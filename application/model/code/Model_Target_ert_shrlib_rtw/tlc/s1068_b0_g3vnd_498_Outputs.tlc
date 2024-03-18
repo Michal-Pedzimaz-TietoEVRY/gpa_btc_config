@@ -1,0 +1,41 @@
+%implements s1068_b0_g3vnd_498_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+/* {S!d3741}MATLAB Function: '<S2006>/rgainx check sequence' */
+/* {S!d3746}MATLAB Function: '<S2006>/rgainx check sequence' */
+/*  Invoke the function trigger output */
+/* MATLAB Function 'RTC/NtfCheck': '<S1999>:1' */
+/* '<S1999>:1:3' go(); */
+/*  Check if the ramping is done by comparing the target and current gains. */
+/* MATLAB Function 'Rgainy/NtfCheckSubsystem/rgainx check sequence': '<S2011>:1' */
+/*  Assume the work is complete until proven otherwise */
+/* '<S2011>:1:7' done = true; */
+/*@>14cddd7*/Model_Target_B./*@>14ce18f*/done_d/*@>10cf8f1*/ = /*@>14cd896*/true;
+/* '<S2011>:1:8' for i=1:MaskNumRampers */
+/* '<S2011>:1:9' if (Rampers(i).targetGain ~= Rampers(i).currentGain) */
+/*@>10cf8fa*/if (%<SLibCG_DumpSSCode("/*@[14ce12b*/",(SLibCG_SE(SLibCG_CSCDW(1, 1, ".targetGain", -1, "", 0))),"/*@]*/")>/*@>10cf8f7*/ != %<SLibCG_DumpSSCode("/*@[14ce10e*/",(SLibCG_SE(SLibCG_CSCDW(1, 1, ".currentGain", -1, "", 0))),"/*@]*/")>) {
+    /* '<S2011>:1:10' done = false; */
+    /*@>14cdde3*/Model_Target_B./*@>14ce195*/done_d/*@>10cf8f6*/ = /*@>14cd8a7*/false;
+    /*  just proved otherwise */
+}
+/* {E!d3746}End of MATLAB Function: '<S2006>/rgainx check sequence' */
+
+/* {S!d3743}Outputs for Function Call SubSystem: '<S1935>/Triggered Subsystem' */
+/* {S!d3748}SignalConversion generated from: '<S1990>/In1' */
+/*@>14cdddd*/Model_Target_B./*@>14ce192*/In1_g/*@>10cf8df*/ = %<SLibCG_DumpSSCode("/*@[14ce147*/",(SLibCG_SE(SLibCG_BOCSC(40, 1, "", -1, "", 0))),"/*@]*/")>;
+/* {E!d3743}End of Outputs for SubSystem: '<S1935>/Triggered Subsystem' */
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Outputs(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(498, 0, fcnProtoType)>
+%endfunction

@@ -1,0 +1,8 @@
+%implements s1068_b0_g3vnd_150_ModuleConstants "C"
+
+%function ModuleConstants(block) Output
+
+
+/* Named constants for MATLAB Function: '<S1305>/GetFirMappings' */
+#define Model_Target_UpFactor (4.0)
+%endfunction

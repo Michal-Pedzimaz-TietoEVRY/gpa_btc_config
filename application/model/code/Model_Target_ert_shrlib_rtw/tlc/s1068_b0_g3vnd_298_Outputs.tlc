@@ -1,0 +1,80 @@
+%implements s1068_b0_g3vnd_298_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+int32_T count;
+real32_T divBass;
+real32_T divMid;
+real32_T divTreble;
+%closefile localVarDecl
+/* {S!d2103}MATLAB Function: '<S39>/AverageBoostLevel' */
+/* {S!d2106}MATLAB Function: '<S39>/AverageBoostLevel' */
+/*  Invoke the function trigger output */
+/* MATLAB Function 'RTC/REQ': '<S189>:1' */
+/* '<S189>:1:3' go(); */
+/*  This function calculates the average boost value for a given set of bass, */
+/*  mid, and treble boost values. A boost value is included in the average if */
+/*  the corresponding maximum boost value is greater than a threshold. */
+/* MATLAB Function 'ModelPreAmp/DecRate/AudioPilot35/Audiopilot_3_5/GainCalculation/AverageBoostLevel': '<S104>:1' */
+/*  Constants */
+/* '<S104>:1:8' cTHRESHOLD = single(1e-12); */
+/* '<S104>:1:9' cONE = single(1); */
+/*  States */
+/* '<S104>:1:13' count = single(0); */
+/*@>13794ee*/count/*@>10d876e*/ = /*@>137a427*/0;
+/* '<S104>:1:14' divBass = single(0); */
+/*@>13794f0*/divBass/*@>10d876f*/ = /*@>137952b*/0.0F;
+/* '<S104>:1:15' divMid = single(0); */
+/*@>13794f2*/divMid/*@>10d8770*/ = /*@>137952c*/0.0F;
+/* '<S104>:1:16' divTreble = single(0); */
+/*@>13794f4*/divTreble/*@>10d8771*/ = /*@>137952d*/0.0F;
+/*  The value formulates the boost as a percentage/fraction  */
+/*  of the maximum. */
+/*  If the max boost for the band is zero,  */
+/*  that band is disabled and not counted towards the average. */
+/* '<S104>:1:23' if (maxBassBoost > cTHRESHOLD) */
+/*@>10d878e*/if (%<SLibCG_DumpSSCode("/*@[137a34a*/",(SLibCG_SE(SLibCG_BOCSC(419, 1, "", -1, "", 0))),"/*@]*/")>/*@>10d877c*/ > /*@>137952e*/1.0E-12F) {
+    /* '<S104>:1:24' divBass = bassBoost/maxBassBoost; */
+    /*@>137950c*/divBass/*@>10d87bf*/ = /*@>1379bab*/qhmath_div_f(/*@>1379f1a*/Model_Target_B./*@>137a489*/Product2, %<SLibCG_DumpSSCode("/*@[137a39e*/",(SLibCG_BOCSC(419, 1, "", -1, "", 0)),"/*@]*/")>);
+    /* '<S104>:1:25' count = count + 1; */
+    /*@>13794f6*/count/*@>10d8772*/ = /*@>137a42a*/1;
+}
+/* '<S104>:1:28' if (maxMidBoost > cTHRESHOLD) */
+/*@>10d8791*/if (%<SLibCG_DumpSSCode("/*@[137a366*/",(SLibCG_SE(SLibCG_BOCSC(423, 1, "", -1, "", 0))),"/*@]*/")>/*@>10d877d*/ > /*@>137952f*/1.0E-12F) {
+    /* '<S104>:1:29' divMid = midBoost/maxMidBoost; */
+    /*@>137950e*/divMid/*@>10d87c3*/ = /*@>1379bad*/qhmath_div_f(/*@>1379f20*/Model_Target_B./*@>137a48c*/Product1, %<SLibCG_DumpSSCode("/*@[137a3ba*/",(SLibCG_BOCSC(423, 1, "", -1, "", 0)),"/*@]*/")>);
+    /* '<S104>:1:30' count = count + 1; */
+    /*@>13794fb*/count/*@>137a42f*/++;
+}
+/* '<S104>:1:33' if (maxTrebleBoost > cTHRESHOLD) */
+/*@>10d8794*/if (%<SLibCG_DumpSSCode("/*@[137a382*/",(SLibCG_SE(SLibCG_BOCSC(412, 1, "", -1, "", 0))),"/*@]*/")>/*@>10d877f*/ > /*@>1379531*/1.0E-12F) {
+    /* '<S104>:1:34' divTreble = trebleBoost/maxTrebleBoost; */
+    /*@>1379510*/divTreble/*@>10d87c7*/ = /*@>1379baf*/qhmath_div_f(/*@>1379f26*/Model_Target_B./*@>137a48f*/Product_h5, %<SLibCG_DumpSSCode("/*@[137a3d6*/",(SLibCG_BOCSC(412, 1, "", -1, "", 0)),"/*@]*/")>);
+    /* '<S104>:1:35' count = count + 1; */
+    /*@>1379508*/count/*@>137a430*/++;
+}
+/*  Calculate the average */
+/* '<S104>:1:40' boostAverage = (divBass + divMid + divTreble); */
+/*@>1379f2c*/Model_Target_B./*@>137a492*/boostAverage/*@>10d877a*/ = (/*@>13794fd*/divBass/*@>10d8781*/ + /*@>13794ff*/divMid)/*@>10d8782*/ + /*@>1379501*/divTreble;
+/* '<S104>:1:42' if (count > cONE) */
+/*@>10d8799*/if (/*@>137950a*/count/*@>10d8783*/ > /*@>1379532*/1) {
+    /* '<S104>:1:43' boostAverage = boostAverage/count; */
+    /*@>1379f32*/Model_Target_B./*@>137a495*/boostAverage/*@>10d87cb*/ = /*@>1379bb1*/qhmath_div_f(/*@>1379f38*/Model_Target_B./*@>137a498*/boostAverage, /*@>1379689*/(real32_T)/*@>1379528*/count);
+}
+/* {E!d2106}End of MATLAB Function: '<S39>/AverageBoostLevel' */
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void HandleReqPreAmpAudiopilotgetAverageAudioPilotBoostLevel(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(298, 0, fcnProtoType)>
+%endfunction

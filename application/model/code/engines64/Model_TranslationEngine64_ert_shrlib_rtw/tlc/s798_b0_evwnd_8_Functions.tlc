@@ -1,0 +1,107 @@
+%implements s798_b0_evwnd_8_Functions "C"
+
+%function rt_roundd_snf_Fcn0(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+%assign cfgTxt = ""
+%openfile cfgTxt
+real_T y;
+if (fabs(u) < 4.503599627370496E+15) {
+    if (u >= 0.5) {
+        y = floor(u + 0.5);
+    } else if (u > -0.5) {
+        y = u * 0.0;
+    } else {
+        y = ceil(u - 0.5);
+    }
+} else {
+    y = u;
+}
+return y;
+%closefile cfgTxt
+%<cfgTxt>
+%closefile fcnBuff
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[8].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("rt_roundd_snf", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "rt_roundd_snf"))
+%<SLibCG_AccessArg(8, 0, 1)>
+%endif
+%if SLibCG_ArgAccessed(8, 0, 1)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "rt_roundd_snf", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "rt_roundd_snf"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(8, 0, 1)>
+%endif
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+extern real_T rt_roundd_snf(\
+%assign comma = ""
+%<comma>real_T u\
+%assign comma = ", "
+%if SLibCG_ArgAccessed(8, 0, 1)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("rt_roundd_snf", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(8, 0, fcnProtoType)>
+%return fcnBuff
+%endfunction
+
+%function Model_TranslationEngine64_eml_integer_colon_dispatcher_i_Fcn1(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+%assign cfgTxt = ""
+%openfile cfgTxt
+int32_T k;
+int32_T n;
+/*@>cb3d5d*/if (/*@>cb15b2*/b/*@>14ad60*/ < /*@>cb15ae*/1) {
+    /*@>cb3d61*/n/*@>cb3d60*/ = /*@>cbaa99*/0;
+} else {
+    /*@>cb15cb*/n/*@>cb09b2*/ = /*@>cb15b6*/b;
+}
+y_size/*@>caf201*/[/*@>cb15bd*/0]/*@>caf209*/ = /*@>cbaa9c*/1;
+y_size/*@>caf214*/[/*@>cb15c0*/1]/*@>caf21c*/ = /*@>cb15b9*/n;
+/*@>14ad2b*/if (/*@>cb159c*/n/*@>14ad19*/ > /*@>cb159e*/0) {
+    int32_T yk;
+    /*@>cb8581*/y_data/*@>cb70ad*/[/*@>cb15c4*/0]/*@>14ad11*/ = /*@>cbaa9f*/1;
+    /*@>cb15a0*/yk/*@>14ad12*/ = /*@>cbaaa2*/1;
+/*@>14ad2e*/    for (/*@>cbaaaa*/k = /*@>cbaaa9*/2; /*@>cbaab5*/k <= /*@>cbaab3*/n; /*@>cbaab0*/k/*@>cbaab7*/++) {
+        /*@>cb15ac*/yk/*@>cbaab8*/++;
+        /*@>cb8584*/y_data[/*@>cb15c8*/k/*@>caf2db*/ - /*@>cb15ca*/1]/*@>14ad17*/ = /*@>cb15a9*/yk;
+    }
+}
+%closefile cfgTxt
+%<cfgTxt>
+%closefile fcnBuff
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[8].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Model_TranslationEngine64_eml_integer_colon_dispatcher_i", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Model_TranslationEngine64_eml_integer_colon_dispatcher_i"))
+%<SLibCG_AccessArg(8, 1, 3)>
+%endif
+%if SLibCG_ArgAccessed(8, 1, 3)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Model_TranslationEngine64_eml_integer_colon_dispatcher_i", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Model_TranslationEngine64_eml_integer_colon_dispatcher_i"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(8, 1, 3)>
+%endif
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_TranslationEngine64_eml_integer_colon_dispatcher_i(\
+%assign comma = ""
+%<comma>int32_T b\
+%assign comma = ", "
+%<comma>int32_T y_data[]\
+%assign comma = ", "
+%<comma>int32_T y_size[2]\
+%assign comma = ", "
+%if SLibCG_ArgAccessed(8, 1, 3)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_TranslationEngine64_eml_integer_colon_dispatcher_i", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(8, 1, fcnProtoType)>
+%return fcnBuff
+%endfunction
+

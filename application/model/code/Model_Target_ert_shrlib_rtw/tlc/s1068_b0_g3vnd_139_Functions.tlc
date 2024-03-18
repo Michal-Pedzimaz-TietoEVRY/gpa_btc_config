@@ -1,0 +1,45 @@
+%implements s1068_b0_g3vnd_139_Functions "C"
+
+%function Model_Target_sum_Fcn0(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+%assign cfgTxt = ""
+%openfile cfgTxt
+int32_T b_xj;
+int32_T i;
+int32_T xj;
+/*@>12c4114*/i/*@>a7ce6c*/ = x_size/*@>12cde2e*/[/*@>12cde2a*/1];
+/*@>a7cead*/if (x_size/*@>12cde34*/[/*@>12cde30*/1]/*@>a7d287*/ == /*@>12c4111*/0) {
+/*@>12beb1c*/    for (/*@>12d0bc1*/i = /*@>12d0bc0*/0; /*@>12d0bcb*/i < /*@>12d0bc9*/8; /*@>12d0bc7*/i/*@>12d0bcf*/++) {
+        /*@>12cbedd*/y/*@>12beb14*/[/*@>12c412f*/i]/*@>12beb13*/ = /*@>12c4131*/0.0F;
+    }
+} else {
+/*@>a7cf19*/    for (/*@>12d0bb0*/xj = /*@>12d0baf*/0; /*@>12d0bba*/xj < /*@>12d0bb8*/8; /*@>12d0bb6*/xj/*@>12d0bd0*/++) {
+        /*@>12cbed1*/y/*@>12c049c*/[/*@>12c4151*/xj]/*@>a7cf12*/ = /*@>12cde39*/x_data/*@>12cde3b*/[/*@>12cde37*/xj];
+    }
+/*@>a7cf1d*/    for (/*@>12d0b8f*/xj = /*@>12d0b8e*/2; /*@>12d0b9a*/xj <= /*@>12d0b98*/i; /*@>12d0b95*/xj/*@>12d0bd1*/++) {
+        int32_T xoffset;
+        /*@>12c411b*/xoffset/*@>a7cf10*/ = (/*@>12c411f*/xj/*@>a7cefa*/ - /*@>12c411e*/1)/*@>12c4226*/ << /*@>12c4225*/3;
+/*@>a7cf20*/        for (/*@>12d0b9f*/b_xj = /*@>12d0b9e*/0; /*@>12d0ba9*/b_xj < /*@>12d0ba7*/8; /*@>12d0ba5*/b_xj/*@>12d0bd2*/++) {
+            /*@>12cbed4*/y/*@>12c7db9*/[/*@>12c7dbc*/b_xj] += /*@>12cde43*/x_data/*@>12cde45*/[/*@>12cde3f*/xoffset/*@>12cde3d*/ + /*@>12cde41*/b_xj];
+        }
+    }
+}
+%closefile cfgTxt
+%<cfgTxt>
+%closefile fcnBuff
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_sum(\
+%assign comma = ""
+%<comma>const real32_T x_data[]\
+%assign comma = ", "
+%<comma>const int32_T x_size[2]\
+%assign comma = ", "
+%<comma>real32_T y[8]\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(139, 0, fcnProtoType)>
+%return fcnBuff
+%endfunction
+

@@ -1,0 +1,5 @@
+function [PoolNumStages, PoolCoeffs] = PoolIirArmNeonV7V8TranslationFcn(rawSOS, numStages, maxNumStages)
+% Shares Translation Fcn with Hexagon
+[PoolNumStages, PoolCoeffs] = PoolIirHexagonTranslationFcn(rawSOS, numStages, maxNumStages);
+
+end

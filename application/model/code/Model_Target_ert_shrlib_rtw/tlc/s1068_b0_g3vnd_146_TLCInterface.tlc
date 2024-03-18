@@ -1,0 +1,22 @@
+%implements s1068_b0_g3vnd_146_TLCInterface "C"
+
+%function getSystemOutputFcnCallInfo_471_2_146_1_467_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>12d53aa*/Outputs"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_471_2_146_1_469_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>12d53ae*/HandleReqPreAmpMedusaOverheadHoligramDisable"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_471_2_146_1_470_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>12d53b2*/Outputs"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_471_7_146_1_466_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>12d53b6*/Outputs"; Args [] }
+%return fcnInfo
+%endfunction

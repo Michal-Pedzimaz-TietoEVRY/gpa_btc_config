@@ -1,0 +1,66 @@
+%implements s1068_b0_g3vnd_51_Functions "C"
+
+%function Model_Target_eml_find_Fcn0(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+%assign cfgTxt = ""
+%openfile cfgTxt
+int32_T idx;
+int32_T ii;
+boolean_T exitg1;
+/*@>11ebb52*/idx/*@>b8b882*/ = /*@>11effee*/0;
+i_size/*@>11ea836*/[/*@>11ebb79*/0]/*@>11ea837*/ = /*@>11efff1*/1;
+/*@>11ebb57*/ii/*@>b8b898*/ = /*@>11efff4*/0;
+exitg1 = false;
+while/*@<b8b8a0*/ ((!exitg1) && (/*@>11ebb5a*/ii/*@>b8b89f*/ < /*@>11ebb5c*/30)) {
+    /*@>b8b889*/if (/*@>11ef4bd*/x/*@>11ef4bf*/[/*@>11ef4bb*/ii]) {
+        /*@>11ebb60*/idx/*@>11f0026*/++;
+        /*@>11eec20*/i_data[/*@>11ebb84*/idx/*@>11ea8c4*/ - /*@>11ebb86*/1]/*@>b8b879*/ = /*@>11ebb6a*/ii/*@>11ea9a7*/ + /*@>11ebb87*/1;
+        /*@>b8b88c*/if (/*@>11ebb67*/idx/*@>b8b86d*/ >= /*@>11ebb69*/30) {
+            exitg1 = true;
+        } else {
+            /*@>11f0019*/ii/*@>11f0027*/++;
+        }
+    } else {
+        /*@>11ebb65*/ii/*@>11f0028*/++;
+    }
+}
+/*@>11ecb74*/if (/*@>11ebb6c*/idx/*@>11e8b34*/ < /*@>11ebb6e*/1) {
+    i_size/*@>11ecb78*/[/*@>11ecb7b*/1]/*@>11ecb77*/ = /*@>11efff7*/0;
+} else {
+    i_size/*@>11eb547*/[/*@>11ebb8a*/1]/*@>11eb546*/ = /*@>11ebb70*/idx;
+}
+%closefile cfgTxt
+%<cfgTxt>
+%closefile fcnBuff
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[51].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Model_Target_eml_find", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Model_Target_eml_find"))
+%<SLibCG_AccessArg(51, 0, 3)>
+%endif
+%if SLibCG_ArgAccessed(51, 0, 3)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Model_Target_eml_find", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Model_Target_eml_find"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(51, 0, 3)>
+%endif
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_eml_find(\
+%assign comma = ""
+%<comma>const boolean_T x[30]\
+%assign comma = ", "
+%<comma>int32_T i_data[]\
+%assign comma = ", "
+%<comma>int32_T i_size[2]\
+%assign comma = ", "
+%if SLibCG_ArgAccessed(51, 0, 3)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_Target_eml_find", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(51, 0, fcnProtoType)>
+%return fcnBuff
+%endfunction
+

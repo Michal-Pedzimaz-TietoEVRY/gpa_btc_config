@@ -1,0 +1,362 @@
+%implements s798_b0_evwnd_112_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+real_T OverallGainPerCh[16];
+real_T offset;
+int32_T f_data[960];
+int32_T tmp_data[960];
+int32_T b_data[240];
+int32_T ts_data[240];
+int32_T NumStages[16];
+int32_T SOSIndex;
+int32_T b_vlen;
+int32_T d_k;
+int32_T k;
+int32_T yk;
+real32_T PoolCoeffs[960];
+real32_T x;
+char_T d_data[31];
+static const char_T e[31] = %<(TLC_STR_CTX(101))>;
+int32_T tmp_size[2];
+%closefile localVarDecl
+/* {S!d801}MATLAB Function: '<S1164>/Translation' */
+/* {S!d804}MATLAB Function: '<S1164>/Translation' incorporates:
+ *  S-Function (TuneVarMEX): '<S1164>/Tune Variable1'
+ *  S-Function (TuneVarMEX): '<S1164>/Tune Variable2'
+ */
+/*  Invoke the function trigger output */
+/* MATLAB Function 'TranslateTrigger/tfunc': '<S1167>:1' */
+/* '<S1167>:1:3' f(); */
+/*  Translation from raw SOS for pool SOS */
+/* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/VLS/Crosstalk Cancellation/Pooliir with Non-Trivial Translations/InnerLink/PoolIirTunableWithReset/Translation': '<S1166>:1' */
+/*  Some build time sanity size checking before calling the translation */
+/* '<S1166>:1:7' if numel(NumStages.Value) ~= NumChannels */
+/* '<S1166>:1:11' if RawSOS.Size(2) ~= 6 */
+/* '<S1166>:1:15' [PoolNumStages, PoolCoeffs] = poolIirTranslation(RawSOS, NumStages, MaxNumStages, VariantUint8); */
+/*  Perform platform-based translation for poolIir block */
+/*  */
+/*  This functions offers the following outputs: */
+/*    PoolNumStages: Number of active stages for each channel */
+/*    PoolCoeffs   : SOS coefficients in a format accepted by CRL (can be */
+/*                   different for different platform CRLs) */
+/*                   Hexagon (qhdsp_iir_af_bose.S) and ARM format - [b0, b1, a1, b2, a2]        [NumStages x 5, 1] */
+/*                   Hexagon (flt_iir_cas_bq.S) DF-II format [-a1/a0 b1/b0 -a2/a0 b2/b0] plus gain per channel. */
+/*                                              where a0 is assumed to be 1.0. [TotNumStages x 4 + NumChannel, 1] */
+/*                   SHARC plus processors - [k, b1, b2, a1, a2]          [NumStages x 4, 1]                   */
+/*  */
+/*  This function expects the following inputs: */
+/*    rawSOS      : Unprocessed SOS coefficients in the order - [b0, b1, b2, a0, a1, a2] */
+/*                  Dimensions - [NumStages x NumChannels, 6] */
+/*    numStages   : Number of active stages for each channel */
+/*                  Dimensions - [1 x NumChannels] */
+/*    maxNumStages: Maximum permissible number of stages for each channel */
+/*                  Dimensions - [1 x NumChannels] */
+/*    variantUint8: Platform Variant - accepts only uint8 data type */
+/*                  Generally, the 'variant' is a character array or a */
+/*                  string. In that case, it could be changed to uint8 data */
+/*                  type as follows: uint8(char(Config.Variant)) */
+/*   */
+/*  If rawSOS and numStages are not being supplied from a TuneVar directly, */
+/*  please change it to TuneVar output type as shown below: */
+/*  rawSOS = struct('Value', rawSosCoeffs); */
+/* 'poolIirTranslation:29' variantStr = char(variantUint8); */
+/* 'poolIirTranslation:31' switch (variantStr) */
+/* 'poolIirTranslation:38' case{"Hexagon"} */
+/*  Hexagon specific order for biquad coefficients  */
+/* 'poolIirTranslation:40' [PoolNumStages, PoolCoeffs] = PoolIirHexagonTranslationFcn(rawSOS, numStages, maxNumStages); */
+/*  Hexagon flt_iir_cas_bq.S expects biquad coefficiients in following order: */
+/*    [-a1/a0 b1/b0 -a2/a0 b2/b0] where a0 is assumed to be 1. */
+/*    Overall gain b0/a0 is appended at the end of PoolCoeffs per channel.  */
+/*  */
+/*  In Matlab, coefficients are ordered as: */
+/*    [b0, b1, b2, a0, a1, a2]. */
+/* 'PoolIirHexagonTranslationFcn:10' NumCoeffPerBiquad = 4; */
+/* 'PoolIirHexagonTranslationFcn:11' RawSOS        = rawSOS.Value; */
+/* 'PoolIirHexagonTranslationFcn:12' NumStages     = int32(numStages.Value); */
+/* 'PoolIirHexagonTranslationFcn:13' NumChannels   = numel(NumStages); */
+/* 'PoolIirHexagonTranslationFcn:14' MaxNumStages  = maxNumStages; */
+/* 'PoolIirHexagonTranslationFcn:15' PoolNumStages = int32(zeros(NumChannels,1)); */
+/*@>dedefc*/for (/*@>dfb06f*/SOSIndex = /*@>dfb06e*/0; /*@>dfb079*/SOSIndex < /*@>dfb077*/16; /*@>dfb075*/SOSIndex/*@>dfb07d*/++) {
+    /*@>df1d80*/x/*@>df1d82*/ = /*@>df8af0*/roundf(/*@>dfa11b*/Model_TranslationEngine64_VLS_B./*@>dfb49d*/numStages./*@>dfb497*/Value/*@>df9d35*/[/*@>df9d2e*/SOSIndex]);
+    /*@>df4324*/if (/*@>df3b6f*/x/*@>df3b6d*/ < /*@>df3b70*/2.14748365E+9F) {
+        /*@>df4368*/if (/*@>df3b74*/x/*@>df3b72*/ >= /*@>df3b75*/-2.14748365E+9F) {
+            /*@>df436d*/NumStages/*@>df436c*/[/*@>df436f*/SOSIndex]/*@>df436b*/ = /*@>df3b76*/(int32_T)/*@>df3b78*/x;
+        } else {
+            /*@>df4329*/NumStages/*@>df4328*/[/*@>df432b*/SOSIndex]/*@>df4327*/ = /*@>df3b79*/MIN_int32_T;
+        }
+    } else {
+        /*@>df1aca*/NumStages/*@>df0ee3*/[/*@>df1ac8*/SOSIndex]/*@>dedeef*/ = /*@>df3b7a*/MAX_int32_T;
+    }
+    /*@>dfa127*/Model_TranslationEngine64_VLS_B./*@>dfb4a0*/PoolNumStages/*@>decb45*/[/*@>df1a79*/SOSIndex]/*@>decb44*/ = /*@>dfaec8*/0;
+}
+/* 'PoolIirHexagonTranslationFcn:16' PoolCoeffs    = single(zeros(MaxNumStages * NumCoeffPerBiquad, 1)); */
+/* 'PoolIirHexagonTranslationFcn:17' ChannelCoeffs = zeros(MaxNumStages * NumCoeffPerBiquad, 1); */
+/*@>df8de8*/memset(&/*@>df8609*/PoolCoeffs/*@>df860a*/[/*@>df85f8*/0], /*@>dfaec2*/0, /*@>df8608*/960U/*@>df8610*/ * /*@>df860f*/sizeof(real32_T));
+/*@>df8dea*/memset(&/*@>dfa12d*/Model_TranslationEngine64_VLS_B./*@>dfb4a3*/ChannelCoeffs/*@>df8621*/[/*@>df8606*/0], /*@>dfaec5*/0, /*@>df861f*/960U/*@>df8627*/ * /*@>df8626*/sizeof(real_T));
+/* 'PoolIirHexagonTranslationFcn:18' SOSIndex      = int32(0); */
+/*@>df1a5d*/SOSIndex/*@>c69aae*/ = /*@>dfaecb*/0;
+/*  Verify that the SOS does not violate the maximum number of stages */
+/*  allocated for the pool */
+/* 'PoolIirHexagonTranslationFcn:22' if sum(NumStages) > MaxNumStages */
+/*@>df1a42*/offset/*@>c69a03*/ = /*@>df9d38*/NumStages/*@>df9d3a*/[/*@>df9d37*/0];
+/*@>c69af6*/for (/*@>dfb05e*/k = /*@>dfb05d*/0; /*@>dfb068*/k < /*@>dfb066*/15; /*@>dfb064*/k/*@>dfb07e*/++) {
+    /*@>df1a39*/offset/*@>dfb07f*/ += /*@>df30d0*/(real_T)/*@>df9d40*/NumStages/*@>df9d42*/[/*@>df9d3e*/k/*@>df9d3c*/ + /*@>df9d3f*/1];
+}
+/*@>c69af9*/if (/*@>df1a44*/offset/*@>c69a8f*/ > /*@>df1a5b*/240.0) {
+    /* 'PoolIirHexagonTranslationFcn:23' TranslateError('Too many second order sections'); */
+    /* TRANSLATEERROR (For use in Functions triggered by TranslationTrigger blocks.) */
+    /* Print error message during tune data translation. */
+    /*   Do not include a final newline as this behavior is already built in. */
+    /*   Note that escape sequences such as '\n' will not work here. To emit */
+    /*   special characters, pass them in as arguments to %<"\%c or \%s format"> */
+    /*   specifiers. */
+    /*    Copyright 2018-2019 Bose Corporation */
+    /* 'TranslateError:10' coder.extrinsic('gcb') */
+    /* 'TranslateError:11' coder.extrinsic('warning') */
+    /* 'TranslateError:12' coder.allowpcode('plain'); */
+    /*  enable code generation from p-file */
+    /* 'TranslateError:14' if (coder.target('MATLAB')) */
+    /* 'TranslateError:18' if (coder.target('Sfun')) */
+    /* 'TranslateError:21' else */
+    /* 'TranslateError:22' count = numel(varargin); */
+    /* 'TranslateError:23' fixedArgs = varargin; */
+    /* 'TranslateError:24' for i=1:count */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:26' fixedArgs{i} = [varargin{i} char(0)]; */
+    /* 'TranslateError:29' coder.ceval('TranslateError',fixedArgs{:}); */
+/*@>dee433*/    for (/*@>dfb04d*/b_vlen = /*@>dfb04c*/0; /*@>dfb057*/b_vlen < /*@>dfb055*/31; /*@>dfb053*/b_vlen/*@>dfb080*/++) {
+        /*@>df6f0f*/d_data[/*@>df1b3a*/b_vlen]/*@>dee426*/ = /*@>df9d62*/e/*@>df9d64*/[/*@>df9d61*/b_vlen];
+    }
+    /*@>df8af6*/TranslateError(&/*@>df6ef8*/d_data/*@>df6f0b*/[/*@>df1a46*/0]);
+}
+/* 'PoolIirHexagonTranslationFcn:26' OverallGainPerCh = ones(NumChannels, 1); */
+/* 'PoolIirHexagonTranslationFcn:27' for i = 1:NumChannels */
+/*@>decb92*/for (/*@>dfaefc*/k = /*@>dfaefb*/0; /*@>dfaf06*/k < /*@>dfaf04*/16; /*@>dfaf02*/k/*@>dfb081*/++) {
+    int32_T NumStages_0;
+    NumStages_0 = /*@>df9d46*/NumStages/*@>df9d48*/[/*@>df9d45*/k];
+    /*@>df1aab*/OverallGainPerCh/*@>decb8a*/[/*@>df1a87*/k]/*@>decb89*/ = /*@>df1a89*/1.0;
+    /* 'PoolIirHexagonTranslationFcn:29' ChannelNumStages = NumStages(i); */
+    /*  Size of current SOS */
+    /* 'PoolIirHexagonTranslationFcn:30' assert(ChannelNumStages <= MaxNumStages); */
+    /* 'PoolIirHexagonTranslationFcn:31' if (ChannelNumStages == 0) */
+    /*@>c69b1b*/if (NumStages_0/*@>df6a9f*/ != /*@>df1a5a*/0) {
+        int32_T ChannelSOS_size_idx_0;
+        int32_T q1;
+        int32_T ts_size_idx_1;
+        real32_T y;
+        /* 'PoolIirHexagonTranslationFcn:35' ChannelSOS = RawSOS(SOSIndex+(1:ChannelNumStages),:); */
+        %<SLibCG_DumpSSCode("/*@[dfae21*/",(SLibCGCallSubFcn("Model_TranslationEngine64_eml_integer_colon_dispatcher_p", ["NumStages_0", "/*@>dfb576*/tmp_data", "tmp_size"], 112, 1, 0)),"/*@]*/")>;
+        ChannelSOS_size_idx_0/*@>dee083*/ = tmp_size/*@>df9d53*/[/*@>df9d50*/1];
+        /*@>df1b11*/yk/*@>dee10d*/ = tmp_size/*@>df9d58*/[/*@>df9d55*/1];
+/*@>dee102*/        for (/*@>dfb029*/b_vlen = /*@>dfb028*/0; /*@>dfb033*/b_vlen < /*@>dfb031*/6; /*@>dfb02f*/b_vlen/*@>dfb082*/++) {
+/*@>dee0ec*/            for (/*@>dfb03a*/d_k = /*@>dfb039*/0; /*@>dfb047*/d_k < /*@>dfb044*/yk; /*@>dfb040*/d_k/*@>dfb083*/++) {
+                /*@>df1eaf*/q1/*@>df1eb1*/ = /*@>df9d5c*/tmp_data[/*@>df9d5b*/d_k];
+                /*@>df4394*/if ((/*@>df3b8f*/SOSIndex/*@>df3b8d*/ < /*@>df3b90*/0)/*@>df3b8c*/ && (/*@>df3b93*/q1/*@>df3b91*/ < /*@>df3b95*/MIN_int32_T/*@>df3b94*/ - /*@>df3b97*/SOSIndex)) {
+                    /*@>df4398*/q1/*@>df4397*/ = /*@>df3b98*/MIN_int32_T;
+                } else /*@>df439e*/if ((/*@>df3b9d*/SOSIndex/*@>df3b9b*/ > /*@>df3b9e*/0)/*@>df3b9a*/ && (/*@>df3ba1*/q1/*@>df3b9f*/ > /*@>df3ba3*/MAX_int32_T/*@>df3ba2*/ - /*@>df3ba5*/SOSIndex)) {
+                    /*@>df43a2*/q1/*@>df43a1*/ = /*@>df3ba6*/MAX_int32_T;
+                } else {
+                    /*@>df4385*/q1/*@>dfb084*/ += /*@>df3ba9*/SOSIndex;
+                }
+                /*@>dfa14b*/Model_TranslationEngine64_VLS_B./*@>dfb4ac*/ChannelSOS_data[/*@>df1aff*/d_k + ChannelSOS_size_idx_0 * /*@>df1b01*/b_vlen]/*@>dee0da*/ = /*@>dfa151*/Model_TranslationEngine64_VLS_B./*@>dfb4af*/sosCoefficients./*@>dfb49a*/Value/*@>df9d7a*/[(/*@>df9d6e*/240/*@>df9d6d*/ * /*@>df9d70*/b_vlen/*@>df9d6c*/ + /*@>df9d72*/q1)/*@>df9d6b*/ - /*@>df9d73*/1];
+            }
+        }
+        /* 'PoolIirHexagonTranslationFcn:36' SOSIndex = SOSIndex + ChannelNumStages; */
+        /*@>df432c*/if ((/*@>df3bb7*/SOSIndex/*@>df3bb5*/ < /*@>df3bb8*/0)/*@>df3bb4*/ && (NumStages_0/*@>df3bb9*/ < /*@>df3bbd*/MIN_int32_T/*@>df3bbc*/ - /*@>df3bbf*/SOSIndex)) {
+            /*@>df4330*/SOSIndex/*@>df432f*/ = /*@>df3bc0*/MIN_int32_T;
+        } else /*@>df4370*/if ((/*@>df3bc5*/SOSIndex/*@>df3bc3*/ > /*@>df3bc6*/0)/*@>df3bc2*/ && (NumStages_0/*@>df3bc7*/ > /*@>df3bcb*/MAX_int32_T/*@>df3bca*/ - /*@>df3bcd*/SOSIndex)) {
+            /*@>df4374*/SOSIndex/*@>df4373*/ = /*@>df3bce*/MAX_int32_T;
+        } else {
+            /*@>df1a56*/SOSIndex/*@>dfb09a*/ += NumStages_0;
+        }
+        /*  decompose SOS     */
+        /* 'PoolIirHexagonTranslationFcn:39' OverallGainPerCh(i) = prod(ChannelSOS(:, 1)) / prod(ChannelSOS(:, 4)); */
+        /*@>c69b23*/if (tmp_size/*@>df9d69*/[/*@>df9d66*/1]/*@>c699ef*/ == /*@>df1a36*/0) {
+            /*@>df1a34*/x/*@>c699f0*/ = /*@>df1a33*/1.0F;
+        } else {
+            /*@>df1a31*/x/*@>c699e9*/ = /*@>dfa157*/Model_TranslationEngine64_VLS_B./*@>dfb4b2*/ChannelSOS_data/*@>df9d7f*/[/*@>df9d7c*/0];
+/*@>c69b26*/            for (/*@>dfb019*/yk = /*@>dfb018*/2; /*@>dfb024*/yk <= ChannelSOS_size_idx_0; /*@>dfb01f*/yk/*@>dfb098*/++) {
+                /*@>df1a29*/x/*@>dfb099*/ *= /*@>dfa15d*/Model_TranslationEngine64_VLS_B./*@>dfb4b5*/ChannelSOS_data[/*@>df9d88*/yk/*@>df9d86*/ - /*@>df9d89*/1];
+            }
+        }
+        /*@>c69b2b*/if (tmp_size/*@>df9d84*/[/*@>df9d81*/1]/*@>c699d8*/ == /*@>df1a26*/0) {
+            /*@>df1a24*/y/*@>c699d9*/ = /*@>df1a23*/1.0F;
+        } else {
+            /*@>df1a21*/y/*@>c699d2*/ = /*@>dfa163*/Model_TranslationEngine64_VLS_B./*@>dfb4b8*/ChannelSOS_data[tmp_size/*@>df9d95*/[/*@>df9d97*/1] * /*@>df9d98*/3];
+/*@>c69b2e*/            for (/*@>dfb009*/yk = /*@>dfb008*/2; /*@>dfb014*/yk <= ChannelSOS_size_idx_0; /*@>dfb00f*/yk/*@>dfb096*/++) {
+                /*@>df1a19*/y/*@>dfb097*/ *= /*@>dfa169*/Model_TranslationEngine64_VLS_B./*@>dfb4bb*/ChannelSOS_data[(ChannelSOS_size_idx_0 * /*@>df9da4*/3 + /*@>df9da0*/yk)/*@>df9d9d*/ - /*@>df9da5*/1];
+            }
+        }
+        /*@>df1aad*/OverallGainPerCh/*@>c69aa5*/[/*@>df19e4*/k]/*@>c69aa4*/ = /*@>df19e2*/x/*@>c6991a*/ / /*@>df19e0*/y;
+        /*  [a1 b1/b0 a2 b2/b0] Hexagon assembly code  */
+        /* 'PoolIirHexagonTranslationFcn:42' ts = (1:NumCoeffPerBiquad:(NumCoeffPerBiquad*ChannelNumStages)) - 1; */
+        /*@>df4331*/if (NumStages_0/*@>df1e2b*/ > /*@>df1e27*/536870911) {
+            /*@>df4335*/b_vlen/*@>df4334*/ = /*@>df1e32*/MAX_int32_T;
+        } else /*@>df4375*/if (NumStages_0/*@>df1e30*/ <= /*@>df1e2c*/-536870912) {
+            /*@>df4379*/b_vlen/*@>df4378*/ = /*@>df1e38*/MIN_int32_T;
+        } else {
+            /*@>df1e33*/b_vlen/*@>df1e35*/ = NumStages_0/*@>df1e42*/ << /*@>df1e41*/2;
+        }
+        /*@>df4336*/if (/*@>df3b3b*/b_vlen/*@>c69990*/ < /*@>df1a02*/1) {
+            /*@>df433a*/b_vlen/*@>df4339*/ = /*@>dfaece*/0;
+        } else {
+            /*@>df1cd6*/b_vlen/*@>df1153*/ = /*@>df3154*/(int32_T)(/*@>df3153*/(uint32_T)(/*@>df3b3d*/b_vlen/*@>c698e7*/ - /*@>df19d9*/1)/*@>df1e14*/ >> /*@>df1e13*/2)/*@>c69988*/ + /*@>df19fe*/1;
+        }
+        ts_size_idx_1/*@>dee544*/ = /*@>df1b4a*/b_vlen;
+        /*@>c69b3d*/if (/*@>df1a15*/b_vlen/*@>c699ba*/ > /*@>df1a14*/0) {
+            /*@>df704c*/ts_data/*@>df7064*/[/*@>df1b55*/0]/*@>c699c0*/ = /*@>dfaed1*/1;
+            /*@>df1a11*/yk/*@>c699bf*/ = /*@>dfaed4*/1;
+/*@>c69b40*/            for (/*@>dfaff9*/d_k = /*@>dfaff8*/2; /*@>dfb004*/d_k <= /*@>dfb002*/b_vlen; /*@>dfafff*/d_k/*@>dfb085*/++) {
+                /*@>df1a05*/yk/*@>dfb086*/ += /*@>df1a07*/4;
+                /*@>df70c5*/ts_data[/*@>df1b62*/d_k/*@>dee6dc*/ - /*@>df1b64*/1]/*@>c699bb*/ = /*@>df1a08*/yk;
+            }
+        }
+        /*@>df788c*/yk/*@>df788e*/ = /*@>df7a2b*/b_vlen/*@>defb46*/ - /*@>df1cb7*/1;
+/*@>dee742*/        for (/*@>dfafe9*/b_vlen = /*@>dfafe8*/0; /*@>dfaff4*/b_vlen <= /*@>dfaff2*/yk; /*@>dfafef*/b_vlen/*@>dfb087*/++) {
+            /*@>df1ef9*/d_k/*@>df1efb*/ = /*@>df9dac*/ts_data[b_vlen];
+            /*@>df433b*/if (/*@>df3c02*/d_k/*@>df3c00*/ < /*@>df3c03*/-2147483647) {
+                /*@>df712a*/ts_data[b_vlen]/*@>df433e*/ = /*@>df3c04*/MIN_int32_T;
+            } else {
+                /*@>df710c*/ts_data[b_vlen]/*@>dee733*/ = /*@>df3c07*/d_k/*@>df3c05*/ - /*@>df3c08*/1;
+            }
+        }
+        /* 'PoolIirHexagonTranslationFcn:43' ChannelCoeffs(ts + 1) = -ChannelSOS(:, 5) ./ ChannelSOS(:, 4); */
+        d_k = (ts_size_idx_1 / 4) << 2;
+        q1 = d_k - 4;
+        for (b_vlen = /*@>dfafd8*/0; b_vlen <= q1; b_vlen += 4) {
+            __m128i tmp_0;
+            tmp_0 = _mm_loadu_si128((const __m128i *)&/*@>df7174*/ts_data[b_vlen]);
+            _mm_storeu_si128(/*@>df66a4*/(__m128i *)&/*@>df7191*/b_data[b_vlen], _mm_add_epi32(tmp_0, _mm_set1_epi32(/*@>dfaed7*/1)));
+        }
+/*@>dee8fd*/        for (/*@>dfafc6*/b_vlen = d_k; /*@>dfafd3*/b_vlen < ts_size_idx_1; /*@>dfafcc*/b_vlen/*@>dfb089*/++) {
+            /*@>df71b6*/b_data[b_vlen]/*@>dee8e5*/ = /*@>df9db2*/ts_data[b_vlen]/*@>dee8d0*/ + /*@>df1ab4*/1;
+        }
+/*@>deeaa5*/        for (/*@>dfafb2*/b_vlen = /*@>dfafb1*/0; /*@>dfafbf*/b_vlen < ts_size_idx_1; /*@>dfafb8*/b_vlen/*@>dfb08a*/++) {
+            /*@>dfa16f*/Model_TranslationEngine64_VLS_B./*@>dfb4be*/ChannelCoeffs/*@>deea86*/[/*@>df9db8*/b_data[/*@>df9db7*/b_vlen]/*@>deea8b*/ - /*@>df1bab*/1]/*@>deea93*/ = -/*@<df1f41*//*@>dfa175*/Model_TranslationEngine64_VLS_B./*@>dfb4c1*/ChannelSOS_data[(ChannelSOS_size_idx_0/*@>dfacc2*/ << 2) + /*@>df9dbe*/b_vlen]/*@>deea1d*/ / /*@>dfa17b*/Model_TranslationEngine64_VLS_B./*@>dfb4c4*/ChannelSOS_data[ChannelSOS_size_idx_0 * /*@>df9dcd*/3 + /*@>df9dc9*/b_vlen];
+        }
+        /*  -a1/a0 */
+        /* 'PoolIirHexagonTranslationFcn:44' ChannelCoeffs(ts + 2) =  ChannelSOS(:, 2) ./ ChannelSOS(:, 1); */
+/*@>deec5e*/        for (/*@>dfaf9f*/b_vlen = /*@>dfaf9e*/0; /*@>dfafac*/b_vlen < ts_size_idx_1; /*@>dfafa5*/b_vlen/*@>dfb08b*/++) {
+            /*@>df1f45*/d_k/*@>df1f47*/ = /*@>df9dd4*/ts_data[b_vlen];
+            /*@>df4344*/if (/*@>df3c13*/d_k/*@>df3c11*/ > /*@>df3c14*/2147483645) {
+                /*@>df72ee*/b_data[b_vlen]/*@>df4347*/ = /*@>df3c15*/MAX_int32_T;
+            } else {
+                /*@>df72d0*/b_data[b_vlen]/*@>deec46*/ = /*@>df3c18*/d_k/*@>df3c16*/ + /*@>df3c19*/2;
+            }
+        }
+/*@>deee04*/        for (/*@>dfaf8c*/b_vlen = /*@>dfaf8b*/0; /*@>dfaf99*/b_vlen < ts_size_idx_1; /*@>dfaf92*/b_vlen/*@>dfb08c*/++) {
+            /*@>dfa181*/Model_TranslationEngine64_VLS_B./*@>dfb4c7*/ChannelCoeffs/*@>deede5*/[/*@>df9dda*/b_data[/*@>df9dd9*/b_vlen]/*@>deedea*/ - /*@>df1be9*/1]/*@>deedf2*/ = /*@>dfa187*/Model_TranslationEngine64_VLS_B./*@>dfb4ca*/ChannelSOS_data[/*@>df9de0*/b_vlen + ChannelSOS_size_idx_0]/*@>deed7e*/ / /*@>dfa18d*/Model_TranslationEngine64_VLS_B./*@>dfb4cd*/ChannelSOS_data[/*@>df9de8*/b_vlen];
+        }
+        /*   b1/b0 */
+        /* 'PoolIirHexagonTranslationFcn:45' ChannelCoeffs(ts + 3) = -ChannelSOS(:, 6) ./ ChannelSOS(:, 4); */
+/*@>deefbd*/        for (/*@>dfaf79*/b_vlen = /*@>dfaf78*/0; /*@>dfaf86*/b_vlen < ts_size_idx_1; /*@>dfaf7f*/b_vlen/*@>dfb08d*/++) {
+            /*@>df1f90*/d_k/*@>df1f92*/ = /*@>df9def*/ts_data[b_vlen];
+            /*@>df434d*/if (/*@>df3c23*/d_k/*@>df3c21*/ > /*@>df3c24*/2147483644) {
+                /*@>df7403*/b_data[b_vlen]/*@>df4350*/ = /*@>df3c25*/MAX_int32_T;
+            } else {
+                /*@>df73e5*/b_data[b_vlen]/*@>deefa5*/ = /*@>df3c28*/d_k/*@>df3c26*/ + /*@>df3c29*/3;
+            }
+        }
+/*@>def165*/        for (/*@>dfaf66*/b_vlen = /*@>dfaf65*/0; /*@>dfaf73*/b_vlen < ts_size_idx_1; /*@>dfaf6c*/b_vlen/*@>dfb08e*/++) {
+            /*@>dfa193*/Model_TranslationEngine64_VLS_B./*@>dfb4d0*/ChannelCoeffs/*@>def146*/[/*@>df9df5*/b_data[/*@>df9df4*/b_vlen]/*@>def14b*/ - /*@>df1c27*/1]/*@>def153*/ = -/*@<df1fd8*//*@>dfa199*/Model_TranslationEngine64_VLS_B./*@>dfb4d3*/ChannelSOS_data[ChannelSOS_size_idx_0 * /*@>df9dff*/5 + /*@>df9dfb*/b_vlen]/*@>def0dd*/ / /*@>dfa19f*/Model_TranslationEngine64_VLS_B./*@>dfb4d6*/ChannelSOS_data[ChannelSOS_size_idx_0 * /*@>df9e0a*/3 + /*@>df9e06*/b_vlen];
+        }
+        /*  -a2/a0 */
+        /* 'PoolIirHexagonTranslationFcn:46' ChannelCoeffs(ts + 4) =  ChannelSOS(:, 3) ./ ChannelSOS(:, 1); */
+/*@>def2b6*/        for (/*@>dfaf56*/b_vlen = /*@>dfaf55*/0; /*@>dfaf61*/b_vlen <= yk; /*@>dfaf5c*/b_vlen/*@>dfb08f*/++) {
+            /*@>df1fdc*/d_k/*@>df1fde*/ = /*@>df9e11*/ts_data[b_vlen];
+            /*@>df4356*/if (/*@>df3c47*/d_k/*@>df3c45*/ > /*@>df3c48*/2147483643) {
+                /*@>df750a*/ts_data[b_vlen]/*@>df4359*/ = /*@>df3c49*/MAX_int32_T;
+            } else {
+                /*@>df74ec*/ts_data[b_vlen]/*@>def2a7*/ = /*@>df3c4c*/d_k/*@>df3c4a*/ + /*@>df3c4d*/4;
+            }
+        }
+/*@>def45a*/        for (/*@>dfaf43*/b_vlen = /*@>dfaf42*/0; /*@>dfaf50*/b_vlen < ts_size_idx_1; /*@>dfaf49*/b_vlen/*@>dfb090*/++) {
+            /*@>dfa1a5*/Model_TranslationEngine64_VLS_B./*@>dfb4d9*/ChannelCoeffs/*@>def43b*/[/*@>df9e17*/ts_data[/*@>df9e16*/b_vlen]/*@>def440*/ - /*@>df1c61*/1]/*@>def448*/ = /*@>dfa1ab*/Model_TranslationEngine64_VLS_B./*@>dfb4dc*/ChannelSOS_data[(ChannelSOS_size_idx_0/*@>dfacc5*/ << 1) + /*@>df9e1d*/b_vlen]/*@>def3d4*/ / /*@>dfa1b1*/Model_TranslationEngine64_VLS_B./*@>dfb4df*/ChannelSOS_data[/*@>df9e27*/b_vlen];
+        }
+        /*   b2/b0 */
+        /*  length of Current Channel Coeffs */
+        /* 'PoolIirHexagonTranslationFcn:49' ChannelCoeffsLength = NumCoeffPerBiquad*ChannelNumStages; */
+        /*  Offset into coefficient array for the current channel */
+        /* 'PoolIirHexagonTranslationFcn:52' offset = NumCoeffPerBiquad*sum(PoolNumStages(1:i-1)); */
+        /*@>df1155*/if (/*@>df19dc*/k/*@>c69844*/ < /*@>df19df*/1) {
+            /*@>df19f9*/offset/*@>c69983*/ = /*@>df19f8*/0.0;
+        } else {
+            /*@>df19f6*/offset/*@>c69979*/ = /*@>dfa1b7*/Model_TranslationEngine64_VLS_B./*@>dfb4e2*/PoolNumStages/*@>df9e2f*/[/*@>df9e2c*/0];
+/*@>c69b62*/            for (/*@>dfaf33*/d_k = /*@>dfaf32*/2; /*@>dfaf3e*/d_k <= /*@>dfaf3c*/k; /*@>dfaf39*/d_k/*@>dfb094*/++) {
+                /*@>df19ee*/offset/*@>dfb095*/ += /*@>df3228*/(real_T)/*@>dfa1bd*/Model_TranslationEngine64_VLS_B./*@>dfb4e5*/PoolNumStages/*@>df9e37*/[/*@>df9e33*/d_k/*@>df9e31*/ - /*@>df9e34*/1];
+            }
+        }
+        /*@>df1a50*/offset/*@>dfb091*/ *= /*@>df1a52*/4.0;
+        /* 'PoolIirHexagonTranslationFcn:53' PoolNumStages(i) = int32(ChannelNumStages); */
+        /*@>dfa1c3*/Model_TranslationEngine64_VLS_B./*@>dfb4e8*/PoolNumStages/*@>def528*/[/*@>df1c77*/k]/*@>c69a95*/ = NumStages_0;
+        /*  Store the coefficients */
+        /* 'PoolIirHexagonTranslationFcn:56' PoolCoeffs(offset+(1:ChannelCoeffsLength)) = single(ChannelCoeffs(1:ChannelCoeffsLength)); */
+        /*@>df4399*/if (NumStages_0/*@>df3dc4*/ > /*@>df3dc7*/536870911) {
+            /*@>df439d*/b_vlen/*@>df439c*/ = /*@>df3dc8*/MAX_int32_T;
+        } else /*@>df43a3*/if (NumStages_0/*@>df3dca*/ <= /*@>df3dcd*/-536870912) {
+            /*@>df43a7*/b_vlen/*@>df43a6*/ = /*@>df3dce*/MIN_int32_T;
+        } else {
+            /*@>df438d*/b_vlen/*@>df438f*/ = NumStages_0/*@>df3dcf*/ << /*@>df3dd2*/2;
+        }
+        %<SLibCG_DumpSSCode("/*@[dfae3a*/",(SLibCGCallSubFcn("Model_TranslationEngine64_eml_integer_colon_dispatcher_p", ["/*@>dfb58a*/b_vlen", "/*@>dfb594*/tmp_data", "tmp_size"], 112, 1, 1)),"/*@]*/")>;
+        NumStages_0/*@>dedc54*/ = tmp_size/*@>df9e3c*/[/*@>df9e39*/1];
+        /*@>df1c96*/yk/*@>def717*/ = tmp_size/*@>df9e41*/[/*@>df9e3e*/1];
+/*@>def702*/        for (/*@>dfaf20*/b_vlen = /*@>dfaf1f*/0; /*@>dfaf2d*/b_vlen < /*@>dfaf2a*/yk; /*@>dfaf26*/b_vlen/*@>dfb092*/++) {
+            real_T tmp;
+            /*@>df2029*/tmp/*@>df202b*/ = /*@>df1abc*/offset/*@>def6b3*/ + /*@>df3240*/(real_T)/*@>df9e45*/tmp_data[b_vlen];
+            /*@>df435f*/if (/*@>df3c6a*/tmp/*@>df3c68*/ < /*@>df3c6b*/2.147483648E+9) {
+                /*@>df437a*/if (/*@>df3c6f*/tmp/*@>df3c6d*/ >= /*@>df3c70*/-2.147483648E+9) {
+                    /*@>df7690*/f_data[b_vlen]/*@>df437d*/ = /*@>df3c71*/(int32_T)/*@>df3c73*/tmp;
+                } else {
+                    /*@>df7673*/f_data[b_vlen]/*@>df4362*/ = /*@>df3c74*/MIN_int32_T;
+                }
+            } else {
+                /*@>df762f*/f_data[b_vlen]/*@>def6ea*/ = /*@>df3c75*/MAX_int32_T;
+            }
+        }
+/*@>def89e*/        for (/*@>dfaf0d*/b_vlen = /*@>dfaf0c*/0; /*@>dfaf1a*/b_vlen < NumStages_0; /*@>dfaf13*/b_vlen/*@>dfb093*/++) {
+            /*@>df1c9e*/PoolCoeffs/*@>def879*/[/*@>df9e4b*/f_data[/*@>df9e4a*/b_vlen]/*@>def87e*/ - /*@>df1ca5*/1]/*@>def886*/ = /*@>def852*/(real32_T)/*@>dfa1c9*/Model_TranslationEngine64_VLS_B./*@>dfb4eb*/ChannelCoeffs/*@>df9e53*/[/*@>df9e50*/b_vlen];
+        }
+    }
+}
+/* 'PoolIirHexagonTranslationFcn:59' PoolCoeffs = [PoolCoeffs; OverallGainPerCh]; */
+/*@>df8df7*/memcpy(&/*@>dfa139*/Model_TranslationEngine64_VLS_B./*@>dfb4a6*/PoolCoeffs/*@>df818a*/[/*@>df8179*/0], &/*@>df8191*/PoolCoeffs/*@>df8192*/[/*@>df8186*/0], /*@>df8188*/960U/*@>df8195*/ * /*@>df8194*/sizeof(real32_T));
+/*@>decbcd*/for (/*@>dfaeeb*/SOSIndex = /*@>dfaeea*/0; /*@>dfaef5*/SOSIndex < /*@>dfaef3*/16; /*@>dfaef1*/SOSIndex/*@>dfb09b*/++) {
+    /*@>dfa13f*/Model_TranslationEngine64_VLS_B./*@>dfb4a9*/PoolCoeffs/*@>dedff0*/[/*@>df1ae6*/SOSIndex/*@>dedff5*/ + /*@>df1ae8*/960]/*@>decbbb*/ = /*@>decbc5*/(real32_T)/*@>df9d4c*/OverallGainPerCh/*@>df9d4e*/[/*@>df9d4b*/SOSIndex];
+}
+/* {E!d804}End of MATLAB Function: '<S1164>/Translation' */
+/*  VariantStr = char(VariantUint8); */
+/*  switch (VariantStr) */
+/*      case {"Generic","SharcPlusCore"} */
+/*          %<"\% These variants order biquad coefficients in a compacted form"> */
+/*          [PoolNumStages, PoolCoeffs] = pooliirTranslationFcn(RawSOS, NumStages, MaxNumStages); */
+/*      case {"SharcPlusAccelGul","SharcPlusAccelGxp"} */
+/*          %<"\% These variants order biquad coefficients for the ADI accelerator"> */
+/*          [PoolNumStages, PoolCoeffs] = pooliirAccelTranslationFcn(RawSOS, NumStages, MaxNumStages); */
+/*      case{"Hexagon"} */
+/*          %<"\% Hexagon specific order for biquad coefficients "> */
+/*          [PoolNumStages, PoolCoeffs] = PoolIirHexagonTranslationFcn(RawSOS, NumStages, MaxNumStages); */
+/*      case{"ArmNeonV7V8"} */
+/*          [PoolNumStages, PoolCoeffs] = PoolIirArmNeonV7V8TranslationFcn(RawSOS, NumStages, MaxNumStages); */
+/*      otherwise */
+/*          %<"\% This is a build-time error, not a translation error. The"> */
+/*          %<"\% selected build-time variant is not supported for translation"> */
+/*          error('Invalid implementation type: [%<"\%s]\', VariantStr);"> */
+/*  end */
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void FuncTranslation_Model_232_8_34_50_36(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(112, 1, fcnProtoType)>
+%endfunction

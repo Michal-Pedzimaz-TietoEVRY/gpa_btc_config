@@ -1,0 +1,37 @@
+%implements s1068_b0_g3vnd_139_Enable "C"
+
+%function Enable(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%assign tlcEnableFcnOfS461B2 = OpaqueTLCBlockFcn("Enable", 461, 2, 139, 3, 0)
+%assign   Enable_open_RTCRequestResponseTrigger_461_7 = ""
+%openfile Enable_open_RTCRequestResponseTrigger_461_7
+
+/* Enable for S-Function (RTC_REQ_RSP): '<S1190>/RTC Request Response Trigger' */
+%closefile Enable_open_RTCRequestResponseTrigger_461_7
+
+%assign    Enable_body_RTCRequestResponseTrigger_461_7 = ""
+%openfile  Enable_body_RTCRequestResponseTrigger_461_7
+
+%<SLibCG_DumpSSCode("/*@[12cfcbe*/",tlcEnableFcnOfS461B2,"/*@]*/")>\
+%closefile Enable_body_RTCRequestResponseTrigger_461_7
+
+%assign    Enable_close_RTCRequestResponseTrigger_461_7 = ""
+%openfile  Enable_close_RTCRequestResponseTrigger_461_7
+
+/* End of Enable for S-Function (RTC_REQ_RSP): '<S1190>/RTC Request Response Trigger' */
+%closefile Enable_close_RTCRequestResponseTrigger_461_7
+%<SLibCG_DumpSSCode(Enable_open_RTCRequestResponseTrigger_461_7, Enable_body_RTCRequestResponseTrigger_461_7, Enable_close_RTCRequestResponseTrigger_461_7)>
+
+%closefile cfgTxt
+%<cfgTxt>
+%endfunction
+%function EnableFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_Medusa5H1Part4_Enable(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(139, 3, fcnProtoType)>
+%endfunction

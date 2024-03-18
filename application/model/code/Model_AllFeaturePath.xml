@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root version="1.0">
+  <FeaturePath id="CoreIndexRole" libref="FeaturePath/CoreIndex" name="CoreIndexRole" want_group="off" want_module="off" />
+  <FeaturePath id="InputSelect" name="InputSelect" want_group="on" want_module="on">
+    <FeaturePath id="InputSelectRouterCfg" libref="RouterBtc/Router" name="RouterCfg" want_group="off" want_module="off" />
+  </FeaturePath>
+  <FeaturePath id="PreAmp" name="PreAmp" want_group="on" want_module="on">
+    <FeaturePath id="PreAmpAudiopilot" libref="Audiopilot_3_5/Audiopilot_3_5" name="Audiopilot" want_group="off" want_module="off">
+      <FeaturePath id="PreAmpAudiopilotHfNoise" libref="HighFrequencyNoiseEstimatorCoh/HighFrequencyNoiseEstimatorCoh" name="HfNoise" want_group="off" want_module="off">
+        <FeaturePath id="PreAmpAudiopilotHfNoiseImpulseRejection" libref="HighFrequencyNoiseEstimatorCoh/HighFrequencyNoiseEstimatorCoh" name="ImpulseRejection" want_group="off" want_module="off" />
+        <FeaturePath id="PreAmpAudiopilotHfNoiseSlew" libref="HighFrequencyNoiseEstimatorCoh/HighFrequencyNoiseEstimatorCoh" name="Slew" want_group="off" want_module="off" />
+        <FeaturePath id="PreAmpAudiopilotHfNoisePreprocessAntiAlias" libref="PoolIir/PoolIirTunableWithReset" name="PreprocessAntiAlias" want_group="off" want_module="off" />
+        <FeaturePath id="PreAmpAudiopilotHfNoisePreprocessBandpassLowpass" libref="PoolIir/PoolIirTunableWithReset" name="PreprocessBandpassLowpass" want_group="off" want_module="off" />
+      </FeaturePath>
+      <FeaturePath id="PreAmpAudiopilotLfNoise" libref="LowFrequencyNoiseEstimatorCoh/LowFrequencyNoiseEstimatorCoh" name="LfNoise" want_group="off" want_module="off">
+        <FeaturePath id="PreAmpAudiopilotLfNoiseImpulseRejection" libref="LowFrequencyNoiseEstimatorCoh/LowFrequencyNoiseEstimatorCoh" name="ImpulseRejection" want_group="off" want_module="off" />
+        <FeaturePath id="PreAmpAudiopilotLfNoiseMic" libref="PoolIir/PoolIirTunableWithReset" name="Mic" want_group="off" want_module="off" />
+        <FeaturePath id="PreAmpAudiopilotLfNoiseRef" libref="PoolIir/PoolIirTunableWithReset" name="Ref" want_group="off" want_module="off" />
+        <FeaturePath id="PreAmpAudiopilotLfNoiseSlew" libref="LowFrequencyNoiseEstimatorCoh/LowFrequencyNoiseEstimatorCoh" name="Slew" want_group="off" want_module="off" />
+        <FeaturePath id="PreAmpAudiopilotLfNoiseSpeedBounds" libref="SpeedBoundsNoiseSlew/SpeedBounds" name="SpeedBounds" want_group="off" want_module="off" />
+      </FeaturePath>
+      <FeaturePath id="PreAmpAudiopilotRatio" libref="HighFrequencyNoiseEstimatorCoh/RatioCalculation" name="Ratio" want_group="off" want_module="off">
+        <FeaturePath id="PreAmpAudiopilotRatioUpdate" libref="HighFrequencyNoiseEstimatorCoh/RatioCalculation" name="Update" want_group="off" want_module="off" />
+        <FeaturePath id="PreAmpAudiopilotRatioSlew" libref="HighFrequencyNoiseEstimatorCoh/RatioCalculation" name="Slew" want_group="off" want_module="off" />
+        <FeaturePath id="PreAmpAudiopilotRatioImpulseRejection" libref="HighFrequencyNoiseEstimatorCoh/RatioCalculation" name="ImpulseRejection" want_group="off" want_module="off" />
+      </FeaturePath>
+      <FeaturePath id="PreAmpAudiopilotLfNoise" libref="Audiopilot_3_5/Audiopilot_3_5" name="LfNoise" want_group="off" want_module="off">
+        <FeaturePath id="PreAmpAudiopilotLfNoiseSlew" libref="Audiopilot_3_5/Audiopilot_3_5" name="Slew" want_group="off" want_module="off" />
+        <FeaturePath id="PreAmpAudiopilotLfNoiseSpeedBounds" libref="SpeedBoundsNoiseSlew/SpeedBounds" name="SpeedBounds" want_group="off" want_module="off" />
+      </FeaturePath>
+    </FeaturePath>
+    <FeaturePath id="PreAmpAudiopilotLevelDetect" libref="EntertainmentLevelDetection/EntertainmentLevelDetection" name="AudiopilotLevelDetect" want_group="off" want_module="off" />
+    <FeaturePath id="PreAmpLevelWatchAudiopilot" libref="EntertainmentLevelDetection/EntertainmentLevelDetection" name="LevelWatchAudiopilot" want_group="off" want_module="off" />
+    <FeaturePath id="PreAmpBodLevelDetect" libref="EntertainmentLevelDetection/EntertainmentLevelDetection" name="BodLevelDetect" want_group="off" want_module="off" />
+    <FeaturePath id="PreAmpLevelWatchBod" libref="EntertainmentLevelDetection/EntertainmentLevelDetection" name="LevelWatchBod" want_group="off" want_module="off" />
+    <FeaturePath id="PreAmpDyneqLevelDetect" libref="EntertainmentLevelDetection/EntertainmentLevelDetection" name="DyneqLevelDetect" want_group="off" want_module="off" />
+    <FeaturePath id="PreAmpLevelWatchDyneq" libref="EntertainmentLevelDetection/EntertainmentLevelDetection" name="LevelWatchDyneq" want_group="off" want_module="off" />
+    <FeaturePath id="PreAmpFanLevelDetect" libref="EntertainmentLevelDetection/EntertainmentLevelDetection" name="FanLevelDetect" want_group="off" want_module="off" />
+    <FeaturePath id="PreAmpLevelWatchFan" libref="EntertainmentLevelDetection/EntertainmentLevelDetection" name="LevelWatchFan" want_group="off" want_module="off" />
+    <FeaturePath id="PreAmpLevelDetect" libref="EntertainmentLevelDetection/EntertainmentLevelDetection" name="LevelDetect" want_group="off" want_module="off">
+      <FeaturePath id="PreAmpLevelDetectPreemphasis" libref="PoolIir/PoolIirTunableWithReset" name="Preemphasis" want_group="off" want_module="off" />
+    </FeaturePath>
+    <FeaturePath id="PreAmpVolumeCfg" libref="VolumeBtc/Volume" name="VolumeCfg" want_group="off" want_module="off" />
+    <FeaturePath id="PreAmpBalance_Cfg" libref="BalanceBtc/Balance" name="Balance_Cfg" want_group="off" want_module="off" />
+    <FeaturePath id="PreAmpMedusa" libref="medusa5h1_stereo/Medusa + Holigram" name="Medusa" want_group="off" want_module="off">
+      <FeaturePath id="PreAmpMedusaBassManager" libref="BassManager/MedusaBassManager" name="BassManager" want_group="off" want_module="off">
+        <FeaturePath id="PreAmpMedusaBassManagerHpf" libref="PoolIir/PoolIirTunableWithReset" name="Hpf" want_group="off" want_module="off" />
+        <FeaturePath id="PreAmpMedusaBassManagerLpf" libref="PoolIir/PoolIirTunableWithReset" name="Lpf" want_group="off" want_module="off" />
+      </FeaturePath>
+      <FeaturePath id="PreAmpMedusaTrebleBoost" libref="TrebleBoost/TrebleBoostStereo" name="TrebleBoost" want_group="off" want_module="off">
+        <FeaturePath id="PreAmpMedusaTrebleBoostIdentifier" libref="TrebleBoost/TrebleBoostStereo" name="Identifier" want_group="off" want_module="off" />
+      </FeaturePath>
+      <FeaturePath id="PreAmpMedusaDeciRate" libref="MedusaFdp/MedusaFdp" name="DeciRate" want_group="off" want_module="off">
+        <FeaturePath id="PreAmpMedusaDeciRateFdp" libref="MedusaFdp/MedusaFdp" name="Fdp" want_group="off" want_module="off">
+          <FeaturePath id="PreAmpMedusaDeciRateFdpCoeffs" libref="MedusaFdp/MedusaFdp" name="Coeffs" want_group="off" want_module="off" />
+          <FeaturePath id="PreAmpMedusaDeciRateFdpCoeffs" libref="MedusaFdp/MedusaFdp" name="Coeffs" want_group="off" want_module="off" />
+          <FeaturePath id="PreAmpMedusaDeciRateFdpSpum" libref="MedusaFdp/MedusaFdp" name="Spum" want_group="off" want_module="off" />
+        </FeaturePath>
+      </FeaturePath>
+      <FeaturePath id="PreAmpMedusaFullRate" libref="MedusaFdp/MedusaFdp" name="FullRate" want_group="off" want_module="off">
+        <FeaturePath id="PreAmpMedusaFullRateFdp" libref="MedusaFdp/MedusaFdp" name="Fdp" want_group="off" want_module="off">
+          <FeaturePath id="PreAmpMedusaFullRateFdpCoeffs" libref="MedusaFdp/MedusaFdp" name="Coeffs" want_group="off" want_module="off" />
+          <FeaturePath id="PreAmpMedusaFullRateFdpCoeffs" libref="MedusaFdp/MedusaFdp" name="Coeffs" want_group="off" want_module="off" />
+          <FeaturePath id="PreAmpMedusaFullRateFdpSpum" libref="MedusaFdp/MedusaFdp" name="Spum" want_group="off" want_module="off" />
+        </FeaturePath>
+      </FeaturePath>
+      <FeaturePath id="PreAmpMedusaMonoDetector" libref="MonoDetector/MedusaMonoDetector" name="MonoDetector" want_group="off" want_module="off" />
+      <FeaturePath id="PreAmpMedusaSPUMDecayEst" libref="MedusaSPUMDecayEst/SPUM Decay Estimate" name="SPUMDecayEst" want_group="off" want_module="off">
+        <FeaturePath id="PreAmpMedusaSPUMDecayEstHPF" libref="PoolIir/PoolIirTunableWithReset" name="HPF" want_group="off" want_module="off" />
+      </FeaturePath>
+      <FeaturePath id="PreAmpMedusatailCompEQ" libref="PoolIir/PoolIirTunableWithReset" name="tailCompEQ" want_group="off" want_module="off" />
+      <FeaturePath id="PreAmpMedusaFullRateMixer" libref="MedusaFullRateMixer/Full-Rate Mixer with CAE &amp; Fade Ramper" name="FullRateMixer" want_group="off" want_module="off">
+        <FeaturePath id="PreAmpMedusaFullRateMixerCS" libref="MedusaFullRateMixer/Full-Rate Mixer with CAE &amp; Fade Ramper" name="CS" want_group="off" want_module="off">
+          <FeaturePath id="PreAmpMedusaFullRateMixerCSFade" libref="MedusaFullRateMixer/Full-Rate Mixer with CAE &amp; Fade Ramper" name="Fade" want_group="off" want_module="off" />
+          <FeaturePath id="PreAmpMedusaFullRateMixerCSSLC" libref="MedusaFullRateMixer/Full-Rate Mixer with CAE &amp; Fade Ramper" name="SLC" want_group="off" want_module="off" />
+        </FeaturePath>
+        <FeaturePath id="PreAmpMedusaFullRateMixerLeft" libref="MedusaFullRateMixer/Full-Rate Mixer with CAE &amp; Fade Ramper" name="Left" want_group="off" want_module="off">
+          <FeaturePath id="PreAmpMedusaFullRateMixerLeftFade" libref="MedusaFullRateMixer/Full-Rate Mixer with CAE &amp; Fade Ramper" name="Fade" want_group="off" want_module="off" />
+          <FeaturePath id="PreAmpMedusaFullRateMixerLeftSLC" libref="MedusaFullRateMixer/Full-Rate Mixer with CAE &amp; Fade Ramper" name="SLC" want_group="off" want_module="off" />
+        </FeaturePath>
+        <FeaturePath id="PreAmpMedusaFullRateMixerRight" libref="MedusaFullRateMixer/Full-Rate Mixer with CAE &amp; Fade Ramper" name="Right" want_group="off" want_module="off">
+          <FeaturePath id="PreAmpMedusaFullRateMixerRightFade" libref="MedusaFullRateMixer/Full-Rate Mixer with CAE &amp; Fade Ramper" name="Fade" want_group="off" want_module="off" />
+          <FeaturePath id="PreAmpMedusaFullRateMixerRightSLC" libref="MedusaFullRateMixer/Full-Rate Mixer with CAE &amp; Fade Ramper" name="SLC" want_group="off" want_module="off" />
+        </FeaturePath>
+      </FeaturePath>
+      <FeaturePath id="PreAmpMedusaPremix" libref="MedusaPremix/PremixWithMonoSurroundAndCaeWithFadeRamper" name="Premix" want_group="off" want_module="off">
+        <FeaturePath id="PreAmpMedusaPremixMonoSurround" libref="MedusaPremix/PremixWithMonoSurroundAndCaeWithFadeRamper" name="MonoSurround" want_group="off" want_module="off" />
+        <FeaturePath id="PreAmpMedusaPremixCS" libref="MedusaPremix/PremixWithMonoSurroundAndCaeWithFadeRamper" name="CS" want_group="off" want_module="off">
+          <FeaturePath id="PreAmpMedusaPremixCSFade" libref="MedusaPremix/PremixWithMonoSurroundAndCaeWithFadeRamper" name="Fade" want_group="off" want_module="off" />
+          <FeaturePath id="PreAmpMedusaPremixCSSLC" libref="MedusaPremix/PremixWithMonoSurroundAndCaeWithFadeRamper" name="SLC" want_group="off" want_module="off" />
+        </FeaturePath>
+        <FeaturePath id="PreAmpMedusaPremixLeft" libref="MedusaPremix/PremixWithMonoSurroundAndCaeWithFadeRamper" name="Left" want_group="off" want_module="off">
+          <FeaturePath id="PreAmpMedusaPremixLeftFade" libref="MedusaPremix/PremixWithMonoSurroundAndCaeWithFadeRamper" name="Fade" want_group="off" want_module="off" />
+          <FeaturePath id="PreAmpMedusaPremixLeftSLC" libref="MedusaPremix/PremixWithMonoSurroundAndCaeWithFadeRamper" name="SLC" want_group="off" want_module="off" />
+        </FeaturePath>
+        <FeaturePath id="PreAmpMedusaPremixRight" libref="MedusaPremix/PremixWithMonoSurroundAndCaeWithFadeRamper" name="Right" want_group="off" want_module="off">
+          <FeaturePath id="PreAmpMedusaPremixRightFade" libref="MedusaPremix/PremixWithMonoSurroundAndCaeWithFadeRamper" name="Fade" want_group="off" want_module="off" />
+          <FeaturePath id="PreAmpMedusaPremixRightSLC" libref="MedusaPremix/PremixWithMonoSurroundAndCaeWithFadeRamper" name="SLC" want_group="off" want_module="off" />
+        </FeaturePath>
+      </FeaturePath>
+      <FeaturePath id="PreAmpMedusaSurroundLevelControl" libref="MedusaSurroundLevelControl/Surround Level Control Generic" name="SurroundLevelControl" want_group="off" want_module="off" />
+      <FeaturePath id="PreAmpMedusaVLSDrvGains" libref="VLSGains/VLS Gains Drv" name="VLSDrvGains" want_group="off" want_module="off" />
+      <FeaturePath id="PreAmpMedusaVLSPaxGains" libref="VLSGains/VLS Gains Pax" name="VLSPaxGains" want_group="off" want_module="off" />
+      <FeaturePath id="PreAmpMedusaDRHoligram" libref="MedusaDrHoligramEq/MedusaDrHoligramEq" name="DRHoligram" want_group="off" want_module="off">
+        <FeaturePath id="PreAmpMedusaDRHoligramFIR" libref="FirGeneric/Fir" name="FIR" want_group="off" want_module="off" />
+        <FeaturePath id="PreAmpMedusaDRHoligramPoolIirTunableConfig" libref="PoolIir/PoolIirTunableWithReset" name="PoolIirTunableConfig" want_group="off" want_module="off" />
+      </FeaturePath>
+      <FeaturePath id="PreAmpMedusaFRHoligram" libref="MedusaFRHoligramEQ/FR Holigram EQ" name="FRHoligram" want_group="off" want_module="off">
+        <FeaturePath id="PreAmpMedusaFRHoligramIirConfig" libref="PoolIir/PoolIirTunableWithReset" name="IirConfig" want_group="off" want_module="off" />
+      </FeaturePath>
+      <FeaturePath id="PreAmpMedusaHeadrestCompEQ" libref="HeadrestCompEQ/Headrest Comp EQ" name="HeadrestCompEQ" want_group="off" want_module="off">
+        <FeaturePath id="PreAmpMedusaHeadrestCompEQFIR" libref="FirGeneric/Fir" name="FIR" want_group="off" want_module="off" />
+        <FeaturePath id="PreAmpMedusaHeadrestCompEQIirConfig" libref="PoolIir/PoolIirTunableWithReset" name="IirConfig" want_group="off" want_module="off" />
+      </FeaturePath>
+      <FeaturePath id="PreAmpMedusaOverhead" libref="medusa5h1_stereo/Medusa + Holigram" name="Overhead" want_group="off" want_module="off">
+        <FeaturePath id="PreAmpMedusaOverheadDRHoligram" libref="MedusaDrHoligramEq/MedusaDrHoligramEq" name="DRHoligram" want_group="off" want_module="off">
+          <FeaturePath id="PreAmpMedusaOverheadDRHoligramFIR" libref="FirGeneric/Fir" name="FIR" want_group="off" want_module="off" />
+          <FeaturePath id="PreAmpMedusaOverheadDRHoligramPoolIirTunableConfig" libref="PoolIir/PoolIirTunableWithReset" name="PoolIirTunableConfig" want_group="off" want_module="off" />
+        </FeaturePath>
+      </FeaturePath>
+    </FeaturePath>
+    <FeaturePath id="PreAmpMedusa" libref="medusa5h1_stereo/MedusaPostHoligram" name="Medusa" want_group="off" want_module="off">
+      <FeaturePath id="PreAmpMedusaFirUp" libref="FirUp/FirUp" name="FirUp" want_group="off" want_module="off">
+        <FeaturePath id="PreAmpMedusaFirUpFIR" libref="FirGeneric/Fir" name="FIR" want_group="off" want_module="off" />
+      </FeaturePath>
+    </FeaturePath>
+    <FeaturePath id="PreAmpFadeControl" libref="FadeControlBtc/FadeControl" name="FadeControl" want_group="off" want_module="off" />
+    <FeaturePath id="PreAmpFadeRamperDR" libref="FadeRamperBtc/FadeRamper" name="FadeRamperDR" want_group="off" want_module="off" />
+    <FeaturePath id="PreAmpFadeRamperFR" libref="FadeRamperBtc/FadeRamper" name="FadeRamperFR" want_group="off" want_module="off" />
+    <FeaturePath id="PreAmpMuteControl" libref="MuteControlBtc/MuteControl" name="MuteControl" want_group="off" want_module="off" />
+    <FeaturePath id="PreAmpMuteDR" libref="MuteRamperBtc/MuteRamper" name="MuteDR" want_group="off" want_module="off" />
+    <FeaturePath id="PreAmpMuteFR" libref="MuteRamperBtc/MuteRamper" name="MuteFR" want_group="off" want_module="off" />
+    <FeaturePath id="PreAmpSleepingBeautyDR" libref="SleepingBeautyBtc/SleepingBeauty" name="SleepingBeautyDR" want_group="off" want_module="off" />
+    <FeaturePath id="PreAmpSleepingBeautyFR" libref="SleepingBeautyBtc/SleepingBeauty" name="SleepingBeautyFR" want_group="off" want_module="off" />
+    <FeaturePath id="PreAmpVLS" libref="VLS/VLS" name="VLS" want_group="off" want_module="off">
+      <FeaturePath id="PreAmpVLSXtalkCancellation" libref="XtalkCancellation/Crosstalk Cancellation" name="XtalkCancellation" want_group="off" want_module="off">
+        <FeaturePath id="PreAmpVLSXtalkCancellationIIR" libref="PoolIir/PoolIirTunableWithReset" name="IIR" want_group="off" want_module="off" />
+      </FeaturePath>
+      <FeaturePath id="PreAmpVLSGenerationDrv" libref="VLSGen/VLS Generation" name="GenerationDrv" want_group="off" want_module="off">
+        <FeaturePath id="PreAmpVLSGenerationDrvFIR" libref="FirGenericDeprecated/FirGeneric" name="FIR" want_group="off" want_module="off" />
+        <FeaturePath id="PreAmpVLSGenerationDrvFIR" libref="FirGeneric/Fir" name="FIR" want_group="off" want_module="off" />
+      </FeaturePath>
+      <FeaturePath id="PreAmpVLSGenerationPax" libref="VLSGen/VLS Generation" name="GenerationPax" want_group="off" want_module="off">
+        <FeaturePath id="PreAmpVLSGenerationPaxFIR" libref="FirGenericDeprecated/FirGeneric" name="FIR" want_group="off" want_module="off" />
+        <FeaturePath id="PreAmpVLSGenerationPaxFIR" libref="FirGeneric/Fir" name="FIR" want_group="off" want_module="off" />
+      </FeaturePath>
+    </FeaturePath>
+    <FeaturePath id="PreAmpBass" libref="ToneBtc/Tone" name="Bass" want_group="off" want_module="off" />
+    <FeaturePath id="PreAmpMidrange" libref="MidrangeBtc/Midrange" name="Midrange" want_group="off" want_module="off" />
+    <FeaturePath id="PreAmpLimiter" libref="MusicLimiterLib/MusicLimiter" name="Limiter" want_group="off" want_module="off" />
+    <FeaturePath id="PreAmpTreble" libref="ToneBtc/Tone" name="Treble" want_group="off" want_module="off" />
+  </FeaturePath>
+  <FeaturePath id="Near" name="Near" want_group="on" want_module="on">
+    <FeaturePath id="NearDr_" libref="Near1p1Ann/Near1p1" name="Dr_" want_group="off" want_module="off">
+      <FeaturePath id="NearDr_Pooliir" libref="PoolIir/PoolIirTunableWithReset" name="Pooliir" want_group="off" want_module="off" />
+      <FeaturePath id="NearDr_PoolIirTunable" libref="PoolIir/PoolIirTunableWithReset" name="PoolIirTunable" want_group="off" want_module="off" />
+      <FeaturePath id="NearDr_Router" libref="RouterBtc/Router" name="Router" want_group="off" want_module="off" />
+    </FeaturePath>
+    <FeaturePath id="NearFr_" libref="Near1p1Ann/Near1p1" name="Fr_" want_group="off" want_module="off">
+      <FeaturePath id="NearFr_Pooliir" libref="PoolIir/PoolIirTunableWithReset" name="Pooliir" want_group="off" want_module="off" />
+      <FeaturePath id="NearFr_PoolIirTunable" libref="PoolIir/PoolIirTunableWithReset" name="PoolIirTunable" want_group="off" want_module="off" />
+      <FeaturePath id="NearFr_Router" libref="RouterBtc/Router" name="Router" want_group="off" want_module="off" />
+    </FeaturePath>
+    <FeaturePath id="NearLevelDetect" libref="AnnouncementLevelDetection/AnnouncementLevelDetector" name="LevelDetect" want_group="off" want_module="off">
+      <FeaturePath id="NearLevelDetectPreEmphasisShelfFilter" libref="PoolIir/PoolIirTunableWithReset" name="PreEmphasisShelfFilter" want_group="off" want_module="off" />
+    </FeaturePath>
+    <FeaturePath id="NearAnn1LevelDetect" libref="AnnouncementLevelDetection/AnnouncementLevelDetector" name="Ann1LevelDetect" want_group="off" want_module="off" />
+    <FeaturePath id="NearAnn2LevelDetect" libref="AnnouncementLevelDetection/AnnouncementLevelDetector" name="Ann2LevelDetect" want_group="off" want_module="off" />
+    <FeaturePath id="NearAnn3LevelDetect" libref="AnnouncementLevelDetection/AnnouncementLevelDetector" name="Ann3LevelDetect" want_group="off" want_module="off" />
+    <FeaturePath id="NearAnn4LevelDetect" libref="AnnouncementLevelDetection/AnnouncementLevelDetector" name="Ann4LevelDetect" want_group="off" want_module="off" />
+    <FeaturePath id="NearAnn1" libref="VolumeMute/VolumeMute" name="Ann1" want_group="off" want_module="off">
+      <FeaturePath id="NearAnn1Ann1NonEntGainCalc" libref="NonEntGainCalcBtc/NonEntGainCalc" name="Ann1NonEntGainCalc" want_group="off" want_module="off" />
+      <FeaturePath id="NearAnn1Ann1NonEntVncApplied" libref="NonEntVncAppliedBtc/NonEntVncApplied" name="Ann1NonEntVncApplied" want_group="off" want_module="off" />
+      <FeaturePath id="NearAnn1Ann1Mute" libref="MuteControlBtc/MuteControl" name="Ann1Mute" want_group="off" want_module="off" />
+      <FeaturePath id="NearAnn1Mute" libref="MuteRamperBtc/MuteRamper" name="Mute" want_group="off" want_module="off" />
+      <FeaturePath id="NearAnn1Ann1Volume" libref="AnnVolumeBtc/AnnVolume" name="Ann1Volume" want_group="off" want_module="off" />
+    </FeaturePath>
+    <FeaturePath id="NearAnn2" libref="VolumeMute/VolumeMute" name="Ann2" want_group="off" want_module="off">
+      <FeaturePath id="NearAnn2Ann2NonEntGainCalc" libref="NonEntGainCalcBtc/NonEntGainCalc" name="Ann2NonEntGainCalc" want_group="off" want_module="off" />
+      <FeaturePath id="NearAnn2Ann2NonEntVncApplied" libref="NonEntVncAppliedBtc/NonEntVncApplied" name="Ann2NonEntVncApplied" want_group="off" want_module="off" />
+      <FeaturePath id="NearAnn2Ann2Mute" libref="MuteControlBtc/MuteControl" name="Ann2Mute" want_group="off" want_module="off" />
+      <FeaturePath id="NearAnn2Mute" libref="MuteRamperBtc/MuteRamper" name="Mute" want_group="off" want_module="off" />
+      <FeaturePath id="NearAnn2Ann2Volume" libref="AnnVolumeBtc/AnnVolume" name="Ann2Volume" want_group="off" want_module="off" />
+    </FeaturePath>
+    <FeaturePath id="NearAnn3" libref="VolumeMute/VolumeMute" name="Ann3" want_group="off" want_module="off">
+      <FeaturePath id="NearAnn3Ann3NonEntGainCalc" libref="NonEntGainCalcBtc/NonEntGainCalc" name="Ann3NonEntGainCalc" want_group="off" want_module="off" />
+      <FeaturePath id="NearAnn3Ann3NonEntVncApplied" libref="NonEntVncAppliedBtc/NonEntVncApplied" name="Ann3NonEntVncApplied" want_group="off" want_module="off" />
+      <FeaturePath id="NearAnn3Ann3Mute" libref="MuteControlBtc/MuteControl" name="Ann3Mute" want_group="off" want_module="off" />
+      <FeaturePath id="NearAnn3Mute" libref="MuteRamperBtc/MuteRamper" name="Mute" want_group="off" want_module="off" />
+      <FeaturePath id="NearAnn3Ann3Volume" libref="AnnVolumeBtc/AnnVolume" name="Ann3Volume" want_group="off" want_module="off" />
+    </FeaturePath>
+    <FeaturePath id="NearAnn4" libref="VolumeMute/VolumeMute" name="Ann4" want_group="off" want_module="off">
+      <FeaturePath id="NearAnn4Ann4NonEntGainCalc" libref="NonEntGainCalcBtc/NonEntGainCalc" name="Ann4NonEntGainCalc" want_group="off" want_module="off" />
+      <FeaturePath id="NearAnn4Ann4NonEntVncApplied" libref="NonEntVncAppliedBtc/NonEntVncApplied" name="Ann4NonEntVncApplied" want_group="off" want_module="off" />
+      <FeaturePath id="NearAnn4Ann4Mute" libref="MuteControlBtc/MuteControl" name="Ann4Mute" want_group="off" want_module="off" />
+      <FeaturePath id="NearAnn4Mute" libref="MuteRamperBtc/MuteRamper" name="Mute" want_group="off" want_module="off" />
+      <FeaturePath id="NearAnn4Ann4Volume" libref="AnnVolumeBtc/AnnVolume" name="Ann4Volume" want_group="off" want_module="off" />
+    </FeaturePath>
+  </FeaturePath>
+  <FeaturePath id="PostProcess" name="PostProcess" want_group="on" want_module="on">
+    <FeaturePath id="PostProcessEnergyLimiter" libref="EnergyLimiterBtc/EnergyLimiter" name="EnergyLimiter" want_group="off" want_module="off" />
+    <FeaturePath id="PostProcessLimiter" libref="LimiterBtc/Limiter" name="Limiter" want_group="off" want_module="off" />
+    <FeaturePath id="PostProcessMute" libref="MuteControlBtc/MuteControl" name="Mute" want_group="off" want_module="off" />
+    <FeaturePath id="PostProcessMute" libref="MuteRamperBtc/MuteRamper" name="Mute" want_group="off" want_module="off" />
+    <FeaturePath id="PostProcessPostLimiterEq" libref="PoolIir/PoolIirTunableWithReset" name="PostLimiterEq" want_group="off" want_module="off" />
+    <FeaturePath id="PostProcessSoftClipper" libref="SoftclipperBtc/SoftClipper" name="SoftClipper" want_group="off" want_module="off" />
+  </FeaturePath>
+  <FeaturePath id="TestRouter" name="TestRouter" want_group="on" want_module="off">
+    <FeaturePath id="TestRouterASDRouter" libref="AsdRouterBtc/AsdRouter" name="ASDRouter" want_group="off" want_module="off" />
+  </FeaturePath>
+</root>

@@ -1,0 +1,163 @@
+%implements "machineSource" "C"
+%function CacheMachineDefinitions(block,system) void
+%openfile tmpFcnBuf
+%closefile tmpFcnBuf
+%<SLibCacheCodeToFile("sf_machine_data_defn",tmpFcnBuf)>\
+
+%endfunction
+%function DumpMachineInitializer(block) Output
+
+%openfile tmpFcnBuf
+
+%closefile tmpFcnBuf
+%if !WHITE_SPACE(tmpFcnBuf)
+
+  /* Machine initializer */
+  %<tmpFcnBuf>\
+%endif
+%endfunction
+%function GlobalMachineInitializer(block) void
+  %openfile tmpFcnBuf
+  %<DumpMachineInitializer(block)>\
+  %if FILE_EXISTS("TunableDelayBtc_rtw.tlc")
+    %generatefile "machineSource" "TunableDelayBtc_rtw.tlc"
+    %<GENERATE_TYPE(block,"DumpMachineInitializer","machineSource")>\
+  %endif
+  %if FILE_EXISTS("RfftLib_rtw.tlc")
+    %generatefile "machineSource" "RfftLib_rtw.tlc"
+    %<GENERATE_TYPE(block,"DumpMachineInitializer","machineSource")>\
+  %endif
+  %if FILE_EXISTS("SpeedBoundsNoiseSlew_rtw.tlc")
+    %generatefile "machineSource" "SpeedBoundsNoiseSlew_rtw.tlc"
+    %<GENERATE_TYPE(block,"DumpMachineInitializer","machineSource")>\
+  %endif
+  %if FILE_EXISTS("RgainyBtc_rtw.tlc")
+    %generatefile "machineSource" "RgainyBtc_rtw.tlc"
+    %<GENERATE_TYPE(block,"DumpMachineInitializer","machineSource")>\
+  %endif
+  %if FILE_EXISTS("LevelDetectorLibBtc_rtw.tlc")
+    %generatefile "machineSource" "LevelDetectorLibBtc_rtw.tlc"
+    %<GENERATE_TYPE(block,"DumpMachineInitializer","machineSource")>\
+  %endif
+  %if FILE_EXISTS("LeastSquareSmooth_rtw.tlc")
+    %generatefile "machineSource" "LeastSquareSmooth_rtw.tlc"
+    %<GENERATE_TYPE(block,"DumpMachineInitializer","machineSource")>\
+  %endif
+  %if FILE_EXISTS("CrossFaderLib_rtw.tlc")
+    %generatefile "machineSource" "CrossFaderLib_rtw.tlc"
+    %<GENERATE_TYPE(block,"DumpMachineInitializer","machineSource")>\
+  %endif
+  %if FILE_EXISTS("FirGeneric_rtw.tlc")
+    %generatefile "machineSource" "FirGeneric_rtw.tlc"
+    %<GENERATE_TYPE(block,"DumpMachineInitializer","machineSource")>\
+  %endif
+  %if FILE_EXISTS("RTC_rtw.tlc")
+    %generatefile "machineSource" "RTC_rtw.tlc"
+    %<GENERATE_TYPE(block,"DumpMachineInitializer","machineSource")>\
+  %endif
+  %if FILE_EXISTS("ITC_rtw.tlc")
+    %generatefile "machineSource" "ITC_rtw.tlc"
+    %<GENERATE_TYPE(block,"DumpMachineInitializer","machineSource")>\
+  %endif
+  %if FILE_EXISTS("PoolIir_rtw.tlc")
+    %generatefile "machineSource" "PoolIir_rtw.tlc"
+    %<GENERATE_TYPE(block,"DumpMachineInitializer","machineSource")>\
+  %endif
+  %if FILE_EXISTS("FirUp_rtw.tlc")
+    %generatefile "machineSource" "FirUp_rtw.tlc"
+    %<GENERATE_TYPE(block,"DumpMachineInitializer","machineSource")>\
+  %endif
+  %if FILE_EXISTS("FirEven_rtw.tlc")
+    %generatefile "machineSource" "FirEven_rtw.tlc"
+    %<GENERATE_TYPE(block,"DumpMachineInitializer","machineSource")>\
+  %endif
+  %if FILE_EXISTS("MedusaSurroundLevelControl_rtw.tlc")
+    %generatefile "machineSource" "MedusaSurroundLevelControl_rtw.tlc"
+    %<GENERATE_TYPE(block,"DumpMachineInitializer","machineSource")>\
+  %endif
+  %if FILE_EXISTS("MuteRamperBtc_rtw.tlc")
+    %generatefile "machineSource" "MuteRamperBtc_rtw.tlc"
+    %<GENERATE_TYPE(block,"DumpMachineInitializer","machineSource")>\
+  %endif
+  %if FILE_EXISTS("PoolDelay_rtw.tlc")
+    %generatefile "machineSource" "PoolDelay_rtw.tlc"
+    %<GENERATE_TYPE(block,"DumpMachineInitializer","machineSource")>\
+  %endif
+  %if FILE_EXISTS("MedusaDelays_rtw.tlc")
+    %generatefile "machineSource" "MedusaDelays_rtw.tlc"
+    %<GENERATE_TYPE(block,"DumpMachineInitializer","machineSource")>\
+  %endif
+  %if FILE_EXISTS("Ifir_rtw.tlc")
+    %generatefile "machineSource" "Ifir_rtw.tlc"
+    %<GENERATE_TYPE(block,"DumpMachineInitializer","machineSource")>\
+  %endif
+  %if FILE_EXISTS("RifftLib_rtw.tlc")
+    %generatefile "machineSource" "RifftLib_rtw.tlc"
+    %<GENERATE_TYPE(block,"DumpMachineInitializer","machineSource")>\
+  %endif
+  %closefile tmpFcnBuf
+  %return tmpFcnBuf              
+%endfunction %% GlobalMachineInitializer
+
+%function DumpMachineTerminator(block) Output
+%openfile tmpFcnBuf
+
+%closefile tmpFcnBuf
+%if !WHITE_SPACE(tmpFcnBuf)
+
+  /* Machine initializer */
+  %<tmpFcnBuf>\
+%endif
+%endfunction
+%function GlobalMachineTerminator(block) void
+  %openfile tmpFcnBuf
+  %<DumpMachineTerminator(block)>\
+  %generatefile "machineSource" "TunableDelayBtc_rtw.tlc"
+  %<GENERATE_TYPE(block,"DumpMachineTerminator","machineSource")>\
+  %generatefile "machineSource" "RfftLib_rtw.tlc"
+  %<GENERATE_TYPE(block,"DumpMachineTerminator","machineSource")>\
+  %generatefile "machineSource" "SpeedBoundsNoiseSlew_rtw.tlc"
+  %<GENERATE_TYPE(block,"DumpMachineTerminator","machineSource")>\
+  %generatefile "machineSource" "RgainyBtc_rtw.tlc"
+  %<GENERATE_TYPE(block,"DumpMachineTerminator","machineSource")>\
+  %generatefile "machineSource" "LevelDetectorLibBtc_rtw.tlc"
+  %<GENERATE_TYPE(block,"DumpMachineTerminator","machineSource")>\
+  %generatefile "machineSource" "LeastSquareSmooth_rtw.tlc"
+  %<GENERATE_TYPE(block,"DumpMachineTerminator","machineSource")>\
+  %generatefile "machineSource" "CrossFaderLib_rtw.tlc"
+  %<GENERATE_TYPE(block,"DumpMachineTerminator","machineSource")>\
+  %generatefile "machineSource" "FirGeneric_rtw.tlc"
+  %<GENERATE_TYPE(block,"DumpMachineTerminator","machineSource")>\
+  %generatefile "machineSource" "RTC_rtw.tlc"
+  %<GENERATE_TYPE(block,"DumpMachineTerminator","machineSource")>\
+  %generatefile "machineSource" "ITC_rtw.tlc"
+  %<GENERATE_TYPE(block,"DumpMachineTerminator","machineSource")>\
+  %generatefile "machineSource" "PoolIir_rtw.tlc"
+  %<GENERATE_TYPE(block,"DumpMachineTerminator","machineSource")>\
+  %generatefile "machineSource" "FirUp_rtw.tlc"
+  %<GENERATE_TYPE(block,"DumpMachineTerminator","machineSource")>\
+  %generatefile "machineSource" "FirEven_rtw.tlc"
+  %<GENERATE_TYPE(block,"DumpMachineTerminator","machineSource")>\
+  %generatefile "machineSource" "MedusaSurroundLevelControl_rtw.tlc"
+  %<GENERATE_TYPE(block,"DumpMachineTerminator","machineSource")>\
+  %generatefile "machineSource" "MuteRamperBtc_rtw.tlc"
+  %<GENERATE_TYPE(block,"DumpMachineTerminator","machineSource")>\
+  %generatefile "machineSource" "PoolDelay_rtw.tlc"
+  %<GENERATE_TYPE(block,"DumpMachineTerminator","machineSource")>\
+  %generatefile "machineSource" "MedusaDelays_rtw.tlc"
+  %<GENERATE_TYPE(block,"DumpMachineTerminator","machineSource")>\
+  %generatefile "machineSource" "Ifir_rtw.tlc"
+  %<GENERATE_TYPE(block,"DumpMachineTerminator","machineSource")>\
+  %generatefile "machineSource" "RifftLib_rtw.tlc"
+  %<GENERATE_TYPE(block,"DumpMachineTerminator","machineSource")>\
+  %closefile tmpFcnBuf
+  %return tmpFcnBuf              
+%endfunction %% GlobalMachineTerminator
+
+%function CacheMachineFunctions(block,system) void
+  %openfile tmpFcnBuf
+            
+            
+  %closefile tmpFcnBuf
+  %<SLibCacheCodeToFile("sf_machine_fcn_defn",tmpFcnBuf)>
+%endfunction

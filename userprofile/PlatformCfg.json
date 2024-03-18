@@ -1,0 +1,19 @@
+{
+    "postprocess": "disabled",
+    "Four_Byte_Align": ["Model_1_2.h"],
+    "to_static_func": [
+        "int32_T div_nde_s32_floor"           
+    ],
+    "to_be_removed_file": [
+        "srcThread.c"
+    ],
+    "to_be_added_header": {
+        "Model_1_6": "qhmath.h"
+    },
+    "multi_definition_func": [
+        "GetPartitionRoot", "RegisterPartition", "GetPartitionRootByIndex"
+    ],
+    "multi_definition_var":[
+        "TalariaAsyncRoutingTable"
+    ]
+}

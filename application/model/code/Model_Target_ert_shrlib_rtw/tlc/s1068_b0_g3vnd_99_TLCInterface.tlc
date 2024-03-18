@@ -1,0 +1,82 @@
+%implements s1068_b0_g3vnd_99_TLCInterface "C"
+
+%function getOutputAddr_314_1_99_1_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_BOCSCAddr(block, 741, 1776, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getOutput_314_1_99_1_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_BOCSC(block, 741, 1776, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getInputAddr_314_3_99_1_1_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_BOCSCAddr(block, 742, 32, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getInput_314_3_99_1_1_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_BOCSC(block, 742, 32, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getOutputAddr_314_3_99_1_1_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return ""
+%endfunction
+
+%function getOutput_314_3_99_1_1_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return ""
+%endfunction
+
+%function getOutputAddr_314_4_99_1_2_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_BOCSCAddr(block, 739, 4, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getOutput_314_4_99_1_2_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_BOCSC(block, 739, 4, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getOutputAddr_314_5_99_1_3_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_BOCSCAddr(block, 743, 164, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getOutput_314_5_99_1_3_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_BOCSC(block, 743, 164, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getSystemOutputFcnCallInfo_314_6_99_1_308_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>1253270*/InitTrigger_Model_141_345_50_172_192"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_314_9_99_1_305_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>1253274*/InitTrigger_Model_141_345_50_172_156"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_314_14_99_1_313_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>1253278*/InitTrigger_Model_141_347_84"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_314_17_99_1_311_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>125327c*/InitTrigger_Model_141_347_65"; Args [] }
+%return fcnInfo
+%endfunction
+%function getInputAddr_314_20_99_4_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return ""
+%endfunction
+
+%function getInput_314_20_99_4_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return ""
+%endfunction
+

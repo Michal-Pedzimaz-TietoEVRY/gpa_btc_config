@@ -1,0 +1,190 @@
+%implements s798_b0_evwnd_276_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+real_T cleanIdx_data[30];
+real_T tmp_data[30];
+int32_T indx_data[30];
+int32_T i;
+int32_T loop_ub;
+real32_T tmp_0;
+uint32_T tmp;
+char_T k_data[78];
+char_T i_data[74];
+char_T j_data[13];
+int8_T g_tmp_data[30];
+int8_T remainingPairs_data[30];
+static const char_T l[74] = %<(TLC_STR_CTX(121))>;
+static const char_T m[13] = %<(TLC_STR_CTX(122))>;
+static const char_T n[78] = %<(TLC_STR_CTX(123))>;
+int32_T indx_size;
+int32_T remainingPairs_size_idx_1;
+%closefile localVarDecl
+/* {S!d1783}MATLAB Function: '<S572>/Balance_Table_Translation' */
+/* {S!d1786}MATLAB Function: '<S572>/Balance_Table_Translation' incorporates:
+ *  S-Function (TuneVarMEX): '<S572>/TuneVarBalanceTable'
+ *
+ * Block description for '<S572>/TuneVarBalanceTable':
+ *  Define the balance curve using a table, with the first column being
+ *  the list of indices and the second column being the corresponding
+ *  balance gains in dB. Gain values for indices in between the elements
+ *  in the table are linearly interpolated.
+ */
+/*  Invoke the function trigger output */
+/* MATLAB Function 'TranslateTrigger/tfunc': '<S597>:1' */
+/* '<S597>:1:3' f(); */
+/*  Set up the size and datatype of our TOP outputs: */
+/* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/Balance/Balance/TuneVarTable/Balance_Table_Translation': '<S595>:1' */
+/* '<S595>:1:5' maxTableSize = numel(balanceTable.Value) / 2; */
+/* '<S595>:1:6' idxType = 'uint8'; */
+/* '<S595>:1:7' idxStorageType = 'uint32'; */
+/* '<S595>:1:8' dbType = 'single'; */
+/* '<S595>:1:9' tableIdx = zeros(1,maxTableSize,idxStorageType); */
+/* '<S595>:1:10' tableDb = zeros(1,maxTableSize,dbType); */
+/*@>ef52e1*/memset(&/*@>ef6831*/Model_TranslationEngine64_B./*@>ef7cf0*/tableIdx_o/*@>ef4723*/[/*@>ef4711*/0], /*@>ef7abd*/0, /*@>ef4721*/30U/*@>ef4729*/ * /*@>ef4728*/sizeof(uint32_T));
+/*@>ef52e3*/memset(&/*@>ef6837*/Model_TranslationEngine64_B./*@>ef7cf3*/tableDb_j/*@>ef473a*/[/*@>ef471f*/0], /*@>ef7ac0*/0, /*@>ef4738*/30U/*@>ef4740*/ * /*@>ef473f*/sizeof(real32_T));
+/*  separate the pairs into their index and value components */
+/* '<S595>:1:13' givenPairs = balanceTable.Size(1); */
+/* '<S595>:1:14' indexes = balanceTable.Value(1:givenPairs,1); */
+/* '<S595>:1:15' values = balanceTable.Value(1:givenPairs,2); */
+/*  then sort and ignore duplicates */
+/* '<S595>:1:18' [cleanIdx,map] = unique(indexes); */
+/*@>ef0ca9*/if (/*@>ef683d*/Model_TranslationEngine64_B./*@>ef7cf6*/Table_i./*@>ef7ce7*/Size/*@>ef6090*/[/*@>ef6089*/0]/*@>ee7260*/ < /*@>eee3ef*/1.0) {
+    /*@>ef0cad*/loop_ub/*@>ef0cac*/ = /*@>ef7ac3*/-1;
+} else {
+    /*@>eee5e8*/loop_ub/*@>eed7d0*/ = /*@>eee962*/(int32_T)/*@>ef6843*/Model_TranslationEngine64_B./*@>ef7cf9*/Table_i./*@>ef7cea*/Size/*@>ef6099*/[/*@>ef6092*/0]/*@>ee7269*/ - /*@>eee3f1*/1;
+}
+i/*@>eea50b*/ = /*@>eee5e6*/loop_ub + 1;
+if (/*@>ef42cc*/loop_ub >= /*@>ef42ca*/0) {
+    /*@>ef52f0*/memcpy(&/*@>ef42a4*/tmp_data/*@>ef42a5*/[/*@>ef4291*/0], &/*@>ef6849*/Model_TranslationEngine64_B./*@>ef7cfc*/Table_i./*@>ef7ce4*/Value[0], /*@>ef428f*/(uint32_T)(/*@>ef428b*/loop_ub + 1)/*@>ef42b6*/ * /*@>ef42b5*/sizeof(real_T));
+}
+%<SLibCG_DumpSSCode("/*@[ef772a*/",(SLibCGCallSubFcn("Model_TranslationEngine64_unique_vector_a", ["/*@>ef7db3*/tmp_data", "&i", "/*@>ef7dc8*/cleanIdx_data", "&loop_ub", "/*@>ef7ddd*/indx_data", "&indx_size"], 276, 2, 0)),"/*@]*/")>;
+/*  Validate input sizes */
+/* '<S595>:1:21' numPairs = numel(map); */
+/* '<S595>:1:22' argName='BalanceTable'; */
+/*  Validate: enough data? */
+/* '<S595>:1:25' if (numPairs < 2) */
+/*@>c74851*/if (indx_size/*@>c746f9*/ < /*@>eee3dd*/2) {
+    /* '<S595>:1:26' TranslateError('%<"\%s must have at least 2 index pairs. Encounted value with only \%f pairs\\n\', argName, numPairs);"> */
+    /* TRANSLATEERROR (For use in Functions triggered by TranslationTrigger blocks.) */
+    /* Print error message during tune data translation. */
+    /*   Do not include a final newline as this behavior is already built in. */
+    /*   Note that escape sequences such as '\n' will not work here. To emit */
+    /*   special characters, pass them in as arguments to %<"\%c or \%s format"> */
+    /*   specifiers. */
+    /*    Copyright 2018-2019 Bose Corporation */
+    /* 'TranslateError:10' coder.extrinsic('gcb') */
+    /* 'TranslateError:11' coder.extrinsic('warning') */
+    /* 'TranslateError:12' coder.allowpcode('plain'); */
+    /*  enable code generation from p-file */
+    /* 'TranslateError:14' if (coder.target('MATLAB')) */
+    /* 'TranslateError:18' if (coder.target('Sfun')) */
+    /* 'TranslateError:21' else */
+    /* 'TranslateError:22' count = numel(varargin); */
+    /* 'TranslateError:23' fixedArgs = varargin; */
+    /* 'TranslateError:24' for i=1:count */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:26' fixedArgs{i} = [varargin{i} char(0)]; */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:26' fixedArgs{i} = [varargin{i} char(0)]; */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:29' coder.ceval('TranslateError',fixedArgs{:}); */
+    /*@>ef52f2*/memcpy(&/*@>ef4231*/i_data[/*@>ef4221*/0], &/*@>ef4239*/l/*@>ef423a*/[/*@>ef422e*/0], /*@>ef4230*/74U/*@>ef423d*/ * /*@>ef423c*/sizeof(char_T));
+/*@>eeb3b5*/    for (/*@>ef7b3e*/i = /*@>ef7b3d*/0; /*@>ef7b48*/i < /*@>ef7b46*/13; /*@>ef7b44*/i/*@>ef7b4c*/++) {
+        /*@>ef34c5*/j_data[/*@>eee5a1*/i]/*@>eeb3a8*/ = /*@>ef60cd*/m/*@>ef60cf*/[/*@>ef60cc*/i];
+    }
+    /*@>ef4ed9*/TranslateError(&/*@>ef3492*/i_data/*@>ef34a5*/[/*@>eee5ad*/0], &/*@>ef34a8*/j_data/*@>ef34bb*/[/*@>eee5b1*/0], /*@>eef611*/(real_T)indx_size);
+}
+/*  Validate: Highest index still below 255? */
+/* '<S595>:1:30' if (cleanIdx(1) < 0 || cleanIdx(end) > intmax(idxType)) */
+/*@>c74870*/if ((/*@>ef609c*/cleanIdx_data/*@>ef609e*/[/*@>ef609b*/0]/*@>c746fa*/ < /*@>eee3de*/0.0)/*@>ef75f3*/ || (/*@>ef60a4*/cleanIdx_data/*@>ef60a6*/[loop_ub/*@>ef60a0*/ - /*@>ef60a3*/1]/*@>c746fe*/ > /*@>eee3df*/255.0)) {
+    /* '<S595>:1:31' TranslateError('%<"\%s out of range table index \%f encountered. Index must be between 0 and \%d.\\n\',argName,cleanIdx(end),intmax(idxType));"> */
+    /* TRANSLATEERROR (For use in Functions triggered by TranslationTrigger blocks.) */
+    /* Print error message during tune data translation. */
+    /*   Do not include a final newline as this behavior is already built in. */
+    /*   Note that escape sequences such as '\n' will not work here. To emit */
+    /*   special characters, pass them in as arguments to %<"\%c or \%s format"> */
+    /*   specifiers. */
+    /*    Copyright 2018-2019 Bose Corporation */
+    /* 'TranslateError:10' coder.extrinsic('gcb') */
+    /* 'TranslateError:11' coder.extrinsic('warning') */
+    /* 'TranslateError:12' coder.allowpcode('plain'); */
+    /*  enable code generation from p-file */
+    /* 'TranslateError:14' if (coder.target('MATLAB')) */
+    /* 'TranslateError:18' if (coder.target('Sfun')) */
+    /* 'TranslateError:21' else */
+    /* 'TranslateError:22' count = numel(varargin); */
+    /* 'TranslateError:23' fixedArgs = varargin; */
+    /* 'TranslateError:24' for i=1:count */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:26' fixedArgs{i} = [varargin{i} char(0)]; */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:26' fixedArgs{i} = [varargin{i} char(0)]; */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:29' coder.ceval('TranslateError',fixedArgs{:}); */
+    /*@>ef52f4*/memcpy(&/*@>ef419c*/k_data[/*@>ef418c*/0], &/*@>ef41a4*/n/*@>ef41a5*/[/*@>ef4199*/0], /*@>ef419b*/78U/*@>ef41a8*/ * /*@>ef41a7*/sizeof(char_T));
+/*@>eeb4ea*/    for (/*@>ef7b2d*/i = /*@>ef7b2c*/0; /*@>ef7b37*/i < /*@>ef7b35*/13; /*@>ef7b33*/i/*@>ef7b4d*/++) {
+        /*@>ef3596*/j_data[/*@>eee5c6*/i]/*@>eeb4dd*/ = /*@>ef60e9*/m/*@>ef60eb*/[/*@>ef60e8*/i];
+    }
+    /*@>ef4edd*/TranslateError(&/*@>ef3560*/k_data/*@>ef3573*/[/*@>eee5d2*/0], &/*@>ef3576*/j_data/*@>ef3589*/[/*@>eee5d6*/0], /*@>ef60e3*/cleanIdx_data/*@>ef60e5*/[loop_ub/*@>ef60df*/ - /*@>ef60e2*/1], /*@>eef636*/MAX_uint8_T);
+}
+/*  fill in the table buffer with provided pairs */
+/* '<S595>:1:35' tableIdx(1:numPairs) = cleanIdx(1:numPairs); */
+/*@>ef0cae*/if (indx_size/*@>ee7284*/ < /*@>eee3f4*/1) {
+    /*@>ef0cb2*/loop_ub/*@>ef0cb1*/ = /*@>ef7ac6*/-1;
+} else {
+    /*@>eee5ea*/loop_ub/*@>eed7d5*/ = indx_size/*@>ee728c*/ - /*@>eee3f6*/1;
+}
+/*@>eea7b8*/for (/*@>ef7b1d*/i = /*@>ef7b1c*/0; /*@>ef7b28*/i <= /*@>ef7b26*/loop_ub; /*@>ef7b23*/i/*@>ef7b4e*/++) {
+    /*@>ef684f*/Model_TranslationEngine64_B./*@>ef7cff*/tableIdx_o/*@>eea79e*/[/*@>eee47f*/i]/*@>eea7a5*/ = /*@>eee967*/(uint32_T)%<SLibCG_DumpSSCode("/*@[ef7741*/",(SLibCGCallSubFcn("rt_roundd_snf", ["/*@>ef7df3*/cleanIdx_data/*@>ef7df2*/[/*@>ef7df4*/i]"], 276, 2, 1)),"/*@]*/")>;
+}
+/* '<S595>:1:36' tableDb(1:numPairs) = values(map(1:numPairs)); */
+/*@>ef0cb3*/if (indx_size/*@>c74822*/ < /*@>eee3e8*/1) {
+    /*@>ef0cb7*/loop_ub/*@>ef0cb6*/ = /*@>ef7ac9*/0;
+} else {
+    /*@>eee5ee*/loop_ub/*@>eed7df*/ = indx_size;
+}
+/*@>eeaa42*/for (/*@>ef7b0a*/i = /*@>ef7b09*/0; /*@>ef7b17*/i < /*@>ef7b14*/loop_ub; /*@>ef7b10*/i/*@>ef7b4f*/++) {
+    /*@>ef6855*/Model_TranslationEngine64_B./*@>ef7d02*/tableDb_j/*@>eeaa2a*/[/*@>eee4af*/i]/*@>eeaa31*/ = /*@>eeaa07*/(real32_T)/*@>ef685b*/Model_TranslationEngine64_B./*@>ef7d05*/Table_i./*@>ef7ced*/Value/*@>ef60c1*/[/*@>ef60b7*/indx_data/*@>ef60b6*/[/*@>ef60b9*/i]/*@>ef60b4*/ + /*@>ef60ba*/29];
+}
+/*  fill the rest of the table buffer with the last entry */
+/* '<S595>:1:39' remainingPairs = numel(map)+1:maxTableSize; */
+/*@>c748a7*/if (indx_size/*@>c747d9*/ + /*@>eee3e9*/1/*@>c74825*/ > /*@>eee3e5*/30) {
+    remainingPairs_size_idx_1/*@>ee88da*/ = /*@>ef7acc*/0;
+} else {
+    remainingPairs_size_idx_1/*@>eeab03*/ = /*@>ef0465*/30/*@>ef1d30*/ - indx_size;
+    /*@>eee4de*/loop_ub/*@>eeab46*/ = /*@>ef046e*/29/*@>ef1d32*/ - indx_size;
+/*@>eeab2b*/    for (/*@>ef7afa*/i = /*@>ef7af9*/0; /*@>ef7b05*/i <= /*@>ef7b03*/loop_ub; /*@>ef7b00*/i/*@>ef7b52*/++) {
+        /*@>ef3391*/remainingPairs_data[/*@>eee4d3*/i]/*@>eeab17*/ = /*@>eef62d*/(int8_T)((indx_size/*@>ef6a7e*/ + /*@>ef6a81*/1)/*@>eeab0c*/ + /*@>eee4ce*/i);
+    }
+}
+/* '<S595>:1:40' tableIdx(remainingPairs) = tableIdx(numPairs); */
+if (remainingPairs_size_idx_1/*@>ef4111*/ - /*@>ef4114*/1 >= /*@>ef4110*/0) {
+    /*@>ef52f6*/memcpy(&/*@>ef40f2*/g_tmp_data[/*@>ef40e2*/0], &/*@>ef40fa*/remainingPairs_data[/*@>ef40f1*/0], /*@>ef40e0*/(uint32_T)remainingPairs_size_idx_1/*@>ef40fe*/ * /*@>ef40fd*/sizeof(int8_T));
+}
+/*@>eee429*/tmp/*@>ee9b89*/ = /*@>ef6861*/Model_TranslationEngine64_B./*@>ef7d08*/tableIdx_o/*@>ef60c9*/[indx_size/*@>ef60c3*/ - /*@>ef60c6*/1];
+/*@>eeafac*/for (/*@>ef7ae7*/i = /*@>ef7ae6*/0; /*@>ef7af4*/i < remainingPairs_size_idx_1; /*@>ef7aed*/i/*@>ef7b50*/++) {
+    /*@>ef6867*/Model_TranslationEngine64_B./*@>ef7d0b*/tableIdx_o/*@>eeaf87*/[/*@>ef60d3*/g_tmp_data[/*@>ef60d2*/i]/*@>eeaf8c*/ - /*@>eee532*/1]/*@>eeaf94*/ = /*@>eee529*/tmp;
+}
+/* '<S595>:1:41' tableDb(remainingPairs) =  tableDb(numPairs); */
+/*@>eee42b*/tmp_0/*@>ee9b9e*/ = /*@>ef686d*/Model_TranslationEngine64_B./*@>ef7d0e*/tableDb_j/*@>ef60dd*/[indx_size/*@>ef60d7*/ - /*@>ef60da*/1];
+/*@>eeb1b6*/for (/*@>ef7ad4*/i = /*@>ef7ad3*/0; /*@>ef7ae1*/i < remainingPairs_size_idx_1; /*@>ef7ada*/i/*@>ef7b51*/++) {
+    /*@>ef6873*/Model_TranslationEngine64_B./*@>ef7d11*/tableDb_j/*@>eeb191*/[/*@>ef60ef*/g_tmp_data[/*@>ef60ee*/i]/*@>eeb196*/ - /*@>eee559*/1]/*@>eeb19e*/ = /*@>eee550*/tmp_0;
+}
+/* {E!d1786}End of MATLAB Function: '<S572>/Balance_Table_Translation' */
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void FuncTranslation_Model_135_90(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(276, 2, fcnProtoType)>
+%endfunction

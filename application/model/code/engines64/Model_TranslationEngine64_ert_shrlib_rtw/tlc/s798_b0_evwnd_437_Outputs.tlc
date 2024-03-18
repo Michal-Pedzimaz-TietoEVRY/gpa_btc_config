@@ -1,0 +1,25 @@
+%implements s798_b0_evwnd_437_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+/* Outputs for Function Call SubSystem: '<S1841>/Subsystem' */
+/* SignalConversion generated from: '<S1842>/Bus Selector' */
+/*  Invoke the function trigger output */
+/* MATLAB Function 'TranslateTrigger/tfunc': '<S1844>:1' */
+/* '<S1844>:1:3' f(); */
+/*@>1041eb3*/Model_TranslationEngine64_B./*@>1041f7b*/Value_a/*@>c79476*/ = /*@>1041eb9*/Model_TranslationEngine64_B./*@>1041f7e*/RampTime_h0.Value;
+/* End of Outputs for SubSystem: '<S1841>/Subsystem' */
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void FuncTranslation_Model_1292_190_67_18(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(437, 0, fcnProtoType)>
+%endfunction

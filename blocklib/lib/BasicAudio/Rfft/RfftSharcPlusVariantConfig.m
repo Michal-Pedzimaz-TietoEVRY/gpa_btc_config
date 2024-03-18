@@ -1,0 +1,92 @@
+classdef RfftSharcPlusVariantConfig < BtcVariant
+% RfftSharcPlusVariantConfig Build-time configuration class for the RfftSharcPlus variant
+% Usage:
+%    <automatically allocated by setting the "Variant" property of the
+%    containing object derived from BtcBaseClassWithVariants
+%
+
+%   Copyright 2023 Bose Corporation
+
+  properties(Dependent, SetAccess = private)
+    % PropertyName size class {validation functions} = DefaultValue
+    BufferAlias
+  end
+  properties(SetObservable, GetObservable, Dependent, SetAccess = private)
+    DsmDataRealInitValue (:,1) single {mustBeReal}
+    DsmDataImagInitValue (:,1) single {mustBeReal}
+    DsmTempRealInitValue (:,1) single {mustBeReal}
+    DsmTempImagInitValue (:,1) single {mustBeReal}
+  end
+  properties(SetObservable, GetObservable, SetAccess = private)
+    DsmTwiddleRealInitValue uint32 = 0
+    DsmTwiddleImagInitValue uint32 = 0
+  end
+  methods
+    %----------------------------------------------------------------------
+    function this = RfftSharcPlusVariantConfig(constructingParentObj)
+        this@BtcVariant(constructingParentObj);
+    end
+    %----------------------------------------------------------------------
+    function value = get.BufferAlias(this)
+        value = [char(this.Parent.Alias) 'RfftBuffer'];
+    end
+    %----------------------------------------------------------------------
+    function VariantValidate(this)
+        % VariantValidate validates cross-property interactions. Our parent
+        % object calls us during block mask initialization.
+
+        if (this.Parent.FftSize ~= 256 && this.Parent.FftSize ~= 128)
+            error("This variant of Rfft does not support FftSize of %d", this.Parent.FftSize);
+        end
+        VariantValidate@BtcVariant(this);
+    end
+    %----------------------------------------------------------------------
+    function VariantDoMaskInit(this,blockHandle)
+        % VariantDoMaskInit performs automation of code generation settings
+        % and other canvas interactions for a variant subsystem. Our parent
+        % object calls us during block mask initialization.
+        
+        % Set up storage classes for working memory
+        this.ConfigureDataStoreMemory('TempReal', blockHandle, 'Default');
+        this.ConfigureDataStoreMemory('TempImag', blockHandle, 'Default');
+        this.ConfigureDataStoreMemory('DataReal', blockHandle, ['FFTMemL1DmWordAlign' num2str(this.Parent.FftSize)]);
+        this.ConfigureDataStoreMemory('DataImag', blockHandle, ['FFTMemL1PmWordAlign' num2str(this.Parent.FftSize)]);
+
+        % Be friendly about the CRL this variant expects
+        this.EnsureCodeReplacementLibrary(blockHandle, 'SHARC+ code replacement library');
+
+        VariantDoMaskInit@BtcVariant(this,blockHandle);
+    end
+
+    %----------------------------------------------------------------------  
+    function ConfigureDataStoreMemory(this, DataStoreMemoryName, blkh, MemorySection)
+        % Get DSM block Path
+        theDsm = ['Rfft/'...
+            char(this.Parent.Variant) '/' char(DataStoreMemoryName)];
+        DSMBlockPath = MaskUtil.SubBlockName(blkh,theDsm);
+
+        % Configure DSM Storage Class
+        identifier = [this.BufferAlias DataStoreMemoryName];
+        CscUtil.SetDatastoreCsc(DSMBlockPath, 'Blocklib', 'FFTBuffer', ...
+                                'Identifier', identifier, ...
+                                'MemorySection', MemorySection);
+    end
+    %----------------------------------------------------------------------  
+    function val = get.DsmDataRealInitValue(this)
+        val = zeros(this.Parent.FftSize,1);
+    end
+    %----------------------------------------------------------------------  
+    function val = get.DsmDataImagInitValue(this)
+        val = zeros(this.Parent.FftSize,1);
+    end
+    %----------------------------------------------------------------------
+    function val = get.DsmTempRealInitValue(this)
+        val = zeros(this.Parent.FftSize,1);
+    end
+    %----------------------------------------------------------------------  
+    function val = get.DsmTempImagInitValue(this)
+        val = zeros(this.Parent.FftSize,1);
+    end
+    %----------------------------------------------------------------------
+  end
+end

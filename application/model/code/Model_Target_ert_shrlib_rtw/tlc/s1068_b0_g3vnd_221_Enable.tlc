@@ -1,0 +1,37 @@
+%implements s1068_b0_g3vnd_221_Enable "C"
+
+%function Enable(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%assign tlcEnableFcnOfS8B1 = OpaqueTLCBlockFcn("Enable", 8, 1, 221, 2, 0)
+%assign   Enable_open_RTCRequestResponseTrigger_8_1 = ""
+%openfile Enable_open_RTCRequestResponseTrigger_8_1
+
+/* Enable for S-Function (RTC_REQ_RSP): '<S15>/RTC Request Response Trigger' */
+%closefile Enable_open_RTCRequestResponseTrigger_8_1
+
+%assign    Enable_body_RTCRequestResponseTrigger_8_1 = ""
+%openfile  Enable_body_RTCRequestResponseTrigger_8_1
+
+%<SLibCG_DumpSSCode("/*@[1354434*/",tlcEnableFcnOfS8B1,"/*@]*/")>\
+%closefile Enable_body_RTCRequestResponseTrigger_8_1
+
+%assign    Enable_close_RTCRequestResponseTrigger_8_1 = ""
+%openfile  Enable_close_RTCRequestResponseTrigger_8_1
+
+/* End of Enable for S-Function (RTC_REQ_RSP): '<S15>/RTC Request Response Trigger' */
+%closefile Enable_close_RTCRequestResponseTrigger_8_1
+%<SLibCG_DumpSSCode(Enable_open_RTCRequestResponseTrigger_8_1, Enable_body_RTCRequestResponseTrigger_8_1, Enable_close_RTCRequestResponseTrigger_8_1)>
+
+%closefile cfgTxt
+%<cfgTxt>
+%endfunction
+%function EnableFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_InputSelect_Enable(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(221, 2, fcnProtoType)>
+%endfunction

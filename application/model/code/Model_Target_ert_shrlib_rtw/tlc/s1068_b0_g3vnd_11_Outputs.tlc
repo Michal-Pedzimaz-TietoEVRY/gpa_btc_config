@@ -1,0 +1,68 @@
+%implements s1068_b0_g3vnd_11_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+int32_T i;
+%closefile localVarDecl
+/*  Update the steering coeffs using final stretch coeffs */
+/* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 2/Decimated-Rate FDP/Fdp/FreqDomainProcessing/CalculateAndApplyCoefficients/DeciRate/Calculate coefficients/Updated Stretch Coeffs and Steering Coeffs/Update Steering Coeffs': '<S698>:1' */
+/*  Update Lok/Rok */
+/* '<S698>:1:5' Lok = Loks + ((2 - Rstrks) .* Lstrks) .* Lxks; */
+/* '<S698>:1:6' Rok = Roks + ((2 - Lstrks) .* Rstrks) .* Rxks; */
+/*  Update Lxk/Rxk */
+/* '<S698>:1:9' LxRxStretchFactor = (1 - Lstrks) .* (1 - Rstrks); */
+/* '<S698>:1:10' Lxk = LxRxStretchFactor .* Lxks; */
+/* '<S698>:1:11' Rxk = LxRxStretchFactor .* Rxks; */
+/*@>116b0bc*/for (/*@>116c270*/i = /*@>116c26f*/0; /*@>116c27a*/i < /*@>116c278*/129; /*@>116c276*/i/*@>116c27e*/++) {
+    /*@>116c02c*/localB->/*@>116c310*/Lok/*@>116b3b7*/[/*@>116b83a*/i]/*@>116b093*/ = (/*@>116b81f*/2.0F/*@>116b0a4*/ - /*@>116bf4e*/rtu_Rstrks/*@>116bf50*/[/*@>116bf4c*/i])/*@>116b89e*/ * /*@>116bf55*/rtu_Lstrks/*@>116bf57*/[/*@>116bf53*/i]/*@>116b89a*/ * /*@>116bf5c*/rtu_Lxks/*@>116bf5e*/[/*@>116bf5a*/i]/*@>116b09a*/ + /*@>116bf63*/rtu_Loks/*@>116bf65*/[/*@>116bf61*/i];
+    /*@>116c033*/localB->/*@>116c313*/Rok/*@>116b451*/[/*@>116b84e*/i]/*@>116b0ca*/ = (/*@>116b825*/2.0F/*@>116b0db*/ - /*@>116bf6a*/rtu_Lstrks/*@>116bf6c*/[/*@>116bf68*/i])/*@>116b896*/ * /*@>116bf71*/rtu_Rstrks/*@>116bf73*/[/*@>116bf6f*/i]/*@>116b892*/ * /*@>116bf78*/rtu_Rxks/*@>116bf7a*/[/*@>116bf76*/i]/*@>116b0d1*/ + /*@>116bf7f*/rtu_Roks/*@>116bf81*/[/*@>116bf7d*/i];
+    /*@>116c03a*/localB->/*@>116c316*/Rxk/*@>116b4ab*/[/*@>116b85a*/i]/*@>116b101*/ = (/*@>116b826*/1.0F/*@>116b109*/ - /*@>116bf86*/rtu_Lstrks/*@>116bf88*/[/*@>116bf84*/i])/*@>116b88e*/ * (/*@>116b827*/1.0F/*@>116b112*/ - /*@>116bf8d*/rtu_Rstrks/*@>116bf8f*/[/*@>116bf8b*/i]);
+    /*@>116c041*/localB->/*@>116c319*/Lxk/*@>116b4f4*/[/*@>116b866*/i]/*@>116b4f5*/ = /*@>116c048*/localB->/*@>116c31c*/Rxk/*@>116bf95*/[/*@>116bf92*/i]/*@>116b88a*/ * /*@>116bf9a*/rtu_Lxks/*@>116bf9c*/[/*@>116bf98*/i];
+    /*@>116c04f*/localB->/*@>116c31f*/Rxk/*@>116b545*/[/*@>116b872*/i]/*@>116c27f*/ *= /*@>116bfa7*/rtu_Rxks/*@>116bfa9*/[/*@>116bfa5*/i];
+}
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[11].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(11, 0, 0)>
+%endif
+%if SLibCG_ArgAccessed(11, 0, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(11, 0, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_UpdateSteeringCoeffs(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(11, 0, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_Target_UpdateSteeringCoeffs", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>const real32_T rtu_Lstrks[129]\
+%assign comma = ", "
+%<comma>const real32_T rtu_Rstrks[129]\
+%assign comma = ", "
+%<comma>const real32_T rtu_Loks[129]\
+%assign comma = ", "
+%<comma>const real32_T rtu_Roks[129]\
+%assign comma = ", "
+%<comma>const real32_T rtu_Lxks[129]\
+%assign comma = ", "
+%<comma>const real32_T rtu_Rxks[129]\
+%assign comma = ", "
+%<comma>B_UpdateSteeringCoeffs_Model_Target_T *localB\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(11, 0, fcnProtoType)>
+%endfunction

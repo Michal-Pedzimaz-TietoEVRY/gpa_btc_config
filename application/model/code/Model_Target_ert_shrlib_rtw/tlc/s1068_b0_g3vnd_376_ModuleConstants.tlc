@@ -1,0 +1,14 @@
+%implements s1068_b0_g3vnd_376_ModuleConstants "C"
+
+%function ModuleConstants(block) Output
+
+
+/* Named constants for MATLAB Function: '<S716>/Detect Impulse' */
+#define Model_Target_MaxValueOfCounterForDetectingImpulse (4.0)
+
+/* Named constants for MATLAB Function: '<S800>/Detect Impulse' */
+#define Model_Target_MaxValueOfCounterForDetectingImpulse_n (16.0)
+
+/* Named constants for MATLAB Function: '<S835>/Mono Detector' */
+#define Model_Target_maxZeroLevelCount (693.0)
+%endfunction

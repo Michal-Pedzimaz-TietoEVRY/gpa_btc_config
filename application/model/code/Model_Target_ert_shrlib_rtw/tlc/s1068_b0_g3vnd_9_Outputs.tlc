@@ -1,0 +1,94 @@
+%implements s1068_b0_g3vnd_9_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+int32_T k;
+%closefile localVarDecl
+/* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 2/Decimated-Rate FDP/Fdp/FreqDomainProcessing/CalculateAndApplyCoefficients/DeciRate/Calculate coefficients/Coeffs 1st Stage': '<S664>:1' */
+/* '<S664>:1:4' epsf = single(eps); */
+/*  Magnitude calculations */
+/* '<S664>:1:7' absLi = abs(Lin) + epsf; */
+/* '<S664>:1:8' absRi = abs(Rin) + epsf; */
+/* '<S664>:1:9' minAbsLiRi = min(absLi, absRi); */
+/*  Excess coefficients (after removing far left/right) */
+/* '<S664>:1:12' Lxk = minAbsLiRi ./ absLi; */
+/* '<S664>:1:13' Rxk = minAbsLiRi ./ absRi; */
+/*  Far left/right coefficients */
+/* '<S664>:1:16' Lok = 1 - Lxk; */
+/*  1 - min(|L|,|R|)/|L| */
+/* '<S664>:1:17' Rok = 1 - Rxk; */
+/*  1 - min(|L|,|R|)/|R| */
+/*  Surround Phase Selectivity computation */
+/*  New SPS = |Lx - Rx|/(|Lx| + |Rx|) */
+/* '<S664>:1:21' Lx = Lin .* Lxk; */
+/* '<S664>:1:22' Rx = Rin .* Rxk; */
+/* '<S664>:1:23' SPS = abs(Lx - Rx) ./ (abs(Lx) + abs(Rx) + epsf); */
+/*@>10c9e3f*/for (/*@>1169ab4*/k = /*@>1169ab3*/0; /*@>1169abe*/k < /*@>1169abc*/129; /*@>1169aba*/k/*@>1169ac2*/++) {
+    real32_T absLi_tmp;
+    real32_T absLi_tmp_0;
+    real32_T absRi_tmp;
+    real32_T absRi_tmp_0;
+    real32_T b_z;
+    real32_T minval;
+    real32_T z;
+    /*@>1168949*/absLi_tmp/*@>116894b*/ = /*@>1169528*/rtu_Lin/*@>116952a*/[/*@>1169526*/k].re;
+    /*@>1168959*/absLi_tmp_0/*@>116895b*/ = /*@>116952f*/rtu_Lin/*@>1169531*/[/*@>116952d*/k].im;
+    /*@>116969c*/localB->/*@>1169bef*/absLi/*@>1167124*/[/*@>1167fa2*/k]/*@>10c9e45*/ = /*@>1169234*/qhmath_hypot_f(/*@>116894d*/absLi_tmp, /*@>116895d*/absLi_tmp_0);
+    /*@>11696a3*/localB->/*@>1169bf2*/absLi/*@>11670b2*/[/*@>1167f94*/k]/*@>1169ac3*/ += /*@>1167f8b*/2.22044605E-16F;
+    /*@>1168969*/absRi_tmp/*@>116896b*/ = /*@>116953c*/rtu_Rin/*@>116953e*/[/*@>116953a*/k].re;
+    /*@>1168979*/absRi_tmp_0/*@>116897b*/ = /*@>1169543*/rtu_Rin/*@>1169545*/[/*@>1169541*/k].im;
+    /*@>11696b1*/localB->/*@>1169bf5*/absRi/*@>11671c7*/[/*@>1167fb6*/k]/*@>10c9e51*/ = /*@>1169236*/qhmath_hypot_f(/*@>116896d*/absRi_tmp, /*@>116897d*/absRi_tmp_0);
+    /*@>11696b8*/localB->/*@>1169bf8*/absRi/*@>1167155*/[/*@>1167fa8*/k]/*@>1169ac4*/ += /*@>1167f8c*/2.22044605E-16F;
+    minval/*@>10c9e5d*/ = /*@>1169238*/fminf(/*@>11696c6*/localB->/*@>1169bfb*/absLi/*@>1169551*/[/*@>116954e*/k], /*@>11696cd*/localB->/*@>1169bfe*/absRi/*@>1169557*/[/*@>1169554*/k]);
+    z/*@>1167264*/ = /*@>116923a*/qhmath_div_f(minval, /*@>11696d4*/localB->/*@>1169c01*/absLi/*@>116955d*/[/*@>116955a*/k]);
+    b_z/*@>11672b7*/ = /*@>116923c*/qhmath_div_f(minval, /*@>11696db*/localB->/*@>1169c04*/absRi/*@>1169563*/[/*@>1169560*/k]);
+    /*@>11696e2*/localB->/*@>1169c07*/Lok/*@>11672f3*/[/*@>1167fca*/k]/*@>11672f4*/ = /*@>1167f8d*/1.0F/*@>11672e7*/ - z;
+    /*@>11696e9*/localB->/*@>1169c0a*/Rok/*@>1167330*/[/*@>1167fd0*/k]/*@>1167331*/ = /*@>1167f8e*/1.0F/*@>1167324*/ - b_z;
+    /*@>116802e*/absLi_tmp/*@>1169ac5*/ *= /*@>116800e*/z;
+    /*@>1168030*/absLi_tmp_0/*@>1169ac6*/ *= /*@>1168014*/z;
+    /*@>1168032*/absRi_tmp/*@>1169ac7*/ *= /*@>116801a*/b_z;
+    /*@>1168034*/absRi_tmp_0/*@>1169ac8*/ *= /*@>1168020*/b_z;
+    /*@>11696f0*/localB->/*@>1169c0d*/SPS/*@>11674a5*/[/*@>1167fd6*/k]/*@>10c9e6a*/ = /*@>116923e*/qhmath_hypot_f(absLi_tmp/*@>1168405*/ - absRi_tmp, absLi_tmp_0/*@>116840a*/ - absRi_tmp_0);
+    /*@>11696f7*/localB->/*@>1169c10*/SPS/*@>1167558*/[/*@>1167fdc*/k]/*@>1167559*/ = /*@>1169244*/qhmath_div_f(/*@>11696fe*/localB->/*@>1169c13*/SPS/*@>1169569*/[/*@>1169566*/k], (/*@>1169240*/qhmath_hypot_f(absLi_tmp, absLi_tmp_0)/*@>1167546*/ + /*@>1169242*/qhmath_hypot_f(absRi_tmp, absRi_tmp_0))/*@>1167545*/ + /*@>1167f8f*/2.22044605E-16F);
+    /*@>1169705*/localB->/*@>1169c16*/Lxk/*@>11675e5*/[/*@>1167fe2*/k]/*@>11675e6*/ = z;
+    /*@>116970c*/localB->/*@>1169c19*/Rxk/*@>1167621*/[/*@>1167fe8*/k]/*@>1167622*/ = b_z;
+    /*@>1169713*/localB->/*@>1169c1c*/minAbsLiRi/*@>116765d*/[/*@>1167fee*/k]/*@>116765e*/ = minval;
+}
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[9].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(9, 0, 0)>
+%endif
+%if SLibCG_ArgAccessed(9, 0, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(9, 0, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_Coeffs1stStage(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(9, 0, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_Target_Coeffs1stStage", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>const creal32_T rtu_Lin[129]\
+%assign comma = ", "
+%<comma>const creal32_T rtu_Rin[129]\
+%assign comma = ", "
+%<comma>B_Coeffs1stStage_Model_Target_T *localB\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(9, 0, fcnProtoType)>
+%endfunction

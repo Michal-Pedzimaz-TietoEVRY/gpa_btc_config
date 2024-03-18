@@ -1,0 +1,44 @@
+%implements s1068_b0_g3vnd_75_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+/*@>12304f1*/localB->/*@>1230670*/vncEnableOut/*@>10cc4fb*/ = /*@>1230313*/rtu_vncEnableIn;
+/*  */
+/* Trivial translation */
+/*  */
+/* MATLAB Function 'NEAR/Near1p1/VolumeMute/VolMuteCh1/Ann1NonEntGainCalc/MATLAB Function': '<S1856>:1' */
+/* '<S1856>:1:5' vncEnableOut = vncEnableIn; */
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[75].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(75, 0, 0)>
+%endif
+%if SLibCG_ArgAccessed(75, 0, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(75, 0, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_MATLABFunction_m0(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(75, 0, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_Target_MATLABFunction_m0", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>uint32_T rtu_vncEnableIn\
+%assign comma = ", "
+%<comma>B_MATLABFunction_Model_Target_k_T *localB\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(75, 0, fcnProtoType)>
+%endfunction

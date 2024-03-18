@@ -1,0 +1,136 @@
+%implements s1068_b0_g3vnd_19_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+int32_T k;
+real32_T currentgain[30];
+real32_T diff[30];
+%closefile localVarDecl
+/* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 3/On/Full-rate Mixer/Full-Rate Mixer with CAE & Fade Ramper/Full Mixing Matrix_Right/Ramper/control': '<S982>:1' */
+/* '<S982>:1:10' dim_rgain = size(FRM_currentGain_Right); */
+/* '<S982>:1:11' rgain_SILENT_GAIN_mat = (MedusaFRMConfig.rgain_SILENT_GAIN)*ones(dim_rgain); */
+/*  Step 1: FREEZE the gain ramper so that we can perform calculations based */
+/*  on the current gain value. */
+/* '<S982>:1:15' FRM_Freeze_Right(1) = true; */
+/*  freeze the gain */
+/*  Step 2: Nudge the gain values a bit if they are sitting at zero. */
+/*  When this control set goes live, ensure that the current gain will move. */
+/*  If current gain is zero, replace with a value very close to zero. What we */
+/*  really want is a value which is on the edge of perception - not too small */
+/*  or large. If the value is too small, we'll waste some of our ramp time */
+/*  in perceived silence. If the value is too large, the audio will lurch */
+/*  into perceptability at the start of the ramp. */
+/* '<S982>:1:24' currentgain = max(FRM_currentGain_Right, rgain_SILENT_GAIN_mat); */
+/* '<S982>:1:25' targetGain  = max(target_gains_linear, rgain_SILENT_GAIN_mat); */
+/*  Step 3a: If a ramp time in milliseconds is provided, ignore the ramp */
+/*  rate in dB/sec (if also provided), otherwise calculate a new ramp time */
+/*  that matches the slope. */
+/* '<S982>:1:30' rampTime_ms = single(rampTime)*ones(dim_rgain); */
+/*@>10bf092*/for (/*@>117c25d*/k = /*@>117c25c*/0; /*@>117c267*/k < /*@>117c265*/30; /*@>117c263*/k/*@>117c26b*/++) {
+    /*@>117a72d*/currentgain/*@>1179772*/[/*@>117a72f*/k]/*@>10bf099*/ = /*@>117ba0d*/fmaxf(/*@>117bd61*/rtd_FRM_currentGain_Right/*@>117bd63*/[/*@>117bd5f*/k], /*@>117a714*/1.1920929E-7F);
+    /*@>117a735*/rtd_FRM_rampCoeff_Right/*@>11797b0*/[/*@>117a737*/k]/*@>10bf0a5*/ = /*@>117ba0f*/fmaxf(/*@>117bd68*/rtu_target_gains_linear/*@>117bd6a*/[/*@>117bd66*/k], /*@>117a715*/1.1920929E-7F);
+    /*@>117a73f*/diff/*@>11797e1*/[/*@>117a73d*/k]/*@>11797e2*/ = /*@>11797d7*/(real32_T)/*@>117a73b*/rtu_rampTime;
+}
+/* '<S982>:1:32' if(~rampTime) */
+/*@>10bf044*/if (/*@>117a71f*/rtu_rampTime/*@>10bf071*/ == /*@>117a708*/0U) {
+    /* '<S982>:1:33' currentGain_db = 20*log10(currentgain); */
+    /* '<S982>:1:34' targetGain_db = 20*log10(targetGain); */
+    /* '<S982>:1:35' diff = abs(currentGain_db - targetGain_db); */
+    /* '<S982>:1:36' rampTime_ms = diff / single(rampRate) * 1000; */
+/*@>117983a*/    for (/*@>117c24c*/k = /*@>117c24b*/0; /*@>117c256*/k < /*@>117c254*/30; /*@>117c252*/k/*@>117c26c*/++) {
+        /*@>117a7ad*/diff/*@>117a107*/[/*@>117a7af*/k] = /*@>117ba17*/qhmath_div_f(/*@>117ba15*/qhmath_abs_f(/*@>117ac28*/20.0F/*@>117ac27*/ * /*@>117ba11*/qhmath_log10_f(/*@>117bd6e*/currentgain/*@>117bd70*/[/*@>117bd6d*/k])/*@>117ac26*/ - /*@>117ac2c*/20.0F/*@>117ac2b*/ * /*@>117ba13*/qhmath_log10_f(/*@>117bd75*/rtd_FRM_rampCoeff_Right/*@>117bd77*/[/*@>117bd73*/k])), /*@>117abb2*/(real32_T)/*@>117abb4*/rtu_rampRate)/*@>117abad*/ * /*@>117abb5*/1000.0F;
+    }
+}
+/*  Step 3b: QUANTIZE the desired ramp time to our FrameSize. Also retrieve */
+/*  the whole number of frames required to best match requested ramp time. */
+/*  Ensure that at least one frame is used. The frame size will therefore */
+/*  determine the steepest ramp (i.e. within one frame you can go anywhere). */
+/* '<S982>:1:43' quantum_ms = 1000 * (MedusaFRMConfig.frame_size) / (MedusaFRMConfig.sample_rate_in_hertz); */
+/* '<S982>:1:44' numFrames = rampTime_ms / quantum_ms; */
+/* '<S982>:1:45' numFrames = max (1, round(numFrames)); */
+/*  In order to have the desired ramp time, the slope must vary dependent */
+/*  on the gain differencebetween target and current value. */
+/*  Ramper's coefficient is therefore calculated as follows: */
+/*  */
+/*    TargetGain = CurrentGain *( RampCoef ^ (Fs*RampTime_ms/1000) ) */
+/*  */
+/*  therefore... */
+/*  */
+/*                      log(TargetGain/CurrentGain) */
+/*    log(RampCoef) = ------------------------------ */
+/*                         Fs*(RampTime_ms/1000) */
+/*  */
+/* '<S982>:1:59' factor = log( targetGain ./ currentgain ); */
+/* '<S982>:1:60' RampCoef = exp(factor ./ numFrames); */
+/*  Output control signals */
+/* '<S982>:1:63' FRM_frameCount_Right  = int32(numFrames); */
+/* '<S982>:1:64' FRM_rampCoeff_Right   = single(RampCoef); */
+/* '<S982>:1:65' FRM_targetGain_Right  = target_gains_linear; */
+/* '<S982>:1:66' FRM_currentGain_Right = currentgain; */
+/*@>1179915*/for (/*@>117c23b*/k = /*@>117c23a*/0; /*@>117c245*/k < /*@>117c243*/30; /*@>117c241*/k/*@>117c26d*/++) {
+    real32_T currentgain_0;
+    real32_T diff_0;
+    real32_T numFrames;
+    currentgain_0 = /*@>117bd7b*/currentgain/*@>117bd7d*/[/*@>117bd7a*/k];
+    diff_0/*@>10bf0d2*/ = /*@>117ba1b*/roundf(/*@>117ba19*/qhmath_div_f(/*@>117bd81*/diff/*@>117bd83*/[/*@>117bd80*/k], /*@>117b21f*/0.722222209F));
+    numFrames/*@>10bf0de*/ = /*@>117ba1d*/fmaxf(/*@>117a713*/1.0F, diff_0);
+    /*@>117a765*/rtd_FRM_rampCoeff_Right/*@>1179b2a*/[/*@>117a763*/k]/*@>1179b2b*/ = /*@>117ba1f*/qhmath_div_f(/*@>117bd88*/rtd_FRM_rampCoeff_Right/*@>117bd8a*/[/*@>117bd86*/k], currentgain_0);
+    /*@>117a76b*/rtd_FRM_rampCoeff_Right/*@>1179b72*/[/*@>117a76d*/k]/*@>10bf0e7*/ = /*@>117ba21*/qhmath_log_f(/*@>117bd8f*/rtd_FRM_rampCoeff_Right/*@>117bd91*/[/*@>117bd8d*/k]);
+    /*@>117a775*/rtd_FRM_rampCoeff_Right/*@>1179bbe*/[/*@>117a773*/k]/*@>1179bbf*/ = /*@>117ba23*/qhmath_div_f(/*@>117bd96*/rtd_FRM_rampCoeff_Right/*@>117bd98*/[/*@>117bd94*/k], numFrames);
+    /*@>117a77b*/rtd_FRM_rampCoeff_Right/*@>1179c06*/[/*@>117a77d*/k]/*@>10bf0f0*/ = /*@>117ba25*/qhmath_exp_f(/*@>117bd9d*/rtd_FRM_rampCoeff_Right/*@>117bd9f*/[/*@>117bd9b*/k]);
+    /*@>117a781*/rtd_FRM_frameCount_Right/*@>1179c3e*/[/*@>117a77f*/k]/*@>1179c3f*/ = /*@>117a7ec*/(int32_T)/*@>117ba27*/roundf(numFrames);
+    /*@>117a787*/rtd_FRM_targetGain_Right/*@>1179c86*/[/*@>117a789*/k]/*@>1178fd1*/ = /*@>117bda4*/rtu_target_gains_linear/*@>117bda6*/[/*@>117bda2*/k];
+    /*@>117a78d*/rtd_FRM_currentGain_Right/*@>1179cb9*/[/*@>117a78b*/k]/*@>1179cba*/ = currentgain_0;
+    /*@>117b155*/diff/*@>117b154*/[/*@>117b157*/k] = diff_0;
+}
+/*  unfreeze the gain */
+/* '<S982>:1:69' FRM_Freeze_Right(1) = false; */
+*rtd_FRM_Freeze_Right/*@>10bf033*/ = /*@>117a709*/false;
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[19].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(19, 0, 0)>
+%endif
+%if SLibCG_ArgAccessed(19, 0, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(19, 0, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_control_a(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(19, 0, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_Target_control_a", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>const real32_T rtu_target_gains_linear[30]\
+%assign comma = ", "
+%<comma>uint32_T rtu_rampRate\
+%assign comma = ", "
+%<comma>uint32_T rtu_rampTime\
+%assign comma = ", "
+%<comma>boolean_T *rtd_FRM_Freeze_Right\
+%assign comma = ", "
+%<comma>real32_T rtd_FRM_currentGain_Right[30]\
+%assign comma = ", "
+%<comma>int32_T rtd_FRM_frameCount_Right[30]\
+%assign comma = ", "
+%<comma>real32_T rtd_FRM_rampCoeff_Right[30]\
+%assign comma = ", "
+%<comma>real32_T rtd_FRM_targetGain_Right[30]\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(19, 0, fcnProtoType)>
+%endfunction

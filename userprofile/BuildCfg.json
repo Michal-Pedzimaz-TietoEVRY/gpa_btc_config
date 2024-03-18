@@ -1,0 +1,45 @@
+{
+  "x86_build": {
+    "model_target": [
+      "Target"
+    ],
+    "build_mode": "Release",
+    "custom_option": "-Wno-unused-variable -Wno-unused-function -Wno-undefined-optimized -Wno-incompatible-pointer-types -Wno-tautological-compare -Wno-strict-prototypes -DABCDEF=1"
+  },
+  "hexagon_build": {
+    "model_target": [
+      "Target"
+    ],
+    "build_mode": "Release",
+    "dsp_arch": "v73",
+    "multithread": "enabled",
+    "custom_option": "-Wno-unused-variable -Wno-unused-function -Wno-undefined-optimized -Wno-incompatible-pointer-types -Wno-tautological-compare -Wno-strict-prototypes -DABCDEF=1"
+  },
+  "armandroid_build": {
+    "model_target": [
+      "Target"
+    ],
+    "build_mode": "Release",
+    "arm_arch": "armv8-a",
+    "arm_tune": "cortex-a53",
+    "custom_option": "-g -mfpu=neon -march=armv8-a -mtune=cortex-a53"
+  },
+  "armqnx_build": {
+    "model_target": [
+      "Target"
+    ],
+    "build_mode": "Release",
+    "arm_arch": "armv8-a",
+    "arm_tune": "cortex-a53",
+    "custom_option": "-g -march=armv8-a -mtune=cortex-a53"
+  },
+  "gul_singlecore_build": {
+    "model_target": [
+      "Target"
+    ],
+    "build_mode": "Release",
+    "dsp_arch": "ADSP-21569 -si-revision 0.0",
+    "sim_config": "ADSP-21569 via ICE-2000",
+    "custom_option": " -double-size-32 -char-size-8 -swc -O -Ov100 -g -DPLATFORM_ADI_DSP_EXTERNAL_RAM"
+  }
+}

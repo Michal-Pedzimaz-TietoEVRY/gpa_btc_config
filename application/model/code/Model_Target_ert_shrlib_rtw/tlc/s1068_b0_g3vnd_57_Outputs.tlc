@@ -1,0 +1,160 @@
+%implements s1068_b0_g3vnd_57_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+real32_T cut_linear;
+real32_T tmp;
+uint8_T j;
+boolean_T exitg1;
+%closefile localVarDecl
+/*  Computes the gains for the L, R, C Mono channel groups.   */
+/*  Based on the gainIdx, we will: */
+/*      1. Set specific speakers to mute, if the gain index is  */
+/*      extreme (i.e. either 0 or 255) */
+/*      2. Begin a gain-tapering function on the speakers, if the */
+/*      gain index is approaching 0 or 255 (i.e. taper the speaker gains */
+/*      beginning with the last few clicks of the gain index) */
+/* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/SleepingBeauty/SleepingBeauty/Enabled/SleepingBeautyDR/InnerLink/calculate_SB_gains': '<S1441>:1' */
+/*   Set target gains to ones */
+/* '<S1441>:1:13' j = uint8(1); */
+/*@>11fae51*/j/*@>10ca85b*/ = /*@>11fd4f1*/1U;
+/* '<S1441>:1:14' cut_linear = single(0.0); */
+/*@>11fae53*/cut_linear/*@>10ca85c*/ = /*@>11fae8a*/0.0F;
+/* '<S1441>:1:16' targetGainsSB = coder.nullcopy(ones(1, MaskNumRampers,'single')); */
+/* '<S1441>:1:17' gainIdx = single(gainIdx); */
+/*  Find the left and the right gains */
+/*  Based on the SB table, the dB value of the index is calculated */
+/* '<S1441>:1:21' while (j <= numel(TableIdx)) */
+exitg1 = false;
+while/*@<10ca88e*/ ((!exitg1) && (/*@>11fae57*/j/*@>10ca875*/ <= /*@>11fae8b*/30)) {
+    /* '<S1441>:1:22' if (gainIdx <= TableIdx(j)) */
+    /*@>11fb732*/tmp/*@>11fb734*/ = /*@>11fce15*/rtu_TableIdx/*@>11fce17*/[/*@>11fce12*/j/*@>11fce0f*/ - /*@>11fce13*/1];
+    /*@>10ca88f*/if (/*@>11fae9e*/rtu_gainIdx/*@>10ca878*/ <= /*@>11fb736*/tmp) {
+        /* '<S1441>:1:23' if (j <= 1) */
+        /*@>10ca890*/if (/*@>11fae5a*/j/*@>10ca879*/ <= /*@>11fae5c*/1) {
+            /*  first indexed value is linearly interpolated to zero */
+            /* '<S1441>:1:24' if (TableIdx(j)) */
+            /*@>10ca892*/if (/*@>11fce1b*/rtu_TableIdx/*@>11fce1d*/[/*@>11fce19*/0]/*@>10ca87a*/ != /*@>11fae66*/0.0F) {
+                /* '<S1441>:1:25' percent = gainIdx / TableIdx(j); */
+                /*@>11fae79*/cut_linear/*@>10ca8f8*/ = /*@>11fc814*/qhmath_div_f(/*@>10ca95b*/(real32_T)/*@>11faea4*/rtu_gainIdx, /*@>11fce21*/rtu_TableIdx/*@>11fce23*/[/*@>11fce1f*/0]);
+            } else {
+                /* '<S1441>:1:26' else */
+                /* '<S1441>:1:27' percent = single(1); */
+                /*@>11fae69*/cut_linear/*@>10ca861*/ = /*@>11fae8e*/1.0F;
+            }
+            /* '<S1441>:1:29' cut_linear = percent * 10 ^ (TableDb(j) / 20); */
+            /*@>11fae71*/cut_linear/*@>11fd51b*/ *= /*@>11fc818*/qhmath_pow_f(/*@>11fae92*/10.0F, /*@>11fc816*/qhmath_div_f(/*@>11fce45*/rtu_TableDb/*@>11fce47*/[/*@>11fce43*/0], /*@>11fae91*/20.0F));
+        } else {
+            real32_T cut_linear_tmp;
+            /* '<S1441>:1:30' else */
+            /*  other values are interpolated in db space */
+            /* '<S1441>:1:31' lastIdx = single(TableIdx(j-1)); */
+            /* '<S1441>:1:32' percent = (gainIdx - lastIdx) / (TableIdx(j) - lastIdx); */
+            /* '<S1441>:1:33' cut_linear = 10 ^ (((percent * (TableDb(j) - TableDb(j-1))) + TableDb(j-1)) / 20); */
+            /*@>11fb742*/cut_linear/*@>11fb744*/ = /*@>11fce2b*/rtu_TableIdx/*@>11fce2d*/[/*@>11fce28*/j/*@>11fce25*/ - /*@>11fce29*/2];
+            /*@>11fb76a*/cut_linear_tmp/*@>11fb76c*/ = /*@>11fce35*/rtu_TableDb/*@>11fce37*/[/*@>11fce32*/j/*@>11fce2f*/ - /*@>11fce33*/2];
+            /*@>11fae7b*/cut_linear/*@>10ca902*/ = /*@>11fc812*/qhmath_pow_f(/*@>11fae90*/10.0F, /*@>11fc810*/qhmath_div_f((/*@>11fce3f*/rtu_TableDb/*@>11fce41*/[/*@>11fce3c*/j/*@>11fce39*/ - /*@>11fce3d*/1]/*@>10ca99f*/ - /*@>11fb76e*/cut_linear_tmp)/*@>11faf17*/ * /*@>11fc80e*/qhmath_div_f(/*@>10ca992*/(real32_T)/*@>11faea6*/rtu_gainIdx/*@>10ca991*/ - /*@>11fb746*/cut_linear, tmp/*@>10ca995*/ - cut_linear)/*@>10ca98e*/ + cut_linear_tmp, /*@>11fae8f*/20.0F));
+        }
+        exitg1 = true;
+    } else {
+        /* '<S1441>:1:36' else */
+        /* '<S1441>:1:37' j = j + 1; */
+        /*@>11fae60*/j/*@>11fd51c*/++;
+    }
+}
+/*  Assign left and right Gain Values to headrest speakers (TAPERING) */
+/* '<S1441>:1:42' if (gainIdx - indexOffset) > 0 */
+/*@>11fb77a*/tmp/*@>11fb77c*/ = /*@>10ca963*/(real32_T)/*@>11faea0*/rtu_gainIdx/*@>10ca87d*/ - /*@>11faea2*/rtu_indexOffset;
+/*@>10ca899*/if (/*@>11fb77e*/tmp/*@>10ca87e*/ > /*@>11fae59*/0.0F) {
+    /*  Left speakers attenuated */
+    /* '<S1441>:1:43' left = single(cut_linear); */
+    /*@>11fcf50*/localB->/*@>11fd60c*/targetGainsSB/*@>10ca90a*/[/*@>11fae7e*/0]/*@>10ca867*/ = /*@>11fae62*/cut_linear;
+    /* '<S1441>:1:44' right = single(1); */
+    /*@>11fcf5e*/localB->/*@>11fd612*/targetGainsSB/*@>10ca914*/[/*@>11fae80*/1]/*@>10ca868*/ = /*@>11fae8c*/1.0F;
+    /* '<S1441>:1:45' center = left; */
+    /*@>11fcf6c*/localB->/*@>11fd618*/targetGainsSB/*@>10ca928*/[/*@>11fae84*/2]/*@>10ca869*/ = /*@>11fae67*/cut_linear;
+    /* '<S1441>:1:46' mono = center; */
+    /*@>11fcf7a*/localB->/*@>11fd61e*/targetGainsSB/*@>10ca93c*/[/*@>11fae88*/3]/*@>10ca86a*/ = /*@>11fae6d*/cut_linear;
+    /*  %<"\% If we\'re extreme, make the cut complete"> */
+    /* '<S1441>:1:49' if (abs(gainIdx - indexOffset) >= (indexOffset-1)) */
+    /*@>10ca8a0*/if (/*@>11fc81c*/qhmath_abs_f(tmp)/*@>10ca880*/ >= /*@>11faeac*/rtu_indexOffset/*@>10ca87f*/ - /*@>11fae75*/1.0F) {
+        /* '<S1441>:1:50' left = single(0); */
+        /*@>11fcf88*/localB->/*@>11fd624*/targetGainsSB/*@>10ca905*/[/*@>11fae7d*/0]/*@>10ca86b*/ = /*@>11fae93*/0.0F;
+        /* '<S1441>:1:51' center = single(0); */
+        /*@>11fcf96*/localB->/*@>11fd62a*/targetGainsSB/*@>10ca923*/[/*@>11fae83*/2]/*@>10ca86c*/ = /*@>11fae95*/0.0F;
+    }
+} else {
+    /* '<S1441>:1:53' else */
+    /*  Right speakers attenuated  */
+    /* '<S1441>:1:54' right = single(cut_linear); */
+    /*@>11fcf57*/localB->/*@>11fd60f*/targetGainsSB/*@>10ca91e*/[/*@>11fae82*/1]/*@>10ca86e*/ = /*@>11fae64*/cut_linear;
+    /* '<S1441>:1:55' left = single(1); */
+    /*@>11fcf65*/localB->/*@>11fd615*/targetGainsSB/*@>10ca90f*/[/*@>11fae7f*/0]/*@>10ca86f*/ = /*@>11fae8d*/1.0F;
+    /* '<S1441>:1:56' center = right; */
+    /*@>11fcf73*/localB->/*@>11fd61b*/targetGainsSB/*@>10ca932*/[/*@>11fae86*/2]/*@>10ca870*/ = /*@>11fae6b*/cut_linear;
+    /* '<S1441>:1:57' mono = center; */
+    /*@>11fcf81*/localB->/*@>11fd621*/targetGainsSB/*@>10ca941*/[/*@>11fae89*/3]/*@>10ca871*/ = /*@>11fae73*/cut_linear;
+    /*  %<"\% If we\'re extreme, make the cut complete"> */
+    /* '<S1441>:1:60' if (abs(gainIdx - indexOffset) >= (indexOffset-1)) */
+    /*@>10ca8a9*/if (/*@>11fc81a*/qhmath_abs_f(/*@>10ca96d*/(real32_T)/*@>11faeae*/rtu_gainIdx/*@>10ca96c*/ - /*@>11faeb0*/rtu_indexOffset)/*@>10ca882*/ >= /*@>11faeb2*/rtu_indexOffset/*@>10ca881*/ - /*@>11fae76*/1.0F) {
+        /* '<S1441>:1:61' right = single(0); */
+        /*@>11fcf8f*/localB->/*@>11fd627*/targetGainsSB/*@>10ca919*/[/*@>11fae81*/1]/*@>10ca872*/ = /*@>11fae94*/0.0F;
+        /* '<S1441>:1:62' center = single(0); */
+        /*@>11fcf9d*/localB->/*@>11fd62d*/targetGainsSB/*@>10ca92d*/[/*@>11fae85*/2]/*@>10ca873*/ = /*@>11fae96*/0.0F;
+    }
+}
+/*  Mute the mono channels if we're extreme and if it's checked in the mask */
+/* '<S1441>:1:67' if (abs(gainIdx - indexOffset) >= (indexOffset-1)) && (MaskSilentExtremeMutesBass) */
+/*@>10ca8ac*/if ((/*@>11fc81e*/qhmath_abs_f(/*@>10ca979*/(real32_T)/*@>11faeb4*/rtu_gainIdx/*@>10ca978*/ - /*@>11faeb6*/rtu_indexOffset)/*@>10ca884*/ >= /*@>11faeb8*/rtu_indexOffset/*@>10ca883*/ - /*@>11fae77*/1.0F)/*@>11fd47c*/ && (/*@>11faeba*/rtu_MaskSilentExtremeMutesBass/*@>10ca885*/ != /*@>11fae78*/0.0F)) {
+    /* '<S1441>:1:68' mono = single(0); */
+    /*@>11fcfa4*/localB->/*@>11fd630*/targetGainsSB/*@>10ca937*/[/*@>11fae87*/3]/*@>10ca874*/ = /*@>11fae97*/0.0F;
+}
+/*  Write gains to targetGains  */
+/* '<S1441>:1:72' targetGainsSB(1) = left; */
+/* '<S1441>:1:73' targetGainsSB(2) = right; */
+/* '<S1441>:1:74' targetGainsSB(3) = center; */
+/* '<S1441>:1:75' targetGainsSB(4) = mono; */
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[57].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(57, 0, 0)>
+%endif
+%if SLibCG_ArgAccessed(57, 0, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(57, 0, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_calculate_SB_gains(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(57, 0, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_Target_calculate_SB_gains", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>uint32_T rtu_gainIdx\
+%assign comma = ", "
+%<comma>const real32_T rtu_TableDb[30]\
+%assign comma = ", "
+%<comma>const real32_T rtu_TableIdx[30]\
+%assign comma = ", "
+%<comma>real32_T rtu_indexOffset\
+%assign comma = ", "
+%<comma>real32_T rtu_MaskSilentExtremeMutesBass\
+%assign comma = ", "
+%<comma>B_calculate_SB_gains_Model_Target_T *localB\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(57, 0, fcnProtoType)>
+%endfunction

@@ -1,0 +1,56 @@
+%implements "chartSource" "C"
+%function ChartConfig(block, system) void
+  %createrecord chartConfiguration { ...
+          executeAtInitialization  0 ...
+  }
+  %return chartConfiguration
+%endfunction
+%function ChartDataMap(block, system) void
+  %createrecord ChartDataElements {\
+    NumChartData   5 \
+    ChartDataDefaults {\
+      RecordType   "ChartData"\
+      Dimensions   []\
+      IsTestPoint  0\
+    }\
+    ChartData {\
+      Name         "states2"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "C:\volvo_gpa_ip4\ModelConfigHERA2144\blocklib\lib\filters\FirGeneric\FirGenericProcessSim.m:658-665"\
+      Dimensions   [43560]\
+    }\
+    ChartData {\
+      Name         "filterOffsets"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "C:\volvo_gpa_ip4\ModelConfigHERA2144\blocklib\lib\filters\FirGeneric\FirGenericProcessSim.m:792-805"\
+      Dimensions   [66]\
+    }\
+    ChartData {\
+      Name         "filterOffsets_not_empty"\
+      Description  "EmlPersistentSentinel"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "C:\volvo_gpa_ip4\ModelConfigHERA2144\blocklib\lib\filters\FirGeneric\FirGenericProcessSim.m:792-805"\
+    }\
+    ChartData {\
+      Name         "stateOffsets"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "C:\volvo_gpa_ip4\ModelConfigHERA2144\blocklib\lib\filters\FirGeneric\FirGenericProcessSim.m:1304-1316"\
+      Dimensions   [66]\
+    }\
+    ChartData {\
+      Name         "stateOffsets_not_empty"\
+      Description  "EmlPersistentSentinel"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "C:\volvo_gpa_ip4\ModelConfigHERA2144\blocklib\lib\filters\FirGeneric\FirGenericProcessSim.m:1304-1316"\
+    }\
+  }
+  %return ChartDataElements
+%endfunction

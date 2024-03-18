@@ -1,0 +1,100 @@
+%implements s1068_b0_g3vnd_99_Enable "C"
+
+%function Enable(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%assign tlcEnableFcnOfS314B6 = OpaqueTLCBlockFcn("Enable", 314, 6, 99, 2, 0)
+%assign tlcEnableFcnOfS314B9 = OpaqueTLCBlockFcn("Enable", 314, 9, 99, 2, 1)
+%assign tlcEnableFcnOfS314B14 = OpaqueTLCBlockFcn("Enable", 314, 14, 99, 2, 2)
+%assign tlcEnableFcnOfS314B17 = OpaqueTLCBlockFcn("Enable", 314, 17, 99, 2, 3)
+%assign   Enable_open_ITC1_314_9 = ""
+%openfile Enable_open_ITC1_314_9
+
+/* Enable for S-Function (InitTriggerControl): '<S919>/ITC1' */
+%closefile Enable_open_ITC1_314_9
+
+%assign    Enable_body_ITC1_314_9 = ""
+%openfile  Enable_body_ITC1_314_9
+
+%<SLibCG_DumpSSCode("/*@[12530d2*/",tlcEnableFcnOfS314B6,"/*@]*/")>\
+%closefile Enable_body_ITC1_314_9
+
+%assign    Enable_close_ITC1_314_9 = ""
+%openfile  Enable_close_ITC1_314_9
+
+/* End of Enable for S-Function (InitTriggerControl): '<S919>/ITC1' */
+%closefile Enable_close_ITC1_314_9
+%<SLibCG_DumpSSCode(Enable_open_ITC1_314_9, Enable_body_ITC1_314_9, Enable_close_ITC1_314_9)>
+
+
+%assign   Enable_open_ITC1_o_314_12 = ""
+%openfile Enable_open_ITC1_o_314_12
+
+/* Enable for S-Function (InitTriggerControl): '<S911>/ITC1' */
+%closefile Enable_open_ITC1_o_314_12
+
+%assign    Enable_body_ITC1_o_314_12 = ""
+%openfile  Enable_body_ITC1_o_314_12
+
+%<SLibCG_DumpSSCode("/*@[12530d4*/",tlcEnableFcnOfS314B9,"/*@]*/")>\
+%closefile Enable_body_ITC1_o_314_12
+
+%assign    Enable_close_ITC1_o_314_12 = ""
+%openfile  Enable_close_ITC1_o_314_12
+
+/* End of Enable for S-Function (InitTriggerControl): '<S911>/ITC1' */
+%closefile Enable_close_ITC1_o_314_12
+%<SLibCG_DumpSSCode(Enable_open_ITC1_o_314_12, Enable_body_ITC1_o_314_12, Enable_close_ITC1_o_314_12)>
+
+
+%assign   Enable_open_ITC1_p_314_18 = ""
+%openfile Enable_open_ITC1_p_314_18
+
+/* Enable for S-Function (InitTriggerControl): '<S927>/ITC1' */
+%closefile Enable_open_ITC1_p_314_18
+
+%assign    Enable_body_ITC1_p_314_18 = ""
+%openfile  Enable_body_ITC1_p_314_18
+
+%<SLibCG_DumpSSCode("/*@[12530d6*/",tlcEnableFcnOfS314B14,"/*@]*/")>\
+%closefile Enable_body_ITC1_p_314_18
+
+%assign    Enable_close_ITC1_p_314_18 = ""
+%openfile  Enable_close_ITC1_p_314_18
+
+/* End of Enable for S-Function (InitTriggerControl): '<S927>/ITC1' */
+%closefile Enable_close_ITC1_p_314_18
+%<SLibCG_DumpSSCode(Enable_open_ITC1_p_314_18, Enable_body_ITC1_p_314_18, Enable_close_ITC1_p_314_18)>
+
+
+%assign   Enable_open_ITC1_j_314_21 = ""
+%openfile Enable_open_ITC1_j_314_21
+
+/* Enable for S-Function (InitTriggerControl): '<S926>/ITC1' */
+%closefile Enable_open_ITC1_j_314_21
+
+%assign    Enable_body_ITC1_j_314_21 = ""
+%openfile  Enable_body_ITC1_j_314_21
+
+%<SLibCG_DumpSSCode("/*@[12530d8*/",tlcEnableFcnOfS314B17,"/*@]*/")>\
+%closefile Enable_body_ITC1_j_314_21
+
+%assign    Enable_close_ITC1_j_314_21 = ""
+%openfile  Enable_close_ITC1_j_314_21
+
+/* End of Enable for S-Function (InitTriggerControl): '<S926>/ITC1' */
+%closefile Enable_close_ITC1_j_314_21
+%<SLibCG_DumpSSCode(Enable_open_ITC1_j_314_21, Enable_body_ITC1_j_314_21, Enable_close_ITC1_j_314_21)>
+
+%closefile cfgTxt
+%<cfgTxt>
+%endfunction
+%function EnableFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_ExpandTailComponents_Enable(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(99, 2, fcnProtoType)>
+%endfunction

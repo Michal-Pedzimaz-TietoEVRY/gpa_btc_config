@@ -1,0 +1,41 @@
+%implements "chartSource" "C"
+%function ChartConfig(block, system) void
+  %createrecord chartConfiguration { ...
+          executeAtInitialization  0 ...
+  }
+  %return chartConfiguration
+%endfunction
+%function ChartDataMap(block, system) void
+  %createrecord ChartDataElements {\
+    NumChartData   3 \
+    ChartDataDefaults {\
+      RecordType   "ChartData"\
+      Dimensions   []\
+      IsTestPoint  0\
+    }\
+    ChartData {\
+      Name         "IRMinCount"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "Model_Target:117:516:1746:420-430"\
+    }\
+    ChartData {\
+      Name         "IRSubMin"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "Model_Target:117:516:1746:431-439"\
+      Dimensions   [3,65]\
+    }\
+    ChartData {\
+      Name         "IRPowMS"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "Model_Target:117:516:1746:440-447"\
+      Dimensions   [1,65]\
+    }\
+  }
+  %return ChartDataElements
+%endfunction

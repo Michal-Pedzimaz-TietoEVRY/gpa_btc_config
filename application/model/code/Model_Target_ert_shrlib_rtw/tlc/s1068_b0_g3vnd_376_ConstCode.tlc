@@ -1,0 +1,92 @@
+%implements s1068_b0_g3vnd_376_ConstCode "C"
+
+%function ConstCode(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%assign tlcOutputsFcnOfS300B133 = OpaqueTLCBlockFcn("Outputs", 300, 133, 376, 5, 0)
+%assign tlcOutputsFcnOfS300B134 = OpaqueTLCBlockFcn("Outputs", 300, 134, 376, 5, 1)
+%assign tlcOutputsFcnOfS300B168 = OpaqueTLCBlockFcn("Outputs", 300, 168, 376, 5, 2)
+%assign tlcOutputsFcnOfS300B169 = OpaqueTLCBlockFcn("Outputs", 300, 169, 376, 5, 3)
+%assign tlcOutputsFcnOfS290B22 = OpaqueTLCBlockFcn("Outputs", 290, 22, 376, 5, 4)
+%assign tlcOutputsFcnOfS290B23 = OpaqueTLCBlockFcn("Outputs", 290, 23, 376, 5, 5)
+%assign tlcOutputsFcnOfS300B199 = OpaqueTLCBlockFcn("Outputs", 300, 199, 376, 5, 6)
+%assign tlcOutputsFcnOfS300B204 = OpaqueTLCBlockFcn("Outputs", 300, 204, 376, 5, 7)
+%if !WHITE_SPACE(tlcOutputsFcnOfS300B133)
+/* ConstCode for S-Function (CapturedConst): '<S660>/Captured Tune Const' incorporates:
+ *  S-Function (AudioStats_MEX): '<S660>/Audio Stats'
+ */
+%<SLibCG_DumpSSCode("/*@[143f2d8*/",tlcOutputsFcnOfS300B133,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS300B134)
+/* ConstCode for S-Function (CapturedConst): '<S660>/Captured Tune Const1' incorporates:
+ *  S-Function (AudioStats_MEX): '<S660>/Audio Stats'
+ */
+%<SLibCG_DumpSSCode("/*@[143f2da*/",tlcOutputsFcnOfS300B134,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS300B168)
+/* ConstCode for S-Function (CapturedConst): '<S756>/Captured Tune Const' incorporates:
+ *  S-Function (AudioStats_MEX): '<S756>/Audio Stats'
+ */
+%<SLibCG_DumpSSCode("/*@[143f2dc*/",tlcOutputsFcnOfS300B168,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS300B169)
+/* ConstCode for S-Function (CapturedConst): '<S756>/Captured Tune Const1' incorporates:
+ *  S-Function (AudioStats_MEX): '<S756>/Audio Stats'
+ */
+%<SLibCG_DumpSSCode("/*@[143f2de*/",tlcOutputsFcnOfS300B169,"/*@]*/")>\
+%endif
+%assign   ConstCode_open_MonoDetector_300_52 = ""
+%openfile ConstCode_open_MonoDetector_300_52
+
+/* ConstCode for IfAction SubSystem: '<S649>/Mono Detector' */
+%closefile ConstCode_open_MonoDetector_300_52
+
+%assign    ConstCode_body_MonoDetector_300_52 = ""
+%openfile  ConstCode_body_MonoDetector_300_52
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS290B22)
+/* ConstCode for S-Function (CapturedConst): '<S842>/Captured Tune Const1' incorporates:
+ *  S-Function (AudioStats_MEX): '<S835>/Audio Stats'
+ */
+%<SLibCG_DumpSSCode("/*@[143f2e0*/",tlcOutputsFcnOfS290B22,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS290B23)
+/* ConstCode for S-Function (CapturedConst): '<S842>/Captured Tune Const' incorporates:
+ *  S-Function (AudioStats_MEX): '<S835>/Audio Stats'
+ */
+%<SLibCG_DumpSSCode("/*@[143f2e2*/",tlcOutputsFcnOfS290B23,"/*@]*/")>\
+%endif
+%closefile ConstCode_body_MonoDetector_300_52
+
+%assign    ConstCode_close_MonoDetector_300_52 = ""
+%openfile  ConstCode_close_MonoDetector_300_52
+
+/* End of ConstCode for SubSystem: '<S649>/Mono Detector' */
+%closefile ConstCode_close_MonoDetector_300_52
+%<SLibCG_DumpSSCode(ConstCode_open_MonoDetector_300_52, ConstCode_body_MonoDetector_300_52, ConstCode_close_MonoDetector_300_52)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS300B199)
+
+/* ConstCode for S-Function (CapturedConst): '<S856>/Captured Tune Const1' incorporates:
+ *  S-Function (AudioStats_MEX): '<S856>/Audio Stats'
+ */
+%<SLibCG_DumpSSCode("/*@[143f2e4*/",tlcOutputsFcnOfS300B199,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS300B204)
+/* ConstCode for S-Function (CapturedConst): '<S870>/CapturedTuneConst' incorporates:
+ *  S-Function (AudioStats_MEX): '<S870>/AudioStats'
+ */
+%<SLibCG_DumpSSCode("/*@[143f2e6*/",tlcOutputsFcnOfS300B204,"/*@]*/")>\
+%endif
+%closefile cfgTxt
+%<cfgTxt>
+%endfunction
+%function ConstCodeFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_Medusa5H1Part2_Const(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(376, 5, fcnProtoType)>
+%endfunction

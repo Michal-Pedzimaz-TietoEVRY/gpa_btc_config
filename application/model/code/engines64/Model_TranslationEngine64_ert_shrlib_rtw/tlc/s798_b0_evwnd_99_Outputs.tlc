@@ -1,0 +1,1891 @@
+%implements s798_b0_evwnd_99_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%assign tlcOutputsFcnOfS379B0 = OpaqueTLCBlockFcn("Outputs", 379, 0, 99, 1, 0)
+%assign tlcOutputsFcnOfS379B1 = OpaqueTLCBlockFcn("Outputs", 379, 1, 99, 1, 1)
+%assign tlcOutputsFcnOfS379B2 = OpaqueTLCBlockFcn("Outputs", 379, 2, 99, 1, 2)
+%assign tlcOutputsFcnOfS379B5 = OpaqueTLCBlockFcn("Outputs", 379, 5, 99, 1, 3)
+%assign tlcOutputsFcnOfS379B6 = OpaqueTLCBlockFcn("Outputs", 379, 6, 99, 1, 4)
+%assign tlcOutputsFcnOfS379B7 = OpaqueTLCBlockFcn("Outputs", 379, 7, 99, 1, 5)
+%assign tlcOutputsFcnOfS379B9 = OpaqueTLCBlockFcn("Outputs", 379, 9, 99, 1, 6)
+%assign tlcOutputsFcnOfS379B10 = OpaqueTLCBlockFcn("Outputs", 379, 10, 99, 1, 7)
+%assign tlcOutputsFcnOfS379B13 = OpaqueTLCBlockFcn("Outputs", 379, 13, 99, 1, 8)
+%assign tlcOutputsFcnOfS379B14 = OpaqueTLCBlockFcn("Outputs", 379, 14, 99, 1, 9)
+%assign tlcOutputsFcnOfS379B15 = OpaqueTLCBlockFcn("Outputs", 379, 15, 99, 1, 10)
+%assign tlcOutputsFcnOfS379B18 = OpaqueTLCBlockFcn("Outputs", 379, 18, 99, 1, 11)
+%assign tlcOutputsFcnOfS379B19 = OpaqueTLCBlockFcn("Outputs", 379, 19, 99, 1, 12)
+%assign tlcOutputsFcnOfS379B20 = OpaqueTLCBlockFcn("Outputs", 379, 20, 99, 1, 13)
+%assign tlcOutputsFcnOfS379B23 = OpaqueTLCBlockFcn("Outputs", 379, 23, 99, 1, 14)
+%assign tlcOutputsFcnOfS379B24 = OpaqueTLCBlockFcn("Outputs", 379, 24, 99, 1, 15)
+%assign tlcOutputsFcnOfS379B25 = OpaqueTLCBlockFcn("Outputs", 379, 25, 99, 1, 16)
+%assign tlcOutputsFcnOfS379B26 = OpaqueTLCBlockFcn("Outputs", 379, 26, 99, 1, 17)
+%assign tlcOutputsFcnOfS379B29 = OpaqueTLCBlockFcn("Outputs", 379, 29, 99, 1, 18)
+%assign tlcOutputsFcnOfS379B30 = OpaqueTLCBlockFcn("Outputs", 379, 30, 99, 1, 19)
+%assign tlcOutputsFcnOfS379B31 = OpaqueTLCBlockFcn("Outputs", 379, 31, 99, 1, 20)
+%assign tlcOutputsFcnOfS379B32 = OpaqueTLCBlockFcn("Outputs", 379, 32, 99, 1, 21)
+%assign tlcOutputsFcnOfS379B35 = OpaqueTLCBlockFcn("Outputs", 379, 35, 99, 1, 22)
+%assign tlcOutputsFcnOfS379B36 = OpaqueTLCBlockFcn("Outputs", 379, 36, 99, 1, 23)
+%assign tlcOutputsFcnOfS379B37 = OpaqueTLCBlockFcn("Outputs", 379, 37, 99, 1, 24)
+%assign tlcOutputsFcnOfS379B38 = OpaqueTLCBlockFcn("Outputs", 379, 38, 99, 1, 25)
+%assign tlcOutputsFcnOfS379B41 = OpaqueTLCBlockFcn("Outputs", 379, 41, 99, 1, 26)
+%assign tlcOutputsFcnOfS379B42 = OpaqueTLCBlockFcn("Outputs", 379, 42, 99, 1, 27)
+%assign tlcOutputsFcnOfS379B43 = OpaqueTLCBlockFcn("Outputs", 379, 43, 99, 1, 28)
+%assign tlcOutputsFcnOfS379B46 = OpaqueTLCBlockFcn("Outputs", 379, 46, 99, 1, 29)
+%assign tlcOutputsFcnOfS379B47 = OpaqueTLCBlockFcn("Outputs", 379, 47, 99, 1, 30)
+%assign tlcOutputsFcnOfS379B48 = OpaqueTLCBlockFcn("Outputs", 379, 48, 99, 1, 31)
+%assign tlcOutputsFcnOfS379B51 = OpaqueTLCBlockFcn("Outputs", 379, 51, 99, 1, 32)
+%assign tlcOutputsFcnOfS379B52 = OpaqueTLCBlockFcn("Outputs", 379, 52, 99, 1, 33)
+%assign tlcOutputsFcnOfS379B53 = OpaqueTLCBlockFcn("Outputs", 379, 53, 99, 1, 34)
+%assign tlcOutputsFcnOfS379B54 = OpaqueTLCBlockFcn("Outputs", 379, 54, 99, 1, 35)
+%assign tlcOutputsFcnOfS379B57 = OpaqueTLCBlockFcn("Outputs", 379, 57, 99, 1, 36)
+%assign tlcOutputsFcnOfS379B58 = OpaqueTLCBlockFcn("Outputs", 379, 58, 99, 1, 37)
+%assign tlcOutputsFcnOfS379B59 = OpaqueTLCBlockFcn("Outputs", 379, 59, 99, 1, 38)
+%assign tlcOutputsFcnOfS379B60 = OpaqueTLCBlockFcn("Outputs", 379, 60, 99, 1, 39)
+%assign tlcOutputsFcnOfS379B63 = OpaqueTLCBlockFcn("Outputs", 379, 63, 99, 1, 40)
+%assign tlcOutputsFcnOfS379B64 = OpaqueTLCBlockFcn("Outputs", 379, 64, 99, 1, 41)
+%assign tlcOutputsFcnOfS379B65 = OpaqueTLCBlockFcn("Outputs", 379, 65, 99, 1, 42)
+%assign tlcOutputsFcnOfS379B66 = OpaqueTLCBlockFcn("Outputs", 379, 66, 99, 1, 43)
+%assign tlcOutputsFcnOfS379B69 = OpaqueTLCBlockFcn("Outputs", 379, 69, 99, 1, 44)
+%assign tlcOutputsFcnOfS379B70 = OpaqueTLCBlockFcn("Outputs", 379, 70, 99, 1, 45)
+%assign tlcOutputsFcnOfS379B71 = OpaqueTLCBlockFcn("Outputs", 379, 71, 99, 1, 46)
+%assign tlcOutputsFcnOfS379B74 = OpaqueTLCBlockFcn("Outputs", 379, 74, 99, 1, 47)
+%assign tlcOutputsFcnOfS379B75 = OpaqueTLCBlockFcn("Outputs", 379, 75, 99, 1, 48)
+%assign tlcOutputsFcnOfS379B76 = OpaqueTLCBlockFcn("Outputs", 379, 76, 99, 1, 49)
+%assign tlcOutputsFcnOfS379B77 = OpaqueTLCBlockFcn("Outputs", 379, 77, 99, 1, 50)
+%assign tlcOutputsFcnOfS379B80 = OpaqueTLCBlockFcn("Outputs", 379, 80, 99, 1, 51)
+%assign tlcOutputsFcnOfS379B81 = OpaqueTLCBlockFcn("Outputs", 379, 81, 99, 1, 52)
+%assign tlcOutputsFcnOfS379B82 = OpaqueTLCBlockFcn("Outputs", 379, 82, 99, 1, 53)
+%assign tlcOutputsFcnOfS379B83 = OpaqueTLCBlockFcn("Outputs", 379, 83, 99, 1, 54)
+%assign tlcOutputsFcnOfS379B86 = OpaqueTLCBlockFcn("Outputs", 379, 86, 99, 1, 55)
+%assign tlcOutputsFcnOfS379B87 = OpaqueTLCBlockFcn("Outputs", 379, 87, 99, 1, 56)
+%assign tlcOutputsFcnOfS379B88 = OpaqueTLCBlockFcn("Outputs", 379, 88, 99, 1, 57)
+%assign tlcOutputsFcnOfS379B89 = OpaqueTLCBlockFcn("Outputs", 379, 89, 99, 1, 58)
+%assign tlcOutputsFcnOfS379B92 = OpaqueTLCBlockFcn("Outputs", 379, 92, 99, 1, 59)
+%assign tlcOutputsFcnOfS379B93 = OpaqueTLCBlockFcn("Outputs", 379, 93, 99, 1, 60)
+%assign tlcOutputsFcnOfS379B94 = OpaqueTLCBlockFcn("Outputs", 379, 94, 99, 1, 61)
+%assign tlcOutputsFcnOfS379B95 = OpaqueTLCBlockFcn("Outputs", 379, 95, 99, 1, 62)
+%assign tlcOutputsFcnOfS379B98 = OpaqueTLCBlockFcn("Outputs", 379, 98, 99, 1, 63)
+%assign tlcOutputsFcnOfS379B99 = OpaqueTLCBlockFcn("Outputs", 379, 99, 99, 1, 64)
+%assign tlcOutputsFcnOfS379B100 = OpaqueTLCBlockFcn("Outputs", 379, 100, 99, 1, 65)
+%assign tlcOutputsFcnOfS379B101 = OpaqueTLCBlockFcn("Outputs", 379, 101, 99, 1, 66)
+%assign tlcOutputsFcnOfS379B104 = OpaqueTLCBlockFcn("Outputs", 379, 104, 99, 1, 67)
+%assign tlcOutputsFcnOfS379B105 = OpaqueTLCBlockFcn("Outputs", 379, 105, 99, 1, 68)
+%assign tlcOutputsFcnOfS379B106 = OpaqueTLCBlockFcn("Outputs", 379, 106, 99, 1, 69)
+%assign tlcOutputsFcnOfS379B107 = OpaqueTLCBlockFcn("Outputs", 379, 107, 99, 1, 70)
+%assign tlcOutputsFcnOfS379B108 = OpaqueTLCBlockFcn("Outputs", 379, 108, 99, 1, 71)
+%assign tlcOutputsFcnOfS379B111 = OpaqueTLCBlockFcn("Outputs", 379, 111, 99, 1, 72)
+%assign tlcOutputsFcnOfS379B112 = OpaqueTLCBlockFcn("Outputs", 379, 112, 99, 1, 73)
+%assign tlcOutputsFcnOfS379B113 = OpaqueTLCBlockFcn("Outputs", 379, 113, 99, 1, 74)
+%assign tlcOutputsFcnOfS379B114 = OpaqueTLCBlockFcn("Outputs", 379, 114, 99, 1, 75)
+%assign tlcOutputsFcnOfS379B115 = OpaqueTLCBlockFcn("Outputs", 379, 115, 99, 1, 76)
+%assign tlcOutputsFcnOfS379B116 = OpaqueTLCBlockFcn("Outputs", 379, 116, 99, 1, 77)
+%assign tlcOutputsFcnOfS379B119 = OpaqueTLCBlockFcn("Outputs", 379, 119, 99, 1, 78)
+%assign tlcOutputsFcnOfS379B120 = OpaqueTLCBlockFcn("Outputs", 379, 120, 99, 1, 79)
+%assign tlcOutputsFcnOfS379B121 = OpaqueTLCBlockFcn("Outputs", 379, 121, 99, 1, 80)
+%assign tlcOutputsFcnOfS379B124 = OpaqueTLCBlockFcn("Outputs", 379, 124, 99, 1, 81)
+%assign tlcOutputsFcnOfS379B125 = OpaqueTLCBlockFcn("Outputs", 379, 125, 99, 1, 82)
+%assign tlcOutputsFcnOfS379B126 = OpaqueTLCBlockFcn("Outputs", 379, 126, 99, 1, 83)
+%assign tlcOutputsFcnOfS379B129 = OpaqueTLCBlockFcn("Outputs", 379, 129, 99, 1, 84)
+%assign tlcOutputsFcnOfS379B130 = OpaqueTLCBlockFcn("Outputs", 379, 130, 99, 1, 85)
+%assign tlcOutputsFcnOfS379B131 = OpaqueTLCBlockFcn("Outputs", 379, 131, 99, 1, 86)
+%assign tlcOutputsFcnOfS379B132 = OpaqueTLCBlockFcn("Outputs", 379, 132, 99, 1, 87)
+%assign tlcOutputsFcnOfS379B135 = OpaqueTLCBlockFcn("Outputs", 379, 135, 99, 1, 88)
+%assign tlcOutputsFcnOfS379B136 = OpaqueTLCBlockFcn("Outputs", 379, 136, 99, 1, 89)
+%assign tlcOutputsFcnOfS379B137 = OpaqueTLCBlockFcn("Outputs", 379, 137, 99, 1, 90)
+%assign tlcOutputsFcnOfS379B138 = OpaqueTLCBlockFcn("Outputs", 379, 138, 99, 1, 91)
+%assign tlcOutputsFcnOfS379B141 = OpaqueTLCBlockFcn("Outputs", 379, 141, 99, 1, 92)
+%assign tlcOutputsFcnOfS379B142 = OpaqueTLCBlockFcn("Outputs", 379, 142, 99, 1, 93)
+%assign tlcOutputsFcnOfS379B143 = OpaqueTLCBlockFcn("Outputs", 379, 143, 99, 1, 94)
+%assign tlcOutputsFcnOfS379B144 = OpaqueTLCBlockFcn("Outputs", 379, 144, 99, 1, 95)
+%assign tlcOutputsFcnOfS379B147 = OpaqueTLCBlockFcn("Outputs", 379, 147, 99, 1, 96)
+%assign tlcOutputsFcnOfS379B148 = OpaqueTLCBlockFcn("Outputs", 379, 148, 99, 1, 97)
+%assign tlcOutputsFcnOfS379B149 = OpaqueTLCBlockFcn("Outputs", 379, 149, 99, 1, 98)
+%assign tlcOutputsFcnOfS379B152 = OpaqueTLCBlockFcn("Outputs", 379, 152, 99, 1, 99)
+%assign tlcOutputsFcnOfS379B153 = OpaqueTLCBlockFcn("Outputs", 379, 153, 99, 1, 100)
+%assign tlcOutputsFcnOfS379B154 = OpaqueTLCBlockFcn("Outputs", 379, 154, 99, 1, 101)
+%assign tlcOutputsFcnOfS379B157 = OpaqueTLCBlockFcn("Outputs", 379, 157, 99, 1, 102)
+%assign tlcOutputsFcnOfS379B158 = OpaqueTLCBlockFcn("Outputs", 379, 158, 99, 1, 103)
+%assign tlcOutputsFcnOfS379B159 = OpaqueTLCBlockFcn("Outputs", 379, 159, 99, 1, 104)
+%assign tlcOutputsFcnOfS379B160 = OpaqueTLCBlockFcn("Outputs", 379, 160, 99, 1, 105)
+%assign tlcOutputsFcnOfS379B163 = OpaqueTLCBlockFcn("Outputs", 379, 163, 99, 1, 106)
+%assign tlcOutputsFcnOfS379B164 = OpaqueTLCBlockFcn("Outputs", 379, 164, 99, 1, 107)
+%assign tlcOutputsFcnOfS379B165 = OpaqueTLCBlockFcn("Outputs", 379, 165, 99, 1, 108)
+%assign tlcOutputsFcnOfS379B166 = OpaqueTLCBlockFcn("Outputs", 379, 166, 99, 1, 109)
+%assign tlcOutputsFcnOfS379B169 = OpaqueTLCBlockFcn("Outputs", 379, 169, 99, 1, 110)
+%assign tlcOutputsFcnOfS379B170 = OpaqueTLCBlockFcn("Outputs", 379, 170, 99, 1, 111)
+%assign tlcOutputsFcnOfS379B171 = OpaqueTLCBlockFcn("Outputs", 379, 171, 99, 1, 112)
+%assign tlcOutputsFcnOfS379B172 = OpaqueTLCBlockFcn("Outputs", 379, 172, 99, 1, 113)
+%assign tlcOutputsFcnOfS379B175 = OpaqueTLCBlockFcn("Outputs", 379, 175, 99, 1, 114)
+%assign tlcOutputsFcnOfS379B176 = OpaqueTLCBlockFcn("Outputs", 379, 176, 99, 1, 115)
+%assign tlcOutputsFcnOfS379B177 = OpaqueTLCBlockFcn("Outputs", 379, 177, 99, 1, 116)
+%assign tlcOutputsFcnOfS379B180 = OpaqueTLCBlockFcn("Outputs", 379, 180, 99, 1, 117)
+%assign tlcOutputsFcnOfS379B181 = OpaqueTLCBlockFcn("Outputs", 379, 181, 99, 1, 118)
+%assign tlcOutputsFcnOfS379B182 = OpaqueTLCBlockFcn("Outputs", 379, 182, 99, 1, 119)
+%assign tlcOutputsFcnOfS379B183 = OpaqueTLCBlockFcn("Outputs", 379, 183, 99, 1, 120)
+%assign tlcOutputsFcnOfS379B186 = OpaqueTLCBlockFcn("Outputs", 379, 186, 99, 1, 121)
+%assign tlcOutputsFcnOfS379B187 = OpaqueTLCBlockFcn("Outputs", 379, 187, 99, 1, 122)
+%assign tlcOutputsFcnOfS379B188 = OpaqueTLCBlockFcn("Outputs", 379, 188, 99, 1, 123)
+%assign tlcOutputsFcnOfS379B189 = OpaqueTLCBlockFcn("Outputs", 379, 189, 99, 1, 124)
+%assign tlcOutputsFcnOfS379B192 = OpaqueTLCBlockFcn("Outputs", 379, 192, 99, 1, 125)
+%assign tlcOutputsFcnOfS379B193 = OpaqueTLCBlockFcn("Outputs", 379, 193, 99, 1, 126)
+%assign tlcOutputsFcnOfS379B194 = OpaqueTLCBlockFcn("Outputs", 379, 194, 99, 1, 127)
+%assign tlcOutputsFcnOfS379B195 = OpaqueTLCBlockFcn("Outputs", 379, 195, 99, 1, 128)
+%assign tlcOutputsFcnOfS379B198 = OpaqueTLCBlockFcn("Outputs", 379, 198, 99, 1, 129)
+%assign tlcOutputsFcnOfS379B199 = OpaqueTLCBlockFcn("Outputs", 379, 199, 99, 1, 130)
+%assign tlcOutputsFcnOfS379B200 = OpaqueTLCBlockFcn("Outputs", 379, 200, 99, 1, 131)
+%assign tlcOutputsFcnOfS379B201 = OpaqueTLCBlockFcn("Outputs", 379, 201, 99, 1, 132)
+%assign tlcOutputsFcnOfS379B204 = OpaqueTLCBlockFcn("Outputs", 379, 204, 99, 1, 133)
+%assign tlcOutputsFcnOfS379B205 = OpaqueTLCBlockFcn("Outputs", 379, 205, 99, 1, 134)
+%assign tlcOutputsFcnOfS379B206 = OpaqueTLCBlockFcn("Outputs", 379, 206, 99, 1, 135)
+%assign tlcOutputsFcnOfS379B207 = OpaqueTLCBlockFcn("Outputs", 379, 207, 99, 1, 136)
+%assign tlcOutputsFcnOfS379B210 = OpaqueTLCBlockFcn("Outputs", 379, 210, 99, 1, 137)
+%assign tlcOutputsFcnOfS379B211 = OpaqueTLCBlockFcn("Outputs", 379, 211, 99, 1, 138)
+%assign tlcOutputsFcnOfS379B212 = OpaqueTLCBlockFcn("Outputs", 379, 212, 99, 1, 139)
+%assign tlcOutputsFcnOfS379B213 = OpaqueTLCBlockFcn("Outputs", 379, 213, 99, 1, 140)
+%assign tlcOutputsFcnOfS379B214 = OpaqueTLCBlockFcn("Outputs", 379, 214, 99, 1, 141)
+%assign tlcOutputsFcnOfS379B217 = OpaqueTLCBlockFcn("Outputs", 379, 217, 99, 1, 142)
+%assign tlcOutputsFcnOfS379B218 = OpaqueTLCBlockFcn("Outputs", 379, 218, 99, 1, 143)
+%assign tlcOutputsFcnOfS379B219 = OpaqueTLCBlockFcn("Outputs", 379, 219, 99, 1, 144)
+%assign tlcOutputsFcnOfS379B222 = OpaqueTLCBlockFcn("Outputs", 379, 222, 99, 1, 145)
+%assign tlcOutputsFcnOfS379B223 = OpaqueTLCBlockFcn("Outputs", 379, 223, 99, 1, 146)
+%assign tlcOutputsFcnOfS379B224 = OpaqueTLCBlockFcn("Outputs", 379, 224, 99, 1, 147)
+%assign tlcOutputsFcnOfS379B227 = OpaqueTLCBlockFcn("Outputs", 379, 227, 99, 1, 148)
+%assign tlcOutputsFcnOfS379B228 = OpaqueTLCBlockFcn("Outputs", 379, 228, 99, 1, 149)
+%assign tlcOutputsFcnOfS379B229 = OpaqueTLCBlockFcn("Outputs", 379, 229, 99, 1, 150)
+%assign tlcOutputsFcnOfS379B232 = OpaqueTLCBlockFcn("Outputs", 379, 232, 99, 1, 151)
+%assign tlcOutputsFcnOfS379B233 = OpaqueTLCBlockFcn("Outputs", 379, 233, 99, 1, 152)
+%assign tlcOutputsFcnOfS379B234 = OpaqueTLCBlockFcn("Outputs", 379, 234, 99, 1, 153)
+%assign tlcOutputsFcnOfS379B237 = OpaqueTLCBlockFcn("Outputs", 379, 237, 99, 1, 154)
+%assign tlcOutputsFcnOfS379B238 = OpaqueTLCBlockFcn("Outputs", 379, 238, 99, 1, 155)
+%assign tlcOutputsFcnOfS379B239 = OpaqueTLCBlockFcn("Outputs", 379, 239, 99, 1, 156)
+%assign tlcOutputsFcnOfS379B242 = OpaqueTLCBlockFcn("Outputs", 379, 242, 99, 1, 157)
+%assign tlcOutputsFcnOfS379B243 = OpaqueTLCBlockFcn("Outputs", 379, 243, 99, 1, 158)
+%assign tlcOutputsFcnOfS379B244 = OpaqueTLCBlockFcn("Outputs", 379, 244, 99, 1, 159)
+%assign tlcOutputsFcnOfS379B247 = OpaqueTLCBlockFcn("Outputs", 379, 247, 99, 1, 160)
+%assign tlcOutputsFcnOfS379B248 = OpaqueTLCBlockFcn("Outputs", 379, 248, 99, 1, 161)
+%assign tlcOutputsFcnOfS379B249 = OpaqueTLCBlockFcn("Outputs", 379, 249, 99, 1, 162)
+%assign tlcOutputsFcnOfS379B252 = OpaqueTLCBlockFcn("Outputs", 379, 252, 99, 1, 163)
+%assign tlcOutputsFcnOfS379B253 = OpaqueTLCBlockFcn("Outputs", 379, 253, 99, 1, 164)
+%assign tlcOutputsFcnOfS379B254 = OpaqueTLCBlockFcn("Outputs", 379, 254, 99, 1, 165)
+%assign tlcOutputsFcnOfS379B257 = OpaqueTLCBlockFcn("Outputs", 379, 257, 99, 1, 166)
+%assign tlcOutputsFcnOfS379B258 = OpaqueTLCBlockFcn("Outputs", 379, 258, 99, 1, 167)
+%assign tlcOutputsFcnOfS379B259 = OpaqueTLCBlockFcn("Outputs", 379, 259, 99, 1, 168)
+%assign tlcOutputsFcnOfS379B260 = OpaqueTLCBlockFcn("Outputs", 379, 260, 99, 1, 169)
+%assign tlcOutputsFcnOfS379B263 = OpaqueTLCBlockFcn("Outputs", 379, 263, 99, 1, 170)
+%assign tlcOutputsFcnOfS379B264 = OpaqueTLCBlockFcn("Outputs", 379, 264, 99, 1, 171)
+%assign tlcOutputsFcnOfS379B265 = OpaqueTLCBlockFcn("Outputs", 379, 265, 99, 1, 172)
+%assign tlcOutputsFcnOfS379B268 = OpaqueTLCBlockFcn("Outputs", 379, 268, 99, 1, 173)
+%assign tlcOutputsFcnOfS379B269 = OpaqueTLCBlockFcn("Outputs", 379, 269, 99, 1, 174)
+%assign tlcOutputsFcnOfS379B270 = OpaqueTLCBlockFcn("Outputs", 379, 270, 99, 1, 175)
+%assign tlcOutputsFcnOfS379B273 = OpaqueTLCBlockFcn("Outputs", 379, 273, 99, 1, 176)
+%assign tlcOutputsFcnOfS379B274 = OpaqueTLCBlockFcn("Outputs", 379, 274, 99, 1, 177)
+%assign tlcOutputsFcnOfS379B275 = OpaqueTLCBlockFcn("Outputs", 379, 275, 99, 1, 178)
+%assign tlcOutputsFcnOfS379B278 = OpaqueTLCBlockFcn("Outputs", 379, 278, 99, 1, 179)
+%assign tlcOutputsFcnOfS379B279 = OpaqueTLCBlockFcn("Outputs", 379, 279, 99, 1, 180)
+%assign tlcOutputsFcnOfS379B280 = OpaqueTLCBlockFcn("Outputs", 379, 280, 99, 1, 181)
+%assign tlcOutputsFcnOfS379B283 = OpaqueTLCBlockFcn("Outputs", 379, 283, 99, 1, 182)
+%assign tlcOutputsFcnOfS379B284 = OpaqueTLCBlockFcn("Outputs", 379, 284, 99, 1, 183)
+%assign tlcOutputsFcnOfS379B285 = OpaqueTLCBlockFcn("Outputs", 379, 285, 99, 1, 184)
+%assign tlcOutputsFcnOfS379B288 = OpaqueTLCBlockFcn("Outputs", 379, 288, 99, 1, 185)
+%assign tlcOutputsFcnOfS379B289 = OpaqueTLCBlockFcn("Outputs", 379, 289, 99, 1, 186)
+%assign tlcOutputsFcnOfS379B290 = OpaqueTLCBlockFcn("Outputs", 379, 290, 99, 1, 187)
+%assign tlcOutputsFcnOfS379B293 = OpaqueTLCBlockFcn("Outputs", 379, 293, 99, 1, 188)
+%assign tlcOutputsFcnOfS379B294 = OpaqueTLCBlockFcn("Outputs", 379, 294, 99, 1, 189)
+%assign tlcOutputsFcnOfS379B295 = OpaqueTLCBlockFcn("Outputs", 379, 295, 99, 1, 190)
+%assign tlcOutputsFcnOfS379B298 = OpaqueTLCBlockFcn("Outputs", 379, 298, 99, 1, 191)
+%assign tlcOutputsFcnOfS379B299 = OpaqueTLCBlockFcn("Outputs", 379, 299, 99, 1, 192)
+%assign tlcOutputsFcnOfS379B300 = OpaqueTLCBlockFcn("Outputs", 379, 300, 99, 1, 193)
+%assign tlcOutputsFcnOfS379B303 = OpaqueTLCBlockFcn("Outputs", 379, 303, 99, 1, 194)
+%assign tlcOutputsFcnOfS379B304 = OpaqueTLCBlockFcn("Outputs", 379, 304, 99, 1, 195)
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B0)
+/* S-Function (TuneVarMEX): '<S753>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d98565*/",tlcOutputsFcnOfS379B0,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B1)
+/* S-Function (TuneVarMEX): '<S753>/Tune Variable1' */
+%<SLibCG_DumpSSCode("/*@[d98567*/",tlcOutputsFcnOfS379B1,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_379_2 = ""
+%openfile Outputs_open_SFunction_379_2
+
+/* S-Function (TranslateTrigger): '<S759>/S-Function' */
+%closefile Outputs_open_SFunction_379_2
+
+%assign    Outputs_body_SFunction_379_2 = ""
+%openfile  Outputs_body_SFunction_379_2
+
+%<SLibCG_DumpSSCode("/*@[d98569*/",tlcOutputsFcnOfS379B2,"/*@]*/")>\
+%closefile Outputs_body_SFunction_379_2
+
+%assign    Outputs_close_SFunction_379_2 = ""
+%openfile  Outputs_close_SFunction_379_2
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S759>/S-Function' */
+%closefile Outputs_close_SFunction_379_2
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_379_2, Outputs_body_SFunction_379_2, Outputs_close_SFunction_379_2)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B5)
+
+/* S-Function (TOP_MEX): '<S758>/Alignment Delay' */
+%<SLibCG_DumpSSCode("/*@[d9856b*/",tlcOutputsFcnOfS379B5,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B6)
+/* S-Function (TOP_MEX): '<S758>/Decimated Bass Delay' */
+%<SLibCG_DumpSSCode("/*@[d9856d*/",tlcOutputsFcnOfS379B6,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B7)
+/* S-Function (TOP_MEX): '<S758>/Full Rate Bass Delay' */
+%<SLibCG_DumpSSCode("/*@[d9856f*/",tlcOutputsFcnOfS379B7,"/*@]*/")>\
+%endif
+%assign   Outputs_open_ExpandTailComponents_p_379_8 = ""
+%openfile Outputs_open_ExpandTailComponents_p_379_8
+
+/* Outputs for Atomic SubSystem: '<S752>/Expand Tail Components' */
+%closefile Outputs_open_ExpandTailComponents_p_379_8
+
+%assign    Outputs_body_ExpandTailComponents_p_379_8 = ""
+%openfile  Outputs_body_ExpandTailComponents_p_379_8
+
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[291], "Output",0)
+%<SLibCG_DumpSSCode("/*@[d986e8*/",SLibCGIRGenReusableSysCall("Model_TranslationEngine64_ExpandTailComponents", [], 291, 0, 6, 0, 6, 379),"/*@]*/")>\
+%assign ss = ::CompiledModel.System[291]
+%if !LibSystemIsInlined(ss)
+;
+%else
+\
+%endif
+
+%endif
+%closefile Outputs_body_ExpandTailComponents_p_379_8
+
+%assign    Outputs_close_ExpandTailComponents_p_379_8 = ""
+%openfile  Outputs_close_ExpandTailComponents_p_379_8
+
+/* End of Outputs for SubSystem: '<S752>/Expand Tail Components' */
+%closefile Outputs_close_ExpandTailComponents_p_379_8
+%<SLibCG_DumpSSCode(Outputs_open_ExpandTailComponents_p_379_8, Outputs_body_ExpandTailComponents_p_379_8, Outputs_close_ExpandTailComponents_p_379_8)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B9)
+
+/* S-Function (TuneVarMEX): '<S776>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d98571*/",tlcOutputsFcnOfS379B9,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_j_379_10 = ""
+%openfile Outputs_open_SFunction_j_379_10
+
+/* S-Function (TranslateTrigger): '<S783>/S-Function' */
+%closefile Outputs_open_SFunction_j_379_10
+
+%assign    Outputs_body_SFunction_j_379_10 = ""
+%openfile  Outputs_body_SFunction_j_379_10
+
+%<SLibCG_DumpSSCode("/*@[d98573*/",tlcOutputsFcnOfS379B10,"/*@]*/")>\
+%closefile Outputs_body_SFunction_j_379_10
+
+%assign    Outputs_close_SFunction_j_379_10 = ""
+%openfile  Outputs_close_SFunction_j_379_10
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S783>/S-Function' */
+%closefile Outputs_close_SFunction_j_379_10
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_j_379_10, Outputs_body_SFunction_j_379_10, Outputs_close_SFunction_j_379_10)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B13)
+
+/* S-Function (TOP_MEX): '<S776>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d98575*/",tlcOutputsFcnOfS379B13,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B14)
+/* S-Function (TuneVarMEX): '<S777>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d98577*/",tlcOutputsFcnOfS379B14,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_l_379_15 = ""
+%openfile Outputs_open_SFunction_l_379_15
+
+/* S-Function (TranslateTrigger): '<S786>/S-Function' */
+%closefile Outputs_open_SFunction_l_379_15
+
+%assign    Outputs_body_SFunction_l_379_15 = ""
+%openfile  Outputs_body_SFunction_l_379_15
+
+%<SLibCG_DumpSSCode("/*@[d98579*/",tlcOutputsFcnOfS379B15,"/*@]*/")>\
+%closefile Outputs_body_SFunction_l_379_15
+
+%assign    Outputs_close_SFunction_l_379_15 = ""
+%openfile  Outputs_close_SFunction_l_379_15
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S786>/S-Function' */
+%closefile Outputs_close_SFunction_l_379_15
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_l_379_15, Outputs_body_SFunction_l_379_15, Outputs_close_SFunction_l_379_15)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B18)
+
+/* S-Function (TOP_MEX): '<S777>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d9857b*/",tlcOutputsFcnOfS379B18,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B19)
+/* S-Function (TuneVarMEX): '<S778>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d9857d*/",tlcOutputsFcnOfS379B19,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_f_379_20 = ""
+%openfile Outputs_open_SFunction_f_379_20
+
+/* S-Function (TranslateTrigger): '<S789>/S-Function' */
+%closefile Outputs_open_SFunction_f_379_20
+
+%assign    Outputs_body_SFunction_f_379_20 = ""
+%openfile  Outputs_body_SFunction_f_379_20
+
+%<SLibCG_DumpSSCode("/*@[d9857f*/",tlcOutputsFcnOfS379B20,"/*@]*/")>\
+%closefile Outputs_body_SFunction_f_379_20
+
+%assign    Outputs_close_SFunction_f_379_20 = ""
+%openfile  Outputs_close_SFunction_f_379_20
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S789>/S-Function' */
+%closefile Outputs_close_SFunction_f_379_20
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_f_379_20, Outputs_body_SFunction_f_379_20, Outputs_close_SFunction_f_379_20)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B23)
+
+/* S-Function (TOP_MEX): '<S778>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d98581*/",tlcOutputsFcnOfS379B23,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B24)
+/* S-Function (TOP_MEX): '<S778>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[d98583*/",tlcOutputsFcnOfS379B24,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B25)
+/* S-Function (TuneVarMEX): '<S779>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d98585*/",tlcOutputsFcnOfS379B25,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_g_379_26 = ""
+%openfile Outputs_open_SFunction_g_379_26
+
+/* S-Function (TranslateTrigger): '<S792>/S-Function' */
+%closefile Outputs_open_SFunction_g_379_26
+
+%assign    Outputs_body_SFunction_g_379_26 = ""
+%openfile  Outputs_body_SFunction_g_379_26
+
+%<SLibCG_DumpSSCode("/*@[d98587*/",tlcOutputsFcnOfS379B26,"/*@]*/")>\
+%closefile Outputs_body_SFunction_g_379_26
+
+%assign    Outputs_close_SFunction_g_379_26 = ""
+%openfile  Outputs_close_SFunction_g_379_26
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S792>/S-Function' */
+%closefile Outputs_close_SFunction_g_379_26
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_g_379_26, Outputs_body_SFunction_g_379_26, Outputs_close_SFunction_g_379_26)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B29)
+
+/* S-Function (TOP_MEX): '<S779>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d98589*/",tlcOutputsFcnOfS379B29,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B30)
+/* S-Function (TOP_MEX): '<S779>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[d9858b*/",tlcOutputsFcnOfS379B30,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B31)
+/* S-Function (TuneVarMEX): '<S780>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d9858d*/",tlcOutputsFcnOfS379B31,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_lz_379_32 = ""
+%openfile Outputs_open_SFunction_lz_379_32
+
+/* S-Function (TranslateTrigger): '<S795>/S-Function' */
+%closefile Outputs_open_SFunction_lz_379_32
+
+%assign    Outputs_body_SFunction_lz_379_32 = ""
+%openfile  Outputs_body_SFunction_lz_379_32
+
+%<SLibCG_DumpSSCode("/*@[d9858f*/",tlcOutputsFcnOfS379B32,"/*@]*/")>\
+%closefile Outputs_body_SFunction_lz_379_32
+
+%assign    Outputs_close_SFunction_lz_379_32 = ""
+%openfile  Outputs_close_SFunction_lz_379_32
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S795>/S-Function' */
+%closefile Outputs_close_SFunction_lz_379_32
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_lz_379_32, Outputs_body_SFunction_lz_379_32, Outputs_close_SFunction_lz_379_32)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B35)
+
+/* S-Function (TOP_MEX): '<S780>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d98591*/",tlcOutputsFcnOfS379B35,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B36)
+/* S-Function (TOP_MEX): '<S780>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[d98593*/",tlcOutputsFcnOfS379B36,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B37)
+/* S-Function (TuneVarMEX): '<S781>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d98595*/",tlcOutputsFcnOfS379B37,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_h_379_38 = ""
+%openfile Outputs_open_SFunction_h_379_38
+
+/* S-Function (TranslateTrigger): '<S798>/S-Function' */
+%closefile Outputs_open_SFunction_h_379_38
+
+%assign    Outputs_body_SFunction_h_379_38 = ""
+%openfile  Outputs_body_SFunction_h_379_38
+
+%<SLibCG_DumpSSCode("/*@[d98597*/",tlcOutputsFcnOfS379B38,"/*@]*/")>\
+%closefile Outputs_body_SFunction_h_379_38
+
+%assign    Outputs_close_SFunction_h_379_38 = ""
+%openfile  Outputs_close_SFunction_h_379_38
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S798>/S-Function' */
+%closefile Outputs_close_SFunction_h_379_38
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_h_379_38, Outputs_body_SFunction_h_379_38, Outputs_close_SFunction_h_379_38)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B41)
+
+/* S-Function (TOP_MEX): '<S781>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d98599*/",tlcOutputsFcnOfS379B41,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B42)
+/* S-Function (TuneVarMEX): '<S782>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d9859b*/",tlcOutputsFcnOfS379B42,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_p_379_43 = ""
+%openfile Outputs_open_SFunction_p_379_43
+
+/* S-Function (TranslateTrigger): '<S801>/S-Function' */
+%closefile Outputs_open_SFunction_p_379_43
+
+%assign    Outputs_body_SFunction_p_379_43 = ""
+%openfile  Outputs_body_SFunction_p_379_43
+
+%<SLibCG_DumpSSCode("/*@[d9859d*/",tlcOutputsFcnOfS379B43,"/*@]*/")>\
+%closefile Outputs_body_SFunction_p_379_43
+
+%assign    Outputs_close_SFunction_p_379_43 = ""
+%openfile  Outputs_close_SFunction_p_379_43
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S801>/S-Function' */
+%closefile Outputs_close_SFunction_p_379_43
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_p_379_43, Outputs_body_SFunction_p_379_43, Outputs_close_SFunction_p_379_43)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B46)
+
+/* S-Function (TOP_MEX): '<S782>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d9859f*/",tlcOutputsFcnOfS379B46,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B47)
+/* S-Function (TuneVarMEX): '<S804>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d985a1*/",tlcOutputsFcnOfS379B47,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_i_379_48 = ""
+%openfile Outputs_open_SFunction_i_379_48
+
+/* S-Function (TranslateTrigger): '<S814>/S-Function' */
+%closefile Outputs_open_SFunction_i_379_48
+
+%assign    Outputs_body_SFunction_i_379_48 = ""
+%openfile  Outputs_body_SFunction_i_379_48
+
+%<SLibCG_DumpSSCode("/*@[d985a3*/",tlcOutputsFcnOfS379B48,"/*@]*/")>\
+%closefile Outputs_body_SFunction_i_379_48
+
+%assign    Outputs_close_SFunction_i_379_48 = ""
+%openfile  Outputs_close_SFunction_i_379_48
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S814>/S-Function' */
+%closefile Outputs_close_SFunction_i_379_48
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_i_379_48, Outputs_body_SFunction_i_379_48, Outputs_close_SFunction_i_379_48)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B51)
+
+/* S-Function (TOP_MEX): '<S804>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d985a5*/",tlcOutputsFcnOfS379B51,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B52)
+/* S-Function (TOP_MEX): '<S804>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[d985a7*/",tlcOutputsFcnOfS379B52,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B53)
+/* S-Function (TuneVarMEX): '<S805>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d985a9*/",tlcOutputsFcnOfS379B53,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_b_379_54 = ""
+%openfile Outputs_open_SFunction_b_379_54
+
+/* S-Function (TranslateTrigger): '<S817>/S-Function' */
+%closefile Outputs_open_SFunction_b_379_54
+
+%assign    Outputs_body_SFunction_b_379_54 = ""
+%openfile  Outputs_body_SFunction_b_379_54
+
+%<SLibCG_DumpSSCode("/*@[d985ab*/",tlcOutputsFcnOfS379B54,"/*@]*/")>\
+%closefile Outputs_body_SFunction_b_379_54
+
+%assign    Outputs_close_SFunction_b_379_54 = ""
+%openfile  Outputs_close_SFunction_b_379_54
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S817>/S-Function' */
+%closefile Outputs_close_SFunction_b_379_54
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_b_379_54, Outputs_body_SFunction_b_379_54, Outputs_close_SFunction_b_379_54)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B57)
+
+/* S-Function (TOP_MEX): '<S805>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d985ad*/",tlcOutputsFcnOfS379B57,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B58)
+/* S-Function (TOP_MEX): '<S805>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[d985af*/",tlcOutputsFcnOfS379B58,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B59)
+/* S-Function (TuneVarMEX): '<S806>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d985b1*/",tlcOutputsFcnOfS379B59,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_n_379_60 = ""
+%openfile Outputs_open_SFunction_n_379_60
+
+/* S-Function (TranslateTrigger): '<S820>/S-Function' */
+%closefile Outputs_open_SFunction_n_379_60
+
+%assign    Outputs_body_SFunction_n_379_60 = ""
+%openfile  Outputs_body_SFunction_n_379_60
+
+%<SLibCG_DumpSSCode("/*@[d985b3*/",tlcOutputsFcnOfS379B60,"/*@]*/")>\
+%closefile Outputs_body_SFunction_n_379_60
+
+%assign    Outputs_close_SFunction_n_379_60 = ""
+%openfile  Outputs_close_SFunction_n_379_60
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S820>/S-Function' */
+%closefile Outputs_close_SFunction_n_379_60
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_n_379_60, Outputs_body_SFunction_n_379_60, Outputs_close_SFunction_n_379_60)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B63)
+
+/* S-Function (TOP_MEX): '<S806>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d985b5*/",tlcOutputsFcnOfS379B63,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B64)
+/* S-Function (TOP_MEX): '<S806>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[d985b7*/",tlcOutputsFcnOfS379B64,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B65)
+/* S-Function (TuneVarMEX): '<S807>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d985b9*/",tlcOutputsFcnOfS379B65,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_li_379_66 = ""
+%openfile Outputs_open_SFunction_li_379_66
+
+/* S-Function (TranslateTrigger): '<S823>/S-Function' */
+%closefile Outputs_open_SFunction_li_379_66
+
+%assign    Outputs_body_SFunction_li_379_66 = ""
+%openfile  Outputs_body_SFunction_li_379_66
+
+%<SLibCG_DumpSSCode("/*@[d985bb*/",tlcOutputsFcnOfS379B66,"/*@]*/")>\
+%closefile Outputs_body_SFunction_li_379_66
+
+%assign    Outputs_close_SFunction_li_379_66 = ""
+%openfile  Outputs_close_SFunction_li_379_66
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S823>/S-Function' */
+%closefile Outputs_close_SFunction_li_379_66
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_li_379_66, Outputs_body_SFunction_li_379_66, Outputs_close_SFunction_li_379_66)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B69)
+
+/* S-Function (TOP_MEX): '<S807>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d985bd*/",tlcOutputsFcnOfS379B69,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B70)
+/* S-Function (TuneVarMEX): '<S808>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d985bf*/",tlcOutputsFcnOfS379B70,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_k_379_71 = ""
+%openfile Outputs_open_SFunction_k_379_71
+
+/* S-Function (TranslateTrigger): '<S826>/S-Function' */
+%closefile Outputs_open_SFunction_k_379_71
+
+%assign    Outputs_body_SFunction_k_379_71 = ""
+%openfile  Outputs_body_SFunction_k_379_71
+
+%<SLibCG_DumpSSCode("/*@[d985c1*/",tlcOutputsFcnOfS379B71,"/*@]*/")>\
+%closefile Outputs_body_SFunction_k_379_71
+
+%assign    Outputs_close_SFunction_k_379_71 = ""
+%openfile  Outputs_close_SFunction_k_379_71
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S826>/S-Function' */
+%closefile Outputs_close_SFunction_k_379_71
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_k_379_71, Outputs_body_SFunction_k_379_71, Outputs_close_SFunction_k_379_71)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B74)
+
+/* S-Function (TOP_MEX): '<S808>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d985c3*/",tlcOutputsFcnOfS379B74,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B75)
+/* S-Function (TOP_MEX): '<S808>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[d985c5*/",tlcOutputsFcnOfS379B75,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B76)
+/* S-Function (TuneVarMEX): '<S809>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d985c7*/",tlcOutputsFcnOfS379B76,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_pm_379_77 = ""
+%openfile Outputs_open_SFunction_pm_379_77
+
+/* S-Function (TranslateTrigger): '<S829>/S-Function' */
+%closefile Outputs_open_SFunction_pm_379_77
+
+%assign    Outputs_body_SFunction_pm_379_77 = ""
+%openfile  Outputs_body_SFunction_pm_379_77
+
+%<SLibCG_DumpSSCode("/*@[d985c9*/",tlcOutputsFcnOfS379B77,"/*@]*/")>\
+%closefile Outputs_body_SFunction_pm_379_77
+
+%assign    Outputs_close_SFunction_pm_379_77 = ""
+%openfile  Outputs_close_SFunction_pm_379_77
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S829>/S-Function' */
+%closefile Outputs_close_SFunction_pm_379_77
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_pm_379_77, Outputs_body_SFunction_pm_379_77, Outputs_close_SFunction_pm_379_77)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B80)
+
+/* S-Function (TOP_MEX): '<S809>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d985cb*/",tlcOutputsFcnOfS379B80,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B81)
+/* S-Function (TOP_MEX): '<S809>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[d985cd*/",tlcOutputsFcnOfS379B81,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B82)
+/* S-Function (TuneVarMEX): '<S810>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d985cf*/",tlcOutputsFcnOfS379B82,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_o_379_83 = ""
+%openfile Outputs_open_SFunction_o_379_83
+
+/* S-Function (TranslateTrigger): '<S832>/S-Function' */
+%closefile Outputs_open_SFunction_o_379_83
+
+%assign    Outputs_body_SFunction_o_379_83 = ""
+%openfile  Outputs_body_SFunction_o_379_83
+
+%<SLibCG_DumpSSCode("/*@[d985d1*/",tlcOutputsFcnOfS379B83,"/*@]*/")>\
+%closefile Outputs_body_SFunction_o_379_83
+
+%assign    Outputs_close_SFunction_o_379_83 = ""
+%openfile  Outputs_close_SFunction_o_379_83
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S832>/S-Function' */
+%closefile Outputs_close_SFunction_o_379_83
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_o_379_83, Outputs_body_SFunction_o_379_83, Outputs_close_SFunction_o_379_83)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B86)
+
+/* S-Function (TOP_MEX): '<S810>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d985d3*/",tlcOutputsFcnOfS379B86,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B87)
+/* S-Function (TOP_MEX): '<S810>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[d985d5*/",tlcOutputsFcnOfS379B87,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B88)
+/* S-Function (TuneVarMEX): '<S811>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d985d7*/",tlcOutputsFcnOfS379B88,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_m_379_89 = ""
+%openfile Outputs_open_SFunction_m_379_89
+
+/* S-Function (TranslateTrigger): '<S835>/S-Function' */
+%closefile Outputs_open_SFunction_m_379_89
+
+%assign    Outputs_body_SFunction_m_379_89 = ""
+%openfile  Outputs_body_SFunction_m_379_89
+
+%<SLibCG_DumpSSCode("/*@[d985d9*/",tlcOutputsFcnOfS379B89,"/*@]*/")>\
+%closefile Outputs_body_SFunction_m_379_89
+
+%assign    Outputs_close_SFunction_m_379_89 = ""
+%openfile  Outputs_close_SFunction_m_379_89
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S835>/S-Function' */
+%closefile Outputs_close_SFunction_m_379_89
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_m_379_89, Outputs_body_SFunction_m_379_89, Outputs_close_SFunction_m_379_89)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B92)
+
+/* S-Function (TOP_MEX): '<S811>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d985db*/",tlcOutputsFcnOfS379B92,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B93)
+/* S-Function (TOP_MEX): '<S811>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[d985dd*/",tlcOutputsFcnOfS379B93,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B94)
+/* S-Function (TuneVarMEX): '<S812>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d985df*/",tlcOutputsFcnOfS379B94,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_c_379_95 = ""
+%openfile Outputs_open_SFunction_c_379_95
+
+/* S-Function (TranslateTrigger): '<S838>/S-Function' */
+%closefile Outputs_open_SFunction_c_379_95
+
+%assign    Outputs_body_SFunction_c_379_95 = ""
+%openfile  Outputs_body_SFunction_c_379_95
+
+%<SLibCG_DumpSSCode("/*@[d985e1*/",tlcOutputsFcnOfS379B95,"/*@]*/")>\
+%closefile Outputs_body_SFunction_c_379_95
+
+%assign    Outputs_close_SFunction_c_379_95 = ""
+%openfile  Outputs_close_SFunction_c_379_95
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S838>/S-Function' */
+%closefile Outputs_close_SFunction_c_379_95
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_c_379_95, Outputs_body_SFunction_c_379_95, Outputs_close_SFunction_c_379_95)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B98)
+
+/* S-Function (TOP_MEX): '<S812>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d985e3*/",tlcOutputsFcnOfS379B98,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B99)
+/* S-Function (TOP_MEX): '<S812>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[d985e5*/",tlcOutputsFcnOfS379B99,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B100)
+/* S-Function (TuneVarMEX): '<S813>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d985e7*/",tlcOutputsFcnOfS379B100,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_n1_379_101 = ""
+%openfile Outputs_open_SFunction_n1_379_101
+
+/* S-Function (TranslateTrigger): '<S841>/S-Function' */
+%closefile Outputs_open_SFunction_n1_379_101
+
+%assign    Outputs_body_SFunction_n1_379_101 = ""
+%openfile  Outputs_body_SFunction_n1_379_101
+
+%<SLibCG_DumpSSCode("/*@[d985e9*/",tlcOutputsFcnOfS379B101,"/*@]*/")>\
+%closefile Outputs_body_SFunction_n1_379_101
+
+%assign    Outputs_close_SFunction_n1_379_101 = ""
+%openfile  Outputs_close_SFunction_n1_379_101
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S841>/S-Function' */
+%closefile Outputs_close_SFunction_n1_379_101
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_n1_379_101, Outputs_body_SFunction_n1_379_101, Outputs_close_SFunction_n1_379_101)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B104)
+
+/* S-Function (TOP_MEX): '<S813>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d985eb*/",tlcOutputsFcnOfS379B104,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B105)
+/* S-Function (TOP_MEX): '<S813>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[d985ed*/",tlcOutputsFcnOfS379B105,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B106)
+/* M-S-Function: '<S773>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[d985ee*/",tlcOutputsFcnOfS379B106,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B107)
+/* S-Function (TuneVarMEX): '<S848>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d985f0*/",tlcOutputsFcnOfS379B107,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_a_379_108 = ""
+%openfile Outputs_open_SFunction_a_379_108
+
+/* S-Function (TranslateTrigger): '<S849>/S-Function' */
+%closefile Outputs_open_SFunction_a_379_108
+
+%assign    Outputs_body_SFunction_a_379_108 = ""
+%openfile  Outputs_body_SFunction_a_379_108
+
+%<SLibCG_DumpSSCode("/*@[d985f2*/",tlcOutputsFcnOfS379B108,"/*@]*/")>\
+%closefile Outputs_body_SFunction_a_379_108
+
+%assign    Outputs_close_SFunction_a_379_108 = ""
+%openfile  Outputs_close_SFunction_a_379_108
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S849>/S-Function' */
+%closefile Outputs_close_SFunction_a_379_108
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_a_379_108, Outputs_body_SFunction_a_379_108, Outputs_close_SFunction_a_379_108)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B111)
+
+/* S-Function (TOP_MEX): '<S848>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d985f4*/",tlcOutputsFcnOfS379B111,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B112)
+/* S-Function (TOP_MEX): '<S848>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[d985f6*/",tlcOutputsFcnOfS379B112,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B113)
+/* S-Function (TOP_MEX): '<S848>/TOP2' */
+%<SLibCG_DumpSSCode("/*@[d985f8*/",tlcOutputsFcnOfS379B113,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B114)
+/* M-S-Function: '<S845>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[d985f9*/",tlcOutputsFcnOfS379B114,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B115)
+/* S-Function (TuneVarMEX): '<S852>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d985fb*/",tlcOutputsFcnOfS379B115,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_fy_379_116 = ""
+%openfile Outputs_open_SFunction_fy_379_116
+
+/* S-Function (TranslateTrigger): '<S859>/S-Function' */
+%closefile Outputs_open_SFunction_fy_379_116
+
+%assign    Outputs_body_SFunction_fy_379_116 = ""
+%openfile  Outputs_body_SFunction_fy_379_116
+
+%<SLibCG_DumpSSCode("/*@[d985fd*/",tlcOutputsFcnOfS379B116,"/*@]*/")>\
+%closefile Outputs_body_SFunction_fy_379_116
+
+%assign    Outputs_close_SFunction_fy_379_116 = ""
+%openfile  Outputs_close_SFunction_fy_379_116
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S859>/S-Function' */
+%closefile Outputs_close_SFunction_fy_379_116
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_fy_379_116, Outputs_body_SFunction_fy_379_116, Outputs_close_SFunction_fy_379_116)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B119)
+
+/* S-Function (TOP_MEX): '<S852>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d985ff*/",tlcOutputsFcnOfS379B119,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B120)
+/* S-Function (TuneVarMEX): '<S853>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d98601*/",tlcOutputsFcnOfS379B120,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_m2_379_121 = ""
+%openfile Outputs_open_SFunction_m2_379_121
+
+/* S-Function (TranslateTrigger): '<S862>/S-Function' */
+%closefile Outputs_open_SFunction_m2_379_121
+
+%assign    Outputs_body_SFunction_m2_379_121 = ""
+%openfile  Outputs_body_SFunction_m2_379_121
+
+%<SLibCG_DumpSSCode("/*@[d98603*/",tlcOutputsFcnOfS379B121,"/*@]*/")>\
+%closefile Outputs_body_SFunction_m2_379_121
+
+%assign    Outputs_close_SFunction_m2_379_121 = ""
+%openfile  Outputs_close_SFunction_m2_379_121
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S862>/S-Function' */
+%closefile Outputs_close_SFunction_m2_379_121
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_m2_379_121, Outputs_body_SFunction_m2_379_121, Outputs_close_SFunction_m2_379_121)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B124)
+
+/* S-Function (TOP_MEX): '<S853>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d98605*/",tlcOutputsFcnOfS379B124,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B125)
+/* S-Function (TuneVarMEX): '<S854>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d98607*/",tlcOutputsFcnOfS379B125,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_e_379_126 = ""
+%openfile Outputs_open_SFunction_e_379_126
+
+/* S-Function (TranslateTrigger): '<S865>/S-Function' */
+%closefile Outputs_open_SFunction_e_379_126
+
+%assign    Outputs_body_SFunction_e_379_126 = ""
+%openfile  Outputs_body_SFunction_e_379_126
+
+%<SLibCG_DumpSSCode("/*@[d98609*/",tlcOutputsFcnOfS379B126,"/*@]*/")>\
+%closefile Outputs_body_SFunction_e_379_126
+
+%assign    Outputs_close_SFunction_e_379_126 = ""
+%openfile  Outputs_close_SFunction_e_379_126
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S865>/S-Function' */
+%closefile Outputs_close_SFunction_e_379_126
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_e_379_126, Outputs_body_SFunction_e_379_126, Outputs_close_SFunction_e_379_126)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B129)
+
+/* S-Function (TOP_MEX): '<S854>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d9860b*/",tlcOutputsFcnOfS379B129,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B130)
+/* S-Function (TOP_MEX): '<S854>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[d9860d*/",tlcOutputsFcnOfS379B130,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B131)
+/* S-Function (TuneVarMEX): '<S855>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d9860f*/",tlcOutputsFcnOfS379B131,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_mm_379_132 = ""
+%openfile Outputs_open_SFunction_mm_379_132
+
+/* S-Function (TranslateTrigger): '<S868>/S-Function' */
+%closefile Outputs_open_SFunction_mm_379_132
+
+%assign    Outputs_body_SFunction_mm_379_132 = ""
+%openfile  Outputs_body_SFunction_mm_379_132
+
+%<SLibCG_DumpSSCode("/*@[d98611*/",tlcOutputsFcnOfS379B132,"/*@]*/")>\
+%closefile Outputs_body_SFunction_mm_379_132
+
+%assign    Outputs_close_SFunction_mm_379_132 = ""
+%openfile  Outputs_close_SFunction_mm_379_132
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S868>/S-Function' */
+%closefile Outputs_close_SFunction_mm_379_132
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_mm_379_132, Outputs_body_SFunction_mm_379_132, Outputs_close_SFunction_mm_379_132)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B135)
+
+/* S-Function (TOP_MEX): '<S855>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d98613*/",tlcOutputsFcnOfS379B135,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B136)
+/* S-Function (TOP_MEX): '<S855>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[d98615*/",tlcOutputsFcnOfS379B136,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B137)
+/* S-Function (TuneVarMEX): '<S856>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d98617*/",tlcOutputsFcnOfS379B137,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_oq_379_138 = ""
+%openfile Outputs_open_SFunction_oq_379_138
+
+/* S-Function (TranslateTrigger): '<S871>/S-Function' */
+%closefile Outputs_open_SFunction_oq_379_138
+
+%assign    Outputs_body_SFunction_oq_379_138 = ""
+%openfile  Outputs_body_SFunction_oq_379_138
+
+%<SLibCG_DumpSSCode("/*@[d98619*/",tlcOutputsFcnOfS379B138,"/*@]*/")>\
+%closefile Outputs_body_SFunction_oq_379_138
+
+%assign    Outputs_close_SFunction_oq_379_138 = ""
+%openfile  Outputs_close_SFunction_oq_379_138
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S871>/S-Function' */
+%closefile Outputs_close_SFunction_oq_379_138
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_oq_379_138, Outputs_body_SFunction_oq_379_138, Outputs_close_SFunction_oq_379_138)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B141)
+
+/* S-Function (TOP_MEX): '<S856>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d9861b*/",tlcOutputsFcnOfS379B141,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B142)
+/* S-Function (TOP_MEX): '<S856>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[d9861d*/",tlcOutputsFcnOfS379B142,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B143)
+/* S-Function (TuneVarMEX): '<S857>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d9861f*/",tlcOutputsFcnOfS379B143,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_nb_379_144 = ""
+%openfile Outputs_open_SFunction_nb_379_144
+
+/* S-Function (TranslateTrigger): '<S874>/S-Function' */
+%closefile Outputs_open_SFunction_nb_379_144
+
+%assign    Outputs_body_SFunction_nb_379_144 = ""
+%openfile  Outputs_body_SFunction_nb_379_144
+
+%<SLibCG_DumpSSCode("/*@[d98621*/",tlcOutputsFcnOfS379B144,"/*@]*/")>\
+%closefile Outputs_body_SFunction_nb_379_144
+
+%assign    Outputs_close_SFunction_nb_379_144 = ""
+%openfile  Outputs_close_SFunction_nb_379_144
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S874>/S-Function' */
+%closefile Outputs_close_SFunction_nb_379_144
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_nb_379_144, Outputs_body_SFunction_nb_379_144, Outputs_close_SFunction_nb_379_144)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B147)
+
+/* S-Function (TOP_MEX): '<S857>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d98623*/",tlcOutputsFcnOfS379B147,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B148)
+/* S-Function (TuneVarMEX): '<S858>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d98625*/",tlcOutputsFcnOfS379B148,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_io_379_149 = ""
+%openfile Outputs_open_SFunction_io_379_149
+
+/* S-Function (TranslateTrigger): '<S877>/S-Function' */
+%closefile Outputs_open_SFunction_io_379_149
+
+%assign    Outputs_body_SFunction_io_379_149 = ""
+%openfile  Outputs_body_SFunction_io_379_149
+
+%<SLibCG_DumpSSCode("/*@[d98627*/",tlcOutputsFcnOfS379B149,"/*@]*/")>\
+%closefile Outputs_body_SFunction_io_379_149
+
+%assign    Outputs_close_SFunction_io_379_149 = ""
+%openfile  Outputs_close_SFunction_io_379_149
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S877>/S-Function' */
+%closefile Outputs_close_SFunction_io_379_149
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_io_379_149, Outputs_body_SFunction_io_379_149, Outputs_close_SFunction_io_379_149)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B152)
+
+/* S-Function (TOP_MEX): '<S858>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d98629*/",tlcOutputsFcnOfS379B152,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B153)
+/* S-Function (TuneVarMEX): '<S880>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d9862b*/",tlcOutputsFcnOfS379B153,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_et_379_154 = ""
+%openfile Outputs_open_SFunction_et_379_154
+
+/* S-Function (TranslateTrigger): '<S890>/S-Function' */
+%closefile Outputs_open_SFunction_et_379_154
+
+%assign    Outputs_body_SFunction_et_379_154 = ""
+%openfile  Outputs_body_SFunction_et_379_154
+
+%<SLibCG_DumpSSCode("/*@[d9862d*/",tlcOutputsFcnOfS379B154,"/*@]*/")>\
+%closefile Outputs_body_SFunction_et_379_154
+
+%assign    Outputs_close_SFunction_et_379_154 = ""
+%openfile  Outputs_close_SFunction_et_379_154
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S890>/S-Function' */
+%closefile Outputs_close_SFunction_et_379_154
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_et_379_154, Outputs_body_SFunction_et_379_154, Outputs_close_SFunction_et_379_154)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B157)
+
+/* S-Function (TOP_MEX): '<S880>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d9862f*/",tlcOutputsFcnOfS379B157,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B158)
+/* S-Function (TOP_MEX): '<S880>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[d98631*/",tlcOutputsFcnOfS379B158,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B159)
+/* S-Function (TuneVarMEX): '<S881>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d98633*/",tlcOutputsFcnOfS379B159,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_ic_379_160 = ""
+%openfile Outputs_open_SFunction_ic_379_160
+
+/* S-Function (TranslateTrigger): '<S893>/S-Function' */
+%closefile Outputs_open_SFunction_ic_379_160
+
+%assign    Outputs_body_SFunction_ic_379_160 = ""
+%openfile  Outputs_body_SFunction_ic_379_160
+
+%<SLibCG_DumpSSCode("/*@[d98635*/",tlcOutputsFcnOfS379B160,"/*@]*/")>\
+%closefile Outputs_body_SFunction_ic_379_160
+
+%assign    Outputs_close_SFunction_ic_379_160 = ""
+%openfile  Outputs_close_SFunction_ic_379_160
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S893>/S-Function' */
+%closefile Outputs_close_SFunction_ic_379_160
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_ic_379_160, Outputs_body_SFunction_ic_379_160, Outputs_close_SFunction_ic_379_160)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B163)
+
+/* S-Function (TOP_MEX): '<S881>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d98637*/",tlcOutputsFcnOfS379B163,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B164)
+/* S-Function (TOP_MEX): '<S881>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[d98639*/",tlcOutputsFcnOfS379B164,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B165)
+/* S-Function (TuneVarMEX): '<S882>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d9863b*/",tlcOutputsFcnOfS379B165,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_l2_379_166 = ""
+%openfile Outputs_open_SFunction_l2_379_166
+
+/* S-Function (TranslateTrigger): '<S896>/S-Function' */
+%closefile Outputs_open_SFunction_l2_379_166
+
+%assign    Outputs_body_SFunction_l2_379_166 = ""
+%openfile  Outputs_body_SFunction_l2_379_166
+
+%<SLibCG_DumpSSCode("/*@[d9863d*/",tlcOutputsFcnOfS379B166,"/*@]*/")>\
+%closefile Outputs_body_SFunction_l2_379_166
+
+%assign    Outputs_close_SFunction_l2_379_166 = ""
+%openfile  Outputs_close_SFunction_l2_379_166
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S896>/S-Function' */
+%closefile Outputs_close_SFunction_l2_379_166
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_l2_379_166, Outputs_body_SFunction_l2_379_166, Outputs_close_SFunction_l2_379_166)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B169)
+
+/* S-Function (TOP_MEX): '<S882>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d9863f*/",tlcOutputsFcnOfS379B169,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B170)
+/* S-Function (TOP_MEX): '<S882>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[d98641*/",tlcOutputsFcnOfS379B170,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B171)
+/* S-Function (TuneVarMEX): '<S883>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d98643*/",tlcOutputsFcnOfS379B171,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_nr_379_172 = ""
+%openfile Outputs_open_SFunction_nr_379_172
+
+/* S-Function (TranslateTrigger): '<S899>/S-Function' */
+%closefile Outputs_open_SFunction_nr_379_172
+
+%assign    Outputs_body_SFunction_nr_379_172 = ""
+%openfile  Outputs_body_SFunction_nr_379_172
+
+%<SLibCG_DumpSSCode("/*@[d98645*/",tlcOutputsFcnOfS379B172,"/*@]*/")>\
+%closefile Outputs_body_SFunction_nr_379_172
+
+%assign    Outputs_close_SFunction_nr_379_172 = ""
+%openfile  Outputs_close_SFunction_nr_379_172
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S899>/S-Function' */
+%closefile Outputs_close_SFunction_nr_379_172
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_nr_379_172, Outputs_body_SFunction_nr_379_172, Outputs_close_SFunction_nr_379_172)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B175)
+
+/* S-Function (TOP_MEX): '<S883>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d98647*/",tlcOutputsFcnOfS379B175,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B176)
+/* S-Function (TuneVarMEX): '<S884>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d98649*/",tlcOutputsFcnOfS379B176,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_pl_379_177 = ""
+%openfile Outputs_open_SFunction_pl_379_177
+
+/* S-Function (TranslateTrigger): '<S902>/S-Function' */
+%closefile Outputs_open_SFunction_pl_379_177
+
+%assign    Outputs_body_SFunction_pl_379_177 = ""
+%openfile  Outputs_body_SFunction_pl_379_177
+
+%<SLibCG_DumpSSCode("/*@[d9864b*/",tlcOutputsFcnOfS379B177,"/*@]*/")>\
+%closefile Outputs_body_SFunction_pl_379_177
+
+%assign    Outputs_close_SFunction_pl_379_177 = ""
+%openfile  Outputs_close_SFunction_pl_379_177
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S902>/S-Function' */
+%closefile Outputs_close_SFunction_pl_379_177
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_pl_379_177, Outputs_body_SFunction_pl_379_177, Outputs_close_SFunction_pl_379_177)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B180)
+
+/* S-Function (TOP_MEX): '<S884>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d9864d*/",tlcOutputsFcnOfS379B180,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B181)
+/* S-Function (TOP_MEX): '<S884>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[d9864f*/",tlcOutputsFcnOfS379B181,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B182)
+/* S-Function (TuneVarMEX): '<S885>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d98651*/",tlcOutputsFcnOfS379B182,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_d_379_183 = ""
+%openfile Outputs_open_SFunction_d_379_183
+
+/* S-Function (TranslateTrigger): '<S905>/S-Function' */
+%closefile Outputs_open_SFunction_d_379_183
+
+%assign    Outputs_body_SFunction_d_379_183 = ""
+%openfile  Outputs_body_SFunction_d_379_183
+
+%<SLibCG_DumpSSCode("/*@[d98653*/",tlcOutputsFcnOfS379B183,"/*@]*/")>\
+%closefile Outputs_body_SFunction_d_379_183
+
+%assign    Outputs_close_SFunction_d_379_183 = ""
+%openfile  Outputs_close_SFunction_d_379_183
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S905>/S-Function' */
+%closefile Outputs_close_SFunction_d_379_183
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_d_379_183, Outputs_body_SFunction_d_379_183, Outputs_close_SFunction_d_379_183)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B186)
+
+/* S-Function (TOP_MEX): '<S885>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d98655*/",tlcOutputsFcnOfS379B186,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B187)
+/* S-Function (TOP_MEX): '<S885>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[d98657*/",tlcOutputsFcnOfS379B187,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B188)
+/* S-Function (TuneVarMEX): '<S886>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d98659*/",tlcOutputsFcnOfS379B188,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_lg_379_189 = ""
+%openfile Outputs_open_SFunction_lg_379_189
+
+/* S-Function (TranslateTrigger): '<S908>/S-Function' */
+%closefile Outputs_open_SFunction_lg_379_189
+
+%assign    Outputs_body_SFunction_lg_379_189 = ""
+%openfile  Outputs_body_SFunction_lg_379_189
+
+%<SLibCG_DumpSSCode("/*@[d9865b*/",tlcOutputsFcnOfS379B189,"/*@]*/")>\
+%closefile Outputs_body_SFunction_lg_379_189
+
+%assign    Outputs_close_SFunction_lg_379_189 = ""
+%openfile  Outputs_close_SFunction_lg_379_189
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S908>/S-Function' */
+%closefile Outputs_close_SFunction_lg_379_189
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_lg_379_189, Outputs_body_SFunction_lg_379_189, Outputs_close_SFunction_lg_379_189)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B192)
+
+/* S-Function (TOP_MEX): '<S886>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d9865d*/",tlcOutputsFcnOfS379B192,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B193)
+/* S-Function (TOP_MEX): '<S886>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[d9865f*/",tlcOutputsFcnOfS379B193,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B194)
+/* S-Function (TuneVarMEX): '<S887>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d98661*/",tlcOutputsFcnOfS379B194,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_lk_379_195 = ""
+%openfile Outputs_open_SFunction_lk_379_195
+
+/* S-Function (TranslateTrigger): '<S911>/S-Function' */
+%closefile Outputs_open_SFunction_lk_379_195
+
+%assign    Outputs_body_SFunction_lk_379_195 = ""
+%openfile  Outputs_body_SFunction_lk_379_195
+
+%<SLibCG_DumpSSCode("/*@[d98663*/",tlcOutputsFcnOfS379B195,"/*@]*/")>\
+%closefile Outputs_body_SFunction_lk_379_195
+
+%assign    Outputs_close_SFunction_lk_379_195 = ""
+%openfile  Outputs_close_SFunction_lk_379_195
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S911>/S-Function' */
+%closefile Outputs_close_SFunction_lk_379_195
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_lk_379_195, Outputs_body_SFunction_lk_379_195, Outputs_close_SFunction_lk_379_195)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B198)
+
+/* S-Function (TOP_MEX): '<S887>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d98665*/",tlcOutputsFcnOfS379B198,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B199)
+/* S-Function (TOP_MEX): '<S887>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[d98667*/",tlcOutputsFcnOfS379B199,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B200)
+/* S-Function (TuneVarMEX): '<S888>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d98669*/",tlcOutputsFcnOfS379B200,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_j0_379_201 = ""
+%openfile Outputs_open_SFunction_j0_379_201
+
+/* S-Function (TranslateTrigger): '<S914>/S-Function' */
+%closefile Outputs_open_SFunction_j0_379_201
+
+%assign    Outputs_body_SFunction_j0_379_201 = ""
+%openfile  Outputs_body_SFunction_j0_379_201
+
+%<SLibCG_DumpSSCode("/*@[d9866b*/",tlcOutputsFcnOfS379B201,"/*@]*/")>\
+%closefile Outputs_body_SFunction_j0_379_201
+
+%assign    Outputs_close_SFunction_j0_379_201 = ""
+%openfile  Outputs_close_SFunction_j0_379_201
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S914>/S-Function' */
+%closefile Outputs_close_SFunction_j0_379_201
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_j0_379_201, Outputs_body_SFunction_j0_379_201, Outputs_close_SFunction_j0_379_201)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B204)
+
+/* S-Function (TOP_MEX): '<S888>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d9866d*/",tlcOutputsFcnOfS379B204,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B205)
+/* S-Function (TOP_MEX): '<S888>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[d9866f*/",tlcOutputsFcnOfS379B205,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B206)
+/* S-Function (TuneVarMEX): '<S889>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d98671*/",tlcOutputsFcnOfS379B206,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_ju_379_207 = ""
+%openfile Outputs_open_SFunction_ju_379_207
+
+/* S-Function (TranslateTrigger): '<S917>/S-Function' */
+%closefile Outputs_open_SFunction_ju_379_207
+
+%assign    Outputs_body_SFunction_ju_379_207 = ""
+%openfile  Outputs_body_SFunction_ju_379_207
+
+%<SLibCG_DumpSSCode("/*@[d98673*/",tlcOutputsFcnOfS379B207,"/*@]*/")>\
+%closefile Outputs_body_SFunction_ju_379_207
+
+%assign    Outputs_close_SFunction_ju_379_207 = ""
+%openfile  Outputs_close_SFunction_ju_379_207
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S917>/S-Function' */
+%closefile Outputs_close_SFunction_ju_379_207
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_ju_379_207, Outputs_body_SFunction_ju_379_207, Outputs_close_SFunction_ju_379_207)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B210)
+
+/* S-Function (TOP_MEX): '<S889>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d98675*/",tlcOutputsFcnOfS379B210,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B211)
+/* S-Function (TOP_MEX): '<S889>/TOP1' */
+%<SLibCG_DumpSSCode("/*@[d98677*/",tlcOutputsFcnOfS379B211,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B212)
+/* M-S-Function: '<S844>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[d98678*/",tlcOutputsFcnOfS379B212,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B213)
+/* S-Function (TuneVarMEX): '<S924>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d9867a*/",tlcOutputsFcnOfS379B213,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_lr_379_214 = ""
+%openfile Outputs_open_SFunction_lr_379_214
+
+/* S-Function (TranslateTrigger): '<S929>/S-Function' */
+%closefile Outputs_open_SFunction_lr_379_214
+
+%assign    Outputs_body_SFunction_lr_379_214 = ""
+%openfile  Outputs_body_SFunction_lr_379_214
+
+%<SLibCG_DumpSSCode("/*@[d9867c*/",tlcOutputsFcnOfS379B214,"/*@]*/")>\
+%closefile Outputs_body_SFunction_lr_379_214
+
+%assign    Outputs_close_SFunction_lr_379_214 = ""
+%openfile  Outputs_close_SFunction_lr_379_214
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S929>/S-Function' */
+%closefile Outputs_close_SFunction_lr_379_214
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_lr_379_214, Outputs_body_SFunction_lr_379_214, Outputs_close_SFunction_lr_379_214)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B217)
+
+/* S-Function (TOP_MEX): '<S924>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d9867e*/",tlcOutputsFcnOfS379B217,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B218)
+/* S-Function (TuneVarMEX): '<S925>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d98680*/",tlcOutputsFcnOfS379B218,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_d0_379_219 = ""
+%openfile Outputs_open_SFunction_d0_379_219
+
+/* S-Function (TranslateTrigger): '<S932>/S-Function' */
+%closefile Outputs_open_SFunction_d0_379_219
+
+%assign    Outputs_body_SFunction_d0_379_219 = ""
+%openfile  Outputs_body_SFunction_d0_379_219
+
+%<SLibCG_DumpSSCode("/*@[d98682*/",tlcOutputsFcnOfS379B219,"/*@]*/")>\
+%closefile Outputs_body_SFunction_d0_379_219
+
+%assign    Outputs_close_SFunction_d0_379_219 = ""
+%openfile  Outputs_close_SFunction_d0_379_219
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S932>/S-Function' */
+%closefile Outputs_close_SFunction_d0_379_219
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_d0_379_219, Outputs_body_SFunction_d0_379_219, Outputs_close_SFunction_d0_379_219)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B222)
+
+/* S-Function (TOP_MEX): '<S925>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d98684*/",tlcOutputsFcnOfS379B222,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B223)
+/* S-Function (TuneVarMEX): '<S926>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d98686*/",tlcOutputsFcnOfS379B223,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_ll_379_224 = ""
+%openfile Outputs_open_SFunction_ll_379_224
+
+/* S-Function (TranslateTrigger): '<S935>/S-Function' */
+%closefile Outputs_open_SFunction_ll_379_224
+
+%assign    Outputs_body_SFunction_ll_379_224 = ""
+%openfile  Outputs_body_SFunction_ll_379_224
+
+%<SLibCG_DumpSSCode("/*@[d98688*/",tlcOutputsFcnOfS379B224,"/*@]*/")>\
+%closefile Outputs_body_SFunction_ll_379_224
+
+%assign    Outputs_close_SFunction_ll_379_224 = ""
+%openfile  Outputs_close_SFunction_ll_379_224
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S935>/S-Function' */
+%closefile Outputs_close_SFunction_ll_379_224
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_ll_379_224, Outputs_body_SFunction_ll_379_224, Outputs_close_SFunction_ll_379_224)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B227)
+
+/* S-Function (TOP_MEX): '<S926>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d9868a*/",tlcOutputsFcnOfS379B227,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B228)
+/* S-Function (TuneVarMEX): '<S927>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d9868c*/",tlcOutputsFcnOfS379B228,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_cr_379_229 = ""
+%openfile Outputs_open_SFunction_cr_379_229
+
+/* S-Function (TranslateTrigger): '<S938>/S-Function' */
+%closefile Outputs_open_SFunction_cr_379_229
+
+%assign    Outputs_body_SFunction_cr_379_229 = ""
+%openfile  Outputs_body_SFunction_cr_379_229
+
+%<SLibCG_DumpSSCode("/*@[d9868e*/",tlcOutputsFcnOfS379B229,"/*@]*/")>\
+%closefile Outputs_body_SFunction_cr_379_229
+
+%assign    Outputs_close_SFunction_cr_379_229 = ""
+%openfile  Outputs_close_SFunction_cr_379_229
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S938>/S-Function' */
+%closefile Outputs_close_SFunction_cr_379_229
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_cr_379_229, Outputs_body_SFunction_cr_379_229, Outputs_close_SFunction_cr_379_229)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B232)
+
+/* S-Function (TOP_MEX): '<S927>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d98690*/",tlcOutputsFcnOfS379B232,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B233)
+/* S-Function (TuneVarMEX): '<S928>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d98692*/",tlcOutputsFcnOfS379B233,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_ip_379_234 = ""
+%openfile Outputs_open_SFunction_ip_379_234
+
+/* S-Function (TranslateTrigger): '<S941>/S-Function' */
+%closefile Outputs_open_SFunction_ip_379_234
+
+%assign    Outputs_body_SFunction_ip_379_234 = ""
+%openfile  Outputs_body_SFunction_ip_379_234
+
+%<SLibCG_DumpSSCode("/*@[d98694*/",tlcOutputsFcnOfS379B234,"/*@]*/")>\
+%closefile Outputs_body_SFunction_ip_379_234
+
+%assign    Outputs_close_SFunction_ip_379_234 = ""
+%openfile  Outputs_close_SFunction_ip_379_234
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S941>/S-Function' */
+%closefile Outputs_close_SFunction_ip_379_234
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_ip_379_234, Outputs_body_SFunction_ip_379_234, Outputs_close_SFunction_ip_379_234)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B237)
+
+/* S-Function (TOP_MEX): '<S928>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d98696*/",tlcOutputsFcnOfS379B237,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B238)
+/* S-Function (TuneVarMEX): '<S944>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d98698*/",tlcOutputsFcnOfS379B238,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_gp_379_239 = ""
+%openfile Outputs_open_SFunction_gp_379_239
+
+/* S-Function (TranslateTrigger): '<S948>/S-Function' */
+%closefile Outputs_open_SFunction_gp_379_239
+
+%assign    Outputs_body_SFunction_gp_379_239 = ""
+%openfile  Outputs_body_SFunction_gp_379_239
+
+%<SLibCG_DumpSSCode("/*@[d9869a*/",tlcOutputsFcnOfS379B239,"/*@]*/")>\
+%closefile Outputs_body_SFunction_gp_379_239
+
+%assign    Outputs_close_SFunction_gp_379_239 = ""
+%openfile  Outputs_close_SFunction_gp_379_239
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S948>/S-Function' */
+%closefile Outputs_close_SFunction_gp_379_239
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_gp_379_239, Outputs_body_SFunction_gp_379_239, Outputs_close_SFunction_gp_379_239)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B242)
+
+/* S-Function (TOP_MEX): '<S944>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d9869c*/",tlcOutputsFcnOfS379B242,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B243)
+/* S-Function (TuneVarMEX): '<S945>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d9869e*/",tlcOutputsFcnOfS379B243,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_m5_379_244 = ""
+%openfile Outputs_open_SFunction_m5_379_244
+
+/* S-Function (TranslateTrigger): '<S951>/S-Function' */
+%closefile Outputs_open_SFunction_m5_379_244
+
+%assign    Outputs_body_SFunction_m5_379_244 = ""
+%openfile  Outputs_body_SFunction_m5_379_244
+
+%<SLibCG_DumpSSCode("/*@[d986a0*/",tlcOutputsFcnOfS379B244,"/*@]*/")>\
+%closefile Outputs_body_SFunction_m5_379_244
+
+%assign    Outputs_close_SFunction_m5_379_244 = ""
+%openfile  Outputs_close_SFunction_m5_379_244
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S951>/S-Function' */
+%closefile Outputs_close_SFunction_m5_379_244
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_m5_379_244, Outputs_body_SFunction_m5_379_244, Outputs_close_SFunction_m5_379_244)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B247)
+
+/* S-Function (TOP_MEX): '<S945>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d986a2*/",tlcOutputsFcnOfS379B247,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B248)
+/* S-Function (TuneVarMEX): '<S946>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d986a4*/",tlcOutputsFcnOfS379B248,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_juw_379_249 = ""
+%openfile Outputs_open_SFunction_juw_379_249
+
+/* S-Function (TranslateTrigger): '<S954>/S-Function' */
+%closefile Outputs_open_SFunction_juw_379_249
+
+%assign    Outputs_body_SFunction_juw_379_249 = ""
+%openfile  Outputs_body_SFunction_juw_379_249
+
+%<SLibCG_DumpSSCode("/*@[d986a6*/",tlcOutputsFcnOfS379B249,"/*@]*/")>\
+%closefile Outputs_body_SFunction_juw_379_249
+
+%assign    Outputs_close_SFunction_juw_379_249 = ""
+%openfile  Outputs_close_SFunction_juw_379_249
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S954>/S-Function' */
+%closefile Outputs_close_SFunction_juw_379_249
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_juw_379_249, Outputs_body_SFunction_juw_379_249, Outputs_close_SFunction_juw_379_249)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B252)
+
+/* S-Function (TOP_MEX): '<S946>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d986a8*/",tlcOutputsFcnOfS379B252,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B253)
+/* S-Function (TuneVarMEX): '<S947>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d986aa*/",tlcOutputsFcnOfS379B253,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_ha_379_254 = ""
+%openfile Outputs_open_SFunction_ha_379_254
+
+/* S-Function (TranslateTrigger): '<S957>/S-Function' */
+%closefile Outputs_open_SFunction_ha_379_254
+
+%assign    Outputs_body_SFunction_ha_379_254 = ""
+%openfile  Outputs_body_SFunction_ha_379_254
+
+%<SLibCG_DumpSSCode("/*@[d986ac*/",tlcOutputsFcnOfS379B254,"/*@]*/")>\
+%closefile Outputs_body_SFunction_ha_379_254
+
+%assign    Outputs_close_SFunction_ha_379_254 = ""
+%openfile  Outputs_close_SFunction_ha_379_254
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S957>/S-Function' */
+%closefile Outputs_close_SFunction_ha_379_254
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_ha_379_254, Outputs_body_SFunction_ha_379_254, Outputs_close_SFunction_ha_379_254)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B257)
+
+/* S-Function (TOP_MEX): '<S947>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d986ae*/",tlcOutputsFcnOfS379B257,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B258)
+/* M-S-Function: '<S920>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[d986af*/",tlcOutputsFcnOfS379B258,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B259)
+/* S-Function (TuneVarMEX): '<S962>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d986b1*/",tlcOutputsFcnOfS379B259,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_gh_379_260 = ""
+%openfile Outputs_open_SFunction_gh_379_260
+
+/* S-Function (TranslateTrigger): '<S967>/S-Function' */
+%closefile Outputs_open_SFunction_gh_379_260
+
+%assign    Outputs_body_SFunction_gh_379_260 = ""
+%openfile  Outputs_body_SFunction_gh_379_260
+
+%<SLibCG_DumpSSCode("/*@[d986b3*/",tlcOutputsFcnOfS379B260,"/*@]*/")>\
+%closefile Outputs_body_SFunction_gh_379_260
+
+%assign    Outputs_close_SFunction_gh_379_260 = ""
+%openfile  Outputs_close_SFunction_gh_379_260
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S967>/S-Function' */
+%closefile Outputs_close_SFunction_gh_379_260
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_gh_379_260, Outputs_body_SFunction_gh_379_260, Outputs_close_SFunction_gh_379_260)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B263)
+
+/* S-Function (TOP_MEX): '<S962>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d986b5*/",tlcOutputsFcnOfS379B263,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B264)
+/* S-Function (TuneVarMEX): '<S963>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d986b7*/",tlcOutputsFcnOfS379B264,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_aa_379_265 = ""
+%openfile Outputs_open_SFunction_aa_379_265
+
+/* S-Function (TranslateTrigger): '<S970>/S-Function' */
+%closefile Outputs_open_SFunction_aa_379_265
+
+%assign    Outputs_body_SFunction_aa_379_265 = ""
+%openfile  Outputs_body_SFunction_aa_379_265
+
+%<SLibCG_DumpSSCode("/*@[d986b9*/",tlcOutputsFcnOfS379B265,"/*@]*/")>\
+%closefile Outputs_body_SFunction_aa_379_265
+
+%assign    Outputs_close_SFunction_aa_379_265 = ""
+%openfile  Outputs_close_SFunction_aa_379_265
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S970>/S-Function' */
+%closefile Outputs_close_SFunction_aa_379_265
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_aa_379_265, Outputs_body_SFunction_aa_379_265, Outputs_close_SFunction_aa_379_265)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B268)
+
+/* S-Function (TOP_MEX): '<S963>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d986bb*/",tlcOutputsFcnOfS379B268,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B269)
+/* S-Function (TuneVarMEX): '<S964>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d986bd*/",tlcOutputsFcnOfS379B269,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_aw_379_270 = ""
+%openfile Outputs_open_SFunction_aw_379_270
+
+/* S-Function (TranslateTrigger): '<S973>/S-Function' */
+%closefile Outputs_open_SFunction_aw_379_270
+
+%assign    Outputs_body_SFunction_aw_379_270 = ""
+%openfile  Outputs_body_SFunction_aw_379_270
+
+%<SLibCG_DumpSSCode("/*@[d986bf*/",tlcOutputsFcnOfS379B270,"/*@]*/")>\
+%closefile Outputs_body_SFunction_aw_379_270
+
+%assign    Outputs_close_SFunction_aw_379_270 = ""
+%openfile  Outputs_close_SFunction_aw_379_270
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S973>/S-Function' */
+%closefile Outputs_close_SFunction_aw_379_270
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_aw_379_270, Outputs_body_SFunction_aw_379_270, Outputs_close_SFunction_aw_379_270)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B273)
+
+/* S-Function (TOP_MEX): '<S964>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d986c1*/",tlcOutputsFcnOfS379B273,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B274)
+/* S-Function (TuneVarMEX): '<S965>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d986c3*/",tlcOutputsFcnOfS379B274,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_jw_379_275 = ""
+%openfile Outputs_open_SFunction_jw_379_275
+
+/* S-Function (TranslateTrigger): '<S976>/S-Function' */
+%closefile Outputs_open_SFunction_jw_379_275
+
+%assign    Outputs_body_SFunction_jw_379_275 = ""
+%openfile  Outputs_body_SFunction_jw_379_275
+
+%<SLibCG_DumpSSCode("/*@[d986c5*/",tlcOutputsFcnOfS379B275,"/*@]*/")>\
+%closefile Outputs_body_SFunction_jw_379_275
+
+%assign    Outputs_close_SFunction_jw_379_275 = ""
+%openfile  Outputs_close_SFunction_jw_379_275
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S976>/S-Function' */
+%closefile Outputs_close_SFunction_jw_379_275
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_jw_379_275, Outputs_body_SFunction_jw_379_275, Outputs_close_SFunction_jw_379_275)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B278)
+
+/* S-Function (TOP_MEX): '<S965>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d986c7*/",tlcOutputsFcnOfS379B278,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B279)
+/* S-Function (TuneVarMEX): '<S966>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d986c9*/",tlcOutputsFcnOfS379B279,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_lu_379_280 = ""
+%openfile Outputs_open_SFunction_lu_379_280
+
+/* S-Function (TranslateTrigger): '<S979>/S-Function' */
+%closefile Outputs_open_SFunction_lu_379_280
+
+%assign    Outputs_body_SFunction_lu_379_280 = ""
+%openfile  Outputs_body_SFunction_lu_379_280
+
+%<SLibCG_DumpSSCode("/*@[d986cb*/",tlcOutputsFcnOfS379B280,"/*@]*/")>\
+%closefile Outputs_body_SFunction_lu_379_280
+
+%assign    Outputs_close_SFunction_lu_379_280 = ""
+%openfile  Outputs_close_SFunction_lu_379_280
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S979>/S-Function' */
+%closefile Outputs_close_SFunction_lu_379_280
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_lu_379_280, Outputs_body_SFunction_lu_379_280, Outputs_close_SFunction_lu_379_280)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B283)
+
+/* S-Function (TOP_MEX): '<S966>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d986cd*/",tlcOutputsFcnOfS379B283,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B284)
+/* S-Function (TuneVarMEX): '<S982>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d986cf*/",tlcOutputsFcnOfS379B284,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_no_379_285 = ""
+%openfile Outputs_open_SFunction_no_379_285
+
+/* S-Function (TranslateTrigger): '<S986>/S-Function' */
+%closefile Outputs_open_SFunction_no_379_285
+
+%assign    Outputs_body_SFunction_no_379_285 = ""
+%openfile  Outputs_body_SFunction_no_379_285
+
+%<SLibCG_DumpSSCode("/*@[d986d1*/",tlcOutputsFcnOfS379B285,"/*@]*/")>\
+%closefile Outputs_body_SFunction_no_379_285
+
+%assign    Outputs_close_SFunction_no_379_285 = ""
+%openfile  Outputs_close_SFunction_no_379_285
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S986>/S-Function' */
+%closefile Outputs_close_SFunction_no_379_285
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_no_379_285, Outputs_body_SFunction_no_379_285, Outputs_close_SFunction_no_379_285)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B288)
+
+/* S-Function (TOP_MEX): '<S982>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d986d3*/",tlcOutputsFcnOfS379B288,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B289)
+/* S-Function (TuneVarMEX): '<S983>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d986d5*/",tlcOutputsFcnOfS379B289,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_jj_379_290 = ""
+%openfile Outputs_open_SFunction_jj_379_290
+
+/* S-Function (TranslateTrigger): '<S989>/S-Function' */
+%closefile Outputs_open_SFunction_jj_379_290
+
+%assign    Outputs_body_SFunction_jj_379_290 = ""
+%openfile  Outputs_body_SFunction_jj_379_290
+
+%<SLibCG_DumpSSCode("/*@[d986d7*/",tlcOutputsFcnOfS379B290,"/*@]*/")>\
+%closefile Outputs_body_SFunction_jj_379_290
+
+%assign    Outputs_close_SFunction_jj_379_290 = ""
+%openfile  Outputs_close_SFunction_jj_379_290
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S989>/S-Function' */
+%closefile Outputs_close_SFunction_jj_379_290
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_jj_379_290, Outputs_body_SFunction_jj_379_290, Outputs_close_SFunction_jj_379_290)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B293)
+
+/* S-Function (TOP_MEX): '<S983>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d986d9*/",tlcOutputsFcnOfS379B293,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B294)
+/* S-Function (TuneVarMEX): '<S984>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d986db*/",tlcOutputsFcnOfS379B294,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_cg_379_295 = ""
+%openfile Outputs_open_SFunction_cg_379_295
+
+/* S-Function (TranslateTrigger): '<S992>/S-Function' */
+%closefile Outputs_open_SFunction_cg_379_295
+
+%assign    Outputs_body_SFunction_cg_379_295 = ""
+%openfile  Outputs_body_SFunction_cg_379_295
+
+%<SLibCG_DumpSSCode("/*@[d986dd*/",tlcOutputsFcnOfS379B295,"/*@]*/")>\
+%closefile Outputs_body_SFunction_cg_379_295
+
+%assign    Outputs_close_SFunction_cg_379_295 = ""
+%openfile  Outputs_close_SFunction_cg_379_295
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S992>/S-Function' */
+%closefile Outputs_close_SFunction_cg_379_295
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_cg_379_295, Outputs_body_SFunction_cg_379_295, Outputs_close_SFunction_cg_379_295)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B298)
+
+/* S-Function (TOP_MEX): '<S984>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d986df*/",tlcOutputsFcnOfS379B298,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B299)
+/* S-Function (TuneVarMEX): '<S985>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[d986e1*/",tlcOutputsFcnOfS379B299,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_pj_379_300 = ""
+%openfile Outputs_open_SFunction_pj_379_300
+
+/* S-Function (TranslateTrigger): '<S995>/S-Function' */
+%closefile Outputs_open_SFunction_pj_379_300
+
+%assign    Outputs_body_SFunction_pj_379_300 = ""
+%openfile  Outputs_body_SFunction_pj_379_300
+
+%<SLibCG_DumpSSCode("/*@[d986e3*/",tlcOutputsFcnOfS379B300,"/*@]*/")>\
+%closefile Outputs_body_SFunction_pj_379_300
+
+%assign    Outputs_close_SFunction_pj_379_300 = ""
+%openfile  Outputs_close_SFunction_pj_379_300
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S995>/S-Function' */
+%closefile Outputs_close_SFunction_pj_379_300
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_pj_379_300, Outputs_body_SFunction_pj_379_300, Outputs_close_SFunction_pj_379_300)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B303)
+
+/* S-Function (TOP_MEX): '<S985>/TOP' */
+%<SLibCG_DumpSSCode("/*@[d986e5*/",tlcOutputsFcnOfS379B303,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS379B304)
+/* M-S-Function: '<S921>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[d986e6*/",tlcOutputsFcnOfS379B304,"/*@]*/")>\
+%endif
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_TranslationEngine64_Medusa5H1Part3(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(99, 1, fcnProtoType)>
+%endfunction

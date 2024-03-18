@@ -1,0 +1,1016 @@
+%implements s798_b0_evwnd_146_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%assign tlcOutputsFcnOfS504B0 = OpaqueTLCBlockFcn("Outputs", 504, 0, 146, 1, 0)
+%assign tlcOutputsFcnOfS504B1 = OpaqueTLCBlockFcn("Outputs", 504, 1, 146, 1, 1)
+%assign tlcOutputsFcnOfS504B4 = OpaqueTLCBlockFcn("Outputs", 504, 4, 146, 1, 2)
+%assign tlcOutputsFcnOfS504B5 = OpaqueTLCBlockFcn("Outputs", 504, 5, 146, 1, 3)
+%assign tlcOutputsFcnOfS504B6 = OpaqueTLCBlockFcn("Outputs", 504, 6, 146, 1, 4)
+%assign tlcOutputsFcnOfS504B9 = OpaqueTLCBlockFcn("Outputs", 504, 9, 146, 1, 5)
+%assign tlcOutputsFcnOfS504B10 = OpaqueTLCBlockFcn("Outputs", 504, 10, 146, 1, 6)
+%assign tlcOutputsFcnOfS504B11 = OpaqueTLCBlockFcn("Outputs", 504, 11, 146, 1, 7)
+%assign tlcOutputsFcnOfS504B14 = OpaqueTLCBlockFcn("Outputs", 504, 14, 146, 1, 8)
+%assign tlcOutputsFcnOfS504B15 = OpaqueTLCBlockFcn("Outputs", 504, 15, 146, 1, 9)
+%assign tlcOutputsFcnOfS504B16 = OpaqueTLCBlockFcn("Outputs", 504, 16, 146, 1, 10)
+%assign tlcOutputsFcnOfS504B19 = OpaqueTLCBlockFcn("Outputs", 504, 19, 146, 1, 11)
+%assign tlcOutputsFcnOfS504B20 = OpaqueTLCBlockFcn("Outputs", 504, 20, 146, 1, 12)
+%assign tlcOutputsFcnOfS504B21 = OpaqueTLCBlockFcn("Outputs", 504, 21, 146, 1, 13)
+%assign tlcOutputsFcnOfS504B24 = OpaqueTLCBlockFcn("Outputs", 504, 24, 146, 1, 14)
+%assign tlcOutputsFcnOfS504B25 = OpaqueTLCBlockFcn("Outputs", 504, 25, 146, 1, 15)
+%assign tlcOutputsFcnOfS504B26 = OpaqueTLCBlockFcn("Outputs", 504, 26, 146, 1, 16)
+%assign tlcOutputsFcnOfS504B29 = OpaqueTLCBlockFcn("Outputs", 504, 29, 146, 1, 17)
+%assign tlcOutputsFcnOfS504B30 = OpaqueTLCBlockFcn("Outputs", 504, 30, 146, 1, 18)
+%assign tlcOutputsFcnOfS504B31 = OpaqueTLCBlockFcn("Outputs", 504, 31, 146, 1, 19)
+%assign tlcOutputsFcnOfS504B34 = OpaqueTLCBlockFcn("Outputs", 504, 34, 146, 1, 20)
+%assign tlcOutputsFcnOfS504B35 = OpaqueTLCBlockFcn("Outputs", 504, 35, 146, 1, 21)
+%assign tlcOutputsFcnOfS504B36 = OpaqueTLCBlockFcn("Outputs", 504, 36, 146, 1, 22)
+%assign tlcOutputsFcnOfS504B37 = OpaqueTLCBlockFcn("Outputs", 504, 37, 146, 1, 23)
+%assign tlcOutputsFcnOfS504B38 = OpaqueTLCBlockFcn("Outputs", 504, 38, 146, 1, 24)
+%assign tlcOutputsFcnOfS504B41 = OpaqueTLCBlockFcn("Outputs", 504, 41, 146, 1, 25)
+%assign tlcOutputsFcnOfS504B42 = OpaqueTLCBlockFcn("Outputs", 504, 42, 146, 1, 26)
+%assign tlcOutputsFcnOfS504B43 = OpaqueTLCBlockFcn("Outputs", 504, 43, 146, 1, 27)
+%assign tlcOutputsFcnOfS504B44 = OpaqueTLCBlockFcn("Outputs", 504, 44, 146, 1, 28)
+%assign tlcOutputsFcnOfS504B47 = OpaqueTLCBlockFcn("Outputs", 504, 47, 146, 1, 29)
+%assign tlcOutputsFcnOfS504B48 = OpaqueTLCBlockFcn("Outputs", 504, 48, 146, 1, 30)
+%assign tlcOutputsFcnOfS504B49 = OpaqueTLCBlockFcn("Outputs", 504, 49, 146, 1, 31)
+%assign tlcOutputsFcnOfS504B52 = OpaqueTLCBlockFcn("Outputs", 504, 52, 146, 1, 32)
+%assign tlcOutputsFcnOfS504B53 = OpaqueTLCBlockFcn("Outputs", 504, 53, 146, 1, 33)
+%assign tlcOutputsFcnOfS504B54 = OpaqueTLCBlockFcn("Outputs", 504, 54, 146, 1, 34)
+%assign tlcOutputsFcnOfS504B57 = OpaqueTLCBlockFcn("Outputs", 504, 57, 146, 1, 35)
+%assign tlcOutputsFcnOfS504B58 = OpaqueTLCBlockFcn("Outputs", 504, 58, 146, 1, 36)
+%assign tlcOutputsFcnOfS504B59 = OpaqueTLCBlockFcn("Outputs", 504, 59, 146, 1, 37)
+%assign tlcOutputsFcnOfS504B62 = OpaqueTLCBlockFcn("Outputs", 504, 62, 146, 1, 38)
+%assign tlcOutputsFcnOfS504B63 = OpaqueTLCBlockFcn("Outputs", 504, 63, 146, 1, 39)
+%assign tlcOutputsFcnOfS504B64 = OpaqueTLCBlockFcn("Outputs", 504, 64, 146, 1, 40)
+%assign tlcOutputsFcnOfS504B67 = OpaqueTLCBlockFcn("Outputs", 504, 67, 146, 1, 41)
+%assign tlcOutputsFcnOfS504B68 = OpaqueTLCBlockFcn("Outputs", 504, 68, 146, 1, 42)
+%assign tlcOutputsFcnOfS504B69 = OpaqueTLCBlockFcn("Outputs", 504, 69, 146, 1, 43)
+%assign tlcOutputsFcnOfS504B72 = OpaqueTLCBlockFcn("Outputs", 504, 72, 146, 1, 44)
+%assign tlcOutputsFcnOfS504B73 = OpaqueTLCBlockFcn("Outputs", 504, 73, 146, 1, 45)
+%assign tlcOutputsFcnOfS504B74 = OpaqueTLCBlockFcn("Outputs", 504, 74, 146, 1, 46)
+%assign tlcOutputsFcnOfS504B75 = OpaqueTLCBlockFcn("Outputs", 504, 75, 146, 1, 47)
+%assign tlcOutputsFcnOfS504B78 = OpaqueTLCBlockFcn("Outputs", 504, 78, 146, 1, 48)
+%assign tlcOutputsFcnOfS504B79 = OpaqueTLCBlockFcn("Outputs", 504, 79, 146, 1, 49)
+%assign tlcOutputsFcnOfS504B80 = OpaqueTLCBlockFcn("Outputs", 504, 80, 146, 1, 50)
+%assign tlcOutputsFcnOfS504B83 = OpaqueTLCBlockFcn("Outputs", 504, 83, 146, 1, 51)
+%assign tlcOutputsFcnOfS504B84 = OpaqueTLCBlockFcn("Outputs", 504, 84, 146, 1, 52)
+%assign tlcOutputsFcnOfS504B85 = OpaqueTLCBlockFcn("Outputs", 504, 85, 146, 1, 53)
+%assign tlcOutputsFcnOfS504B88 = OpaqueTLCBlockFcn("Outputs", 504, 88, 146, 1, 54)
+%assign tlcOutputsFcnOfS504B89 = OpaqueTLCBlockFcn("Outputs", 504, 89, 146, 1, 55)
+%assign tlcOutputsFcnOfS504B90 = OpaqueTLCBlockFcn("Outputs", 504, 90, 146, 1, 56)
+%assign tlcOutputsFcnOfS504B93 = OpaqueTLCBlockFcn("Outputs", 504, 93, 146, 1, 57)
+%assign tlcOutputsFcnOfS504B94 = OpaqueTLCBlockFcn("Outputs", 504, 94, 146, 1, 58)
+%assign tlcOutputsFcnOfS504B95 = OpaqueTLCBlockFcn("Outputs", 504, 95, 146, 1, 59)
+%assign tlcOutputsFcnOfS504B98 = OpaqueTLCBlockFcn("Outputs", 504, 98, 146, 1, 60)
+%assign tlcOutputsFcnOfS504B99 = OpaqueTLCBlockFcn("Outputs", 504, 99, 146, 1, 61)
+%assign tlcOutputsFcnOfS504B100 = OpaqueTLCBlockFcn("Outputs", 504, 100, 146, 1, 62)
+%assign tlcOutputsFcnOfS504B103 = OpaqueTLCBlockFcn("Outputs", 504, 103, 146, 1, 63)
+%assign tlcOutputsFcnOfS504B104 = OpaqueTLCBlockFcn("Outputs", 504, 104, 146, 1, 64)
+%assign tlcOutputsFcnOfS504B105 = OpaqueTLCBlockFcn("Outputs", 504, 105, 146, 1, 65)
+%assign tlcOutputsFcnOfS504B106 = OpaqueTLCBlockFcn("Outputs", 504, 106, 146, 1, 66)
+%assign tlcOutputsFcnOfS504B109 = OpaqueTLCBlockFcn("Outputs", 504, 109, 146, 1, 67)
+%assign tlcOutputsFcnOfS504B110 = OpaqueTLCBlockFcn("Outputs", 504, 110, 146, 1, 68)
+%assign tlcOutputsFcnOfS504B111 = OpaqueTLCBlockFcn("Outputs", 504, 111, 146, 1, 69)
+%assign tlcOutputsFcnOfS504B114 = OpaqueTLCBlockFcn("Outputs", 504, 114, 146, 1, 70)
+%assign tlcOutputsFcnOfS504B115 = OpaqueTLCBlockFcn("Outputs", 504, 115, 146, 1, 71)
+%assign tlcOutputsFcnOfS504B116 = OpaqueTLCBlockFcn("Outputs", 504, 116, 146, 1, 72)
+%assign tlcOutputsFcnOfS504B119 = OpaqueTLCBlockFcn("Outputs", 504, 119, 146, 1, 73)
+%assign tlcOutputsFcnOfS504B120 = OpaqueTLCBlockFcn("Outputs", 504, 120, 146, 1, 74)
+%assign tlcOutputsFcnOfS504B121 = OpaqueTLCBlockFcn("Outputs", 504, 121, 146, 1, 75)
+%assign tlcOutputsFcnOfS504B124 = OpaqueTLCBlockFcn("Outputs", 504, 124, 146, 1, 76)
+%assign tlcOutputsFcnOfS504B125 = OpaqueTLCBlockFcn("Outputs", 504, 125, 146, 1, 77)
+%assign tlcOutputsFcnOfS504B126 = OpaqueTLCBlockFcn("Outputs", 504, 126, 146, 1, 78)
+%assign tlcOutputsFcnOfS504B129 = OpaqueTLCBlockFcn("Outputs", 504, 129, 146, 1, 79)
+%assign tlcOutputsFcnOfS504B130 = OpaqueTLCBlockFcn("Outputs", 504, 130, 146, 1, 80)
+%assign tlcOutputsFcnOfS504B131 = OpaqueTLCBlockFcn("Outputs", 504, 131, 146, 1, 81)
+%assign tlcOutputsFcnOfS504B134 = OpaqueTLCBlockFcn("Outputs", 504, 134, 146, 1, 82)
+%assign tlcOutputsFcnOfS504B135 = OpaqueTLCBlockFcn("Outputs", 504, 135, 146, 1, 83)
+%assign tlcOutputsFcnOfS504B136 = OpaqueTLCBlockFcn("Outputs", 504, 136, 146, 1, 84)
+%assign tlcOutputsFcnOfS504B139 = OpaqueTLCBlockFcn("Outputs", 504, 139, 146, 1, 85)
+%assign tlcOutputsFcnOfS504B140 = OpaqueTLCBlockFcn("Outputs", 504, 140, 146, 1, 86)
+%assign tlcOutputsFcnOfS504B141 = OpaqueTLCBlockFcn("Outputs", 504, 141, 146, 1, 87)
+%assign tlcOutputsFcnOfS504B144 = OpaqueTLCBlockFcn("Outputs", 504, 144, 146, 1, 88)
+%assign tlcOutputsFcnOfS504B145 = OpaqueTLCBlockFcn("Outputs", 504, 145, 146, 1, 89)
+%assign tlcOutputsFcnOfS504B146 = OpaqueTLCBlockFcn("Outputs", 504, 146, 146, 1, 90)
+%assign tlcOutputsFcnOfS504B149 = OpaqueTLCBlockFcn("Outputs", 504, 149, 146, 1, 91)
+%assign tlcOutputsFcnOfS504B150 = OpaqueTLCBlockFcn("Outputs", 504, 150, 146, 1, 92)
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B0)
+/* S-Function (TuneVarMEX): '<S1178>/BoostHz'
+ *
+ * Block description for '<S1178>/BoostHz':
+ *  Indicates the 'corner frequency' of the target frequency band for the
+ *  'Boost' filter.
+ */
+%<SLibCG_DumpSSCode("/*@[e10a73*/",tlcOutputsFcnOfS504B0,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_504_1 = ""
+%openfile Outputs_open_SFunction_504_1
+
+/* S-Function (TranslateTrigger): '<S1183>/S-Function' */
+%closefile Outputs_open_SFunction_504_1
+
+%assign    Outputs_body_SFunction_504_1 = ""
+%openfile  Outputs_body_SFunction_504_1
+
+%<SLibCG_DumpSSCode("/*@[e10a75*/",tlcOutputsFcnOfS504B1,"/*@]*/")>\
+%closefile Outputs_body_SFunction_504_1
+
+%assign    Outputs_close_SFunction_504_1 = ""
+%openfile  Outputs_close_SFunction_504_1
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S1183>/S-Function' */
+%closefile Outputs_close_SFunction_504_1
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_504_1, Outputs_body_SFunction_504_1, Outputs_close_SFunction_504_1)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B4)
+
+/* S-Function (TOP_MEX): '<S1178>/BoostCoeffs' */
+%<SLibCG_DumpSSCode("/*@[e10a77*/",tlcOutputsFcnOfS504B4,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B5)
+/* S-Function (TuneVarMEX): '<S1178>/CutHz'
+ *
+ * Block description for '<S1178>/CutHz':
+ *  Indicates the 'corner frequency' of the target frequency band for the
+ *  'Cut' filter.
+ */
+%<SLibCG_DumpSSCode("/*@[e10a79*/",tlcOutputsFcnOfS504B5,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_f_504_6 = ""
+%openfile Outputs_open_SFunction_f_504_6
+
+/* S-Function (TranslateTrigger): '<S1184>/S-Function' */
+%closefile Outputs_open_SFunction_f_504_6
+
+%assign    Outputs_body_SFunction_f_504_6 = ""
+%openfile  Outputs_body_SFunction_f_504_6
+
+%<SLibCG_DumpSSCode("/*@[e10a7b*/",tlcOutputsFcnOfS504B6,"/*@]*/")>\
+%closefile Outputs_body_SFunction_f_504_6
+
+%assign    Outputs_close_SFunction_f_504_6 = ""
+%openfile  Outputs_close_SFunction_f_504_6
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S1184>/S-Function' */
+%closefile Outputs_close_SFunction_f_504_6
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_f_504_6, Outputs_body_SFunction_f_504_6, Outputs_close_SFunction_f_504_6)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B9)
+
+/* S-Function (TOP_MEX): '<S1178>/CutCoeffs' */
+%<SLibCG_DumpSSCode("/*@[e10a7d*/",tlcOutputsFcnOfS504B9,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B10)
+/* S-Function (TuneVarMEX): '<S1178>/Boost_dB'
+ *
+ * Block description for '<S1178>/Boost_dB':
+ *  Indicates the maximum impact in dB for the tone boost. This value must
+ *  be positive. A negative boost impact would imply a gain cut instead!
+ */
+%<SLibCG_DumpSSCode("/*@[e10a7f*/",tlcOutputsFcnOfS504B10,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_l_504_11 = ""
+%openfile Outputs_open_SFunction_l_504_11
+
+/* S-Function (TranslateTrigger): '<S1182>/S-Function' */
+%closefile Outputs_open_SFunction_l_504_11
+
+%assign    Outputs_body_SFunction_l_504_11 = ""
+%openfile  Outputs_body_SFunction_l_504_11
+
+%<SLibCG_DumpSSCode("/*@[e10a81*/",tlcOutputsFcnOfS504B11,"/*@]*/")>\
+%closefile Outputs_body_SFunction_l_504_11
+
+%assign    Outputs_close_SFunction_l_504_11 = ""
+%openfile  Outputs_close_SFunction_l_504_11
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S1182>/S-Function' */
+%closefile Outputs_close_SFunction_l_504_11
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_l_504_11, Outputs_body_SFunction_l_504_11, Outputs_close_SFunction_l_504_11)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B14)
+
+/* S-Function (TOP_MEX): '<S1178>/Boost_dB TOP' */
+%<SLibCG_DumpSSCode("/*@[e10a83*/",tlcOutputsFcnOfS504B14,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B15)
+/* S-Function (TuneVarMEX): '<S1178>/Cut_dB'
+ *
+ * Block description for '<S1178>/Cut_dB':
+ *  Indicates the maximum impact in dB for the tone cut. This value must
+ *  be positive. A negative cut impact would imply a gain boost instead!
+ */
+%<SLibCG_DumpSSCode("/*@[e10a85*/",tlcOutputsFcnOfS504B15,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_fs_504_16 = ""
+%openfile Outputs_open_SFunction_fs_504_16
+
+/* S-Function (TranslateTrigger): '<S1185>/S-Function' */
+%closefile Outputs_open_SFunction_fs_504_16
+
+%assign    Outputs_body_SFunction_fs_504_16 = ""
+%openfile  Outputs_body_SFunction_fs_504_16
+
+%<SLibCG_DumpSSCode("/*@[e10a87*/",tlcOutputsFcnOfS504B16,"/*@]*/")>\
+%closefile Outputs_body_SFunction_fs_504_16
+
+%assign    Outputs_close_SFunction_fs_504_16 = ""
+%openfile  Outputs_close_SFunction_fs_504_16
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S1185>/S-Function' */
+%closefile Outputs_close_SFunction_fs_504_16
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_fs_504_16, Outputs_body_SFunction_fs_504_16, Outputs_close_SFunction_fs_504_16)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B19)
+
+/* S-Function (TOP_MEX): '<S1178>/Cut_dB TOP' */
+%<SLibCG_DumpSSCode("/*@[e10a89*/",tlcOutputsFcnOfS504B19,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B20)
+/* S-Function (TuneVarMEX): '<S1186>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[e10a8b*/",tlcOutputsFcnOfS504B20,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_a_504_21 = ""
+%openfile Outputs_open_SFunction_a_504_21
+
+/* S-Function (TranslateTrigger): '<S1199>/S-Function' */
+%closefile Outputs_open_SFunction_a_504_21
+
+%assign    Outputs_body_SFunction_a_504_21 = ""
+%openfile  Outputs_body_SFunction_a_504_21
+
+%<SLibCG_DumpSSCode("/*@[e10a8d*/",tlcOutputsFcnOfS504B21,"/*@]*/")>\
+%closefile Outputs_body_SFunction_a_504_21
+
+%assign    Outputs_close_SFunction_a_504_21 = ""
+%openfile  Outputs_close_SFunction_a_504_21
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S1199>/S-Function' */
+%closefile Outputs_close_SFunction_a_504_21
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_a_504_21, Outputs_body_SFunction_a_504_21, Outputs_close_SFunction_a_504_21)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B24)
+
+/* S-Function (TOP_MEX): '<S1186>/TOP' */
+%<SLibCG_DumpSSCode("/*@[e10a8f*/",tlcOutputsFcnOfS504B24,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B25)
+/* S-Function (TuneVarMEX): '<S1187>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[e10a91*/",tlcOutputsFcnOfS504B25,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_h_504_26 = ""
+%openfile Outputs_open_SFunction_h_504_26
+
+/* S-Function (TranslateTrigger): '<S1203>/S-Function' */
+%closefile Outputs_open_SFunction_h_504_26
+
+%assign    Outputs_body_SFunction_h_504_26 = ""
+%openfile  Outputs_body_SFunction_h_504_26
+
+%<SLibCG_DumpSSCode("/*@[e10a93*/",tlcOutputsFcnOfS504B26,"/*@]*/")>\
+%closefile Outputs_body_SFunction_h_504_26
+
+%assign    Outputs_close_SFunction_h_504_26 = ""
+%openfile  Outputs_close_SFunction_h_504_26
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S1203>/S-Function' */
+%closefile Outputs_close_SFunction_h_504_26
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_h_504_26, Outputs_body_SFunction_h_504_26, Outputs_close_SFunction_h_504_26)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B29)
+
+/* S-Function (TOP_MEX): '<S1187>/TOP' */
+%<SLibCG_DumpSSCode("/*@[e10a95*/",tlcOutputsFcnOfS504B29,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B30)
+/* S-Function (TuneVarMEX): '<S1188>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[e10a97*/",tlcOutputsFcnOfS504B30,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_e_504_31 = ""
+%openfile Outputs_open_SFunction_e_504_31
+
+/* S-Function (TranslateTrigger): '<S1207>/S-Function' */
+%closefile Outputs_open_SFunction_e_504_31
+
+%assign    Outputs_body_SFunction_e_504_31 = ""
+%openfile  Outputs_body_SFunction_e_504_31
+
+%<SLibCG_DumpSSCode("/*@[e10a99*/",tlcOutputsFcnOfS504B31,"/*@]*/")>\
+%closefile Outputs_body_SFunction_e_504_31
+
+%assign    Outputs_close_SFunction_e_504_31 = ""
+%openfile  Outputs_close_SFunction_e_504_31
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S1207>/S-Function' */
+%closefile Outputs_close_SFunction_e_504_31
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_e_504_31, Outputs_body_SFunction_e_504_31, Outputs_close_SFunction_e_504_31)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B34)
+
+/* S-Function (TOP_MEX): '<S1188>/TOP' */
+%<SLibCG_DumpSSCode("/*@[e10a9b*/",tlcOutputsFcnOfS504B34,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B35)
+/* M-S-Function: '<S1178>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[e10a9c*/",tlcOutputsFcnOfS504B35,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B36)
+/* S-Function (TuneVarMEX): '<S1179>/BoostHz'
+ *
+ * Block description for '<S1179>/BoostHz':
+ *  Indicates the 'center frequency' of the target frequency band for the
+ *  'Boost' filter.
+ */
+%<SLibCG_DumpSSCode("/*@[e10a9e*/",tlcOutputsFcnOfS504B36,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B37)
+/* S-Function (TuneVarMEX): '<S1179>/Boost_Q'
+ *
+ * Block description for '<S1179>/Boost_Q':
+ *  Value represents the width of the frequency band for the 'Boost'
+ *  filter.
+ */
+%<SLibCG_DumpSSCode("/*@[e10aa0*/",tlcOutputsFcnOfS504B37,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_hk_504_38 = ""
+%openfile Outputs_open_SFunction_hk_504_38
+
+/* S-Function (TranslateTrigger): '<S1210>/S-Function' */
+%closefile Outputs_open_SFunction_hk_504_38
+
+%assign    Outputs_body_SFunction_hk_504_38 = ""
+%openfile  Outputs_body_SFunction_hk_504_38
+
+%<SLibCG_DumpSSCode("/*@[e10aa2*/",tlcOutputsFcnOfS504B38,"/*@]*/")>\
+%closefile Outputs_body_SFunction_hk_504_38
+
+%assign    Outputs_close_SFunction_hk_504_38 = ""
+%openfile  Outputs_close_SFunction_hk_504_38
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S1210>/S-Function' */
+%closefile Outputs_close_SFunction_hk_504_38
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_hk_504_38, Outputs_body_SFunction_hk_504_38, Outputs_close_SFunction_hk_504_38)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B41)
+
+/* S-Function (TOP_MEX): '<S1179>/BoostCoeffs' */
+%<SLibCG_DumpSSCode("/*@[e10aa4*/",tlcOutputsFcnOfS504B41,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B42)
+/* S-Function (TuneVarMEX): '<S1179>/CutHz'
+ *
+ * Block description for '<S1179>/CutHz':
+ *  Indicates the 'center frequency' of the target frequency band for the
+ *  'Cut' filter.
+ */
+%<SLibCG_DumpSSCode("/*@[e10aa6*/",tlcOutputsFcnOfS504B42,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B43)
+/* S-Function (TuneVarMEX): '<S1179>/Cut_Q'
+ *
+ * Block description for '<S1179>/Cut_Q':
+ *  Value represents the width of the frequency band for the 'Cut' filter.
+ */
+%<SLibCG_DumpSSCode("/*@[e10aa8*/",tlcOutputsFcnOfS504B43,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_n_504_44 = ""
+%openfile Outputs_open_SFunction_n_504_44
+
+/* S-Function (TranslateTrigger): '<S1211>/S-Function' */
+%closefile Outputs_open_SFunction_n_504_44
+
+%assign    Outputs_body_SFunction_n_504_44 = ""
+%openfile  Outputs_body_SFunction_n_504_44
+
+%<SLibCG_DumpSSCode("/*@[e10aaa*/",tlcOutputsFcnOfS504B44,"/*@]*/")>\
+%closefile Outputs_body_SFunction_n_504_44
+
+%assign    Outputs_close_SFunction_n_504_44 = ""
+%openfile  Outputs_close_SFunction_n_504_44
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S1211>/S-Function' */
+%closefile Outputs_close_SFunction_n_504_44
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_n_504_44, Outputs_body_SFunction_n_504_44, Outputs_close_SFunction_n_504_44)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B47)
+
+/* S-Function (TOP_MEX): '<S1179>/CutCoeffs' */
+%<SLibCG_DumpSSCode("/*@[e10aac*/",tlcOutputsFcnOfS504B47,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B48)
+/* S-Function (TuneVarMEX): '<S1179>/Boost_dB'
+ *
+ * Block description for '<S1179>/Boost_dB':
+ *  Indicates the maximum impact in dB for the tone boost. This value must
+ *  be positive. A negative boost impact would imply a gain cut instead!
+ */
+%<SLibCG_DumpSSCode("/*@[e10aae*/",tlcOutputsFcnOfS504B48,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_b_504_49 = ""
+%openfile Outputs_open_SFunction_b_504_49
+
+/* S-Function (TranslateTrigger): '<S1209>/S-Function' */
+%closefile Outputs_open_SFunction_b_504_49
+
+%assign    Outputs_body_SFunction_b_504_49 = ""
+%openfile  Outputs_body_SFunction_b_504_49
+
+%<SLibCG_DumpSSCode("/*@[e10ab0*/",tlcOutputsFcnOfS504B49,"/*@]*/")>\
+%closefile Outputs_body_SFunction_b_504_49
+
+%assign    Outputs_close_SFunction_b_504_49 = ""
+%openfile  Outputs_close_SFunction_b_504_49
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S1209>/S-Function' */
+%closefile Outputs_close_SFunction_b_504_49
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_b_504_49, Outputs_body_SFunction_b_504_49, Outputs_close_SFunction_b_504_49)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B52)
+
+/* S-Function (TOP_MEX): '<S1179>/Boost_dB TOP' */
+%<SLibCG_DumpSSCode("/*@[e10ab2*/",tlcOutputsFcnOfS504B52,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B53)
+/* S-Function (TuneVarMEX): '<S1179>/Cut_dB'
+ *
+ * Block description for '<S1179>/Cut_dB':
+ *  Indicates the maximum impact in dB for the tone cut. This value must
+ *  be positive. A negative cut impact would imply a gain boost instead!
+ */
+%<SLibCG_DumpSSCode("/*@[e10ab4*/",tlcOutputsFcnOfS504B53,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_d_504_54 = ""
+%openfile Outputs_open_SFunction_d_504_54
+
+/* S-Function (TranslateTrigger): '<S1212>/S-Function' */
+%closefile Outputs_open_SFunction_d_504_54
+
+%assign    Outputs_body_SFunction_d_504_54 = ""
+%openfile  Outputs_body_SFunction_d_504_54
+
+%<SLibCG_DumpSSCode("/*@[e10ab6*/",tlcOutputsFcnOfS504B54,"/*@]*/")>\
+%closefile Outputs_body_SFunction_d_504_54
+
+%assign    Outputs_close_SFunction_d_504_54 = ""
+%openfile  Outputs_close_SFunction_d_504_54
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S1212>/S-Function' */
+%closefile Outputs_close_SFunction_d_504_54
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_d_504_54, Outputs_body_SFunction_d_504_54, Outputs_close_SFunction_d_504_54)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B57)
+
+/* S-Function (TOP_MEX): '<S1179>/Cut_dB TOP' */
+%<SLibCG_DumpSSCode("/*@[e10ab8*/",tlcOutputsFcnOfS504B57,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B58)
+/* S-Function (TuneVarMEX): '<S1213>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[e10aba*/",tlcOutputsFcnOfS504B58,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_f3_504_59 = ""
+%openfile Outputs_open_SFunction_f3_504_59
+
+/* S-Function (TranslateTrigger): '<S1226>/S-Function' */
+%closefile Outputs_open_SFunction_f3_504_59
+
+%assign    Outputs_body_SFunction_f3_504_59 = ""
+%openfile  Outputs_body_SFunction_f3_504_59
+
+%<SLibCG_DumpSSCode("/*@[e10abc*/",tlcOutputsFcnOfS504B59,"/*@]*/")>\
+%closefile Outputs_body_SFunction_f3_504_59
+
+%assign    Outputs_close_SFunction_f3_504_59 = ""
+%openfile  Outputs_close_SFunction_f3_504_59
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S1226>/S-Function' */
+%closefile Outputs_close_SFunction_f3_504_59
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_f3_504_59, Outputs_body_SFunction_f3_504_59, Outputs_close_SFunction_f3_504_59)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B62)
+
+/* S-Function (TOP_MEX): '<S1213>/TOP' */
+%<SLibCG_DumpSSCode("/*@[e10abe*/",tlcOutputsFcnOfS504B62,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B63)
+/* S-Function (TuneVarMEX): '<S1214>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[e10ac0*/",tlcOutputsFcnOfS504B63,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_bn_504_64 = ""
+%openfile Outputs_open_SFunction_bn_504_64
+
+/* S-Function (TranslateTrigger): '<S1230>/S-Function' */
+%closefile Outputs_open_SFunction_bn_504_64
+
+%assign    Outputs_body_SFunction_bn_504_64 = ""
+%openfile  Outputs_body_SFunction_bn_504_64
+
+%<SLibCG_DumpSSCode("/*@[e10ac2*/",tlcOutputsFcnOfS504B64,"/*@]*/")>\
+%closefile Outputs_body_SFunction_bn_504_64
+
+%assign    Outputs_close_SFunction_bn_504_64 = ""
+%openfile  Outputs_close_SFunction_bn_504_64
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S1230>/S-Function' */
+%closefile Outputs_close_SFunction_bn_504_64
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_bn_504_64, Outputs_body_SFunction_bn_504_64, Outputs_close_SFunction_bn_504_64)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B67)
+
+/* S-Function (TOP_MEX): '<S1214>/TOP' */
+%<SLibCG_DumpSSCode("/*@[e10ac4*/",tlcOutputsFcnOfS504B67,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B68)
+/* S-Function (TuneVarMEX): '<S1215>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[e10ac6*/",tlcOutputsFcnOfS504B68,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_p_504_69 = ""
+%openfile Outputs_open_SFunction_p_504_69
+
+/* S-Function (TranslateTrigger): '<S1234>/S-Function' */
+%closefile Outputs_open_SFunction_p_504_69
+
+%assign    Outputs_body_SFunction_p_504_69 = ""
+%openfile  Outputs_body_SFunction_p_504_69
+
+%<SLibCG_DumpSSCode("/*@[e10ac8*/",tlcOutputsFcnOfS504B69,"/*@]*/")>\
+%closefile Outputs_body_SFunction_p_504_69
+
+%assign    Outputs_close_SFunction_p_504_69 = ""
+%openfile  Outputs_close_SFunction_p_504_69
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S1234>/S-Function' */
+%closefile Outputs_close_SFunction_p_504_69
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_p_504_69, Outputs_body_SFunction_p_504_69, Outputs_close_SFunction_p_504_69)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B72)
+
+/* S-Function (TOP_MEX): '<S1215>/TOP' */
+%<SLibCG_DumpSSCode("/*@[e10aca*/",tlcOutputsFcnOfS504B72,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B73)
+/* M-S-Function: '<S1179>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[e10acb*/",tlcOutputsFcnOfS504B73,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B74)
+/* S-Function (TuneVarMEX): '<S1239>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[e10acd*/",tlcOutputsFcnOfS504B74,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_fm_504_75 = ""
+%openfile Outputs_open_SFunction_fm_504_75
+
+/* S-Function (TranslateTrigger): '<S1241>/S-Function' */
+%closefile Outputs_open_SFunction_fm_504_75
+
+%assign    Outputs_body_SFunction_fm_504_75 = ""
+%openfile  Outputs_body_SFunction_fm_504_75
+
+%<SLibCG_DumpSSCode("/*@[e10acf*/",tlcOutputsFcnOfS504B75,"/*@]*/")>\
+%closefile Outputs_body_SFunction_fm_504_75
+
+%assign    Outputs_close_SFunction_fm_504_75 = ""
+%openfile  Outputs_close_SFunction_fm_504_75
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S1241>/S-Function' */
+%closefile Outputs_close_SFunction_fm_504_75
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_fm_504_75, Outputs_body_SFunction_fm_504_75, Outputs_close_SFunction_fm_504_75)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B78)
+
+/* S-Function (TOP_MEX): '<S1239>/TOP' */
+%<SLibCG_DumpSSCode("/*@[e10ad1*/",tlcOutputsFcnOfS504B78,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B79)
+/* S-Function (TuneVarMEX): '<S1247>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[e10ad3*/",tlcOutputsFcnOfS504B79,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_bg_504_80 = ""
+%openfile Outputs_open_SFunction_bg_504_80
+
+/* S-Function (TranslateTrigger): '<S1250>/S-Function' */
+%closefile Outputs_open_SFunction_bg_504_80
+
+%assign    Outputs_body_SFunction_bg_504_80 = ""
+%openfile  Outputs_body_SFunction_bg_504_80
+
+%<SLibCG_DumpSSCode("/*@[e10ad5*/",tlcOutputsFcnOfS504B80,"/*@]*/")>\
+%closefile Outputs_body_SFunction_bg_504_80
+
+%assign    Outputs_close_SFunction_bg_504_80 = ""
+%openfile  Outputs_close_SFunction_bg_504_80
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S1250>/S-Function' */
+%closefile Outputs_close_SFunction_bg_504_80
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_bg_504_80, Outputs_body_SFunction_bg_504_80, Outputs_close_SFunction_bg_504_80)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B83)
+
+/* S-Function (TOP_MEX): '<S1247>/TOP' */
+%<SLibCG_DumpSSCode("/*@[e10ad7*/",tlcOutputsFcnOfS504B83,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B84)
+/* S-Function (TuneVarMEX): '<S1252>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[e10ad9*/",tlcOutputsFcnOfS504B84,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_n1_504_85 = ""
+%openfile Outputs_open_SFunction_n1_504_85
+
+/* S-Function (TranslateTrigger): '<S1256>/S-Function' */
+%closefile Outputs_open_SFunction_n1_504_85
+
+%assign    Outputs_body_SFunction_n1_504_85 = ""
+%openfile  Outputs_body_SFunction_n1_504_85
+
+%<SLibCG_DumpSSCode("/*@[e10adb*/",tlcOutputsFcnOfS504B85,"/*@]*/")>\
+%closefile Outputs_body_SFunction_n1_504_85
+
+%assign    Outputs_close_SFunction_n1_504_85 = ""
+%openfile  Outputs_close_SFunction_n1_504_85
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S1256>/S-Function' */
+%closefile Outputs_close_SFunction_n1_504_85
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_n1_504_85, Outputs_body_SFunction_n1_504_85, Outputs_close_SFunction_n1_504_85)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B88)
+
+/* S-Function (TOP_MEX): '<S1252>/TOP' */
+%<SLibCG_DumpSSCode("/*@[e10add*/",tlcOutputsFcnOfS504B88,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B89)
+/* S-Function (TuneVarMEX): '<S1253>/attackTune' */
+%<SLibCG_DumpSSCode("/*@[e10adf*/",tlcOutputsFcnOfS504B89,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_k_504_90 = ""
+%openfile Outputs_open_SFunction_k_504_90
+
+/* S-Function (TranslateTrigger): '<S1262>/S-Function' */
+%closefile Outputs_open_SFunction_k_504_90
+
+%assign    Outputs_body_SFunction_k_504_90 = ""
+%openfile  Outputs_body_SFunction_k_504_90
+
+%<SLibCG_DumpSSCode("/*@[e10ae1*/",tlcOutputsFcnOfS504B90,"/*@]*/")>\
+%closefile Outputs_body_SFunction_k_504_90
+
+%assign    Outputs_close_SFunction_k_504_90 = ""
+%openfile  Outputs_close_SFunction_k_504_90
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S1262>/S-Function' */
+%closefile Outputs_close_SFunction_k_504_90
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_k_504_90, Outputs_body_SFunction_k_504_90, Outputs_close_SFunction_k_504_90)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B93)
+
+/* S-Function (TOP_MEX): '<S1253>/attack' */
+%<SLibCG_DumpSSCode("/*@[e10ae3*/",tlcOutputsFcnOfS504B93,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B94)
+/* S-Function (TuneVarMEX): '<S1253>/decay tune' */
+%<SLibCG_DumpSSCode("/*@[e10ae5*/",tlcOutputsFcnOfS504B94,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_b0_504_95 = ""
+%openfile Outputs_open_SFunction_b0_504_95
+
+/* S-Function (TranslateTrigger): '<S1263>/S-Function' */
+%closefile Outputs_open_SFunction_b0_504_95
+
+%assign    Outputs_body_SFunction_b0_504_95 = ""
+%openfile  Outputs_body_SFunction_b0_504_95
+
+%<SLibCG_DumpSSCode("/*@[e10ae7*/",tlcOutputsFcnOfS504B95,"/*@]*/")>\
+%closefile Outputs_body_SFunction_b0_504_95
+
+%assign    Outputs_close_SFunction_b0_504_95 = ""
+%openfile  Outputs_close_SFunction_b0_504_95
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S1263>/S-Function' */
+%closefile Outputs_close_SFunction_b0_504_95
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_b0_504_95, Outputs_body_SFunction_b0_504_95, Outputs_close_SFunction_b0_504_95)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B98)
+
+/* S-Function (TOP_MEX): '<S1253>/decay' */
+%<SLibCG_DumpSSCode("/*@[e10ae9*/",tlcOutputsFcnOfS504B98,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B99)
+/* S-Function (TuneVarMEX): '<S1253>/maxAttack tune' */
+%<SLibCG_DumpSSCode("/*@[e10aeb*/",tlcOutputsFcnOfS504B99,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_be_504_100 = ""
+%openfile Outputs_open_SFunction_be_504_100
+
+/* S-Function (TranslateTrigger): '<S1264>/S-Function' */
+%closefile Outputs_open_SFunction_be_504_100
+
+%assign    Outputs_body_SFunction_be_504_100 = ""
+%openfile  Outputs_body_SFunction_be_504_100
+
+%<SLibCG_DumpSSCode("/*@[e10aed*/",tlcOutputsFcnOfS504B100,"/*@]*/")>\
+%closefile Outputs_body_SFunction_be_504_100
+
+%assign    Outputs_close_SFunction_be_504_100 = ""
+%openfile  Outputs_close_SFunction_be_504_100
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S1264>/S-Function' */
+%closefile Outputs_close_SFunction_be_504_100
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_be_504_100, Outputs_body_SFunction_be_504_100, Outputs_close_SFunction_be_504_100)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B103)
+
+/* S-Function (TOP_MEX): '<S1253>/maxAttack' */
+%<SLibCG_DumpSSCode("/*@[e10aef*/",tlcOutputsFcnOfS504B103,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B104)
+/* M-S-Function: '<S1253>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[e10af0*/",tlcOutputsFcnOfS504B104,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B105)
+/* S-Function (TuneVarMEX): '<S1254>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[e10af2*/",tlcOutputsFcnOfS504B105,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_pe_504_106 = ""
+%openfile Outputs_open_SFunction_pe_504_106
+
+/* S-Function (TranslateTrigger): '<S1268>/S-Function' */
+%closefile Outputs_open_SFunction_pe_504_106
+
+%assign    Outputs_body_SFunction_pe_504_106 = ""
+%openfile  Outputs_body_SFunction_pe_504_106
+
+%<SLibCG_DumpSSCode("/*@[e10af4*/",tlcOutputsFcnOfS504B106,"/*@]*/")>\
+%closefile Outputs_body_SFunction_pe_504_106
+
+%assign    Outputs_close_SFunction_pe_504_106 = ""
+%openfile  Outputs_close_SFunction_pe_504_106
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S1268>/S-Function' */
+%closefile Outputs_close_SFunction_pe_504_106
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_pe_504_106, Outputs_body_SFunction_pe_504_106, Outputs_close_SFunction_pe_504_106)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B109)
+
+/* S-Function (TOP_MEX): '<S1254>/TOP' */
+%<SLibCG_DumpSSCode("/*@[e10af6*/",tlcOutputsFcnOfS504B109,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B110)
+/* S-Function (TuneVarMEX): '<S1255>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[e10af8*/",tlcOutputsFcnOfS504B110,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_l3_504_111 = ""
+%openfile Outputs_open_SFunction_l3_504_111
+
+/* S-Function (TranslateTrigger): '<S1271>/S-Function' */
+%closefile Outputs_open_SFunction_l3_504_111
+
+%assign    Outputs_body_SFunction_l3_504_111 = ""
+%openfile  Outputs_body_SFunction_l3_504_111
+
+%<SLibCG_DumpSSCode("/*@[e10afa*/",tlcOutputsFcnOfS504B111,"/*@]*/")>\
+%closefile Outputs_body_SFunction_l3_504_111
+
+%assign    Outputs_close_SFunction_l3_504_111 = ""
+%openfile  Outputs_close_SFunction_l3_504_111
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S1271>/S-Function' */
+%closefile Outputs_close_SFunction_l3_504_111
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_l3_504_111, Outputs_body_SFunction_l3_504_111, Outputs_close_SFunction_l3_504_111)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B114)
+
+/* S-Function (TOP_MEX): '<S1255>/TOP' */
+%<SLibCG_DumpSSCode("/*@[e10afc*/",tlcOutputsFcnOfS504B114,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B115)
+/* S-Function (TuneVarMEX): '<S1181>/BoostHz'
+ *
+ * Block description for '<S1181>/BoostHz':
+ *  Indicates the 'corner frequency' of the target frequency band for the
+ *  'Boost' filter.
+ */
+%<SLibCG_DumpSSCode("/*@[e10afe*/",tlcOutputsFcnOfS504B115,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_fl_504_116 = ""
+%openfile Outputs_open_SFunction_fl_504_116
+
+/* S-Function (TranslateTrigger): '<S1275>/S-Function' */
+%closefile Outputs_open_SFunction_fl_504_116
+
+%assign    Outputs_body_SFunction_fl_504_116 = ""
+%openfile  Outputs_body_SFunction_fl_504_116
+
+%<SLibCG_DumpSSCode("/*@[e10b00*/",tlcOutputsFcnOfS504B116,"/*@]*/")>\
+%closefile Outputs_body_SFunction_fl_504_116
+
+%assign    Outputs_close_SFunction_fl_504_116 = ""
+%openfile  Outputs_close_SFunction_fl_504_116
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S1275>/S-Function' */
+%closefile Outputs_close_SFunction_fl_504_116
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_fl_504_116, Outputs_body_SFunction_fl_504_116, Outputs_close_SFunction_fl_504_116)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B119)
+
+/* S-Function (TOP_MEX): '<S1181>/BoostCoeffs' */
+%<SLibCG_DumpSSCode("/*@[e10b02*/",tlcOutputsFcnOfS504B119,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B120)
+/* S-Function (TuneVarMEX): '<S1181>/CutHz'
+ *
+ * Block description for '<S1181>/CutHz':
+ *  Indicates the 'corner frequency' of the target frequency band for the
+ *  'Cut' filter.
+ */
+%<SLibCG_DumpSSCode("/*@[e10b04*/",tlcOutputsFcnOfS504B120,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_pj_504_121 = ""
+%openfile Outputs_open_SFunction_pj_504_121
+
+/* S-Function (TranslateTrigger): '<S1276>/S-Function' */
+%closefile Outputs_open_SFunction_pj_504_121
+
+%assign    Outputs_body_SFunction_pj_504_121 = ""
+%openfile  Outputs_body_SFunction_pj_504_121
+
+%<SLibCG_DumpSSCode("/*@[e10b06*/",tlcOutputsFcnOfS504B121,"/*@]*/")>\
+%closefile Outputs_body_SFunction_pj_504_121
+
+%assign    Outputs_close_SFunction_pj_504_121 = ""
+%openfile  Outputs_close_SFunction_pj_504_121
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S1276>/S-Function' */
+%closefile Outputs_close_SFunction_pj_504_121
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_pj_504_121, Outputs_body_SFunction_pj_504_121, Outputs_close_SFunction_pj_504_121)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B124)
+
+/* S-Function (TOP_MEX): '<S1181>/CutCoeffs' */
+%<SLibCG_DumpSSCode("/*@[e10b08*/",tlcOutputsFcnOfS504B124,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B125)
+/* S-Function (TuneVarMEX): '<S1181>/Boost_dB'
+ *
+ * Block description for '<S1181>/Boost_dB':
+ *  Indicates the maximum impact in dB for the tone boost. This value must
+ *  be positive. A negative boost impact would imply a gain cut instead!
+ */
+%<SLibCG_DumpSSCode("/*@[e10b0a*/",tlcOutputsFcnOfS504B125,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_c_504_126 = ""
+%openfile Outputs_open_SFunction_c_504_126
+
+/* S-Function (TranslateTrigger): '<S1274>/S-Function' */
+%closefile Outputs_open_SFunction_c_504_126
+
+%assign    Outputs_body_SFunction_c_504_126 = ""
+%openfile  Outputs_body_SFunction_c_504_126
+
+%<SLibCG_DumpSSCode("/*@[e10b0c*/",tlcOutputsFcnOfS504B126,"/*@]*/")>\
+%closefile Outputs_body_SFunction_c_504_126
+
+%assign    Outputs_close_SFunction_c_504_126 = ""
+%openfile  Outputs_close_SFunction_c_504_126
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S1274>/S-Function' */
+%closefile Outputs_close_SFunction_c_504_126
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_c_504_126, Outputs_body_SFunction_c_504_126, Outputs_close_SFunction_c_504_126)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B129)
+
+/* S-Function (TOP_MEX): '<S1181>/Boost_dB TOP' */
+%<SLibCG_DumpSSCode("/*@[e10b0e*/",tlcOutputsFcnOfS504B129,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B130)
+/* S-Function (TuneVarMEX): '<S1181>/Cut_dB'
+ *
+ * Block description for '<S1181>/Cut_dB':
+ *  Indicates the maximum impact in dB for the tone cut. This value must
+ *  be positive. A negative cut impact would imply a gain boost instead!
+ */
+%<SLibCG_DumpSSCode("/*@[e10b10*/",tlcOutputsFcnOfS504B130,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_m_504_131 = ""
+%openfile Outputs_open_SFunction_m_504_131
+
+/* S-Function (TranslateTrigger): '<S1277>/S-Function' */
+%closefile Outputs_open_SFunction_m_504_131
+
+%assign    Outputs_body_SFunction_m_504_131 = ""
+%openfile  Outputs_body_SFunction_m_504_131
+
+%<SLibCG_DumpSSCode("/*@[e10b12*/",tlcOutputsFcnOfS504B131,"/*@]*/")>\
+%closefile Outputs_body_SFunction_m_504_131
+
+%assign    Outputs_close_SFunction_m_504_131 = ""
+%openfile  Outputs_close_SFunction_m_504_131
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S1277>/S-Function' */
+%closefile Outputs_close_SFunction_m_504_131
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_m_504_131, Outputs_body_SFunction_m_504_131, Outputs_close_SFunction_m_504_131)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B134)
+
+/* S-Function (TOP_MEX): '<S1181>/Cut_dB TOP' */
+%<SLibCG_DumpSSCode("/*@[e10b14*/",tlcOutputsFcnOfS504B134,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B135)
+/* S-Function (TuneVarMEX): '<S1278>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[e10b16*/",tlcOutputsFcnOfS504B135,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_dw_504_136 = ""
+%openfile Outputs_open_SFunction_dw_504_136
+
+/* S-Function (TranslateTrigger): '<S1291>/S-Function' */
+%closefile Outputs_open_SFunction_dw_504_136
+
+%assign    Outputs_body_SFunction_dw_504_136 = ""
+%openfile  Outputs_body_SFunction_dw_504_136
+
+%<SLibCG_DumpSSCode("/*@[e10b18*/",tlcOutputsFcnOfS504B136,"/*@]*/")>\
+%closefile Outputs_body_SFunction_dw_504_136
+
+%assign    Outputs_close_SFunction_dw_504_136 = ""
+%openfile  Outputs_close_SFunction_dw_504_136
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S1291>/S-Function' */
+%closefile Outputs_close_SFunction_dw_504_136
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_dw_504_136, Outputs_body_SFunction_dw_504_136, Outputs_close_SFunction_dw_504_136)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B139)
+
+/* S-Function (TOP_MEX): '<S1278>/TOP' */
+%<SLibCG_DumpSSCode("/*@[e10b1a*/",tlcOutputsFcnOfS504B139,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B140)
+/* S-Function (TuneVarMEX): '<S1279>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[e10b1c*/",tlcOutputsFcnOfS504B140,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_bi_504_141 = ""
+%openfile Outputs_open_SFunction_bi_504_141
+
+/* S-Function (TranslateTrigger): '<S1295>/S-Function' */
+%closefile Outputs_open_SFunction_bi_504_141
+
+%assign    Outputs_body_SFunction_bi_504_141 = ""
+%openfile  Outputs_body_SFunction_bi_504_141
+
+%<SLibCG_DumpSSCode("/*@[e10b1e*/",tlcOutputsFcnOfS504B141,"/*@]*/")>\
+%closefile Outputs_body_SFunction_bi_504_141
+
+%assign    Outputs_close_SFunction_bi_504_141 = ""
+%openfile  Outputs_close_SFunction_bi_504_141
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S1295>/S-Function' */
+%closefile Outputs_close_SFunction_bi_504_141
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_bi_504_141, Outputs_body_SFunction_bi_504_141, Outputs_close_SFunction_bi_504_141)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B144)
+
+/* S-Function (TOP_MEX): '<S1279>/TOP' */
+%<SLibCG_DumpSSCode("/*@[e10b20*/",tlcOutputsFcnOfS504B144,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B145)
+/* S-Function (TuneVarMEX): '<S1280>/Tune Variable' */
+%<SLibCG_DumpSSCode("/*@[e10b22*/",tlcOutputsFcnOfS504B145,"/*@]*/")>\
+%endif
+%assign   Outputs_open_SFunction_p4_504_146 = ""
+%openfile Outputs_open_SFunction_p4_504_146
+
+/* S-Function (TranslateTrigger): '<S1299>/S-Function' */
+%closefile Outputs_open_SFunction_p4_504_146
+
+%assign    Outputs_body_SFunction_p4_504_146 = ""
+%openfile  Outputs_body_SFunction_p4_504_146
+
+%<SLibCG_DumpSSCode("/*@[e10b24*/",tlcOutputsFcnOfS504B146,"/*@]*/")>\
+%closefile Outputs_body_SFunction_p4_504_146
+
+%assign    Outputs_close_SFunction_p4_504_146 = ""
+%openfile  Outputs_close_SFunction_p4_504_146
+
+/* End of Outputs for S-Function (TranslateTrigger): '<S1299>/S-Function' */
+%closefile Outputs_close_SFunction_p4_504_146
+%<SLibCG_DumpSSCode(Outputs_open_SFunction_p4_504_146, Outputs_body_SFunction_p4_504_146, Outputs_close_SFunction_p4_504_146)>
+
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B149)
+
+/* S-Function (TOP_MEX): '<S1280>/TOP' */
+%<SLibCG_DumpSSCode("/*@[e10b26*/",tlcOutputsFcnOfS504B149,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS504B150)
+/* M-S-Function: '<S1181>/FeaturePath' */
+%<SLibCG_DumpSSCode("/*@[e10b27*/",tlcOutputsFcnOfS504B150,"/*@]*/")>\
+%endif
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_TranslationEngine64_PreAmpPart1(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(146, 1, fcnProtoType)>
+%endfunction

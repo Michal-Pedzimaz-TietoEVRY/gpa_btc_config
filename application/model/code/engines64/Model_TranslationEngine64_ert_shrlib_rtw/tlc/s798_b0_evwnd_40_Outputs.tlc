@@ -1,0 +1,264 @@
+%implements s798_b0_evwnd_40_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+int32_T actualTrebleDelay;
+char_T h_data[82];
+char_T d_data[72];
+char_T b_data[70];
+char_T c_data[68];
+char_T g_data[67];
+char_T e_data[65];
+char_T f_data[63];
+static const char_T i[70] = %<(TLC_STR_CTX(25))>;
+static const char_T j[68] = %<(TLC_STR_CTX(26))>;
+static const char_T k[72] = %<(TLC_STR_CTX(27))>;
+static const char_T l[65] = %<(TLC_STR_CTX(28))>;
+static const char_T m[63] = %<(TLC_STR_CTX(29))>;
+static const char_T n[67] = %<(TLC_STR_CTX(30))>;
+static const char_T o[82] = %<(TLC_STR_CTX(31))>;
+%closefile localVarDecl
+/* {S!d1}MATLAB Function: '<S635>/translation' */
+/* {S!d4}MATLAB Function: '<S635>/translation' incorporates:
+ *  S-Function (TuneVarMEX): '<S630>/Tune Variable1'
+ *  S-Function (TuneVarMEX): '<S630>/Tune Variable4'
+ *  S-Function (TuneVarMEX): '<S630>/Tune Variable5'
+ */
+/*  Invoke the function trigger output */
+/* MATLAB Function 'TranslateTrigger/tfunc': '<S638>:1' */
+/* '<S638>:1:3' f(); */
+/* [Param:DecimationFactor] */
+/* [Param:DeciRateMaxWiggleDelay] */
+/* [Param:DeciRateMaxNearWiggleDelay] */
+/* [Param:MaxHoligramDelay] */
+/* [Param:DeciRateFdpDelay] */
+/* [Param:FullRateFdpDelay] */
+/* [Param:MaxTrebleDelay] */
+/* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 2/Alignment Delay/Full-rate Alignment Delay Translation/translation': '<S637>:1' */
+/*  Treble Delay Translation */
+/*  This translation computes the alignment delay values for full-rate */
+/*  upmixed components */
+/*  Extracting build-time parameters from config struct */
+/* '<S637>:1:19' DEC = DecimationFactor; */
+/*  Error Check for incoming tune values */
+/* '<S637>:1:22' if(wiggleDelay.Value < 0) */
+/*@>c6553d*/if (/*@>d1434f*/Model_TranslationEngine64_AlignmentDelay_B./*@>d14979*/DeciRateWiggleFilterDelaySamples.Value/*@>c65536*/ < /*@>d111b3*/0) {
+    /* '<S637>:1:23' TranslateError('Value of ''Medusa Wiggle Delay'' must be greater than or equal to zero.'); */
+    /* TRANSLATEERROR (For use in Functions triggered by TranslationTrigger blocks.) */
+    /* Print error message during tune data translation. */
+    /*   Do not include a final newline as this behavior is already built in. */
+    /*   Note that escape sequences such as '\n' will not work here. To emit */
+    /*   special characters, pass them in as arguments to %<"\%c or \%s format"> */
+    /*   specifiers. */
+    /*    Copyright 2018-2019 Bose Corporation */
+    /* 'TranslateError:10' coder.extrinsic('gcb') */
+    /* 'TranslateError:11' coder.extrinsic('warning') */
+    /* 'TranslateError:12' coder.allowpcode('plain'); */
+    /*  enable code generation from p-file */
+    /* 'TranslateError:14' if (coder.target('MATLAB')) */
+    /* 'TranslateError:18' if (coder.target('Sfun')) */
+    /* 'TranslateError:21' else */
+    /* 'TranslateError:22' count = numel(varargin); */
+    /* 'TranslateError:23' fixedArgs = varargin; */
+    /* 'TranslateError:24' for i=1:count */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:26' fixedArgs{i} = [varargin{i} char(0)]; */
+    /* 'TranslateError:29' coder.ceval('TranslateError',fixedArgs{:}); */
+    /*@>d13ae8*/memcpy(&/*@>d13394*/b_data[/*@>d13384*/0], &/*@>d1339c*/i/*@>d1339d*/[/*@>d13391*/0], /*@>d13393*/70U/*@>d133a0*/ * /*@>d1339f*/sizeof(char_T));
+    /*@>d13879*/TranslateError(&/*@>d12b6a*/b_data/*@>d12b7d*/[/*@>d111c4*/0]);
+}
+/* '<S637>:1:26' if(NEARWiggleDelay.Value < 0) */
+/*@>c6553f*/if (/*@>d14355*/Model_TranslationEngine64_AlignmentDelay_B./*@>d1497c*/DeciRateNearWiggleFilterDelaySamples.Value/*@>c65537*/ < /*@>d111b4*/0) {
+    /* '<S637>:1:27' TranslateError('Value of ''NEAR Wiggle Delay'' must be greater than or equal to zero.'); */
+    /* TRANSLATEERROR (For use in Functions triggered by TranslationTrigger blocks.) */
+    /* Print error message during tune data translation. */
+    /*   Do not include a final newline as this behavior is already built in. */
+    /*   Note that escape sequences such as '\n' will not work here. To emit */
+    /*   special characters, pass them in as arguments to %<"\%c or \%s format"> */
+    /*   specifiers. */
+    /*    Copyright 2018-2019 Bose Corporation */
+    /* 'TranslateError:10' coder.extrinsic('gcb') */
+    /* 'TranslateError:11' coder.extrinsic('warning') */
+    /* 'TranslateError:12' coder.allowpcode('plain'); */
+    /*  enable code generation from p-file */
+    /* 'TranslateError:14' if (coder.target('MATLAB')) */
+    /* 'TranslateError:18' if (coder.target('Sfun')) */
+    /* 'TranslateError:21' else */
+    /* 'TranslateError:22' count = numel(varargin); */
+    /* 'TranslateError:23' fixedArgs = varargin; */
+    /* 'TranslateError:24' for i=1:count */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:26' fixedArgs{i} = [varargin{i} char(0)]; */
+    /* 'TranslateError:29' coder.ceval('TranslateError',fixedArgs{:}); */
+    /*@>d13aea*/memcpy(&/*@>d13339*/c_data[/*@>d13329*/0], &/*@>d13341*/j/*@>d13342*/[/*@>d13336*/0], /*@>d13338*/68U/*@>d13345*/ * /*@>d13344*/sizeof(char_T));
+    /*@>d1387d*/TranslateError(&/*@>d12bcd*/c_data/*@>d12be0*/[/*@>d111c8*/0]);
+}
+/* '<S637>:1:30' if(holigramDelay.Value < 0) */
+/*@>c65541*/if (/*@>d1435b*/Model_TranslationEngine64_AlignmentDelay_B./*@>d1497f*/HoligramFilterAlignmentDelaySamples.Value/*@>c65538*/ < /*@>d111b5*/0) {
+    /* '<S637>:1:31' TranslateError('Value of ''Medusa Holigram Delay'' must be greater than or equal to zero.'); */
+    /* TRANSLATEERROR (For use in Functions triggered by TranslationTrigger blocks.) */
+    /* Print error message during tune data translation. */
+    /*   Do not include a final newline as this behavior is already built in. */
+    /*   Note that escape sequences such as '\n' will not work here. To emit */
+    /*   special characters, pass them in as arguments to %<"\%c or \%s format"> */
+    /*   specifiers. */
+    /*    Copyright 2018-2019 Bose Corporation */
+    /* 'TranslateError:10' coder.extrinsic('gcb') */
+    /* 'TranslateError:11' coder.extrinsic('warning') */
+    /* 'TranslateError:12' coder.allowpcode('plain'); */
+    /*  enable code generation from p-file */
+    /* 'TranslateError:14' if (coder.target('MATLAB')) */
+    /* 'TranslateError:18' if (coder.target('Sfun')) */
+    /* 'TranslateError:21' else */
+    /* 'TranslateError:22' count = numel(varargin); */
+    /* 'TranslateError:23' fixedArgs = varargin; */
+    /* 'TranslateError:24' for i=1:count */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:26' fixedArgs{i} = [varargin{i} char(0)]; */
+    /* 'TranslateError:29' coder.ceval('TranslateError',fixedArgs{:}); */
+    /*@>d13aec*/memcpy(&/*@>d132de*/d_data[/*@>d132ce*/0], &/*@>d132e6*/k/*@>d132e7*/[/*@>d132db*/0], /*@>d132dd*/72U/*@>d132ea*/ * /*@>d132e9*/sizeof(char_T));
+    /*@>d13881*/TranslateError(&/*@>d12c1e*/d_data/*@>d12c31*/[/*@>d111cc*/0]);
+}
+/* '<S637>:1:34' if(wiggleDelay.Value > DeciRateMaxWiggleDelay) */
+/*@>c65543*/if (/*@>d14361*/Model_TranslationEngine64_AlignmentDelay_B./*@>d14982*/DeciRateWiggleFilterDelaySamples.Value/*@>c65539*/ > /*@>d111b6*/166) {
+    /* '<S637>:1:35' TranslateError('Value of ''Medusa Wiggle Delay'' must be less than or equal to %<"\%d.\', DeciRateMaxWiggleDelay);"> */
+    /* TRANSLATEERROR (For use in Functions triggered by TranslationTrigger blocks.) */
+    /* Print error message during tune data translation. */
+    /*   Do not include a final newline as this behavior is already built in. */
+    /*   Note that escape sequences such as '\n' will not work here. To emit */
+    /*   special characters, pass them in as arguments to %<"\%c or \%s format"> */
+    /*   specifiers. */
+    /*    Copyright 2018-2019 Bose Corporation */
+    /* 'TranslateError:10' coder.extrinsic('gcb') */
+    /* 'TranslateError:11' coder.extrinsic('warning') */
+    /* 'TranslateError:12' coder.allowpcode('plain'); */
+    /*  enable code generation from p-file */
+    /* 'TranslateError:14' if (coder.target('MATLAB')) */
+    /* 'TranslateError:18' if (coder.target('Sfun')) */
+    /* 'TranslateError:21' else */
+    /* 'TranslateError:22' count = numel(varargin); */
+    /* 'TranslateError:23' fixedArgs = varargin; */
+    /* 'TranslateError:24' for i=1:count */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:26' fixedArgs{i} = [varargin{i} char(0)]; */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:29' coder.ceval('TranslateError',fixedArgs{:}); */
+    /*@>d13aee*/memcpy(&/*@>d13283*/e_data[/*@>d13273*/0], &/*@>d1328b*/l/*@>d1328c*/[/*@>d13280*/0], /*@>d13282*/65U/*@>d1328f*/ * /*@>d1328e*/sizeof(char_T));
+    /*@>d13885*/TranslateError(&/*@>d12c8d*/e_data/*@>d12ca0*/[/*@>d111d0*/0], /*@>d111d1*/166);
+}
+/* '<S637>:1:38' if(NEARWiggleDelay.Value > DeciRateMaxNearWiggleDelay) */
+/*@>c65545*/if (/*@>d14367*/Model_TranslationEngine64_AlignmentDelay_B./*@>d14985*/DeciRateNearWiggleFilterDelaySamples.Value/*@>c6553a*/ > /*@>d111b7*/166) {
+    /* '<S637>:1:39' TranslateError('Value of ''NEAR Wiggle Delay'' must be less than or equal to %<"\%d.\', DeciRateMaxNearWiggleDelay);"> */
+    /* TRANSLATEERROR (For use in Functions triggered by TranslationTrigger blocks.) */
+    /* Print error message during tune data translation. */
+    /*   Do not include a final newline as this behavior is already built in. */
+    /*   Note that escape sequences such as '\n' will not work here. To emit */
+    /*   special characters, pass them in as arguments to %<"\%c or \%s format"> */
+    /*   specifiers. */
+    /*    Copyright 2018-2019 Bose Corporation */
+    /* 'TranslateError:10' coder.extrinsic('gcb') */
+    /* 'TranslateError:11' coder.extrinsic('warning') */
+    /* 'TranslateError:12' coder.allowpcode('plain'); */
+    /*  enable code generation from p-file */
+    /* 'TranslateError:14' if (coder.target('MATLAB')) */
+    /* 'TranslateError:18' if (coder.target('Sfun')) */
+    /* 'TranslateError:21' else */
+    /* 'TranslateError:22' count = numel(varargin); */
+    /* 'TranslateError:23' fixedArgs = varargin; */
+    /* 'TranslateError:24' for i=1:count */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:26' fixedArgs{i} = [varargin{i} char(0)]; */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:29' coder.ceval('TranslateError',fixedArgs{:}); */
+/*@>d107ff*/    for (/*@>d14892*/actualTrebleDelay = /*@>d14891*/0; /*@>d1489c*/actualTrebleDelay < /*@>d1489a*/63; /*@>d14898*/actualTrebleDelay/*@>d148a0*/++) {
+        /*@>d12d02*/f_data[/*@>d112be*/actualTrebleDelay]/*@>d107f2*/ = /*@>d1422b*/m/*@>d1422d*/[/*@>d1422a*/actualTrebleDelay];
+    }
+    /*@>d13887*/TranslateError(&/*@>d12ceb*/f_data/*@>d12cfe*/[/*@>d111d5*/0], /*@>d111d6*/166);
+}
+/* '<S637>:1:42' if(holigramDelay.Value > MaxHoligramDelay) */
+/*@>c65547*/if (/*@>d1436d*/Model_TranslationEngine64_AlignmentDelay_B./*@>d14988*/HoligramFilterAlignmentDelaySamples.Value/*@>c6553b*/ > /*@>d111b8*/1764) {
+    /* '<S637>:1:43' TranslateError('Value of ''Medusa Holigram Delay'' must be less than or equal to %<"\%d.\', MaxHoligramDelay);"> */
+    /* TRANSLATEERROR (For use in Functions triggered by TranslationTrigger blocks.) */
+    /* Print error message during tune data translation. */
+    /*   Do not include a final newline as this behavior is already built in. */
+    /*   Note that escape sequences such as '\n' will not work here. To emit */
+    /*   special characters, pass them in as arguments to %<"\%c or \%s format"> */
+    /*   specifiers. */
+    /*    Copyright 2018-2019 Bose Corporation */
+    /* 'TranslateError:10' coder.extrinsic('gcb') */
+    /* 'TranslateError:11' coder.extrinsic('warning') */
+    /* 'TranslateError:12' coder.allowpcode('plain'); */
+    /*  enable code generation from p-file */
+    /* 'TranslateError:14' if (coder.target('MATLAB')) */
+    /* 'TranslateError:18' if (coder.target('Sfun')) */
+    /* 'TranslateError:21' else */
+    /* 'TranslateError:22' count = numel(varargin); */
+    /* 'TranslateError:23' fixedArgs = varargin; */
+    /* 'TranslateError:24' for i=1:count */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:26' fixedArgs{i} = [varargin{i} char(0)]; */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:29' coder.ceval('TranslateError',fixedArgs{:}); */
+    /*@>d13af0*/memcpy(&/*@>d131ed*/g_data[/*@>d131dd*/0], &/*@>d131f5*/n/*@>d131f6*/[/*@>d131ea*/0], /*@>d131ec*/67U/*@>d131f9*/ * /*@>d131f8*/sizeof(char_T));
+    /*@>d1388b*/TranslateError(&/*@>d12d1c*/g_data/*@>d12d2f*/[/*@>d111da*/0], /*@>d111db*/1764);
+}
+/*  Computing the alignment delay values for treble path */
+/*  Medusa wiggle filter latency */
+/* '<S637>:1:48' wiggleDelayDec = int32(round(wiggleDelay.Value)); */
+/* '<S637>:1:49' wiggleDelayFull = int32(wiggleDelayDec * DEC); */
+/*  NEAR wiggle filter latency */
+/* '<S637>:1:52' NEARWiggleDelayDec = int32(round(NEARWiggleDelay.Value)); */
+/* '<S637>:1:53' NEARWiggleDelayFull = int32(NEARWiggleDelayDec * DEC); */
+/*  Holigram filter latency */
+/* '<S637>:1:56' holigramDelayFull = int32(round(holigramDelay.Value)); */
+/*  Compute the treble alignment delay (applies to full-rate upmixed components) */
+/* '<S637>:1:59' actualTrebleDelay = DeciRateFdpDelay - FullRateFdpDelay + wiggleDelayFull + NEARWiggleDelayFull + holigramDelayFull; */
+/*@>d111ba*/actualTrebleDelay/*@>c65532*/ = (((/*@>d14373*/Model_TranslationEngine64_AlignmentDelay_B./*@>d1498b*/DeciRateWiggleFilterDelaySamples.Value/*@>d11344*/ << /*@>d11956*/2)/*@>c6556f*/ + (/*@>d14379*/Model_TranslationEngine64_AlignmentDelay_B./*@>d1498e*/DeciRateNearWiggleFilterDelaySamples.Value/*@>d11353*/ << /*@>d11958*/2))/*@>c65570*/ + /*@>d1437f*/Model_TranslationEngine64_AlignmentDelay_B./*@>d14991*/HoligramFilterAlignmentDelaySamples.Value)/*@>c65571*/ + /*@>d111b9*/1152;
+/*  Error check for outgoing alignment delay value */
+/* '<S637>:1:62' if(actualTrebleDelay > MaxTrebleDelay) */
+/*@>c65550*/if (/*@>d111bc*/actualTrebleDelay/*@>c6553c*/ > /*@>d111be*/4244) {
+    /* '<S637>:1:63' TranslateError('Value of ''Medusa Treble Delay'' on full-rate path exceeds the maximum value of %<"\%d.\', MaxTrebleDelay);"> */
+    /* TRANSLATEERROR (For use in Functions triggered by TranslationTrigger blocks.) */
+    /* Print error message during tune data translation. */
+    /*   Do not include a final newline as this behavior is already built in. */
+    /*   Note that escape sequences such as '\n' will not work here. To emit */
+    /*   special characters, pass them in as arguments to %<"\%c or \%s format"> */
+    /*   specifiers. */
+    /*    Copyright 2018-2019 Bose Corporation */
+    /* 'TranslateError:10' coder.extrinsic('gcb') */
+    /* 'TranslateError:11' coder.extrinsic('warning') */
+    /* 'TranslateError:12' coder.allowpcode('plain'); */
+    /*  enable code generation from p-file */
+    /* 'TranslateError:14' if (coder.target('MATLAB')) */
+    /* 'TranslateError:18' if (coder.target('Sfun')) */
+    /* 'TranslateError:21' else */
+    /* 'TranslateError:22' count = numel(varargin); */
+    /* 'TranslateError:23' fixedArgs = varargin; */
+    /* 'TranslateError:24' for i=1:count */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:26' fixedArgs{i} = [varargin{i} char(0)]; */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:29' coder.ceval('TranslateError',fixedArgs{:}); */
+    /*@>d13af2*/memcpy(&/*@>d13191*/h_data[/*@>d13181*/0], &/*@>d13199*/o/*@>d1319a*/[/*@>d1318e*/0], /*@>d13190*/82U/*@>d1319d*/ * /*@>d1319c*/sizeof(char_T));
+    /*@>d1388f*/TranslateError(&/*@>d12d7a*/h_data/*@>d12d8d*/[/*@>d111df*/0], /*@>d111e0*/4244);
+}
+/*  Assigning output */
+/* '<S637>:1:67' trebleDelay = actualTrebleDelay; */
+/*@>d14385*/Model_TranslationEngine64_AlignmentDelay_B./*@>d14994*/trebleDelay/*@>c65535*/ = /*@>d111bf*/actualTrebleDelay;
+/* {E!d4}End of MATLAB Function: '<S635>/translation' */
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void FuncTranslation_Model_141_1371(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(40, 0, fcnProtoType)>
+%endfunction

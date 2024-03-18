@@ -1,0 +1,68 @@
+%implements s1068_b0_g3vnd_21_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+int32_T i;
+%closefile localVarDecl
+/* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 3/On/Premix/Premix with Mono-Surround & CAE with Fade Ramper/Full Mixing Matrix_Left/Ramper/process': '<S1080>:1' */
+/* '<S1080>:1:10' for i = 1:numel(Premix_currentGain_Left) */
+/*@>10c0da6*/for (/*@>117e784*/i = /*@>117e783*/0; /*@>117e78e*/i < /*@>117e78c*/77; /*@>117e78a*/i/*@>117e792*/++) {
+    /* '<S1080>:1:11' if (Premix_Freeze_Left(1) == false) */
+    /*@>10c0da8*/if (!/*@<10c0db4*/*/*@<117e79b*/rtd_Premix_Freeze_Left) {
+        /* '<S1080>:1:12' if (Premix_frameCount_Left(i) == 0) */
+        /*@>10c0da9*/if (/*@>117e4f0*/rtd_Premix_frameCount_Left/*@>117e4f2*/[/*@>117e4ee*/i]/*@>10c0d9c*/ == /*@>117dc83*/0) {
+            /*  The ramp is finished. Stop ramping and SNAP to the target */
+            /* '<S1080>:1:14' Premix_currentGain_Left(i) = Premix_targetGain_Left(i); */
+            /*@>117dc8f*/rtd_Premix_currentGain_Left/*@>117d99a*/[/*@>117dc91*/i]/*@>10c0d90*/ = /*@>117e4f7*/rtd_Premix_targetGain_Left/*@>117e4f9*/[/*@>117e4f5*/i];
+        } else {
+            /* '<S1080>:1:15' else */
+            /*  The ramp is *NOT* frozen or done: gain is moving */
+            /* '<S1080>:1:17' Premix_currentGain_Left(i) = Premix_currentGain_Left(i)*Premix_rampCoeff_Left(i); */
+            /*@>117dc9b*/rtd_Premix_currentGain_Left/*@>117d9f4*/[/*@>117dc9d*/i]/*@>117e793*/ *= /*@>117e505*/rtd_Premix_rampCoeff_Left/*@>117e507*/[/*@>117e503*/i];
+            /* '<S1080>:1:18' Premix_frameCount_Left(i) = Premix_frameCount_Left(i) - 1; */
+            /*@>117dca3*/rtd_Premix_frameCount_Left/*@>117da2e*/[/*@>117dca5*/i]/*@>117e794*/--;
+        }
+    }
+}
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[21].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(21, 0, 0)>
+%endif
+%if SLibCG_ArgAccessed(21, 0, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(21, 0, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_process_in(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(21, 0, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_Target_process_in", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>const boolean_T *rtd_Premix_Freeze_Left\
+%assign comma = ", "
+%<comma>real32_T rtd_Premix_currentGain_Left[77]\
+%assign comma = ", "
+%<comma>int32_T rtd_Premix_frameCount_Left[77]\
+%assign comma = ", "
+%<comma>const real32_T rtd_Premix_rampCoeff_Left[77]\
+%assign comma = ", "
+%<comma>const real32_T rtd_Premix_targetGain_Left[77]\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(21, 0, fcnProtoType)>
+%endfunction

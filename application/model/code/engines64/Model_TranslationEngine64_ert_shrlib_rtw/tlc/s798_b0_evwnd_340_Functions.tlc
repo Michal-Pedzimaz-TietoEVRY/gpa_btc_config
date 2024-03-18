@@ -1,0 +1,75 @@
+%implements s798_b0_evwnd_340_Functions "C"
+
+%function rt_roundd_snf_Fcn0(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+%assign cfgTxt = ""
+%openfile cfgTxt
+real_T y;
+if (fabs(u) < 4.503599627370496E+15) {
+    if (u >= 0.5) {
+        y = floor(u + 0.5);
+    } else if (u > -0.5) {
+        y = u * 0.0;
+    } else {
+        y = ceil(u - 0.5);
+    }
+} else {
+    y = u;
+}
+return y;
+%closefile cfgTxt
+%<cfgTxt>
+%closefile fcnBuff
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+extern real_T rt_roundd_snf(\
+%assign comma = ""
+%<comma>real_T u\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(340, 0, fcnProtoType)>
+%return fcnBuff
+%endfunction
+
+%function Model_TranslationEngine64_eml_integer_colon_dispatcher_kl_Fcn1(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+%assign cfgTxt = ""
+%openfile cfgTxt
+int32_T k;
+int32_T n;
+/*@>f8ce8d*/if (/*@>f8a5b8*/b/*@>2623c4*/ < /*@>f8a5b4*/1) {
+    /*@>f8ce91*/n/*@>f8ce90*/ = /*@>f93f21*/0;
+} else {
+    /*@>f8a5d1*/n/*@>f8992c*/ = /*@>f8a5bc*/b;
+}
+y_size/*@>f880df*/[/*@>f8a5c3*/0]/*@>f880e7*/ = /*@>f93f24*/1;
+y_size/*@>f880f2*/[/*@>f8a5c6*/1]/*@>f880fa*/ = /*@>f8a5bf*/n;
+/*@>26238f*/if (/*@>f8a5a2*/n/*@>26237d*/ > /*@>f8a5a4*/0) {
+    int32_T yk;
+    /*@>f9178b*/y_data/*@>f9030f*/[/*@>f8a5ca*/0]/*@>262375*/ = /*@>f93f27*/1;
+    /*@>f8a5a6*/yk/*@>262376*/ = /*@>f93f2a*/1;
+/*@>262392*/    for (/*@>f93f32*/k = /*@>f93f31*/2; /*@>f93f3d*/k <= /*@>f93f3b*/n; /*@>f93f38*/k/*@>f93f3f*/++) {
+        /*@>f8a5b2*/yk/*@>f93f40*/++;
+        /*@>f9178e*/y_data[/*@>f8a5ce*/k/*@>f881b9*/ - /*@>f8a5d0*/1]/*@>26237b*/ = /*@>f8a5af*/yk;
+    }
+}
+%closefile cfgTxt
+%<cfgTxt>
+%closefile fcnBuff
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_TranslationEngine64_eml_integer_colon_dispatcher_kl(\
+%assign comma = ""
+%<comma>int32_T b\
+%assign comma = ", "
+%<comma>int32_T y_data[]\
+%assign comma = ", "
+%<comma>int32_T y_size[2]\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(340, 1, fcnProtoType)>
+%return fcnBuff
+%endfunction
+

@@ -1,0 +1,148 @@
+%implements s1068_b0_g3vnd_74_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+real32_T input1;
+%closefile localVarDecl
+/*@>122e53f*/input1/*@>10d6a24*/ = /*@>122e54b*/rtu_rmsInput;
+/*  %<"\% inputs"> */
+/*  parameters */
+/* MATLAB Function 'LevelDetector': '<S1821>:1' */
+/*  States */
+/* '<S1821>:1:11' if (isempty(holdFlag)) */
+/*@>10d6a4f*/if (!/*@<10d6a40*//*@>122fc92*/localDW->/*@>123016d*/holdFlag_not_empty) {
+    /* '<S1821>:1:12' holdFlag = 1; */
+    /*@>122fc99*/localDW->/*@>1230170*/holdFlag_not_empty/*@>10d6a26*/ = /*@>122e504*/true;
+    /* '<S1821>:1:13' holdState = 0; */
+    /* '<S1821>:1:14' envelope1 = -abs(minVolumeDb); */
+    /*@>122fca0*/localDW->/*@>1230173*/envelope1/*@>10d6a27*/ = -/*@<122e569*//*@>122f55e*/qhmath_abs_f(/*@>122e54d*/rtu_minVolumeDb);
+}
+/*  By default we use the RMS input */
+/* '<S1821>:1:18' input1 = rmsInput; */
+/* '<S1821>:1:19' level = single(0.0); */
+/* '<S1821>:1:21' if mode1 >= 0.0 */
+/*@>10d6a55*/if (/*@>122e54f*/rtu_mode1/*@>10d6a42*/ >= /*@>122e507*/0.0F) {
+    real32_T delta;
+    /*  Choose input1 based on mode1 */
+    /* '<S1821>:1:23' if (mode1 > 0.0) */
+    /*@>10d6a57*/if (/*@>122e551*/rtu_mode1/*@>10d6a43*/ > /*@>122e508*/0.0F) {
+        /* '<S1821>:1:24' input1 = peakInput; */
+        /*@>122e509*/input1/*@>10d6a29*/ = /*@>122e553*/rtu_peakInput;
+    }
+    /* '<S1821>:1:26' delta = single( envelope1 - input1 ); */
+    /*@>122e50f*/delta/*@>10d6a2c*/ = /*@>122fca7*/localDW->/*@>1230176*/envelope1/*@>10d6a44*/ - /*@>122e50d*/input1;
+    /* '<S1821>:1:27' if ( delta <= single(0) ) */
+    /*@>10d6a5b*/if (/*@>122e511*/delta/*@>10d6a45*/ <= /*@>122e546*/0.0F) {
+        /*  Attack phase */
+        /* '<S1821>:1:29' envelope1 = input1; */
+        /*@>122fcae*/localDW->/*@>1230179*/envelope1/*@>10d6a2f*/ = /*@>122e513*/input1;
+        /* '<S1821>:1:30' holdState = 0; */
+        /*@>122fcb5*/localDW->/*@>123017c*/holdState/*@>10d6a30*/ = /*@>122e51b*/0.0;
+        /* '<S1821>:1:31' holdFlag = 1; */
+        /*@>122fcbc*/localDW->/*@>123017f*/holdFlag/*@>10d6a31*/ = /*@>122e520*/1.0;
+    } else {
+        /* '<S1821>:1:32' else */
+        /*  Slow Decay phase */
+        /* '<S1821>:1:34' coef = slowDecayDbPerSample; */
+        /*@>122e517*/input1/*@>10d6a32*/ = /*@>122e555*/rtu_slowDecayDbPerSample;
+        /*  Hold phase */
+        /* '<S1821>:1:37' if ( delta >= holdMarginDb ) */
+        /*@>10d6a63*/if (/*@>122e51c*/delta/*@>10d6a46*/ >= /*@>122e557*/rtu_holdMarginDb) {
+            /* '<S1821>:1:38' holdState = holdState + 1; */
+            /*@>122fcc3*/localDW->/*@>1230182*/holdState/*@>12300d8*/++;
+            /* '<S1821>:1:39' if ( holdState > holdTimeSamples ) */
+            /*@>10d6a65*/if (/*@>122fcd8*/localDW->/*@>1230188*/holdState/*@>10d6a48*/ > /*@>122e559*/rtu_holdTimeSamples) {
+                /* '<S1821>:1:40' holdFlag = 0; */
+                /*@>122fced*/localDW->/*@>1230191*/holdFlag/*@>10d6a37*/ = /*@>122e52d*/0.0;
+            }
+        } else {
+            /* '<S1821>:1:42' else */
+            /* '<S1821>:1:43' holdState = 0; */
+            /*@>122fcd1*/localDW->/*@>1230185*/holdState/*@>10d6a38*/ = /*@>122e528*/0.0;
+        }
+        /*  Fast decay phase */
+        /* '<S1821>:1:47' if holdFlag == 0 */
+        /*@>10d6a69*/if (/*@>122fd02*/localDW->/*@>123019a*/holdFlag/*@>10d6a4a*/ == /*@>122e530*/0.0) {
+            /* '<S1821>:1:48' coef = fastDecayDbPerSample; */
+            /*@>122e531*/input1/*@>10d6a3a*/ = /*@>122e55f*/rtu_fastDecayDbPerSample;
+        }
+        /*  Super fast decay phase */
+        /* '<S1821>:1:52' if ( AnnTrigger > AnnTriggerThreshold ) */
+        /*@>10d6a6d*/if (/*@>122e561*/rtu_AnnTrigger/*@>10d6a4b*/ > /*@>122e547*/0.5) {
+            /* '<S1821>:1:53' coef = SuperFastDecayMultiplier * fastDecayDbPerSample; */
+            /*@>122e533*/input1/*@>10d6a3b*/ = /*@>122e545*/Model_Target_SuperFastDecayMultiplier_m/*@>122e567*/ * /*@>122e563*/rtu_fastDecayDbPerSample;
+        }
+        /*  Update the envelope1 */
+        /* '<S1821>:1:57' envelope1 = envelope1 + coef; */
+        /*@>122fd09*/localDW->/*@>123019d*/envelope1/*@>12300d9*/ += /*@>122e537*/input1;
+    }
+    /*  Boundary Check */
+    /* '<S1821>:1:60' envelope1 = max(minVolumeDb, envelope1); */
+    /*@>122fcdf*/localDW->/*@>123018b*/envelope1/*@>10d6aba*/ = /*@>122f560*/fmaxf(/*@>122e55b*/rtu_minVolumeDb, /*@>122fce6*/localDW->/*@>123018e*/envelope1);
+    /* '<S1821>:1:61' envelope1 = min(maxVolumeDb, envelope1); */
+    /*@>122fcf4*/localDW->/*@>1230194*/envelope1/*@>10d6abd*/ = /*@>122f562*/fminf(/*@>122e55d*/rtu_maxVolumeDb, /*@>122fcfb*/localDW->/*@>1230197*/envelope1);
+    /*  dBSPL Conversion */
+    /* '<S1821>:1:64' level = max(0, envelope1 + predictionDbspl + volumeDb); */
+}
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[74].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(74, 1, 0)>
+%endif
+%if SLibCG_ArgAccessed(74, 1, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(74, 1, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_InnerLink_n(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(74, 1, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_Target_InnerLink_n", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>real32_T rtu_rmsInput\
+%assign comma = ", "
+%<comma>real32_T rtu_peakInput\
+%assign comma = ", "
+%if SLibCG_ArgAccessed(74, 1, 3)
+%<comma>real32_T rtu_predictionDbspl\
+%assign comma = ", "
+%endif
+%<comma>real32_T rtu_slowDecayDbPerSample\
+%assign comma = ", "
+%<comma>real32_T rtu_holdMarginDb\
+%assign comma = ", "
+%<comma>real32_T rtu_holdTimeSamples\
+%assign comma = ", "
+%<comma>real32_T rtu_fastDecayDbPerSample\
+%assign comma = ", "
+%<comma>real32_T rtu_minVolumeDb\
+%assign comma = ", "
+%<comma>real32_T rtu_maxVolumeDb\
+%assign comma = ", "
+%if SLibCG_ArgAccessed(74, 1, 10)
+%<comma>real32_T rtu_volumeDb\
+%assign comma = ", "
+%endif
+%<comma>real_T rtu_AnnTrigger\
+%assign comma = ", "
+%<comma>real32_T rtu_mode1\
+%assign comma = ", "
+%<comma>DW_InnerLink_Model_Target_o_T *localDW\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(74, 1, fcnProtoType)>
+%endfunction

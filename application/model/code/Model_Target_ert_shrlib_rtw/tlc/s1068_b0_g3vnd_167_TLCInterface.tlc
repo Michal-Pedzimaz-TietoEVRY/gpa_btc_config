@@ -1,0 +1,22 @@
+%implements s1068_b0_g3vnd_167_TLCInterface "C"
+
+%function getInputAddr_602_0_167_0_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_BOCSCAddr(block, 566, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getInput_602_0_167_0_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_BOCSC(block, 566, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getInputAddr_602_0_167_0_0_2_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<12fe41b*//*@>12fe40f*/Model_Target_PreAmpPart1_B./*@>12fe421*/In1_h"
+%endfunction
+
+%function getInput_602_0_167_0_0_2_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>12fe42f*/Model_Target_PreAmpPart1_B./*@>12fe442*/In1_h"
+%endfunction
+

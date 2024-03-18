@@ -1,0 +1,113 @@
+%implements s798_b0_evwnd_158_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+real_T endOfMap;
+real_T loopCount;
+real_T mapDifference;
+real_T mapLength;
+int32_T i;
+%closefile localVarDecl
+/* {S!d1297}MATLAB Function: '<S7>/Trivial Translation' */
+/* {S!d1300}MATLAB Function: '<S7>/Trivial Translation' incorporates:
+ *  S-Function (TuneVarMEX): '<S7>/TuneVarRouterMap'
+ */
+/*  Invoke the function trigger output */
+/* MATLAB Function 'TranslateTrigger/tfunc': '<S10>:1' */
+/* '<S10>:1:3' f(); */
+/*  ----- To access TuneVar maximum size, current size, and current value: */
+/*    Note: TuneVar signals arrive with exposed variable size information. */
+/*          The expressions below illustrate for the "Map" input argument. */
+/*  */
+/*    size(Map.Value) : the maximum possible size of the Map variable */
+/*  */
+/*    Tune.Size   : the current size of *valid* data in Map.Value */
+/*  */
+/*    Map.Size(1) : Number of rows present in Map - this does not vary. */
+/*  */
+/*    Map.Size(2) : Number of columns currently valid in Map - this is */
+/*        the variable part of size that can change (if allowed by TuneVar). */
+/*  */
+/*    Map.Value : the current value of the tune variable... but end-padded  */
+/*        to the maximum available size with undefined/invalid data. */
+/*  */
+/*    numel(Map.Value) : another way of looking at the maximum number of */
+/*        elements that could arrive in Map.Value */
+/*  */
+/*  ----- To register an error, use the following method (works like printf): */
+/*    TranslateError( <format string>, <arguments ... ) */
+/*    ... this error will cause the build process to abort. */
+/* MATLAB Function 'InputSelect/Router/Trivial Translation': '<S9>:1' */
+/*  The below logic ensures that an output map gets filled in in the  */
+/*  "round robin" manner. This is to occur when the supplied map is shorter */
+/*  than the number of channel outputs. For instance, */
+/*  nChanIn = 4 */
+/*  nChanOut = 9 */
+/*  outputMapSupplied = [4 3 2 2] */
+/*   */
+/*  This logic would run and return OutMap = [4 3 2 2 1 2 3 4 1] */
+/*  */
+/*  If no outputMap was supplied (i.e. = [];) THEN */
+/*  This logic would run and return OutMap = [1 2 3 4 1 2 3 4 1]; */
+/*  First part finds the number of output map indices that were left blank */
+/* '<S9>:1:42' nChanOut = numel(Map.Value); */
+/* '<S9>:1:43' mapLength = Map.Size(2); */
+/*@>e305d3*/mapLength/*@>c6af66*/ = /*@>e31c72*/Model_TranslationEngine64_B./*@>e320ce*/Map_b./*@>e320bf*/Size/*@>e318c1*/[/*@>e318ba*/1];
+/* '<S9>:1:44' mapDifference = nChanOut - mapLength; */
+/*@>e305d5*/mapDifference/*@>c6af67*/ = /*@>e3060b*/5.0/*@>c6af7d*/ - /*@>e31c78*/Model_TranslationEngine64_B./*@>e320d1*/Map_b./*@>e320c2*/Size/*@>e318ca*/[/*@>e318c3*/1];
+/* '<S9>:1:45' OutMap = int32(Map.Value); */
+/*@>e30020*/for (/*@>e32020*/i = /*@>e3201f*/0; /*@>e3202a*/i < /*@>e32028*/5; /*@>e32026*/i/*@>e3202e*/++) {
+    /*@>e31c7e*/Model_TranslationEngine64_B./*@>e320d4*/OutMap/*@>e301ca*/[/*@>e30623*/i]/*@>e3000f*/ = /*@>e30642*/(int32_T)%<SLibCG_DumpSSCode("/*@[e31fbe*/",(SLibCGCallSubFcn("rt_roundd_snf", ["/*@>e320fc*/Model_TranslationEngine64_B./*@>e320fb*/Map_b./*@>e320fa*/Value/*@>e320f9*/[/*@>e320ff*/i]"], 158, 1, 0)),"/*@]*/")>;
+}
+/*  This loop appropriates the correct input channel number to the */
+/*  corresponding output channel, based on the mapDifference found above */
+/* '<S9>:1:49' if (mapLength == 1) && Map.Value(1) == 0 */
+/*@>c6af9c*/if ((/*@>e31c8a*/Model_TranslationEngine64_B./*@>e320da*/Map_b./*@>e320c8*/Size/*@>e318dd*/[/*@>e318d6*/1]/*@>c6af7f*/ == /*@>e305d7*/1.0)/*@>e31f45*/ && (/*@>e31c90*/Model_TranslationEngine64_B./*@>e320dd*/Map_b./*@>e320cb*/Value/*@>e318e6*/[/*@>e318df*/0]/*@>c6af81*/ == /*@>e305d8*/0.0)) {
+    /* '<S9>:1:50' mapLength = 0; */
+    /*@>e305d9*/mapLength/*@>c6af6c*/ = /*@>e305db*/0.0;
+    /* '<S9>:1:51' mapDifference = nChanOut; */
+    /*@>e305df*/mapDifference/*@>c6af6d*/ = /*@>e3060c*/5.0;
+}
+/* '<S9>:1:53' endOfMap = 0; */
+/*@>e305dc*/endOfMap/*@>c6af6e*/ = /*@>e305de*/0.0;
+/* '<S9>:1:54' loopCount = 0; */
+/*@>e305e1*/loopCount/*@>c6af6f*/ = /*@>e305e3*/0.0;
+/* '<S9>:1:55' while endOfMap < mapDifference */
+while/*@<c6afa3*/ (/*@>e305e4*/endOfMap/*@>c6af82*/ < /*@>e305e6*/mapDifference) {
+    boolean_T exitg1;
+    /* '<S9>:1:56' for inputChan = 1 : nInRouterMask */
+    /*@>e305e8*/i/*@>c6afb9*/ = /*@>e31ff9*/0;
+    exitg1 = false;
+    while/*@<c6afc2*/ ((!exitg1) && (/*@>e305eb*/i/*@>c6afc1*/ <= /*@>e305ed*/4)) {
+        /* '<S9>:1:57' OutMap(mapLength+inputChan+loopCount) = inputChan; */
+        /*@>e31c96*/Model_TranslationEngine64_B./*@>e320e0*/OutMap/*@>c6af74*/[/*@>e30645*/(int32_T)((/*@>e305ee*/mapLength/*@>c6af86*/ + (/*@>e30882*/(real_T)/*@>e30606*/i/*@>c6b01a*/ + /*@>e30605*/1.0))/*@>c6af87*/ + /*@>e305f0*/loopCount)/*@>c6af89*/ - /*@>e305f2*/1]/*@>c6af75*/ = /*@>e30609*/i/*@>c6b01e*/ + /*@>e30608*/1;
+        /* '<S9>:1:58' endOfMap = endOfMap + 1; */
+        /*@>e305fa*/endOfMap/*@>e32030*/++;
+        /* '<S9>:1:59' if endOfMap == mapDifference */
+        /*@>c6afa6*/if (/*@>e305fc*/endOfMap/*@>c6af84*/ == /*@>e305fe*/mapDifference) {
+            exitg1 = true;
+        } else {
+            /*@>e30603*/i/*@>e32031*/++;
+        }
+    }
+    /* '<S9>:1:63' inputChan = 1; */
+    /* '<S9>:1:64' loopCount = loopCount + nInRouterMask; */
+    /*@>e305f5*/loopCount/*@>e32032*/ += /*@>e3062d*/5.0;
+}
+/* {E!d1300}End of MATLAB Function: '<S7>/Trivial Translation' */
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void FuncTranslation_Model_397(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(158, 1, fcnProtoType)>
+%endfunction

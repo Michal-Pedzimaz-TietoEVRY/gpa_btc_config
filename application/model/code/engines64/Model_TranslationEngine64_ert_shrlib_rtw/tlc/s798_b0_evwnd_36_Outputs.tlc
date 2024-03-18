@@ -1,0 +1,58 @@
+%implements s798_b0_evwnd_36_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+real32_T Wc;
+%closefile localVarDecl
+/*  */
+/*  Calculate coefficients for single pole LPF */
+/*  */
+/* MATLAB Function 'NEAR/Near1p1/VolumeMute/VolMuteCh1/Ann1NonEntGainCalc/TuneTOP8/translation': '<S1560>:1' */
+/* '<S1560>:1:6' Wc      = 1/(tau.Value*Fd); */
+/*@>cf9d76*/Wc/*@>c6dbae*/ = /*@>cf9d7f*/1.0F/*@>c6dbad*/ / (rtu_tau->Value/*@>cf9d9d*/ * /*@>cf9d80*/11025.0F);
+/* '<S1560>:1:7' sinCoef = sin(Wc); */
+/* '<S1560>:1:8' cosCoef = cos(Wc); */
+/* '<S1560>:1:9' coef    = (1-sinCoef)/cosCoef; */
+/*@>cf9d78*/Wc/*@>c6dbb2*/ = (/*@>cf9d7a*/1.0F/*@>c6dbb9*/ - /*@>cfa0ed*/sinf(/*@>cf9d7d*/Wc))/*@>c6dbb1*/ / /*@>cfa0ef*/cosf(/*@>cf9d7b*/Wc);
+/* '<S1560>:1:11' Num = double([1-coef 0]); */
+/*@>cfa1ce*/localB->/*@>cfa31f*/Num/*@>cf9bb6*/[/*@>cf9d86*/0]/*@>cf9bb5*/ = /*@>cf9d87*/1.0F/*@>cf9bbc*/ - /*@>cf9d88*/Wc;
+/*@>cfa1d5*/localB->/*@>cfa322*/Num/*@>cf9bc2*/[/*@>cf9d8a*/1]/*@>cf9bc1*/ = /*@>cf9d8b*/0.0;
+/* '<S1560>:1:12' Den =  double([1 -(coef)]); */
+/*@>cfa1dc*/localB->/*@>cfa325*/Den/*@>cf9bcb*/[/*@>cf9d8c*/0]/*@>cf9bca*/ = /*@>cf9d8d*/1.0;
+/*@>cfa1e3*/localB->/*@>cfa328*/Den/*@>cf9bd3*/[/*@>cf9d8e*/1]/*@>cf9bd2*/ = -/*@<cf9d9a*//*@>cf9d8f*/Wc;
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[36].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(36, 0, 0)>
+%endif
+%if SLibCG_ArgAccessed(36, 0, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(36, 0, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_TranslationEngine64_translation_g(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(36, 0, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_TranslationEngine64_translation_g", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>const bus_single_1_1 *rtu_tau\
+%assign comma = ", "
+%<comma>B_translation_Model_TranslationEngine64_g_T *localB\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(36, 0, fcnProtoType)>
+%endfunction

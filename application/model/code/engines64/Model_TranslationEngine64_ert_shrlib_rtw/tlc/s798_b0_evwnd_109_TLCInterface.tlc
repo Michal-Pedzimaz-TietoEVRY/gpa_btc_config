@@ -1,0 +1,67 @@
+%implements s798_b0_evwnd_109_TLCInterface "C"
+
+%function getOutputAddr_397_0_109_1_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<de9a7f*//*@>de9a73*/Model_TranslationEngine64_Medusa5H1Part6_B./*@>de9a85*/NonHeadrestSpeakerDelaySamples"
+%endfunction
+
+%function getOutput_397_0_109_1_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>de9a93*/Model_TranslationEngine64_Medusa5H1Part6_B./*@>de9aa6*/NonHeadrestSpeakerDelaySamples"
+%endfunction
+
+%function getOutputAddr_397_1_109_1_1_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<de9ad3*//*@>de9ac7*/Model_TranslationEngine64_Medusa5H1Part6_B./*@>de9ad9*/HeadrestDrvSpeakerDelaySamples"
+%endfunction
+
+%function getOutput_397_1_109_1_1_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>de9ae7*/Model_TranslationEngine64_Medusa5H1Part6_B./*@>de9afa*/HeadrestDrvSpeakerDelaySamples"
+%endfunction
+
+%function getOutputAddr_397_2_109_1_2_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<de9b27*//*@>de9b1b*/Model_TranslationEngine64_Medusa5H1Part6_B./*@>de9b2d*/HeadrestPaxSpeakerDelaySamples"
+%endfunction
+
+%function getOutput_397_2_109_1_2_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>de9b3b*/Model_TranslationEngine64_Medusa5H1Part6_B./*@>de9b4e*/HeadrestPaxSpeakerDelaySamples"
+%endfunction
+
+%function getOutputAddr_397_3_109_1_3_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<de9b7b*//*@>de9b6f*/Model_TranslationEngine64_Medusa5H1Part6_B./*@>de9b81*/FRHoligramDelaySamples"
+%endfunction
+
+%function getOutput_397_3_109_1_3_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>de9b8f*/Model_TranslationEngine64_Medusa5H1Part6_B./*@>de9ba2*/FRHoligramDelaySamples"
+%endfunction
+
+%function getInputAddr_397_7_109_1_5_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<de9be6*//*@>de9bda*/Model_TranslationEngine64_Medusa5H1Part6_B./*@>de9bec*/FRSpkrDelay" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInput_397_7_109_1_5_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>de9bfa*/Model_TranslationEngine64_Medusa5H1Part6_B./*@>de9c0d*/FRSpkrDelay" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInputAddr_397_8_109_1_6_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<de9c3a*//*@>de9c2e*/Model_TranslationEngine64_Medusa5H1Part6_B./*@>de9c40*/DRDelay" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInput_397_8_109_1_6_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>de9c4e*/Model_TranslationEngine64_Medusa5H1Part6_B./*@>de9c61*/DRDelay" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getSystemOutputFcnCallInfo_397_4_109_1_396_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>de9a51*/FuncTranslation_Model_141_4193"; Args [] }
+%return fcnInfo
+%endfunction

@@ -1,0 +1,377 @@
+%implements s118_b0_3swnd_6_TLCInterface "C"
+
+%function getOutputAddr_114_0_6_1_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<591db*//*@>591cf*/Model_InterpretationEngine64_PostProcess_B./*@>591e1*/TSP" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getOutput_114_0_6_1_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>591ef*/Model_InterpretationEngine64_PostProcess_B./*@>59202*/TSP" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getParamAddr_114_0_6_1_0_1_8(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_CSCPAddr(block, 8, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getParam_114_0_6_1_0_1_8(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_CSCP(block, 8, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getParamAddr_114_0_6_1_0_1_7(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_CSCPAddr(block, 7, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getParam_114_0_6_1_0_1_7(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_CSCP(block, 7, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getInputAddr_114_4_6_1_2_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<5924c*//*@>59240*/Model_InterpretationEngine64_PostProcess_B./*@>59252*/In1_b" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInput_114_4_6_1_2_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>59260*/Model_InterpretationEngine64_PostProcess_B./*@>59273*/In1_b" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getOutputAddr_114_5_6_1_3_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<592a0*//*@>59294*/Model_InterpretationEngine64_PostProcess_B./*@>592a6*/TSP_b"
+%endfunction
+
+%function getOutput_114_5_6_1_3_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>592b4*/Model_InterpretationEngine64_PostProcess_B./*@>592c7*/TSP_b"
+%endfunction
+
+%function getParamAddr_114_5_6_1_3_1_8(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_CSCPAddr(block, 8, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getParam_114_5_6_1_3_1_8(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_CSCP(block, 8, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getParamAddr_114_5_6_1_3_1_7(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_CSCPAddr(block, 7, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getParam_114_5_6_1_3_1_7(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_CSCP(block, 7, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getInputAddr_114_9_6_1_5_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<59311*//*@>59305*/Model_InterpretationEngine64_PostProcess_B./*@>59317*/In1_p"
+%endfunction
+
+%function getInput_114_9_6_1_5_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>59325*/Model_InterpretationEngine64_PostProcess_B./*@>59338*/In1_p"
+%endfunction
+
+%function getOutputAddr_114_10_6_1_6_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<59365*//*@>59359*/Model_InterpretationEngine64_PostProcess_B./*@>5936b*/TSP_f"
+%endfunction
+
+%function getOutput_114_10_6_1_6_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>59379*/Model_InterpretationEngine64_PostProcess_B./*@>5938c*/TSP_f"
+%endfunction
+
+%function getParamAddr_114_10_6_1_6_1_8(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_CSCPAddr(block, 8, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getParam_114_10_6_1_6_1_8(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_CSCP(block, 8, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getParamAddr_114_10_6_1_6_1_7(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_CSCPAddr(block, 7, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getParam_114_10_6_1_6_1_7(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_CSCP(block, 7, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getInputAddr_114_14_6_1_8_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<593d6*//*@>593ca*/Model_InterpretationEngine64_PostProcess_B./*@>593dc*/In1"
+%endfunction
+
+%function getInput_114_14_6_1_8_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>593ea*/Model_InterpretationEngine64_PostProcess_B./*@>593fd*/In1"
+%endfunction
+
+%function getOutputAddr_114_15_6_1_9_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<5942a*//*@>5941e*/Model_InterpretationEngine64_PostProcess_B./*@>59430*/TSP_i"
+%endfunction
+
+%function getOutput_114_15_6_1_9_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>5943e*/Model_InterpretationEngine64_PostProcess_B./*@>59451*/TSP_i"
+%endfunction
+
+%function getParamAddr_114_15_6_1_9_1_8(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_CSCPAddr(block, 8, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getParam_114_15_6_1_9_1_8(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_CSCP(block, 8, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getParamAddr_114_15_6_1_9_1_7(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_CSCPAddr(block, 7, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getParam_114_15_6_1_9_1_7(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_CSCP(block, 7, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getInputAddr_114_19_6_1_11_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<5949b*//*@>5948f*/Model_InterpretationEngine64_PostProcess_B./*@>594a1*/In1_n"
+%endfunction
+
+%function getInput_114_19_6_1_11_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>594af*/Model_InterpretationEngine64_PostProcess_B./*@>594c2*/In1_n"
+%endfunction
+
+%function getOutputAddr_114_20_6_1_12_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<594ef*//*@>594e3*/Model_InterpretationEngine64_PostProcess_B./*@>594f5*/TSP_fc"
+%endfunction
+
+%function getOutput_114_20_6_1_12_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>59503*/Model_InterpretationEngine64_PostProcess_B./*@>59516*/TSP_fc"
+%endfunction
+
+%function getParamAddr_114_20_6_1_12_1_8(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_CSCPAddr(block, 8, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getParam_114_20_6_1_12_1_8(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_CSCP(block, 8, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getParamAddr_114_20_6_1_12_1_7(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_CSCPAddr(block, 7, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getParam_114_20_6_1_12_1_7(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_CSCP(block, 7, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getInputAddr_114_24_6_1_14_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<59560*//*@>59554*/Model_InterpretationEngine64_PostProcess_B./*@>59566*/In1_g"
+%endfunction
+
+%function getInput_114_24_6_1_14_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>59574*/Model_InterpretationEngine64_PostProcess_B./*@>59587*/In1_g"
+%endfunction
+
+%function getOutputAddr_114_0_6_1_16_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<595c9*//*@>595bd*/Model_InterpretationEngine64_PostProcess_B./*@>595cf*/TSP" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getOutput_114_0_6_1_16_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>595dd*/Model_InterpretationEngine64_PostProcess_B./*@>595f0*/TSP" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getParamAddr_114_0_6_1_16_1_8(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_CSCPAddr(block, 8, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getParam_114_0_6_1_16_1_8(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_CSCP(block, 8, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getParamAddr_114_0_6_1_16_1_7(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_CSCPAddr(block, 7, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getParam_114_0_6_1_16_1_7(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_CSCP(block, 7, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getOutputAddr_114_5_6_1_17_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<59623*//*@>59617*/Model_InterpretationEngine64_PostProcess_B./*@>59629*/TSP_b"
+%endfunction
+
+%function getOutput_114_5_6_1_17_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>59637*/Model_InterpretationEngine64_PostProcess_B./*@>5964a*/TSP_b"
+%endfunction
+
+%function getParamAddr_114_5_6_1_17_1_8(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_CSCPAddr(block, 8, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getParam_114_5_6_1_17_1_8(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_CSCP(block, 8, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getParamAddr_114_5_6_1_17_1_7(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_CSCPAddr(block, 7, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getParam_114_5_6_1_17_1_7(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_CSCP(block, 7, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getOutputAddr_114_10_6_1_18_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<5967d*//*@>59671*/Model_InterpretationEngine64_PostProcess_B./*@>59683*/TSP_f"
+%endfunction
+
+%function getOutput_114_10_6_1_18_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>59691*/Model_InterpretationEngine64_PostProcess_B./*@>596a4*/TSP_f"
+%endfunction
+
+%function getParamAddr_114_10_6_1_18_1_8(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_CSCPAddr(block, 8, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getParam_114_10_6_1_18_1_8(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_CSCP(block, 8, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getParamAddr_114_10_6_1_18_1_7(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_CSCPAddr(block, 7, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getParam_114_10_6_1_18_1_7(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_CSCP(block, 7, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getOutputAddr_114_15_6_1_19_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<596d7*//*@>596cb*/Model_InterpretationEngine64_PostProcess_B./*@>596dd*/TSP_i"
+%endfunction
+
+%function getOutput_114_15_6_1_19_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>596eb*/Model_InterpretationEngine64_PostProcess_B./*@>596fe*/TSP_i"
+%endfunction
+
+%function getParamAddr_114_15_6_1_19_1_8(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_CSCPAddr(block, 8, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getParam_114_15_6_1_19_1_8(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_CSCP(block, 8, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getParamAddr_114_15_6_1_19_1_7(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_CSCPAddr(block, 7, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getParam_114_15_6_1_19_1_7(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_CSCP(block, 7, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getOutputAddr_114_20_6_1_20_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<59731*//*@>59725*/Model_InterpretationEngine64_PostProcess_B./*@>59737*/TSP_fc"
+%endfunction
+
+%function getOutput_114_20_6_1_20_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>59745*/Model_InterpretationEngine64_PostProcess_B./*@>59758*/TSP_fc"
+%endfunction
+
+%function getParamAddr_114_20_6_1_20_1_8(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_CSCPAddr(block, 8, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getParam_114_20_6_1_20_1_8(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_CSCP(block, 8, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getParamAddr_114_20_6_1_20_1_7(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_CSCPAddr(block, 7, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getParam_114_20_6_1_20_1_7(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return SLibCGB_CSCP(block, 7, 1, "", lcv, ucv, sigIdx, reim)
+%endfunction
+
+%function getSystemOutputFcnCallInfo_114_1_6_1_105_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>5919d*/Model_InterpretationEngine64_ifunc_em"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_114_6_6_1_107_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>591a1*/Model_InterpretationEngine64_ifunc_lv"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_114_11_6_1_109_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>591a5*/Model_InterpretationEngine64_ifunc_jl"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_114_16_6_1_111_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>591a9*/Model_InterpretationEngine64_ifunc_jt"; Args [] }
+%return fcnInfo
+%endfunction
+%function getSystemOutputFcnCallInfo_114_21_6_1_113_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>591ad*/Model_InterpretationEngine64_ifunc_cj"; Args [] }
+%return fcnInfo
+%endfunction

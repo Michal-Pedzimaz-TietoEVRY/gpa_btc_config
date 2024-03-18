@@ -1,0 +1,47 @@
+%implements s1068_b0_g3vnd_184_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+/* {S!d1677}Outputs for Function Call SubSystem: '<S2188>/Triggered Subsystem1' */
+/* {S!d1678}Outputs for Function Call SubSystem: '<S2188>/Triggered Subsystem' */
+/* {S!d1692}Switch: '<S2193>/Switch1' incorporates:
+ *  Switch: '<S2194>/Switch1'
+ */
+/*  Invoke the function trigger output */
+/* MATLAB Function 'RTC/NtfCheck': '<S2211>:1' */
+/* '<S2211>:1:3' go(); */
+/*@>13189db*/if (%<SLibCG_DumpSSCode("/*@[131908a*/",(SLibCG_SE(SLibCG_BOCSC(537, 1, "", -1, "", 0))),"/*@]*/")>/*@>131887b*/ > /*@>1318a35*/0U) {
+    real32_T tmp;
+    /* {S!d1682}DataTypeConversion: '<S2193>/Data Type Conversion' */
+    /*@>1318e7d*/Model_Target_PostProcess_B./*@>13190e2*/DataTypeConversion_f/*@>13189de*/ = (/*@>1318e83*/Model_Target_PostProcess_B./*@>13190e5*/transition/*@>1318a69*/ != /*@>1318a67*/0.0F);
+    /* {S!d1684}DataTypeConversion: '<S2194>/Data Type Conversion' */
+    /*@>1318a44*/tmp/*@>1318a46*/ = /*@>1318d9a*/fmodf(/*@>1318d98*/qhmath_floor_f(/*@>1318e8f*/Model_Target_PostProcess_B./*@>13190eb*/transition), /*@>1318a41*/4.2949673E+9F);
+    /* {S!d1686}DataTypeConversion: '<S2194>/Data Type Conversion' */
+    /*@>1318e95*/Model_Target_PostProcess_B./*@>13190ee*/DataTypeConversion/*@>13189e4*/ = /*@>1318a4d*/tmp/*@>1318a50*/ < /*@>1318a4c*/0.0F/*@>1318a50*/ ? /*@>1318a58*/(uint32_T)-/*@<1318a57*//*@>1318a56*/(int32_T)/*@>1318a61*/(uint32_T)-/*@<1318a54*//*@>1318a51*/tmp : /*@>1318a64*/(uint32_T)/*@>1318a59*/tmp;
+} else {
+    /* {S!d1688}DataTypeConversion: '<S2193>/Data Type Conversion' incorporates:
+ *  Constant: '<S2193>/Constant1'
+ */
+    /*@>1318e77*/Model_Target_PostProcess_B./*@>13190df*/DataTypeConversion_f/*@>10c6e80*/ = /*@>1318a3a*/true;
+    /* {S!d1690}DataTypeConversion: '<S2194>/Data Type Conversion' incorporates:
+ *  Constant: '<S2194>/Constant1'
+ */
+    /*@>1318e89*/Model_Target_PostProcess_B./*@>13190e8*/DataTypeConversion/*@>10c6e90*/ = /*@>1318a3b*/5U;
+}
+/* {E!d1692}End of Switch: '<S2193>/Switch1' */
+/* {E!d1678}End of Outputs for SubSystem: '<S2188>/Triggered Subsystem' */
+/* {E!d1677}End of Outputs for SubSystem: '<S2188>/Triggered Subsystem1' */
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Outputs(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(184, 0, fcnProtoType)>
+%endfunction

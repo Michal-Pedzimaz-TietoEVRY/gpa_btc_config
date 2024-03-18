@@ -1,0 +1,207 @@
+%implements s798_b0_evwnd_23_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+real_T cleanIdx_data[30];
+real_T rtu_sleepingBeautyTable_data[30];
+int32_T indx_data[30];
+int32_T i;
+int32_T loop_ub;
+real32_T tmp_0;
+uint32_T tmp;
+char_T k_data[78];
+char_T i_data[74];
+char_T j_data[20];
+int8_T g_tmp_data[30];
+int8_T remainingPairs_data[30];
+static const char_T l[74] = %<(TLC_STR_CTX(18))>;
+static const char_T m[20] = %<(TLC_STR_CTX(19))>;
+static const char_T n[78] = %<(TLC_STR_CTX(20))>;
+int32_T cleanIdx_size;
+int32_T indx_size;
+int32_T remainingPairs_size_idx_1;
+%closefile localVarDecl
+%assign _modelSS = ""
+
+%if SLibCG_FcnCallArgAccessed(23,2,1,1)
+%<SLibCG_AccessArg(23 ,2, 0)>
+%endif
+
+%if SLibCG_FcnCallArgAccessed(23,2,0,6)
+%<SLibCG_AccessArg(23 ,2, 0)>
+%endif
+
+/*  Set up the size and datatype of our TOP outputs: */
+/* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/SleepingBeauty/SleepingBeauty/Enabled/SleepingBeautyDR/InnerLink/TuneVarTable/translation': '<S1133>:1' */
+/* '<S1133>:1:5' maxTableSize = numel(sleepingBeautyTable.Value) / 2; */
+/* '<S1133>:1:6' idxType = 'uint8'; */
+/* '<S1133>:1:7' idxStorageType = 'uint32'; */
+/* '<S1133>:1:8' dbType = 'single'; */
+/* '<S1133>:1:9' tableIdx = zeros(1,maxTableSize,idxStorageType); */
+/* '<S1133>:1:10' tableDb = zeros(1,maxTableSize,dbType); */
+/*@>cdc956*/memset(&/*@>cddbd2*/localB->/*@>cdf0a1*/tableIdx/*@>cdbda6*/[/*@>cdbd94*/0], /*@>cdee62*/0, /*@>cdbda4*/30U/*@>cdbdac*/ * /*@>cdbdab*/sizeof(uint32_T));
+/*@>cdc958*/memset(&/*@>cddbd9*/localB->/*@>cdf0a4*/tableDb/*@>cdbdbd*/[/*@>cdbda2*/0], /*@>cdee65*/0, /*@>cdbdbb*/30U/*@>cdbdc3*/ * /*@>cdbdc2*/sizeof(real32_T));
+/*  separate the pairs into their index and value components */
+/* '<S1133>:1:13' givenPairs = sleepingBeautyTable.Size(1); */
+/* '<S1133>:1:14' indices = sleepingBeautyTable.Value(1:givenPairs,1); */
+/* '<S1133>:1:15' values = sleepingBeautyTable.Value(1:givenPairs,2); */
+/*  then sort and ignore duplicates */
+/* '<S1133>:1:18' [cleanIdx,map] = unique(indices); */
+/*@>cd8354*/if (/*@>cdd70d*/rtu_sleepingBeautyTable->/*@>cdf098*/Size/*@>cdd713*/[/*@>cdd70b*/0]/*@>cce8ce*/ < /*@>cd5a8b*/1.0) {
+    /*@>cd8358*/loop_ub/*@>cd8357*/ = /*@>cdee68*/-1;
+} else {
+    /*@>cd5c84*/loop_ub/*@>cd4e6a*/ = /*@>cd6003*/(int32_T)/*@>cdd717*/rtu_sleepingBeautyTable->/*@>cdf09b*/Size/*@>cdd71d*/[/*@>cdd715*/0]/*@>cce8d8*/ - /*@>cd5a8d*/1;
+}
+i/*@>cd1b86*/ = /*@>cd5c82*/loop_ub + 1;
+if (/*@>cdb94f*/loop_ub >= /*@>cdb94d*/0) {
+    /*@>cdc965*/memcpy(&/*@>cdb925*/rtu_sleepingBeautyTable_data/*@>cdb926*/[/*@>cdb912*/0], &rtu_sleepingBeautyTable->/*@>cdf095*/Value[0], /*@>cdb910*/(uint32_T)(/*@>cdb90c*/loop_ub + 1)/*@>cdb939*/ * /*@>cdb938*/sizeof(real_T));
+}
+%<SLibCG_DumpSSCode("/*@[cdeabb*/",(SLibCGCallSubFcn("Model_TranslationEngine64_unique_vector", ["/*@>cdf159*/rtu_sleepingBeautyTable_data", "&i", "/*@>cdf16e*/cleanIdx_data", "&cleanIdx_size", "/*@>cdf183*/indx_data", "&indx_size", "/*@>cdf198*/%<::tSimStruct>"], 23, 2, 0)),"/*@]*/")>;
+/*  Validate input sizes */
+/* '<S1133>:1:21' numPairs = numel(map); */
+/* '<S1133>:1:22' argName='sleepingBeautyTable'; */
+/*  Validate: enough data? */
+/* '<S1133>:1:25' if (numPairs < 2) */
+/*@>c6ceca*/if (indx_size/*@>c6cd72*/ < /*@>cd5a79*/2) {
+    /* '<S1133>:1:26' TranslateError('%<"\%s must have at least 2 index pairs. Encounted value with only \%f pairs\\n\', argName, numPairs);"> */
+    /* TRANSLATEERROR (For use in Functions triggered by TranslationTrigger blocks.) */
+    /* Print error message during tune data translation. */
+    /*   Do not include a final newline as this behavior is already built in. */
+    /*   Note that escape sequences such as '\n' will not work here. To emit */
+    /*   special characters, pass them in as arguments to %<"\%c or \%s format"> */
+    /*   specifiers. */
+    /*    Copyright 2018-2019 Bose Corporation */
+    /* 'TranslateError:10' coder.extrinsic('gcb') */
+    /* 'TranslateError:11' coder.extrinsic('warning') */
+    /* 'TranslateError:12' coder.allowpcode('plain'); */
+    /*  enable code generation from p-file */
+    /* 'TranslateError:14' if (coder.target('MATLAB')) */
+    /* 'TranslateError:18' if (coder.target('Sfun')) */
+    /* 'TranslateError:21' else */
+    /* 'TranslateError:22' count = numel(varargin); */
+    /* 'TranslateError:23' fixedArgs = varargin; */
+    /* 'TranslateError:24' for i=1:count */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:26' fixedArgs{i} = [varargin{i} char(0)]; */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:26' fixedArgs{i} = [varargin{i} char(0)]; */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:29' coder.ceval('TranslateError',fixedArgs{:}); */
+    /*@>cdc967*/memcpy(&/*@>cdb8b2*/i_data[/*@>cdb8a2*/0], &/*@>cdb8ba*/l/*@>cdb8bb*/[/*@>cdb8af*/0], /*@>cdb8b1*/74U/*@>cdb8be*/ * /*@>cdb8bd*/sizeof(char_T));
+/*@>cd2a3a*/    for (/*@>cdeee3*/i = /*@>cdeee2*/0; /*@>cdeeed*/i < /*@>cdeeeb*/20; /*@>cdeee9*/i/*@>cdeef1*/++) {
+        /*@>cdab4e*/j_data[/*@>cd5c3d*/i]/*@>cd2a2d*/ = /*@>cdd752*/m/*@>cdd754*/[/*@>cdd751*/i];
+    }
+    /*@>cdc553*/TranslateError(&/*@>cdab1b*/i_data/*@>cdab2e*/[/*@>cd5c49*/0], &/*@>cdab31*/j_data/*@>cdab44*/[/*@>cd5c4d*/0], /*@>cd6cca*/(real_T)indx_size);
+}
+/*  Validate: Highest index still below 255? */
+/* '<S1133>:1:30' if (cleanIdx(1) < 0 || cleanIdx(end) > intmax(idxType)) */
+/*@>c6cee9*/if ((/*@>cdd720*/cleanIdx_data/*@>cdd722*/[/*@>cdd71f*/0]/*@>c6cd73*/ < /*@>cd5a7a*/0.0)/*@>cde989*/ || (/*@>cdd728*/cleanIdx_data/*@>cdd72a*/[cleanIdx_size/*@>cdd724*/ - /*@>cdd727*/1]/*@>c6cd77*/ > /*@>cd5a7b*/255.0)) {
+    /* '<S1133>:1:31' TranslateError('%<"\%s out of range table index \%f encountered. Index must be between 0 and \%d.\\n\',argName,cleanIdx(end),intmax(idxType));"> */
+    /* TRANSLATEERROR (For use in Functions triggered by TranslationTrigger blocks.) */
+    /* Print error message during tune data translation. */
+    /*   Do not include a final newline as this behavior is already built in. */
+    /*   Note that escape sequences such as '\n' will not work here. To emit */
+    /*   special characters, pass them in as arguments to %<"\%c or \%s format"> */
+    /*   specifiers. */
+    /*    Copyright 2018-2019 Bose Corporation */
+    /* 'TranslateError:10' coder.extrinsic('gcb') */
+    /* 'TranslateError:11' coder.extrinsic('warning') */
+    /* 'TranslateError:12' coder.allowpcode('plain'); */
+    /*  enable code generation from p-file */
+    /* 'TranslateError:14' if (coder.target('MATLAB')) */
+    /* 'TranslateError:18' if (coder.target('Sfun')) */
+    /* 'TranslateError:21' else */
+    /* 'TranslateError:22' count = numel(varargin); */
+    /* 'TranslateError:23' fixedArgs = varargin; */
+    /* 'TranslateError:24' for i=1:count */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:26' fixedArgs{i} = [varargin{i} char(0)]; */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:26' fixedArgs{i} = [varargin{i} char(0)]; */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:29' coder.ceval('TranslateError',fixedArgs{:}); */
+    /*@>cdc969*/memcpy(&/*@>cdb81d*/k_data[/*@>cdb80d*/0], &/*@>cdb825*/n/*@>cdb826*/[/*@>cdb81a*/0], /*@>cdb81c*/78U/*@>cdb829*/ * /*@>cdb828*/sizeof(char_T));
+/*@>cd2b6f*/    for (/*@>cdeed2*/i = /*@>cdeed1*/0; /*@>cdeedc*/i < /*@>cdeeda*/20; /*@>cdeed8*/i/*@>cdeef2*/++) {
+        /*@>cdac1f*/j_data[/*@>cd5c62*/i]/*@>cd2b62*/ = /*@>cdd76e*/m/*@>cdd770*/[/*@>cdd76d*/i];
+    }
+    /*@>cdc557*/TranslateError(&/*@>cdabe9*/k_data/*@>cdabfc*/[/*@>cd5c6e*/0], &/*@>cdabff*/j_data/*@>cdac12*/[/*@>cd5c72*/0], /*@>cdd768*/cleanIdx_data/*@>cdd76a*/[cleanIdx_size/*@>cdd764*/ - /*@>cdd767*/1], /*@>cd6cef*/MAX_uint8_T);
+}
+/*  fill in the table buffer with provided pairs */
+/* '<S1133>:1:35' tableIdx(1:numPairs) = cleanIdx(1:numPairs); */
+/*@>cd8359*/if (indx_size/*@>cce8f4*/ < /*@>cd5a90*/1) {
+    /*@>cd835d*/loop_ub/*@>cd835c*/ = /*@>cdee6b*/-1;
+} else {
+    /*@>cd5c86*/loop_ub/*@>cd4e6f*/ = indx_size/*@>cce8fc*/ - /*@>cd5a92*/1;
+}
+/*@>cd1e35*/for (/*@>cdeec2*/i = /*@>cdeec1*/0; /*@>cdeecd*/i <= /*@>cdeecb*/loop_ub; /*@>cdeec8*/i/*@>cdeef3*/++) {
+    /*@>cddbe0*/localB->/*@>cdf0a7*/tableIdx/*@>cd1e1b*/[/*@>cd5b1b*/i]/*@>cd1e22*/ = /*@>cd6008*/(uint32_T)%<SLibCG_DumpSSCode("/*@[cdead3*/",(SLibCGCallSubFcn("rt_roundd_snf", ["/*@>cdf1a3*/cleanIdx_data/*@>cdf1a2*/[/*@>cdf1a4*/i]", "/*@>cdf1ae*/%<::tSimStruct>"], 23, 2, 1)),"/*@]*/")>;
+}
+/* '<S1133>:1:36' tableDb(1:numPairs) = values(map(1:numPairs)); */
+/*@>cd835e*/if (indx_size/*@>c6ce9b*/ < /*@>cd5a84*/1) {
+    /*@>cd8362*/cleanIdx_size/*@>cd8361*/ = /*@>cdee6e*/0;
+} else {
+    /*@>cd5c8a*/cleanIdx_size/*@>cd4e79*/ = indx_size;
+}
+/*@>cd20c7*/for (/*@>cdeeaf*/i = /*@>cdeeae*/0; /*@>cdeebc*/i < /*@>cdeeb9*/cleanIdx_size; /*@>cdeeb5*/i/*@>cdeef4*/++) {
+    /*@>cddbe7*/localB->/*@>cdf0aa*/tableDb/*@>cd20af*/[/*@>cd5b4b*/i]/*@>cd20b6*/ = /*@>cd208b*/(real32_T)rtu_sleepingBeautyTable->/*@>cdf09e*/Value/*@>cdd746*/[/*@>cdd73b*/indx_data/*@>cdd73a*/[/*@>cdd73d*/i]/*@>cdd738*/ + /*@>cdd73e*/29];
+}
+/*  fill the rest of the table buffer with the last entry */
+/* '<S1133>:1:39' remainingPairs = numel(map)+1:maxTableSize; */
+/*@>c6cf20*/if (indx_size/*@>c6ce52*/ + /*@>cd5a85*/1/*@>c6ce9e*/ > /*@>cd5a81*/30) {
+    remainingPairs_size_idx_1/*@>ccff3c*/ = /*@>cdee71*/0;
+} else {
+    remainingPairs_size_idx_1/*@>cd2188*/ = /*@>cd7b1f*/30/*@>cd93ca*/ - indx_size;
+    /*@>cd5b7a*/loop_ub/*@>cd21cb*/ = /*@>cd7b28*/29/*@>cd93cc*/ - indx_size;
+/*@>cd21b0*/    for (/*@>cdee9f*/cleanIdx_size = /*@>cdee9e*/0; /*@>cdeeaa*/cleanIdx_size <= /*@>cdeea8*/loop_ub; /*@>cdeea5*/cleanIdx_size/*@>cdeef7*/++) {
+        /*@>cdaa1a*/remainingPairs_data[/*@>cd5b6f*/cleanIdx_size]/*@>cd219c*/ = /*@>cd6ce6*/(int8_T)((indx_size/*@>cdddec*/ + /*@>cdddef*/1)/*@>cd2191*/ + /*@>cd5b6a*/cleanIdx_size);
+    }
+}
+/* '<S1133>:1:40' tableIdx(remainingPairs) = tableIdx(numPairs); */
+if (remainingPairs_size_idx_1/*@>cdb792*/ - /*@>cdb795*/1 >= /*@>cdb791*/0) {
+    /*@>cdc96b*/memcpy(&/*@>cdb773*/g_tmp_data[/*@>cdb763*/0], &/*@>cdb77b*/remainingPairs_data[/*@>cdb772*/0], /*@>cdb761*/(uint32_T)remainingPairs_size_idx_1/*@>cdb77f*/ * /*@>cdb77e*/sizeof(int8_T));
+}
+/*@>cd5ac5*/tmp/*@>cd11f4*/ = /*@>cddbee*/localB->/*@>cdf0ad*/tableIdx/*@>cdd74e*/[indx_size/*@>cdd748*/ - /*@>cdd74b*/1];
+/*@>cd2631*/for (/*@>cdee8c*/i = /*@>cdee8b*/0; /*@>cdee99*/i < remainingPairs_size_idx_1; /*@>cdee92*/i/*@>cdeef5*/++) {
+    /*@>cddbf5*/localB->/*@>cdf0b0*/tableIdx/*@>cd260c*/[/*@>cdd758*/g_tmp_data[/*@>cdd757*/i]/*@>cd2611*/ - /*@>cd5bce*/1]/*@>cd2619*/ = /*@>cd5bc5*/tmp;
+}
+/* '<S1133>:1:41' tableDb(remainingPairs) =  tableDb(numPairs); */
+/*@>cd5ac7*/tmp_0/*@>cd1209*/ = /*@>cddbfc*/localB->/*@>cdf0b3*/tableDb/*@>cdd762*/[indx_size/*@>cdd75c*/ - /*@>cdd75f*/1];
+/*@>cd283b*/for (/*@>cdee79*/i = /*@>cdee78*/0; /*@>cdee86*/i < remainingPairs_size_idx_1; /*@>cdee7f*/i/*@>cdeef6*/++) {
+    /*@>cddc03*/localB->/*@>cdf0b6*/tableDb/*@>cd2816*/[/*@>cdd774*/g_tmp_data[/*@>cdd773*/i]/*@>cd281b*/ - /*@>cd5bf5*/1]/*@>cd2823*/ = /*@>cd5bec*/tmp_0;
+}
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[23].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(23, 2, 0)>
+%endif
+%if SLibCG_ArgAccessed(23, 2, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(23, 2, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_TranslationEngine64_translation(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(23, 2, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_TranslationEngine64_translation", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>const bus_double_30__2 *rtu_sleepingBeautyTable\
+%assign comma = ", "
+%<comma>B_translation_Model_TranslationEngine64_T *localB\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(23, 2, fcnProtoType)>
+%endfunction

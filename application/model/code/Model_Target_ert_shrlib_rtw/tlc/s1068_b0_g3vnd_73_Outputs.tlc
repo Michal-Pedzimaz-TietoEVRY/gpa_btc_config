@@ -1,0 +1,156 @@
+%implements s1068_b0_g3vnd_73_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+int32_T i;
+real32_T gVec[32];
+real32_T gdiff;
+real32_T gp;
+real32_T nextDownCoeff;
+real32_T nextUpCoeff;
+boolean_T chtgain;
+%closefile localVarDecl
+/*  FRAME_SIZE = 32; */
+/*  Ramp coefficients */
+/* MATLAB Function 'NEAR/Near1p1/LocRamper/MATLAB Function': '<S1726>:1' */
+/* '<S1726>:1:5' if (isempty(lastTGain)) */
+/*@>10d6d8b*/if (!/*@<10d6d7b*//*@>122d1d4*/localDW->/*@>122d826*/lastTGain_not_empty) {
+    /* '<S1726>:1:5' , */
+    /* '<S1726>:1:5' lastTGain = cast(tgain + 1, class(tgain)); */
+    /*@>122d1db*/localDW->/*@>122d829*/lastTGain/*@>10d6d4b*/ = /*@>122b60b*/rtu_tgain/*@>10d6d7c*/ + /*@>122b586*/1.0F;
+    /*@>122d1e2*/localDW->/*@>122d82c*/lastTGain_not_empty/*@>10d6d49*/ = /*@>122b58b*/true;
+}
+/* '<S1726>:1:7' if (isempty(lastG)) */
+/*  Ramp coefficients */
+/* '<S1726>:1:10' if (isempty(upCoeff)) */
+/* '<S1726>:1:12' if (isempty(upCoeffN)) */
+/* '<S1726>:1:14' if (isempty(downCoeff)) */
+/* '<S1726>:1:16' if (isempty(downCoeffN)) */
+/* '<S1726>:1:22' if (isempty(lpfCoeff)) */
+/*  Update the next set of ramp coefficients to use */
+/* '<S1726>:1:24' nextUpCoeff = cast(10 ^ abs(ramp_db_per_samp / 20), class(tgain)); */
+/*@>122b5eb*/nextUpCoeff/*@>10d6e25*/ = /*@>122c9f7*/qhmath_pow_f(/*@>122b5f8*/10.0F, /*@>122c9f5*/qhmath_abs_f(/*@>122c9f3*/qhmath_div_f(/*@>122b60d*/rtu_ramp_db_per_samp, /*@>122b5f7*/20.0F)));
+/* '<S1726>:1:25' nextUpCoeffN = cast(nextUpCoeff ^ FRAME_SIZE, class(tgain)); */
+/* '<S1726>:1:26' nextDownCoeff = cast(10 ^ (-abs(ramp_db_per_samp) / 20), class(tgain)); */
+/*@>122b5ed*/nextDownCoeff/*@>10d6e28*/ = /*@>122c9fd*/qhmath_pow_f(/*@>122b5fa*/10.0F, /*@>122c9fb*/qhmath_div_f(-/*@<122b651*//*@>122c9f9*/qhmath_abs_f(/*@>122b60f*/rtu_ramp_db_per_samp), /*@>122b5f9*/20.0F));
+/* '<S1726>:1:27' nextDownCoeffN = cast(nextDownCoeff ^ FRAME_SIZE, class(tgain)); */
+/*  Switch to the next set of ramp coefficients if the target gain changed */
+/* '<S1726>:1:29' chtgain = (tgain ~= lastTGain); */
+/*@>122b58e*/chtgain/*@>10d6d4d*/ = (/*@>122b611*/rtu_tgain/*@>10d6d7d*/ != /*@>122d1e9*/localDW->/*@>122d82f*/lastTGain);
+/* '<S1726>:1:30' lastTGain = tgain; */
+/*@>122d1f0*/localDW->/*@>122d832*/lastTGain/*@>10d6d4e*/ = /*@>122b613*/rtu_tgain;
+/* '<S1726>:1:31' if (chtgain) */
+/*@>10d6d94*/if (/*@>122b592*/chtgain) {
+    /* '<S1726>:1:32' upCoeff = nextUpCoeff; */
+    /*@>122d1f7*/localDW->/*@>122d835*/upCoeff/*@>10d6d51*/ = /*@>122b594*/nextUpCoeff;
+    /* '<S1726>:1:33' upCoeffN = nextUpCoeffN; */
+    /*@>122d205*/localDW->/*@>122d83b*/upCoeffN/*@>10d6d52*/ = /*@>122c9ff*/qhmath_pow_f(/*@>122b5fd*/nextUpCoeff, /*@>122b601*/32.0F);
+    /* '<S1726>:1:34' downCoeff = nextDownCoeff; */
+    /*@>122d213*/localDW->/*@>122d841*/downCoeff/*@>10d6d54*/ = /*@>122b5a2*/nextDownCoeff;
+    /* '<S1726>:1:35' downCoeffN = nextDownCoeffN; */
+    /*@>122d21a*/localDW->/*@>122d844*/downCoeffN/*@>10d6d55*/ = /*@>122ca01*/qhmath_pow_f(/*@>122b5ff*/nextDownCoeff, /*@>122b602*/32.0F);
+}
+/*  Initialize output */
+/* '<S1726>:1:38' gp = lastG; */
+/*@>122b59a*/gp/*@>10d6d57*/ = /*@>122d1fe*/localDW->/*@>122d838*/lastG;
+/* '<S1726>:1:39' gdiff = tgain - gp; */
+/*@>122b5a0*/gdiff/*@>10d6d58*/ = /*@>122b615*/rtu_tgain/*@>10d6d7e*/ - /*@>122d20c*/localDW->/*@>122d83e*/lastG;
+/*  By default, use the lpf filter */
+/* '<S1726>:1:41' a = lpfCoeff; */
+/*@>122b5aa*/nextUpCoeff/*@>10d6d5a*/ = /*@>122d221*/localDW->/*@>122d847*/lpfCoeff;
+/* '<S1726>:1:42' b0 = 1-a; */
+/*@>122b5af*/nextDownCoeff/*@>10d6d5b*/ = /*@>122b5ae*/1.0F/*@>10d6d7f*/ - /*@>122d228*/localDW->/*@>122d84a*/lpfCoeff;
+/* '<S1726>:1:44' if (abs(gdiff) < minGain) */
+/*@>10d6da0*/if (/*@>122ca03*/qhmath_abs_f(/*@>122b5f3*/gdiff)/*@>10d6d80*/ < /*@>122b617*/rtu_minGain) {
+    /*  Snap to target gain if it's close enough */
+    /* '<S1726>:1:46' gVec = tgain * ones(FRAME_SIZE, 1, class(tgain)); */
+/*@>122ae3c*/    for (/*@>122d711*/i = /*@>122d710*/0; /*@>122d71b*/i < /*@>122d719*/32; /*@>122d717*/i/*@>122d71f*/++) {
+        /*@>122b62c*/gVec/*@>122ae33*/[/*@>122b623*/i]/*@>122ae32*/ = /*@>122b625*/rtu_tgain;
+    }
+} else {
+    /* '<S1726>:1:47' else */
+    /* '<S1726>:1:48' if (gdiff > 0) */
+    /*@>10d6da2*/if (/*@>122b5b1*/gdiff/*@>10d6d82*/ > /*@>122b5b3*/0.0F) {
+        /*  previous gain cannot be zero for exponential ramp */
+        /* '<S1726>:1:50' temp = max(gp, minGain); */
+        /*@>122b5ef*/gdiff/*@>10d6e2b*/ = /*@>122ca05*/fmaxf(/*@>122d23d*/localDW->/*@>122d853*/lastG, /*@>10d6e2c*/(real32_T)/*@>122b61b*/rtu_minGain);
+        /* '<S1726>:1:51' if (temp * upCoeffN < tgain) */
+        /*@>10d6da4*/if (/*@>122b5ba*/gdiff/*@>122b63e*/ * /*@>122d244*/localDW->/*@>122d856*/upCoeffN/*@>10d6d84*/ < /*@>122b61d*/rtu_tgain) {
+            /*  Ramp not done, so do zero-input exponential ramp */
+            /* '<S1726>:1:53' a = upCoeff; */
+            /*@>122b5ce*/nextUpCoeff/*@>10d6d60*/ = /*@>122d260*/localDW->/*@>122d862*/upCoeff;
+            /* '<S1726>:1:54' b0 = cast(0, class(tgain)); */
+            /*@>122b5d0*/nextDownCoeff/*@>10d6d61*/ = /*@>122b5fc*/0.0F;
+            /* '<S1726>:1:55' gp = temp; */
+            /*@>122b5db*/gp/*@>10d6d63*/ = /*@>122b5d9*/gdiff;
+        }
+
+        /* '<S1726>:1:57' else */
+        /* '<S1726>:1:58' if (gp * downCoeffN > tgain) */
+    } else /*@>10d6da9*/if (/*@>122d22f*/localDW->/*@>122d84d*/lastG/*@>122b63a*/ * /*@>122d236*/localDW->/*@>122d850*/downCoeffN/*@>10d6d86*/ > /*@>122b619*/rtu_tgain) {
+        /*  Ramp not done, so do zero-input exponential ramp */
+        /* '<S1726>:1:60' a = downCoeff; */
+        /*@>122b5c2*/nextUpCoeff/*@>10d6d66*/ = /*@>122d252*/localDW->/*@>122d85c*/downCoeff;
+        /* '<S1726>:1:61' b0 = cast(0, class(tgain)); */
+        /*@>122b5ca*/nextDownCoeff/*@>10d6d67*/ = /*@>122b5fb*/0.0F;
+    }
+    /*  Calculate gain */
+    /* '<S1726>:1:65' zi = a * gp; */
+    /*@>122b5c8*/gp/*@>122d720*/ *= /*@>122b5c4*/nextUpCoeff;
+    /* '<S1726>:1:66' gVec = zeros(FRAME_SIZE, 1, class(tgain)); */
+    /* '<S1726>:1:67' for samp = 1:FRAME_SIZE */
+/*@>10d6db0*/    for (/*@>122d700*/i = /*@>122d6ff*/0; /*@>122d70a*/i < /*@>122d708*/32; /*@>122d706*/i/*@>122d721*/++) {
+        /* '<S1726>:1:68' g = b0 * tgain + zi; */
+        /*@>122b5e1*/gdiff/*@>10d6d6e*/ = /*@>122b5dd*/nextDownCoeff/*@>122b646*/ * /*@>122b621*/rtu_tgain/*@>10d6d89*/ + /*@>122b5df*/gp;
+        /* '<S1726>:1:69' zi = a * g; */
+        /*@>122b5e7*/gp/*@>10d6d71*/ = /*@>122b5e3*/nextUpCoeff/*@>122b642*/ * /*@>122b5e5*/gdiff;
+        /* '<S1726>:1:70' gVec(samp) = g; */
+        /*@>122b62e*/gVec/*@>10d6d72*/[/*@>122b5f5*/i]/*@>10d6d74*/ = /*@>122b5e9*/gdiff;
+    }
+}
+/* '<S1726>:1:73' lastG = gVec(end); */
+/*@>122d24b*/localDW->/*@>122d859*/lastG/*@>10d6d77*/ = /*@>122cf9c*/gVec/*@>122cf9e*/[/*@>122cf9b*/31];
+/* '<S1726>:1:74' gval = lastG; */
+*rty_gval/*@>10d6d79*/ = /*@>122d259*/localDW->/*@>122d85f*/lastG;
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[73].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(73, 1, 0)>
+%endif
+%if SLibCG_ArgAccessed(73, 1, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(73, 1, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_MATLABFunction_j(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(73, 1, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_Target_MATLABFunction_j", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>real32_T rtu_tgain\
+%assign comma = ", "
+%<comma>real32_T rtu_ramp_db_per_samp\
+%assign comma = ", "
+%<comma>real_T rtu_minGain\
+%assign comma = ", "
+%<comma>real32_T *rty_gval\
+%assign comma = ", "
+%<comma>DW_MATLABFunction_Model_Target_i_T *localDW\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(73, 1, fcnProtoType)>
+%endfunction

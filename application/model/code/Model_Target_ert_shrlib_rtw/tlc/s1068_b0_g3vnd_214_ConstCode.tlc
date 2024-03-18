@@ -1,0 +1,31 @@
+%implements s1068_b0_g3vnd_214_ConstCode "C"
+
+%function ConstCode(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%assign tlcOutputsFcnOfS916B108 = OpaqueTLCBlockFcn("Outputs", 916, 108, 214, 3, 0)
+%assign tlcOutputsFcnOfS916B109 = OpaqueTLCBlockFcn("Outputs", 916, 109, 214, 3, 1)
+%if !WHITE_SPACE(tlcOutputsFcnOfS916B108)
+/* ConstCode for S-Function (CapturedConst): '<S2216>/Captured Tune Const' incorporates:
+ *  S-Function (AudioStats_MEX): '<S2216>/Audio Stats'
+ */
+%<SLibCG_DumpSSCode("/*@[134a0ff*/",tlcOutputsFcnOfS916B108,"/*@]*/")>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS916B109)
+/* ConstCode for S-Function (CapturedConst): '<S2243>/CapturedTuneConst' incorporates:
+ *  S-Function (AudioStats_MEX): '<S2243>/AudioStats'
+ */
+%<SLibCG_DumpSSCode("/*@[134a101*/",tlcOutputsFcnOfS916B109,"/*@]*/")>\
+%endif
+%closefile cfgTxt
+%<cfgTxt>
+%endfunction
+%function ConstCodeFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_PostProcess_Const(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(214, 3, fcnProtoType)>
+%endfunction

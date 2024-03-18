@@ -1,0 +1,60 @@
+%implements "chartSource" "C"
+%function ChartConfig(block, system) void
+  %createrecord chartConfiguration { ...
+          executeAtInitialization  0 ...
+  }
+  %return chartConfiguration
+%endfunction
+%function ChartDataMap(block, system) void
+  %createrecord ChartDataElements {\
+    NumChartData   6 \
+    ChartDataDefaults {\
+      RecordType   "ChartData"\
+      Dimensions   []\
+      IsTestPoint  0\
+    }\
+    ChartData {\
+      Name         "zeroLevelCount"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "Model_Target:141:2933:156-170"\
+    }\
+    ChartData {\
+      Name         "Llevel"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "Model_Target:141:2933:183-189"\
+    }\
+    ChartData {\
+      Name         "Rlevel"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "Model_Target:141:2933:202-208"\
+    }\
+    ChartData {\
+      Name         "smoothedSumOfEnergies"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "Model_Target:141:2933:221-242"\
+    }\
+    ChartData {\
+      Name         "smoothedEnergyOfSum"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "Model_Target:141:2933:255-274"\
+    }\
+    ChartData {\
+      Name         "lastSpumOn"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "Model_Target:141:2933:311-321"\
+    }\
+  }
+  %return ChartDataElements
+%endfunction

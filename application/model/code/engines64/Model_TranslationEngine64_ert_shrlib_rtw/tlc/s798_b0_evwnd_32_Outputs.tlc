@@ -1,0 +1,54 @@
+%implements s798_b0_evwnd_32_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+/* MATLAB Function 'NEAR/Near1p1/DrProc/HrEQDr/Subsystem2/Translation': '<S1329>:1' */
+/* '<S1329>:1:2' switch NumHeadrestSpeakers */
+/* '<S1329>:1:14' case 2 */
+/* '<S1329>:1:15' switch AnnChannelCount */
+/* '<S1329>:1:18' case 2 */
+/* '<S1329>:1:19' eqdelays = single([driversrc1.Value, driversrc2.Value, passengersrc1.Value, passengersrc2.Value]); */
+/*@>cf6c3d*/localB->/*@>cf6d4e*/eqdelays/*@>cf66ac*/[/*@>cf690b*/0]/*@>cf66ab*/ = rtu_driversrc1->Value;
+/*@>cf6c44*/localB->/*@>cf6d51*/eqdelays/*@>cf66b8*/[/*@>cf690f*/1]/*@>cf66b7*/ = rtu_driversrc2->Value;
+/*@>cf6c4b*/localB->/*@>cf6d54*/eqdelays/*@>cf66c4*/[/*@>cf6913*/2]/*@>cf66c3*/ = rtu_passengersrc1->Value;
+/*@>cf6c52*/localB->/*@>cf6d57*/eqdelays/*@>cf66d0*/[/*@>cf6917*/3]/*@>cf66cf*/ = rtu_passengersrc2->Value;
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[32].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(32, 0, 0)>
+%endif
+%if SLibCG_ArgAccessed(32, 0, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(32, 0, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_TranslationEngine64_Translation_e(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(32, 0, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_TranslationEngine64_Translation_e", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>const bus_single_1_1 *rtu_driversrc1\
+%assign comma = ", "
+%<comma>const bus_single_1_1 *rtu_driversrc2\
+%assign comma = ", "
+%<comma>const bus_single_1_1 *rtu_passengersrc1\
+%assign comma = ", "
+%<comma>const bus_single_1_1 *rtu_passengersrc2\
+%assign comma = ", "
+%<comma>B_Translation_Model_TranslationEngine64_or_T *localB\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(32, 0, fcnProtoType)>
+%endfunction

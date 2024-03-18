@@ -1,0 +1,27 @@
+%implements s1068_b0_g3vnd_183_SystemInitialize "C"
+
+%function SystemInitialize(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%<SLibCGIRDumpSystemUserCode(639, "Initialize", "Header")>\
+%<SLibCGIRDumpSystemUserCode(639, "Initialize", "Body")>\
+/* SystemInitialize for MATLAB Function: '<S1576>/MATLAB Function' */
+/* '<S1567>:1:10' currentFadeInd = 0; */
+/* '<S1567>:1:11' currentSig = uint32(0); */
+/* '<S1580>:1:11' state = single(1 * ones(1,channelCount)); */
+/*@>1315b29*/Model_Target_PreAmpPart1_DW./*@>1317bc8*/state/*@>130d1f5*/[/*@>130ddcf*/0]/*@>130d1f4*/ = /*@>130ddc8*/1.0F;
+/*@>1315b2f*/Model_Target_PreAmpPart1_DW./*@>1317bcb*/state/*@>130d225*/[/*@>130dde5*/1]/*@>130d224*/ = /*@>130ddde*/1.0F;
+%<SLibCGIRDumpSystemUserCode(639, "Initialize", "Trailer")>\
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedSystemInitializeLocalVars", localVarDecl)>
+%endfunction
+%function SystemInitializeFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_PreAmpPart1_Init(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(183, 0, fcnProtoType)>
+%endfunction

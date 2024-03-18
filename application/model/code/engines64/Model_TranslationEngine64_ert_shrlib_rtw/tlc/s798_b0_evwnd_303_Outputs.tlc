@@ -1,0 +1,97 @@
+%implements s798_b0_evwnd_303_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+int32_T i;
+char_T c_data[54];
+char_T b_data[46];
+static const char_T d[46] = %<(TLC_STR_CTX(138))>;
+static const char_T e[54] = %<(TLC_STR_CTX(139))>;
+%closefile localVarDecl
+/* {S!d1937}MATLAB Function: '<S715>/Trivial Translation2' */
+/* {S!d1940}MATLAB Function: '<S715>/Trivial Translation2' incorporates:
+ *  S-Function (TuneVarMEX): '<S715>/Tune Variable2'
+ *  S-Function (TuneVarMEX): '<S715>/Tune Variable3'
+ *
+ * Block description for '<S715>/Tune Variable2':
+ *  Cutoff frequency for single pole averager when decay parameter is
+ *  increasing.
+ *
+ * Block description for '<S715>/Tune Variable3':
+ *  Cutoff frequency for single pole averager when decay parameter is
+ *  decreasing (slow decay).
+ */
+/*  Invoke the function trigger output */
+/* MATLAB Function 'TranslateTrigger/tfunc': '<S732>:1' */
+/* '<S732>:1:3' f(); */
+/*  Cutoff is the inverse of time constant in Hz. So this function */
+/*  basically converts reciprocal of time constant to first order iir */
+/*  filter coefficient. */
+/*  Reference: https://bosecorp.sharepoint.com/sites/ASD3/DSPTeam/Shared%<"\%20Documents/DSP_Topics/Comparison\%20of\%20time\%20constant\%20conversion\%20methods.docx"> */
+/* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 2/SPUM Decay Estimate/Decay Estimate/Trivial Translation2': '<S724>:1' */
+/* '<S724>:1:6' if FastAttackCutoff.Value >= SlowAttackCutoff.Value */
+/*@>c6c71c*/if (/*@>f2293a*/Model_TranslationEngine64_B./*@>f22c37*/FastAttackCutoff.Value/*@>c6c711*/ >= /*@>f22940*/Model_TranslationEngine64_B./*@>f22c3a*/SlowAttackCutoff.Value) {
+    real_T wn;
+    /* '<S724>:1:7' wn = 2 * pi * FastAttackCutoff.Value / FrameRate; */
+    /*@>f21723*/wn/*@>c6c70a*/ = /*@>f21722*/6.2831853071795862/*@>f217c2*/ * /*@>f22946*/Model_TranslationEngine64_B./*@>f22c3d*/FastAttackCutoff.Value/*@>c6c713*/ / /*@>f22995*/Model_TranslationEngine64_ConstB./*@>f22c4f*/CapturedTuneConst1_hw;
+    /* '<S724>:1:8' FastAttack = 1 - (1 - sin(wn)) ./ cos(wn); */
+    /*@>f2294c*/Model_TranslationEngine64_B./*@>f22c40*/FastAttack/*@>c6c70b*/ = /*@>f21726*/1.0/*@>c6c716*/ - (/*@>f21725*/1.0/*@>c6c714*/ - /*@>f222ec*/sin(/*@>f21742*/wn))/*@>c6c715*/ / /*@>f222ee*/cos(/*@>f21744*/wn);
+    /* '<S724>:1:9' wn = 2 * pi * SlowAttackCutoff.Value / FrameRate; */
+    /*@>f21729*/wn/*@>c6c70d*/ = /*@>f21728*/6.2831853071795862/*@>f217b7*/ * /*@>f22952*/Model_TranslationEngine64_B./*@>f22c43*/SlowAttackCutoff.Value/*@>c6c718*/ / /*@>f2299b*/Model_TranslationEngine64_ConstB./*@>f22c52*/CapturedTuneConst1_hw;
+    /* '<S724>:1:10' SlowAttack = 1 - (1 - sin(wn)) ./ cos(wn); */
+    /*@>f22958*/Model_TranslationEngine64_B./*@>f22c46*/SlowAttack/*@>c6c70e*/ = /*@>f2172d*/1.0/*@>c6c71b*/ - (/*@>f2172c*/1.0/*@>c6c719*/ - /*@>f222f0*/sin(/*@>f21746*/wn))/*@>c6c71a*/ / /*@>f222f2*/cos(/*@>f21748*/wn);
+} else {
+    /* '<S724>:1:11' else */
+    /* '<S724>:1:12' TranslateError('Cutoff frequency of single pole averager for '... */
+    /* '<S724>:1:13'         ,'decay should be less than or equal to that for attack'); */
+    /* TRANSLATEERROR (For use in Functions triggered by TranslationTrigger blocks.) */
+    /* Print error message during tune data translation. */
+    /*   Do not include a final newline as this behavior is already built in. */
+    /*   Note that escape sequences such as '\n' will not work here. To emit */
+    /*   special characters, pass them in as arguments to %<"\%c or \%s format"> */
+    /*   specifiers. */
+    /*    Copyright 2018-2019 Bose Corporation */
+    /* 'TranslateError:10' coder.extrinsic('gcb') */
+    /* 'TranslateError:11' coder.extrinsic('warning') */
+    /* 'TranslateError:12' coder.allowpcode('plain'); */
+    /*  enable code generation from p-file */
+    /* 'TranslateError:14' if (coder.target('MATLAB')) */
+    /* 'TranslateError:18' if (coder.target('Sfun')) */
+    /* 'TranslateError:21' else */
+    /* 'TranslateError:22' count = numel(varargin); */
+    /* 'TranslateError:23' fixedArgs = varargin; */
+    /* 'TranslateError:24' for i=1:count */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:26' fixedArgs{i} = [varargin{i} char(0)]; */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:26' fixedArgs{i} = [varargin{i} char(0)]; */
+    /* 'TranslateError:29' coder.ceval('TranslateError',fixedArgs{:}); */
+/*@>f21353*/    for (/*@>f22b9b*/i = /*@>f22b9a*/0; /*@>f22ba5*/i < /*@>f22ba3*/46; /*@>f22ba1*/i/*@>f22ba9*/++) {
+        /*@>f21f87*/b_data[/*@>f2177c*/i]/*@>f21346*/ = /*@>f225a9*/d/*@>f225ab*/[/*@>f225a8*/i];
+    }
+/*@>f21421*/    for (/*@>f22b8a*/i = /*@>f22b89*/0; /*@>f22b94*/i < /*@>f22b92*/54; /*@>f22b90*/i/*@>f22baa*/++) {
+        /*@>f21ffa*/c_data[/*@>f21796*/i]/*@>f21414*/ = /*@>f225af*/e/*@>f225b1*/[/*@>f225ae*/i];
+    }
+    /*@>f222ea*/TranslateError(&/*@>f21fcd*/b_data/*@>f21fe0*/[/*@>f21731*/0], &/*@>f21fe3*/c_data/*@>f21ff6*/[/*@>f21735*/0]);
+    /* '<S724>:1:14' FastAttack = 0; */
+    /*@>f2295e*/Model_TranslationEngine64_B./*@>f22c49*/FastAttack/*@>c6c70f*/ = /*@>f21727*/0.0;
+    /* '<S724>:1:15' SlowAttack = 0; */
+    /*@>f22964*/Model_TranslationEngine64_B./*@>f22c4c*/SlowAttack/*@>c6c710*/ = /*@>f2172b*/0.0;
+}
+/* {E!d1940}End of MATLAB Function: '<S715>/Trivial Translation2' */
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void FuncTranslation_Model_141_2851(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(303, 0, fcnProtoType)>
+%endfunction

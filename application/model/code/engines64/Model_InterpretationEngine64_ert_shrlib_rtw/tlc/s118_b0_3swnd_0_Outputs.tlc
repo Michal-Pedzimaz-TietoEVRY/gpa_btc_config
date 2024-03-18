@@ -1,0 +1,50 @@
+%implements s118_b0_3swnd_0_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+/* MATLAB Function 'ModelPreAmp/DecRate/AudioPilot35/Audiopilot_3_5/NoiseEstimationVariant/RegularNoiseEstimation/LFNoiseEstimatorCoh/LfNoiseImpulseRejection/MusicVariance/db20 ': '<S149>:1' */
+/* '<S149>:1:4' State = db20(abs(TSP1) + eps); */
+/* DB20  Linear quantity to decibels */
+/*    Converts x to dB assuming that x represents volts. */
+/*    y=20*log10(abs(x)); */
+/*  */
+/*  See Also: DB10, UNDB20 */
+/*    Copyright 2018-2019 Bose Corporation */
+/*  Bill Berardi */
+/*  $Id: db20.m 11813 2012-07-11 17:31:25Z rs7109 $ */
+/* 'db20:12' y = 20/log(10)*log(abs(x)); */
+/*@>56029*/localB->/*@>560ad*/State/*@>51d5d*/ = /*@>55fbd*/logf(/*@>55fbb*/fabsf(/*@>55db5*/rtu_TSP1)/*@>51d66*/ + /*@>55db1*/2.22044605E-16F)/*@>55db9*/ * /*@>55db2*/8.68588924F;
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[0].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(0, 0, 0)>
+%endif
+%if SLibCG_ArgAccessed(0, 0, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(0, 0, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_InterpretationEngine64_db20(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(0, 0, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_InterpretationEngine64_db20", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>real32_T rtu_TSP1\
+%assign comma = ", "
+%<comma>B_db20_Model_InterpretationEngine64_T *localB\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 0, fcnProtoType)>
+%endfunction

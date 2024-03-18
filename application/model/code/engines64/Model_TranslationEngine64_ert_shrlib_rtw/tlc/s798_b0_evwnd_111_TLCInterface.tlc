@@ -1,0 +1,27 @@
+%implements s798_b0_evwnd_111_TLCInterface "C"
+
+%function getOutputAddr_400_0_111_1_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<deadd6*//*@>deadca*/Model_TranslationEngine64_MedusaPostHoligram_B./*@>deaddc*/RoutingMap"
+%endfunction
+
+%function getOutput_400_0_111_1_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>deadea*/Model_TranslationEngine64_MedusaPostHoligram_B./*@>deadfd*/RoutingMap"
+%endfunction
+
+%function getInputAddr_400_4_111_1_2_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<deae41*//*@>deae35*/Model_TranslationEngine64_MedusaPostHoligram_B./*@>deae47*/Value" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInput_400_4_111_1_2_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>deae55*/Model_TranslationEngine64_MedusaPostHoligram_B./*@>deae68*/Value" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getSystemOutputFcnCallInfo_400_1_111_1_399_0(opaqueBlk) void
+%assign _modelSS = ""
+%createrecord fcnInfo { Name "/*@>deada8*/FuncTranslation_Model_150_574_67_18"; Args [] }
+%return fcnInfo
+%endfunction

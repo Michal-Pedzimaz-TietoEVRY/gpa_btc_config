@@ -1,0 +1,47 @@
+%implements s1068_b0_g3vnd_56_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+int32_T i;
+%closefile localVarDecl
+/* {S!d24}Product: '<S1419>/Multiply' */
+/*@>11f95db*/for (/*@>11f9ac7*/i = /*@>11f9ac6*/0; /*@>11f9ad1*/i < /*@>11f9acf*/32; /*@>11f9acd*/i/*@>11f9ad5*/++) {
+    /*@>11f9745*/rty_Out1/*@>11f964c*/[/*@>11f9747*/i]/*@>11f95c9*/ = /*@>11f973e*/rtu_In1;
+}
+/* {E!d24}End of Product: '<S1419>/Multiply' */
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[56].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(56, 0, 0)>
+%endif
+%if SLibCG_ArgAccessed(56, 0, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(56, 0, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_elseActionSubsystem(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(56, 0, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_Target_elseActionSubsystem", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>real32_T rtu_In1\
+%assign comma = ", "
+%<comma>real32_T rty_Out1[32]\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(56, 0, fcnProtoType)>
+%endfunction

@@ -1,0 +1,75 @@
+%implements s798_b0_evwnd_348_Functions "C"
+
+%function rt_roundd_snf_Fcn0(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+%assign cfgTxt = ""
+%openfile cfgTxt
+real_T y;
+if (fabs(u) < 4.503599627370496E+15) {
+    if (u >= 0.5) {
+        y = floor(u + 0.5);
+    } else if (u > -0.5) {
+        y = u * 0.0;
+    } else {
+        y = ceil(u - 0.5);
+    }
+} else {
+    y = u;
+}
+return y;
+%closefile cfgTxt
+%<cfgTxt>
+%closefile fcnBuff
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+extern real_T rt_roundd_snf(\
+%assign comma = ""
+%<comma>real_T u\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(348, 0, fcnProtoType)>
+%return fcnBuff
+%endfunction
+
+%function Model_TranslationEngine64_eml_integer_colon_dispatcher_k2_Fcn1(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+%assign cfgTxt = ""
+%openfile cfgTxt
+int32_T k;
+int32_T n;
+/*@>10120ec*/if (/*@>100f95a*/b/*@>2d1a8a*/ < /*@>100f956*/1) {
+    /*@>10120f0*/n/*@>10120ef*/ = /*@>1018fd9*/0;
+} else {
+    /*@>100f973*/n/*@>100ed75*/ = /*@>100f95e*/b;
+}
+y_size/*@>100d5f2*/[/*@>100f965*/0]/*@>100d5fa*/ = /*@>1018fdc*/1;
+y_size/*@>100d605*/[/*@>100f968*/1]/*@>100d60d*/ = /*@>100f961*/n;
+/*@>2d1a55*/if (/*@>100f944*/n/*@>2d1a43*/ > /*@>100f946*/0) {
+    int32_T yk;
+    /*@>101685b*/y_data/*@>1015436*/[/*@>100f96c*/0]/*@>2d1a3b*/ = /*@>1018fdf*/1;
+    /*@>100f948*/yk/*@>2d1a3c*/ = /*@>1018fe2*/1;
+/*@>2d1a58*/    for (/*@>1018fea*/k = /*@>1018fe9*/2; /*@>1018ff5*/k <= /*@>1018ff3*/n; /*@>1018ff0*/k/*@>1018ff7*/++) {
+        /*@>100f954*/yk/*@>1018ff8*/++;
+        /*@>101685e*/y_data[/*@>100f970*/k/*@>100d6cc*/ - /*@>100f972*/1]/*@>2d1a41*/ = /*@>100f951*/yk;
+    }
+}
+%closefile cfgTxt
+%<cfgTxt>
+%closefile fcnBuff
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_TranslationEngine64_eml_integer_colon_dispatcher_k2(\
+%assign comma = ""
+%<comma>int32_T b\
+%assign comma = ", "
+%<comma>int32_T y_data[]\
+%assign comma = ", "
+%<comma>int32_T y_size[2]\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(348, 1, fcnProtoType)>
+%return fcnBuff
+%endfunction
+

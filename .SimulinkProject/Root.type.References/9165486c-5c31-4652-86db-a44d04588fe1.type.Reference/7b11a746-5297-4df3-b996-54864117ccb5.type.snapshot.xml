@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Info>
+    <Files>
+        <File path="Near.prj" value="5b24d457"/>
+        <File path="components/ALD/AnnouncementLevelDetection.slx" value="5251b7a7"/>
+        <File path="components/ALD/AnnouncementLevelDetectionDefaultConfig.m" value="b7feda0f"/>
+        <File path="components/ALD/AnnouncementLevelDetectionMask.m" value="a323e124"/>
+        <File path="components/ALD/AnnouncementLevelDetection_init.m" value="3fc8c607"/>
+        <File path="components/ALD" value="-1"/>
+        <File path="components/Bandsplitter/Bandsplitter1p1.slx" value="7f22c207"/>
+        <File path="components/Bandsplitter/Bandsplitter1p1Class.m" value="b7eb4bfe"/>
+        <File path="components/Bandsplitter/BandsplitterClass.m" value="23c374de"/>
+        <File path="components/Bandsplitter" value="-1"/>
+        <File path="components/Crossfader" value="-1"/>
+        <File path="components/FixedAttenuator/FixedAttenuatorLib.slx" value="d37e699b"/>
+        <File path="components/FixedAttenuator" value="-1"/>
+        <File path="components/FsEQ/FsEQInit.m" value="d635fe7f"/>
+        <File path="components/FsEQ/FsEQSimEvents.m" value="b25bcb02"/>
+        <File path="components/FsEQ/setFsEQPoolCoeffs.m" value="8a9dc7c9"/>
+        <File path="components/FsEQ" value="-1"/>
+        <File path="components/HrEQ/HrEQInit.m" value="f34b3b0c"/>
+        <File path="components/HrEQ/HrEQLib.slx" value="c53e6f78"/>
+        <File path="components/HrEQ/calcPoolCoeffs.m" value="b2760215"/>
+        <File path="components/HrEQ/setHrEQPoolCoeffs.m" value="52cf5761"/>
+        <File path="components/HrEQ" value="-1"/>
+        <File path="components/Monoizer/MonoizerLib.slx" value="6b1ba945"/>
+        <File path="components/Monoizer" value="-1"/>
+        <File path="components/MusicLimiter/MusicLimiterClass.m" value="26f8b542"/>
+        <File path="components/MusicLimiter" value="-1"/>
+        <File path="components/NEARInit.m" value="2bd82704"/>
+        <File path="components/NEARLib.slx" value="2df57f81"/>
+        <File path="components/NEARSimEvents.m" value="41ed8b8a"/>
+        <File path="components/Near1p1AnnInit.m" value="b1a46567"/>
+        <File path="components/NearWbAnnInit.m" value="55fefe62"/>
+        <File path="components/PreAmp/PreAmpClass.m" value="55b84030"/>
+        <File path="components/PreAmp/PreAmpLib.slx" value="6d3666b7"/>
+        <File path="components/PreAmp" value="-1"/>
+        <File path="components/Upmixer/PostmixLib.slx" value="700a8883"/>
+        <File path="components/Upmixer/Upmixer1p1Lib.slx" value="85afaf8c"/>
+        <File path="components/Upmixer/UpmixerClass.m" value="d6d424ef"/>
+        <File path="components/Upmixer" value="-1"/>
+        <File path="components/VM/VMInit.m" value="d9309bab"/>
+        <File path="components/VM/VmClass.m" value="2cd05880"/>
+        <File path="components/VM/VolMuteVNCALD.slx" value="dc3d842b"/>
+        <File path="components/VM" value="-1"/>
+        <File path="components/WiggleDelay/WiggleDelayLib.slx" value="7562f7b1"/>
+        <File path="components/WiggleDelay" value="-1"/>
+        <File path="components/WiggleFilter/WiggleFilterClass.m" value="1be2e240"/>
+        <File path="components/WiggleFilter/WiggleFilterLib.slx" value="8fa29d6f"/>
+        <File path="components/WiggleFilter" value="-1"/>
+        <File path="components" value="-1"/>
+    </Files>
+    <MetadataNode>
+        <path value="ProjectData:type:Info">
+            <node name="Info">
+                <entry value="near" key="Name"/>
+            </node>
+        </path>
+        <path value="Root:type:Categories">
+            <path value="FileClassCategory:type:Category">
+                <node name="Info">
+                    <entry value="None" key="DataType"/>
+                    <entry value="Classification" key="Name"/>
+                    <entry value="1" key="ReadOnly"/>
+                    <entry value="1" key="SingleValued"/>
+                </node>
+                <path value="artifact:type:Label">
+                    <node name="Info">
+                        <entry value="Artifact" key="Name"/>
+                        <entry value="READ_ONLY" key="ReadOnly"/>
+                    </node>
+                </path>
+                <path value="convenience:type:Label">
+                    <node name="Info">
+                        <entry value="Convenience" key="Name"/>
+                        <entry value="READ_ONLY" key="ReadOnly"/>
+                    </node>
+                </path>
+                <path value="derived:type:Label">
+                    <node name="Info">
+                        <entry value="Derived" key="Name"/>
+                        <entry value="READ_ONLY" key="ReadOnly"/>
+                    </node>
+                </path>
+                <path value="design:type:Label">
+                    <node name="Info">
+                        <entry value="Design" key="Name"/>
+                        <entry value="READ_ONLY" key="ReadOnly"/>
+                    </node>
+                </path>
+                <path value="none:type:Label">
+                    <node name="Info">
+                        <entry value="None" key="Name"/>
+                        <entry value="READ_ONLY" key="ReadOnly"/>
+                    </node>
+                </path>
+                <path value="other:type:Label">
+                    <node name="Info">
+                        <entry value="Other" key="Name"/>
+                        <entry value="READ_ONLY" key="ReadOnly"/>
+                    </node>
+                </path>
+                <path value="test:type:Label">
+                    <node name="Info">
+                        <entry value="Test" key="Name"/>
+                        <entry value="READ_ONLY" key="ReadOnly"/>
+                    </node>
+                </path>
+            </path>
+        </path>
+        <path value="Root:type:EntryPoints"/>
+        <path value="Root:type:Extensions"/>
+        <path value="Root:type:Files"/>
+        <path value="Root:type:ProjectData"/>
+    </MetadataNode>
+    <Date value="March 14, 2023 12:58:07 AM"/>
+</Info>

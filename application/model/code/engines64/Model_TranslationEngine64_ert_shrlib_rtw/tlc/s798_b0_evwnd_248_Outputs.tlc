@@ -1,0 +1,35 @@
+%implements s798_b0_evwnd_248_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+real32_T wc;
+%closefile localVarDecl
+/* MATLAB Function: '<S455>/Tau2Gamma' */
+/* MATLAB Function: '<S455>/Tau2Gamma' incorporates:
+ *  S-Function (TuneVarMEX): '<S455>/Tune Variable'
+ */
+/*  Invoke the function trigger output */
+/* MATLAB Function 'TranslateTrigger/tfunc': '<S461>:1' */
+/* '<S461>:1:3' f(); */
+/*  Approximate conversion from coefficient to time constant */
+/* MATLAB Function 'ModelPreAmp/DecRate/AudioPilot35/Audiopilot_3_5/NoiseEstimationVariant/RegularNoiseEstimation/RatioCalculation/RatioSmoother/RatioImpulseRejectionGamma0/Tau2Gamma': '<S459>:1' */
+/* '<S459>:1:4' wc = 1/(HFDecRate*tau.Value); */
+/*@>ebb895*/wc/*@>c737b4*/ = /*@>ebb89b*/1.0F/*@>c737b3*/ / (/*@>ebb8a3*/21.6346149F/*@>ebb8a7*/ * /*@>ebbe4e*/Model_TranslationEngine64_B./*@>ebbf40*/Gamma0TauS_p.Value);
+/* '<S459>:1:5' gamma = 1-(1-sin(wc))/cos(wc); */
+/*@>ebbe54*/Model_TranslationEngine64_B./*@>ebbf43*/gamma/*@>c737ac*/ = /*@>ebb89d*/1.0F/*@>c737ad*/ - (/*@>ebb89c*/1.0F/*@>c737c1*/ - /*@>ebbae1*/sinf(/*@>ebb897*/wc))/*@>c737bc*/ / /*@>ebbae3*/cosf(/*@>ebb899*/wc);
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void FuncTranslation_Model_117_2149(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(248, 0, fcnProtoType)>
+%endfunction

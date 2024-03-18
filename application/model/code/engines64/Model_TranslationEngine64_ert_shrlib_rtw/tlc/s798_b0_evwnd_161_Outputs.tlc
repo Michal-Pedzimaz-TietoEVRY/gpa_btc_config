@@ -1,0 +1,460 @@
+%implements s798_b0_evwnd_161_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+real_T a_data[18];
+real_T duplicateIdx_data[18];
+real_T idxUnique_data[18];
+int32_T indx_data[18];
+int32_T i;
+int32_T ixLead;
+int32_T iyLead;
+int32_T loop_ub;
+real32_T table_data[36];
+real32_T updatedTable_data[36];
+real32_T w_data[32];
+real32_T fanSettingUnique_data[18];
+real32_T table_data_0[18];
+real32_T b_y1_data[15];
+real32_T tmp1;
+char_T p_data[135];
+char_T k_data[70];
+char_T m_data[66];
+char_T o_data[54];
+char_T n_data[53];
+char_T l_data[20];
+int8_T j_data[18];
+boolean_T x_data[18];
+boolean_T isNoiseIncreasing;
+static const char_T q[70] = %<(TLC_STR_CTX(105))>;
+static const char_T r[20] = %<(TLC_STR_CTX(106))>;
+static const char_T s[66] = %<(TLC_STR_CTX(107))>;
+static const char_T t[53] = %<(TLC_STR_CTX(108))>;
+static const char_T u[54] = %<(TLC_STR_CTX(109))>;
+static const char_T v[135] = %<(TLC_STR_CTX(110))>;
+int32_T a_size[2];
+int32_T w_size[2];
+int32_T fanSettingUnique_size;
+int32_T idxUnique_size;
+int32_T table_size_idx_0;
+int32_T table_size_idx_0_tmp;
+real32_T work_data_idx_0;
+boolean_T exitg1;
+boolean_T guard1 = false;
+%closefile localVarDecl
+/* {S!d1315}MATLAB Function: '<S28>/TableFormatting' */
+/* {S!d1318}MATLAB Function: '<S28>/TableFormatting' incorporates:
+ *  S-Function (TuneVarMEX): '<S28>/Tune Variable'
+ */
+/*  Invoke the function trigger output */
+/* MATLAB Function 'TranslateTrigger/tfunc': '<S31>:1' */
+/* '<S31>:1:3' f(); */
+/*  "table": Table containing noise values corresponding to different HVAC */
+/*  settings. Column 1 contains the 'HVAC Setting' and varies from */
+/*  [0,1.0]. Column 2 contains the corresponding 'HVAC noise' values. */
+/*  Error checks for the HVAC table: */
+/*  1. Column1 must have atleast 2 unique values. */
+/*  2. Each unique value in column 1 can correspond to only one noise value. */
+/*     Example- An HVAC setting of 0.5 cannot correspond to both 60 dBSPL and 70 dBSPL. */
+/*  3. If there are duplicate pairs in the table, only one is retained. */
+/*  4. Column2 values are expected to either increase with an increase in HVAC setting or remain constant. */
+/*     Example - The noise corresponding to an HVAC setting of 1.0 must be  */
+/*     higher than or equal to that of 0.5. */
+/*  5. If the table does not contain the entries for HVAC settings 0.0 or */
+/*     1.0, they are added in the translation so that the interpolation */
+/*     can handle any incoming control messages in the range [0.0, 1.0]. */
+/*     Example - [0.5,70 ;  */
+/*  6. Size restrictions - the table must have 2 columns and <= MaskHvacTableSize rows.     */
+/* MATLAB Function 'ModelPreAmp/DecRate/AudioPilot35/Audiopilot_3_5/ConfigurationRtcInputs/Hvac/table/TableFormatting': '<S29>:1' */
+/*  "tableTOP": Output table [16x2] after performing checks */
+/* '<S29>:1:23' argName = 'AudioPilot 3.5 HVAC'; */
+/* '<S29>:1:24' tableTOP = zeros(MaskHvacTableSize,2,'single'); */
+/*@>e55618*/memset(&/*@>e58662*/Model_TranslationEngine64_B./*@>e5b8a4*/tableTOP/*@>e53aa6*/[/*@>e53aa2*/0], /*@>e5b1cd*/0, /*@>e53aab*/sizeof(real32_T)/*@>e5a5ef*/ << /*@>e5a5ee*/5U);
+/* '<S29>:1:25' numEntries = table.Size(1); */
+/* '<S29>:1:26' table = table.Value(1:numEntries,:); */
+/*  Sort the table with respect to the fan setting (ascending).  */
+/*  Ensure that the corresponding noise values are also in the ascending  */
+/*  order by checking if the difference between consecutive elements is  */
+/*  always non negative. */
+/* '<S29>:1:32' table = sortrows(table,1); */
+/*@>e4a1d5*/if (/*@>e58668*/Model_TranslationEngine64_B./*@>e5b8a7*/HvacTable./*@>e5b89b*/Size/*@>e57893*/[/*@>e5788c*/0]/*@>e33fce*/ < /*@>e4396c*/1.0) {
+    /*@>e4a1d9*/loop_ub/*@>e4a1d8*/ = /*@>e5b1d0*/-1;
+} else {
+    /*@>e43d53*/loop_ub/*@>e41da6*/ = /*@>e444af*/(int32_T)/*@>e5866e*/Model_TranslationEngine64_B./*@>e5b8aa*/HvacTable./*@>e5b89e*/Size/*@>e5789c*/[/*@>e57895*/0]/*@>e33fd7*/ - /*@>e4396e*/1;
+}
+w_size/*@>e3ab39*/[/*@>e439e2*/0]/*@>e3ab3b*/ = /*@>e43d4f*/loop_ub + 1;
+w_size/*@>e3ab47*/[/*@>e439e6*/1]/*@>e3ab49*/ = /*@>e5b1d3*/2;
+/*@>e3abaa*/for (/*@>e5b3dd*/iyLead = /*@>e5b3dc*/0; /*@>e5b3e7*/iyLead < /*@>e5b3e5*/2; /*@>e5b3e3*/iyLead/*@>e5b3fb*/++) {
+/*@>e3ab8f*/    for (/*@>e5b3ee*/ixLead = /*@>e5b3ed*/0; /*@>e5b3f9*/ixLead <= /*@>e5b3f7*/loop_ub; /*@>e5b3f4*/ixLead/*@>e5b3fc*/++) {
+        /*@>e5032d*/w_data[/*@>e439eb*/ixLead + (/*@>e51d08*/loop_ub + 1) * /*@>e439ed*/iyLead]/*@>e3ab7c*/ = /*@>e58674*/Model_TranslationEngine64_B./*@>e5b8ad*/HvacTable./*@>e5b8a1*/Value/*@>e578b0*/[(/*@>e578a6*/iyLead/*@>e578a4*/ << /*@>e578a7*/4)/*@>e578a3*/ + /*@>e578a9*/ixLead];
+    }
+}
+%<SLibCG_DumpSSCode("/*@[e5a91f*/",(SLibCGCallSubFcn("Model_TranslationEngine64_sortrows", ["/*@>e5ba06*/w_data", "w_size"], 161, 5, 2)),"/*@]*/")>;
+table_size_idx_0/*@>e37052*/ = w_size/*@>e578a1*/[/*@>e5789e*/0];
+/*@>e43a2b*/loop_ub/*@>e3ad81*/ = w_size/*@>e578b5*/[/*@>e578b2*/0]/*@>e5a5f2*/ << /*@>e5a5f1*/1;
+if (/*@>e5316a*/loop_ub/*@>e53168*/ - /*@>e5316b*/1 >= /*@>e53167*/0) {
+    /*@>e55625*/memcpy(&/*@>e53149*/table_data/*@>e5314a*/[/*@>e53139*/0], &/*@>e53151*/w_data/*@>e53152*/[/*@>e53148*/0], /*@>e53137*/(uint32_T)/*@>e53136*/loop_ub/*@>e53155*/ * /*@>e53154*/sizeof(real32_T));
+}
+/* '<S29>:1:33' isNoiseIncreasing = all(diff(table(:,2)) >= 0); */
+/*@>e43913*/i/*@>c715b8*/ = w_size/*@>e578ba*/[/*@>e578b7*/0] - /*@>e43d3c*/1;
+/*@>c715ba*/if (w_size/*@>e578bf*/[/*@>e578bc*/0]/*@>c71598*/ == /*@>e43915*/0) {
+    ixLead/*@>e3ae31*/ = /*@>e5b1d6*/0;
+} else {
+    /*@>e4a1e8*/if (w_size/*@>e578c4*/[/*@>e578c1*/0]/*@>e48dcb*/ - /*@>e48dd1*/1/*@>e48b2b*/ <= /*@>e48b2e*/1) {
+        /*@>e4a1ec*/iyLead/*@>e4a1eb*/ = w_size/*@>e578c9*/[/*@>e578c6*/0]/*@>e48dd3*/ - /*@>e48dd9*/1;
+    } else {
+        /*@>e4a1e1*/iyLead/*@>e4a1e3*/ = /*@>e5b1d9*/1;
+    }
+    /*@>c715bc*/if (/*@>e4a1e5*/iyLead/*@>c71597*/ < /*@>e43916*/1) {
+        ixLead/*@>e3aec3*/ = /*@>e5b1dc*/0;
+    } else {
+        ixLead/*@>c71592*/ = /*@>e48b34*/(int8_T)(w_size/*@>e578ce*/[/*@>e578cb*/0]/*@>e48b35*/ - /*@>e48b3b*/1);
+        /*@>c715c3*/if (/*@>e48b3e*/(int8_T)(w_size/*@>e578d3*/[/*@>e578d0*/0]/*@>e48b3f*/ - /*@>e48b45*/1)/*@>c715d5*/ != /*@>e4391b*/0) {
+            /*@>e517fa*/work_data_idx_0/*@>c715af*/ = /*@>e578e4*/w_data[w_size[0]];
+/*@>c715c8*/            for (/*@>e5b3cb*/loop_ub = /*@>e5b3ca*/2; /*@>e5b3d8*/loop_ub <= /*@>e5b3d5*/i + /*@>e5b3d6*/1; /*@>e5b3d1*/loop_ub/*@>e5b419*/++) {
+                /*@>e4392a*/tmp1/*@>c715ab*/ = /*@>e578fe*/w_data[(/*@>e578f8*/loop_ub + w_size[0]) - /*@>e578fd*/1];
+                /*@>e504d1*/b_y1_data/*@>c7159d*/[/*@>e43d38*/loop_ub - /*@>e43d3a*/2]/*@>c7159b*/ = /*@>e48b55*/tmp1/*@>e48b53*/ - /*@>e51888*/work_data_idx_0;
+                /*@>e51886*/work_data_idx_0 = /*@>e4d475*/tmp1;
+            }
+        }
+    }
+}
+/*@>e3af4c*/for (/*@>e5b3b8*/iyLead = /*@>e5b3b7*/0; /*@>e5b3c5*/iyLead < ixLead; /*@>e5b3be*/iyLead/*@>e5b3fd*/++) {
+    /*@>e50466*/x_data/*@>e3af39*/[/*@>e43a53*/iyLead]/*@>e3af3a*/ = (/*@>e578d7*/b_y1_data/*@>e578d9*/[/*@>e578d6*/iyLead]/*@>e3af24*/ >= /*@>e439cf*/0.0F);
+}
+/*@>e4392e*/isNoiseIncreasing/*@>c71614*/ = /*@>e43930*/true;
+/*@>e43931*/i/*@>c7161e*/ = /*@>e5b1df*/1;
+exitg1 = false;
+while/*@<c71626*/ ((!exitg1) && (/*@>e43934*/i/*@>c71625*/ <= ixLead)) {
+    /*@>c71619*/if (!/*@<c7161c*//*@>e578ec*/x_data/*@>e578ee*/[/*@>e578ea*/i/*@>e578e8*/ - /*@>e578eb*/1]) {
+        /*@>e4393b*/isNoiseIncreasing/*@>c71617*/ = /*@>e4393d*/false;
+        exitg1 = true;
+    } else {
+        /*@>e43939*/i/*@>e5b3ff*/++;
+    }
+}
+/* '<S29>:1:34' if ~isNoiseIncreasing */
+/*@>c71384*/if (!/*@<c71356*//*@>e4389a*/isNoiseIncreasing) {
+    /* '<S29>:1:35' TranslateError('Error in %<"\%s: Noise values must increase with increase in fan current.\',argName);"> */
+    /* TRANSLATEERROR (For use in Functions triggered by TranslationTrigger blocks.) */
+    /* Print error message during tune data translation. */
+    /*   Do not include a final newline as this behavior is already built in. */
+    /*   Note that escape sequences such as '\n' will not work here. To emit */
+    /*   special characters, pass them in as arguments to %<"\%c or \%s format"> */
+    /*   specifiers. */
+    /*    Copyright 2018-2019 Bose Corporation */
+    /* 'TranslateError:10' coder.extrinsic('gcb') */
+    /* 'TranslateError:11' coder.extrinsic('warning') */
+    /* 'TranslateError:12' coder.allowpcode('plain'); */
+    /*  enable code generation from p-file */
+    /* 'TranslateError:14' if (coder.target('MATLAB')) */
+    /* 'TranslateError:18' if (coder.target('Sfun')) */
+    /* 'TranslateError:21' else */
+    /* 'TranslateError:22' count = numel(varargin); */
+    /* 'TranslateError:23' fixedArgs = varargin; */
+    /* 'TranslateError:24' for i=1:count */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:26' fixedArgs{i} = [varargin{i} char(0)]; */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:26' fixedArgs{i} = [varargin{i} char(0)]; */
+    /* 'TranslateError:29' coder.ceval('TranslateError',fixedArgs{:}); */
+    /*@>e55627*/memcpy(&/*@>e530ce*/k_data[/*@>e530be*/0], &/*@>e530d6*/q/*@>e530d7*/[/*@>e530cb*/0], /*@>e530cd*/70U/*@>e530da*/ * /*@>e530d9*/sizeof(char_T));
+/*@>e3c075*/    for (/*@>e5b3a7*/iyLead = /*@>e5b3a6*/0; /*@>e5b3b1*/iyLead < /*@>e5b3af*/20; /*@>e5b3ad*/iyLead/*@>e5b400*/++) {
+        /*@>e50948*/l_data[/*@>e43be5*/iyLead]/*@>e3c068*/ = /*@>e57966*/r/*@>e57968*/[/*@>e57965*/iyLead];
+    }
+    /*@>e54c34*/TranslateError(&/*@>e5091b*/k_data/*@>e5092e*/[/*@>e438eb*/0], &/*@>e50931*/l_data/*@>e50944*/[/*@>e438ef*/0]);
+}
+/*  Ensure that the lowest fan setting is 0 and the highest is 1.0 for */
+/*  the interpolation to work. Using an intermediate variable to add the */
+/*  new row. */
+/* '<S29>:1:41' if table(1,1) ~= single(0.0) */
+/*@>c71389*/if (/*@>e57903*/w_data/*@>e57905*/[/*@>e57902*/0]/*@>c71357*/ != /*@>e4389c*/0.0F) {
+    /* '<S29>:1:42' numRows = size(table,1) + 1; */
+    /* '<S29>:1:43' updatedTable = zeros(numRows,2,'single'); */
+    /*@>e51a5a*/table_size_idx_0_tmp/*@>e51a5c*/ = w_size/*@>e57912*/[/*@>e5790f*/0]/*@>e3711f*/ + /*@>e43974*/1;
+    table_size_idx_0/*@>e37159*/ = w_size/*@>e57917*/[/*@>e57914*/0]/*@>e51d15*/ + /*@>e51d1a*/1;
+    /*@>e43aae*/loop_ub/*@>e3b3fc*/ = (w_size/*@>e5791c*/[/*@>e57919*/0]/*@>e3b3d0*/ + /*@>e43aa8*/1)/*@>e444a4*/ << /*@>e444a3*/1;
+    /*@>e55629*/memset(&/*@>e53a48*/table_data/*@>e53a49*/[/*@>e53a47*/0], /*@>e5b1e2*/0, /*@>e53a45*/(uint32_T)/*@>e53a44*/loop_ub/*@>e53a4f*/ * /*@>e53a4e*/sizeof(real32_T));
+    /* '<S29>:1:44' updatedTable(1,1) = 0.0; */
+    /*@>e505cc*/table_data/*@>e505e7*/[/*@>e52a21*/0]/*@>c71330*/ = /*@>e438a0*/0.0F;
+    /* '<S29>:1:45' updatedTable(1,2) = table(1,2); */
+    /*@>e505f6*/table_data[w_size/*@>e57921*/[/*@>e5791e*/0]/*@>e51d36*/ + /*@>e51d3b*/1]/*@>c71333*/ = /*@>e5792c*/w_data[w_size[0]];
+    /* '<S29>:1:46' updatedTable(2:numRows,:) = table; */
+    /*@>e4a1da*/if (w_size/*@>e5793e*/[/*@>e5793b*/0]/*@>c7173d*/ + /*@>e4395a*/1/*@>c71798*/ < /*@>e43957*/2) {
+        /*@>e4a1de*/i/*@>e4a1dd*/ = /*@>e5b1eb*/0;
+    } else {
+        /*@>e438a2*/i/*@>c7135c*/ = /*@>e5b1e8*/1;
+    }
+    /*@>e43b5c*/loop_ub/*@>e3ba08*/ = w_size/*@>e57943*/[/*@>e57940*/0];
+/*@>e3b9fd*/    for (/*@>e5b383*/iyLead = /*@>e5b382*/0; /*@>e5b38d*/iyLead < /*@>e5b38b*/2; /*@>e5b389*/iyLead/*@>e5b401*/++) {
+/*@>e3b9e7*/        for (/*@>e5b394*/ixLead = /*@>e5b393*/0; /*@>e5b3a1*/ixLead < /*@>e5b39e*/loop_ub; /*@>e5b39a*/ixLead/*@>e5b402*/++) {
+            /*@>e5081f*/table_data[(/*@>e43b4a*/i/*@>e3b9cd*/ + /*@>e43b4c*/ixLead) + /*@>e51ce8*/table_size_idx_0_tmp * /*@>e43b4e*/iyLead]/*@>e3b9d5*/ = /*@>e57960*/w_data[w_size[0] * /*@>e5795f*/iyLead + /*@>e57958*/ixLead];
+        }
+    }
+    /* '<S29>:1:47' table = updatedTable; */
+}
+/* '<S29>:1:49' if table(end,1) ~= single(1.0) */
+/*@>c71396*/if (/*@>e5790b*/table_data[table_size_idx_0/*@>e57907*/ - /*@>e5790a*/1]/*@>c71361*/ != /*@>e4389d*/1.0F) {
+    /* '<S29>:1:50' numRows = size(table,1) + 1; */
+    /* '<S29>:1:51' updatedTable = zeros(numRows,2,'single'); */
+    /*@>e51a6a*/i/*@>e51a6c*/ = table_size_idx_0/*@>e37184*/ + /*@>e43978*/1;
+    /*@>e5562b*/memset(&/*@>e539fd*/updatedTable_data/*@>e539fe*/[/*@>e539fc*/0], /*@>e5b1e5*/0, /*@>e539fa*/(uint32_T)((table_size_idx_0/*@>e58ada*/ + /*@>e58add*/1)/*@>e58ad9*/ << /*@>e58ade*/1)/*@>e53a04*/ * /*@>e53a03*/sizeof(real32_T));
+    /* '<S29>:1:52' updatedTable(numRows,1) = 1.0; */
+    /*@>e5063f*/updatedTable_data[table_size_idx_0]/*@>c7133c*/ = /*@>e438a1*/1.0F;
+    /* '<S29>:1:53' updatedTable(numRows,2) = table(numRows-1,2); */
+    /*@>e50699*/updatedTable_data[(table_size_idx_0 + table_size_idx_0)/*@>e52a38*/ + /*@>e51d5d*/1]/*@>c71340*/ = /*@>e57937*/table_data[(table_size_idx_0 + table_size_idx_0) - /*@>e57936*/1];
+    /* '<S29>:1:54' updatedTable(1:numRows-1,:) = table; */
+/*@>e3b92f*/    for (/*@>e5b35f*/iyLead = /*@>e5b35e*/0; /*@>e5b369*/iyLead < /*@>e5b367*/2; /*@>e5b365*/iyLead/*@>e5b403*/++) {
+/*@>e3b919*/        for (/*@>e5b370*/ixLead = /*@>e5b36f*/0; /*@>e5b37d*/ixLead < table_size_idx_0; /*@>e5b376*/ixLead/*@>e5b404*/++) {
+            /*@>e507d8*/updatedTable_data[/*@>e43b2b*/ixLead + (table_size_idx_0/*@>e51d60*/ + /*@>e51d63*/1) * /*@>e43b2d*/iyLead]/*@>e3b907*/ = /*@>e5794d*/table_data[table_size_idx_0 * /*@>e5794c*/iyLead + /*@>e57947*/ixLead];
+        }
+    }
+    /* '<S29>:1:55' table = updatedTable; */
+    table_size_idx_0/*@>e5b405*/++;
+    /*@>e5562d*/memcpy(&/*@>e53019*/table_data/*@>e5301a*/[/*@>e53009*/0], &/*@>e53021*/updatedTable_data/*@>e53022*/[/*@>e53018*/0], /*@>e53007*/(uint32_T)(/*@>e58ae2*/i/*@>e5a5f5*/ << /*@>e5a5f4*/1)/*@>e53025*/ * /*@>e53024*/sizeof(real32_T));
+}
+/* '<S29>:1:57' fanSetting = table(:,1); */
+/* '<S29>:1:58' noise = table(:,2); */
+/* '<S29>:1:59' numEntries = numel(fanSetting); */
+/*  Check for unique indexes in fan settings. If a fan setting has a */
+/*  duplicate, check if the corresponding noise values are the same. If */
+/*  they are the same, then only one pair is retained and the others */
+/*  discarded. If they are different, an error is thrown as one fan */
+/*  setting cannot correspond to multiple noise values. */
+/* '<S29>:1:66' [fanSettingUnique,idxUnique] = unique(fanSetting); */
+iyLead/*@>e3b622*/ = table_size_idx_0;
+if (table_size_idx_0/*@>e52fc9*/ - /*@>e52fcc*/1 >= /*@>e52fc8*/0) {
+    /*@>e5562f*/memcpy(&/*@>e52faa*/table_data_0/*@>e52fab*/[/*@>e52f9a*/0], &/*@>e52fb2*/table_data[/*@>e52fa9*/0], /*@>e52f98*/(uint32_T)table_size_idx_0/*@>e52fb6*/ * /*@>e52fb5*/sizeof(real32_T));
+}
+%<SLibCG_DumpSSCode("/*@[e5a93b*/",(SLibCGCallSubFcn("Model_TranslationEngine64_unique_vector_d", ["/*@>e5ba1a*/table_data_0", "&table_size_idx_0", "/*@>e5ba2f*/fanSettingUnique_data", "&fanSettingUnique_size", "/*@>e5ba44*/indx_data", "&loop_ub"], 161, 5, 3)),"/*@]*/")>;
+idxUnique_size/*@>e3b7d5*/ = loop_ub;
+/*@>e3b7f9*/for (/*@>e5b34c*/iyLead = /*@>e5b34b*/0; /*@>e5b359*/iyLead < loop_ub; /*@>e5b352*/iyLead/*@>e5b406*/++) {
+    /*@>e508ab*/idxUnique_data/*@>e3b7e6*/[/*@>e43b14*/iyLead]/*@>e3b7e7*/ = /*@>e5796c*/indx_data/*@>e5796e*/[/*@>e5796b*/iyLead];
+}
+/* '<S29>:1:67' duplicateIdx = setdiff(1:numEntries,idxUnique); */
+/*@>c714a8*/if (table_size_idx_0/*@>c714a5*/ < /*@>e438e1*/1) {
+    a_size/*@>e3bb07*/[/*@>e43b8a*/0]/*@>e3732d*/ = /*@>e5b1f1*/1;
+    a_size/*@>e3bbef*/[/*@>e43b96*/1]/*@>e37339*/ = /*@>e5b1f4*/0;
+} else {
+    a_size/*@>e3ba6d*/[/*@>e43b6a*/0]/*@>e3ba6f*/ = /*@>e5b1ee*/1;
+    a_size/*@>e3ba81*/[/*@>e43b71*/1]/*@>e3ba83*/ = table_size_idx_0;
+    /*@>e43b81*/loop_ub/*@>e3bac5*/ = table_size_idx_0/*@>e3ba9a*/ - /*@>e43b7c*/1;
+/*@>e3baaa*/    for (/*@>e5b33c*/iyLead = /*@>e5b33b*/0; /*@>e5b347*/iyLead <= /*@>e5b345*/loop_ub; /*@>e5b342*/iyLead/*@>e5b418*/++) {
+        /*@>e509dc*/a_data[/*@>e43b76*/iyLead]/*@>e3ba96*/ = /*@>e463eb*/(real_T)/*@>e43b72*/iyLead/*@>e3ba8b*/ + /*@>e43b74*/1.0;
+    }
+}
+%<SLibCG_DumpSSCode("/*@[e5a95a*/",(SLibCGCallSubFcn("Model_TranslationEngine64_do_vectors", ["/*@>e5ba59*/a_data", "a_size", "/*@>e5ba6d*/idxUnique_data", "&idxUnique_size", "/*@>e5ba82*/duplicateIdx_data", "w_size", "/*@>e5ba96*/indx_data", "&loop_ub", "&iyLead"], 161, 5, 4)),"/*@]*/")>;
+/* '<S29>:1:69' for i = 1:numel(duplicateIdx) */
+/*@>e438a8*/i/*@>c71366*/ = w_size/*@>e57973*/[/*@>e57970*/1];
+/*@>c713a7*/for (/*@>e5b2e5*/ixLead = /*@>e5b2e4*/0; /*@>e5b2f2*/ixLead < /*@>e5b2ef*/i; /*@>e5b2eb*/ixLead/*@>e5b407*/++) {
+    int32_T j_size_idx_0;
+    /* '<S29>:1:70' currFanSetting = fanSetting(duplicateIdx(i)); */
+    /*@>e438b0*/tmp1/*@>c7134a*/ = /*@>e57983*/table_data[/*@>e5797c*/(int32_T)/*@>e5797f*/duplicateIdx_data[/*@>e57981*/ixLead]/*@>e5797b*/ - /*@>e57982*/1];
+    /* '<S29>:1:71' dupNoise = noise( fanSetting == currFanSetting ); */
+    /* '<S29>:1:72' IsCorrespondingNoiseEqual = all(dupNoise == dupNoise(1)); */
+    /*@>e438b4*/iyLead/*@>c713ce*/ = table_size_idx_0/*@>c717e1*/ - /*@>e4395d*/1;
+    /*@>e438b7*/loop_ub/*@>c713d1*/ = /*@>e5b1f7*/0;
+/*@>c713d5*/    for (/*@>e5b32c*/table_size_idx_0_tmp = /*@>e5b32b*/0; /*@>e5b337*/table_size_idx_0_tmp <= /*@>e5b335*/iyLead; /*@>e5b332*/table_size_idx_0_tmp/*@>e5b408*/++) {
+        /*@>c713d8*/if (/*@>e57989*/table_data[/*@>e57988*/table_size_idx_0_tmp]/*@>c713d3*/ == /*@>e438c1*/tmp1) {
+            /*@>e438c9*/loop_ub/*@>e5b409*/++;
+        }
+    }
+    j_size_idx_0/*@>c713e2*/ = /*@>e4396a*/loop_ub;
+    /*@>e438c3*/loop_ub/*@>c713e8*/ = /*@>e5b1fa*/0;
+/*@>c713ea*/    for (/*@>e5b31c*/table_size_idx_0_tmp = /*@>e5b31b*/0; /*@>e5b327*/table_size_idx_0_tmp <= /*@>e5b325*/iyLead; /*@>e5b322*/table_size_idx_0_tmp/*@>e5b40a*/++) {
+        /*@>c713ed*/if (/*@>e579a2*/table_data[/*@>e579a1*/table_size_idx_0_tmp]/*@>c713e5*/ == /*@>e438d1*/tmp1) {
+            /*@>e50b26*/j_data/*@>c713f7*/[/*@>e438d3*/loop_ub]/*@>c713e7*/ = /*@>e46413*/(int8_T)(/*@>e438d5*/table_size_idx_0_tmp/*@>c713f9*/ + /*@>e438d7*/1);
+            /*@>e438dd*/loop_ub/*@>e5b40b*/++;
+        }
+    }
+    /*@>e439c7*/work_data_idx_0/*@>e39bae*/ = /*@>e5799c*/table_data[(/*@>e57997*/j_data/*@>e57996*/[/*@>e57998*/0] + table_size_idx_0) - /*@>e5799b*/1];
+/*@>e3c4da*/    for (/*@>e5b309*/iyLead = /*@>e5b308*/0; /*@>e5b316*/iyLead < j_size_idx_0; /*@>e5b30f*/iyLead/*@>e5b40c*/++) {
+        /*@>e50ba4*/x_data/*@>e3c4c7*/[/*@>e43c37*/iyLead]/*@>e3c4c8*/ = (/*@>e579bd*/table_data[(/*@>e579b7*/j_data/*@>e579b6*/[/*@>e579b9*/iyLead] + table_size_idx_0) - /*@>e579bc*/1]/*@>e3c48c*/ == /*@>e439c9*/work_data_idx_0);
+    }
+    /*@>e4393e*/isNoiseIncreasing/*@>c71636*/ = /*@>e43940*/true;
+    /*@>e43941*/iyLead/*@>c71640*/ = /*@>e5b1fd*/1;
+    exitg1 = false;
+    while/*@<c71648*/ ((!exitg1) && (/*@>e43944*/iyLead/*@>c71647*/ <= j_size_idx_0)) {
+        /*@>c7163b*/if (!/*@<c7163e*//*@>e579c5*/x_data/*@>e579c7*/[/*@>e579c3*/iyLead/*@>e579c1*/ - /*@>e579c4*/1]) {
+            /*@>e4394b*/isNoiseIncreasing/*@>c71639*/ = /*@>e4394d*/false;
+            exitg1 = true;
+        } else {
+            /*@>e43949*/iyLead/*@>e5b40e*/++;
+        }
+    }
+    /* '<S29>:1:73' if IsCorrespondingNoiseEqual ~= 1 */
+    /*@>c713aa*/if (!/*@<c71424*//*@>e438d8*/isNoiseIncreasing) {
+        /* '<S29>:1:74' TranslateError('Error in %<"\%s: Fan settings [\%f] corresponds to multiple noise values. Ensure that each fan setting corresponds only to one noise value.\',argName,currFanSetting);"> */
+        /* TRANSLATEERROR (For use in Functions triggered by TranslationTrigger blocks.) */
+        /* Print error message during tune data translation. */
+        /*   Do not include a final newline as this behavior is already built in. */
+        /*   Note that escape sequences such as '\n' will not work here. To emit */
+        /*   special characters, pass them in as arguments to %<"\%c or \%s format"> */
+        /*   specifiers. */
+        /*    Copyright 2018-2019 Bose Corporation */
+        /* 'TranslateError:10' coder.extrinsic('gcb') */
+        /* 'TranslateError:11' coder.extrinsic('warning') */
+        /* 'TranslateError:12' coder.allowpcode('plain'); */
+        /*  enable code generation from p-file */
+        /* 'TranslateError:14' if (coder.target('MATLAB')) */
+        /* 'TranslateError:18' if (coder.target('Sfun')) */
+        /* 'TranslateError:21' else */
+        /* 'TranslateError:22' count = numel(varargin); */
+        /* 'TranslateError:23' fixedArgs = varargin; */
+        /* 'TranslateError:24' for i=1:count */
+        /* 'TranslateError:25' if (ischar(varargin{i})) */
+        /* 'TranslateError:26' fixedArgs{i} = [varargin{i} char(0)]; */
+        /* 'TranslateError:25' if (ischar(varargin{i})) */
+        /* 'TranslateError:26' fixedArgs{i} = [varargin{i} char(0)]; */
+        /* 'TranslateError:25' if (ischar(varargin{i})) */
+        /* 'TranslateError:29' coder.ceval('TranslateError',fixedArgs{:}); */
+        /*@>e55631*/memcpy(&/*@>e52f34*/p_data[/*@>e52f14*/0], &/*@>e52f3c*/v/*@>e52f3d*/[/*@>e52f21*/0], /*@>e52f33*/135U/*@>e52f40*/ * /*@>e52f3f*/sizeof(char_T));
+/*@>e3cf73*/        for (/*@>e5b2f8*/iyLead = /*@>e5b2f7*/0; /*@>e5b302*/iyLead < /*@>e5b300*/20; /*@>e5b2fe*/iyLead/*@>e5b40f*/++) {
+            /*@>e50f6a*/l_data[/*@>e43d2a*/iyLead]/*@>e3cf66*/ = /*@>e57a04*/r/*@>e57a06*/[/*@>e57a03*/iyLead];
+        }
+        /*@>e54c5e*/TranslateError(&/*@>e50f3c*/p_data/*@>e50f4f*/[/*@>e4390c*/0], &/*@>e50f52*/l_data/*@>e50f65*/[/*@>e43910*/0], /*@>e43958*/tmp1);
+    }
+}
+/* '<S29>:1:78' numEntriesUnique = numel(fanSettingUnique); */
+/* '<S29>:1:79' noiseUnique = noise(idxUnique); */
+/*  Number of table entries needs to be atleast 2 for the interp1 function to */
+/*  work and less than equal to MaskHvacTableSize. The fan setting can */
+/*  only be in the range [0,1.0]. */
+/* '<S29>:1:84' if (numEntriesUnique < 2) */
+/*@>c713af*/if (fanSettingUnique_size/*@>c7136f*/ < /*@>e438b2*/2) {
+    /* '<S29>:1:85' TranslateError('Error in %<"\%s: Noise table must have atleast 2 unique fan settings.\',argName);"> */
+    /* TRANSLATEERROR (For use in Functions triggered by TranslationTrigger blocks.) */
+    /* Print error message during tune data translation. */
+    /*   Do not include a final newline as this behavior is already built in. */
+    /*   Note that escape sequences such as '\n' will not work here. To emit */
+    /*   special characters, pass them in as arguments to %<"\%c or \%s format"> */
+    /*   specifiers. */
+    /*    Copyright 2018-2019 Bose Corporation */
+    /* 'TranslateError:10' coder.extrinsic('gcb') */
+    /* 'TranslateError:11' coder.extrinsic('warning') */
+    /* 'TranslateError:12' coder.allowpcode('plain'); */
+    /*  enable code generation from p-file */
+    /* 'TranslateError:14' if (coder.target('MATLAB')) */
+    /* 'TranslateError:18' if (coder.target('Sfun')) */
+    /* 'TranslateError:21' else */
+    /* 'TranslateError:22' count = numel(varargin); */
+    /* 'TranslateError:23' fixedArgs = varargin; */
+    /* 'TranslateError:24' for i=1:count */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:26' fixedArgs{i} = [varargin{i} char(0)]; */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:26' fixedArgs{i} = [varargin{i} char(0)]; */
+    /* 'TranslateError:29' coder.ceval('TranslateError',fixedArgs{:}); */
+    /*@>e55633*/memcpy(&/*@>e52e8f*/m_data[/*@>e52e7f*/0], &/*@>e52e97*/s/*@>e52e98*/[/*@>e52e8c*/0], /*@>e52e8e*/66U/*@>e52e9b*/ * /*@>e52e9a*/sizeof(char_T));
+/*@>e3cbe8*/    for (/*@>e5b2d4*/iyLead = /*@>e5b2d3*/0; /*@>e5b2de*/iyLead < /*@>e5b2dc*/20; /*@>e5b2da*/iyLead/*@>e5b410*/++) {
+        /*@>e50d9c*/l_data[/*@>e43ccf*/iyLead]/*@>e3cbdb*/ = /*@>e579e6*/r/*@>e579e8*/[/*@>e579e5*/iyLead];
+    }
+    /*@>e54c62*/TranslateError(&/*@>e50d6f*/m_data/*@>e50d82*/[/*@>e438f3*/0], &/*@>e50d85*/l_data/*@>e50d98*/[/*@>e438f7*/0]);
+}
+/* '<S29>:1:87' if (numEntriesUnique > MaskHvacTableSize) */
+/*@>c713b1*/if (fanSettingUnique_size/*@>c71370*/ > /*@>e438b3*/16) {
+    /* '<S29>:1:88' TranslateError('Error in %<"\%s: Noise table cannot be longer than [\%d].\', argName,MaskHvacTableSize);"> */
+    /* TRANSLATEERROR (For use in Functions triggered by TranslationTrigger blocks.) */
+    /* Print error message during tune data translation. */
+    /*   Do not include a final newline as this behavior is already built in. */
+    /*   Note that escape sequences such as '\n' will not work here. To emit */
+    /*   special characters, pass them in as arguments to %<"\%c or \%s format"> */
+    /*   specifiers. */
+    /*    Copyright 2018-2019 Bose Corporation */
+    /* 'TranslateError:10' coder.extrinsic('gcb') */
+    /* 'TranslateError:11' coder.extrinsic('warning') */
+    /* 'TranslateError:12' coder.allowpcode('plain'); */
+    /*  enable code generation from p-file */
+    /* 'TranslateError:14' if (coder.target('MATLAB')) */
+    /* 'TranslateError:18' if (coder.target('Sfun')) */
+    /* 'TranslateError:21' else */
+    /* 'TranslateError:22' count = numel(varargin); */
+    /* 'TranslateError:23' fixedArgs = varargin; */
+    /* 'TranslateError:24' for i=1:count */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:26' fixedArgs{i} = [varargin{i} char(0)]; */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:26' fixedArgs{i} = [varargin{i} char(0)]; */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:29' coder.ceval('TranslateError',fixedArgs{:}); */
+/*@>e3caf9*/    for (/*@>e5b2c3*/iyLead = /*@>e5b2c2*/0; /*@>e5b2cd*/iyLead < /*@>e5b2cb*/53; /*@>e5b2c9*/iyLead/*@>e5b411*/++) {
+        /*@>e50d38*/n_data[/*@>e43cbb*/iyLead]/*@>e3caec*/ = /*@>e579ec*/t/*@>e579ee*/[/*@>e579eb*/iyLead];
+    }
+/*@>e3cd26*/    for (/*@>e5b2b2*/iyLead = /*@>e5b2b1*/0; /*@>e5b2bc*/iyLead < /*@>e5b2ba*/20; /*@>e5b2b8*/iyLead/*@>e5b412*/++) {
+        /*@>e50e1e*/l_data[/*@>e43cf1*/iyLead]/*@>e3cd19*/ = /*@>e579f2*/r/*@>e579f4*/[/*@>e579f1*/iyLead];
+    }
+    /*@>e54c64*/TranslateError(&/*@>e50df1*/n_data/*@>e50e04*/[/*@>e438fb*/0], &/*@>e50e07*/l_data/*@>e50e1a*/[/*@>e438ff*/0], /*@>e43900*/16.0);
+}
+/* '<S29>:1:90' if (any(fanSetting > 1) || any(fanSetting < 0)) */
+/*@>e3c289*/for (/*@>e5b29f*/iyLead = /*@>e5b29e*/0; /*@>e5b2ac*/iyLead < table_size_idx_0; /*@>e5b2a5*/iyLead/*@>e5b413*/++) {
+    /*@>e50b78*/x_data/*@>e3c270*/[/*@>e43c0c*/iyLead]/*@>e3c271*/ = (/*@>e579a8*/table_data[/*@>e579a7*/iyLead]/*@>e3c240*/ > /*@>e438b6*/1.0F);
+}
+guard1 = false;
+/*@>c713b3*/if (%<SLibCG_DumpSSCode("/*@[e5a8ef*/",(SLibCGCallSubFcn("Model_TranslationEngine64_any", ["/*@>e5bab6*/x_data", "&table_size_idx_0"], 161, 5, 0)),"/*@]*/")>) {
+    guard1 = true;
+} else {
+/*@>e3c5c3*/    for (/*@>e5b28c*/iyLead = /*@>e5b28b*/0; /*@>e5b299*/iyLead < table_size_idx_0; /*@>e5b292*/iyLead/*@>e5b417*/++) {
+        /*@>e50c1d*/x_data/*@>e3c5aa*/[/*@>e43c53*/iyLead]/*@>e3c5ab*/ = (/*@>e579cb*/table_data[/*@>e579ca*/iyLead]/*@>e3c57a*/ < /*@>e438ba*/0.0F);
+    }
+    /*@>c713b4*/if (%<SLibCG_DumpSSCode("/*@[e5a907*/",(SLibCGCallSubFcn("Model_TranslationEngine64_any", ["/*@>e5bacb*/x_data", "&table_size_idx_0"], 161, 5, 1)),"/*@]*/")>) {
+        guard1 = true;
+    }
+}
+if (guard1) {
+    /* '<S29>:1:91' TranslateError('Error in %<"\%s: Fan setting needs to be between 0 and 1.\', argName);"> */
+    /* TRANSLATEERROR (For use in Functions triggered by TranslationTrigger blocks.) */
+    /* Print error message during tune data translation. */
+    /*   Do not include a final newline as this behavior is already built in. */
+    /*   Note that escape sequences such as '\n' will not work here. To emit */
+    /*   special characters, pass them in as arguments to %<"\%c or \%s format"> */
+    /*   specifiers. */
+    /*    Copyright 2018-2019 Bose Corporation */
+    /* 'TranslateError:10' coder.extrinsic('gcb') */
+    /* 'TranslateError:11' coder.extrinsic('warning') */
+    /* 'TranslateError:12' coder.allowpcode('plain'); */
+    /*  enable code generation from p-file */
+    /* 'TranslateError:14' if (coder.target('MATLAB')) */
+    /* 'TranslateError:18' if (coder.target('Sfun')) */
+    /* 'TranslateError:21' else */
+    /* 'TranslateError:22' count = numel(varargin); */
+    /* 'TranslateError:23' fixedArgs = varargin; */
+    /* 'TranslateError:24' for i=1:count */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:26' fixedArgs{i} = [varargin{i} char(0)]; */
+    /* 'TranslateError:25' if (ischar(varargin{i})) */
+    /* 'TranslateError:26' fixedArgs{i} = [varargin{i} char(0)]; */
+    /* 'TranslateError:29' coder.ceval('TranslateError',fixedArgs{:}); */
+/*@>e3cc77*/    for (/*@>e5b27b*/iyLead = /*@>e5b27a*/0; /*@>e5b285*/iyLead < /*@>e5b283*/54; /*@>e5b281*/iyLead/*@>e5b414*/++) {
+        /*@>e50e3a*/o_data[/*@>e43ce0*/iyLead]/*@>e3cc6a*/ = /*@>e579f8*/u/*@>e579fa*/[/*@>e579f7*/iyLead];
+    }
+/*@>e3ce35*/    for (/*@>e5b26a*/iyLead = /*@>e5b269*/0; /*@>e5b274*/iyLead < /*@>e5b272*/20; /*@>e5b270*/iyLead/*@>e5b415*/++) {
+        /*@>e50eda*/l_data[/*@>e43d08*/iyLead]/*@>e3ce28*/ = /*@>e579fe*/r/*@>e57a00*/[/*@>e579fd*/iyLead];
+    }
+    /*@>e54c6e*/TranslateError(&/*@>e50ead*/o_data/*@>e50ec0*/[/*@>e43904*/0], &/*@>e50ec3*/l_data/*@>e50ed6*/[/*@>e43908*/0]);
+}
+/*  Create the output TOP matrix  */
+/* '<S29>:1:95' tableTOP(1:numEntriesUnique,1) = fanSettingUnique; */
+if (fanSettingUnique_size/*@>e52d21*/ - /*@>e52d24*/1 >= /*@>e52d20*/0) {
+    /*@>e55635*/memcpy(&/*@>e5867a*/Model_TranslationEngine64_B./*@>e5b8b0*/tableTOP/*@>e52d03*/[/*@>e52cf2*/0], &/*@>e52d0a*/fanSettingUnique_data/*@>e52d0b*/[/*@>e52d01*/0], /*@>e52cf0*/(uint32_T)fanSettingUnique_size/*@>e52d0e*/ * /*@>e52d0d*/sizeof(real32_T));
+}
+/* '<S29>:1:96' tableTOP(1:numEntriesUnique,2) = noiseUnique; */
+/*@>e3c8ef*/for (/*@>e5b257*/iyLead = /*@>e5b256*/0; /*@>e5b264*/iyLead < idxUnique_size; /*@>e5b25d*/iyLead/*@>e5b416*/++) {
+    /*@>e58680*/Model_TranslationEngine64_B./*@>e5b8b3*/tableTOP/*@>e40b1f*/[/*@>e43c86*/iyLead/*@>e40b1e*/ + /*@>e43d52*/16]/*@>e3c8dd*/ = /*@>e579e0*/table_data[(/*@>e579d7*/(int32_T)/*@>e579da*/idxUnique_data/*@>e579d9*/[/*@>e579dc*/iyLead] + table_size_idx_0) - /*@>e579df*/1];
+}
+/* {E!d1318}End of MATLAB Function: '<S28>/TableFormatting' */
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void FuncTranslation_Model_117_1781(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(161, 5, fcnProtoType)>
+%endfunction

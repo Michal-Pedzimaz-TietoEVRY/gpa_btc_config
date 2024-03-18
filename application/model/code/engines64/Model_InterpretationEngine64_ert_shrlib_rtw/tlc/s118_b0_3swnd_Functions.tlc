@@ -1,0 +1,19 @@
+%implements s118_b0_3swnd_Functions "C"
+
+%function Model_InterpretationEngine64_TestInterfaceFcn_Fcn0(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+%assign cfgTxt = ""
+%openfile cfgTxt
+%closefile cfgTxt
+%<cfgTxt>
+%closefile fcnBuff
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_InterpretationEngine64_TestInterfaceFcn(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(60, 0, fcnProtoType)>
+%return fcnBuff
+%endfunction
+

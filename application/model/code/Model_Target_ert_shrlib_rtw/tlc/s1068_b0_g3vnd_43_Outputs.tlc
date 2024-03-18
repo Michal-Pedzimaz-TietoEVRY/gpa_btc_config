@@ -1,0 +1,68 @@
+%implements s1068_b0_g3vnd_43_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+int32_T i;
+%closefile localVarDecl
+/* MATLAB Function 'ModelPreAmp/DecRate/Medusa5H1/MedusaHoligram/Medusa5H1 Part 3/On/VLS Gains Computation/VLS Gains Drv/Gain Computation/Ramper/process': '<S1148>:1' */
+/* '<S1148>:1:10' for i = 1:numel(VLSDrv_currentGain) */
+/*@>10c1050*/for (/*@>11d2201*/i = /*@>11d2200*/0; /*@>11d220b*/i < /*@>11d2209*/12; /*@>11d2207*/i/*@>11d220f*/++) {
+    /* '<S1148>:1:11' if (VLSDrv_Freeze(1) == false) */
+    /*@>10c1052*/if (!/*@<10c105e*/*/*@<11d2218*/rtd_VLSDrv_Freeze) {
+        /* '<S1148>:1:12' if (VLSDrv_frameCount(i) == 0) */
+        /*@>10c1053*/if (/*@>11d1f6d*/rtd_VLSDrv_frameCount/*@>11d1f6f*/[/*@>11d1f6b*/i]/*@>10c104d*/ == /*@>11d1701*/0) {
+            /*  The ramp is finished. Stop ramping and SNAP to the target */
+            /* '<S1148>:1:14' VLSDrv_currentGain(i) = VLSDrv_targetGain(i); */
+            /*@>11d170d*/rtd_VLSDrv_currentGain/*@>11d1418*/[/*@>11d170f*/i]/*@>10c1042*/ = /*@>11d1f74*/rtd_VLSDrv_targetGain/*@>11d1f76*/[/*@>11d1f72*/i];
+        } else {
+            /* '<S1148>:1:15' else */
+            /*  The ramp is *NOT* frozen or done: gain is moving */
+            /* '<S1148>:1:17' VLSDrv_currentGain(i) = VLSDrv_currentGain(i)*VLSDrv_rampCoeff(i); */
+            /*@>11d1719*/rtd_VLSDrv_currentGain/*@>11d1472*/[/*@>11d171b*/i]/*@>11d2210*/ *= /*@>11d1f82*/rtd_VLSDrv_rampCoeff/*@>11d1f84*/[/*@>11d1f80*/i];
+            /* '<S1148>:1:18' VLSDrv_frameCount(i) = VLSDrv_frameCount(i) - 1; */
+            /*@>11d1721*/rtd_VLSDrv_frameCount/*@>11d14ac*/[/*@>11d1723*/i]/*@>11d2211*/--;
+        }
+    }
+}
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[43].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(43, 0, 0)>
+%endif
+%if SLibCG_ArgAccessed(43, 0, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(43, 0, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Model_Target_process_c(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(43, 0, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Model_Target_process_c", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>const boolean_T *rtd_VLSDrv_Freeze\
+%assign comma = ", "
+%<comma>real32_T rtd_VLSDrv_currentGain[12]\
+%assign comma = ", "
+%<comma>int32_T rtd_VLSDrv_frameCount[12]\
+%assign comma = ", "
+%<comma>const real32_T rtd_VLSDrv_rampCoeff[12]\
+%assign comma = ", "
+%<comma>const real32_T rtd_VLSDrv_targetGain[12]\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(43, 0, fcnProtoType)>
+%endfunction
